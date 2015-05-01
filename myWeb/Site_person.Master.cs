@@ -49,10 +49,10 @@ namespace myWeb
                         }
                         ASPxMenu1.Visible = true;
                         ASPxMenu1.Items[7].Visible = false;
-                        if (("00286,00001,00229,00135").Contains(Helper.CStr(Session["PersonCode"])))
-                        {
-                            ASPxMenu1.Items[7].Visible = true;
-                        }
+                        //if (("00286,00001,00229,00135").Contains(Helper.CStr(Session["PersonCode"])))
+                        //{
+                        //    ASPxMenu1.Items[7].Visible = true;
+                        //}
                     }
                     else {
                         ASPxMenu1.Visible = false;

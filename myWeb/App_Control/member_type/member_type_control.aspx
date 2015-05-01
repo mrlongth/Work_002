@@ -72,7 +72,7 @@
             <td align="right" nowrap valign="top" style="width: 20%">
                                         <asp:Label runat="server" CssClass="label_error" 
                     ID="Label73">*</asp:Label>
-                <asp:Label ID="Label13" runat="server">อัตราบุคคลากร(%) :</asp:Label>
+                <asp:Label ID="Label13" runat="server">อัตราบุคลากร(%) :</asp:Label>
             </td>
             <td align="left" colspan="2" nowrap valign="top">
                 <cc2:AwNumeric ID="txtmember_type_rate" runat="server" CssClass="numberbox" 

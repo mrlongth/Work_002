@@ -75,7 +75,7 @@ namespace myWeb
 
         protected void GenMenu()
         {
-            cUser_menu objUserMenu = new cUser_menu();
+            cUser_group_menu objUserMenu = new cUser_group_menu();
             DataSet ds = new DataSet();
             DataTable dtList = new DataTable();
             DataTable dt = new DataTable();
@@ -87,17 +87,17 @@ namespace myWeb
                 string strMassege = string.Empty;
                 strCriteria = " And MenuParent = 0 ";
                 strCriteria += " And Menu_Status='Y' ";
-                strCriteria += " And UserID=" + Session["UserID"].ToString();
+                strCriteria += " And user_group_code ='" + Session["UserGroupCode"].ToString() + "' ";
                 strCriteria += " And CanView= 'Y' ";
                 strCriteria += " Order by MenuOrder ";
-                objUserMenu.SP_USER_MENU_SEL(strCriteria, ref ds, ref strMassege);
+                objUserMenu.SP_USER_GROUP_MENU_SEL(strCriteria, ref ds, ref strMassege);
                 dtList = ds.Tables[0];
 
-                strCriteria = " And UserID=" + Session["UserID"].ToString();
+                strCriteria = " And user_group_code ='" + Session["UserGroupCode"].ToString() + "' ";
                 strCriteria += " And Menu_Status='Y' ";
                 strCriteria += " And CanView= 'Y' ";
                 strCriteria += " Order by MenuOrder ";
-                objUserMenu.SP_USER_MENU_SEL(strCriteria, ref ds, ref strMassege);
+                objUserMenu.SP_USER_GROUP_MENU_SEL(strCriteria, ref ds, ref strMassege);
                 dt = ds.Tables[0];
 
                 ASPxMenu1.Items.Clear();

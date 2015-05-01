@@ -75,7 +75,7 @@
                     </asp:DropDownList>
                 </td>
                 <td align="left" nowrap valign="middle" style="text-align: right; width: 10%;">
-                    <asp:Label runat="server" ID="lblPage2">กลุ่มบุคคลากร :</asp:Label>
+                    <asp:Label runat="server" ID="lblPage2">กลุ่มบุคลากร :</asp:Label>
                 </td>
                 <td align="left" nowrap valign="middle" colspan="2">
                     <asp:DropDownList runat="server" CssClass="textbox" ID="cboPerson_group"  >
@@ -242,14 +242,14 @@
                     <asp:HiddenField ID="hdfitem_has" runat="server" Value='<%# DataBinder.Eval(Container, "DataItem.item_has") %>' />
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="รหัสบุคคลากร " SortExpression="person_code">
+            <asp:TemplateField HeaderText="รหัสบุคลากร " SortExpression="person_code">
                 <ItemStyle HorizontalAlign="Center" Width="8%" Wrap="True" />
                 <ItemTemplate>
                     <asp:Label ID="lblperson_code" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.person_code") %>'>
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="ชื่อบุคคลากร " SortExpression="person_thai_name">
+            <asp:TemplateField HeaderText="ชื่อบุคลากร " SortExpression="person_thai_name">
                 <ItemStyle HorizontalAlign="Left" Width="12%" Wrap="True" />
                 <ItemTemplate>
                     <asp:Label ID="lblperson_name" runat="server" Text='<%  # DataBinder.Eval(Container, "DataItem.title_name")+""+DataBinder.Eval(Container, "DataItem.person_thai_name") %>'>
@@ -317,14 +317,14 @@
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="รหัสบุคคลากร " SortExpression="person_code">
+            <asp:TemplateField HeaderText="รหัสบุคลากร " SortExpression="person_code">
                 <ItemStyle HorizontalAlign="Center" Width="8%" Wrap="True" />
                 <ItemTemplate>
                     <asp:Label ID="lblperson_code0" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.person_code") %>'>
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="ชื่อบุคคลากร " SortExpression="person_thai_name">
+            <asp:TemplateField HeaderText="ชื่อบุคลากร " SortExpression="person_thai_name">
                 <ItemStyle HorizontalAlign="Left" Width="12%" Wrap="True" />
                 <ItemTemplate>
                     <asp:Label ID="lblperson_name" runat="server" Text='<%  # DataBinder.Eval(Container, "DataItem.title_name")+""+DataBinder.Eval(Container, "DataItem.person_thai_name") %>'>

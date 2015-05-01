@@ -37,7 +37,7 @@
     </table>
     <ajaxtoolkit:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="0" Height="210px"
         BorderWidth="0px" Style="text-align: left;">
-        <ajaxtoolkit:TabPanel runat="server" HeaderText="ข้อมูลประวัติบุคคลากร" ID="TabPanel1">
+        <ajaxtoolkit:TabPanel runat="server" HeaderText="ข้อมูลประวัติบุคลากร" ID="TabPanel1">
             <HeaderTemplate>
                 ข้อมูลรายรับ/จ่าย
             </HeaderTemplate>
@@ -50,7 +50,7 @@
                         <td align="left" nowrap valign="middle" colspan="2" style="width: 55%">
                             <asp:label runat="server" id="lblpayment_doc" font-bold="True" forecolor="#3366CC">XXXXX</asp:label>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <asp:label runat="server" id="Label73x">รหัสบุคคลากร :</asp:label>
+                            <asp:label runat="server" id="Label73x">รหัสบุคลากร :</asp:label>
                             &nbsp;<asp:label runat="server" id="lblperson_code" font-bold="True" forecolor="#3366CC">P001</asp:label>
                             <asp:label runat="server" id="lblPersoncode0" font-bold="True" forecolor="#3366CC">-</asp:label>
                             <asp:label runat="server" id="lblperson_name" font-bold="True" forecolor="#3366CC">XXXXX</asp:label>
@@ -264,7 +264,7 @@
                             </asp:dropdownlist>
                         </td>
                         <td align="left" nowrap style="text-align: right" valign="middle">
-                                <asp:Label ID="Label50" runat="server" CssClass="label_hbk">กลุ่มบุคคลากร :</asp:Label>
+                                <asp:Label ID="Label50" runat="server" CssClass="label_hbk">กลุ่มบุคลากร :</asp:Label>
                             </td>
                             <td align="left" nowrap valign="middle">
                                 <asp:DropDownList ID="cboPerson_group" runat="server" CssClass="textbox">

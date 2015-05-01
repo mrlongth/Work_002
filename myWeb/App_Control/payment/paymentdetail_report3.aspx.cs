@@ -531,7 +531,7 @@ namespace myWeb.App_Control.payment
 
             strperson_group_code = cboPerson_group.SelectedValue;
             if (strperson_group_code.Length > 0)
-                strCondition += "กลุ่มบุคคลากร : " + cboPerson_group.SelectedItem.Text + "   ";
+                strCondition += "กลุ่มบุคลากร : " + cboPerson_group.SelectedItem.Text + "   ";
 
             strdirector_code = cboDirector.SelectedValue;
             if (strdirector_code.Length > 0)

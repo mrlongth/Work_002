@@ -29,7 +29,7 @@
                 </asp:DropDownList>
             </td>
             <td style="text-align: right">
-                <asp:Label runat="server" CssClass="label_h" ID="lblPage14">กลุ่มบุคคลากร :</asp:Label>
+                <asp:Label runat="server" CssClass="label_h" ID="lblPage14">กลุ่มบุคลากร :</asp:Label>
             </td>
             <td>
                 <asp:DropDownList runat="server" CssClass="textbox"   
@@ -158,7 +158,7 @@
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="กลุ่มบุคคลากร" SortExpression="person_group_name">
+            <asp:TemplateField HeaderText="กลุ่มบุคลากร" SortExpression="person_group_name">
                 <ItemStyle HorizontalAlign="Left" Width="10%" Wrap="True" />
                 <ItemTemplate>
                     <asp:Label ID="lblperson_group_name" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.person_group_name") %>'>

@@ -40,7 +40,7 @@
         </tr>
         <tr align="left">
             <td align="right" nowrap valign="top" style="width: 15%">
-                <asp:Label runat="server" ID="lblFName">รหัสสถานะบุคคลากร :</asp:Label>
+                <asp:Label runat="server" ID="lblFName">รหัสสถานะบุคลากร :</asp:Label>
             </td>
             <td align="left" colspan="2" nowrap valign="top">
                 &nbsp;<asp:TextBox ID="txtperson_work_status_code" runat="server" CssClass="textboxdis"
@@ -55,7 +55,7 @@
         </tr>
         <tr align="left">
             <td align="right" nowrap valign="top">
-                <asp:Label ID="Label11" runat="server">สถานะบุคคลากร :</asp:Label>
+                <asp:Label ID="Label11" runat="server">สถานะบุคลากร :</asp:Label>
             </td>
             <td align="left" colspan="2" nowrap valign="top">
                 <font face="Tahoma">&nbsp;<asp:TextBox ID="txtperson_work_status_name" runat="server"

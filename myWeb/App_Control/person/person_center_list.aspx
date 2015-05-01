@@ -1,6 +1,6 @@
 <%@ Page Language="C#" MasterPageFile="~/Site_list.Master" EnableEventValidation="false"
     AutoEventWireup="true" CodeBehind="person_center_list.aspx.cs" Inherits="myWeb.App_Control.person.person_center_list"
-    Title="แสดงข้อมูลบุคคลากร  (จากกองกลางเจ้าหน้าที่)" %>
+    Title="แสดงข้อมูลบุคลากร  (จากกองกลางเจ้าหน้าที่)" %>
 
 <%@ Register Assembly="Aware.WebControls" Namespace="Aware.WebControls" TagPrefix="cc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -16,7 +16,7 @@
                 <asp:Label runat="server" CssClass="label_error" ID="lblError"></asp:Label>
             </td>
             <td style="width: 20%; text-align: right;">
-                <asp:Label runat="server" CssClass="label_h" ID="lblPage2">กลุ่มบุคคลากร :</asp:Label>
+                <asp:Label runat="server" CssClass="label_h" ID="lblPage2">กลุ่มบุคลากร :</asp:Label>
             </td>
             <td colspan="2" style="height: 23px">
                 <asp:DropDownList runat="server" CssClass="textbox" ID="cboPerson_group" AutoPostBack="True"

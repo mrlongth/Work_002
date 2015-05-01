@@ -839,7 +839,7 @@ namespace myWeb.App_Control.payment_adj
                 ImageButton imgAdd = (ImageButton)e.Row.FindControl("imgAdd");
                 imgAdd.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgGridAdd"].Rows[0]["img"].ToString();
                 imgAdd.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgGridAdd"].Rows[0]["title"].ToString());
-                imgAdd.Attributes.Add("onclick", "OpenPopUp('800px','500px','94%','เลือกบุคคลากร','payment_adj_control.aspx','1');return false;");
+                imgAdd.Attributes.Add("onclick", "OpenPopUp('800px','500px','94%','เลือกบุคลากร','payment_adj_control.aspx','1');return false;");
                 imgAdd.Visible = false;
                 for (int iCol = 0; iCol < e.Row.Cells.Count; iCol++)
                 {

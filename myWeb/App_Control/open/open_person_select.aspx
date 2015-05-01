@@ -1,13 +1,13 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site_lov.Master" EnableEventValidation="false"
     AutoEventWireup="true" CodeBehind="open_person_select.aspx.cs" Inherits="myWeb.App_Control.open.open_person_select"
-    Title="เลือกข้อมูลบุคคลากร" %>
+    Title="เลือกข้อมูลบุคลากร" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <table cellpadding="1" cellspacing="1" style="width: 100%" border="0">
         <tr>
             <td style="text-align: right;">
-                <asp:Label runat="server" CssClass="label_h" ID="lblPage1">รหัสบุคคลากร :</asp:Label>
+                <asp:Label runat="server" CssClass="label_h" ID="lblPage1">รหัสบุคลากร :</asp:Label>
             </td>
             <td style="width: 1%">
                 <asp:TextBox runat="server" CssClass="textbox" Width="100px" ID="txtperson_code"></asp:TextBox>
@@ -51,7 +51,7 @@
                         <asp:Label ID="lblNo" runat="server"> </asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="รหัสบุคคลากร " SortExpression="person_code">
+                <asp:TemplateField HeaderText="รหัสบุคลากร " SortExpression="person_code">
                     <ItemStyle HorizontalAlign="Center" Width="10%" Wrap="True" />
                     <ItemTemplate>
                         <asp:HiddenField ID="hddopen_rate" runat="server" Value='<% # DataBinder.Eval(Container, "DataItem.open_rate") %>' />
@@ -59,7 +59,7 @@
                         </asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="ชื่อบุคคลากร " SortExpression="person_thai_name">
+                <asp:TemplateField HeaderText="ชื่อบุคลากร " SortExpression="person_thai_name">
                     <ItemStyle HorizontalAlign="Left" Width="18%" Wrap="True" />
                     <ItemTemplate>
                         <asp:Label ID="lbltitle_name" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.title_name") %>'>
@@ -70,7 +70,7 @@
                         </asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="กลุ่มบุคคลากร" SortExpression="person_group_name">
+                <asp:TemplateField HeaderText="กลุ่มบุคลากร" SortExpression="person_group_name">
                     <ItemStyle HorizontalAlign="Left" Width="15%" Wrap="True" />
                     <ItemTemplate>
                         <asp:Label ID="lblperson_group_name" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.person_group_name") %>'>

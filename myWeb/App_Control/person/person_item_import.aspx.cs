@@ -486,7 +486,7 @@ namespace myWeb.App_Control.person
                 ImageButton imgDelete = (ImageButton)e.Row.FindControl("imgDelete");
                 imgDelete.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["img"].ToString();
                 imgDelete.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["title"].ToString());
-                imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบข้อมูลรับ/จ่ายบุคคลากร " + txtitem_code.Text + " : " + txtitem_name.Text + " ?\");");
+                imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบข้อมูลรับ/จ่ายบุคลากร " + txtitem_code.Text + " : " + txtitem_name.Text + " ?\");");
 
                 #endregion
 

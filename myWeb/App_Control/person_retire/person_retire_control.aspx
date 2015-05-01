@@ -37,7 +37,7 @@
                 <table border="0" cellpadding="2" cellspacing="2" style="width: 100%;">
                     <tr align="left">
                         <td align="right" nowrap style="" valign="middle" width="10%">
-                            <asp:Label ID="Label21" runat="server" CssClass="label_hbk">รหัสบุคคลากร :</asp:Label>
+                            <asp:Label ID="Label21" runat="server" CssClass="label_hbk">รหัสบุคลากร :</asp:Label>
                         </td>
                         <td align="left" nowrap valign="middle" width="40%">
                             <asp:TextBox ID="txtpr_person_code" runat="server" CssClass="textboxdis" 

@@ -1,6 +1,6 @@
 <%@ Page Language="C#" MasterPageFile="~/Site_list.Master" EnableEventValidation="false"
     AutoEventWireup="true" CodeBehind="person_retire_retire_list.aspx.cs" Inherits="myWeb.App_Control.person_retire.person_retire_list"
-    Title="แสดงข้อมูลบุคคลากร" %>
+    Title="แสดงข้อมูลบุคลากร" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <table cellpadding="1" cellspacing="1" style="width: 100%" border="0">
@@ -14,7 +14,7 @@
         </tr>
         <tr>
             <td style="text-align: right; width: 20%;">
-                <asp:Label runat="server" CssClass="label_h" ID="lblPage1">รหัสบุคคลากร :</asp:Label>
+                <asp:Label runat="server" CssClass="label_h" ID="lblPage1">รหัสบุคลากร :</asp:Label>
             </td>
             <td>
                 <asp:TextBox runat="server" CssClass="textbox" Width="100px" ID="txtpr_person_code"></asp:TextBox>
@@ -68,14 +68,14 @@
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="รหัสบุคคลากร " SortExpression="pr_person_code">
+            <asp:TemplateField HeaderText="รหัสบุคลากร " SortExpression="pr_person_code">
                 <ItemStyle HorizontalAlign="Center" Width="5%" Wrap="True" />
                 <ItemTemplate>
                     <asp:Label ID="lblpr_person_code" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.pr_person_code") %>'>
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="ชื่อบุคคลากร " SortExpression="person_thai_name">
+            <asp:TemplateField HeaderText="ชื่อบุคลากร " SortExpression="person_thai_name">
                 <ItemStyle HorizontalAlign="Left" Width="12%" Wrap="True" />
                 <ItemTemplate>
                     <asp:Label ID="lblperson_retire_name" runat="server" Text='<%  # DataBinder.Eval(Container, "DataItem.person_thai_name") %>'

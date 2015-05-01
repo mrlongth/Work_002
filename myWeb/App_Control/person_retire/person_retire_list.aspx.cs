@@ -228,7 +228,7 @@ namespace myWeb.App_Control.person_retire
 
                 #region set ImageView
                 ImageButton imgView = (ImageButton)e.Row.FindControl("imgView");
-                imgView.Attributes.Add("onclick", "OpenPopUp('800px','400px','94%','แสดงข้อมูลบุคคลากร','person_retire_view.aspx?mode=view&pr_person_code=" +
+                imgView.Attributes.Add("onclick", "OpenPopUp('800px','400px','94%','แสดงข้อมูลบุคลากร','person_retire_view.aspx?mode=view&pr_person_code=" +
                                                                                                             lblpr_person_code.Text + "','1');return false;");
                 imgView.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgView"].Rows[0]["img"].ToString();
                 imgView.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgView"].Rows[0]["title"].ToString());

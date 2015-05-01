@@ -308,7 +308,7 @@ namespace myWeb.App_Control.open
                 //imgClear_open.Attributes.Add("onclick", "document.forms[0]." + txtopen_code.UniqueID + ".value='';" +
                 //                        "document.forms[0]." + txtopen_title.UniqueID + ".value='';return false;");
 
-                imgList_person.Attributes.Add("onclick", "OpenPopUp('900px','500px','94%','ค้นหาข้อมูลบุคคลากร' ,'../lov/person_lov.aspx?" +
+                imgList_person.Attributes.Add("onclick", "OpenPopUp('900px','500px','94%','ค้นหาข้อมูลบุคลากร' ,'../lov/person_lov.aspx?" +
                      "from=open_control&person_code='+getElementById('" + txtopen_person.ClientID + "').value+'" +
                      "&person_name='+getElementById('" + txtopen_person_name.ClientID + "').value+'" +
                     "&ctrl1=" + txtopen_person.ClientID + "&ctrl2=" + txtopen_person_name.ClientID + "&show=2', '2');return false;");
@@ -1437,7 +1437,7 @@ namespace myWeb.App_Control.open
                 ImageButton imgAdd = (ImageButton)e.Row.FindControl("imgAdd");
                 imgAdd.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgGridAdd"].Rows[0]["img"].ToString();
                 imgAdd.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgGridAdd"].Rows[0]["title"].ToString());
-                imgAdd.Attributes.Add("onclick", "OpenPopUp('850px','450px','95%','ค้นหาบุคคลากร','open_person_select.aspx?open_id='+$('#" + hddopen_id.ClientID + "').val()+'&open_head_id='+$('#" + hddopen_head_id.ClientID + "').val()+'&page=0&show=2','2');return false;");
+                imgAdd.Attributes.Add("onclick", "OpenPopUp('850px','450px','95%','ค้นหาบุคลากร','open_person_select.aspx?open_id='+$('#" + hddopen_id.ClientID + "').val()+'&open_head_id='+$('#" + hddopen_head_id.ClientID + "').val()+'&page=0&show=2','2');return false;");
             }
             else if (e.Row.RowType.Equals(DataControlRowType.DataRow) || e.Row.RowState.Equals(DataControlRowState.Alternate))
             {

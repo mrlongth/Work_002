@@ -28,7 +28,7 @@
     <div style="text-align: center; padding-left: 10px">
         <ajaxtoolkit:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="0" Height="370px"
             BorderWidth="0px" Style="text-align: left" Width="98%">
-            <ajaxtoolkit:TabPanel ID="TabPanel1" runat="server" HeaderText="ข้อมูลประวัติบุคคลากร">
+            <ajaxtoolkit:TabPanel ID="TabPanel1" runat="server" HeaderText="ข้อมูลประวัติบุคลากร">
                 <HeaderTemplate>
                     ข้อมูลการขออนุมัติเบิกจ่าย
                 </HeaderTemplate>
@@ -473,7 +473,7 @@
             </ajaxtoolkit:TabPanel>
             <ajaxtoolkit:TabPanel ID="TabPanel5" runat="server">
                 <HeaderTemplate>
-                    ข้อมูลบุคคลากร
+                    ข้อมูลบุคลากร
                 </HeaderTemplate>
                 <ContentTemplate>
                     <div class="div-lov" style="height: 380px">
@@ -493,7 +493,7 @@
                                         รวมทั้งสิ้น
                                     </FooterTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="รายชื่อบุคคลากร">
+                                <asp:TemplateField HeaderText="รายชื่อบุคลากร">
                                     <ItemTemplate>
                                         <asp:TextBox runat="server" ReadOnly="true" CssClass="textboxdis" Width="60" ID="txtperson_code"
                                             Text='<%# DataBinder.Eval(Container, "DataItem.person_code") %>' />

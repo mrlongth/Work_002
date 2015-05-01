@@ -1,13 +1,13 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site_lov.Master" EnableEventValidation="false"
     AutoEventWireup="true" CodeBehind="person_group_lov.aspx.cs" Inherits="myWeb.App_Control.lov.person_group_lov"
-    Title="ค้นหาข้อมูลกลุ่มบุคคลากร" %>
+    Title="ค้นหาข้อมูลกลุ่มบุคลากร" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <table cellpadding="0" cellspacing="0" style="width: 100%">
         <tr>
             <td style="text-align: right; width: 21%;">
-                <asp:Label runat="server" CssClass="label_h" ID="lblPage2">รหัสกลุ่มบุคคลากร :
+                <asp:Label runat="server" CssClass="label_h" ID="lblPage2">รหัสกลุ่มบุคลากร :
                 </asp:Label>
             </td>
             <td>
@@ -22,7 +22,7 @@
         </tr>
         <tr>
             <td style="text-align: right; width: 21%; height: 26px;">
-                <asp:Label runat="server" CssClass="label_h" ID="lblPage1">กลุ่มบุคคลากร : </asp:Label>
+                <asp:Label runat="server" CssClass="label_h" ID="lblPage1">กลุ่มบุคลากร : </asp:Label>
             </td>
             <td style="height: 26px">
                 &nbsp;<asp:TextBox runat="server" CssClass="textbox" Width="300px" 
@@ -44,14 +44,14 @@
                     <asp:Label ID="lblNo" runat="server"> </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="รหัสกลุ่มบุคคลากร " SortExpression="person_group_code">
+            <asp:TemplateField HeaderText="รหัสกลุ่มบุคลากร " SortExpression="person_group_code">
                 <ItemStyle HorizontalAlign="Center" Width="20%" Wrap="True" />
                 <ItemTemplate>
                     <asp:Label ID="lblperson_group_code" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.person_group_code") %>'>
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="ชื่อกลุ่มบุคคลากร " SortExpression="person_group_name">
+            <asp:TemplateField HeaderText="ชื่อกลุ่มบุคลากร " SortExpression="person_group_name">
                 <ItemStyle HorizontalAlign="Left" Width="50%" Wrap="True" />
                 <ItemTemplate>
                     <asp:Label ID="lblperson_group_name" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.person_group_name") %>'>

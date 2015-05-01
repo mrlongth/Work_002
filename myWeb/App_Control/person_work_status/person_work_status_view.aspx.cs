@@ -27,7 +27,7 @@ namespace myWeb.App_Control.person_work_status
             lblError.Text = "";
             if (!IsPostBack)
             {
-                Session["menupopup_name"] = "แสดงข้อมูลสถานะบุคคลากร";
+                Session["menupopup_name"] = "แสดงข้อมูลสถานะบุคลากร";
                 #region set QueryString
                 if (Request.QueryString["person_work_status_code"] != null)
                 {

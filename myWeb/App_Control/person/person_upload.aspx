@@ -8,7 +8,7 @@
 <head runat="server">
     <script src="../../scripts/form.js" type="text/javascript"></script>
     <link href="StyleSheet_popup.css" rel="stylesheet" type="text/css" />
-    <title>Upload รูปบุคคลากร</title>
+    <title>Upload รูปบุคลากร</title>
     <style type="text/css">
 
 .label_hbk {

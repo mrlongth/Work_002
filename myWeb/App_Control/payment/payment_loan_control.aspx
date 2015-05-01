@@ -50,7 +50,7 @@
         </tr>
         <tr align="left">
             <td align="right" nowrap valign="middle" width="17%">
-                <asp:Label runat="server" ID="Label15">บุคคลากร :</asp:Label>
+                <asp:Label runat="server" ID="Label15">บุคลากร :</asp:Label>
             </td>
             <td align="left" nowrap valign="middle" height="20px">
                 &nbsp;<asp:Label runat="server" ID="lblperson_name" Font-Bold="True" ForeColor="#3366CC">XXXXX</asp:Label>

@@ -120,8 +120,9 @@ body {
 	position:absolute;
 	z-index:2;
 	background:url(../images/logo.png);
-	width:592px;
+	width:536px;
 	height:182px;
+    left:42px
 }
 .logo_2 {
 	position:absolute;
@@ -192,10 +193,9 @@ body {
 	background:url(../images/mainnav_bg.png);
 	height:45px;
 	margin-left:0px;
-font-size:
 }
 .seven {
-	background:url(../images/75_y.png);
+	background:url(../images/logo-90-CMRU_001_y.png) center no-repeat;
 	width:419px;
 	height:376px;
 	margin:10px 0 0 0px;
@@ -235,7 +235,7 @@ font-size:
 .select {
 	text-align:left;
 	font:22px bold Verdana, Geneva, sans-serif;
-	color:#48a7d0;
+	color:#fc900b;
 	margin:8px 0 0 15px
 }
 .logout{background:url(../images/log_out.png); width:115px; height:32px; margin:40px 0 0 459px; padding:13px 0 0 28px; color:#0079b2}

@@ -100,21 +100,21 @@ namespace myWeb
             }
         }
 
-        public int UserID
-        {
-            get
-            {
-                if (Session["UserID"] == null)
-                {
-                    Session["UserID"] = "0";
-                }
-                return int.Parse(Session["UserID"].ToString());
-            }
-            set
-            {
-                Session["UserID"] = value;
-            }
-        }
+        //public int UserID
+        //{
+        //    get
+        //    {
+        //        if (Session["UserID"] == null)
+        //        {
+        //            Session["UserID"] = "0";
+        //        }
+        //        return int.Parse(Session["UserID"].ToString());
+        //    }
+        //    set
+        //    {
+        //        Session["UserID"] = value;
+        //    }
+        //}
 
         public string UserLoginName
         {
@@ -210,6 +210,45 @@ namespace myWeb
                 Session["UnitCodeList"] = value;
             }
         }
+
+        public string UserGroupList
+        {
+            get
+            {
+                if (Session["UserGroupList"] == null)
+                {
+                    return "";
+                }
+                else
+                {
+                    return Session["UserGroupList"].ToString();
+                }
+            }
+            set
+            {
+                Session["UserGroupList"] = value;
+            }
+        }
+
+        public string UserGroupCode
+        {
+            get
+            {
+                if (Session["UserGroupCode"] == null)
+                {
+                    return "";
+                }
+                else
+                {
+                    return Session["UserGroupCode"].ToString();
+                }
+            }
+            set
+            {
+                Session["UserGroupCode"] = value;
+            }
+        }
+
 
 
 
@@ -327,19 +366,20 @@ namespace myWeb
         {
             get
             {
-                if (Session["myBudgetType"] == null)
+                if (Request.QueryString["budget_type"] != null)
                 {
-                    return "";
+                    Session["myBudgetType"] = Request.QueryString["budget_type"].ToString();
                 }
                 else
                 {
-                    return Session["myBudgetType"].ToString();
+                    Session["myBudgetType"] = "";
                 }
+                return Helper.CStr(Session["myBudgetType"]);
             }
-            set
-            {
-                Session["myBudgetType"] = value;
-            }
+            //set
+            //{
+            //    Session["myBudgetType"] = value;
+            //}
         }
 
 
@@ -351,15 +391,15 @@ namespace myWeb
             string currentUrl = this.GetCurrentUrl();
             string strMessage = string.Empty;
 
-            cUser_menu objUserBLL = new cUser_menu();
+            cUser_group_menu objUserBLL = new cUser_group_menu();
             DataSet ds = new DataSet();
             DataTable table;
             string strCriteria;
             if ((currentUrl.IndexOf("Rep_paymentGSJbyyear") > -1) || (currentUrl.IndexOf("Rep_paymentGSJbyyear") > -1))
-                strCriteria = " And LoginName='" + UserLoginName + "'  And  MenuNavigationUrl='Rep_paymentGSJbyyear' ";
+                strCriteria = " And user_group_code='" + this.UserGroupCode + "'  And  MenuNavigationUrl='Rep_paymentGSJbyyear' ";
             else
-                strCriteria = " And LoginName='" + UserLoginName + "'  And  MenuNavigationUrl='" + currentUrl + "' ";
-            objUserBLL.SP_USER_MENU_SEL(strCriteria, ref ds, ref strMessage);
+                strCriteria = " And user_group_code='" + this.UserGroupCode + "'  And  MenuNavigationUrl='" + currentUrl + "' ";
+            objUserBLL.SP_USER_GROUP_MENU_SEL(strCriteria, ref ds, ref strMessage);
             if (ds.Tables.Count > 0)
             {
                 table = ds.Tables[0];
@@ -764,12 +804,14 @@ namespace myWeb
                     dt.Columns.Add("GSJ");
                     dt.Columns.Add("SOS");
                     dt.Columns.Add("GBK2");
+                    dt.Columns.Add("PVD");
 
                     rw = dt.NewRow();
                     rw[0] = oXml.GetValue("MemberType", "GBK");
                     rw[1] = oXml.GetValue("MemberType", "GSJ");
                     rw[2] = oXml.GetValue("MemberType", "SOS");
                     rw[3] = oXml.GetValue("MemberType", "GBK2");
+                    rw[4] = oXml.GetValue("MemberType", "PVD");
                     dt.Rows.Add(rw);
                     ds.Tables.Add(dt);
                     #endregion

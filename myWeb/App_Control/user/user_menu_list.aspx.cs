@@ -2,15 +2,14 @@
 using System.Collections;
 using System.Configuration;
 using System.Data;
-using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
-using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
-using System.Xml.Linq;
-using Aware.WebControls;
+using System.Web.UI.HtmlControls;
+using System.Threading;
+using System.Text;
 using myDLL;
 
 namespace myWeb.App_Control.user
@@ -18,277 +17,342 @@ namespace myWeb.App_Control.user
     public partial class user_menu_list : PageBase
     {
 
-        protected void Page_Load(object sender, System.EventArgs e)
+        #region private data
+        private string strRecordPerPage;
+        private string strPageNo = "1";
+        private bool[] blnAccessRight = new bool[5] { false, false, false, false, false };
+        private string strPrefixCtr = "ctl00$ASPxRoundPanel1$ASPxRoundPanel2$ContentPlaceHolder1$";
+        private string strPrefixCtr_2 = "ctl00$ASPxRoundPanel1$ContentPlaceHolder2$";
+        #endregion
+
+        private DataTable dtUserGroup
         {
-            lblError.Text = "";
+            get
+            {
+                if (ViewState["dtUserGroup"] == null)
+                {
+                    cCommon oCommon = new cCommon();
+                    string strMessage = string.Empty, strCriteria = string.Empty;
+                    DataSet ds = new DataSet();
+                    DataTable dt = new DataTable();
+                    strCriteria = " Select * from  user_group ";
+                    if (oCommon.SEL_SQL(strCriteria, ref ds, ref strMessage))
+                    {
+                        dt = ds.Tables[0];
+                    }
+                    ViewState["dtUserGroup"] = dt;
+                }
+                return (DataTable)ViewState["dtUserGroup"];
+            }
+            set
+            {
+                ViewState["dtUserGroup"] = value;
+            }
+        }
+
+        protected void Page_Init(object sender, EventArgs e)
+        {
+        }
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
             if (!IsPostBack)
             {
-                imgSaveOnly.Attributes.Add("onMouseOver", "src='../../images/button/save_add2.png'");
-                imgSaveOnly.Attributes.Add("onMouseOut", "src='../../images/button/save_add.png'");
 
                 imgFind.Attributes.Add("onMouseOver", "src='../../images/button/Search2.png'");
                 imgFind.Attributes.Add("onMouseOut", "src='../../images/button/Search.png'");
-
-                imgCancel.Attributes.Add("onMouseOver", "src='../../images/button/cancel2.png'");
-                imgCancel.Attributes.Add("onMouseOut", "src='../../images/button/cancel.png'");
-
-                string strYear = ((DataSet)Application["xmlconfig"]).Tables["default"].Rows[0]["yearnow"].ToString();
-
-                imgList.Attributes.Add("onclick", "OpenPopUp('850px','450px','94%','ค้นหาข้อมูลผู้ใช้งาน' ,'../lov/user_lov.aspx?loginname='+document.getElementById('" + txtloginname.ClientID + "').value+'" +
-                                                                              "&person_name='+document.getElementById('" + txtperson_name.ClientID + "').value+'" +
-                                                                              "&ctrl1=" + txtloginname.ClientID + "&ctrl2=" + txtperson_name.ClientID +
-                                                                              "&show=1', '1');return false;");
-                imgClear.Attributes.Add("onclick", "document.getElementById('" + txtloginname.ClientID + "').value='';" +
-                                                                                                    "document.getElementById('" + txtperson_name.ClientID + "').value=''; " +
-                                                                                                    "return false;");
-
-                ViewState["sort"] = "loginname";
+                ViewState["sort"] = "person_code";
                 ViewState["direction"] = "ASC";
-
-                TabContainer1.Visible = false;
-                imgFind.Visible = true;
-                imgSaveOnly.Visible = false;
-                chkdirector_lock.Visible = false;
-                chkunit_lock.Visible = false;
+                RadioAll.Checked = true;
+                InitcboUserGroup();
+                InitcboDirector();
+                InitcboUnit();
+                InitcboWork_status();
+                InitcboPerson_group();
+                BindGridView(0);
 
             }
-        }
-
-        #region Web Form Designer generated code
-        override protected void OnInit(EventArgs e)
-        {
-            //
-            // CODEGEN: This call is required by the ASP.NET Web Form Designer.
-            //
-            InitializeComponent();
-            base.OnInit(e);
-        }
-
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
-        private void InitializeComponent()
-        {
-            //  this.imgSaveOnly.Click += new System.Web.UI.ImageClickEventHandler(this.imgSaveOnly_Click);
-        }
-        #endregion
-
-
-        public string myDirectorCode
-        {
-            get
+            else
             {
-                if (ViewState["myDirectorCode"] == null)
+                if (Request.Form[strPrefixCtr_2 + "GridView1$ctl01$cboPerPage"] != null)
                 {
-                    ViewState["myDirectorCode"] =  string.Empty;
+                    strRecordPerPage = Request.Form[strPrefixCtr_2 + "GridView1$ctl01$cboPerPage"].ToString();
+                    strPageNo = Request.Form[strPrefixCtr_2 + "GridView1$ctl01$txtPage"].ToString();
                 }
-                return ViewState["myDirectorCode"].ToString();
-            }
-            set
-            {
-                ViewState["myDirectorCode"] = value;
-            }
-        }
-
-        public string myUnitCodeList
-        {
-            get
-            {
-                if (ViewState["myUnitCodeList"] == null)
+                if (txthpage.Value != string.Empty)
                 {
-                    ViewState["myUnitCodeList"] = string.Empty;
+                    BindGridView(int.Parse(txthpage.Value)-1);
+                    txthpage.Value = string.Empty;
                 }
-                return ViewState["myUnitCodeList"].ToString();
             }
-            set
-            {
-                ViewState["myUnitCodeList"] = value;
-            }
+
         }
 
+        #region private function
 
-
-        private bool saveData(string strUserID)
+        private void InitcboUserGroup()
         {
-            bool blnResult = false;
-            string strMessage = string.Empty;
-            string strActive = string.Empty,
-                strCreatedBy = string.Empty,
-                strUpdatedBy = string.Empty;
-            string strScript = string.Empty;
+            var strCode = cboUserGroup.SelectedValue;
+            cboUserGroup.Items.Clear();
+            cboUserGroup.Items.Add(new ListItem("---- เลือกข้อมูลทั้งหมด ----", ""));
             int i;
-            cUser_menu oUser_menu = new cUser_menu();
-            cUser oUser = new cUser();
-            DataSet ds = new DataSet();
-            try
+            for (i = 0; i <= dtUserGroup.Rows.Count - 1; i++)
             {
-                string strCanView;
-                string strCanInsert;
-                string strCanEdit;
-                string strCanDelete;
-                string strCanApprove;
-                string strCanExtra;
-                oUser_menu.SP_USER_MENU_DEL(strUserID, ref strMessage);
-                for (i = 0; i <= (GridView1.Rows.Count - 1); i++)
-                {
-                    GridViewRow row = GridView1.Rows[i];
-                    HiddenField hddMenuID = (HiddenField)row.FindControl("hddMenuID");
-                    CheckBox chkCanView = (CheckBox)row.FindControl("chkCanView");
-                    CheckBox chkCanInsert = (CheckBox)row.FindControl("chkCanInsert");
-                    CheckBox chkCanEdit = (CheckBox)row.FindControl("chkCanEdit");
-                    CheckBox chkCanDelete = (CheckBox)row.FindControl("chkCanDelete");
-                    CheckBox chkCanApprove = (CheckBox)row.FindControl("chkCanApprove");
-                    CheckBox chkCanExtra = (CheckBox)row.FindControl("chkCanExtra");
-                    string intMenuId = hddMenuID.Value;
-                    strCanView = chkCanView.Checked == true ? "Y" : "N";
-                    strCanInsert = chkCanInsert.Checked == true ? "Y" : "N";
-                    strCanEdit = chkCanEdit.Checked == true ? "Y" : "N";
-                    strCanDelete = chkCanDelete.Checked == true ? "Y" : "N";
-                    strCanApprove = chkCanApprove.Checked == true ? "Y" : "N";
-                    strCanExtra = chkCanExtra.Checked == true ? "Y" : "N";
-                    //if (chkCanView.Checked | chkCanInsert.Checked | chkCanEdit.Checked | chkCanDelete.Checked | chkCanApprove.Checked | chkCanExtra.Checked)
-                    //{
-                    oUser_menu.SP_USER_MENU_INS(strUserID, intMenuId, strCanView, strCanInsert, strCanEdit, strCanDelete, strCanApprove, strCanExtra, UserLoginName, ref strMessage);
-                    // }
-                }
-                string strperson_group_list = string.Empty;
-                for (i = 0; i <= (GridView2.Rows.Count - 1); i++)
-                {
-                    GridViewRow row = GridView2.Rows[i];
-                    CheckBox chkPersonGroup = (CheckBox)row.FindControl("chkPersonGroup");
-                    if (chkPersonGroup.Checked)
-                    {
-                        Label lblperson_group_code = (Label)row.FindControl("lblperson_group_code");
-                        strperson_group_list += lblperson_group_code.Text + ",";
-                    }
-                }
-                if (strperson_group_list.Length > 0)
-                {
-                    strperson_group_list = strperson_group_list.Substring(0, strperson_group_list.Length - 1);
-                }
-                string strdirector_lock = "N";
-                if (chkdirector_lock.Checked)
-                {
-                    strdirector_lock = "Y";
-                }
-                string strunit_lock = "N";
-                if (chkunit_lock.Checked)
-                {
-                    strunit_lock = "Y";
-                }
-                oUser.SP_USER_PERSON_GROUP_UPD(strUserID, strperson_group_list, strdirector_lock, strunit_lock, UserLoginName, ref strMessage);
-                blnResult = true;
-                MsgBox("บันทึกข้อมูลสมบูรณ์");
+                cboUserGroup.Items.Add(new ListItem(dtUserGroup.Rows[i]["user_group_name"].ToString(), dtUserGroup.Rows[i]["user_group_code"].ToString()));
             }
-            catch (Exception ex)
+            if (cboUserGroup.Items.FindByValue(strCode) != null)
             {
-                blnResult = false;
-                lblError.Text = ex.Message.ToString();
+                cboUserGroup.SelectedIndex = -1;
+                cboUserGroup.Items.FindByValue(strCode).Selected = true;
             }
-            finally
-            {
-                oUser_menu.Dispose();
-            }
-            return blnResult;
         }
 
-        private void BindGridView()
+
+        private void InitcboWork_status()
         {
-            cUser_menu objUserMenu = new cUser_menu();
+            cPerson_work_status oPerson_work_status = new cPerson_work_status();
+            string strMessage = string.Empty, strCriteria = string.Empty;
+            string strperson_work_status_code = string.Empty;
+            strperson_work_status_code = "";
+            if (Request.Form[strPrefixCtr + "cboPerson_work_status"] != null)
+            {
+                strperson_work_status_code = Request.Form[strPrefixCtr + "cboPerson_work_status"].ToString();
+            }
             DataSet ds = new DataSet();
-            string strMessage = string.Empty;
-            string strCriteria = string.Empty;
-            string strloginname = txtloginname.Text;
-
-            try
+            DataTable dt = new DataTable();
+            strCriteria = "  and  c_active='Y' ";
+            if (oPerson_work_status.SP_PERSON_WORK_STATUS_SEL(strCriteria, ref ds, ref strMessage))
             {
-                strCriteria = " and loginname='" + strloginname + "' ";
-                strCriteria += " And Menu_Status='Y' ";
-
-                objUserMenu.SP_USER_MENU_MANAGE_SEL(strCriteria, ref ds, ref strMessage);
-                GridView1.DataSource = ds;
-                GridView1.DataBind();
-
-                cUser oUser = new cUser();
-                string strCheck = string.Empty;
-                strCheck = " and [loginname] = '" + txtloginname.Text.Trim() + "' ";
-                if (!oUser.SP_USER_SEL(strCheck, ref ds, ref strMessage))
+                dt = ds.Tables[0];
+                cboPerson_work_status.Items.Clear();
+                cboPerson_work_status.Items.Add(new ListItem("---- เลือกข้อมูลทั้งหมด ----", ""));
+                int i;
+                for (i = 0; i <= dt.Rows.Count - 1; i++)
                 {
-                    lblError.Text = strMessage;
+                    cboPerson_work_status.Items.Add(new ListItem(dt.Rows[i]["person_work_status_name"].ToString(), dt.Rows[i]["person_work_status_code"].ToString()));
                 }
-                else
+                if (cboPerson_work_status.Items.FindByValue(strperson_work_status_code) != null)
                 {
-                    if (ds.Tables[0].Rows.Count == 0)
-                    {
-                        string strScript =
-                              "alert('ไม่สามารถบันข้อมูลได้ เนื่องจาก" +
-                              "\\nไม่พบข้อมูล Username : " + txtloginname.Text.Trim() + "');";
-                        MsgBox(strScript);
-                        return;
-                    }
-                    else
-                    {
-                        this.myDirectorCode = ds.Tables[0].Rows[0]["director_code"].ToString();
-                        this.myUnitCodeList = ds.Tables[0].Rows[0]["unit_code_list"].ToString(); 
-                        hddperson_group_list.Value = ds.Tables[0].Rows[0]["person_group_list"].ToString();
-                        if (ds.Tables[0].Rows[0]["director_lock"].ToString().Equals("Y"))
-                        {
-                            chkdirector_lock.Checked = true;
-                        }
-                        else
-                        {
-                            chkdirector_lock.Checked = false;
-                        }
-                        if (ds.Tables[0].Rows[0]["unit_lock"].ToString().Equals("Y"))
-                        {
-                            chkunit_lock.Checked = true;
-                        }
-                        else
-                        {
-                            chkunit_lock.Checked = false;
-                        }
-                    }
+                    cboPerson_work_status.SelectedIndex = -1;
+                    cboPerson_work_status.Items.FindByValue(strperson_work_status_code).Selected = true;
                 }
-
-                if (GridView1.Rows.Count > 0)
-                {
-                    TabContainer1.Visible = true;
-                    TabContainer1.ActiveTabIndex = 0;
-                    imgSaveOnly.Visible = true;
-                    chkdirector_lock.Visible = true;
-                    chkunit_lock.Visible = true;
-                }
-            }
-            catch (Exception ex)
-            {
-                lblError.Text = ex.Message.ToString();
-            }
-            finally
-            {
-                objUserMenu.Dispose();
-                ds.Dispose();
             }
         }
 
-        private void BindGridView2()
+        private void InitcboPerson_group()
         {
             cPerson_group oPerson_group = new cPerson_group();
+            string strMessage = string.Empty,
+                        strCriteria = string.Empty,
+                        strperson_group_code = string.Empty;
+            strperson_group_code = cboPerson_group.SelectedValue;
+            int i;
+            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
+            strCriteria = " and c_active='Y' ";
+            if (oPerson_group.SP_PERSON_GROUP_SEL(strCriteria, ref ds, ref strMessage))
+            {
+                dt = ds.Tables[0];
+                cboPerson_group.Items.Clear();
+                cboPerson_group.Items.Add(new ListItem("---- เลือกข้อมูลทั้งหมด ----", ""));
+                for (i = 0; i <= dt.Rows.Count - 1; i++)
+                {
+                    cboPerson_group.Items.Add(new ListItem(dt.Rows[i]["person_group_name"].ToString(), dt.Rows[i]["person_group_code"].ToString()));
+                }
+                if (cboPerson_group.Items.FindByValue(strperson_group_code) != null)
+                {
+                    cboPerson_group.SelectedIndex = -1;
+                    cboPerson_group.Items.FindByValue(strperson_group_code).Selected = true;
+                }
+            }
+        }
+
+        private void InitcboDirector()
+        {
+            cDirector oDirector = new cDirector();
+            string strMessage = string.Empty, strCriteria = string.Empty;
+            string strDirector_code = string.Empty;
+            string strYear = ((DataSet)Application["xmlconfig"]).Tables["default"].Rows[0]["yearnow"].ToString();
+            strDirector_code = cboDirector.SelectedValue;
+            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
+            strCriteria = " and director_year = '" + strYear + "'  and  c_active='Y' ";
+            if (DirectorLock == "Y")
+            {
+                strCriteria += " and substring(director_code,4,2) = substring('" + DirectorCode + "',4,2) ";
+            }
+            if (oDirector.SP_SEL_DIRECTOR(strCriteria, ref ds, ref strMessage))
+            {
+                dt = ds.Tables[0];
+                cboDirector.Items.Clear();
+                cboDirector.Items.Add(new ListItem("---- เลือกข้อมูลทั้งหมด ----", ""));
+                int i;
+                for (i = 0; i <= dt.Rows.Count - 1; i++)
+                {
+                    cboDirector.Items.Add(new ListItem(dt.Rows[i]["director_name"].ToString(), dt.Rows[i]["director_code"].ToString()));
+                }
+                if (cboDirector.Items.FindByValue(strDirector_code) != null)
+                {
+                    cboDirector.SelectedIndex = -1;
+                    cboDirector.Items.FindByValue(strDirector_code).Selected = true;
+                }
+                InitcboUnit();
+            }
+        }
+
+        private void InitcboUnit()
+        {
+            cUnit oUnit = new cUnit();
+            string strMessage = string.Empty, strCriteria = string.Empty;
+            string strUnit_code = cboUnit.SelectedValue;
+            string strDirector_code = cboDirector.SelectedValue;
+            string strYear = ((DataSet)Application["xmlconfig"]).Tables["default"].Rows[0]["yearnow"].ToString();
+            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
+            strCriteria = " and unit.unit_year = '" + strYear + "'  and  unit.c_active='Y' " +
+                                   " and unit.director_code = '" + strDirector_code + "' ";
+            if (oUnit.SP_SEL_UNIT(strCriteria, ref ds, ref strMessage))
+            {
+                dt = ds.Tables[0];
+                cboUnit.Items.Clear();
+                cboUnit.Items.Add(new ListItem("---- เลือกข้อมูลทั้งหมด ----", ""));
+                int i;
+                for (i = 0; i <= dt.Rows.Count - 1; i++)
+                {
+                    cboUnit.Items.Add(new ListItem(dt.Rows[i]["unit_name"].ToString(), dt.Rows[i]["unit_code"].ToString()));
+                }
+                if (cboUnit.Items.FindByValue(strUnit_code) != null)
+                {
+                    cboUnit.SelectedIndex = -1;
+                    cboUnit.Items.FindByValue(strUnit_code).Selected = true;
+                }
+            }
+        }
+
+        #endregion
+
+        private void cboPerPage_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            GridView1.PageSize = int.Parse(strRecordPerPage);
+            if (int.Parse(strPageNo) != 0)
+            {
+                BindGridView(int.Parse(strPageNo) - 1);
+            }
+            else
+            {
+                BindGridView(0);
+            }
+        }
+
+        private void imgGo_Click(object sender, System.Web.UI.ImageClickEventArgs e)
+        {
+            BindGridView(int.Parse(strPageNo) - 1);
+        }
+
+        protected void imgFind_Click(object sender, ImageClickEventArgs e)
+        {
+            BindGridView(0);
+        }
+
+        private void BindGridView(int nPageNo)
+        {
+            cPerson oPerson = new cPerson();
             DataSet ds = new DataSet();
             string strMessage = string.Empty;
             string strCriteria = string.Empty;
-            string strActive = string.Empty;
-            strCriteria = strCriteria + "  And  (c_active ='Y') ";
+            string strperson_group_code = string.Empty;
+            string strdirector_code = string.Empty;
+            string strunit_code = string.Empty;
+            string strperson_code = string.Empty;
+            string strperson_name = string.Empty;
+            string strperson_work_status_code = string.Empty;
+            string struser_group_code = string.Empty;
+            string struser_group_list = string.Empty;
+
+            strperson_group_code = cboPerson_group.SelectedValue;
+            strdirector_code = cboDirector.SelectedValue;
+            strunit_code = cboUnit.SelectedValue;
+            strperson_work_status_code = cboPerson_work_status.SelectedValue;
+            strperson_code = txtperson_code.Text.Replace("'", "''").Trim();
+            strperson_name = txtperson_name.Text.Replace("'", "''").Trim();
+            struser_group_list = cboUserGroup.SelectedValue;
+            if (Request.Form[strPrefixCtr + "cboPerson_work_status"] != null)
+            {
+                strperson_work_status_code = Request.Form[strPrefixCtr + "cboPerson_work_status"].ToString();
+            }
+            if (!strperson_group_code.Equals(""))
+            {
+                strCriteria = strCriteria + "  And  (person_group_code like '%" + strperson_group_code + "%') ";
+            }
+
+            if (!strdirector_code.Equals(""))
+            {
+                strCriteria = strCriteria + "  And  (director_code = '" + strdirector_code + "') ";
+            }
+
+            if (!strunit_code.Equals(""))
+            {
+                strCriteria = strCriteria + "  And  (unit_code= '" + strunit_code + "') ";
+            }
+
+            if (!strperson_code.Equals(""))
+            {
+                strCriteria = strCriteria + "  And  (person_code= '" + strperson_code + "') ";
+            }
+
+            if (!strperson_name.Equals(""))
+            {
+                strCriteria = strCriteria + "  And  (person_thai_name like '%" + strperson_name + "%'  " +
+                                                              "  OR person_thai_surname like '%" + strperson_name + "%'  " +
+                                                              "  OR person_eng_name like '%" + strperson_name + "%'  " +
+                                                              "  OR person_eng_surname like '%" + strperson_name + "%')";
+            }
+
+            if (!strperson_work_status_code.Equals(""))
+            {
+                strCriteria = strCriteria + "  And  (person_work_status_code= '" + strperson_work_status_code + "') ";
+            }
+
+            if (RadioActive.Checked)
+            {
+                strCriteria = strCriteria + "  And  (c_active ='Y') ";
+            }
+            else if (RadioCancel.Checked)
+            {
+                strCriteria = strCriteria + "  And  (c_active ='N') ";
+            }
+            if (!struser_group_list.Equals(""))
+            {
+                if (struser_group_list == "User")
+                    strCriteria = strCriteria + "  And  (user_group_list is null or user_group_list  = '') ";
+                else
+                    strCriteria = strCriteria + "  And  (user_group_list  Like '%" + struser_group_list + "%') ";
+            }
+
             try
             {
-                if (!oPerson_group.SP_PERSON_GROUP_SEL(strCriteria, ref ds, ref strMessage))
+                if (!oPerson.SP_PERSON_LIST_SEL(strCriteria, ref ds, ref strMessage))
                 {
                     lblError.Text = strMessage;
                 }
                 else
                 {
-                    GridView2.DataSource = ds.Tables[0];
-                    GridView2.DataBind();
+                    try
+                    {
+                        GridView1.PageIndex = nPageNo;
+                        txthTotalRecord.Value = ds.Tables[0].Rows.Count.ToString();
+                        ds.Tables[0].DefaultView.Sort = ViewState["sort"] + " " + ViewState["direction"];
+                        GridView1.DataSource = ds.Tables[0];
+                        GridView1.DataBind();
+                    }
+                    catch
+                    {
+                        GridView1.PageIndex = 0;
+                        txthTotalRecord.Value = ds.Tables[0].Rows.Count.ToString();
+                        ds.Tables[0].DefaultView.Sort = ViewState["sort"] + " " + ViewState["direction"];
+                        GridView1.DataSource = ds.Tables[0];
+                        GridView1.DataBind();
+                    }
                 }
             }
             catch (Exception ex)
@@ -297,8 +361,12 @@ namespace myWeb.App_Control.user
             }
             finally
             {
-                oPerson_group.Dispose();
+                oPerson.Dispose();
                 ds.Dispose();
+                if (GridView1.Rows.Count > 0)
+                {
+                    GridView1.TopPagerRow.Visible = true;
+                }
             }
         }
 
@@ -306,77 +374,11 @@ namespace myWeb.App_Control.user
         {
             if (e.Row.RowType.Equals(DataControlRowType.Header))
             {
-                //Find the checkbox control in header and add an attribute
-                //((CheckBox)e.Row.FindControl("cbSelectAll")).Attributes.Add("onclick", "javascript:SelectAll('" +
-                //        ((CheckBox)e.Row.FindControl("cbSelectAll")).ClientID + "')");
-
                 for (int iCol = 0; iCol < e.Row.Cells.Count; iCol++)
                 {
                     e.Row.Cells[iCol].Attributes.Add("class", "table_h");
                     e.Row.Cells[iCol].Wrap = false;
                 }
-
-                ((CheckBox)e.Row.FindControl("chkViewAll")).Attributes.Add("onclick", "javascript:SelectAll('" +
-                 ((CheckBox)e.Row.FindControl("chkViewAll")).ClientID + "',3)");
-
-                //CheckBox chkCanViewAll = (CheckBox)e.Row.FindControl("chkViewAll");
-                //if (chkCanViewAll != null)
-                //{
-                //    chkCanViewAll.Attributes.Add("onclick", "SelectAllCheckboxes(this, 'chkCanView'); ");
-                //}
-
-
-                ((CheckBox)e.Row.FindControl("chkInsertAll")).Attributes.Add("onclick", "javascript:SelectAll('" +
-              ((CheckBox)e.Row.FindControl("chkInsertAll")).ClientID + "',4)");
-
-
-                //CheckBox chkCanInsertAll = (CheckBox)e.Row.FindControl("chkInsertAll");
-                //if (chkCanInsertAll != null)
-                //{
-                //    chkCanInsertAll.Attributes.Add("onclick", "SelectAllCheckboxes(this, 'chkCanInsert'); ");
-                //}
-
-
-                ((CheckBox)e.Row.FindControl("chkEditAll")).Attributes.Add("onclick", "javascript:SelectAll('" +
-              ((CheckBox)e.Row.FindControl("chkEditAll")).ClientID + "',5)");
-
-
-
-                //CheckBox chkCanUpdateAll = (CheckBox)e.Row.FindControl("chkEditAll");
-                //if (chkCanUpdateAll != null)
-                //{
-                //    chkCanUpdateAll.Attributes.Add("onclick", "SelectAllCheckboxes(this, 'chkCanEdit');");
-                //}
-
-                ((CheckBox)e.Row.FindControl("chkDeleteAll")).Attributes.Add("onclick", "javascript:SelectAll('" +
-           ((CheckBox)e.Row.FindControl("chkDeleteAll")).ClientID + "',6)");
-
-
-                //CheckBox chkCanDeleteAll = (CheckBox)e.Row.FindControl("chkDeleteAll");
-                //if (chkCanDeleteAll != null)
-                //{
-                //    chkCanDeleteAll.Attributes.Add("onclick", "SelectAllCheckboxes(this, 'chkCanDelete');");
-                //}
-
-                ((CheckBox)e.Row.FindControl("chkApproveAll")).Attributes.Add("onclick", "javascript:SelectAll('" +
-      ((CheckBox)e.Row.FindControl("chkApproveAll")).ClientID + "',7)");
-
-                //CheckBox chkCanApproveAll = (CheckBox)e.Row.FindControl("chkApproveAll");
-                //if (chkCanApproveAll != null)
-                //{
-                //    chkCanApproveAll.Attributes.Add("onclick", "SelectAllCheckboxes(this, 'chkCanApprove');");
-                //}
-
-                ((CheckBox)e.Row.FindControl("chkExtraAll")).Attributes.Add("onclick", "javascript:SelectAll('" +
-  ((CheckBox)e.Row.FindControl("chkExtraAll")).ClientID + "',8)");
-
-                //CheckBox chkCanExtraAll = (CheckBox)e.Row.FindControl("chkExtraAll");
-                //if (chkCanExtraAll != null)
-                //{
-                //    chkCanExtraAll.Attributes.Add("onclick", "SelectAllCheckboxes(this, 'chkCanExtra');");
-                //}
-
-
             }
             else if (e.Row.RowType.Equals(DataControlRowType.DataRow) || e.Row.RowState.Equals(DataControlRowState.Alternate))
             {
@@ -404,104 +406,59 @@ namespace myWeb.App_Control.user
                 Label lblNo = (Label)e.Row.FindControl("lblNo");
                 int nNo = (GridView1.PageSize * GridView1.PageIndex) + e.Row.RowIndex + 1;
                 lblNo.Text = nNo.ToString();
+                Label lblperson_code = (Label)e.Row.FindControl("lblperson_code");
+                Label lblc_active = (Label)e.Row.FindControl("lblc_active");
 
-                CheckBox chkCanView = (CheckBox)e.Row.FindControl("chkCanView");
-                Label lblCanViewStatus = (Label)e.Row.FindControl("lblCanViewStatus");
-                Label lblMenuCanViewStatus = (Label)e.Row.FindControl("lblMenuCanViewStatus");
-
-                CheckBox chkCanInsert = (CheckBox)e.Row.FindControl("chkCanInsert");
-                Label lblCanInsertStatus = (Label)e.Row.FindControl("lblCanInsertStatus");
-                Label lblMenuCanInsertStatus = (Label)e.Row.FindControl("lblMenuCanInsertStatus");
-
-                CheckBox chkCanEdit = (CheckBox)e.Row.FindControl("chkCanEdit");
-                Label lblCanEditStatus = (Label)e.Row.FindControl("lblCanEditStatus");
-                Label lblMenuCanEditStatus = (Label)e.Row.FindControl("lblMenuCanEditStatus");
-
-                CheckBox chkCanDelete = (CheckBox)e.Row.FindControl("chkCanDelete");
-                Label lblCanDeleteStatus = (Label)e.Row.FindControl("lblCanDeleteStatus");
-                Label lblMenuCanDeleteStatus = (Label)e.Row.FindControl("lblMenuCanDeleteStatus");
-
-                CheckBox chkCanApprove = (CheckBox)e.Row.FindControl("chkCanApprove");
-                Label lblCanApproveStatus = (Label)e.Row.FindControl("lblCanApproveStatus");
-                Label lblMenuCanApproveStatus = (Label)e.Row.FindControl("lblMenuCanApproveStatus");
-
-                CheckBox chkCanExtra = (CheckBox)e.Row.FindControl("chkCanExtra");
-                Label lblCanExtraStatus = (Label)e.Row.FindControl("lblCanExtraStatus");
-                Label lblMenuCanExtraStatus = (Label)e.Row.FindControl("lblMenuCanExtraStatus");
-
-                chkCanView.Visible = false;
-                chkCanView.Checked = false;
-
-                chkCanInsert.Visible = false;
-                chkCanInsert.Checked = false;
-
-                chkCanEdit.Visible = false;
-                chkCanEdit.Checked = false;
-
-                chkCanDelete.Visible = false;
-                chkCanDelete.Checked = false;
-
-                chkCanApprove.Visible = false;
-                chkCanApprove.Checked = false;
-
-                chkCanExtra.Visible = false;
-                chkCanExtra.Checked = false;
-
-                if (lblMenuCanViewStatus.Text.Equals("Y"))
+                Label lbluser_group_list = (Label)e.Row.FindControl("lbluser_group_list");
+                string[] user_group_list = lbluser_group_list.Text.Split(',');
+                DataView dv = null;
+                lbluser_group_list.Text = "";
+                foreach (var value in user_group_list)
                 {
-                    chkCanView.Visible = true;
+                    dv = new DataView(this.dtUserGroup, "user_group_code='" + value + "'", "", DataViewRowState.CurrentRows);
+                    if (dv.ToTable().Rows.Count > 0)
+                        lbluser_group_list.Text += dv[0]["user_group_name"] + ",";
                 }
-                if (lblCanViewStatus.Text.Equals("Y"))
+                if (lbluser_group_list.Text.Length > 0)
+                    lbluser_group_list.Text = lbluser_group_list.Text.Substring(0,
+                        lbluser_group_list.Text.Length - 1);
+
+                string strStatus = lblc_active.Text;
+
+                #region set ImageStatus
+                ImageButton imgStatus = (ImageButton)e.Row.FindControl("imgStatus");
+                if (strStatus.Equals("Y"))
                 {
-                    chkCanView.Checked = true;
+                    imgStatus.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgStatus"].Rows[0]["img"].ToString();
+                    imgStatus.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgStatus"].Rows[0]["title"].ToString());
+                    imgStatus.Attributes.Add("onclick", "return false;");
+                }
+                else
+                {
+                    imgStatus.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgStatus"].Rows[0]["imgdisable"].ToString();
+                    imgStatus.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgStatus"].Rows[0]["titledisable"].ToString());
+                    imgStatus.Attributes.Add("onclick", "return false;");
+                }
+                #endregion
+
+                #region set Image Edit & Delete
+
+                ImageButton imgEdit = (ImageButton)e.Row.FindControl("imgEdit");
+                Label lblperson_names = (Label)e.Row.FindControl("lblperson_names");
+                if (IsUserEdit)
+                {
+                    lblperson_names.Text = "<a href=\"\" onclick=\"" +
+                                             "OpenPopUp('700px','350px','95%','กำหนดกลุ่มผู้ใช้งานสำหรับบุคคลากร','user_menu_control.aspx?person_code=" +
+                                                                                                                lblperson_code.Text + "&page=" + GridView1.PageIndex + "','1');return false;\" >" + lblperson_names.Text + "</a>";
                 }
 
-                if (lblMenuCanInsertStatus.Text.Equals("Y"))
-                {
-                    chkCanInsert.Visible = true;
-                }
-                if (lblCanInsertStatus.Text.Equals("Y"))
-                {
-                    chkCanInsert.Checked = true;
-                }
+                imgEdit.Attributes.Add("onclick", "OpenPopUp('700px','350px','95%','กำหนดกลุ่มผู้ใช้งานสำหรับบุคคลากร','user_menu_control.aspx?person_code=" +
+                                                                                                            lblperson_code.Text + "&page=" + GridView1.PageIndex + "','1');return false;");
 
-
-                if (lblMenuCanEditStatus.Text.Equals("Y"))
-                {
-                    chkCanEdit.Visible = true;
-                }
-                if (lblCanEditStatus.Text.Equals("Y"))
-                {
-                    chkCanEdit.Checked = true;
-                }
-
-
-                if (lblMenuCanDeleteStatus.Text.Equals("Y"))
-                {
-                    chkCanDelete.Visible = true;
-                }
-                if (lblCanDeleteStatus.Text.Equals("Y"))
-                {
-                    chkCanDelete.Checked = true;
-                }
-
-                if (lblMenuCanApproveStatus.Text.Equals("Y"))
-                {
-                    chkCanApprove.Visible = true;
-                }
-                if (lblCanApproveStatus.Text.Equals("Y"))
-                {
-                    chkCanApprove.Checked = true;
-                }
-
-                if (lblMenuCanExtraStatus.Text.Equals("Y"))
-                {
-                    chkCanExtra.Visible = true;
-                }
-                if (lblCanExtraStatus.Text.Equals("Y"))
-                {
-                    chkCanExtra.Checked = true;
-                }
+                imgEdit.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["img"].ToString();
+                imgEdit.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["title"].ToString());
+                imgEdit.Visible = base.IsUserEdit;
+                #endregion
 
             }
         }
@@ -540,6 +497,156 @@ namespace myWeb.App_Control.user
                 }
                 #endregion
             }
+            else if (e.Row.RowType.Equals(DataControlRowType.Pager))
+            {
+                TableCell tbc = e.Row.Cells[0];
+                Label lblPrev = null;
+                Label lblNext = null;
+                ImageButton lbtnPrev = null;
+                ImageButton lbtnNext = null;
+
+                #region find and store Previous and Next Page
+                TableRow tbr = (TableRow)tbc.Controls[0].Controls[0];
+                foreach (System.Web.UI.Control c in tbr.Controls)
+                {
+                    if (c.GetType().ToString().Equals("System.Web.UI.WebControls.Label"))
+                    {
+                        Label lbl = (Label)c;
+                        if (lbl.Text.IndexOf("P") != -1)
+                        {
+                            lblPrev = lbl;
+                            lblPrev.Text = string.Empty;
+                        }
+                        if (lbl.Text.IndexOf("N") != -1)
+                        {
+                            lblNext = lbl;
+                            lblNext.Text = string.Empty;
+                        }
+                    }
+                    if (c.Controls[0].GetType().ToString().Equals("System.Web.UI.WebControls.DataControlImageButton"))
+                    {
+                        ImageButton lbtn = (ImageButton)c.Controls[0];
+                        if (lbtn.AlternateText.IndexOf("P") != -1)
+                        {
+                            lbtnPrev = lbtn;
+                            lbtnPrev.ImageUrl = "~/images/prev.gif";
+                        }
+                        if (lbtn.AlternateText.IndexOf("N") != -1)
+                        {
+                            lbtnNext = lbtn;
+                            lbtnNext.ImageUrl = "~/images/next.gif";
+                        }
+                    }
+                }
+                #endregion
+
+                #region render new pager
+                tbc.Text = string.Empty;
+                Literal lblPager = new Literal();
+                lblPager.Text = "<TABLE border='0' width='100%' cellpadding='0' cellspacing='0'><TR><TD width='30%' valign='middle'>";
+                tbc.Controls.Add(lblPager);
+
+                Label lblTotalRecord = new Label();
+                lblTotalRecord.Attributes.Add("class", "label_h");
+                lblTotalRecord.Text = "พบข้อมูล " + txthTotalRecord.Value.ToString() + " รายการ.";
+                tbc.Controls.Add(lblTotalRecord);
+
+                lblPager = new Literal();
+                lblPager.Text = "</TD><TD width='30%' align='center' valign='middle'>";
+                tbc.Controls.Add(lblPager);
+
+                DropDownList cboPerPage = new DropDownList();
+                cboPerPage.ID = "cboPerPage";
+
+                DataTable entries;
+                if ((DataSet)Application["xmlconfig"] == null)
+                    return;
+                else
+                    entries = ((DataSet)Application["xmlconfig"]).Tables["RecordPerPage"];
+
+                for (int i = 0; i < entries.Rows.Count; i++)
+                {
+                    cboPerPage.Items.Add(new ListItem(entries.Rows[i][0].ToString(), entries.Rows[i][1].ToString()));
+                }
+
+                if (cboPerPage.Items.FindByValue(strRecordPerPage) != null)
+                {
+                    cboPerPage.Items.FindByValue(strRecordPerPage).Selected = true;
+                }
+
+                cboPerPage.AutoPostBack = true;
+                cboPerPage.SelectedIndexChanged += new System.EventHandler(cboPerPage_SelectedIndexChanged);
+                tbc.Controls.Add(cboPerPage);
+
+                lblPager = new Literal();
+                lblPager.Text = "&nbsp;&nbsp;&nbsp;<span class=\"label_h\">รายการ/หน้า</span></TD><TD width='40%' align='right' valign='middle'>";
+                tbc.Controls.Add(lblPager);
+
+                if (lblPrev != null)
+                {
+                    tbc.Controls.Add(lblPrev);
+                }
+                else if (lbtnPrev != null)
+                {
+                    tbc.Controls.Add(lbtnPrev);
+                }
+
+                lblPager = new Literal();
+                lblPager.Text = "&nbsp;&nbsp;&nbsp;<span class=\"label_h\">หน้าที่: </span>";
+                tbc.Controls.Add(lblPager);
+
+                TextBox txtPage = new TextBox();
+                txtPage.AutoPostBack = false;
+                txtPage.ID = "txtPage";
+                txtPage.Width = System.Web.UI.WebControls.Unit.Parse("30px");
+                txtPage.Attributes.Add("class", "text1");
+                txtPage.Style.Add("text-align", "right");
+                int nCurrentPage = (GridView1.PageIndex + 1);
+                txtPage.Text = nCurrentPage.ToString();//strPageNo;
+                txtPage.Attributes.Add("onkeypress", "javascript: return checkKeyCode(event);");
+                txtPage.Attributes.Add("onkeyup", "javasctipt: checkInt(this, " + GridView1.PageCount.ToString() + ");");
+                tbc.Controls.Add(txtPage);
+
+                lblPager = new Literal();
+                lblPager.Text = "<span class=\"label_h\"> จากทั้งหมด " + GridView1.PageCount.ToString() + "&nbsp;&nbsp;</span>";
+                tbc.Controls.Add(lblPager);
+
+                lblPager = new Literal();
+                lblPager.Text = "&nbsp;&nbsp;";
+                tbc.Controls.Add(lblPager);
+
+                ImageButton imgGo = new ImageButton();
+                imgGo.ID = "imgGo";
+                imgGo.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgGo"].Rows[0]["img"].ToString();
+                imgGo.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgGo"].Rows[0]["title"].ToString());
+                imgGo.Attributes.Add("onclick", "javascript: return checkPage(" + GridView1.PageCount.ToString() + ",'กรุณาระบุข้อมูลให้ถูกต้อง.|||ctl00$ASPxRoundPanel1$ContentPlaceHolder2$GridView1$ctl01$txtPage');");
+                imgGo.Click += new System.Web.UI.ImageClickEventHandler(this.imgGo_Click);
+                tbc.Controls.Add(imgGo);
+
+                lblPager = new Literal();
+                lblPager.Text = "&nbsp;&nbsp;&nbsp;";
+                tbc.Controls.Add(lblPager);
+
+                if (lblNext != null)
+                {
+                    tbc.Controls.Add(lblNext);
+                }
+                else if (lbtnNext != null)
+                {
+                    tbc.Controls.Add(lbtnNext);
+                }
+
+                lblPager = new Literal();
+                lblPager.Text = "</TD></TR></TABLE>";
+                tbc.Controls.Add(lblPager);
+
+                #endregion
+            }
+        }
+
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            BindGridView(e.NewPageIndex);
         }
 
         protected void GridView1_Sorting(object sender, GridViewSortEventArgs e)
@@ -558,6 +665,9 @@ namespace myWeb.App_Control.user
                     ViewState["sort"] = e.SortExpression;
                     ViewState["direction"] = "ASC";
                 }
+                GridViewRow item = (GridViewRow)GridView1.Controls[0].Controls[0];
+                TextBox txtPage = (TextBox)item.FindControl("txtPage");
+                BindGridView(int.Parse(txtPage.Text) - 1);
             }
             catch (Exception ex)
             {
@@ -565,171 +675,19 @@ namespace myWeb.App_Control.user
             }
         }
 
-        protected void imgSaveOnly_Click(object sender, ImageClickEventArgs e)
+        protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-
             string strMessage = string.Empty;
+            string strCheck = string.Empty;
             string strScript = string.Empty;
-            cUser oUser = new cUser();
-            DataSet ds = new DataSet();
+            string strUpdatedBy = Session["username"].ToString();
+            Label lblperson_code = (Label)GridView1.Rows[e.RowIndex].FindControl("lblperson_code");
+            cPerson oPerson = new cPerson();
             try
             {
-                string strCheck = string.Empty;
-                strCheck = " and [loginname] = '" + txtloginname.Text.Trim() + "' ";
-                if (!oUser.SP_USER_SEL(strCheck, ref ds, ref strMessage))
+                if (!oPerson.SP_PERSON_DEL(lblperson_code.Text, "N", strUpdatedBy, ref strMessage))
                 {
                     lblError.Text = strMessage;
-                }
-                else
-                {
-                    if (ds.Tables[0].Rows.Count == 0)
-                    {
-                        strScript =
-                            "alert('ไม่สามารถบันข้อมูลได้ เนื่องจาก" +
-                            "\\nไม่พบข้อมูล Username : " + txtloginname.Text.Trim() + "');";
-                        MsgBox(strScript);
-                        return;
-                    }
-                }
-                string strUserID = ds.Tables[0].Rows[0]["userID"].ToString();
-                saveData(strUserID);
-            }
-            catch (Exception ex)
-            {
-                lblError.Text = ex.Message.ToString();
-            }
-            finally
-            {
-                oUser.Dispose();
-                ds.Dispose();
-            }
-        }
-
-        protected void imgFind_Click(object sender, ImageClickEventArgs e)
-        {
-            BindGridView();
-            BindGridView2();
-        }
-
-        protected void imgCancel_Click(object sender, ImageClickEventArgs e)
-        {
-            TabContainer1.Visible = false;
-            imgSaveOnly.Visible = false;
-            chkdirector_lock.Visible = false;
-            chkunit_lock.Visible = false;
-            txtloginname.Text = "";
-            txtperson_name.Text = "";
-        }
-
-        protected void GridView2_RowCreated(object sender, GridViewRowEventArgs e)
-        {
-            if (e.Row.RowType.Equals(DataControlRowType.Header))
-            {
-                #region Create Item Header
-                bool bSort = false;
-                int i = 0;
-                for (i = 0; i < GridView2.Columns.Count; i++)
-                {
-                    if (ViewState["sort"].Equals(GridView2.Columns[i].SortExpression))
-                    {
-                        bSort = true;
-                        break;
-                    }
-                }
-                if (bSort)
-                {
-                    foreach (System.Web.UI.Control c in e.Row.Controls[i].Controls)
-                    {
-                        if (c.GetType().ToString().Equals("System.Web.UI.WebControls.DataControlLinkButton"))
-                        {
-                            if (ViewState["direction"].Equals("ASC"))
-                            {
-                                ((LinkButton)c).Text += "<img border=0 src='" + ((DataSet)Application["xmlconfig"]).Tables["imgAsc"].Rows[0]["img"].ToString() + "'>";
-                            }
-                            else
-                            {
-                                ((LinkButton)c).Text += "<img border=0 src='" + ((DataSet)Application["xmlconfig"]).Tables["imgDesc"].Rows[0]["img"].ToString() + "'>";
-                            }
-                        }
-                    }
-                }
-                #endregion
-            }
-        }
-
-        protected void GridView2_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            if (e.Row.RowType.Equals(DataControlRowType.Header))
-            {
-                for (int iCol = 0; iCol < e.Row.Cells.Count; iCol++)
-                {
-                    e.Row.Cells[iCol].Attributes.Add("class", "table_h");
-                    e.Row.Cells[iCol].Wrap = false;
-                }
-                ((CheckBox)e.Row.FindControl("chkAll")).Attributes.Add("onclick", "javascript:SelectAll2('" +
-                     ((CheckBox)e.Row.FindControl("chkAll")).ClientID + "',3)");
-            }
-            else if (e.Row.RowType.Equals(DataControlRowType.DataRow) || e.Row.RowState.Equals(DataControlRowState.Alternate))
-            {
-                #region Set datagrid row color
-                string strEvenColor, strOddColor, strMouseOverColor;
-                strEvenColor = ((DataSet)Application["xmlconfig"]).Tables["colorDataGridRow"].Rows[0]["Even"].ToString();
-                strOddColor = ((DataSet)Application["xmlconfig"]).Tables["colorDataGridRow"].Rows[0]["Odd"].ToString();
-                strMouseOverColor = ((DataSet)Application["xmlconfig"]).Tables["colorDataGridRow"].Rows[0]["MouseOver"].ToString();
-
-                e.Row.Style.Add("valign", "top");
-                e.Row.Style.Add("cursor", "hand");
-                e.Row.Attributes.Add("onMouseOver", "this.style.backgroundColor='" + strMouseOverColor + "'");
-
-                if (e.Row.RowState.Equals(DataControlRowState.Alternate))
-                {
-                    e.Row.Attributes.Add("bgcolor", strOddColor);
-                    e.Row.Attributes.Add("onMouseOut", "this.style.backgroundColor='" + strOddColor + "'");
-                }
-                else
-                {
-                    e.Row.Attributes.Add("bgcolor", strEvenColor);
-                    e.Row.Attributes.Add("onMouseOut", "this.style.backgroundColor='" + strEvenColor + "'");
-                }
-                #endregion
-
-                Label lblNo = (Label)e.Row.FindControl("lblNo");
-                Label lblperson_group_code = (Label)e.Row.FindControl("lblperson_group_code");
-                int nNo = (GridView2.PageSize * GridView2.PageIndex) + e.Row.RowIndex + 1;
-                lblNo.Text = nNo.ToString();
-                string[] strperson_group_list = hddperson_group_list.Value.Split(',');
-                CheckBox chkPersonGroup = (CheckBox)e.Row.FindControl("chkPersonGroup");
-                chkPersonGroup.Checked = false;
-                for (int i = 0; i <= (strperson_group_list.GetUpperBound(0)); i++)
-                {
-                    if (strperson_group_list[i] == lblperson_group_code.Text)
-                    {
-                        chkPersonGroup.Checked = true;
-                    }
-                }
-            }
-        }
-
-
-
-        private void BindGridView3()
-        {
-            cUnit oUnit = new cUnit();
-            DataSet ds = new DataSet();
-            string strMessage = string.Empty;
-            string strCriteria = string.Empty;
-            string strActive = string.Empty;
-            strCriteria = strCriteria + "  And  (c_active ='Y') and director_code= '" + this.myDirectorCode + "' ";
-            try
-            {
-                if (!oUnit.SP_SEL_UNIT(strCriteria, ref ds, ref strMessage))
-                {
-                    lblError.Text = strMessage;
-                }
-                else
-                {
-                    GridView3.DataSource = ds.Tables[0];
-                    GridView3.DataBind();
                 }
             }
             catch (Exception ex)
@@ -738,103 +696,37 @@ namespace myWeb.App_Control.user
             }
             finally
             {
-                oUnit.Dispose();
-                ds.Dispose();
+                oPerson.Dispose();
             }
+            BindGridView(0);
         }
-        protected void GridView3_RowCreated(object sender, GridViewRowEventArgs e)
+
+        protected void cboPerson_group_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (e.Row.RowType.Equals(DataControlRowType.Header))
-            {
-                #region Create Item Header
-                bool bSort = false;
-                int i = 0;
-                for (i = 0; i < GridView3.Columns.Count; i++)
-                {
-                    if (ViewState["sort"].Equals(GridView3.Columns[i].SortExpression))
-                    {
-                        bSort = true;
-                        break;
-                    }
-                }
-                if (bSort)
-                {
-                    foreach (System.Web.UI.Control c in e.Row.Controls[i].Controls)
-                    {
-                        if (c.GetType().ToString().Equals("System.Web.UI.WebControls.DataControlLinkButton"))
-                        {
-                            if (ViewState["direction"].Equals("ASC"))
-                            {
-                                ((LinkButton)c).Text += "<img border=0 src='" + ((DataSet)Application["xmlconfig"]).Tables["imgAsc"].Rows[0]["img"].ToString() + "'>";
-                            }
-                            else
-                            {
-                                ((LinkButton)c).Text += "<img border=0 src='" + ((DataSet)Application["xmlconfig"]).Tables["imgDesc"].Rows[0]["img"].ToString() + "'>";
-                            }
-                        }
-                    }
-                }
-                #endregion
-            }
+            BindGridView(0);
         }
 
-        protected void GridView3_RowDataBound(object sender, GridViewRowEventArgs e)
+        protected void cboPerson_work_status_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (e.Row.RowType.Equals(DataControlRowType.Header))
-            {
-                for (int iCol = 0; iCol < e.Row.Cells.Count; iCol++)
-                {
-                    e.Row.Cells[iCol].Attributes.Add("class", "table_h");
-                    e.Row.Cells[iCol].Wrap = false;
-                }
-                ((CheckBox)e.Row.FindControl("chkUnitAll")).Attributes.Add("onclick", "javascript:SelectAll2('" +
-                     ((CheckBox)e.Row.FindControl("chkUnitAll")).ClientID + "',3)");
-            }
-            else if (e.Row.RowType.Equals(DataControlRowType.DataRow) || e.Row.RowState.Equals(DataControlRowState.Alternate))
-            {
-                #region Set datagrid row color
-                string strEvenColor, strOddColor, strMouseOverColor;
-                strEvenColor = ((DataSet)Application["xmlconfig"]).Tables["colorDataGridRow"].Rows[0]["Even"].ToString();
-                strOddColor = ((DataSet)Application["xmlconfig"]).Tables["colorDataGridRow"].Rows[0]["Odd"].ToString();
-                strMouseOverColor = ((DataSet)Application["xmlconfig"]).Tables["colorDataGridRow"].Rows[0]["MouseOver"].ToString();
-
-                e.Row.Style.Add("valign", "top");
-                e.Row.Style.Add("cursor", "hand");
-                e.Row.Attributes.Add("onMouseOver", "this.style.backgroundColor='" + strMouseOverColor + "'");
-
-                if (e.Row.RowState.Equals(DataControlRowState.Alternate))
-                {
-                    e.Row.Attributes.Add("bgcolor", strOddColor);
-                    e.Row.Attributes.Add("onMouseOut", "this.style.backgroundColor='" + strOddColor + "'");
-                }
-                else
-                {
-                    e.Row.Attributes.Add("bgcolor", strEvenColor);
-                    e.Row.Attributes.Add("onMouseOut", "this.style.backgroundColor='" + strEvenColor + "'");
-                }
-                #endregion
-
-                Label lblNo = (Label)e.Row.FindControl("lblNo");
-                Label lblunit_code = (Label)e.Row.FindControl("lblunit_code");
-                int nNo = (GridView2.PageSize * GridView2.PageIndex) + e.Row.RowIndex + 1;
-                lblNo.Text = nNo.ToString();
-                string[] strunit_list = this.UnitCodeList.Split(',');
-                CheckBox chkUnit = (CheckBox)e.Row.FindControl("chkUnit");
-                chkUnit.Checked = false;
-                for (int i = 0; i <= (strunit_list.GetUpperBound(0)); i++)
-                {
-                    if (strunit_list[i] == lblunit_code.Text)
-                    {
-                        chkUnit.Checked = true;
-                    }
-                }
-            }
+            BindGridView(0);
         }
 
+        protected void cboDirector_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            InitcboUnit();
+            BindGridView(0);
+        }
 
+        protected void cboUnit_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            InitcboUnit();
+            BindGridView(0);
+        }
 
+        protected void cboUserGroup_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
 
     }
-
-
 }

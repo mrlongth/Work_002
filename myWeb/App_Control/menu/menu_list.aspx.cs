@@ -39,6 +39,7 @@ namespace myWeb.App_Control.menu
 
                 ViewState["sort"] = "MenuOrder";
                 ViewState["direction"] = "ASC";
+                InitcboMenuParent();
                 BindGridView(0);
             }
             else
@@ -58,6 +59,35 @@ namespace myWeb.App_Control.menu
         }
 
         #region private function
+
+        private void InitcboMenuParent()
+        {
+            cMenu oMenu = new cMenu();
+            string strMessage = string.Empty,
+                        strCriteria = string.Empty,
+                        strMenuParent = string.Empty;
+            strMenuParent = cboMenuParent.SelectedValue;
+            int i;
+            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
+            strCriteria = " and [Status]='Y' Order by MenuOrder";
+            if (oMenu.SP_MENU_SEL(strCriteria, ref ds, ref strMessage))
+            {
+                dt = ds.Tables[0];
+                cboMenuParent.Items.Clear();
+                cboMenuParent.Items.Add(new ListItem("---- เลือกทั้งหมด ----", ""));
+                for (i = 0; i <= dt.Rows.Count - 1; i++)
+                {
+                    cboMenuParent.Items.Add(new ListItem(dt.Rows[i]["MenuName"].ToString(), dt.Rows[i]["MenuID"].ToString()));
+                }
+                if (cboMenuParent.Items.FindByValue(strMenuParent) != null)
+                {
+                    cboMenuParent.SelectedIndex = -1;
+                    cboMenuParent.Items.FindByValue(strMenuParent).Selected = true;
+                }
+            }
+        }
+
 
         #endregion
 
@@ -91,10 +121,12 @@ namespace myWeb.App_Control.menu
             string strMessage = string.Empty;
             string strCriteria = string.Empty;
             string strMenuName = string.Empty;
+            string stMenuParent = string.Empty;
             string strUrl = string.Empty;
 
             strMenuName = txtMenuName.Text.Replace("'", "''").Trim();
             strUrl = txtUrl.Text.Replace("'", "''").Trim();
+            stMenuParent = cboMenuParent.SelectedValue; 
 
             if (!strMenuName.Equals(""))
             {
@@ -105,6 +137,13 @@ namespace myWeb.App_Control.menu
             {
                 strCriteria = strCriteria + "  And  (MenuNavigationUrl like '%" + strUrl + "%') ";
             }
+
+            if (!stMenuParent.Equals(""))
+            {
+                strCriteria = strCriteria + "  And  (MenuParent = '" + stMenuParent + "') ";
+            }
+            
+
             if (RadioActive.Checked)
             {
                 strCriteria = strCriteria + "  And  ([Status] ='Y') ";
@@ -213,7 +252,7 @@ namespace myWeb.App_Control.menu
 
                 #region set ImageView
                 ImageButton imgView = (ImageButton)e.Row.FindControl("imgView");
-                imgView.Attributes.Add("onclick", "OpenPopUp('900px','500px','94%','แสดงข้อมูลบุคคลากร','person_view.aspx?mode=view&MenuId=" +
+                imgView.Attributes.Add("onclick", "OpenPopUp('900px','500px','94%','แสดงข้อมูลบุคลากร','person_view.aspx?mode=view&MenuId=" +
                                                                                                             hddMenuID.Value + "','1');return false;");
                 imgView.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgView"].Rows[0]["img"].ToString();
                 imgView.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgView"].Rows[0]["title"].ToString());

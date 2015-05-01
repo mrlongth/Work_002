@@ -32,7 +32,7 @@
         <tr align="left">
             <td align="right" nowrap style="width: 20%">
                                         <asp:Label runat="server" CssClass="label_error" ID="Label71">*</asp:Label>
-                <asp:Label runat="server" ID="lblFName">รหัสสถานะบุคคลากร :</asp:Label>
+                <asp:Label runat="server" ID="lblFName">รหัสสถานะบุคลากร :</asp:Label>
             </td>
             <td align="left" colspan="2" nowrap>
                 <asp:TextBox ID="txtperson_work_status_code" runat="server" CssClass="textbox"
@@ -49,7 +49,7 @@
             <td align="right" nowrap>
                                         <asp:Label runat="server" CssClass="label_error" 
                     ID="Label72">*</asp:Label>
-                <asp:Label ID="Label11" runat="server">สถานะบุคคลากร :</asp:Label>
+                <asp:Label ID="Label11" runat="server">สถานะบุคลากร :</asp:Label>
             </td>
             <td align="left" colspan="2" nowrap>
                 <font face="Tahoma"><asp:TextBox ID="txtperson_work_status_name" runat="server"
@@ -102,14 +102,14 @@
             </td>
             <td align="right" nowrap style="text-align: left">
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtperson_work_status_code"
-                    Display="None" ErrorMessage="กรุณาป้อนรหัสสถานะบุคคลากร" ValidationGroup="A"
+                    Display="None" ErrorMessage="กรุณาป้อนรหัสสถานะบุคลากร" ValidationGroup="A"
                     SetFocusOnError="True"></asp:RequiredFieldValidator>
                 <cc1:ValidatorCalloutExtender ID="RequiredFieldValidator1_ValidatorCalloutExtender"
                     runat="server" Enabled="True" TargetControlID="RequiredFieldValidator1" HighlightCssClass="validatorCalloutHighlight">
                 </cc1:ValidatorCalloutExtender>
                 <br />
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtperson_work_status_name"
-                    Display="None" ErrorMessage="กรุณาป้อนสถานะบุคคลากร" ValidationGroup="A" SetFocusOnError="True"></asp:RequiredFieldValidator>
+                    Display="None" ErrorMessage="กรุณาป้อนสถานะบุคลากร" ValidationGroup="A" SetFocusOnError="True"></asp:RequiredFieldValidator>
                 <cc1:ValidatorCalloutExtender ID="RequiredFieldValidator2_ValidatorCalloutExtender"
                     runat="server" Enabled="True" TargetControlID="RequiredFieldValidator2" HighlightCssClass="validatorCalloutHighlight">
                 </cc1:ValidatorCalloutExtender>

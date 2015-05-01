@@ -68,7 +68,7 @@ namespace myWeb.App_Control.person
                 ChangeLabelBudget();
                 if (ViewState["mode"].ToString().ToLower().Equals("add"))
                 {
-                    Session["menupopup_name"] = "เพิ่มข้อมูลรายรับ/จ่ายบุคคลากร";
+                    Session["menupopup_name"] = "เพิ่มข้อมูลรายรับ/จ่ายบุคลากร";
                     ViewState["page"] = Request.QueryString["page"];
                 }
                 else

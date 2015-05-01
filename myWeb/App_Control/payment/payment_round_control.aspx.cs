@@ -481,7 +481,7 @@ namespace myWeb.App_Control.payment_round
                        "\\nปีงบประมาณ : " + cboYear.SelectedValue +
                        "\\nรอบเดือนที่จ่าย : " + cboPay_Month.SelectedItem.Text +
                        "\\nรอบปีที่จ่าย : " + cboPay_Year.SelectedValue +
-                    //"\\nกลุ่มบุคคลากร : " + cboPerson_group.SelectedItem.Text +
+                    //"\\nกลุ่มบุคลากร : " + cboPerson_group.SelectedItem.Text +
                        "\\nเสร็จเรียบร้อย\");\n" +
                        "ClosePopUpListPost('" + ViewState["page"].ToString() + "','1');";
                 ScriptManager.RegisterStartupScript(Page, Page.GetType(), "OpenPage", strScript, true);

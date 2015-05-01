@@ -42,7 +42,7 @@
     <table border="0" cellpadding="1" cellspacing="1" style="width: 100%">
         <tr align="left">
             <td align="right" nowrap valign="middle" width="17%">
-                <asp:Label runat="server" ID="Label15">รหัสบุคคลากร :</asp:Label>
+                <asp:Label runat="server" ID="Label15">รหัสบุคลากร :</asp:Label>
             </td>
             <td align="left" nowrap valign="middle" colspan="2" height="20px">
                 &nbsp;<asp:Label runat="server" ID="lblperson_code" Font-Bold="True" ForeColor="#3366CC">P001</asp:Label>

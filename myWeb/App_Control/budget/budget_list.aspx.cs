@@ -21,7 +21,7 @@ namespace myWeb.App_Control.budget
         #region private data
         private string strRecordPerPage;
         private string strPageNo = "1";
-        private string old_str = "แผนงบประมาณ";
+        private string old_str = "ยุทธศาสตร์การจัดสรรงบประมาณ";
         private string new_str = "แผนงาน";
         private string BudgetType
         {
@@ -296,7 +296,7 @@ namespace myWeb.App_Control.budget
                 ImageButton imgDelete = (ImageButton)e.Row.FindControl("imgDelete");
                 imgDelete.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["img"].ToString();
                 imgDelete.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["title"].ToString());
-                imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบแผนงบประมาณ   " + lblbudget_code.Text + " : " + lblbudget_name.Text + " ?\");");
+                imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบยุทธศาสตร์การจัดสรรงบประมาณ   " + lblbudget_code.Text + " : " + lblbudget_name.Text + " ?\");");
                 #endregion
 
             }

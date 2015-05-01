@@ -50,7 +50,7 @@ namespace myWeb.App_Control.person_group
 
                 if (ViewState["mode"].ToString().ToLower().Equals("add"))
                 {
-                    Session["menupopup_name"] = "เพิ่มข้อมูลกลุ่มบุคคลากร";
+                    Session["menupopup_name"] = "เพิ่มข้อมูลกลุ่มบุคลากร";
                     ViewState["page"] = Request.QueryString["page"];
                     txtperson_group_code.ReadOnly = false;
                     txtperson_group_code.CssClass = "textbox";
@@ -59,7 +59,7 @@ namespace myWeb.App_Control.person_group
 
                 else if (ViewState["mode"].ToString().ToLower().Equals("edit"))
                 {
-                    Session["menupopup_name"] =  "แก้ไขข้อมูลกลุ่มบุคคลากร";
+                    Session["menupopup_name"] =  "แก้ไขข้อมูลกลุ่มบุคลากร";
                     setData();
                     txtperson_group_code.ReadOnly = true;
                     txtperson_group_code.CssClass = "textboxdis";

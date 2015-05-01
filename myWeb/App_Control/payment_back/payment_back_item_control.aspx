@@ -35,7 +35,7 @@
             </td>
             <td align="left" nowrap valign="middle" colspan="5" style="width: 55%">
                 <asp:Label runat="server" ID="lblpayment_doc" Font-Bold="True" ForeColor="#3366CC">XXXXX</asp:Label>&nbsp;<asp:Label
-                    runat="server" ID="Label73">รหัสบุคคลากร :</asp:Label>
+                    runat="server" ID="Label73">รหัสบุคลากร :</asp:Label>
                 &nbsp;<asp:Label runat="server" ID="lblperson_code" Font-Bold="True" ForeColor="#3366CC">P001</asp:Label>
                 <asp:Label runat="server" ID="lblPersoncode0" Font-Bold="True" ForeColor="#3366CC">-</asp:Label>
                 <asp:Label runat="server" ID="lblperson_name" Font-Bold="True" ForeColor="#3366CC">XXXXX</asp:Label>

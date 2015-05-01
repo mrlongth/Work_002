@@ -6,6 +6,25 @@
     <table cellpadding="1" cellspacing="1" style="width: 100%" border="0">
         <tr>
             <td style="text-align: right; width: 20%;">
+                <asp:Label runat="server" CssClass="label_h" ID="lblPage11">เมนูหลัก :
+                </asp:Label>
+            </td>
+            <td style="width: 1%;">
+                            <asp:dropdownlist runat="server" cssclass="textbox" id="cboMenuParent" />
+            </td>
+            <td style="width: 20%; text-align: right;">
+                &nbsp;</td>
+            <td style="height: 23px; width: 254px;">
+                &nbsp;</td>
+            <td rowspan="4">
+                <asp:ImageButton runat="server" AlternateText="ค้นหาข้อมูล" ImageUrl="~/images/button/Search.png"
+                    ID="imgFind" OnClick="imgFind_Click"></asp:ImageButton>
+                <asp:ImageButton runat="server" AlternateText="เพิ่มข้อมุล" ImageUrl="~/images/button/Save.png"
+                    ID="imgNew"></asp:ImageButton>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; width: 20%;">
                 <asp:Label runat="server" CssClass="label_h" ID="lblPage9">ชื่อเมนู :
                 </asp:Label>
             </td>
@@ -16,12 +35,6 @@
                 &nbsp;</td>
             <td style="height: 23px; width: 254px;">
                 <asp:Label runat="server" CssClass="label_error" ID="lblError"></asp:Label>
-            </td>
-            <td rowspan="3">
-                <asp:ImageButton runat="server" AlternateText="ค้นหาข้อมูล" ImageUrl="~/images/button/Search.png"
-                    ID="imgFind" OnClick="imgFind_Click"></asp:ImageButton>
-                <asp:ImageButton runat="server" AlternateText="เพิ่มข้อมุล" ImageUrl="~/images/button/Save.png"
-                    ID="imgNew"></asp:ImageButton>
             </td>
         </tr>
         <tr>

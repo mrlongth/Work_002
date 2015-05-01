@@ -34,7 +34,7 @@ namespace myWeb.App_Control.person_work_status
                 imgFind.Attributes.Add("onMouseOver", "src='../../images/button/Search2.png'");
                 imgFind.Attributes.Add("onMouseOut", "src='../../images/button/Search.png'");
 
-                imgNew.Attributes.Add("onclick", "OpenPopUp('800px','250px','90%','เพิ่มข้อมูลสถานะบุคคลากร','person_work_status_control.aspx?mode=add&page=0','1');return false;");
+                imgNew.Attributes.Add("onclick", "OpenPopUp('800px','250px','90%','เพิ่มข้อมูลสถานะบุคลากร','person_work_status_control.aspx?mode=add&page=0','1');return false;");
                 ViewState["sort"] = "person_work_status_code";
                 ViewState["direction"] = "ASC";
                 RadioAll.Checked = true;
@@ -187,7 +187,7 @@ namespace myWeb.App_Control.person_work_status
 
                 #region set ImageView
                 ImageButton imgView = (ImageButton)e.Row.FindControl("imgView");
-                imgView.Attributes.Add("onclick", "OpenPopUp('800px','250px','90%','แสดงข้อมูลสถานะบุคคลากร','person_work_status_view.aspx?mode=view&person_work_status_code=" + 
+                imgView.Attributes.Add("onclick", "OpenPopUp('800px','250px','90%','แสดงข้อมูลสถานะบุคลากร','person_work_status_view.aspx?mode=view&person_work_status_code=" + 
                                                                 lblperson_work_status_code.Text + "','1');return false;");
                 imgView.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgView"].Rows[0]["img"].ToString();
                 imgView.Attributes.Add("person_work_status", ((DataSet)Application["xmlconfig"]).Tables["imgView"].Rows[0]["title"].ToString());
@@ -197,7 +197,7 @@ namespace myWeb.App_Control.person_work_status
 
                 ImageButton imgEdit = (ImageButton)e.Row.FindControl("imgEdit");
                 Label lblCanEdit = (Label)e.Row.FindControl("lblCanEdit");
-                imgEdit.Attributes.Add("onclick", "OpenPopUp('800px','250px','90%','แสดงข้อมูลสถานะบุคคลากร','person_work_status_control.aspx?mode=edit&person_work_status_code=" + 
+                imgEdit.Attributes.Add("onclick", "OpenPopUp('800px','250px','90%','แสดงข้อมูลสถานะบุคลากร','person_work_status_control.aspx?mode=edit&person_work_status_code=" + 
                                                                                 lblperson_work_status_code.Text + "&page=" + GridView1.PageIndex.ToString() + "&canEdit=Y','1');return false;");
                 imgEdit.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["img"].ToString();
                 imgEdit.Attributes.Add("person_work_status", ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["title"].ToString());
@@ -205,7 +205,7 @@ namespace myWeb.App_Control.person_work_status
                 ImageButton imgDelete = (ImageButton)e.Row.FindControl("imgDelete");
                 imgDelete.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["img"].ToString();
                 imgDelete.Attributes.Add("person_work_status", ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["title"].ToString());
-                imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบแผนงบประมาณ   " + lblperson_work_status_code.Text + " : " + lblperson_work_status_name.Text + " ?\");");
+                imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบยุทธศาสตร์การจัดสรรงบประมาณ   " + lblperson_work_status_code.Text + " : " + lblperson_work_status_name.Text + " ?\");");
                 #endregion
             }
 

@@ -116,7 +116,7 @@
                     <asp:Label ID="lblNo" runat="server"> </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="แผนงบประมาณ" SortExpression="budget_plan_code">
+            <asp:TemplateField HeaderText="ยุทธศาสตร์การจัดสรรงบประมาณ" SortExpression="budget_plan_code">
                 <ItemStyle HorizontalAlign="Left" Width="5%" Wrap="True" />
                 <ItemTemplate>
                     <asp:Label ID="lblbudget_plan_code" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.budget_plan_code") %>'>

@@ -29,7 +29,7 @@ namespace myWeb.App_Control.payment
         {
             if (!IsPostBack)
             {
-                imgList_person.Attributes.Add("onclick", "OpenPopUp('900px','500px','94%','ค้นหาข้อมูลบุคคลากร' ,'../lov/person_lov.aspx?year='+document.forms[0]." + strPrefixCtr +
+                imgList_person.Attributes.Add("onclick", "OpenPopUp('900px','500px','94%','ค้นหาข้อมูลบุคลากร' ,'../lov/person_lov.aspx?year='+document.forms[0]." + strPrefixCtr +
                  "cboYear.options[document.forms[0]." + strPrefixCtr + "cboYear.selectedIndex].value+" +
                  "'&person_code='+document.forms[0]." + strPrefixCtr + "txtperson_code.value+" +
                  "'&person_name='+document.forms[0]." + strPrefixCtr + "txtperson_name.value+" +

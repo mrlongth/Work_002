@@ -51,11 +51,10 @@
                     <td width="83" class="left">&nbsp;
                     </td>
                     <td class="mid">
-                        <dxm:ASPxMenu ID="ASPxMenu1" runat="server" AutoSeparators="All" CssFilePath="~/App_Themes/Aqua/{0}/styles.css"
-                            CssPostfix="Aqua" GutterImageSpacing="7px" ImageFolder="~/App_Themes/Aqua/{0}/"
-                            ItemSpacing="0px" SeparatorColor="#AECAF0" SeparatorHeight="100%" SeparatorWidth="1px"
+                        <dxm:ASPxMenu ID="ASPxMenu1" runat="server" AutoSeparators="All" CssFilePath="~/App_Themes/Office2003 Olive/{0}/styles.css"
+                            CssPostfix="Office2003_Olive" GutterImageSpacing="0px" ImageFolder="~/App_Themes/Office2003 Olive/{0}/"
+                            ItemSpacing="0px"
                             ShowPopOutImages="True" Font-Size="Small">
-                            <RootItemSubMenuOffset FirstItemX="-1" FirstItemY="-1" X="-1" Y="-1" />
                             <Items>
                                 <dxm:MenuItem NavigateUrl="~/MainPerson.aspx" Text="หน้าแรก">
                                     <Image Url="~/images/doc_page.png" />
@@ -69,7 +68,7 @@
                                     <Image Url="~/images/page/printer.png" />
                                 </dxm:MenuItem>
                                 <dxm:MenuItem Name="menuPaymentBack" NavigateUrl="~/Person_Manage/global_payment_back_report.aspx"
-                                    Text="รายงานเอกสารตกเบิก">
+                                    Text="รายงานเอกสารตกเบิก" Visible="false">
                                     <Image Url="~/images/page/printer.png" />
                                 </dxm:MenuItem>
                                 <dxm:MenuItem Name="menuCumulative" NavigateUrl="~/Person_Manage/global_payment_cumulative.aspx"
@@ -83,17 +82,18 @@
                                     <Image Url="~/images/page/page_white_paintbrush.png" />
                                 </dxm:MenuItem>
                                 <dxm:MenuItem Name="menuSlip" NavigateUrl="~/Person_Manage/global_budget_plan_report.aspx"
-                                    Text="รายงานสรุปงบประมาณคงเหลือ">
+                                    Text="รายงานสรุปงบประมาณคงเหลือ" Visible="false">
                                     <Image Url="~/images/page/printer.png" />
                                 </dxm:MenuItem>
                             </Items>
+                            <HorizontalPopOutImage Height="7px" Width="7px" />
                             <VerticalPopOutImage Height="11px" Width="11px" />
+                            <RootItemSubMenuOffset FirstItemX="-1" FirstItemY="-1" X="-1" Y="-1" />
                             <ItemStyle ImageSpacing="5px" PopOutImageSpacing="18px" VerticalAlign="Middle" />
-                            <SubMenuStyle BackColor="#F9F9F9" GutterWidth="0px" SeparatorColor="#AECAF0" />
                             <SubMenuItemStyle ImageSpacing="7px">
                             </SubMenuItemStyle>
+                            <SubMenuStyle BackColor="#F9F9F9" GutterWidth="0px" SeparatorColor="#AECAF0" />
                             <Border BorderColor="#AECAF0" BorderStyle="Solid" BorderWidth="1px" />
-                            <HorizontalPopOutImage Height="7px" Width="7px" />
                         </dxm:ASPxMenu>
                         <%--<div class="main_nav">
                         <div class="menu">
@@ -144,8 +144,7 @@
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                     <td class="bottom_left"></td>
-                    <td class="bottom_mid">พัฒนาระบบโดย นางศรีอนงค์ ใคร้มา นักวิชาการเงินและบัญชีชำนาญการ หน่วยเงินเดือน ค่าจ้างและสวัสดิการ
-                    กองคลัง
+                    <td class="bottom_mid">ระบบการจ่ายเงินสำหรับบุคลากร มหาวิทยาลัยราชภัฏเชียงใหม่
                     </td>
                     <td class="bottom_right">&nbsp;
                     </td>

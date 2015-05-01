@@ -62,7 +62,7 @@
                             </font>
                         </td>
                         <td style="width: 20%; text-align: right;">
-                            <asp:Label runat="server" CssClass="label_h" ID="lblPage2">กลุ่มบุคคลากร :</asp:Label>
+                            <asp:Label runat="server" CssClass="label_h" ID="lblPage2">กลุ่มบุคลากร :</asp:Label>
                         </td>
                         <td style="height: 23px; text-align: left;">
                             <asp:DropDownList runat="server" CssClass="textbox" ID="cboPerson_group">
@@ -90,7 +90,7 @@
                     </tr>
                     <tr>
                         <td style="text-align: right; width: 20%;">
-                <asp:Label runat="server" CssClass="label_h" ID="lblPage9">รหัสบุคคลากร :</asp:Label>
+                <asp:Label runat="server" CssClass="label_h" ID="lblPage9">รหัสบุคลากร :</asp:Label>
                         </td>
                         <td style="text-align: left;" colspan="3">
                 <asp:TextBox runat="server" CssClass="textbox"   Width="100px" ID="txtperson_code"></asp:TextBox>

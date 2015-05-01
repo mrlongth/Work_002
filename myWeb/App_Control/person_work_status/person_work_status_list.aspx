@@ -1,12 +1,12 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site_list.Master" AutoEventWireup="true"
     CodeBehind="person_work_status_list.aspx.cs" Inherits="myWeb.App_Control.person_work_status.person_work_status_list"
-    Title="แสดงข้อมูลสถานะบุคคลากร" %>
+    Title="แสดงข้อมูลสถานะบุคลากร" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <table cellpadding="1" cellspacing="1" style="width: 100%">
         <tr>
             <td style="text-align: right;">
-                <asp:Label runat="server" CssClass="label_h" ID="lblPage2">รหัสสถานะบุคคลากร :
+                <asp:Label runat="server" CssClass="label_h" ID="lblPage2">รหัสสถานะบุคลากร :
                 </asp:Label>
             </td>
             <td style="width: 578px">
@@ -22,7 +22,7 @@
         </tr>
         <tr>
             <td style="text-align: right;">
-                <asp:Label runat="server" CssClass="label_h" ID="lblPage1">สถานะบุคคลากร :
+                <asp:Label runat="server" CssClass="label_h" ID="lblPage1">สถานะบุคลากร :
                 </asp:Label>
             </td>
             <td style="width: 578px">
@@ -63,7 +63,7 @@
                     <asp:Label ID="lblNo" runat="server"> </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="รหัสสถานะบุคคลากร " SortExpression="person_work_status_code">
+            <asp:TemplateField HeaderText="รหัสสถานะบุคลากร " SortExpression="person_work_status_code">
                 <ItemStyle HorizontalAlign="Center" Width="20%" Wrap="False" />
                 <ItemTemplate>
                     <asp:Label ID="lblperson_work_status_code" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.person_work_status_code") %>'>
@@ -71,7 +71,7 @@
                 </ItemTemplate>
                 <ItemStyle Wrap="False" />
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="สถานะบุคคลากร " SortExpression="person_work_status_name">
+            <asp:TemplateField HeaderText="สถานะบุคลากร " SortExpression="person_work_status_name">
                 <ItemTemplate>
                     <asp:Label ID="lblperson_work_status_name" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.person_work_status_name") %>'>
                     </asp:Label>

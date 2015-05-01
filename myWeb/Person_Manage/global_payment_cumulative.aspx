@@ -15,7 +15,7 @@
         </tr>
         <tr align="left">
             <td align="right" nowrap style="width: 20%" valign="middle">
-                <asp:Label ID="Label21" runat="server" CssClass="label_h">รหัสบุคคลากร :</asp:Label>
+                <asp:Label ID="Label21" runat="server" CssClass="label_h">รหัสบุคลากร :</asp:Label>
             </td>
             <td align="left" nowrap valign="middle" width="40%">
                 <asp:Label ID="lblPerson_code" runat="server">XXXXX</asp:Label>

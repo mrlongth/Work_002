@@ -42,7 +42,7 @@
             </tr>
             <tr align="left">
                 <td align="right" nowrap valign="middle" width="20%">
-                    <asp:Label ID="lblPage2" runat="server">กลุ่มบุคคลากร :</asp:Label>
+                    <asp:Label ID="lblPage2" runat="server">กลุ่มบุคลากร :</asp:Label>
                 </td>
                 <td align="left" nowrap valign="middle">
                     <asp:DropDownList ID="cboPerson_group" runat="server" CssClass="textbox">
@@ -161,14 +161,14 @@
                 </ItemTemplate>
                 <ItemStyle HorizontalAlign="Center" Wrap="False" Width="2%"></ItemStyle>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="รหัสบุคคลากร " SortExpression="person_code">
+            <asp:TemplateField HeaderText="รหัสบุคลากร " SortExpression="person_code">
                 <ItemStyle HorizontalAlign="Center" Width="8%" Wrap="True" />
                 <ItemTemplate>
                     <asp:Label ID="lblperson_code" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.person_code") %>'>
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="ชื่อบุคคลากร " SortExpression="person_thai_name">
+            <asp:TemplateField HeaderText="ชื่อบุคลากร " SortExpression="person_thai_name">
                 <ItemStyle HorizontalAlign="Left" Width="12%" Wrap="True" />
                 <ItemTemplate>
                     <asp:Label ID="lblperson_name" runat="server" Text='<%  # DataBinder.Eval(Container, "DataItem.title_name")+""+DataBinder.Eval(Container, "DataItem.person_thai_name") %>'>

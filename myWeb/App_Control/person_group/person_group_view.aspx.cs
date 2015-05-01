@@ -27,7 +27,7 @@ namespace myWeb.App_Control.person_group
             lblError.Text = "";
             if (!IsPostBack)
             {
-                Session["menupopup_name"] = "แสดงข้อมูลกลุ่มบุคคลากร";
+                Session["menupopup_name"] = "แสดงข้อมูลกลุ่มบุคลากร";
 
                 #region set QueryString
                 if (Request.QueryString["person_group_code"] != null)

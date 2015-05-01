@@ -108,7 +108,7 @@
         <tr align="left">
             <td align="right" nowrap valign="middle">
                                         <asp:Label runat="server" CssClass="label_error" ID="Label71">*</asp:Label>
-                <asp:Label runat="server" ID="Label13">แผนงบประมาณ :</asp:Label>
+                <asp:Label runat="server" ID="Label13">ยุทธศาสตร์การจัดสรรงบประมาณ :</asp:Label>
             </td>
             <td align="left" colspan="4" nowrap valign="middle">
                 <font face="Tahoma">&nbsp;<asp:DropDownList runat="server" CssClass="textbox" ID="cboBudget">

@@ -14,14 +14,14 @@
     <entry name="500">500</entry>
   </section>
   <section name="imgView">
-    <entry name="img">../../images/controls/view.gif</entry>
+    <entry name="img">../../images/controls/view.png</entry>
     <entry name="title">View</entry>
-    <entry name="imgdisable">../../images/controls/view.gif</entry>
+    <entry name="imgdisable">../../images/controls/view.png</entry>
     <entry name="titledisable">Cannot View</entry>
   </section>
   <section name="imgEdit">
     <entry name="title">Edit</entry>
-    <entry name="img">../../images/controls/edit.gif</entry>
+    <entry name="img">../../images/controls/edit.png</entry>
     <entry name="imgdisable">../../images/controls/edit_disable.gif</entry>
     <entry name="titledisable">Cannot Edit</entry>
   </section>
@@ -32,7 +32,7 @@
     <entry name="titledisable">Cannot Edit</entry>
   </section>
   <section name="imgDelete">
-    <entry name="img">../../images/controls/delete.gif</entry>
+    <entry name="img">../../images/controls/delete.png</entry>
     <entry name="title">Delete</entry>
     <entry name="imgdisable">../../images/controls/delete_disable.gif</entry>
     <entry name="titledisable">Cannot Delete</entry>
@@ -264,6 +264,8 @@
     <!--ลูกจ้างประจำ||กสจ.-->
     <entry name="SOS">03</entry>
     <entry name="GBK2">04</entry>
+    <!--สำรองเลี้ยงชีพ-->
+    <entry name="PVD">05</entry>
   </section>
   <section name="PersonMange">
     <entry name="00001">00001</entry>

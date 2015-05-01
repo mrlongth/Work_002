@@ -265,6 +265,82 @@ namespace myDLL
         }
         #endregion
 
+        #region SP_PERSON_USER_GROUP_UPD
+        public bool SP_PERSON_USER_GROUP_UPD(
+             string pperson_code,
+             string puser_group_list,
+             string pc_updated_by)
+        {
+            bool blnResult = false;
+            var oConn = new SqlConnection();
+            var oCommand = new SqlCommand();
+            try
+            {
+                string strSql = "Update person_work Set " +
+                                " user_group_list = '" + puser_group_list + "'," +
+                                " c_updated_by = '" + pc_updated_by + "'," +
+                                " d_updated_date = '" + cCommon.GetDateTimeNow() + "' " +
+                                " Where person_code = '" + pperson_code + "'";
+                oConn.ConnectionString = _strConn;
+                oConn.Open();
+                oCommand.Connection = oConn;
+                oCommand.CommandType = CommandType.Text;
+                oCommand.CommandText = strSql;
+                oCommand.ExecuteNonQuery();
+                blnResult = true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                oConn.Close();
+                oCommand.Dispose();
+                oConn.Dispose();
+            }
+            return blnResult;
+        }
+        #endregion
+
+        #region SP_PERSON_USER_SEL
+        public bool SP_PERSON_USER_SEL(string strCriteria, ref DataSet ds, ref string strMessage)
+        {
+            bool blnResult = false;
+            SqlConnection oConn = new SqlConnection();
+            SqlCommand oCommand = new SqlCommand();
+            SqlDataAdapter oAdapter = new SqlDataAdapter();
+            try
+            {
+                oConn.ConnectionString = _strConn;
+                oConn.Open();
+                oCommand.Connection = oConn;
+                oCommand.CommandType = CommandType.StoredProcedure;
+                oCommand.CommandText = "sp_PERSON_USER_SEL";
+                SqlParameter oParamI_vc_criteria = new SqlParameter("vc_criteria", SqlDbType.NVarChar);
+                oParamI_vc_criteria.Direction = ParameterDirection.Input;
+                oParamI_vc_criteria.Value = strCriteria;
+                oCommand.Parameters.Add(oParamI_vc_criteria);
+                oAdapter = new SqlDataAdapter(oCommand);
+                ds = new DataSet();
+                oAdapter.Fill(ds, "sp_PERSON_USER_SEL");
+                blnResult = true;
+            }
+            catch (Exception ex)
+            {
+                strMessage = ex.Message.ToString();
+            }
+            finally
+            {
+                oConn.Close();
+                oCommand.Dispose();
+                oConn.Dispose();
+            }
+            return blnResult;
+        }
+        #endregion
+
+
         #region IDisposable Members
 
         void IDisposable.Dispose()

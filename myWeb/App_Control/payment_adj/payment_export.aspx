@@ -49,7 +49,7 @@
                     </asp:DropDownList>
                 </td>
                 <td align="left" nowrap valign="middle" style="text-align: right; width: 10%;">
-                    <asp:Label runat="server" ID="lblPage2">กลุ่มบุคคลากร :</asp:Label>
+                    <asp:Label runat="server" ID="lblPage2">กลุ่มบุคลากร :</asp:Label>
                 </td>
                 <td align="left" nowrap valign="middle" colspan="2">
                     <asp:DropDownList runat="server" CssClass="textbox" ID="cboPerson_group"  >

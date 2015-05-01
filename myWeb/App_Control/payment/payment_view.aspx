@@ -28,7 +28,7 @@
     <div style="text-align: center;">
         <ajaxtoolkit:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="0" Height="370px"
             BorderWidth="0px" Style="text-align: left" Width="98%">
-            <ajaxtoolkit:TabPanel ID="TabPanel1" runat="server" HeaderText="ข้อมูลประวัติบุคคลากร">
+            <ajaxtoolkit:TabPanel ID="TabPanel1" runat="server" HeaderText="ข้อมูลประวัติบุคลากร">
                 <HeaderTemplate>
                     ข้อมูลการจ่ายเงินเดือน
                 </HeaderTemplate>
@@ -91,7 +91,7 @@
                         </tr>
                         <tr align="left">
                             <td align="right" nowrap valign="middle">
-                                <asp:Label ID="Label21" runat="server" CssClass="label_hbk">รหัสบุคคลากร :</asp:Label>
+                                <asp:Label ID="Label21" runat="server" CssClass="label_hbk">รหัสบุคลากร :</asp:Label>
                             </td>
                             <td align="left" nowrap valign="middle">
                                 <asp:TextBox ID="txtperson_code" runat="server" CssClass="textboxdis" Width="100px"></asp:TextBox>
@@ -99,7 +99,7 @@
                                     ReadOnly="True" Width="200px"></asp:TextBox>
                             </td>
                             <td align="left" colspan="2" nowrap style="text-align: right" valign="middle">
-                                <asp:Label ID="Label50" runat="server" CssClass="label_hbk">กลุ่มบุคคลากร :</asp:Label>
+                                <asp:Label ID="Label50" runat="server" CssClass="label_hbk">กลุ่มบุคลากร :</asp:Label>
                             </td>
                             <td align="left" nowrap valign="middle">
                                 <asp:DropDownList ID="cboPerson_group" runat="server" CssClass="textbox">
@@ -258,7 +258,7 @@
                             <td align="left" colspan="2" nowrap valign="middle">
                                 <asp:CheckBox ID="chkStatus" runat="server" Text="ปกติ" /><asp:RequiredFieldValidator
                                     ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtperson_code"
-                                    Display="None" ErrorMessage="กรุณาป้อนรหัสบุคคลากร" SetFocusOnError="True" ValidationGroup="A"></asp:RequiredFieldValidator><ajaxtoolkit:ValidatorCalloutExtender
+                                    Display="None" ErrorMessage="กรุณาป้อนรหัสบุคลากร" SetFocusOnError="True" ValidationGroup="A"></asp:RequiredFieldValidator><ajaxtoolkit:ValidatorCalloutExtender
                                         ID="RequiredFieldValidator1_ValidatorCalloutExtender" runat="server" Enabled="True"
                                         HighlightCssClass="validatorCalloutHighlight" TargetControlID="RequiredFieldValidator1">
                                     </ajaxtoolkit:ValidatorCalloutExtender>

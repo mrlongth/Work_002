@@ -69,7 +69,7 @@
                     </asp:DropDownList>
                 </td>
                 <td align="left" nowrap valign="middle" style="text-align: right; width: 10%;">
-                    <asp:Label runat="server" ID="lblPage2">กลุ่มบุคคลากร :</asp:Label>
+                    <asp:Label runat="server" ID="lblPage2">กลุ่มบุคลากร :</asp:Label>
                 </td>
                 <td align="left" nowrap valign="middle">
                     <asp:DropDownList runat="server" CssClass="textbox" ID="cboPerson_group">
@@ -185,14 +185,14 @@
                 </ItemTemplate>
                 <ItemStyle HorizontalAlign="Center" Wrap="False" Width="2%"></ItemStyle>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="รหัสบุคคลากร " SortExpression="[A00]">
+            <asp:TemplateField HeaderText="รหัสบุคลากร " SortExpression="[A00]">
                 <ItemStyle HorizontalAlign="Center" Width="8%" Wrap="True" />
                 <ItemTemplate>
                     <asp:Label ID="lblperson_code" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.A00") %>'>
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="ชื่อบุคคลากร " SortExpression="[A02]">
+            <asp:TemplateField HeaderText="ชื่อบุคลากร " SortExpression="[A02]">
                 <ItemStyle HorizontalAlign="Left" Width="12%" Wrap="True" />
                 <ItemTemplate>
                     <asp:Label ID="lblperson_name" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.A02") %>'>

@@ -25,7 +25,7 @@ namespace myWeb.App_Control.lov
                 imgFind.Attributes.Add("onMouseOver", "src='../../images/button/Search2.png'");
                 imgFind.Attributes.Add("onMouseOut", "src='../../images/button/Search.png'");
 
-                Session["menulov_name"] = "ค้นหาข้อมูลกลุ่มบุคคลากร";
+                Session["menulov_name"] = "ค้นหาข้อมูลกลุ่มบุคลากร";
 
                 if (Request.QueryString["person_group_code"] != null)
                 {

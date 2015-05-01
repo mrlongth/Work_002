@@ -91,7 +91,7 @@
         </tr>
         <tr align="left">
             <td align="right" nowrap valign="middle">
-                <asp:Label runat="server" ID="lblFName4">รหัสแผนงบประมาณ :</asp:Label>
+                <asp:Label runat="server" ID="lblFName4">รหัสยุทธศาสตร์การจัดสรรงบประมาณ :</asp:Label>
             </td>
             <td align="left" nowrap valign="middle">
                 <font face="Tahoma"><asp:TextBox ID="txtbudget_code" runat="server" CssClass="textboxdis"
@@ -99,7 +99,7 @@
                 </font>
             </td>
             <td align="left" nowrap valign="middle" style="text-align: right">
-                <asp:Label ID="Label18" runat="server">แผนงบประมาณ :</asp:Label>
+                <asp:Label ID="Label18" runat="server">ยุทธศาสตร์การจัดสรรงบประมาณ :</asp:Label>
             </td>
             <td align="left" nowrap valign="middle">
                 <font face="Tahoma"><asp:TextBox ID="txtbudget_name" runat="server" CssClass="textboxdis"

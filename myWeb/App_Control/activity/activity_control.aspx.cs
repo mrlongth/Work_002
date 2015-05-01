@@ -111,7 +111,7 @@ namespace myWeb.App_Control.activity
                 //    foreach (Control c in Page.Controls)
                 //    {
                 //        base.SetLabel(c, "กิจกรรม", "งานรอง");
-                //        base.SetLabel(c, "แผนงบประมาณ", "แผนงาน");
+                //        base.SetLabel(c, "ยุทธศาสตร์การจัดสรรงบประมาณ", "แผนงาน");
                 //        base.SetLabel(c, "ผลผลิต", "งานหลัก");
                 //    }
                 //}

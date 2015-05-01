@@ -1,12 +1,12 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site_list.Master" AutoEventWireup="true"
     CodeBehind="person_group_list.aspx.cs" Inherits="myWeb.App_Control.person_group.person_group_list"
-    Title="แสดงข้อมูลกลุ่มบุคคลากร" %>
+    Title="แสดงข้อมูลกลุ่มบุคลากร" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <table cellpadding="1" cellspacing="1" style="width: 100%">
         <tr>
             <td style="text-align: right;">
-                <asp:Label runat="server" CssClass="label_h" ID="lblPage2">รหัสกลุ่มบุคคลากร :
+                <asp:Label runat="server" CssClass="label_h" ID="lblPage2">รหัสกลุ่มบุคลากร :
                 </asp:Label>
             </td>
             <td style="width: 578px">
@@ -22,7 +22,7 @@
         </tr>
         <tr>
             <td style="text-align: right;">
-                <asp:Label runat="server" CssClass="label_h" ID="lblPage1">กลุ่มบุคคลากร :
+                <asp:Label runat="server" CssClass="label_h" ID="lblPage1">กลุ่มบุคลากร :
                 </asp:Label>
             </td>
             <td style="width: 578px">
@@ -63,7 +63,7 @@
                     <asp:Label ID="lblNo" runat="server"> </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="รหัสกลุ่มบุคคลากร " SortExpression="person_group_code">
+            <asp:TemplateField HeaderText="รหัสกลุ่มบุคลากร " SortExpression="person_group_code">
                 <ItemStyle HorizontalAlign="Center" Width="20%" Wrap="False" />
                 <ItemTemplate>
                     <asp:Label ID="lblperson_group_code" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.person_group_code") %>'>
@@ -71,7 +71,7 @@
                 </ItemTemplate>
                 <ItemStyle Wrap="False" />
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="กลุ่มบุคคลากร " SortExpression="person_group_name">
+            <asp:TemplateField HeaderText="กลุ่มบุคลากร " SortExpression="person_group_name">
                 <ItemTemplate>
                     <asp:Label ID="lblperson_group_name" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.person_group_name") %>'>
                     </asp:Label>

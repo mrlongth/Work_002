@@ -93,7 +93,7 @@ namespace myWeb.App_Control.payment
 
                 #region Set Image
 
-                imgList_item.Attributes.Add("onclick", "OpenPopUp('900px','500px','94%','ค้นหาข้อมูลบุคคลากร' ,'../lov/person_lov.aspx?" +
+                imgList_item.Attributes.Add("onclick", "OpenPopUp('900px','500px','94%','ค้นหาข้อมูลบุคลากร' ,'../lov/person_lov.aspx?" +
                      "from=payment_control&person_code='+getElementById('" + txtperson_code.ClientID + "').value+'" +
                      "&person_name='+getElementById('" + txtperson_name.ClientID + "').value+'" +
                     "&ctrl1=" + txtperson_code.ClientID + "&ctrl2=" + txtperson_name.ClientID + "&show=2', '2');return false;");
@@ -1062,7 +1062,7 @@ namespace myWeb.App_Control.payment
                 ImageButton imgAdd = (ImageButton)e.Row.FindControl("imgAdd");
                 imgAdd.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgGridAdd"].Rows[0]["img"].ToString();
                 imgAdd.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgGridAdd"].Rows[0]["title"].ToString());
-                imgAdd.Attributes.Add("onclick", "OpenPopUp('800px','425px','94%','เพิ่มข้อมูลการจ่ายเงินเดือนรายรับ/จ่ายบุคคลากร','payment_item_control.aspx?mode=add&person_code=" +
+                imgAdd.Attributes.Add("onclick", "OpenPopUp('800px','425px','94%','เพิ่มข้อมูลการจ่ายเงินเดือนรายรับ/จ่ายบุคลากร','payment_item_control.aspx?mode=add&person_code=" +
                                                                                 txtperson_code.Text + "&person_name=" + txtperson_name.Text + "&payment_doc=" +
                                                                                 txtpayment_doc.Text + "&year=" + cboYear.SelectedValue + "','2');return false;");
 
@@ -1142,7 +1142,7 @@ namespace myWeb.App_Control.payment
                 #region set Image Edit & Delete
 
                 ImageButton imgEdit = (ImageButton)e.Row.FindControl("imgEdit");
-                imgEdit.Attributes.Add("onclick", "OpenPopUp('800px','425px','94%','แก้ไขข้อมูลการจ่ายเงินเดือนรายรับ/จ่ายบุคคลากร','payment_item_control.aspx?mode=edit&payment_doc=" +
+                imgEdit.Attributes.Add("onclick", "OpenPopUp('800px','425px','94%','แก้ไขข้อมูลการจ่ายเงินเดือนรายรับ/จ่ายบุคลากร','payment_item_control.aspx?mode=edit&payment_doc=" +
                             txtpayment_doc.Text + "&item_code=" + lblitem_code.Text +
                             "&budget_type=" + hddbudget_type.Value.ToString() +
                             "&page=" + GridView1.PageIndex.ToString() + "','2');return false;");

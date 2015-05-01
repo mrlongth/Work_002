@@ -93,14 +93,14 @@
         <tr align="left">
             <td align="right" nowrap valign="middle">
                             <asp:Label runat="server" CssClass="label_error" ID="Label78">*</asp:Label>
-                            <asp:Label runat="server" ID="lblPage10">แผนงบประมาณ :</asp:Label>
+                            <asp:Label runat="server" ID="lblPage10">ยุทธศาสตร์การจัดสรรงบประมาณ :</asp:Label>
             </td>
             <td align="left" nowrap valign="middle">
                             <asp:DropDownList runat="server" AutoPostBack="True" CssClass="textbox" ID="cboBudget"
                                 OnSelectedIndexChanged="cboBudget_SelectedIndexChanged">
                             </asp:DropDownList>
                 <font face="Tahoma">
-                    <asp:RequiredFieldValidator runat="server" ControlToValidate="cboBudget" ErrorMessage="กรุณาเลือกแผนงบประมาณ"
+                    <asp:RequiredFieldValidator runat="server" ControlToValidate="cboBudget" ErrorMessage="กรุณาเลือกยุทธศาสตร์การจัดสรรงบประมาณ"
                         Display="None" SetFocusOnError="True" ValidationGroup="A" 
                     ID="RequiredFieldValidator4"></asp:RequiredFieldValidator>
                     <ajaxtoolkit:ValidatorCalloutExtender runat="server" Enabled="True" TargetControlID="RequiredFieldValidator4"

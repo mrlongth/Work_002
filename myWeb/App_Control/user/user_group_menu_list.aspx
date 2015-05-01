@@ -84,7 +84,7 @@
 <asp:Content ID="Content2" runat="server" ContentPlaceHolderID="ContentPlaceHolder2">
     <ajaxtoolkit:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="0" BorderWidth="0px"
         Style="text-align: left">
-        <ajaxtoolkit:TabPanel runat="server" HeaderText="ข้อมูลประวัติบุคคลากร" ID="TabPanel1">
+        <ajaxtoolkit:TabPanel runat="server" HeaderText="ข้อมูลประวัติบุคลากร" ID="TabPanel1">
             <HeaderTemplate>
                 สิทธิ์การใช้งานหน้าจอ
             </HeaderTemplate>
@@ -224,14 +224,14 @@
                             </ItemTemplate>
                             <ItemStyle HorizontalAlign="Center" Width="5%" Wrap="False" />
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="รหัสกลุ่มบุคคลากร " SortExpression="person_group_code">
+                        <asp:TemplateField HeaderText="รหัสกลุ่มบุคลากร " SortExpression="person_group_code">
                             <ItemTemplate>
                                 <asp:Label ID="lblperson_group_code" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.person_group_code") %>'>
                                 </asp:Label>
                             </ItemTemplate>
                             <ItemStyle HorizontalAlign="Center" Width="20%" Wrap="False" />
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="กลุ่มบุคคลากร " SortExpression="person_group_name">
+                        <asp:TemplateField HeaderText="กลุ่มบุคลากร " SortExpression="person_group_name">
                             <ItemTemplate>
                                 <asp:Label ID="lblperson_group_name" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.person_group_name")%>'>
                                 </asp:Label>

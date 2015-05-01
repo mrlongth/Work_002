@@ -99,7 +99,7 @@ namespace myWeb.App_Control.person
                     InitcboPerson_group();
                     InitcboMember_type();
                     InitcboPerson_work_status();
-                    Session["menupopup_name"] = "เพิ่มข้อมูลบุคคลากร";
+                    Session["menupopup_name"] = "เพิ่มข้อมูลบุคลากร";
                     ViewState["page"] = Request.QueryString["page"];
                     txtperson_code.ReadOnly = true;
                     txtperson_code.CssClass = "textboxdis";
@@ -122,7 +122,7 @@ namespace myWeb.App_Control.person
                 }
                 else if (ViewState["mode"].ToString().ToLower().Equals("edit"))
                 {
-                    Session["menupopup_name"] = "แก้ไขข้อมูลบุคคลากร";
+                    Session["menupopup_name"] = "แก้ไขข้อมูลบุคลากร";
                     setData();
                     txtperson_code.ReadOnly = true;
                     txtperson_code.CssClass = "textboxdis";
@@ -144,7 +144,7 @@ namespace myWeb.App_Control.person
 
                 #region Set Image
 
-                imgperson_pic.Attributes.Add("onclick", "OpenPopUp('500px','200px','80%','อัพโหลดรูปบุคคลากร' ,'../person/person_upload.aspx?" +
+                imgperson_pic.Attributes.Add("onclick", "OpenPopUp('500px','200px','80%','อัพโหลดรูปบุคลากร' ,'../person/person_upload.aspx?" +
                                                                     "ctrl1=" + txtperson_pic.ClientID + "&ctrl2=" + imgPerson.ClientID + "&show=2', '2');return false;");
                 imgClear_person_pic.Attributes.Add("onclick", "document.getElementById('" + txtperson_pic.ClientID + "').value='';" +
                                                                                                              "document.getElementById('" + imgPerson.ClientID + "').src='../../person_pic/image_n_a.jpg';return false;");
@@ -345,13 +345,17 @@ namespace myWeb.App_Control.person
                         strperson_group_code = string.Empty,
                         strGBK = string.Empty,
                         strGSJ = string.Empty,
-                        strSOS = string.Empty;
+                        strSOS = string.Empty,
+                        strPVD = string.Empty;
             int i;
             strGBK = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["GBK"].ToString();
             strGSJ = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["GSJ"].ToString();
             strSOS = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["SOS"].ToString();
+            strPVD = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["PVD"].ToString();
+            
             strmember_type = cboMember_type.SelectedValue;
             strperson_group_code = cboPerson_group.SelectedValue;
+
             if (strperson_group_code.Equals(strGBK))
             {
                 strCriteria = " and member_type_code='" + strGBK + "' and c_active='Y' ";
@@ -362,7 +366,7 @@ namespace myWeb.App_Control.person
             }
             else
             {
-                strCriteria = " and member_type_code='" + strSOS + "' and c_active='Y' ";
+                strCriteria = " and member_type_code IN ('" + strSOS + "','" + strPVD + "') and c_active='Y' ";
             }
             DataSet ds = new DataSet();
             DataTable dt = new DataTable();
@@ -371,10 +375,18 @@ namespace myWeb.App_Control.person
                 dt = ds.Tables[0];
                 cboMember_type.Items.Clear();
                 cboMember_type.Items.Add(new ListItem("N", ""));
+                string code = string.Empty;
+                string str = string.Empty;                
                 for (i = 0; i <= dt.Rows.Count - 1; i++)
                 {
+                    code += dt.Rows[i]["member_type_code"].ToString() + ",";
+                    str += dt.Rows[i]["member_type_name"].ToString() + ",";
                     cboMember_type.Items.Add(new ListItem(dt.Rows[i]["member_type_name"].ToString(), dt.Rows[i]["member_type_code"].ToString()));
                 }
+                if (dt.Rows.Count > 1) 
+                {
+                    cboMember_type.Items.Add(new ListItem(str.Substring(0, str.Length - 1), code.Substring(0, code.Length - 1)));                
+                } 
                 if (cboMember_type.Items.FindByValue(strmember_type) != null)
                 {
                     cboMember_type.SelectedIndex = -1;
@@ -1412,7 +1424,7 @@ namespace myWeb.App_Control.person
                 imgAdd.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgGridAdd"].Rows[0]["img"].ToString();
                 imgAdd.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgGridAdd"].Rows[0]["title"].ToString());
 
-                imgAdd.Attributes.Add("onclick", "OpenPopUp('800px','400px','95%','เพิ่มข้อมูลรายรับ/จ่ายบุคคลากร','person_item_control.aspx?mode=add&person_code=" + txtperson_code.Text +
+                imgAdd.Attributes.Add("onclick", "OpenPopUp('800px','400px','95%','เพิ่มข้อมูลรายรับ/จ่ายบุคลากร','person_item_control.aspx?mode=add&person_code=" + txtperson_code.Text +
                                                               "&person_name=" + txtperson_thai_name.Text + "  " + txtperson_thai_surname.Text +
                                                               "&person_group_code=" + cboPerson_group.SelectedValue +
                                                               "&year=" + txtbudget_plan_year.Text + "','2');return false;");
@@ -1491,7 +1503,7 @@ namespace myWeb.App_Control.person
                 #region set Image Edit & Delete
 
                 ImageButton imgEdit = (ImageButton)e.Row.FindControl("imgEdit");
-                imgEdit.Attributes.Add("onclick", "OpenPopUp('800px','400px','95%','แก้ไขข้อมูลรายรับ/จ่ายบุคคลากร','person_item_control.aspx?mode=edit&person_code=" +
+                imgEdit.Attributes.Add("onclick", "OpenPopUp('800px','400px','95%','แก้ไขข้อมูลรายรับ/จ่ายบุคลากร','person_item_control.aspx?mode=edit&person_code=" +
                                txtperson_code.Text + "&person_name=" + txtperson_thai_name.Text + "  " + txtperson_thai_surname.Text + "&item_code=" +
                                lblitem_code.Text + "&year=" + txtbudget_plan_year.Text + "','2');return false;");
 
@@ -1502,7 +1514,7 @@ namespace myWeb.App_Control.person
                 ImageButton imgDelete = (ImageButton)e.Row.FindControl("imgDelete");
                 imgDelete.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["img"].ToString();
                 imgDelete.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["title"].ToString());
-                imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบข้อมูลรับ/จ่ายบุคคลากร " + lblitem_code.Text + " : " + lblitem_name.Text + " ?\");");
+                imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบข้อมูลรับ/จ่ายบุคลากร " + lblitem_code.Text + " : " + lblitem_name.Text + " ?\");");
                 #endregion
 
             }
@@ -1663,7 +1675,7 @@ namespace myWeb.App_Control.person
                 ImageButton imgAdd = (ImageButton)e.Row.FindControl("imgAdd1");
                 imgAdd.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgGridAdd"].Rows[0]["img"].ToString();
                 imgAdd.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgGridAdd"].Rows[0]["title"].ToString());
-                imgAdd.Attributes.Add("onclick", "OpenPopUp('800px','300px','91%','เพิ่มข้อมูลสมาชิก(ฌาปนกิจ) บุคคลากร','person_member_control.aspx?mode=add&person_code=" + txtperson_code.Text +
+                imgAdd.Attributes.Add("onclick", "OpenPopUp('800px','300px','91%','เพิ่มข้อมูลสมาชิก(ฌาปนกิจ) บุคลากร','person_member_control.aspx?mode=add&person_code=" + txtperson_code.Text +
                                                               "&person_name=" + txtperson_thai_name.Text + "  " + txtperson_thai_surname.Text +
                                                               "&year=" + txtbudget_plan_year.Text + "','2');return false;");
 
@@ -1719,7 +1731,7 @@ namespace myWeb.App_Control.person
 
                 ImageButton imgEdit = (ImageButton)e.Row.FindControl("imgEdit1");
                 //Label lblCanEdit = (Label)e.Row.FindControl("lblCanEdit2");
-                imgEdit.Attributes.Add("onclick", "OpenPopUp('800px','300px','91%','แก้ไขข้อมูลสมาชิก(ฌาปนกิจ) บุคคลากร','person_member_control.aspx?mode=edit&person_code=" +
+                imgEdit.Attributes.Add("onclick", "OpenPopUp('800px','300px','91%','แก้ไขข้อมูลสมาชิก(ฌาปนกิจ) บุคลากร','person_member_control.aspx?mode=edit&person_code=" +
                                                               txtperson_code.Text + "&person_name=" + txtperson_thai_name.Text + "  " + txtperson_thai_surname.Text + "&member_code=" +
                                                               lblmember_code.Text + "&year=" + txtbudget_plan_year.Text + "','2');return false;");
 
@@ -1729,7 +1741,7 @@ namespace myWeb.App_Control.person
                 ImageButton imgDelete = (ImageButton)e.Row.FindControl("imgDelete1");
                 imgDelete.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["img"].ToString();
                 imgDelete.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["title"].ToString());
-                imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบข้อมูลสมาชิก(ฌาปนกิจ) บุคคลากร " + lblmember_code.Text + " : " + lblmember_name.Text + " ?\");");
+                imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบข้อมูลสมาชิก(ฌาปนกิจ) บุคลากร " + lblmember_code.Text + " : " + lblmember_name.Text + " ?\");");
                 #endregion
 
             }
@@ -1890,7 +1902,7 @@ namespace myWeb.App_Control.person
                 ImageButton imgAdd = (ImageButton)e.Row.FindControl("imgAdd2");
                 imgAdd.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgGridAdd"].Rows[0]["img"].ToString();
                 imgAdd.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgGridAdd"].Rows[0]["title"].ToString());
-                imgAdd.Attributes.Add("onclick", "OpenPopUp('800px','340px','91%','เพิ่มข้อมูลประวัติตำแหน่งบุคคลากร','person_position_control.aspx?mode=add&person_code=" + txtperson_code.Text +
+                imgAdd.Attributes.Add("onclick", "OpenPopUp('800px','340px','91%','เพิ่มข้อมูลประวัติตำแหน่งบุคลากร','person_position_control.aspx?mode=add&person_code=" + txtperson_code.Text +
                                                               "&person_name=" + txtperson_thai_name.Text + "  " + txtperson_thai_surname.Text +
                                                               "&position_code=" + txtposition_code.Text + "&position_name=" + txtposition_name.Text +
                                                               "&person_level=" + txtperson_level.Text +
@@ -1954,7 +1966,7 @@ namespace myWeb.App_Control.person
 
                 ImageButton imgEdit = (ImageButton)e.Row.FindControl("imgEdit2");
                 //Label lblCanEdit = (Label)e.Row.FindControl("lblCanEdit2");
-                imgEdit.Attributes.Add("onclick", "OpenPopUp('800px','340px','91%','แก้ไขข้อมูลประวัติตำแหน่งบุคคลากร','person_position_control.aspx?mode=edit&person_code=" +
+                imgEdit.Attributes.Add("onclick", "OpenPopUp('800px','340px','91%','แก้ไขข้อมูลประวัติตำแหน่งบุคลากร','person_position_control.aspx?mode=edit&person_code=" +
                                               txtperson_code.Text + "&person_name=" + txtperson_thai_name.Text + "  " + txtperson_thai_surname.Text + "&change_date=" +
                                               lblchange_date.Text + "','2');return false;");
                 imgEdit.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["img"].ToString();
@@ -1963,7 +1975,7 @@ namespace myWeb.App_Control.person
                 ImageButton imgDelete = (ImageButton)e.Row.FindControl("imgDelete2");
                 imgDelete.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["img"].ToString();
                 imgDelete.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["title"].ToString());
-                imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบข้อมูลประวัติตำแหน่งบุคคลากรนี้ ?\");");
+                imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบข้อมูลประวัติตำแหน่งบุคลากรนี้ ?\");");
                 #endregion
 
             }
@@ -2128,7 +2140,7 @@ namespace myWeb.App_Control.person
                 imgAdd.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgGridAdd"].Rows[0]["img"].ToString();
                 imgAdd.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgGridAdd"].Rows[0]["title"].ToString());
 
-                imgAdd.Attributes.Add("onclick", "OpenPopUp('750px','330px','95%','เพิ่มข้อมูลเงินกู้บุคคลากร','person_loan_control.aspx?mode=add&person_code=" + txtperson_code.Text +
+                imgAdd.Attributes.Add("onclick", "OpenPopUp('750px','330px','95%','เพิ่มข้อมูลเงินกู้บุคลากร','person_loan_control.aspx?mode=add&person_code=" + txtperson_code.Text +
                                                              "&person_name=" + txtperson_thai_name.Text + "  " + txtperson_thai_surname.Text + "','2');return false;");
             }
             else if (e.Row.RowType.Equals(DataControlRowType.DataRow) || e.Row.RowState.Equals(DataControlRowState.Alternate))
@@ -2167,7 +2179,7 @@ namespace myWeb.App_Control.person
                 #region set Image Edit & Delete
 
                 ImageButton imgEdit = (ImageButton)e.Row.FindControl("imgEdit");
-                imgEdit.Attributes.Add("onclick", "OpenPopUp('750px','330px','95%','แก้ไขข้อมูลเงินกู้บุคคลากร','person_loan_control.aspx?mode=edit&person_code=" +
+                imgEdit.Attributes.Add("onclick", "OpenPopUp('750px','330px','95%','แก้ไขข้อมูลเงินกู้บุคลากร','person_loan_control.aspx?mode=edit&person_code=" +
                                txtperson_code.Text + "&person_name=" + txtperson_thai_name.Text + "  " + txtperson_thai_surname.Text + "&loan_code=" +
                                lblloan_code.Text + "&loan_acc=" + lblloan_acc.Text + "','2');return false;");
 
@@ -2178,7 +2190,7 @@ namespace myWeb.App_Control.person
                 ImageButton imgDelete = (ImageButton)e.Row.FindControl("imgDelete");
                 imgDelete.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["img"].ToString();
                 imgDelete.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["title"].ToString());
-                imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบข้อมูลเงินกู้บุคคลากร " + lblloan_code.Text + " : " + lblloan_name.Text + " ?\");");
+                imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบข้อมูลเงินกู้บุคลากร " + lblloan_code.Text + " : " + lblloan_name.Text + " ?\");");
                 #endregion
 
             }

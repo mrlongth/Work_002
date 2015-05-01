@@ -24,7 +24,7 @@
                     <asp:ListItem Value="A7">รายงานทะเบียนรายละเอียดเช็ค</asp:ListItem>
                     <asp:ListItem Value="A2">รายงานสมุดเงินรับประจำเดือน</asp:ListItem>
                     <asp:ListItem Value="A3">รายงานการนำส่งเงินเบิกเกินส่งคืนคลัง</asp:ListItem>
-                    <asp:ListItem Value="A4">รายงานข้อมูลบุคคลากร</asp:ListItem>
+                    <asp:ListItem Value="A4">รายงานข้อมูลบุคลากร</asp:ListItem>
                     <asp:ListItem Value="A5">รายละเอียดการได้รับเงินประจำตำแหน่ง/เงินตอบแทน</asp:ListItem>
                     <asp:ListItem Value="A8">รายงานสรุปรายการเงินได้และภาษีประจำเดือน</asp:ListItem>
                 </asp:RadioButtonList>
@@ -42,7 +42,7 @@
                             <asp:Label runat="server" CssClass="label_error" ID="lblError"></asp:Label>
                         </td>
                         <td style="width: 20%; text-align: right;">
-                            <asp:Label runat="server" CssClass="label_h" ID="lblPage2">กลุ่มบุคคลากร :</asp:Label>
+                            <asp:Label runat="server" CssClass="label_h" ID="lblPage2">กลุ่มบุคลากร :</asp:Label>
                         </td>
                         <td style="height: 23px; text-align: left;">
                             <asp:DropDownList runat="server" CssClass="textbox" ID="cboPerson_group">

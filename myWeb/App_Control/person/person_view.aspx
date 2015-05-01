@@ -75,7 +75,7 @@
             <td>
                 <ajaxtoolkit:TabContainer ID="TabContainer1" runat="server" Active  Height="365px"
                     BorderWidth="0px" Style="text-align: left">
-                    <ajaxtoolkit:TabPanel runat="server" HeaderText="ข้อมูลประวัติบุคคลากร" ID="TabPanel1">
+                    <ajaxtoolkit:TabPanel runat="server" HeaderText="ข้อมูลประวัติบุคลากร" ID="TabPanel1">
                         <HeaderTemplate>
                             ประวัติบุคคลกร
                         </HeaderTemplate>
@@ -111,7 +111,7 @@
                             <table border="0" cellpadding="1" cellspacing="1" style="width: 100%;">
                                 <tr align="left">
                                     <td align="right" nowrap style="" valign="middle" width="10%">
-                                        <asp:Label ID="Label21" runat="server" CssClass="label_hbk">รหัสบุคคลากร :</asp:Label>
+                                        <asp:Label ID="Label21" runat="server" CssClass="label_hbk">รหัสบุคลากร :</asp:Label>
                                     </td>
                                     <td align="left" nowrap valign="middle" width="40%">
                                         <asp:TextBox ID="txtperson_code" runat="server" CssClass="textboxdis"  
@@ -192,7 +192,7 @@
                                 </tr>
                                 <tr align="left">
                                     <td align="right" nowrap valign="middle">
-                                        <asp:Label ID="Label63" runat="server" CssClass="label_hbk">รูปบุคคลากร :</asp:Label>
+                                        <asp:Label ID="Label63" runat="server" CssClass="label_hbk">รูปบุคลากร :</asp:Label>
                                     </td>
                                     <td align="left" nowrap>
                                         <asp:TextBox ID="txtperson_pic" runat="server" CssClass="textboxdis"  
@@ -350,7 +350,7 @@
                                                 FilterType="Custom, Numbers" ValidChars="." Enabled="True" />
                                     </td>
                                     <td nowrap style="text-align: right">
-                                        <asp:Label ID="Label50" runat="server" CssClass="label_hbk">กลุ่มบุคคลากร :</asp:Label>
+                                        <asp:Label ID="Label50" runat="server" CssClass="label_hbk">กลุ่มบุคลากร :</asp:Label>
                                     </td>
                                     <td>
                                         <asp:DropDownList ID="cboPerson_group" runat="server" CssClass="textboxdis"  

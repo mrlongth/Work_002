@@ -79,7 +79,7 @@
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="อัตราบุคคลากร" SortExpression="member_type_rate">
+            <asp:TemplateField HeaderText="อัตราบุคลากร" SortExpression="member_type_rate">
                 <ItemStyle HorizontalAlign="Right" Width="20%" Wrap="False" />
                 <ItemTemplate>
                     <asp:Label ID="lblmember_type_rate" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.member_type_rate") %>'>

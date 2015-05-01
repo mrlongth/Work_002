@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site_list.Master" AutoEventWireup="true" CodeBehind="budget_list.aspx.cs"
-    Inherits="myWeb.App_Control.budget.budget_list" Title="แสดงข้อมูลแผนงบประมาณ " %>
+    Inherits="myWeb.App_Control.budget.budget_list" Title="แสดงข้อมูลยุทธศาสตร์การจัดสรรงบประมาณ " %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <table cellpadding="1" cellspacing="1" style="width: 100%">
         <tr>
@@ -19,7 +19,7 @@
         </tr>
         <tr>
             <td style="text-align: right;">
-                <asp:Label runat="server" CssClass="label_h" ID="lblPage2">รหัสแผนงบประมาณ :
+                <asp:Label runat="server" CssClass="label_h" ID="lblPage2">รหัสยุทธศาสตร์การจัดสรรงบประมาณ :
                 </asp:Label>
             </td>
             <td>
@@ -29,7 +29,7 @@
         </tr>
         <tr>
             <td style="text-align: right;">
-                <asp:Label runat="server" CssClass="label_h" ID="lblPage1">ชื่อแผนงบประมาณ : 
+                <asp:Label runat="server" CssClass="label_h" ID="lblPage1">ชื่อยุทธศาสตร์การจัดสรรงบประมาณ : 
                 </asp:Label>
             </td>
             <td>
@@ -70,7 +70,7 @@
                     <asp:Label ID="lblNo" runat="server"> </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="รหัสแผนงบประมาณ " SortExpression="budget_code">
+            <asp:TemplateField HeaderText="รหัสยุทธศาสตร์การจัดสรรงบประมาณ " SortExpression="budget_code">
                 <ItemStyle HorizontalAlign="Center" Width="20%" Wrap="False" />
                 <ItemTemplate>
                     <asp:Label ID="lblbudget_code" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.budget_code") %>'>
@@ -78,7 +78,7 @@
                 </ItemTemplate>
                 <ItemStyle Wrap="False" />
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="แผนงบประมาณ " SortExpression="budget_name">
+            <asp:TemplateField HeaderText="ยุทธศาสตร์การจัดสรรงบประมาณ " SortExpression="budget_name">
                 <ItemTemplate>
                     <asp:Label ID="lblbudget_name" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.budget_name") %>'>
                     </asp:Label>

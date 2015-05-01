@@ -7,7 +7,7 @@
     <table cellpadding="1" cellspacing="0" style="width: 100%" border="0">
         <tr>
             <td style="text-align: right;" width="15%">
-                <asp:Label runat="server" CssClass="label_h" ID="lblPage4">กลุ่มบุคคลากร :</asp:Label>
+                <asp:Label runat="server" CssClass="label_h" ID="lblPage4">กลุ่มบุคลากร :</asp:Label>
             </td>
             <td>
                 <asp:DropDownList runat="server" CssClass="textbox"   ID="cboPerson_group"

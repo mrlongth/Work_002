@@ -38,7 +38,7 @@ namespace myWeb.App_Control.person
                 imgFind.Attributes.Add("onMouseOver", "src='../../images/button/Search2.png'");
                 imgFind.Attributes.Add("onMouseOut", "src='../../images/button/Search.png'");
 
-                imgNew.Attributes.Add("onclick", "OpenPopUp('990px','550px','95%','เพิ่มข้อมูลบุคคลากร','person_control.aspx?mode=add&page=0','1');return false;");
+                imgNew.Attributes.Add("onclick", "OpenPopUp('990px','550px','95%','เพิ่มข้อมูลบุคลากร','person_control.aspx?mode=add&page=0','1');return false;");
 
                 ViewState["sort"] = "DATE_INWORK";
                 ViewState["direction"] = "DESC";
@@ -455,7 +455,7 @@ namespace myWeb.App_Control.person
 
                 //#region set ImageView
                 //ImageButton imgView = (ImageButton)e.Row.FindControl("imgView");
-                //imgView.Attributes.Add("onclick", "OpenPopUp('900px','500px','94%','แสดงข้อมูลบุคคลากร','person_center_control.aspx?mode=view&person_code=" +
+                //imgView.Attributes.Add("onclick", "OpenPopUp('900px','500px','94%','แสดงข้อมูลบุคลากร','person_center_control.aspx?mode=view&person_code=" +
                 //                                                             lblCITIZEN_ID.Text + "','1');return false;");
                 //imgView.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgView"].Rows[0]["img"].ToString();
                 //imgView.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgView"].Rows[0]["title"].ToString());
@@ -468,11 +468,11 @@ namespace myWeb.App_Control.person
                 //if (IsUserEdit)
                 //{
                 //    lblperson_names.Text = "<a href=\"\" onclick=\"" +
-                //                             "OpenPopUp('990px','550px','95%','แก้ไขข้อมูลบุคคลากร','person_control.aspx?mode=edit&person_code=" +
+                //                             "OpenPopUp('990px','550px','95%','แก้ไขข้อมูลบุคลากร','person_control.aspx?mode=edit&person_code=" +
                 //                                                                                                lblperson_code.Text + "&page=" + GridView1.PageIndex.ToString() + "','1');return false;\" >" + lblperson_names.Text + "</a>";
                 //}
 
-                //imgEdit.Attributes.Add("onclick", "OpenPopUp('990px','550px','95%','แก้ไขข้อมูลบุคคลากร','person_control.aspx?mode=edit&person_code=" + 
+                //imgEdit.Attributes.Add("onclick", "OpenPopUp('990px','550px','95%','แก้ไขข้อมูลบุคลากร','person_control.aspx?mode=edit&person_code=" + 
                 //                                                                                            lblperson_code.Text +"&page=" + GridView1.PageIndex.ToString() + "','1');return false;");                
 
                 //imgEdit.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["img"].ToString();

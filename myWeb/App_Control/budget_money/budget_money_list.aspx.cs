@@ -75,7 +75,7 @@ namespace myWeb.App_Control.budget_money
                 //    {
                 //        base.SetLabel(c, "แผนงาน", "งานย่อย");
                 //        base.SetLabel(c, "กิจกรรม", "งานรอง");
-                //        base.SetLabel(c, "แผนงบประมาณ", "แผนงาน");
+                //        base.SetLabel(c, "ยุทธศาสตร์การจัดสรรงบประมาณ", "แผนงาน");
                 //        base.SetLabel(c, "ผลผลิต", "งานหลัก");
                 //    }
                 //}

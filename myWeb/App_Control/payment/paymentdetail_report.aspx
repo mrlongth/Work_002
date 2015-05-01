@@ -41,7 +41,7 @@
                             <asp:label runat="server" cssclass="label_error" id="lblError"></asp:label>
                         </td>
                         <td style="width: 20%; text-align: right;">
-                            <asp:label runat="server" cssclass="label_h" id="lblPage2">กลุ่มบุคคลากร :</asp:label>
+                            <asp:label runat="server" cssclass="label_h" id="lblPage2">กลุ่มบุคลากร :</asp:label>
                         </td>
                         <td style="height: 23px; text-align: left;">
                             <asp:dropdownlist runat="server" cssclass="textbox" id="cboPerson_group">

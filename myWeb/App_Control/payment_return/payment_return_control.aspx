@@ -90,7 +90,7 @@
         </tr>
         <tr align="left">
             <td align="right" nowrap valign="middle">
-                <asp:Label runat="server" CssClass="label_hbk" ID="Label21">รหัสบุคคลากร :</asp:Label>
+                <asp:Label runat="server" CssClass="label_hbk" ID="Label21">รหัสบุคลากร :</asp:Label>
             </td>
             <td align="left" nowrap valign="middle" colspan="3">
                 <asp:TextBox runat="server" CssClass="textboxdis" Width="100px" ID="txtperson_code"

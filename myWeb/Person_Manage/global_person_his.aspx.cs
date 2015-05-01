@@ -1241,7 +1241,7 @@ namespace myWeb.Person_Manage
 
         //        ImageButton imgEdit = (ImageButton)e.Row.FindControl("imgEdit2");
         //        //Label lblCanEdit = (Label)e.Row.FindControl("lblCanEdit2");
-        //        imgEdit.Attributes.Add("onclick", "OpenPopUp('800px','340px','91%','แก้ไขข้อมูลประวัติตำแหน่งบุคคลากร','person_position_control.aspx?mode=edit&person_code=" +
+        //        imgEdit.Attributes.Add("onclick", "OpenPopUp('800px','340px','91%','แก้ไขข้อมูลประวัติตำแหน่งบุคลากร','person_position_control.aspx?mode=edit&person_code=" +
         //                                      txtperson_code.Text + "&person_name=" + txtperson_thai_name.Text + "  " + txtperson_thai_surname.Text + "&change_date=" +
         //                                      lblchange_date.Text + "','2');return false;");
         //        imgEdit.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["img"].ToString();
@@ -1250,7 +1250,7 @@ namespace myWeb.Person_Manage
         //        ImageButton imgDelete = (ImageButton)e.Row.FindControl("imgDelete2");
         //        imgDelete.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["img"].ToString();
         //        imgDelete.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["title"].ToString());
-        //        imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบข้อมูลประวัติตำแหน่งบุคคลากรนี้ ?\");");
+        //        imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบข้อมูลประวัติตำแหน่งบุคลากรนี้ ?\");");
         //        #endregion
 
         //    }

@@ -50,7 +50,7 @@ namespace myWeb.App_Control.person_work_status
 
                 if (ViewState["mode"].ToString().ToLower().Equals("add"))
                 {
-                    Session["menupopup_name"] = "เพิ่มข้อมูลสถานะบุคคลากร";
+                    Session["menupopup_name"] = "เพิ่มข้อมูลสถานะบุคลากร";
                     ViewState["page"] = Request.QueryString["page"];
                     txtperson_work_status_code.ReadOnly = false;
                     txtperson_work_status_code.CssClass = "textbox";
@@ -59,7 +59,7 @@ namespace myWeb.App_Control.person_work_status
 
                 else if (ViewState["mode"].ToString().ToLower().Equals("edit"))
                 {
-                    Session["menupopup_name"] =  "แก้ไขข้อมูลสถานะบุคคลากร";
+                    Session["menupopup_name"] =  "แก้ไขข้อมูลสถานะบุคลากร";
                     setData();
                     txtperson_work_status_code.ReadOnly = true;
                     txtperson_work_status_code.CssClass = "textboxdis";

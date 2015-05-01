@@ -40,7 +40,7 @@
         </tr>
         <tr align="left">
             <td align="right" nowrap valign="top">
-                <asp:Label runat="server" ID="lblFName">รหัสกลุ่มบุคคลากร :</asp:Label>
+                <asp:Label runat="server" ID="lblFName">รหัสกลุ่มบุคลากร :</asp:Label>
             </td>
             <td align="left" colspan="2" nowrap valign="top">
                 <asp:TextBox ID="txtperson_group_code" runat="server" CssClass="textboxdis"
@@ -55,7 +55,7 @@
         </tr>
         <tr align="left">
             <td align="right" nowrap valign="top">
-                <asp:Label ID="Label11" runat="server">กลุ่มบุคคลากร :</asp:Label>
+                <asp:Label ID="Label11" runat="server">กลุ่มบุคลากร :</asp:Label>
             </td>
             <td align="left" colspan="2" nowrap valign="top">
                 <font face="Tahoma"><asp:TextBox ID="txtperson_group_name" runat="server" CssClass="textboxdis"

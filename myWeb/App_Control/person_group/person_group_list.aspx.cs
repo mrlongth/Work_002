@@ -34,7 +34,7 @@ namespace myWeb.App_Control.person_group
                 imgFind.Attributes.Add("onMouseOver", "src='../../images/button/Search2.png'");
                 imgFind.Attributes.Add("onMouseOut", "src='../../images/button/Search.png'");
 
-                imgNew.Attributes.Add("onclick", "OpenPopUp('800px','250px','90%','เพิ่มข้อมูลกลุ่มบุคคลากร ','person_group_control.aspx?mode=add&page=0','1');return false;");
+                imgNew.Attributes.Add("onclick", "OpenPopUp('800px','250px','90%','เพิ่มข้อมูลกลุ่มบุคลากร ','person_group_control.aspx?mode=add&page=0','1');return false;");
                 ViewState["sort"] = "person_group_code";
                 ViewState["direction"] = "ASC";
                 RadioAll.Checked = true;
@@ -187,7 +187,7 @@ namespace myWeb.App_Control.person_group
 
                 #region set ImageView
                 ImageButton imgView = (ImageButton)e.Row.FindControl("imgView");
-                imgView.Attributes.Add("onclick", "OpenPopUp('800px','250px','90%','เพิ่มข้อมูลกลุ่มบุคคลากร ','person_group_view.aspx?mode=view&person_group_code=" + 
+                imgView.Attributes.Add("onclick", "OpenPopUp('800px','250px','90%','เพิ่มข้อมูลกลุ่มบุคลากร ','person_group_view.aspx?mode=view&person_group_code=" + 
                                                                  lblperson_group_code.Text + "','1');return false;");
                 imgView.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgView"].Rows[0]["img"].ToString();
                 imgView.Attributes.Add("person_group", ((DataSet)Application["xmlconfig"]).Tables["imgView"].Rows[0]["title"].ToString());
@@ -197,7 +197,7 @@ namespace myWeb.App_Control.person_group
 
                 ImageButton imgEdit = (ImageButton)e.Row.FindControl("imgEdit");
                 Label lblCanEdit = (Label)e.Row.FindControl("lblCanEdit");
-                imgEdit.Attributes.Add("onclick", "OpenPopUp('800px','250px','90%','เพิ่มข้อมูลกลุ่มบุคคลากร ','person_group_control.aspx?mode=edit&person_group_code=" + 
+                imgEdit.Attributes.Add("onclick", "OpenPopUp('800px','250px','90%','เพิ่มข้อมูลกลุ่มบุคลากร ','person_group_control.aspx?mode=edit&person_group_code=" + 
                                                                 lblperson_group_code.Text + "&page=" + GridView1.PageIndex.ToString() + "&canEdit=Y','1');return false;");
 
                 imgEdit.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["img"].ToString();
@@ -206,7 +206,7 @@ namespace myWeb.App_Control.person_group
                 ImageButton imgDelete = (ImageButton)e.Row.FindControl("imgDelete");
                 imgDelete.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["img"].ToString();
                 imgDelete.Attributes.Add("person_group", ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["title"].ToString());
-                imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบแผนงบประมาณ   " + lblperson_group_code.Text + " : " + lblperson_group_name.Text + " ?\");");
+                imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบยุทธศาสตร์การจัดสรรงบประมาณ   " + lblperson_group_code.Text + " : " + lblperson_group_name.Text + " ?\");");
                 #endregion
 
             }

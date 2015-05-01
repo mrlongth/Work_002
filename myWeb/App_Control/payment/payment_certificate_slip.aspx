@@ -15,7 +15,7 @@
                 </asp:dropdownlist>
             </td>
             <td style="text-align: right" width="15%" colspan="2">
-                <asp:label runat="server" cssclass="label_h" id="lblPage7">กลุ่มบุคคลากร :
+                <asp:label runat="server" cssclass="label_h" id="lblPage7">กลุ่มบุคลากร :
                 </asp:label>
             </td>
             <td style="text-align: left" colspan="2">
@@ -65,7 +65,7 @@
         </tr>
         <tr>
             <td style="text-align: right;">
-                <asp:label runat="server" cssclass="label_h" id="lblPage9">รหัสบุคคลากร :</asp:label>
+                <asp:label runat="server" cssclass="label_h" id="lblPage9">รหัสบุคลากร :</asp:label>
             </td>
             <td colspan="4">
                 <asp:textbox runat="server" cssclass="textbox" width="100px" id="txtperson_code">

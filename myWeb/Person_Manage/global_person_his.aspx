@@ -10,7 +10,7 @@
             <td>
                 <ajaxtoolkit:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="0" Height="400px"
                     BorderWidth="0px" Style="text-align: left" Width="900px">
-                    <ajaxtoolkit:TabPanel runat="server" HeaderText="ข้อมูลประวัติบุคคลากร" ID="TabPanel1">
+                    <ajaxtoolkit:TabPanel runat="server" HeaderText="ข้อมูลประวัติบุคลากร" ID="TabPanel1">
                         <HeaderTemplate>
                             ประวัติบุคคลกร
                         </HeaderTemplate>
@@ -29,7 +29,7 @@
                                 </tr>
                                 <tr align="left">
                                     <td align="right" nowrap style="" valign="middle" width="10%">
-                                        <asp:Label ID="Label21" runat="server" CssClass="label_h">รหัสบุคคลากร :</asp:Label>
+                                        <asp:Label ID="Label21" runat="server" CssClass="label_h">รหัสบุคลากร :</asp:Label>
                                     </td>
                                     <td align="left" nowrap valign="middle" width="40%">
                                         <asp:TextBox ID="txtperson_code" runat="server" CssClass="textbox" Width="120px"
@@ -269,7 +269,7 @@
                                         </ajaxtoolkit:FilteredTextBoxExtender>
                                     </td>
                                     <td nowrap style="text-align: right;">
-                                        <asp:Label ID="Label50" runat="server" CssClass="label_h">กลุ่มบุคคลากร :</asp:Label>
+                                        <asp:Label ID="Label50" runat="server" CssClass="label_h">กลุ่มบุคลากร :</asp:Label>
                                     </td>
                                     <td>
                                         <asp:DropDownList ID="cboPerson_group" runat="server" CssClass="textbox" Enabled="False">

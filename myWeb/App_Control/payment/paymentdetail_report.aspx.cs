@@ -62,7 +62,7 @@ namespace myWeb.App_Control.payment
                 //    {
                 //        base.SetLabel(c, "แผนงาน", "งานย่อย");
                 //        base.SetLabel(c, "กิจกรรม", "งานรอง");
-                //        base.SetLabel(c, "แผนงบประมาณ", "แผนงาน");
+                //        base.SetLabel(c, "ยุทธศาสตร์การจัดสรรงบประมาณ", "แผนงาน");
                 //        base.SetLabel(c, "ผลผลิต", "งานหลัก");
                 //    }
                 //}
@@ -514,7 +514,7 @@ namespace myWeb.App_Control.payment
             if (!strperson_group_code.Equals(""))
             {
                 strCriteria = strCriteria + "  And  view_payment.payment_detail_person_group_code ='" + strperson_group_code + "' ";
-                strCriteriaDesc += "กลุ่มบุคคลากร : " + cboPerson_group.SelectedItem.Text + "  ";
+                strCriteriaDesc += "กลุ่มบุคลากร : " + cboPerson_group.SelectedItem.Text + "  ";
             }
 
             if (!strdirector_code.Equals(""))

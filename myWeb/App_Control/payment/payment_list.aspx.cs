@@ -37,7 +37,7 @@ namespace myWeb.App_Control.payment
 
                 imgNew.Attributes.Add("onclick", "OpenPopUp('990px','550px','95%','เพิ่มข้อมูลการจ่ายเงินเดือน','payment_control.aspx?mode=add&page=0','1');return false;");
 
-                imgList_person.Attributes.Add("onclick", "OpenPopUp('900px','500px','94%','ค้นหาข้อมูลบุคคลากร' ,'../lov/person_lov.aspx?year='+document.forms[0]." + strPrefixCtr +
+                imgList_person.Attributes.Add("onclick", "OpenPopUp('900px','500px','94%','ค้นหาข้อมูลบุคลากร' ,'../lov/person_lov.aspx?year='+document.forms[0]." + strPrefixCtr +
                  "cboYear.options[document.forms[0]." + strPrefixCtr + "cboYear.selectedIndex].value+" +
                  "'&person_code='+document.forms[0]." + strPrefixCtr + "txtperson_code.value+" +
                  "'&person_name='+document.forms[0]." + strPrefixCtr + "txtperson_name.value+" +
