@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site_list.Master" EnableEventValidation="false"
     AutoEventWireup="true" CodeBehind="payment_member.aspx.cs" Inherits="myWeb.App_Control.payment_member.payment_member"
-    Title="ประมวลผลเงินสมาชิก(ฌาปนกิจ)" %>
+    Title="ประมวลผลเงินสมาชิก(เครดิตยูเนี่ยน)" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxtoolkit" %>
 <%@ Register Assembly="Aware.WebControls" Namespace="Aware.WebControls" TagPrefix="cc1" %>
@@ -89,14 +89,14 @@
         </tr>
         <tr align="left">
             <td align="right" nowrap valign="middle" width="20%">
-                <asp:Label runat="server" ID="Label83">เงินสมาชิก(ฌาปนกิจ) : </asp:Label>
+                <asp:Label runat="server" ID="Label83">เงินสมาชิก(เครดิตยูเนี่ยน) : </asp:Label>
             </td>
             <td align="left" nowrap valign="middle">
                 <asp:DropDownList runat="server" CssClass="textbox"   ID="cboMember"
                     AutoPostBack="True" OnSelectedIndexChanged="cboMember_SelectedIndexChanged">
                 </asp:DropDownList>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="cboMember"
-                    Display="None" ErrorMessage="กรุณาเลือกเงินสมาชิก(ฌาปนกิจ)" ValidationGroup="A"
+                    Display="None" ErrorMessage="กรุณาเลือกเงินสมาชิก(เครดิตยูเนี่ยน)" ValidationGroup="A"
                     SetFocusOnError="True"></asp:RequiredFieldValidator>
                 <ajaxtoolkit:ValidatorCalloutExtender ID="RequiredFieldValidator1_ValidatorCalloutExtender"
                     runat="server" Enabled="True" TargetControlID="RequiredFieldValidator1" HighlightCssClass="validatorCalloutHighlight">

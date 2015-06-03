@@ -16,6 +16,8 @@ namespace myWeb.App_Control.bank
 {
     public partial class bank_control : PageBase
     {
+        private string strPrefixCtr_main = "ctl00$ContentPlaceHolder1$";
+
         protected void Page_Load(object sender, System.EventArgs e)
         {
             //if (Session["username"] == null)
@@ -59,7 +61,7 @@ namespace myWeb.App_Control.bank
 
                 else if (ViewState["mode"].ToString().ToLower().Equals("edit"))
                 {
-                    Session["menupopup_name"] =  "แก้ไขข้อมูลธนาคาร";
+                    Session["menupopup_name"] = "แก้ไขข้อมูลธนาคาร";
                     setData();
                     txtbank_code.ReadOnly = true;
                     txtbank_code.CssClass = "textboxdis";
@@ -77,6 +79,25 @@ namespace myWeb.App_Control.bank
                 }
 
                 #endregion
+
+                imgList_item.Attributes.Add("onclick", "OpenPopUp('750px','400px','93%','ค้นหาข้อมูลเช็ค' ,'../lov/cheque_lov.aspx?cheque_code='+document.forms[0]." + strPrefixCtr_main + "txtcheque_code.value+'" +
+                        "&cheque_name='+document.forms[0]." + strPrefixCtr_main + "txtcheque_name.value+'" +
+                        "&ctrl1=" + txtcheque_code.ClientID + "&ctrl2=" + txtcheque_name.ClientID + "&show=2', '2');return false;");
+
+                imgClear_item.Attributes.Add("onclick", "document.forms[0]." + strPrefixCtr_main + "txtcheque_code.value='';" +
+                                        "document.forms[0]." + strPrefixCtr_main + "txtcheque_name.value=''; return false;");
+
+
+                imgList_item2.Attributes.Add("onclick", "OpenPopUp('800px','400px','93%','ค้นหาข้อมูลค่าธรรมเนียม' ,'../lov/item_lov.aspx?" +
+                                "item_code='+ $('#" + txtitem_code.ClientID + "').val()+" +
+                                "'&item_name='+ $('#" + txtitem_name.ClientID + "').val()+" +
+                                "'&item_type=C" +
+                                "&ctrl1=" + txtitem_code.ClientID + "&ctrl2=" + txtitem_name.ClientID + "&show=2&from=bank', '2');return false;");
+
+                imgClear_item2.Attributes.Add("onclick", "$('#" + txtitem_code.ClientID + "').val('')+" +
+                                        "$('#" + txtitem_name.ClientID + "').val('');return false;");
+
+
                 //imgClose.Attributes.Add("onclick", "ClosePopUp('1');return false;");
             }
         }
@@ -110,25 +131,33 @@ namespace myWeb.App_Control.bank
             string strMessage = string.Empty;
             string strbank_code = string.Empty,
                 strbank_name = string.Empty,
+                strbank_fee_rate = string.Empty,
+                strfee_charge_normal = string.Empty,
+                strfee_charge_special = string.Empty,
+                strfee_charge_medical = string.Empty,
+                strfee_charge_bonus = string.Empty,
+                strcheque_code = string.Empty,
+                stritem_code = string.Empty,
                 strActive = string.Empty,
                 strCreatedBy = string.Empty,
                 strUpdatedBy = string.Empty;
             string strScript = string.Empty;
-            cBank oBank = new cBank();
-            DataSet ds = new DataSet();
+            var oBank = new cBank();
+            var ds = new DataSet();
             try
             {
                 #region set Data
                 strbank_code = txtbank_code.Text.Trim();
                 strbank_name = txtbank_name.Text;
-                if (chkStatus.Checked == true)
-                {
-                    strActive = "Y";
-                }
-                else 
-                {
-                    strActive = "N";
-                }
+                strbank_fee_rate = txtbank_fee_rate.Value.ToString();
+                strfee_charge_normal = chkfee_charge_normal.Checked ? "1" : "0";
+                strfee_charge_special = chkfee_charge_special.Checked ? "1" : "0";
+                strfee_charge_medical = chkfee_charge_medical.Checked ? "1" : "0";
+                strfee_charge_bonus = chkfee_charge_bonus.Checked ? "1" : "0";
+                strcheque_code = txtcheque_code.Text;
+                stritem_code = txtitem_code.Text;
+                strActive = chkStatus.Checked ? "Y" : "N";
+
                 strCreatedBy = Session["username"].ToString();
                 strUpdatedBy = Session["username"].ToString();
                 #endregion
@@ -155,7 +184,8 @@ namespace myWeb.App_Control.bank
                     #region edit
                     if (!blnDup)
                     {
-                        if (oBank.SP_UPD_BANK(strbank_code, strbank_name, strActive,strUpdatedBy, ref strMessage))
+                        if (oBank.SP_UPD_BANK(strbank_code, strbank_name, strbank_fee_rate, strfee_charge_normal,
+                            strfee_charge_special, strfee_charge_medical, strfee_charge_bonus, strcheque_code,stritem_code, strActive, strUpdatedBy, ref strMessage))
                         {
                             blnResult = true;
                         }
@@ -183,8 +213,8 @@ namespace myWeb.App_Control.bank
                     {
                         if (ds.Tables[0].Rows.Count > 0)
                         {
-                            strScript = 
-                                "alert(\"ไม่สามารถเพิ่มข้อมูล เนื่องจากข้อมูล " + strbank_code.Trim() + " : " + strbank_name.Trim() + "  ซ้ำ\");\n" ;
+                            strScript =
+                                "alert(\"ไม่สามารถเพิ่มข้อมูล เนื่องจากข้อมูล " + strbank_code.Trim() + " : " + strbank_name.Trim() + "  ซ้ำ\");\n";
                             blnDup = true;
                         }
                     }
@@ -192,7 +222,8 @@ namespace myWeb.App_Control.bank
                     #region insert
                     if (!blnDup)
                     {
-                        if (oBank.SP_INS_BANK(strbank_code, strbank_name, strActive, strCreatedBy, ref strMessage))
+                        if (oBank.SP_INS_BANK(strbank_code, strbank_name, strbank_fee_rate, strfee_charge_normal,
+                            strfee_charge_special, strfee_charge_medical, strfee_charge_bonus, strcheque_code, stritem_code, strActive, strCreatedBy, ref strMessage))
                         {
                             ViewState["bank_code"] = strbank_code;
                             blnResult = true;
@@ -248,11 +279,21 @@ namespace myWeb.App_Control.bank
             string strMessage = string.Empty, strCriteria = string.Empty;
             string strbank_code = string.Empty,
                 strbank_name = string.Empty,
+                strbank_fee_rate = string.Empty,
+                strfee_charge_normal = string.Empty,
+                strfee_charge_special = string.Empty,
+                strfee_charge_medical = string.Empty,
+                strfee_charge_bonus = string.Empty,
+                strcheque_code = string.Empty,
+                strcheque_name = string.Empty,
+                stritem_code = string.Empty,
+                stritem_name = string.Empty,
                 strC_active = string.Empty,
                 strCreatedBy = string.Empty,
                 strUpdatedBy = string.Empty,
                 strCreatedDate = string.Empty,
                 strUpdatedDate = string.Empty;
+
             try
             {
                 strCriteria = " and bank_code = '" + ViewState["bank_code"].ToString() + "' ";
@@ -272,11 +313,33 @@ namespace myWeb.App_Control.bank
                         strUpdatedBy = ds.Tables[0].Rows[0]["c_updated_by"].ToString();
                         strCreatedDate = ds.Tables[0].Rows[0]["d_created_date"].ToString();
                         strUpdatedDate = ds.Tables[0].Rows[0]["d_updated_date"].ToString();
+
+                        strbank_fee_rate = ds.Tables[0].Rows[0]["bank_fee_rate"].ToString();
+                        strfee_charge_normal = ds.Tables[0].Rows[0]["fee_charge_normal"].ToString();
+                        strfee_charge_special = ds.Tables[0].Rows[0]["fee_charge_special"].ToString();
+                        strfee_charge_medical = ds.Tables[0].Rows[0]["fee_charge_medical"].ToString();
+                        strfee_charge_bonus = ds.Tables[0].Rows[0]["fee_charge_bonus"].ToString();
+                        strcheque_code = ds.Tables[0].Rows[0]["cheque_code"].ToString();
+                        strcheque_name = ds.Tables[0].Rows[0]["cheque_name"].ToString();
+                        stritem_code = ds.Tables[0].Rows[0]["item_code"].ToString();
+                        stritem_name = ds.Tables[0].Rows[0]["item_name"].ToString();
+
+
                         #endregion
 
                         #region set Control
                         txtbank_code.Text = strbank_code;
                         txtbank_name.Text = strbank_name;
+                        txtbank_fee_rate.Value = strbank_fee_rate;
+                        chkfee_charge_normal.Checked = strfee_charge_normal == "True";
+                        chkfee_charge_special.Checked = strfee_charge_special == "True";
+                        chkfee_charge_medical.Checked = strfee_charge_medical == "True";
+                        chkfee_charge_bonus.Checked = strfee_charge_bonus == "True";
+                        txtcheque_code.Text = strcheque_code;
+                        txtcheque_name.Text = strcheque_name;
+                        txtitem_code.Text = stritem_code;
+                        txtitem_name.Text = stritem_name;
+
                         if (strC_active.Equals("Y"))
                         {
                             txtbank_name.ReadOnly = false;
@@ -301,19 +364,6 @@ namespace myWeb.App_Control.bank
             }
         }
 
-        //private void imgSave_Click(object sender, System.Web.UI.ImageClickEventArgs e)
-        //{
-        //    bool blnResult = false;
-        //    string strScript = string.Empty;
-        //    blnResult = saveData();
-        //    if (blnResult)
-        //    {
-        //        strScript =
-        //            "self.opener.document.forms[0].ctl00$ASPxRoundPanel1$ContentPlaceHolder2$txthpage.value=" + ViewState["page"].ToString() + ";\n" +
-        //            "self.opener.document.forms[0].submit();\n" +
-        //            "self.close();\n" ;
-        //        ScriptManager.RegisterStartupScript(Page, Page.GetType(), "frMainPage", strScript, true);
-        //    }
-        //}
+       
     }
 }

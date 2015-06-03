@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site_lov.Master" EnableEventValidation="false"
     AutoEventWireup="true" CodeBehind="plan_lov.aspx.cs" Inherits="myWeb.App_Control.lov.plan_lov"
-    Title="ค้นหาข้อมูลแผนงาน" %>
+    Title="ค้นหาข้อมูลยุทธศาสตร์การจัดสรรงบประมาณ" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -22,7 +22,7 @@
         </tr>
         <tr>
             <td style="text-align: right; width: 21%;">
-                <asp:Label runat="server" CssClass="label_h" ID="lblPage2">รหัสแผนงาน :
+                <asp:Label runat="server" CssClass="label_h" ID="lblPage2">รหัสยุทธศาสตร์การจัดสรรงบประมาณ :
                 </asp:Label>
             </td>
             <td>
@@ -31,7 +31,7 @@
         </tr>
         <tr>
             <td style="text-align: right; width: 21%; height: 26px;">
-                <asp:Label runat="server" CssClass="label_h" ID="lblPage1">แผนงาน : </asp:Label>
+                <asp:Label runat="server" CssClass="label_h" ID="lblPage1">ยุทธศาสตร์การจัดสรรงบประมาณ : </asp:Label>
             </td>
             <td style="height: 26px">
                 &nbsp;<asp:TextBox runat="server" CssClass="textbox" Width="300px" 
@@ -54,14 +54,14 @@
                     <asp:Label ID="lblNo" runat="server"> </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="รหัสแผนงาน " SortExpression="plan_code">
+            <asp:TemplateField HeaderText="รหัสยุทธศาสตร์การจัดสรรงบประมาณ " SortExpression="plan_code">
                 <ItemStyle HorizontalAlign="Center" Width="20%" Wrap="True" />
                 <ItemTemplate>
                     <asp:Label ID="lblplan_code" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.plan_code") %>'>
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="ชื่อแผนงาน " SortExpression="plan_name">
+            <asp:TemplateField HeaderText="ชื่อยุทธศาสตร์การจัดสรรงบประมาณ " SortExpression="plan_name">
                 <ItemStyle HorizontalAlign="Left" Width="50%" Wrap="True" />
                 <ItemTemplate>
                     <asp:Label ID="lblplan_name" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.plan_name") %>'>

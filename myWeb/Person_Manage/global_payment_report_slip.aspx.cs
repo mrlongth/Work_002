@@ -158,7 +158,7 @@ namespace myWeb.Person_Manage
 
         protected void Page_Init(object sender, EventArgs e)
         {
-            //System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("th-TH");
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("th-TH");
             //getQueryString();
             //Retive_Rep_payment_slip();
             //CrystalReportViewer1.ReportSource = rptSource;

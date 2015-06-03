@@ -160,7 +160,7 @@
                                                 </ajaxtoolkit:ValidatorCalloutExtender>
                             </td>
                             <td align="left" nowrap style="text-align: right" valign="middle">
-                                <asp:Label ID="Label54" runat="server" CssClass="label_hbk">แผนงบ :</asp:Label>
+                                <asp:Label ID="Label54" runat="server" CssClass="label_hbk">แผนงาน :</asp:Label>
                             </td>
                             <td align="left" colspan="2" nowrap valign="middle">
                                 <asp:TextBox ID="txtbudget_name" runat="server" CssClass="textboxdis" Width="300px"></asp:TextBox>
@@ -182,7 +182,7 @@
                         </tr>
                         <tr align="left">
                             <td align="right" nowrap valign="middle">
-                                <asp:Label ID="Label56" runat="server" CssClass="label_hbk">แผนงาน :</asp:Label>
+                                <asp:Label ID="Label56" runat="server" CssClass="label_hbk">ยุทธศาสตร์การจัดสรรงบประมาณ :</asp:Label>
                             </td>
                             <td align="left" nowrap valign="middle">
                                 <asp:TextBox ID="txtplan_name" runat="server" CssClass="textboxdis" Width="300px"></asp:TextBox>

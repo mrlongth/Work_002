@@ -79,7 +79,8 @@ namespace myDLL
     #endregion
 
     #region SP_INS_BANK
-    public bool SP_INS_BANK(string pbank_code, string pbank_name, string pActive, string pC_created_by, ref string strMessage)
+    public bool SP_INS_BANK(string pbank_code, string pbank_name, string pbank_fee_rate ,  string pfee_charge_normal,
+            string pfee_charge_special, string pfee_charge_medical, string pfee_charge_bonus, string  pcheque_code, string pitem_code , string pActive, string pC_created_by, ref string strMessage)
     {
         bool blnResult = false;
         SqlConnection oConn = new SqlConnection();
@@ -102,6 +103,16 @@ namespace myDLL
             oParam_Bank_name.Direction = ParameterDirection.Input;
             oParam_Bank_name.Value = pbank_name;
             oCommand.Parameters.Add(oParam_Bank_name);
+
+
+            oCommand.Parameters.Add("bank_fee_rate", SqlDbType.Money).Value = Helper.CDbl(pbank_fee_rate);
+            oCommand.Parameters.Add("fee_charge_normal", SqlDbType.Bit).Value = pfee_charge_normal == "1";
+            oCommand.Parameters.Add("fee_charge_special", SqlDbType.Bit).Value = pfee_charge_special == "1";
+            oCommand.Parameters.Add("fee_charge_medical", SqlDbType.Bit).Value = pfee_charge_medical == "1";
+            oCommand.Parameters.Add("fee_charge_bonus", SqlDbType.Bit).Value = pfee_charge_bonus == "1";
+            oCommand.Parameters.Add("cheque_code", SqlDbType.VarChar).Value = pcheque_code;
+            oCommand.Parameters.Add("item_code", SqlDbType.VarChar).Value = pitem_code;            
+
             // - - - - - - - - - - - -             
             SqlParameter oParam_Active = new SqlParameter("c_active", SqlDbType.NVarChar);
             oParam_Active.Direction = ParameterDirection.Input;
@@ -131,7 +142,8 @@ namespace myDLL
     #endregion
 
     #region SP_UPD_BANK
-    public bool SP_UPD_BANK(string pbank_code, string pbank_name, string pActive, string pC_updated_by, ref string strMessage)
+    public bool SP_UPD_BANK(string pbank_code, string pbank_name, string pbank_fee_rate, string pfee_charge_normal,
+            string pfee_charge_special, string pfee_charge_medical, string pfee_charge_bonus, string pcheque_code, string pitem_code, string pActive, string pC_updated_by, ref string strMessage)
     {
         bool blnResult = false;
         SqlConnection oConn = new SqlConnection();
@@ -154,6 +166,15 @@ namespace myDLL
             oParam_Bank_name.Direction = ParameterDirection.Input;
             oParam_Bank_name.Value = pbank_name;
             oCommand.Parameters.Add(oParam_Bank_name);
+
+            oCommand.Parameters.Add("bank_fee_rate", SqlDbType.Money).Value = Helper.CDbl(pbank_fee_rate);
+            oCommand.Parameters.Add("fee_charge_normal", SqlDbType.Bit).Value = pfee_charge_normal == "1";
+            oCommand.Parameters.Add("fee_charge_special", SqlDbType.Bit).Value = pfee_charge_special == "1";
+            oCommand.Parameters.Add("fee_charge_medical", SqlDbType.Bit).Value = pfee_charge_medical == "1";
+            oCommand.Parameters.Add("fee_charge_bonus", SqlDbType.Bit).Value = pfee_charge_bonus == "1";
+            oCommand.Parameters.Add("cheque_code", SqlDbType.VarChar).Value = pcheque_code;
+            oCommand.Parameters.Add("item_code", SqlDbType.VarChar).Value = pitem_code;            
+
             // - - - - - - - - - - - -             
             SqlParameter oParam_Active = new SqlParameter("C_active", SqlDbType.NVarChar);
             oParam_Active.Direction = ParameterDirection.Input;

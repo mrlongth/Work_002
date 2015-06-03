@@ -9,6 +9,7 @@
   <%--  <link href="~/StyleSheet.css" rel="stylesheet" type="text/css" />--%>
     <script src="../scripts/form.js" type="text/javascript"></script>
     <title>ตัวอย่างก่อนพิมพ์</title>
+     
 </head>
 <body style="margin: 1px 10px 1px 1px;">
     <form id="form1" runat="server">

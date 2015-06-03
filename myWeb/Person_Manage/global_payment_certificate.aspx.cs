@@ -109,7 +109,7 @@ namespace myWeb.Person_Manage
                         string strSal2 = "0.00";
 
                         string strSQL = string.Empty;
-                        strSQL = "Select Sum(item_debit) as item_debit_sum from [view_person_item] where person_code ='" + base.PersonCode + "' and [item_name] like '%ปจต%' ";
+                        strSQL = "Select Sum(item_debit) as item_debit_sum from [view_person_item] where person_code ='" + base.PersonCode + "' and substring(item_code,5,6) in (Select Code from getConfigListCode('PersonPosition')) ";
                         ds = null;
                         oCommon.SEL_SQL(strSQL, ref ds, ref strMessage);
                         if (ds.Tables[0].Rows.Count > 0)
@@ -117,7 +117,7 @@ namespace myWeb.Person_Manage
                             strSal1 = Helper.CStr(ds.Tables[0].Rows[0]["item_debit_sum"], "0.00");
                         }
                         lblPerson_position.Text = String.Format("{0:0.00}", float.Parse(strSal1));
-                        strSQL = "Select Sum(item_debit) as item_debit_sum from [view_person_item] where person_code ='" + base.PersonCode + "' and [item_name] like '%ตอบแทน%' ";
+                        strSQL = "Select Sum(item_debit) as item_debit_sum from [view_person_item] where person_code ='" + base.PersonCode + "' and substring(item_code,5,6) in (Select Code from getConfigListCode('PersonReward')) ";
                         ds = null;
                         oCommon.SEL_SQL(strSQL, ref ds, ref strMessage);
                         if (ds.Tables[0].Rows.Count > 0)

@@ -24,7 +24,7 @@ namespace myWeb.App_Control.person
         private string strPrefixCtr = "ctl00$ASPxRoundPanel1$ASPxRoundPanel2$ContentPlaceHolder1$";
         private string strPrefixCtr_2 = "ctl00$ASPxRoundPanel1$ContentPlaceHolder2$";
         #endregion
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -90,7 +90,7 @@ namespace myWeb.App_Control.person
                 cboYear.SelectedIndex = -1;
                 cboYear.Items.FindByValue(strYear).Selected = true;
             }
-            InitcboDirector(); 
+            InitcboDirector();
         }
 
         private void InitcboWork_status()
@@ -246,7 +246,7 @@ namespace myWeb.App_Control.person
             InitcboWork_status();
             InitcboPerson_group();
             //InitcboDirector();
-           // InitcboUnit();
+            // InitcboUnit();
             cPerson oPerson = new cPerson();
             DataSet ds = new DataSet();
             string strMessage = string.Empty;
@@ -271,7 +271,7 @@ namespace myWeb.App_Control.person
             {
                 strperson_work_status_code = Request.Form[strPrefixCtr + "cboPerson_work_status"].ToString();
             }
-            
+
             //if (!strYear.Equals(""))
             //{
             //    strCriteria = strCriteria + "  And  (budget_plan_year = '" + strYear + "') ";
@@ -286,7 +286,7 @@ namespace myWeb.App_Control.person
             {
                 strCriteria = strCriteria + "  And  (director_code = '" + strdirector_code + "') ";
             }
-            
+
             if (!strunit_code.Equals(""))
             {
                 strCriteria = strCriteria + "  And  (unit_code= '" + strunit_code + "') ";
@@ -300,9 +300,10 @@ namespace myWeb.App_Control.person
             if (!strperson_name.Equals(""))
             {
                 strCriteria = strCriteria + "  And  (person_thai_name like '%" + strperson_name + "%'  " +
-                                                              "  OR person_thai_surname like '%" + strperson_name + "%'  " +
-                                                              "  OR person_eng_name like '%" + strperson_name + "%'  " +
-                                                              "  OR person_eng_surname like '%" + strperson_name + "%')";
+                                                    "  OR person_thai_surname like '%" + strperson_name + "%'  " +
+                                                    "  OR person_eng_name like '%" + strperson_name + "%'  " +
+                                                    "  OR person_eng_surname like '%" + strperson_name + "%' " +
+                                                    "  OR (person_thai_name+' '+person_thai_surname) like '%" + strperson_name + "%')";
             }
 
             if (!strperson_work_status_code.Equals(""))
@@ -440,9 +441,9 @@ namespace myWeb.App_Control.person
                                                                                                                 lblperson_code.Text + "&page=" + GridView1.PageIndex.ToString() + "','1');return false;\" >" + lblperson_names.Text + "</a>";
                 }
 
-                imgEdit.Attributes.Add("onclick", "OpenPopUp('990px','580px','95%','แก้ไขข้อมูลบุคลากร','person_control.aspx?mode=edit&person_code=" + 
-                                                                                                            lblperson_code.Text +"&page=" + GridView1.PageIndex.ToString() + "','1');return false;");                
-                
+                imgEdit.Attributes.Add("onclick", "OpenPopUp('990px','580px','95%','แก้ไขข้อมูลบุคลากร','person_control.aspx?mode=edit&person_code=" +
+                                                                                                            lblperson_code.Text + "&page=" + GridView1.PageIndex.ToString() + "','1');return false;");
+
                 imgEdit.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["img"].ToString();
                 imgEdit.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["title"].ToString());
 
@@ -452,7 +453,7 @@ namespace myWeb.App_Control.person
                 imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบ " + lblperson_code.Text + " : " + lblperson_name.Text + " ?\");");
                 #endregion
 
-                imgDelete.Visible = IsUserDelete ;
+                imgDelete.Visible = IsUserDelete;
                 imgEdit.Visible = IsUserEdit;
 
             }
@@ -778,7 +779,7 @@ namespace myWeb.App_Control.person
         protected void cboYear_SelectedIndexChanged(object sender, EventArgs e)
         {
             InitcboDirector();
-            BindGridView(0); 
+            BindGridView(0);
         }
 
         protected void cboPerson_group_SelectedIndexChanged(object sender, EventArgs e)
@@ -794,14 +795,14 @@ namespace myWeb.App_Control.person
         protected void cboDirector_SelectedIndexChanged(object sender, EventArgs e)
         {
             InitcboUnit();
-            BindGridView(0); 
+            BindGridView(0);
         }
 
         protected void cboUnit_SelectedIndexChanged(object sender, EventArgs e)
         {
-            InitcboUnit(); 
-            BindGridView(0); 
+            InitcboUnit();
+            BindGridView(0);
         }
-    
+
     }
 }

@@ -388,10 +388,9 @@ namespace myWeb.App_Control.item_acc_income_save
                 {
                     #region insert
                     string strCheckDup = string.Empty;
-                    strCheckDup = " and pay_year = '" + strpay_year + "' " +
-                                  " and pay_month = '" + strpay_month + "'" +
-                                  " and budget_type = '" + this.BudgetType + "'" +
-                                  " and c_created_by = '" + UserLoginName + "' ";
+                    strCheckDup = " and pay_year = '" + strpay_year + "' " + " and pay_month = '" + strpay_month + "'"
+                                  + " and budget_type = '" + this.BudgetType + "'";
+                                 // " and c_created_by = '" + UserLoginName + "' ";
                     if (!oItem_acc.SP_ITEM_ACC_HEAD_SEL(strCheckDup, ref ds, ref strMessage))
                     {
                         lblError.Text = strMessage;
@@ -417,9 +416,9 @@ namespace myWeb.App_Control.item_acc_income_save
                             else
                             {
                                 DataSet dsCHK = new DataSet();
-                                strCheckDup = " and pay_year = '" + strpay_year + "' " +
-                                              " and pay_month = '" + strpay_month + "' " +
-                                              " and c_created_by = '" + UserLoginName + "' ";
+                                strCheckDup = " and pay_year = '" + strpay_year + "' " + " and pay_month = '"
+                                              + strpay_month + "' ";
+                                             // " and c_created_by = '" + UserLoginName + "' ";
                                 if (!oItem_acc.SP_ITEM_ACC_HEAD_SEL(strCheckDup, ref dsCHK, ref strMessage))
                                 {
                                     lblError.Text = strMessage;

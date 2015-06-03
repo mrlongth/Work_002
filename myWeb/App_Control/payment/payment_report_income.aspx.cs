@@ -51,9 +51,9 @@ namespace myWeb.App_Control.payment
                 //{
                 //    foreach (Control c in Page.Controls)
                 //    {
-                //        base.SetLabel(c, "แผนงาน", "งานย่อย");
+                //        base.SetLabel(c, "ยุทธศาสตร์การจัดสรรงบประมาณ", "งานย่อย");
                 //        base.SetLabel(c, "กิจกรรม", "งานรอง");
-                //        base.SetLabel(c, "ยุทธศาสตร์การจัดสรรงบประมาณ", "แผนงาน");
+                //        base.SetLabel(c, "แผนงาน", "ยุทธศาสตร์การจัดสรรงบประมาณ");
                 //        base.SetLabel(c, "ผลผลิต", "งานหลัก");
                 //    }
                 //}

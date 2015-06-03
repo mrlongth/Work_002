@@ -71,7 +71,7 @@ namespace myWeb.App_Control.budget_plan
                 //                                                        "'&ctrl1=" + txtactivity_code.ClientID + "&ctrl2=" + txtactivity_name.ClientID + "', '1');return false;");
                 //imgClear_activity.Attributes.Add("onclick", "document.forms[0]." + strPrefixCtr + "txtactivity_code.value='';document.forms[0]." + strPrefixCtr + "txtactivity_name.value=''; return false;");
 
-                //imgList_plan.Attributes.Add("onclick", "OpenPopUp('800px','400px','93%','ค้นหาข้อมูลแผนงาน' ,'../lov/plan_lov.aspx?year='+document.forms[0]." + strPrefixCtr +
+                //imgList_plan.Attributes.Add("onclick", "OpenPopUp('800px','400px','93%','ค้นหาข้อมูลยุทธศาสตร์การจัดสรรงบประมาณ' ,'../lov/plan_lov.aspx?year='+document.forms[0]." + strPrefixCtr +
                 //                                                        "cboYear.options[document.forms[0]." + strPrefixCtr + "cboYear.selectedIndex].value+" +
                 //                                                        "'&plan_code='+document.forms[0]." + strPrefixCtr + "txtplan_code.value+" +
                 //                                                        "'&plan_name='+document.forms[0]." + strPrefixCtr + "txtplan_name.value+" +
@@ -101,9 +101,9 @@ namespace myWeb.App_Control.budget_plan
                 //{
                 //    foreach (Control c in Page.Controls)
                 //    {
-                //        base.SetLabel(c, "แผนงาน", "งานย่อย");
+                //        base.SetLabel(c, "ยุทธศาสตร์การจัดสรรงบประมาณ", "งานย่อย");
                 //        base.SetLabel(c, "กิจกรรม", "งานรอง");
-                //        base.SetLabel(c, "ยุทธศาสตร์การจัดสรรงบประมาณ", "แผนงาน");
+                //        base.SetLabel(c, "แผนงาน", "ยุทธศาสตร์การจัดสรรงบประมาณ");
                 //        base.SetLabel(c, "ผลผลิต", "งานหลัก");                       
                 //    }
                 //}

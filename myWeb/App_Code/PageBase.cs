@@ -372,7 +372,7 @@ namespace myWeb
                 }
                 else
                 {
-                    Session["myBudgetType"] = "";
+                    Session["myBudgetType"] = "B";
                 }
                 return Helper.CStr(Session["myBudgetType"]);
             }
@@ -892,6 +892,56 @@ namespace myWeb
             
         }
 
+        public string GetConfigItem(string strCode)
+        {
+            string strMessage = string.Empty;
+
+            var objCommon = new cCommon();
+            var ds = new DataSet();
+            DataTable table;
+            var strCriteria = "Select [dbo].[getConfigCode]('" + strCode + "') as Code";
+            objCommon.SEL_SQL(strCriteria, ref ds, ref strMessage);
+            if (ds.Tables.Count <= 0)
+            {
+                return string.Empty;
+            }
+            table = ds.Tables[0];
+            if (table.Rows.Count > 0)
+            {
+                var rowArray = table.Rows[0];
+                return rowArray["Code"].ToString();
+            }
+            return string.Empty;
+        }
+
+        public void SetControlView(Control control)
+        {
+            foreach (Control ctrl in control.Controls)
+            {
+                if (ctrl is ImageButton)
+                {
+                    if (!ctrl.ID.Contains("imgPrint") && !ctrl.ID.Contains("imgView"))
+                        ctrl.Visible = false;
+                }
+                else if (ctrl is TextBox)
+                {
+                    ((TextBox)ctrl).ReadOnly = true;
+                    ((TextBox)ctrl).CssClass = "textboxdis";
+                }
+                else if (ctrl is DropDownList)
+                {
+                    ((DropDownList)ctrl).Enabled = false;
+                    ((DropDownList)ctrl).CssClass = "textboxdis";
+                }
+                else
+                {
+                    if (ctrl.Controls.Count > 0)
+                    {
+                        SetControlView(ctrl);
+                    }
+                }
+            }
+        }
 
 
         //public void SetLabel(Control control, String old_str, String new_str)

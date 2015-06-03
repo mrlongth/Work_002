@@ -184,7 +184,7 @@
                             </asp:imagebutton>
                         </td>
                         <td nowrap style="text-align: right">
-                            <asp:label id="Label54" runat="server" cssclass="label_hbk">แผนงบ :</asp:label>
+                            <asp:label id="Label54" runat="server" cssclass="label_hbk">แผนงาน :</asp:label>
                         </td>
                         <td align="left">
                             <asp:textbox id="txtbudget_name" runat="server" cssclass="textboxdis" width="250px">
@@ -209,7 +209,7 @@
                     </tr>
                     <tr align="left">
                         <td align="right" nowrap valign="middle">
-                            <asp:label id="Label56" runat="server" cssclass="label_hbk">แผนงาน :</asp:label>
+                            <asp:label id="Label56" runat="server" cssclass="label_hbk">ยุทธศาสตร์การจัดสรรงบประมาณ :</asp:label>
                         </td>
                         <td align="left" nowrap valign="middle">
                             <asp:textbox id="txtplan_name" runat="server" cssclass="textboxdis" width="250px">

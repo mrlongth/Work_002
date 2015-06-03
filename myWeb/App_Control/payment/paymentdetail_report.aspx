@@ -2,6 +2,8 @@
     AutoEventWireup="true" CodeBehind="paymentdetail_report.aspx.cs" Inherits="myWeb.App_Control.payment.paymentdetail_report"
     Title="รายงานข้อมูลการจ่ายเงินเดือน" %>
 
+<%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="cc1" %>
+
 <asp:content id="Content1" contentplaceholderid="ContentPlaceHolder1" runat="server">
     <table cellpadding="1" cellspacing="1" style="width: 100%" border="0">
         <tr>
@@ -98,6 +100,11 @@
                             </asp:imagebutton>
                             &nbsp;<asp:textbox runat="server" cssclass="textbox" width="230px" id="txtitem_name"
                                 maxlength="100"></asp:textbox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtitem_code"
+                    Display="None" ErrorMessage="กรุณาป้อนรายได้/จ่าย" ValidationGroup="A" SetFocusOnError="True"></asp:RequiredFieldValidator>
+                <cc1:ValidatorCalloutExtender ID="RequiredFieldValidator1_ValidatorCalloutExtender"
+                    runat="server" Enabled="True" TargetControlID="RequiredFieldValidator1" HighlightCssClass="validatorCalloutHighlight">
+                </cc1:ValidatorCalloutExtender>
                         </td>
                     </tr>
                     <tr>

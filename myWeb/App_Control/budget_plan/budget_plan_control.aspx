@@ -93,14 +93,14 @@
         <tr align="left">
             <td align="right" nowrap valign="middle">
                             <asp:Label runat="server" CssClass="label_error" ID="Label78">*</asp:Label>
-                            <asp:Label runat="server" ID="lblPage10">ยุทธศาสตร์การจัดสรรงบประมาณ :</asp:Label>
+                            <asp:Label runat="server" ID="lblPage10">แผนงาน :</asp:Label>
             </td>
             <td align="left" nowrap valign="middle">
                             <asp:DropDownList runat="server" AutoPostBack="True" CssClass="textbox" ID="cboBudget"
                                 OnSelectedIndexChanged="cboBudget_SelectedIndexChanged">
                             </asp:DropDownList>
                 <font face="Tahoma">
-                    <asp:RequiredFieldValidator runat="server" ControlToValidate="cboBudget" ErrorMessage="กรุณาเลือกยุทธศาสตร์การจัดสรรงบประมาณ"
+                    <asp:RequiredFieldValidator runat="server" ControlToValidate="cboBudget" ErrorMessage="กรุณาเลือกแผนงาน"
                         Display="None" SetFocusOnError="True" ValidationGroup="A" 
                     ID="RequiredFieldValidator4"></asp:RequiredFieldValidator>
                     <ajaxtoolkit:ValidatorCalloutExtender runat="server" Enabled="True" TargetControlID="RequiredFieldValidator4"
@@ -151,13 +151,13 @@
         <tr align="left">
             <td align="right" nowrap valign="middle">
                             <asp:Label runat="server" CssClass="label_error" ID="Label73">*</asp:Label>
-                            <asp:Label runat="server" ID="lblPage4">แผนงาน :</asp:Label>
+                            <asp:Label runat="server" ID="lblPage4">ยุทธศาสตร์การจัดสรรงบประมาณ :</asp:Label>
             </td>
             <td align="left" nowrap valign="middle" colspan="3">
                 <asp:DropDownList ID="cboPlan_code" runat="server" CssClass="textbox">
                 </asp:DropDownList>
                 <font face="Tahoma">
-                    <asp:RequiredFieldValidator runat="server" ControlToValidate="cboPlan_code" ErrorMessage="กรุณาเลือกแผนงาน"
+                    <asp:RequiredFieldValidator runat="server" ControlToValidate="cboPlan_code" ErrorMessage="กรุณาเลือกยุทธศาสตร์การจัดสรรงบประมาณ"
                         Display="None" SetFocusOnError="True" ValidationGroup="A" 
                     ID="RequiredFieldValidator6"></asp:RequiredFieldValidator>
                     <ajaxtoolkit:ValidatorCalloutExtender runat="server" Enabled="True" TargetControlID="RequiredFieldValidator6"

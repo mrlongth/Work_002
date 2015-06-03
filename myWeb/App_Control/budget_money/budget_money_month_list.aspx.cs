@@ -48,9 +48,9 @@ namespace myWeb.App_Control.budget_money
                 //{
                 //    foreach (Control c in Page.Controls)
                 //    {
-                //        base.SetLabel(c, "แผนงาน", "งานย่อย");
+                //        base.SetLabel(c, "ยุทธศาสตร์การจัดสรรงบประมาณ", "งานย่อย");
                 //        base.SetLabel(c, "กิจกรรม", "งานรอง");
-                //        base.SetLabel(c, "ยุทธศาสตร์การจัดสรรงบประมาณ", "แผนงาน");
+                //        base.SetLabel(c, "แผนงาน", "ยุทธศาสตร์การจัดสรรงบประมาณ");
                 //        base.SetLabel(c, "ผลผลิต", "งานหลัก");
                 //    }
                 //}
@@ -618,7 +618,7 @@ namespace myWeb.App_Control.budget_money
                                           "&page=" + GridView1.PageIndex.ToString() +
                                           "&pay_month=" + cboPay_Month.SelectedValue +
                                           "&pay_year=" + cboPay_Year.SelectedValue + "' , '1');return false;");
-                imgEdit.ImageUrl = "../../images/controls/edit.gif";
+                imgEdit.ImageUrl = "../../images/controls/edit.png";
                 imgEdit.Attributes.Add("title", "ข้อมูลเงินงบประมาณ");
 
                 //ImageButton imgDelete = (ImageButton)e.Row.FindControl("imgDelete");

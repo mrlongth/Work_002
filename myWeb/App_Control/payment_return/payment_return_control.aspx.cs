@@ -77,7 +77,7 @@ namespace myWeb.App_Control.payment_return
 
                 #endregion
 
-                imgList_item.Attributes.Add("onclick", "OpenPopUp('910px','520px','93%','ค้นหาข้อมูลการจ่ายเงินเดือน' ,'../lov/payment_lov.aspx?" +
+                imgList_item.Attributes.Add("onclick", "OpenPopUp('910px','520px','93%','ค้นหาข้อมูลการจ่ายค่าดำเนินงานภาคพิเศษ' ,'../lov/payment_lov.aspx?" +
 
                                     "payment_doc='+document.getElementById('" + txtpayment_doc.ClientID + "').value+'&" + "ctrl1=" + txtpayment_doc.ClientID + "&show=2', '2');return false;");
 

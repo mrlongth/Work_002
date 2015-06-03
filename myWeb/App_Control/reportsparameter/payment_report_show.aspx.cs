@@ -291,6 +291,16 @@ namespace myWeb.App_Control.reportsparameter
             {
                 Retive_Rep_paymentGBK_sum();
             }
+
+            else if (ViewState["report_code"].ToString().Equals("Rep_paymentPVD"))
+            {
+                Retive_Rep_paymentGBK();
+            }
+            else if (ViewState["report_code"].ToString().Equals("Rep_paymentPVD_sum"))
+            {
+                Retive_Rep_paymentGBK_sum();
+            }
+
             else if (ViewState["report_code"].ToString().Equals("Rep_allcredit")
                 || ViewState["report_code"].ToString().Equals("Rep_allcredit_1"))
             {

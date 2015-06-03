@@ -76,7 +76,7 @@
                     ID="txtbudget_plan_code"></asp:TextBox>
                 &#160;</td>
             <td align="left" nowrap valign="middle" style="text-align: right">
-                <asp:Label runat="server" CssClass="label_hbk" ID="Label54">แผนงบ :</asp:Label>
+                <asp:Label runat="server" CssClass="label_hbk" ID="Label54">แผนงาน :</asp:Label>
             </td>
             <td align="left" nowrap valign="middle">
                 <asp:TextBox runat="server" CssClass="textboxdis" Width="300px" ID="txtbudget_name"></asp:TextBox>
@@ -103,7 +103,7 @@
         </tr>
         <tr align="left">
             <td align="right" nowrap valign="middle" style="height: 17px">
-                <asp:Label runat="server" CssClass="label_hbk" ID="Label56">แผนงาน :</asp:Label>
+                <asp:Label runat="server" CssClass="label_hbk" ID="Label56">ยุทธศาสตร์การจัดสรรงบประมาณ :</asp:Label>
             </td>
             <td align="left" nowrap valign="middle" style="height: 17px">
                 <asp:TextBox runat="server" CssClass="textboxdis" Width="300px" ID="txtplan_name"></asp:TextBox>

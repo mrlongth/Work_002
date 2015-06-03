@@ -322,8 +322,7 @@ namespace myWeb.App_Control.lov
             {
                 strCriteria = strCriteria + "  And  (person_thai_name like '%" + strperson_name + "%'  " +
                                                               "  OR person_thai_surname like '%" + strperson_name + "%'  " +
-                                                              "  OR person_eng_name like '%" + strperson_name + "%'  " +
-                                                              "  OR person_eng_surname like '%" + strperson_name + "%')";
+                                                              "  OR (person_thai_surname + ' ' +person_eng_surname) like '%" + strperson_name + "%')" ;
             }
 
             if (!strperson_work_status_code.Equals(""))
@@ -341,6 +340,12 @@ namespace myWeb.App_Control.lov
             }
 
             strCriteria += " and person_group_code IN (" + PersonGroupList + ") ";
+
+            if (ViewState["from"].ToString().Equals("payment_medical_control"))
+            {
+                strCriteria += " and person_group_code = '01'";        
+            }
+
             if (DirectorLock == "Y")
             {
                 strCriteria += " and substring(director_code,4,2) = substring('" + DirectorCode + "',4,2) ";
@@ -364,14 +369,16 @@ namespace myWeb.App_Control.lov
                         if (!ViewState["show"].ToString().Equals("1"))
                         {
                             strScript = "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl1"].ToString() + "').value='" + strperson_code + "';\n " +
-                                                 "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl2"].ToString() + "').value='" + strperson_name + "';\n" +
-                                                 "ClosePopUp('" + ViewState["show"].ToString() + "');";
+                                        "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl2"].ToString() + "').value='" + strperson_name + "';\n" +
+                                        "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].__doPostBack('ctl00$ContentPlaceHolder1$LinkButton1','');" +
+                                        "ClosePopUp('" + ViewState["show"].ToString() + "');";
                         }
                         else
                         {
                             strScript = "window.parent.document.getElementById('" + ViewState["ctrl1"].ToString() + "').value='" + strperson_code + "';\n " +
-                                                "window.parent.document.getElementById('" + ViewState["ctrl2"].ToString() + "').value='" + strperson_name + "';\n" +
-                                                 "ClosePopUp('" + ViewState["show"].ToString() + "');";
+                                        "window.parent.document.getElementById('" + ViewState["ctrl2"].ToString() + "').value='" + strperson_name + "';\n" +
+                                        "window.parent.__doPostBack('ctl00$ContentPlaceHolder1$LinkButton1','');" +
+                                        "ClosePopUp('" + ViewState["show"].ToString() + "');";
                         }
                         ScriptManager.RegisterStartupScript(Page, Page.GetType(), "close", strScript, true);
                     }

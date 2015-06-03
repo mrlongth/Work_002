@@ -627,10 +627,16 @@ namespace myWeb.App_Control.item_person_import
                     //odtExcelAll = oExcelReader.GetTable("data", " And 1=2");
                     for (int i = 0; i < dt.Rows.Count; i++)
                     {
-                        string strCmd = "update [" + oExcelReader.SheetName + "$]  set ";
-                        strCmd += " A00='" + dt.Rows[i]["person_code"].ToString() + "' ";
-                        strCmd += " Where A02 Like '%" + dt.Rows[i]["person_thai_name"].ToString() + " " + 
-                                                         dt.Rows[i]["person_thai_surname"].ToString() + "%' ";
+                        //string strCmd = "update [" + oExcelReader.SheetName + "$]  set ";
+                        //strCmd += " A00='" + dt.Rows[i]["person_code"].ToString() + "' ";
+                        //strCmd += " Where A02 Like '%" + dt.Rows[i]["person_thai_name"].ToString() + " " + 
+                        //                                 dt.Rows[i]["person_thai_surname"].ToString() + "%' ";
+
+                        string strCmd = "insert into [" + oExcelReader.SheetName + "$]  (A00,A01) Values ('" + dt.Rows[i]["person_code"] + "','" + dt.Rows[i]["person_thai_name"] + " " +  dt.Rows[i]["person_thai_surname"] + "')";
+                       
+                        //strCmd += " A00='" +  + "' ";
+                        //strCmd += " Where A02 Like '%" + dt.Rows[i]["person_thai_name"].ToString() + " " +
+                        //                                 dt.Rows[i]["person_thai_surname"].ToString() + "%' ";
                         oExcelReader.InsertTable(strCmd);
                     }
                     lnkExcelFile.NavigateUrl = strFilename;

@@ -91,7 +91,7 @@
                     </tr>
                     <tr>
                         <td style="text-align: right; width: 22%;">
-                            <asp:Label runat="server" CssClass="label_h" ID="lblBudget">ยุทธศาสตร์การจัดสรรงบประมาณ :</asp:Label>
+                            <asp:Label runat="server" CssClass="label_h" ID="lblBudget">แผนงาน :</asp:Label>
                         </td>
                         <td style="text-align: left;" colspan="3">
                             <asp:DropDownList runat="server" CssClass="textbox" ID="cboBudget" AutoPostBack="True"

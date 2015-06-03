@@ -105,8 +105,22 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Control\lov\person_retire_lov.aspx" />
+    <Content Include="App_Control\lov\person_special_lov.aspx" />
     <Content Include="App_Control\menu\menu_list.aspx" />
     <Content Include="App_Control\menu\menu_control.aspx" />
+    <Content Include="App_Control\payment_medical\payment_medical_list.aspx" />
+    <Content Include="App_Control\payment_medical\payment_medical_control.aspx" />
+    <Content Include="App_Control\payment_medical\payment_medical_item_control.aspx" />
+    <Content Include="App_Control\payment_special\payment_special_excel_upload.aspx" />
+    <Content Include="App_Control\payment_special\payment_special_import.aspx" />
+    <Content Include="App_Control\payment_special\payment_special_item_control.aspx" />
+    <Content Include="App_Control\payment_special\payment_special_control.aspx" />
+    <Content Include="App_Control\payment_special\payment_special_list.aspx" />
+    <Content Include="App_Control\payment_special\payment_special_round_control.aspx" />
+    <Content Include="App_Control\payment_special\payment_special_round_list.aspx" />
+    <Content Include="App_Control\person_special\person_special_control.aspx" />
+    <Content Include="App_Control\person_special\person_special_list.aspx" />
     <Content Include="App_Control\user\user_group_menu_list.aspx" />
     <Content Include="App_Control\user\user_menu_control.aspx" />
     <Content Include="App_Control\user\user_menu_list.aspx" />
@@ -249,6 +263,8 @@
     <Content Include="images\user_accounts.png" />
     <Content Include="images\user_accounts_alt.png" />
     <Content Include="images\user_group_select.png" />
+    <Content Include="Person_Manage\global_payment_special_slip.aspx" />
+    <Content Include="Person_Manage\global_payment_special_report_slip.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -488,6 +504,20 @@
     <Compile Include="App_Control\cheque\cheque_print.aspx.designer.cs">
       <DependentUpon>cheque_print.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_Control\lov\person_retire_lov.aspx.cs">
+      <DependentUpon>person_retire_lov.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Control\lov\person_retire_lov.aspx.designer.cs">
+      <DependentUpon>person_retire_lov.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Control\lov\person_special_lov.aspx.cs">
+      <DependentUpon>person_special_lov.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Control\lov\person_special_lov.aspx.designer.cs">
+      <DependentUpon>person_special_lov.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Control\lov\direct_pay_item_lov.aspx.cs">
       <DependentUpon>direct_pay_item_lov.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -571,6 +601,76 @@
     </Compile>
     <Compile Include="App_Control\payment_adj\payment_export.aspx.designer.cs">
       <DependentUpon>payment_export.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Control\payment_medical\payment_medical_list.aspx.cs">
+      <DependentUpon>payment_medical_list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Control\payment_medical\payment_medical_list.aspx.designer.cs">
+      <DependentUpon>payment_medical_list.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Control\payment_medical\payment_medical_control.aspx.cs">
+      <DependentUpon>payment_medical_control.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Control\payment_medical\payment_medical_control.aspx.designer.cs">
+      <DependentUpon>payment_medical_control.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Control\payment_medical\payment_medical_item_control.aspx.cs">
+      <DependentUpon>payment_medical_item_control.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Control\payment_medical\payment_medical_item_control.aspx.designer.cs">
+      <DependentUpon>payment_medical_item_control.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Control\payment_special\payment_special_excel_upload.aspx.cs">
+      <DependentUpon>payment_special_excel_upload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Control\payment_special\payment_special_excel_upload.aspx.designer.cs">
+      <DependentUpon>payment_special_excel_upload.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Control\payment_special\payment_special_import.aspx.cs">
+      <DependentUpon>payment_special_import.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Control\payment_special\payment_special_import.aspx.designer.cs">
+      <DependentUpon>payment_special_import.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Control\payment_special\payment_special_item_control.aspx.cs">
+      <DependentUpon>payment_special_item_control.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Control\payment_special\payment_special_item_control.aspx.designer.cs">
+      <DependentUpon>payment_special_item_control.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Control\payment_special\payment_special_control.aspx.cs">
+      <DependentUpon>payment_special_control.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Control\payment_special\payment_special_control.aspx.designer.cs">
+      <DependentUpon>payment_special_control.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Control\payment_special\payment_special_list.aspx.cs">
+      <DependentUpon>payment_special_list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Control\payment_special\payment_special_list.aspx.designer.cs">
+      <DependentUpon>payment_special_list.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Control\payment_special\payment_special_round_control.aspx.cs">
+      <DependentUpon>payment_special_round_control.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Control\payment_special\payment_special_round_control.aspx.designer.cs">
+      <DependentUpon>payment_special_round_control.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Control\payment_special\payment_special_round_list.aspx.cs">
+      <DependentUpon>payment_special_round_list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Control\payment_special\payment_special_round_list.aspx.designer.cs">
+      <DependentUpon>payment_special_round_list.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Control\person\person_loan_control.aspx.cs">
       <DependentUpon>person_loan_control.aspx</DependentUpon>
@@ -830,6 +930,20 @@
     </Compile>
     <Compile Include="App_Control\person\person_item_import.aspx.designer.cs">
       <DependentUpon>person_item_import.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Control\person_special\person_special_control.aspx.cs">
+      <DependentUpon>person_special_control.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Control\person_special\person_special_control.aspx.designer.cs">
+      <DependentUpon>person_special_control.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Control\person_special\person_special_list.aspx.cs">
+      <DependentUpon>person_special_list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Control\person_special\person_special_list.aspx.designer.cs">
+      <DependentUpon>person_special_list.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Control\reportsparameter\open_report_show.aspx.cs">
       <DependentUpon>open_report_show.aspx</DependentUpon>
@@ -1590,6 +1704,20 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Person_Manage\global_payment_special_slip.aspx.cs">
+      <DependentUpon>global_payment_special_slip.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Person_Manage\global_payment_special_slip.aspx.designer.cs">
+      <DependentUpon>global_payment_special_slip.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Person_Manage\global_payment_special_report_slip.aspx.cs">
+      <DependentUpon>global_payment_special_report_slip.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Person_Manage\global_payment_special_report_slip.aspx.designer.cs">
+      <DependentUpon>global_payment_special_report_slip.aspx</DependentUpon>
     </Compile>
     <Compile Include="Person_Manage\global_budget_plan_report.aspx.cs">
       <DependentUpon>global_budget_plan_report.aspx</DependentUpon>
@@ -2480,7 +2608,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>63397</DevelopmentServerPort>
+          <DevelopmentServerPort>64579</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:51707/</IISUrl>
           <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>

@@ -231,7 +231,7 @@ namespace myWeb.App_Control.payment_back
                 {
                     #region edit
 
-                    if (stritem_code.Substring(4) == "09-039")
+                    if (stritem_code.Substring(4) == base.GetConfigItem("SOSCode1"))
                     {
                         if (oPayment_back.SP_PAYMENT_SOS_DETAIL_UPD(strpayment_back_detail_id, strpayment_back_id,
                             strdate_begin, strdate_end, strdate_count_day, strdate_count_month, strdate_count_year,

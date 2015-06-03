@@ -65,7 +65,7 @@ namespace myWeb.App_Control.plan
                 //{
                 //    foreach (Control c in Page.Controls)
                 //    {
-                //        base.SetLabel(c, "แผนงาน", "งานย่อย");
+                //        base.SetLabel(c, "ยุทธศาสตร์การจัดสรรงบประมาณ", "งานย่อย");
                 //    }
                 //}
 
@@ -200,7 +200,7 @@ namespace myWeb.App_Control.plan
                 //{
                 //    foreach (Control c in Page.Controls)
                 //    {
-                //        base.SetLabel(c, "แผนงาน", "งานย่อย");
+                //        base.SetLabel(c, "ยุทธศาสตร์การจัดสรรงบประมาณ", "งานย่อย");
                 //    }
                 //}
                 oPlan.Dispose();
@@ -276,7 +276,7 @@ namespace myWeb.App_Control.plan
 
                 #region set ImageView
                 ImageButton imgView = (ImageButton)e.Row.FindControl("imgView");
-                imgView.Attributes.Add("onclick", "OpenPopUp('800px','250px','90%','แสดงข้อมูลแผนงาน','plan_view.aspx?budget_type=" + this.BudgetType + "&mode=view&plan_code=" + lblplan_code.Text + "','1');return false;");
+                imgView.Attributes.Add("onclick", "OpenPopUp('800px','250px','90%','แสดงข้อมูลยุทธศาสตร์การจัดสรรงบประมาณ','plan_view.aspx?budget_type=" + this.BudgetType + "&mode=view&plan_code=" + lblplan_code.Text + "','1');return false;");
                 imgView.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgView"].Rows[0]["img"].ToString();
                 imgView.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgView"].Rows[0]["title"].ToString());
                 #endregion
@@ -293,7 +293,7 @@ namespace myWeb.App_Control.plan
                 ImageButton imgDelete = (ImageButton)e.Row.FindControl("imgDelete");
                 imgDelete.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["img"].ToString();
                 imgDelete.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["title"].ToString());
-                imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบแผนงาน   " + lblplan_code.Text + " : " + lblplan_name.Text + " ?\");");
+                imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบยุทธศาสตร์การจัดสรรงบประมาณ   " + lblplan_code.Text + " : " + lblplan_name.Text + " ?\");");
                 #endregion
 
             }

@@ -581,7 +581,7 @@ namespace myWeb.App_Control.payment_member_type
             {
                 if (!strmember_type_code.Equals(strGBK2))
                 {
-                    strCriteria = "  and  member_type_code= '" + strmember_type_code + "' " +
+                    strCriteria = "  and  member_type_code like '%" + strmember_type_code + "%' " +
                                            " and person_work_status_code='01' " +
                                            " and payment_year='" + strpayment_year + "' " +
                                            " and pay_month='" + strpay_month + "' " +
@@ -591,7 +591,7 @@ namespace myWeb.App_Control.payment_member_type
                 else
                 {
                     strmember_type_code = strGBK;
-                    strCriteria = "  and  member_type_code= '" + strmember_type_code + "' " +
+                    strCriteria = "  and  member_type_code= '%" + strmember_type_code + "%' " +
                                            " and person_work_status_code='01' " +
                                            " and payment_year='" + strpayment_year + "' " +
                                            " and member_type_add > 0 " +

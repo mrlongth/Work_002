@@ -514,14 +514,14 @@ namespace myWeb.App_Control.payment
 
             //if (strBusget_type == "B")
             //{
-            //    Label54.Text = "แผนงบ :";
+            //    Label54.Text = "แผนงาน :";
             //    Label55.Text = "ผลผลิต :";
             //    Label53.Text = "กิจกรรม :";
-            //    Label56.Text = "แผนงาน :";
+            //    Label56.Text = "ยุทธศาสตร์การจัดสรรงบประมาณ :";
             //}
             //else
             //{
-            //    Label54.Text = "แผนงาน :";
+            //    Label54.Text = "ยุทธศาสตร์การจัดสรรงบประมาณ :";
             //    Label55.Text = "งานหลัก :";
             //    Label53.Text = "งานรอง :";
             //    Label56.Text = "งานย่อย :";

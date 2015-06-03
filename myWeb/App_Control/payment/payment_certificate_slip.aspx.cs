@@ -328,7 +328,7 @@ namespace myWeb.App_Control.payment
             
             //if (!strYear.Equals(""))
             //{
-            //    strCriteria = strCriteria + "  And  (ph.payment_year = '" + strYear + "') ";
+            //    strCriteria = strCriteria + "  And  (ph.payment_medical_year = '" + strYear + "') ";
             //}
 
             //if (!strPay_Month.Equals(""))
@@ -364,12 +364,9 @@ namespace myWeb.App_Control.payment
             if (!strPerson_name.Equals(""))
             {
                 strCriteria = strCriteria + "  And  (ph.person_thai_name like '%" + strPerson_name + "%'  " +
-                                                              "  OR ph.person_thai_surname like '%" + strPerson_name + "%'  " +
-                                                              "  OR ph.person_eng_name like '%" + strPerson_name + "%'  " +
-                                                              "  OR ph.person_eng_surname like '%" + strPerson_name + "%')";
+                                            "  OR ph.person_thai_surname like '%" + strPerson_name + "%'  " +
+                                            "  OR ((ph.person_thai_name + ' ' +  ph.person_thai_surname) like '%" + strPerson_name + "%'))  " ;
             }
-
-
 
             strCriteria += " and ph.person_group_code IN (" + PersonGroupList + ") ";
 

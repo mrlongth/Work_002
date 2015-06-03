@@ -70,7 +70,7 @@
         </tr>
         <tr>
             <td style="text-align: right; width: 15%;">
-                <asp:Label ID="lblPage5" runat="server" CssClass="label_h">ยุทธศาสตร์การจัดสรรงบประมาณ :</asp:Label>
+                <asp:Label ID="lblPage5" runat="server" CssClass="label_h">แผนงาน :</asp:Label>
             </td>
             <td>
                 &nbsp;<asp:DropDownList ID="cboBudget" runat="server" CssClass="textbox" 
@@ -139,7 +139,7 @@
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="ยุทธศาสตร์การจัดสรรงบประมาณ" SortExpression="budget_name">
+            <asp:TemplateField HeaderText="แผนงาน" SortExpression="budget_name">
                 <ItemStyle HorizontalAlign="Left"  Wrap="True" />
                 <ItemTemplate>
                     <asp:Label ID="lblbudget_name" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.budget_name") %>'>

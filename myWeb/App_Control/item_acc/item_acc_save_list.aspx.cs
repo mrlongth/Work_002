@@ -203,7 +203,7 @@ namespace myWeb.App_Control.item_acc
                 strCriteria = strCriteria + "  And  (item_acc_year = '" + strYear + "') ";
             }
             strCriteria += "  And budget_type ='" + this.BudgetType + "' ";
-            strCriteria += "  And c_created_by = '" + UserLoginName + "' ";
+           // strCriteria += "  And c_created_by = '" + UserLoginName + "' ";
 
             try
             {

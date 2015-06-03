@@ -833,9 +833,10 @@ namespace myWeb.App_Control.payment_adj
                     ds.Tables[0].DefaultView.Sort = ViewState["sort"] + " " + ViewState["direction"];
                     ds.Tables[0].Columns.Add("money_credit");
                     ds.Tables[0].Columns.Add("item_has");
+                    ds.Tables[0].Columns.Add("person_salaly_all");
                     for (i = 0; i <= ds.Tables[0].Rows.Count - 1; i++)
                     {
-                        ds.Tables[0].Rows[i]["item_has"] = "N";
+                        ds.Tables[0].Rows[i]["item_has"] = "N";                            
                         if (RadioButtonList2.SelectedValue.Equals("M"))
                         {
                             ds.Tables[0].Rows[i]["money_credit"] = txtrate1.Value;

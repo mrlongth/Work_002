@@ -206,7 +206,7 @@ namespace myWeb.App_Control.person_group
                 ImageButton imgDelete = (ImageButton)e.Row.FindControl("imgDelete");
                 imgDelete.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["img"].ToString();
                 imgDelete.Attributes.Add("person_group", ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["title"].ToString());
-                imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบยุทธศาสตร์การจัดสรรงบประมาณ   " + lblperson_group_code.Text + " : " + lblperson_group_name.Text + " ?\");");
+                imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบแผนงาน   " + lblperson_group_code.Text + " : " + lblperson_group_name.Text + " ?\");");
                 #endregion
 
             }

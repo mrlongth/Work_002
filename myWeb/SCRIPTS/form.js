@@ -786,7 +786,7 @@ function DateDiff(pfromDate, ptoDate)
     else 
     { 
         day = toDate.getDate() - fromDate.getDate(); 
-    }   
+    }
     if ((fromDate.getMonth() + increment) > toDate.getMonth()) 
     { 
         month = (toDate.getMonth() + 12) - (fromDate.getMonth() + increment); 
@@ -803,7 +803,9 @@ function DateDiff(pfromDate, ptoDate)
     var diff = new Object(); 
     diff.Years = year; 
     diff.Months = month; 
-    diff.Days = day; 
+    diff.Days = day;
+    var one_day = 1000 * 60 * 60 * 24;
+    diff.All = (toDate.getTime() - fromDate.getTime()) / one_day;
     return diff; 
 }; 
 function IsLeapYear(utc) 
@@ -830,22 +832,27 @@ function show_diff_date(fromDate, toDate)
     return strreturn ;
  };
 
- function show_diff_month(fromDate, toDate) 
-{ 
-    var diff = DateDiff(fromDate, toDate)
+ function show_diff_month(fromDate, toDate) {
+     var diff = DateDiff(fromDate, toDate);
     var strreturn='0' ;
     if (diff.Months > 0)  strreturn = diff.Months ; 
     return strreturn ;
  };
  
- function show_diff_year(fromDate, toDate) 
-{ 
-    var diff = DateDiff(fromDate, toDate)
+ function show_diff_year(fromDate, toDate) {
+     var diff = DateDiff(fromDate, toDate);
     var strreturn='0' ;
     if (diff.Years > 0)  strreturn = diff.Years ; 
     return strreturn ;
  };
 
+
+ function show_special_diff_day(fromDate, toDate) {
+     var diff = DateDiff(fromDate, toDate);
+     var strreturn = '0';
+     if (diff.All > 0) strreturn = diff.All;
+     return strreturn;
+ };
 
 
 

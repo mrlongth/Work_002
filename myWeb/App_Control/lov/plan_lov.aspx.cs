@@ -31,7 +31,7 @@ namespace myWeb.App_Control.lov
                 imgFind.Attributes.Add("onMouseOver", "src='../../images/button/Search2.png'");
                 imgFind.Attributes.Add("onMouseOut", "src='../../images/button/Search.png'");
 
-                Session["menulov_name"] = "ค้นหาข้อมูลแผนงาน";
+                Session["menulov_name"] = "ค้นหาข้อมูลยุทธศาสตร์การจัดสรรงบประมาณ";
                 if (Request.QueryString["year"] != null)
                 {
                     ViewState["plan_year"] = Request.QueryString["year"].ToString();

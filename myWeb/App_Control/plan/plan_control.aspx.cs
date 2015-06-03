@@ -70,7 +70,7 @@ namespace myWeb.App_Control.plan
                 if (ViewState["mode"].ToString().ToLower().Equals("add"))
                 {
                     ViewState["page"] = Request.QueryString["page"];
-                    Session["menupopup_name"] =  "เพิ่มข้อมูลแผนงาน ";
+                    Session["menupopup_name"] =  "เพิ่มข้อมูลยุทธศาสตร์การจัดสรรงบประมาณ ";
                     txtplan_code.ReadOnly = true;
                     txtplan_code.CssClass = "textboxdis";
                     chkStatus.Checked = true;
@@ -81,7 +81,7 @@ namespace myWeb.App_Control.plan
                     setData();
                     txtplan_code.ReadOnly = true;
                     txtplan_code.CssClass = "textboxdis";
-                    Session["menupopup_name"] = "แก้ไขข้อมูลแผนงาน ";
+                    Session["menupopup_name"] = "แก้ไขข้อมูลยุทธศาสตร์การจัดสรรงบประมาณ ";
                     if (ViewState["PageStatus"] != null)
                     {
                         if (ViewState["PageStatus"].ToString().ToLower().Equals("save"))
@@ -103,7 +103,7 @@ namespace myWeb.App_Control.plan
                 //{
                 //    foreach (Control c in Page.Controls)
                 //    {
-                //        base.SetLabel(c, "แผนงาน", "งานย่อย");
+                //        base.SetLabel(c, "ยุทธศาสตร์การจัดสรรงบประมาณ", "งานย่อย");
                 //    }
                 //}
 

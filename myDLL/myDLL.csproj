@@ -83,6 +83,10 @@
     <Compile Include="Payroll\cOpen.cs" />
     <Compile Include="Payroll\cMaterial.cs" />
     <Compile Include="Payroll\cMenu.cs" />
+    <Compile Include="Payroll\cPayment_medical.cs" />
+    <Compile Include="Payroll\cPayment_special.cs" />
+    <Compile Include="Payroll\cPayment_special_round.cs" />
+    <Compile Include="Payroll\cPerson_special.cs" />
     <Compile Include="Payroll\cUser_group_menu.cs" />
     <Compile Include="Payroll\cPerson_retire.cs" />
     <Compile Include="Payroll\cPerson_center.cs" />

@@ -55,7 +55,7 @@ namespace myWeb.App_Control.lot
                 imgFind.Attributes.Add("onMouseOver", "src='../../images/button/Search2.png'");
                 imgFind.Attributes.Add("onMouseOut", "src='../../images/button/Search.png'");
 
-                imgNew.Attributes.Add("onclick", "OpenPopUp('800px','250px','90%','เพิ่มข้อมูลงบประมาณประจำปี','lot_control.aspx?budget_type=" + this.BudgetType + "&mode=add&page=0','1');return false;");
+                imgNew.Attributes.Add("onclick", "OpenPopUp('800px','250px','90%','เพิ่มข้อมูลประเภทงบรายจ่าย','lot_control.aspx?budget_type=" + this.BudgetType + "&mode=add&page=0','1');return false;");
                 ViewState["sort"] = "lot_code";
                 ViewState["direction"] = "ASC";
                 RadioAll.Checked = true;
@@ -281,7 +281,7 @@ namespace myWeb.App_Control.lot
 
                 #region set ImageView
                 ImageButton imgView = (ImageButton)e.Row.FindControl("imgView");
-                imgView.Attributes.Add("onclick", "OpenPopUp('800px','250px','90%' , 'แสดงข้อมูลงบประมาณประจำปี' , 'lot_view.aspx?budget_type=" + this.BudgetType + "&mode=view&lot_code=" + lbllot_code.Text + "' , '1');return false;");
+                imgView.Attributes.Add("onclick", "OpenPopUp('800px','250px','90%' , 'แสดงข้อมูลประเภทงบรายจ่าย' , 'lot_view.aspx?budget_type=" + this.BudgetType + "&mode=view&lot_code=" + lbllot_code.Text + "' , '1');return false;");
                 imgView.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgView"].Rows[0]["img"].ToString();
                 imgView.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgView"].Rows[0]["title"].ToString());
                 #endregion
@@ -289,7 +289,7 @@ namespace myWeb.App_Control.lot
                 #region set Image Edit & Delete
                 ImageButton imgEdit = (ImageButton)e.Row.FindControl("imgEdit");
                 Label lblCanEdit = (Label)e.Row.FindControl("lblCanEdit");
-                imgEdit.Attributes.Add("onclick", "OpenPopUp('800px','250px','90%' , 'แก้ไขข้อมูลงบประมาณประจำปี' , 'lot_control.aspx?budget_type=" + this.BudgetType + "&mode=edit&lot_code=" 
+                imgEdit.Attributes.Add("onclick", "OpenPopUp('800px','250px','90%' , 'แก้ไขข้อมูลประเภทงบรายจ่าย' , 'lot_control.aspx?budget_type=" + this.BudgetType + "&mode=edit&lot_code=" 
                                                                 + lbllot_code.Text + "&page=" + GridView1.PageIndex.ToString() + "&canEdit=Y' , '1');return false;");
                 imgEdit.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["img"].ToString();
                 imgEdit.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["title"].ToString());

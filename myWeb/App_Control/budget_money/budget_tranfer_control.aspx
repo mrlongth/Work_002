@@ -134,7 +134,7 @@
                     ID="txtactivity_name"></asp:TextBox>
             </td>
             <td align="left" nowrap valign="middle" style="text-align: right">
-                <asp:Label runat="server" CssClass="label_hbk" ID="Label56">แผนงาน :</asp:Label>
+                <asp:Label runat="server" CssClass="label_hbk" ID="Label56">ยุทธศาสตร์การจัดสรรงบประมาณ :</asp:Label>
             </td>
             <td align="left" nowrap valign="middle" colspan="2">
                 <asp:TextBox runat="server" CssClass="textboxdis" Width="300px" 
@@ -259,7 +259,7 @@
                     ID="txtactivity_name_ds"></asp:TextBox>
             </td>
             <td align="right" nowrap valign="middle">
-                <asp:Label runat="server" CssClass="label_hbk" ID="Label75">แผนงาน :</asp:Label>
+                <asp:Label runat="server" CssClass="label_hbk" ID="Label75">ยุทธศาสตร์การจัดสรรงบประมาณ :</asp:Label>
             </td>
             <td align="left" nowrap valign="middle" colspan="2">
                 <asp:TextBox runat="server" CssClass="textboxdis" Width="300px" 

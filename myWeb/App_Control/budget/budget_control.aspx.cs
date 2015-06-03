@@ -17,8 +17,8 @@ namespace myWeb.App_Control.budget
     public partial class budget_control : PageBase
     {
 
-        private string old_str = "ยุทธศาสตร์การจัดสรรงบประมาณ";
-        private string new_str = "แผนงาน";
+        private string old_str = "แผนงาน";
+        private string new_str = "ยุทธศาสตร์การจัดสรรงบประมาณ";
         private string BudgetType
         {
             get

@@ -27,7 +27,7 @@ namespace myWeb.App_Control.plan
             lblError.Text = "";
             if (!IsPostBack)
             {
-                Session["menupopup_name"] = "แสดงข้อมูลแผนงาน";
+                Session["menupopup_name"] = "แสดงข้อมูลยุทธศาสตร์การจัดสรรงบประมาณ";
 
                 #region set QueryString
                 if (Request.QueryString["plan_code"] != null)

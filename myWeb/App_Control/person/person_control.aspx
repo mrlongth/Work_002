@@ -508,7 +508,7 @@
                                             ImageAlign="AbsBottom" ImageUrl="../../images/controls/erase.gif" />
                                     </td>
                                     <td nowrap style="text-align: right">
-                                        <asp:Label ID="Label54" runat="server" CssClass="label_hbk">แผนงบ :</asp:Label>
+                                        <asp:Label ID="Label54" runat="server" CssClass="label_hbk">แผนงาน :</asp:Label>
                                     </td>
                                     <td align="left">
                                         <asp:TextBox ID="txtbudget_name" runat="server" CssClass="textboxdis" Width="300px"></asp:TextBox>
@@ -530,7 +530,7 @@
                                 </tr>
                                 <tr align="left">
                                     <td align="right" nowrap valign="middle">
-                                        <asp:Label ID="Label56" runat="server" CssClass="label_hbk">แผนงาน :</asp:Label>
+                                        <asp:Label ID="Label56" runat="server" CssClass="label_hbk">ยุทธศาสตร์ :</asp:Label>
                                     </td>
                                     <td align="left" nowrap valign="middle">
                                         <asp:TextBox ID="txtplan_name" runat="server" CssClass="textboxdis" Width="300px"></asp:TextBox>
@@ -1221,10 +1221,10 @@
                             </table>
                         </ContentTemplate>
                     </ajaxtoolkit:TabPanel>
-                    <ajaxtoolkit:TabPanel ID="TabPanel6" runat="server" HeaderText="สมาชิก(ฌาปนกิจ)"
+                    <ajaxtoolkit:TabPanel ID="TabPanel6" runat="server" HeaderText="สมาชิก(เครดิตยูเนี่ยน)"
                         ScrollBars="Vertical">
                         <HeaderTemplate>
-                            สมาชิก(ฌาปนกิจ)
+                            สมาชิก(เครดิตยูเนี่ยน)
                         </HeaderTemplate>
                         <ContentTemplate>
                             <table border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
@@ -1245,12 +1245,12 @@
                                                             <asp:Label ID="lblNo1" runat="server"> </asp:Label></ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" Width="2%" Wrap="False" />
                                                     </asp:TemplateField>
-                                                    <asp:TemplateField HeaderText="รหัสสมาชิก(ฌาปนกิจ)" SortExpression="member_code">
+                                                    <asp:TemplateField HeaderText="รหัสสมาชิก(เครดิตยูเนี่ยน)" SortExpression="member_code">
                                                         <ItemTemplate>
                                                             <asp:Label ID="lblmember_code" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.member_code") %>'> </asp:Label></ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" Width="15%" Wrap="True" />
                                                     </asp:TemplateField>
-                                                    <asp:TemplateField HeaderText="ชื่อสมาชิก(ฌาปนกิจ)" SortExpression="member_name">
+                                                    <asp:TemplateField HeaderText="ชื่อสมาชิก(เครดิตยูเนี่ยน)" SortExpression="member_name">
                                                         <ItemTemplate>
                                                             <asp:Label ID="lblmember_name" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.member_name") %>'> </asp:Label></ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Left" Width="45%" Wrap="True" />

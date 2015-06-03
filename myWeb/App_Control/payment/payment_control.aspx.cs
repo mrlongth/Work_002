@@ -172,9 +172,10 @@ namespace myWeb.App_Control.payment
 
                 if (ViewState["mode"].ToString().ToLower().Equals("add"))
                 {
-                    InitcboYear();
-                    InitcboPay_Year();
-                    InitcboPay_Month();
+                    //InitcboYear();
+                    //InitcboPay_Year();
+                    //InitcboPay_Month();
+                    InitcboRound();
                     InitcboPerson_group();
                     InitcboPerson_work_status();
                     txtpayment_date.Text = cCommon.CheckDate(DateTime.Now.ToShortDateString());
@@ -361,6 +362,68 @@ namespace myWeb.App_Control.payment
                     cboBudget_type.SelectedIndex = -1;
                     cboBudget_type.Items.FindByValue(strCode).Selected = true;
                 }
+            }
+        }
+
+        private void InitcboRound()
+        {
+            cPayment_round oPayment_round = new cPayment_round();
+            DataSet ds = new DataSet();
+            string strMessage = string.Empty, strCriteria = string.Empty;
+            string strYear = string.Empty;
+            string strPay_Month = string.Empty;
+            string strPay_Year = string.Empty;
+            try
+            {
+                strCriteria = " and round_status= 'O' ";
+                if (!oPayment_round.SP_PAYMENT_ROUND_SEL(strCriteria, ref ds, ref strMessage))
+                {
+                    lblError.Text = strMessage;
+                }
+                else
+                {
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        #region get Data
+                        strYear = ds.Tables[0].Rows[0]["payment_year"].ToString();
+                        strPay_Month = ds.Tables[0].Rows[0]["pay_month"].ToString();
+                        strPay_Year = ds.Tables[0].Rows[0]["pay_year"].ToString();
+                        #endregion
+
+                        #region set Control
+                        InitcboYear();
+                        if (cboYear.Items.FindByValue(strYear) != null)
+                        {
+                            cboYear.SelectedIndex = -1;
+                            cboYear.Items.FindByValue(strYear).Selected = true;
+                        }
+
+                        InitcboPay_Month();
+                        if (cboPay_Month.Items.FindByValue(strPay_Month) != null)
+                        {
+                            cboPay_Month.SelectedIndex = -1;
+                            cboPay_Month.Items.FindByValue(strPay_Month).Selected = true;
+                        }
+
+                        InitcboPay_Year();
+                        if (cboPay_Year.Items.FindByValue(strPay_Year) != null)
+                        {
+                            cboPay_Year.SelectedIndex = -1;
+                            cboPay_Year.Items.FindByValue(strPay_Year).Selected = true;
+                        }
+
+
+                        #endregion
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message.ToString();
+            }
+            finally
+            {
+                oPayment_round.Dispose();
             }
         }
 
@@ -1655,14 +1718,14 @@ namespace myWeb.App_Control.payment
 
             //if (strBusget_type == "B")
             //{
-            //    Label54.Text = "แผนงบ :";
+            //    Label54.Text = "แผนงาน :";
             //    Label55.Text = "ผลผลิต :";
             //    Label53.Text = "กิจกรรม :";
-            //    Label56.Text = "แผนงาน :";
+            //    Label56.Text = "ยุทธศาสตร์การจัดสรรงบประมาณ :";
             //}
             //else
             //{
-            //    Label54.Text = "แผนงาน :";
+            //    Label54.Text = "ยุทธศาสตร์การจัดสรรงบประมาณ :";
             //    Label55.Text = "งานหลัก :";
             //    Label53.Text = "งานรอง :";
             //    Label56.Text = "งานย่อย :";

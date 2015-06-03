@@ -342,31 +342,31 @@ namespace myWeb.Person_Manage
 
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    string report_title = string.Empty;
-                    string strperson_director_address = System.Configuration.ConfigurationSettings.AppSettings["person_director_address"];
-                    cPerson_center oPerson_center = new cPerson_center();
-                    DataSet dsCenter = new DataSet();
+                    //string report_title = string.Empty;
+                    //string strperson_director_address = System.Configuration.ConfigurationSettings.AppSettings["person_director_address"];
+                    //cPerson_center oPerson_center = new cPerson_center();
+                    //DataSet dsCenter = new DataSet();
 
-                    if (!oPerson_center.SP_PERSON_CENTER_SEL("And  (CITIZEN_ID= '" + base.PersonID + "') ", ref dsCenter, ref strMessage))
-                    {
-                        lblError.Text = strMessage;
-                    }
-                    else
-                    {
-                        if (dsCenter.Tables[0].Rows.Count > 0)
-                        {
-                            string strTelNo = string.Empty;
-                            try
-                            {
-                                strTelNo = dsCenter.Tables[0].Rows[0]["TELEPHONE_WORK"].ToString();
-                                strTelNo = "โทร. " + strTelNo.Substring(7, 4);
-                            }
-                            catch { }
-                            report_title = dsCenter.Tables[0].Rows[0]["FACT_NAME"].ToString() + " " + dsCenter.Tables[0].Rows[0]["DIVISION_NAME"].ToString() + " " + dsCenter.Tables[0].Rows[0]["SUB_DI_NAME"].ToString() + " " + strTelNo;
-                           // report_title = dsCenter.Tables[0].Rows[0]["SUB_DI_NAME"].ToString() + " " + dsCenter.Tables[0].Rows[0]["DIVISION_NAME"].ToString() + " " + dsCenter.Tables[0].Rows[0]["FACT_NAME"].ToString() + " " + strTelNo;
-                        }
-                    }
-
+                    //if (!oPerson_center.SP_PERSON_CENTER_SEL("And  (CITIZEN_ID= '" + base.PersonID + "') ", ref dsCenter, ref strMessage))
+                    //{
+                    //    lblError.Text = strMessage;
+                    //}
+                    //else
+                    //{
+                    //    if (dsCenter.Tables[0].Rows.Count > 0)
+                    //    {
+                    //        string strTelNo = string.Empty;
+                    //        try
+                    //        {
+                    //            strTelNo = dsCenter.Tables[0].Rows[0]["TELEPHONE_WORK"].ToString();
+                    //            strTelNo = "โทร. " + strTelNo.Substring(7, 4);
+                    //        }
+                    //        catch { }
+                    //        //report_title = dsCenter.Tables[0].Rows[0]["FACT_NAME"].ToString() + " " + dsCenter.Tables[0].Rows[0]["DIVISION_NAME"].ToString() + " " + dsCenter.Tables[0].Rows[0]["SUB_DI_NAME"].ToString() + " " + strTelNo;
+                    //       // report_title = dsCenter.Tables[0].Rows[0]["SUB_DI_NAME"].ToString() + " " + dsCenter.Tables[0].Rows[0]["DIVISION_NAME"].ToString() + " " + dsCenter.Tables[0].Rows[0]["FACT_NAME"].ToString() + " " + strTelNo;
+                    //    }
+                    //}
+                    string report_title = "";
                     strReport_code = "Rep_payment_req_loan";
 
                     strScript = "window.open(\"global_payment_report.aspx?report_code=" + strReport_code + "&report_title=" + report_title + "\", \"_blank\");\n";

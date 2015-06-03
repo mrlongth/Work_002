@@ -205,7 +205,7 @@ namespace myWeb.App_Control.person_work_status
                 ImageButton imgDelete = (ImageButton)e.Row.FindControl("imgDelete");
                 imgDelete.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["img"].ToString();
                 imgDelete.Attributes.Add("person_work_status", ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["title"].ToString());
-                imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบยุทธศาสตร์การจัดสรรงบประมาณ   " + lblperson_work_status_code.Text + " : " + lblperson_work_status_name.Text + " ?\");");
+                imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบแผนงาน   " + lblperson_work_status_code.Text + " : " + lblperson_work_status_name.Text + " ?\");");
                 #endregion
             }
 

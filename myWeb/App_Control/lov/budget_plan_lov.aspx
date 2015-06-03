@@ -40,7 +40,7 @@
         </tr>
         <tr>
             <td style="text-align: right; width: 15%;">
-                <asp:Label ID="lblPage5" runat="server" CssClass="label_h">ยุทธศาสตร์การจัดสรรงบประมาณ :</asp:Label>
+                <asp:Label ID="lblPage5" runat="server" CssClass="label_h">แผนงาน :</asp:Label>
             </td>
             <td style="width: 1%;">
                 <asp:DropDownList ID="cboBudget" runat="server" CssClass="textbox" AutoPostBack="True"
@@ -72,7 +72,7 @@
         </tr>
         <tr>
             <td style="text-align: right; width: 15%;">
-                <asp:Label runat="server" CssClass="label_h" ID="lblPage17">แผนงาน :</asp:Label>
+                <asp:Label runat="server" CssClass="label_h" ID="lblPage17">ยุทธศาสตร์การจัดสรรงบประมาณ :</asp:Label>
             </td>
             <td colspan="3">
                 <asp:DropDownList ID="cboPlan_code" runat="server" CssClass="textbox" AutoPostBack="True"
@@ -126,7 +126,7 @@
                             Visible="false"></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="ยุทธศาสตร์การจัดสรรงบประมาณ" SortExpression="budget_name" Visible="false">
+                <asp:TemplateField HeaderText="แผนงาน" SortExpression="budget_name" Visible="false">
                     <ItemStyle HorizontalAlign="Left" Wrap="false" Width="12%"></ItemStyle>
                     <ItemTemplate>
                         <%--<asp:Label ID="lblbudget_code" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.budget_code") %>' Visible="false">
@@ -149,7 +149,7 @@
                         <asp:Label ID="lblactivity_name" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.activity_name") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="แผนงาน" SortExpression="plan_name">
+                <asp:TemplateField HeaderText="ยุทธศาสตร์การจัดสรรงบประมาณ" SortExpression="plan_name">
                     <ItemStyle HorizontalAlign="Left" Wrap="True" Width="13%"></ItemStyle>
                     <ItemTemplate>
                         <%--<asp:Label ID="lblplan_code" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.plan_code") %>' Visible="false"></asp:Label>--%>

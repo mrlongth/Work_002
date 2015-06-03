@@ -88,6 +88,25 @@ namespace myWeb.App_Control.lov
                     ViewState["person_group_code"] = string.Empty;
                 }
 
+
+                if (Request.QueryString["is_special"] != null)
+                {
+                    ViewState["is_special"] = Request.QueryString["is_special"].ToString();
+                }
+                else
+                {
+                    ViewState["is_special"] = string.Empty;
+                }
+
+                if (Request.QueryString["is_medical"] != null)
+                {
+                    ViewState["is_medical"] = Request.QueryString["is_medical"].ToString();
+                }
+                else
+                {
+                    ViewState["is_medical"] = string.Empty;
+                }
+
                 if (Request.QueryString["ctrl1"] != null)
                 {
                     ViewState["ctrl1"] = Request.QueryString["ctrl1"].ToString();
@@ -179,16 +198,16 @@ namespace myWeb.App_Control.lov
                 {
                     ViewState["payment_back_type"] = Request.QueryString["payment_back_type"].ToString();
                 }
-                else 
+                else
                 {
                     ViewState["payment_back_type"] = "";
                 }
 
-                if (txtyear.Text.Length == 0) 
+                if (txtyear.Text.Length == 0)
                 {
                     txtyear.Text = ((DataSet)Application["xmlconfig"]).Tables["default"].Rows[0]["yearnow"].ToString();
                 }
-            
+
                 ViewState["sort"] = "item_code";
                 ViewState["direction"] = "ASC";
                 InitcboPerson_group();
@@ -266,7 +285,7 @@ namespace myWeb.App_Control.lov
             {
                 strCriteria = strCriteria + "  And  (item_name like '%" + stritem_name + "%') ";
             }
-         
+
             if (!stritem_group_code.Equals(""))
             {
                 strCriteria = strCriteria + "  And  (item_group_code like '%" + stritem_group_code + "%') ";
@@ -305,8 +324,22 @@ namespace myWeb.App_Control.lov
                 {
                     strCriteria = strCriteria + "  And  (item_type = '" + stritem_type + "') ";
                 }
-            
+
             }
+
+            if (ViewState["is_special"].ToString().Equals("1"))
+            {
+                strCriteria = strCriteria + "  And  (item_class = 'S') ";
+            }
+            else if (ViewState["is_medical"].ToString().Equals("1"))
+            {
+                strCriteria = strCriteria + "  And  (item_class = 'M') ";
+            }
+            else
+            {
+                strCriteria = strCriteria + "  And  (item_class = 'I') ";                
+            }
+
 
             strCriteria = strCriteria + "  And  (c_active ='Y') ";
 
@@ -338,7 +371,7 @@ namespace myWeb.App_Control.lov
                         if (!ViewState["show"].ToString().Equals("1"))
                         {
 
-                            if (ViewState["from"].ToString().Equals("member"))
+                            if (ViewState["from"].ToString().Equals("member") || ViewState["from"].ToString().Equals("bank"))
                             {
                                 strScript = "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl1"].ToString() + "').value='" + stritem_code + "';\n " +
                                                     "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl2"].ToString() + "').value='" + stritem_name + "';\n" +
@@ -352,6 +385,12 @@ namespace myWeb.App_Control.lov
                                                     "ClosePopUp('" + ViewState["show"].ToString() + "');";
 
                             }
+                            else if (ViewState["from"].ToString().Equals("payment_special") || ViewState["from"].ToString().Equals("payment_medical"))
+                            {
+                                strScript = "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl1"].ToString() + "').value='" + stritem_code + "';\n " +
+                                                "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl2"].ToString() + "').value='" + stritem_name + "';\n" +
+                                                "ClosePopUp('" + ViewState["show"].ToString() + "');";
+                            }
                             else
                             {
                                 strScript = "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl1"].ToString() + "').value='" + stritem_code + "';\n " +
@@ -361,7 +400,7 @@ namespace myWeb.App_Control.lov
                                                 "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl5"].ToString() + "').value='" + strlot_name + "';\n" +
                                                 "ClosePopUp('" + ViewState["show"].ToString() + "');";
 
-                            }    
+                            }
 
                         }
                         else
@@ -459,7 +498,7 @@ namespace myWeb.App_Control.lov
                 Label lbllot_name = (Label)e.Row.FindControl("lbllot_name");
                 if (!ViewState["show"].ToString().Equals("1"))
                 {
-                    if (ViewState["from"].ToString().Equals("member"))
+                    if (ViewState["from"].ToString().Equals("member") || ViewState["from"].ToString().Equals("bank"))
                     {
                         lblitem_code.Text = "<a href=\"\" onclick=\"" +
                                             "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl1"].ToString() + "').value='" + lblitem_code.Text + "';\n " +
@@ -478,7 +517,14 @@ namespace myWeb.App_Control.lov
                                             "return false;\" >" + lblitem_code.Text + "</a>";
 
                     }
-
+                    else if (ViewState["from"].ToString().Equals("payment_special"))
+                    {
+                        lblitem_code.Text = "<a href=\"\" onclick=\"" +
+                        "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl1"].ToString() + "').value='" + lblitem_code.Text + "';\n " +
+                        "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl2"].ToString() + "').value='" + lblitem_name.Text + "';\n" +
+                        "ClosePopUp('" + ViewState["show"].ToString() + "');" +
+                        "return false;\" >" + lblitem_code.Text + "</a>";
+                    }
                     else
                     {
                         lblitem_code.Text = "<a href=\"\" onclick=\"" +
@@ -504,7 +550,7 @@ namespace myWeb.App_Control.lov
                                             "return false;\" >" + lblitem_code.Text + "</a>";
 
                     }
-                    if (ViewState["from"].ToString().Equals("back"))
+                    if (ViewState["from"].ToString().Equals("back") || ViewState["from"].ToString().Equals("payment_special"))
                     {
                         lblitem_code.Text = "<a href=\"\" onclick=\"" +
                                             "window.parent.document.getElementById('" + ViewState["ctrl1"].ToString() + "').value='" + lblitem_code.Text + "';\n " +

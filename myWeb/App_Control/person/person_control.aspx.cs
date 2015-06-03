@@ -457,14 +457,14 @@ namespace myWeb.App_Control.person
 
             //if (strBusget_type == "B")
             //{
-            //    Label54.Text = "แผนงบ :";
+            //    Label54.Text = "แผนงาน :";
             //    Label55.Text = "ผลผลิต :";
             //    Label53.Text = "กิจกรรม :";
-            //    Label56.Text = "แผนงาน :";
+            //    Label56.Text = "ยุทธศาสตร์การจัดสรรงบประมาณ :";
             //}
             //else
             //{
-            //    Label54.Text = "แผนงาน :";
+            //    Label54.Text = "ยุทธศาสตร์การจัดสรรงบประมาณ :";
             //    Label55.Text = "งานหลัก :";
             //    Label53.Text = "งานรอง :";
             //    Label56.Text = "งานย่อย :";
@@ -1675,7 +1675,7 @@ namespace myWeb.App_Control.person
                 ImageButton imgAdd = (ImageButton)e.Row.FindControl("imgAdd1");
                 imgAdd.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgGridAdd"].Rows[0]["img"].ToString();
                 imgAdd.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgGridAdd"].Rows[0]["title"].ToString());
-                imgAdd.Attributes.Add("onclick", "OpenPopUp('800px','300px','91%','เพิ่มข้อมูลสมาชิก(ฌาปนกิจ) บุคลากร','person_member_control.aspx?mode=add&person_code=" + txtperson_code.Text +
+                imgAdd.Attributes.Add("onclick", "OpenPopUp('800px','300px','91%','เพิ่มข้อมูลสมาชิก(เครดิตยูเนี่ยน) บุคลากร','person_member_control.aspx?mode=add&person_code=" + txtperson_code.Text +
                                                               "&person_name=" + txtperson_thai_name.Text + "  " + txtperson_thai_surname.Text +
                                                               "&year=" + txtbudget_plan_year.Text + "','2');return false;");
 
@@ -1731,7 +1731,7 @@ namespace myWeb.App_Control.person
 
                 ImageButton imgEdit = (ImageButton)e.Row.FindControl("imgEdit1");
                 //Label lblCanEdit = (Label)e.Row.FindControl("lblCanEdit2");
-                imgEdit.Attributes.Add("onclick", "OpenPopUp('800px','300px','91%','แก้ไขข้อมูลสมาชิก(ฌาปนกิจ) บุคลากร','person_member_control.aspx?mode=edit&person_code=" +
+                imgEdit.Attributes.Add("onclick", "OpenPopUp('800px','300px','91%','แก้ไขข้อมูลสมาชิก(เครดิตยูเนี่ยน) บุคลากร','person_member_control.aspx?mode=edit&person_code=" +
                                                               txtperson_code.Text + "&person_name=" + txtperson_thai_name.Text + "  " + txtperson_thai_surname.Text + "&member_code=" +
                                                               lblmember_code.Text + "&year=" + txtbudget_plan_year.Text + "','2');return false;");
 
@@ -1741,7 +1741,7 @@ namespace myWeb.App_Control.person
                 ImageButton imgDelete = (ImageButton)e.Row.FindControl("imgDelete1");
                 imgDelete.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["img"].ToString();
                 imgDelete.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["title"].ToString());
-                imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบข้อมูลสมาชิก(ฌาปนกิจ) บุคลากร " + lblmember_code.Text + " : " + lblmember_name.Text + " ?\");");
+                imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบข้อมูลสมาชิก(เครดิตยูเนี่ยน) บุคลากร " + lblmember_code.Text + " : " + lblmember_name.Text + " ?\");");
                 #endregion
 
             }

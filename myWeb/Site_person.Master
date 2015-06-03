@@ -67,18 +67,22 @@
                                     Text="พิมพ์สลิปเงินเดือน">
                                     <Image Url="~/images/page/printer.png" />
                                 </dxm:MenuItem>
-                                <dxm:MenuItem Name="menuPaymentBack" NavigateUrl="~/Person_Manage/global_payment_back_report.aspx"
-                                    Text="รายงานเอกสารตกเบิก" Visible="false">
+                                <dxm:MenuItem Name="menuSlipSpecial" NavigateUrl="~/Person_Manage/global_payment_special_slip.aspx"
+                                    Text="พิมพ์สลิปเงินเดือนภาคพิเศษ">
                                     <Image Url="~/images/page/printer.png" />
                                 </dxm:MenuItem>
-                                <dxm:MenuItem Name="menuCumulative" NavigateUrl="~/Person_Manage/global_payment_cumulative.aspx"
+                                <dxm:MenuItem Name="menuPaymentBack" NavigateUrl="~/Person_Manage/global_payment_back_report.aspx" Visible="false"
+                                    Text="รายงานเอกสารตกเบิก" >
+                                    <Image Url="~/images/page/printer.png" />
+                                </dxm:MenuItem>
+                                <dxm:MenuItem Name="menuCumulative" NavigateUrl="~/Person_Manage/global_payment_cumulative.aspx" Visible="false"
                                     Text="เงินสะสมพนักงาน">
                                     <Image Url="~/images/page/money_dollar.png" />
                                 </dxm:MenuItem>
-                                <dxm:MenuItem Name="menuCertificate" Text="ขอหนังสือรับรองเงินเดือน" NavigateUrl="~/Person_Manage/global_payment_certificate.aspx">
+                                <dxm:MenuItem Name="menuCertificate" Text="ขอหนังสือรับรองเงินเดือน" Visible="false" NavigateUrl="~/Person_Manage/global_payment_certificate.aspx">
                                     <Image Url="~/images/page/page_white_paintbrush.png" />
                                 </dxm:MenuItem>
-                                <dxm:MenuItem Name="menuLoan" Text="หนังสือยินยอมหักหนี้" NavigateUrl="~/Person_Manage/global_payment_loan.aspx">
+                                <dxm:MenuItem Name="menuLoan" Text="หนังสือยินยอมหักหนี้" Visible="false" NavigateUrl="~/Person_Manage/global_payment_loan.aspx">
                                     <Image Url="~/images/page/page_white_paintbrush.png" />
                                 </dxm:MenuItem>
                                 <dxm:MenuItem Name="menuSlip" NavigateUrl="~/Person_Manage/global_budget_plan_report.aspx"

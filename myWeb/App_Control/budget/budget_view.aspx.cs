@@ -27,7 +27,7 @@ namespace myWeb.App_Control.budget
             lblError.Text = "";
             if (!IsPostBack)
             {
-                Session["menupopup_name"] = "แสดงข้อมูลยุทธศาสตร์การจัดสรรงบประมาณ";
+                Session["menupopup_name"] = "แสดงข้อมูลแผนงาน";
 
                 #region set QueryString
                 if (Request.QueryString["budget_code"] != null)

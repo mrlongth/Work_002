@@ -63,7 +63,7 @@ namespace myWeb.App_Control.person
                 #endregion
                 #region Set Image
 
-                imgList_item.Attributes.Add("onclick", "OpenPopUp('800px','400px','93%','ค้นหาข้อมูลสมาชิก/ฌาปนกิจ' ,'../lov/member_lov.aspx?" +
+                imgList_item.Attributes.Add("onclick", "OpenPopUp('800px','400px','93%','ค้นหาข้อมูลสมาชิก/เครดิตยูเนี่ยน' ,'../lov/member_lov.aspx?" +
                                                 "member_code='+document.forms[0]." + strPrefixCtr + "txtmember_code.value+" +
                                                 "'&member_name='+document.forms[0]." + strPrefixCtr + "txtmember_name.value+" +
                                                 "'&ctrl1=" + txtmember_code.ClientID + "&ctrl2=" + txtmember_name.ClientID + "&show=3', '3');return false;");

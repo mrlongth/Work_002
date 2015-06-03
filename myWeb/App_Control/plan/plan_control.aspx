@@ -30,7 +30,7 @@
     <table border="0" cellpadding="1" cellspacing="1" style="width: 100%">
         <tr align="left">
             <td align="right" nowrap valign="top">
-                <asp:Label runat="server" ID="lblFName">รหัสแผนงาน :</asp:Label>
+                <asp:Label runat="server" ID="lblFName">รหัสยุทธศาสตร์การจัดสรรงบประมาณ :</asp:Label>
             </td>
             <td align="left" colspan="2" nowrap valign="top">
                 <asp:TextBox ID="txtplan_code" runat="server" CssClass="textbox" MaxLength="5"
@@ -46,7 +46,7 @@
         <tr align="left">
             <td align="right" nowrap valign="top">
                                         <asp:Label runat="server" CssClass="label_error" ID="Label71">*</asp:Label>
-                <asp:Label ID="Label11" runat="server">แผนงาน :</asp:Label>
+                <asp:Label ID="Label11" runat="server">ยุทธศาสตร์การจัดสรรงบประมาณ :</asp:Label>
             </td>
             <td align="left" colspan="2" nowrap valign="top">
                 <font face="Tahoma"><asp:TextBox ID="txtplan_name" runat="server" CssClass="textbox"
@@ -90,7 +90,7 @@
                 &nbsp;</td>
             <td align="left" nowrap valign="top" colspan="2">
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtplan_name"
-                    Display="None" ErrorMessage="กรุณาป้อนแผนงาน" ValidationGroup="A" 
+                    Display="None" ErrorMessage="กรุณาป้อนยุทธศาสตร์การจัดสรรงบประมาณ" ValidationGroup="A" 
                     SetFocusOnError="True"></asp:RequiredFieldValidator>
                 <ajaxtoolkit:ValidatorCalloutExtender ID="RequiredFieldValidator2_ValidatorCalloutExtender"
                     runat="server" Enabled="True" TargetControlID="RequiredFieldValidator2" HighlightCssClass="validatorCalloutHighlight">

@@ -388,10 +388,10 @@ namespace myWeb.App_Control.payment
 
             if (!strPerson_name.Equals(""))
             {
+
                 strCriteria = strCriteria + "  And  (person_thai_name like '%" + strPerson_name + "%'  " +
-                                                              "  OR person_thai_surname like '%" + strPerson_name + "%'  " +
-                                                              "  OR person_eng_name like '%" + strPerson_name + "%'  " +
-                                                              "  OR person_eng_surname like '%" + strPerson_name + "%')";
+                                           "  OR person_thai_surname like '%" + strPerson_name + "%'  " +
+                                           "  OR ((person_thai_name + ' ' +  person_thai_surname) like '%" + strPerson_name + "%'))  ";
             }
 
             if (!strPayment_doc.Equals(""))
@@ -504,9 +504,9 @@ namespace myWeb.App_Control.payment
             if (!strPerson_name.Equals(""))
             {
                 strCriteria = strCriteria + "  And  (person_thai_name like '%" + strPerson_name + "%'  " +
-                                                              "  OR person_thai_surname like '%" + strPerson_name + "%'  " +
-                                                              "  OR person_eng_name like '%" + strPerson_name + "%'  " +
-                                                              "  OR person_eng_surname like '%" + strPerson_name + "%')";
+                            "  OR person_thai_surname like '%" + strPerson_name + "%'  " +
+                            "  OR ((person_thai_name + ' ' +  person_thai_surname) like '%" + strPerson_name + "%'))  ";
+
             }
 
             if (!strPayment_doc.Equals(""))

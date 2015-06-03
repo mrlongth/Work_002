@@ -91,7 +91,7 @@
         </tr>
         <tr align="left">
             <td align="right" nowrap valign="middle">
-                <asp:Label runat="server" ID="lblFName4">รหัสยุทธศาสตร์การจัดสรรงบประมาณ :</asp:Label>
+                <asp:Label runat="server" ID="lblFName4">รหัสแผนงาน :</asp:Label>
             </td>
             <td align="left" nowrap valign="middle">
                 <font face="Tahoma"><asp:TextBox ID="txtbudget_code" runat="server" CssClass="textboxdis"
@@ -99,7 +99,7 @@
                 </font>
             </td>
             <td align="left" nowrap valign="middle" style="text-align: right">
-                <asp:Label ID="Label18" runat="server">ยุทธศาสตร์การจัดสรรงบประมาณ :</asp:Label>
+                <asp:Label ID="Label18" runat="server">แผนงาน :</asp:Label>
             </td>
             <td align="left" nowrap valign="middle">
                 <font face="Tahoma"><asp:TextBox ID="txtbudget_name" runat="server" CssClass="textboxdis"
@@ -143,14 +143,14 @@
         </tr>
         <tr align="left">
             <td align="right" nowrap valign="middle">
-                <asp:Label runat="server" ID="lblPage6">รหัสแผนงาน :</asp:Label>
+                <asp:Label runat="server" ID="lblPage6">รหัสยุทธศาสตร์การจัดสรรงบประมาณ :</asp:Label>
             </td>
             <td align="left" nowrap valign="middle">
                 <asp:TextBox ID="txtplan_code" runat="server" CssClass="textboxdis" MaxLength="100"
                     ReadOnly="True"   Width="100px"></asp:TextBox>
             </td>
             <td align="left" nowrap valign="middle" style="text-align: right">
-                <asp:Label ID="Label20" runat="server">แผนงาน :</asp:Label>
+                <asp:Label ID="Label20" runat="server">ยุทธศาสตร์การจัดสรรงบประมาณ :</asp:Label>
             </td>
             <td align="left" nowrap valign="middle">
                 <font face="Tahoma"><asp:TextBox ID="txtplan_name" runat="server" CssClass="textboxdis"

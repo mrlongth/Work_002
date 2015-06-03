@@ -229,7 +229,7 @@ namespace myWeb.App_Control.cheque
             }
 
             strCriteria += "  And (cheque_type = '" + ViewState["cheque_type"].ToString() + "') ";
-            strCriteria += " And c_created_by = '" + UserLoginName + "' ";
+            //strCriteria += " And c_created_by = '" + UserLoginName + "' ";
 
             try
             {
