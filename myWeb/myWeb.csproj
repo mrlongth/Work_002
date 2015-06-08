@@ -109,6 +109,9 @@
     <Content Include="App_Control\lov\person_special_lov.aspx" />
     <Content Include="App_Control\menu\menu_list.aspx" />
     <Content Include="App_Control\menu\menu_control.aspx" />
+    <Content Include="App_Control\payment_bonus\payment_bonus_list.aspx" />
+    <Content Include="App_Control\payment_bonus\payment_bonus_control.aspx" />
+    <Content Include="App_Control\payment_bonus\payment_bonus_item_control.aspx" />
     <Content Include="App_Control\payment_medical\payment_medical_list.aspx" />
     <Content Include="App_Control\payment_medical\payment_medical_control.aspx" />
     <Content Include="App_Control\payment_medical\payment_medical_item_control.aspx" />
@@ -601,6 +604,27 @@
     </Compile>
     <Compile Include="App_Control\payment_adj\payment_export.aspx.designer.cs">
       <DependentUpon>payment_export.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Control\payment_bonus\payment_bonus_list.aspx.cs">
+      <DependentUpon>payment_bonus_list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Control\payment_bonus\payment_bonus_list.aspx.designer.cs">
+      <DependentUpon>payment_bonus_list.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Control\payment_bonus\payment_bonus_control.aspx.cs">
+      <DependentUpon>payment_bonus_control.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Control\payment_bonus\payment_bonus_control.aspx.designer.cs">
+      <DependentUpon>payment_bonus_control.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Control\payment_bonus\payment_bonus_item_control.aspx.cs">
+      <DependentUpon>payment_bonus_item_control.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Control\payment_bonus\payment_bonus_item_control.aspx.designer.cs">
+      <DependentUpon>payment_bonus_item_control.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Control\payment_medical\payment_medical_list.aspx.cs">
       <DependentUpon>payment_medical_list.aspx</DependentUpon>
@@ -2606,18 +2630,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>64579</DevelopmentServerPort>
-          <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:51707/</IISUrl>
-          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
-          <IISAppRootUrl>http://localhost:51707/</IISAppRootUrl>
-          <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
-          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>

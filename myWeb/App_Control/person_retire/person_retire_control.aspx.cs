@@ -79,6 +79,7 @@ namespace myWeb.App_Control.person_retire
                 if (ViewState["mode"].ToString().ToLower().Equals("add"))
                 {
                     InitcboTitle();
+                    InitcboBank();
                     ViewState["page"] = Request.QueryString["page"];
                     txtpr_person_code.ReadOnly = true;
                     txtpr_person_code.CssClass = "textboxdis";
@@ -132,6 +133,36 @@ namespace myWeb.App_Control.person_retire
                 }
             }
         }
+
+        private void InitcboBank()
+        {
+            cBank oBank = new cBank();
+            string strMessage = string.Empty, strCriteria = string.Empty;
+            string strbank_code = string.Empty;
+            string strYear = cboBank.SelectedValue;
+            strbank_code = cboBank.SelectedValue;
+            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
+            strCriteria = " and c_active='Y' ";
+            if (oBank.SP_SEL_BANK(strCriteria, ref ds, ref strMessage))
+            {
+                dt = ds.Tables[0];
+                cboBank.Items.Clear();
+                cboBank.Items.Add(new ListItem("---- เลือกข้อมูลทั้งหมด ----", ""));
+                int i;
+                for (i = 0; i <= dt.Rows.Count - 1; i++)
+                {
+                    cboBank.Items.Add(new ListItem(dt.Rows[i]["bank_name"].ToString(), dt.Rows[i]["bank_code"].ToString()));
+                }
+                if (cboBank.Items.FindByValue(strbank_code) != null)
+                {
+                    cboBank.SelectedIndex = -1;
+                    cboBank.Items.FindByValue(strbank_code).Selected = true;
+                }
+            }
+        }
+
+
 
         #endregion
 
@@ -228,9 +259,9 @@ namespace myWeb.App_Control.person_retire
                     #region edit
                     if (!blnDup)
                     {
-                        if (oPerson_retire.SP_PERSON_RETIRE_UPD(strpr_person_code, strtitle_code, strperson_thai_name, strperson_thai_surname, 
-                            strperson_id,strC_active, strUpdatedBy, strPerson_password , strPerson_email, ref strMessage))
-                        {                      
+                        if (oPerson_retire.SP_PERSON_RETIRE_UPD(strpr_person_code, strtitle_code, strperson_thai_name, strperson_thai_surname,
+                            strperson_id, txtperson_acc.Text, cboBank.SelectedValue, strC_active, strUpdatedBy, strPerson_password, strPerson_email, ref strMessage))
+                        {
                             blnResult = true;
                         }
                         else
@@ -268,10 +299,10 @@ namespace myWeb.App_Control.person_retire
                     #region insert
                     if (!blnDup)
                     {
-                        
-                        
-                      if (oPerson_retire.SP_PERSON_RETIRE_INS(strpr_person_code, strtitle_code, strperson_thai_name, strperson_thai_surname,
-                            strperson_id, strC_active, strUpdatedBy, strPerson_password, strPerson_email, ref strMessage))                                                                     
+
+
+                        if (oPerson_retire.SP_PERSON_RETIRE_INS(strpr_person_code, strtitle_code, strperson_thai_name, strperson_thai_surname,
+                              strperson_id, txtperson_acc.Text, cboBank.SelectedValue, strC_active, strUpdatedBy, strPerson_password, strPerson_email, ref strMessage))
                         {
                             string strGetcode = " and person_thai_name = '" + strperson_thai_name.Trim() + "' and person_thai_surname = '" + strperson_thai_surname + "' ";
                             if (!oPerson_retire.SP_PERSON_RETIRE_SEL(strGetcode, ref ds, ref strMessage))
@@ -345,6 +376,8 @@ namespace myWeb.App_Control.person_retire
                 strperson_thai_surname = string.Empty,
                 strperson_id = string.Empty,
                 strC_active = string.Empty,
+                strperson_acc = string.Empty,
+                strperson_bank_code = string.Empty,
                 strCreatedBy = string.Empty,
                 strUpdatedBy = string.Empty,
                 strCreatedDate = string.Empty,
@@ -371,6 +404,9 @@ namespace myWeb.App_Control.person_retire
 
                         strperson_id = ds.Tables[0].Rows[0]["person_id"].ToString();
 
+                        strperson_acc = ds.Tables[0].Rows[0]["person_acc"].ToString();
+                        strperson_bank_code = ds.Tables[0].Rows[0]["person_bank_code"].ToString();
+
                         strC_active = ds.Tables[0].Rows[0]["c_active"].ToString();
                         strCreatedBy = ds.Tables[0].Rows[0]["c_created_by"].ToString();
                         strUpdatedBy = ds.Tables[0].Rows[0]["c_updated_by"].ToString();
@@ -394,6 +430,14 @@ namespace myWeb.App_Control.person_retire
                         txtperson_thai_surname.Text = strperson_thai_surname;
 
                         txtperson_id.Text = strperson_id;
+                        txtperson_acc.Text = strperson_acc;
+
+                        this.InitcboBank();
+                        if (cboBank.Items.FindByValue(strperson_bank_code) != null)
+                        {
+                            cboBank.SelectedIndex = -1;
+                            cboBank.Items.FindByValue(strperson_bank_code).Selected = true;
+                        }
 
                         txtUpdatedBy.Text = strUpdatedBy;
                         txtUpdatedDate.Text = strUpdatedDate;

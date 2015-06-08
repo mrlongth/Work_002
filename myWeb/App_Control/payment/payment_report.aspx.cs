@@ -730,10 +730,6 @@ namespace myWeb.App_Control.payment
                         {
                             strCriteria = strCriteria + "  And (view_payment.item_code= '" + stritem_code + "'  OR  substring(view_payment.item_code,5,7)= '08-084' )";
                         }
-                        //else if (stritem_code.Contains("10-001"))
-                        //{
-                        //    strCriteria = strCriteria + "  And (view_payment.item_code= '" + stritem_code + "'  OR  substring(view_payment.item_code,5,7)= '09-001' )";
-                        //}                            
                         else
                         {
                             strCriteria = strCriteria + "  And  view_payment.item_code= '" + stritem_code + "' ";

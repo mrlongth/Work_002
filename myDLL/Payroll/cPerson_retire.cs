@@ -124,6 +124,8 @@ namespace myDLL
            , string pperson_thai_name
            , string pperson_thai_surname
            , string pperson_id
+           , string pperson_acc
+           , string pperson_bank_code
            , string pc_active
            , string pc_created_by
            , string pperson_password
@@ -147,6 +149,8 @@ namespace myDLL
                 oCommand.Parameters.Add("person_thai_name", SqlDbType.VarChar).Value = pperson_thai_name;
                 oCommand.Parameters.Add("person_thai_surname", SqlDbType.VarChar).Value = pperson_thai_surname;
                 oCommand.Parameters.Add("person_id", SqlDbType.VarChar).Value = pperson_id;
+                oCommand.Parameters.Add("person_acc", SqlDbType.VarChar).Value = pperson_acc;
+                oCommand.Parameters.Add("person_bank_code", SqlDbType.VarChar).Value = pperson_bank_code;
                 oCommand.Parameters.Add("c_active", SqlDbType.VarChar).Value = pc_active;
                 oCommand.Parameters.Add("c_created_by", SqlDbType.VarChar).Value = pc_created_by;
                 oCommand.Parameters.Add("person_password", SqlDbType.VarChar).Value  = Cryptorengine.Encrypt(pperson_password, true); 
@@ -179,6 +183,8 @@ namespace myDLL
            , string pperson_thai_name
            , string pperson_thai_surname
            , string pperson_id
+            , string pperson_acc
+           , string pperson_bank_code          
            , string pc_active
            , string pc_updated_by
            , string pperson_password
@@ -202,6 +208,8 @@ namespace myDLL
                 oCommand.Parameters.Add("person_thai_name", SqlDbType.VarChar).Value = pperson_thai_name;
                 oCommand.Parameters.Add("person_thai_surname", SqlDbType.VarChar).Value = pperson_thai_surname;
                 oCommand.Parameters.Add("person_id", SqlDbType.VarChar).Value = pperson_id;
+                oCommand.Parameters.Add("person_acc", SqlDbType.VarChar).Value = pperson_acc;
+                oCommand.Parameters.Add("person_bank_code", SqlDbType.VarChar).Value = pperson_bank_code;
                 oCommand.Parameters.Add("c_active", SqlDbType.VarChar).Value = pc_active;
                 oCommand.Parameters.Add("c_updated_by", SqlDbType.VarChar).Value = pc_updated_by;
                 oCommand.Parameters.Add("person_password", SqlDbType.VarChar).Value = Cryptorengine.Encrypt(pperson_password, true); 

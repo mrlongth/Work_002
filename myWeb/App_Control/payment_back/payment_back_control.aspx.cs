@@ -775,9 +775,7 @@ namespace myWeb.App_Control.payment_back
                 {
                     #region set Image Edit & Delete
 
-
-                    //if (lblitem_code != null && lblitem_code.Text != "" && (lblitem_code.Text.Substring(4) == "09-039" || lblitem_code.Text.Substring(4) == "03-002"))
-                    if (lblitem_code != null && lblitem_code.Text != "" && (lblitem_code.Text.Substring(4) == base.GetConfigItem("SOSCode2")))
+                   if (lblitem_code != null && lblitem_code.Text != "" && (lblitem_code.Text.Substring(4) == base.GetConfigItem("SOSCode2")))
                     {
                         imgEdit.Attributes.Add("onclick", "return false;");
                         imgEdit.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["imgdisable"].ToString();

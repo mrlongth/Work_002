@@ -87,8 +87,7 @@ namespace myWeb.App_Control.item
 
                 #endregion
                 InitcboBudgetType();
-
-
+                InitcboItemClass();
             }
         }
 
@@ -235,7 +234,6 @@ namespace myWeb.App_Control.item
             }
         }
 
-
         private void InitcboBudgetType()
         {
             cCommon oCommon = new cCommon();
@@ -261,7 +259,30 @@ namespace myWeb.App_Control.item
             }
         }
 
-
+        private void InitcboItemClass()
+        {
+            cCommon oCommon = new cCommon();
+            string strMessage = string.Empty, strCriteria = string.Empty;
+            string strCode = cboItem_class.SelectedValue;
+            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
+            strCriteria = " Select * from  general where g_type = 'item_class'  Order by g_sort ";
+            if (oCommon.SEL_SQL(strCriteria, ref ds, ref strMessage))
+            {
+                dt = ds.Tables[0];
+                cboItem_class.Items.Clear();
+                int i;
+                for (i = 0; i <= dt.Rows.Count - 1; i++)
+                {
+                    cboItem_class.Items.Add(new ListItem(dt.Rows[i]["g_name"].ToString(), dt.Rows[i]["g_code"].ToString()));
+                }
+                if (cboItem_class.Items.FindByValue(strCode) != null)
+                {
+                    cboItem_class.SelectedIndex = -1;
+                    cboItem_class.Items.FindByValue(strCode).Selected = true;
+                }
+            }
+        }
 
         private void setData()
         {
@@ -288,7 +309,8 @@ namespace myWeb.App_Control.item
                 strcheque_type = string.Empty,
                 stritem_acc_code = string.Empty,
                 stritem_project_code1 = string.Empty,
-                stritem_project_code2 = string.Empty;
+                stritem_project_code2 = string.Empty,
+                stritem_class = string.Empty;
             try
             {
                 strCriteria = " and item_code = '" + ViewState["item_code"].ToString() + "' ";
@@ -323,6 +345,7 @@ namespace myWeb.App_Control.item
                         stritem_project_code1 = ds.Tables[0].Rows[0]["item_project_code1"].ToString();
                         stritem_project_code2 = ds.Tables[0].Rows[0]["item_project_code2"].ToString();
 
+                        stritem_class = ds.Tables[0].Rows[0]["item_class"].ToString();
                         #endregion
 
                         #region set Control
@@ -375,6 +398,14 @@ namespace myWeb.App_Control.item
                         }
 
                         txtdirect_pay_code.Text = ds.Tables[0].Rows[0]["direct_pay_code"].ToString();
+
+                        this.InitcboItemClass();
+                        if (cboItem_class.Items.FindByValue(stritem_class) != null)
+                        {
+                            cboItem_class.SelectedIndex = -1;
+                            cboItem_class.Items.FindByValue(stritem_class).Selected = true;
+                        }
+
 
                         if (strC_active.Equals("Y"))
                         {
@@ -488,6 +519,7 @@ namespace myWeb.App_Control.item
                 stritem_acc_code = string.Empty,
                 stritem_project_code1 = string.Empty,
                 stritem_project_code2 = string.Empty,
+                stritem_class = string.Empty,
                 strdirect_pay_code = string.Empty;
             string strScript = string.Empty;
             cItem oItem = new cItem();
@@ -508,6 +540,7 @@ namespace myWeb.App_Control.item
                 stritem_project_code1 = txtitem_project_code1.Text;
                 stritem_project_code2 = txtitem_project_code2.Text;
                 strdirect_pay_code = txtdirect_pay_code.Text;
+                stritem_class = cboItem_class.SelectedValue;
                 if (chkStatus.Checked == true)
                 {
                     strActive = "Y";
@@ -524,7 +557,7 @@ namespace myWeb.App_Control.item
                 {
                     if (strlot_code.Equals(""))
                     {
-                        strScript = "alertjava(\"ประเภทรายการเป็น Debit ต้องระบะรหัสงบประมาณโปรดตรวจสอบ\");\n";
+                        strScript = "alertjava(\"ประเภทรายการเป็น Debit ต้องระบุรหัสงบประมาณโปรดตรวจสอบ\");\n";
                         blnDebit = true;
                     }
                 }
@@ -565,7 +598,7 @@ namespace myWeb.App_Control.item
                                 if (oItem.SP_ITEM_UPD(stritem_code, stritem_year, stritem_name, stritem_type, stritem_group_code,
                                                       strlot_code, strperson_group_code, strActive, strUpdatedBy, strcheque_code,
                                                       strcheque_type, stritem_acc_code, stritem_project_code1,
-                                                      stritem_project_code2, cboBudget_type.SelectedValue, strdirect_pay_code, ref strMessage))
+                                                      stritem_project_code2, cboBudget_type.SelectedValue, strdirect_pay_code,stritem_class, ref strMessage))
                                 {
                                     blnResult = true;
                                 }
@@ -607,7 +640,7 @@ namespace myWeb.App_Control.item
                                                       strlot_code, strperson_group_code, strActive, strCreatedBy,
                                                       strcheque_code, strcheque_type, stritem_acc_code,
                                                       stritem_project_code1, stritem_project_code2,
-                                                      cboBudget_type.SelectedValue, strdirect_pay_code, ref strMessage))
+                                                      cboBudget_type.SelectedValue, strdirect_pay_code, stritem_class , ref strMessage))
                                 {
                                     string strGetcode = " and item_name='" + stritem_name + "' " +
                                                                           " and item_year='" + stritem_year + "' " +

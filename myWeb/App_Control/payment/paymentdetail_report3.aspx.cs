@@ -826,7 +826,7 @@ namespace myWeb.App_Control.payment
             }
             else if (RadioButtonList1.SelectedValue.Equals("20"))
             {
-                strCriteria += "  And  c_created_by = '" + base.UserLoginName + "' ";
+                //strCriteria += "  And  c_created_by = '" + base.UserLoginName + "' ";
                 strCriteria += "  And  cheque_print= 'Y' ";
                 strCriteria += "  And  cheque_money > 0 ";
 
@@ -836,7 +836,7 @@ namespace myWeb.App_Control.payment
 
             else if (RadioButtonList1.SelectedValue.Equals("A6"))
             {
-                strCriteria += "  And  c_created_by = '" + base.UserLoginName + "' ";
+                //strCriteria += "  And  c_created_by = '" + base.UserLoginName + "' ";
                 strCriteria += "  And  cheque_print= 'Y' ";
                 strCriteria += "  And  cheque_money > 0 ";
                 strReport_code = "Rep_cheque_recv";
@@ -845,7 +845,7 @@ namespace myWeb.App_Control.payment
 
             else if (RadioButtonList1.SelectedValue.Equals("A7"))
             {
-                strCriteria += "  And  c_created_by = '" + base.UserLoginName + "' ";
+                //strCriteria += "  And  c_created_by = '" + base.UserLoginName + "' ";
                 strCriteria += "  And  cheque_print= 'Y' ";
                 strCriteria += "  And  cheque_money > 0 ";
                 strReport_code = "Rep_cheque_recv2";
@@ -855,7 +855,7 @@ namespace myWeb.App_Control.payment
 
             else if (RadioButtonList1.SelectedValue.Equals("A2"))
             {
-                strCriteria += "  And  c_created_by = '" + base.UserLoginName + "' ";
+                //strCriteria += "  And  c_created_by = '" + base.UserLoginName + "' ";
                 strReport_code = "Rep_item_acc";
                 if (cboBudget_type.SelectedValue == "R")
                 {

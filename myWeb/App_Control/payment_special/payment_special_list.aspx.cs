@@ -319,10 +319,10 @@ namespace myWeb.App_Control.payment_special
                     #region set Control
 
                     InitcboYear();
-                    if (cboPay_Year.Items.FindByValue(strYear) != null)
+                    if (cboYear.Items.FindByValue(strYear) != null)
                     {
-                        cboPay_Year.SelectedIndex = -1;
-                        cboPay_Year.Items.FindByValue(strPay_Year).Selected = true;
+                        cboYear.SelectedIndex = -1;
+                        cboYear.Items.FindByValue(strYear).Selected = true;
                     }
 
 

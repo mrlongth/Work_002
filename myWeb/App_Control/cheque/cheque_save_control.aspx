@@ -33,20 +33,9 @@
                     ReadOnly="True"></asp:TextBox>
             </td>
             <td align="left" nowrap valign="middle" style="text-align: right">
-                &nbsp;
-            </td>
-            <td align="left" nowrap valign="middle">
-                &nbsp;
-            </td>
-            <td align="left" nowrap valign="middle" style="vertical-align: bottom; width: 1%;">
-                &nbsp;
-            </td>
-        </tr>
-        <tr align="left">
-            <td align="right" nowrap valign="middle" style="width: 12%">
                 <asp:Label runat="server" ID="Label80">วันที่บันทึก :</asp:Label>
             </td>
-            <td align="left" nowrap valign="middle" style="width: 10%">
+            <td align="left" nowrap valign="middle" colspan="2">
                 <asp:TextBox runat="server" ReadOnly="True" CssClass="textbox" Width="110px" ID="txtcheque_date"></asp:TextBox>
                 <ajaxtoolkit:CalendarExtender runat="server" PopupButtonID="imgperson_start" Enabled="True"
                     TargetControlID="txtcheque_date" ID="txtcheque_date_CalendarExtender">
@@ -54,36 +43,67 @@
                 <asp:ImageButton runat="server" AlternateText="Click to show calendar" ImageAlign="AbsMiddle"
                     ImageUrl="~/images/Calendar_scheduleHS.png" ID="imgperson_start"></asp:ImageButton>
             </td>
-            <td align="left" nowrap valign="middle" style="text-align: right">
-                <asp:Label runat="server" ID="Label14">ปีงบประมาณ :</asp:Label>
-            </td>
-            <td align="left" nowrap valign="middle">
-                <asp:DropDownList runat="server" CssClass="textboxdis" ID="cboYear">
-                </asp:DropDownList>
-            </td>
-            <td align="left" nowrap valign="middle" style="vertical-align: bottom; width: 1%;">
+            <td align="left" nowrap valign="middle" style="vertical-align: bottom; width: 1%;" colspan="2">
                 &nbsp;
             </td>
         </tr>
         <tr align="left">
+            <td align="right" nowrap valign="middle" style="width: 12%">
+                <asp:Label runat="server" ID="Label14">ปีงบประมาณ :</asp:Label>
+            </td>
+            <td align="left" nowrap valign="middle" style="width: 10%">
+                <asp:DropDownList runat="server" CssClass="textboxdis" ID="cboYear">
+                </asp:DropDownList>
+            </td>
+            <td align="left" nowrap valign="middle" style="text-align: right">
+                <asp:Label runat="server" CssClass="label_error" ID="Label84">*</asp:Label>
+                <asp:Label runat="server" ID="Label82">ประเภทเช็ค :</asp:Label>
+            </td>
+            <td align="left" nowrap valign="middle">
+                <asp:DropDownList runat="server" CssClass="textbox" ID="cboChequeType" AutoPostBack="True" OnSelectedIndexChanged="cboChequeType_SelectedIndexChanged">
+                </asp:DropDownList>
+                <font face="Tahoma">
+                    <asp:RequiredFieldValidator runat="server" ControlToValidate="cboChequeType"
+                        ErrorMessage="กรุณาเลือกประเภทเช็ค" Display="None" ValidationGroup="A" ID="RequiredFieldValidator2"
+                        SetFocusOnError="True"></asp:RequiredFieldValidator>
+                    <ajaxtoolkit:ValidatorCalloutExtender runat="server" Enabled="True" TargetControlID="RequiredFieldValidator2"
+                        ID="RequiredFieldValidator2_ValidatorCalloutExtender" HighlightCssClass="validatorCalloutHighlight">
+                    </ajaxtoolkit:ValidatorCalloutExtender>
+                </font>
+            </td>
             <td align="right" nowrap valign="middle">
-                <asp:Label runat="server" CssClass="label_hbk" ID="Label59">รอบเดือนที่จ่าย 
-                :</asp:Label>
+                <asp:Label runat="server" ID="Label83">ประเภทงบประมาณ :</asp:Label>
+            </td>
+            <td align="left" nowrap valign="middle" style="vertical-align: bottom; width: 1%;">
+                <asp:DropDownList runat="server" CssClass="textbox" ID="cboBudget_type">
+                </asp:DropDownList>
+            </td>
+            <td align="left" nowrap valign="middle" style="vertical-align: bottom; width: 1%;">
+                &nbsp;</td>
+        </tr>
+        <tr align="left">
+            <td align="right" nowrap valign="middle">
+                <asp:Label runat="server" ID="lblpay_year">รอบปีที่จ่าย :</asp:Label>
+            </td>
+            <td align="left" nowrap valign="middle">
+                <asp:DropDownList runat="server" CssClass="textboxdis" ID="cboPay_Year" Enabled="False">
+                </asp:DropDownList>
+                <asp:HiddenField ID="hddsp_round_id" runat="server" />
+            </td>
+            <td align="left" nowrap valign="middle" style="text-align: right">
+                <asp:Label runat="server" CssClass="label_hbk" ID="lblpay_month">รอบเดือนที่จ่าย  :</asp:Label>
+                &nbsp;
             </td>
             <td align="left" nowrap valign="middle">
                 <asp:DropDownList runat="server" CssClass="textboxdis" ID="cboPay_Month" Enabled="False">
                 </asp:DropDownList>
             </td>
-            <td align="left" nowrap valign="middle" style="text-align: right">
-                <asp:Label runat="server" ID="Label85">รอบปีที่จ่าย :</asp:Label>
-                &nbsp;
-            </td>
-            <td align="left" nowrap valign="middle">
-                <asp:DropDownList runat="server" CssClass="textboxdis" ID="cboPay_Year" Enabled="False">
+            <td align="left" nowrap valign="middle"  style="text-align: right">
+                <asp:Label runat="server" ID="lblpay_item">รอบการจ่ายที่ :</asp:Label>
+                </td>
+            <td align="left" nowrap valign="middle" style="vertical-align: bottom; width: 1%;" colspan="2">
+                <asp:DropDownList runat="server" CssClass="textboxdis" ID="cboPay_Item" Enabled="False">
                 </asp:DropDownList>
-            </td>
-            <td align="left" nowrap valign="middle" style="vertical-align: bottom; width: 1%;">
-                &nbsp;
             </td>
         </tr>
         <tr align="left">
@@ -107,12 +127,12 @@
             <td align="left" nowrap valign="middle" style="text-align: right">
                 <asp:Label runat="server" CssClass="label_hbk" ID="Label54">เลขที่บัญชี :</asp:Label>
             </td>
-            <td align="left" nowrap valign="middle">
+            <td align="left" nowrap valign="middle" colspan="2">
                 <asp:TextBox runat="server" CssClass="textboxdis" Width="200px" ID="txtcheque_bank_no"
                     ReadOnly="True"></asp:TextBox>
                 &nbsp;
             </td>
-            <td align="left" nowrap valign="middle" rowspan="3">
+            <td align="left" nowrap valign="middle" rowspan="3" colspan="2">
                 <asp:Button ID="BtnR1" runat="server" OnClick="BtnR1_Click" />
                 <asp:ImageButton runat="server" ValidationGroup="A" ImageUrl="~/images/controls/save.jpg"
                     ID="imgSaveOnly" OnClick="imgSaveOnly_Click"></asp:ImageButton>
@@ -132,7 +152,7 @@
             <td align="left" nowrap valign="middle" style="height: 17px; text-align: right">
                 <asp:Label runat="server" CssClass="label_hbk" ID="Label53">สาขา :</asp:Label>
             </td>
-            <td align="left" nowrap valign="middle" style="height: 17px">
+            <td align="left" nowrap valign="middle" style="height: 17px" colspan="2">
                 <asp:TextBox runat="server" CssClass="textboxdis" Width="200px" ID="txtbranch_name"
                     ReadOnly="True"></asp:TextBox>
             </td>
@@ -141,7 +161,7 @@
             <td align="right" nowrap valign="middle" style="height: 17px">
                 <asp:Label runat="server" ID="Label81">หมายเหตุ :</asp:Label>
             </td>
-            <td align="left" nowrap valign="middle" style="height: 17px" colspan="3">
+            <td align="left" nowrap valign="middle" style="height: 17px" colspan="4">
                 <font face="Tahoma">
                     <asp:TextBox ID="txtcomments" runat="server" CssClass="textbox" MaxLength="255" Width="300px"
                         CausesValidation="True" ValidationGroup="A"></asp:TextBox>

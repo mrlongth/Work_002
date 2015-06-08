@@ -7,7 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace myWeb.App_Control.payment_special {
+namespace myWeb.App_Control.payment_medical
+{
     
     
     public partial class payment_medical_control {

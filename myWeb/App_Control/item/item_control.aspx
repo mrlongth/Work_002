@@ -114,7 +114,7 @@
                 <asp:DropDownList runat="server" CssClass="textbox"   ID="cboPerson_group">
                 </asp:DropDownList>
             </td>
-            <td align="center" nowrap rowspan="7" style="width: 12%">
+            <td align="center" nowrap rowspan="8" style="width: 12%">
                                         <asp:ImageButton runat="server" ValidationGroup="A" ImageUrl="~/images/controls/save.jpg" ID="imgSaveOnly"></asp:ImageButton>
 
             </td>
@@ -187,6 +187,19 @@
                 <asp:TextBox runat="server" CssClass="textbox"   Width="150px" ID="txtdirect_pay_code"
                     MaxLength="50"></asp:TextBox>
             </td>
+        </tr>
+        <tr align="left">
+            <td align="right" nowrap valign="middle">
+                <asp:Label runat="server" ID="lblPage17">ชนิดรายการ :</asp:Label>
+            </td>
+            <td align="left" nowrap valign="middle">
+                <asp:DropDownList runat="server" CssClass="textbox"   ID="cboItem_class">
+                </asp:DropDownList>
+            </td>
+            <td align="right" nowrap valign="middle">
+                &nbsp;</td>
+            <td align="left" nowrap valign="middle">
+                &nbsp;</td>
         </tr>
         <tr align="left">
             <td align="right" nowrap valign="middle">

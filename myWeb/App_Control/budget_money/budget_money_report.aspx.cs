@@ -483,27 +483,31 @@ namespace myWeb.App_Control.budget_money
             else if (RadioButtonList1.SelectedValue.Equals("9"))
             {
                 strReport_code = "Rep_GSJ";
-                strCriteria = strCriteria + "  And  view_payment.item_code= 'IG5209-038' ";
+
+
+
+
+                strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7)= '" + this.GetConfigItem("GSJCode1") + "' ";
             }
             else if (RadioButtonList1.SelectedValue.Equals("10"))
             {
                 strReport_code = "Rep_GSJbydirector";
-                strCriteria = strCriteria + "  And  view_payment.item_code= 'IG5209-038' ";
+                strCriteria = strCriteria + "  And   substring(view_payment.item_code,5,7)= '" + this.GetConfigItem("GSJCode1") + "' ";
             }
             else if (RadioButtonList1.SelectedValue.Equals("11"))
             {
                 strReport_code = "Rep_GBK";
-                strCriteria = strCriteria + "  And  view_payment.item_code= 'IG5209-037' ";
+                strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7)= '" + this.GetConfigItem("GBKCode1") + "' "; 
             }
             else if (RadioButtonList1.SelectedValue.Equals("12"))
             {
                 strReport_code = "Rep_GBKbydirector";
-                strCriteria = strCriteria + "  And  view_payment.item_code= 'IG5209-037' ";
+                strCriteria = strCriteria + " And  substring(view_payment.item_code,5,7)= '" + this.GetConfigItem("GBKCode1") + "' "; 
             }
             else if (RadioButtonList1.SelectedValue.Equals("13"))
             {
                 strReport_code = "Rep_GBKadd";
-                strCriteria = strCriteria + "  And  item_code= 'IG5209-045' ";
+                strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7)= '" + this.GetConfigItem("GBKCodeAdd") + "' "; 
                 strCriteria = strCriteria.Replace("view_payment.", "");
             }
             else if (RadioButtonList1.SelectedValue.Equals("14"))

@@ -472,12 +472,12 @@ namespace myWeb.App_Control.payment
                 if (cboPayType.SelectedValue == "N")
                 {
                     strReport_code = "Rep_GSJ";
-                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7)= '09-038' ";
+                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7)= '" + this.GetConfigItem("GSJCode1") + "' ";
                 }
                 else
                 {
                     strReport_code = "Rep_GSJ_back";
-                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7)= '09-038A' ";
+                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7)= '" + this.GetConfigItem("GSJCode1") + "A' ";
                 }
             }
             else if (RadioButtonList1.SelectedValue.Equals("10"))
@@ -485,12 +485,12 @@ namespace myWeb.App_Control.payment
                 if (cboPayType.SelectedValue == "N")
                 {
                     strReport_code = "Rep_GSJbydirector";
-                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7)= '09-038' ";
+                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7)= '" + this.GetConfigItem("GSJCode1") + "' ";
                 }
                 else
                 {
                     strReport_code = "Rep_GSJ_backbydirector";
-                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7)= '09-038A' ";
+                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7)= '" + this.GetConfigItem("GSJCode1") + "A' ";
                 }
             }
             else if (RadioButtonList1.SelectedValue.Equals("11"))
@@ -499,12 +499,12 @@ namespace myWeb.App_Control.payment
                 if (cboPayType.SelectedValue == "N")
                 {
                     strReport_code = "Rep_GBK";
-                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7)= '09-037' ";
+                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7)= '" + this.GetConfigItem("GBKCode1") + "' ";
                 }
                 else
                 {
                     strReport_code = "Rep_GBK_back";
-                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7)= '09-037A' ";
+                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7)= '" + this.GetConfigItem("GBKCode1") + "A' ";
                 }
             }
             else if (RadioButtonList1.SelectedValue.Equals("12"))
@@ -512,12 +512,12 @@ namespace myWeb.App_Control.payment
                 if (cboPayType.SelectedValue == "N")
                 {
                     strReport_code = "Rep_GBKbydirector";
-                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7)= '09-037' ";
+                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7)= '" + this.GetConfigItem("GBKCode1") + "' ";
                 }
                 else
                 {
                     strReport_code = "Rep_GBK_backbydirector";
-                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7)= '09-037A' ";
+                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7)= '" + this.GetConfigItem("GBKCode1") + "A' ";
                 }
             }
             else if (RadioButtonList1.SelectedValue.Equals("13"))
@@ -525,12 +525,12 @@ namespace myWeb.App_Control.payment
                 if (cboPayType.SelectedValue == "N")
                 {
                     strReport_code = "Rep_GBKadd";
-                    strCriteria = strCriteria + "  And  substring(item_code,5,7)= '09-045' ";
+                    strCriteria = strCriteria + "  And  substring(item_code,5,7)= '" + this.GetConfigItem("GBKCodeAdd") + "' ";
                 }
                 else
                 {
                     strReport_code = "Rep_GBKadd_back";
-                    strCriteria = strCriteria + "  And  substring(item_code,5,7)= '09-045A' ";
+                    strCriteria = strCriteria + "  And  substring(item_code,5,7)= '" + this.GetConfigItem("GBKCodeAdd") + "A' ";
                 }
                 strCriteria = strCriteria.Replace("view_payment.", "");
             }
@@ -539,17 +539,18 @@ namespace myWeb.App_Control.payment
             else if (RadioButtonList1.SelectedValue.Equals("A01"))
             {
                 if (cboPayType.SelectedValue == "N")
-                    strReport_code = "Rep_paymentGBKbyyear&item_des=" + HttpUtility.HtmlEncode("  And  substring(pa.item_code,5,7)= '09-037' ");
+                 
+                    strReport_code = "Rep_paymentGBKbyyear&item_des=" + HttpUtility.HtmlEncode("  And  substring(pa.item_code,5,7)= '"+this.GetConfigItem("GBKCode1") +"' ");
                 else
-                    strReport_code = "Rep_paymentGBKbyyear&item_des=" + HttpUtility.HtmlEncode("  And  substring(pa.item_code,5,7)= '09-037A' ");
+                    strReport_code = "Rep_paymentGBKbyyear&item_des=" + HttpUtility.HtmlEncode("  And  substring(pa.item_code,5,7)= '" + this.GetConfigItem("GBKCode1") + "A' ");
                 strCriteria = strCriteria.Replace("view_payment.", "psa.");
             }
             else if (RadioButtonList1.SelectedValue.Equals("A02"))
             {
                 if (cboPayType.SelectedValue == "N")
-                    strReport_code = "Rep_paymentGSJbyyear&item_des=" + HttpUtility.HtmlEncode("  And  substring(pa.item_code,5,7)= '09-038' ");
+                    strReport_code = "Rep_paymentGSJbyyear&item_des=" + HttpUtility.HtmlEncode("  And  substring(pa.item_code,5,7)= '" + this.GetConfigItem("GSJCode1") + "' ");
                 else
-                    strReport_code = "Rep_paymentGSJbyyear&item_des=" + HttpUtility.HtmlEncode("  And  substring(pa.item_code,5,7)= '09-038A' ");
+                    strReport_code = "Rep_paymentGSJbyyear&item_des=" + HttpUtility.HtmlEncode("  And  substring(pa.item_code,5,7)= '" + this.GetConfigItem("GSJCode1") + "A' ");
                 strCriteria = strCriteria.Replace("view_payment.", "psa.");
             }
 

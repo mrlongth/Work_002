@@ -413,6 +413,8 @@ namespace myDLL
                 string pcheque_comment,
                 string pc_created_by, 
                 string pcheque_type,
+                string psp_round_id ,
+	            string pbudget_type ,
                 ref string strMessage)
         {
             bool blnResult = false;
@@ -435,6 +437,8 @@ namespace myDLL
                 oCommand.Parameters.Add("@pcheque_comment", SqlDbType.VarChar).Value = pcheque_comment;
                 oCommand.Parameters.Add("@c_created_by", SqlDbType.VarChar).Value = pc_created_by;
                 oCommand.Parameters.Add("@pcheque_type", SqlDbType.VarChar).Value = pcheque_type;
+                oCommand.Parameters.Add("@psp_round_id", SqlDbType.Int).Value = Helper.CInt(psp_round_id);
+                oCommand.Parameters.Add("@pbudget_type", SqlDbType.VarChar).Value = pbudget_type;
                 // - - - - - - - - - - - -             
                 oCommand.ExecuteNonQuery();
                 blnResult = true;
@@ -464,6 +468,8 @@ namespace myDLL
                 string pcheque_comment,
                 string pc_updated_by,
                 string pcheque_type,
+                string psp_round_id,
+                string pbudget_type,
                 ref string strMessage)
         {
             bool blnResult = false;
@@ -486,6 +492,9 @@ namespace myDLL
                 oCommand.Parameters.Add("@pcheque_comment", SqlDbType.VarChar).Value = pcheque_comment;
                 oCommand.Parameters.Add("@pc_updated_by", SqlDbType.VarChar).Value = pc_updated_by;
                 oCommand.Parameters.Add("@pcheque_type", SqlDbType.VarChar).Value = pcheque_type;
+                oCommand.Parameters.Add("@psp_round_id", SqlDbType.Int).Value = Helper.CInt(psp_round_id);
+                oCommand.Parameters.Add("@pbudget_type", SqlDbType.VarChar).Value = pbudget_type;
+
                 // - - - - - - - - - - - -             
                 oCommand.ExecuteNonQuery();
                 blnResult = true;

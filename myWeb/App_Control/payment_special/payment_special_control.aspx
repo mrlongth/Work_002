@@ -243,6 +243,7 @@
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="จำนวนเงิน" SortExpression="sp_payment_item_money">
                                                 <ItemTemplate>
+                                                     <asp:Label ID="lblitem_type" runat="server" Text="-" />
                                                     <cc1:AwNumeric ID="txtsp_payment_item_money" runat="server" Width="80px" LeadZero="Show"
                                                         DisplayMode="View" Text='<% # getNumber(DataBinder.Eval(Container, "DataItem.sp_payment_item_money"))%>'>
                                                     </cc1:AwNumeric>
@@ -271,20 +272,20 @@
                         <tr align="left">
                             <td style="text-align: right"></td>
                             <td style="text-align: right">
-                                <asp:Label runat="server" ID="Label76" Font-Bold="True" Visible="false">ยอดรับ :</asp:Label>
+                                <asp:Label runat="server" ID="Label76" Font-Bold="True" Visible="true">ยอดรับ :</asp:Label>
                             </td>
                             <td style="text-align: right; width: 1%;">
                                 <cc1:AwNumeric ID="txtpayment_recv" runat="server" Text="0.00" Font-Bold="True" CssClass="numberdis"
-                                    LeadZero="Show" MaxValue="99999999999" MinValue="-99999999999" ReadOnly="True" Visible="false">
+                                    LeadZero="Show" MaxValue="99999999999" MinValue="-99999999999" ReadOnly="True" Visible="true">
                                 </cc1:AwNumeric>
                             </td>
                             <td style="text-align: right; width: 10%;">
-                                <asp:Label runat="server" ID="Label77" Font-Bold="True" Visible="false">ยอดจ่าย :</asp:Label>
+                                <asp:Label runat="server" ID="Label77" Font-Bold="true" Visible="true">ยอดจ่าย :</asp:Label>
                             </td>
                             <td style="text-align: right; width: 1%;">
                                 <cc1:AwNumeric ID="txtpayment_pay" runat="server" Font-Bold="True" ForeColor="Red"
                                     CssClass="numberdis" LeadZero="Show" MaxValue="99999999999" MinValue="-99999999999"
-                                    ReadOnly="True" Visible="false">0.00</cc1:AwNumeric>
+                                    ReadOnly="True" Visible="true">0.00</cc1:AwNumeric>
                             </td>
                             <td style="text-align: right; width: 12%;">
                                 <asp:Label runat="server" ID="Label78" Font-Bold="True">รวมทั้งสิ้น :</asp:Label>

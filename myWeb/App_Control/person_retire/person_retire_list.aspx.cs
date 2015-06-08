@@ -36,7 +36,7 @@ namespace myWeb.App_Control.person_retire
                 imgFind.Attributes.Add("onMouseOver", "src='../../images/button/Search2.png'");
                 imgFind.Attributes.Add("onMouseOut", "src='../../images/button/Search.png'");
 
-                imgNew.Attributes.Add("onclick", "OpenPopUp('790px','380px','95%','เพิ่มข้อมูลข้าราชการบำนาญ','person_retire_control.aspx?mode=add&page=0','1');return false;");
+                imgNew.Attributes.Add("onclick", "OpenPopUp('790px','450px','95%','เพิ่มข้อมูลข้าราชการบำนาญ','person_retire_control.aspx?mode=add&page=0','1');return false;");
 
                 ViewState["sort"] = "pr_person_code";
                 ViewState["direction"] = "ASC";
@@ -242,7 +242,7 @@ namespace myWeb.App_Control.person_retire
                 if (IsUserEdit)
                 {
                     lblperson_retire_names.Text = "<a href=\"\" onclick=\"" +
-                                             "OpenPopUp('790px','380px','95%','แก้ไขข้อมูลข้าราชการบำนาญ','person_retire_control.aspx?mode=edit&pr_person_code=" +
+                                             "OpenPopUp('790px','450px','95%','แก้ไขข้อมูลข้าราชการบำนาญ','person_retire_control.aspx?mode=edit&pr_person_code=" +
                                                                                                                 lblpr_person_code.Text + "&page=" + GridView1.PageIndex.ToString() + "','1');return false;\" >" + lblperson_retire_names.Text + "</a>";
                 }
 

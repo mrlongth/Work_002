@@ -124,7 +124,7 @@ namespace myWeb.Person_Manage
             string strCriteria = string.Empty;
             string strperson_code = string.Empty;
             strperson_code = base.PersonCode;
-            strCriteria = " And (person_code='" + strperson_code + "') and item_type = 'C' and substring(item_code,5,7) not in ('09-001','09-100')  ";
+            strCriteria = " And (person_code='" + strperson_code + "') and item_type = 'C' and substring(item_code,5,7) not in (Select Code from getConfigListCode('TaxCode'))  ";
             try
             {
                 if (!oPerson.SP_PERSON_ITEM_SEL(strCriteria, ref ds, ref strMessage))
@@ -307,7 +307,7 @@ namespace myWeb.Person_Manage
 
             if (!strPerson_code.Equals(""))
             {
-                strCriteria = " And (person_code='" + strPerson_code + "') and item_type = 'C' and substring(item_code,5,7) not in ('09-001','09-100')  ";
+                strCriteria = " And (person_code='" + strPerson_code + "') and item_type = 'C' and substring(item_code,5,7) not in (Select Code from getConfigListCode('TaxCode'))  ";
 
             }
             string strItem_code = string.Empty;

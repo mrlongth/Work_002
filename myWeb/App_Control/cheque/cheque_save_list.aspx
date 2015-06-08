@@ -16,7 +16,7 @@
             <td style="text-align: right" width="15%">
                 &nbsp;
             </td>
-            <td style="text-align: right" rowspan="2">
+            <td style="text-align: right" rowspan="3">
                 &nbsp;
                 <asp:Label runat="server" CssClass="label_error" ID="lblError"></asp:Label>
                 <asp:ImageButton runat="server" AlternateText="ค้นหาข้อมูล" ImageUrl="~/images/button/Search.png"
@@ -37,6 +37,17 @@
             </td>
             <td style="text-align: right" width="15%">
                 &nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right;" width="15%">
+                <asp:Label runat="server" CssClass="label_h" ID="lblPage13">ประเภทเช็ค :
+                </asp:Label>
+            </td>
+            <td colspan="2">
+                <asp:DropDownList runat="server" CssClass="textbox" ID="cboCheque_type" AutoPostBack="True"
+                    OnSelectedIndexChanged="cboCheque_bank_code_SelectedIndexChanged">
+                </asp:DropDownList>
             </td>
         </tr>
     </table>
@@ -67,13 +78,8 @@
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="รอบเดือนที่จ่าย" SortExpression="pay_month">
-                <ItemStyle HorizontalAlign="Left" Width="15%" Wrap="True" />
-                <ItemTemplate>
-                    <asp:Label ID="lblpay_month" runat="server" Text='<%# getMonthName(DataBinder.Eval(Container, "DataItem.pay_month")) %>'>
-                    </asp:Label>
-                </ItemTemplate>
-            </asp:TemplateField>
+
+
             <asp:TemplateField HeaderText="รอบปีที่จ่าย" SortExpression="pay_year">
                 <ItemStyle HorizontalAlign="Center" Width="10%" Wrap="True" />
                 <ItemTemplate>
@@ -81,27 +87,35 @@
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="ชื่อบัญชีธนาคาร" SortExpression="cheque_acc_name">
+
+
+            <asp:TemplateField HeaderText="รอบเดือนที่จ่าย/ภาคการศึกษา" SortExpression="pay_month">
+                <ItemStyle HorizontalAlign="Left" Width="15%" Wrap="True" />
+                <ItemTemplate>
+                    <asp:Label ID="lblpay_month" runat="server" >
+                    </asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+           
+          
+              <asp:TemplateField HeaderText="ประเภทเช็ค" SortExpression="g_name">
+                <ItemStyle HorizontalAlign="Left" Width="20%" Wrap="True" />
+                <ItemTemplate>
+                    <asp:Label ID="lblcheque_type_name" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.g_name") %>'>
+                    </asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+          
+            
+
+              <asp:TemplateField HeaderText="ชื่อบัญชีธนาคาร" SortExpression="cheque_acc_name">
                 <ItemStyle HorizontalAlign="Left" Width="20%" Wrap="True" />
                 <ItemTemplate>
                     <asp:Label ID="lblcheque_acc_name" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cheque_acc_name") %>'>
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="ธนาคาร" SortExpression="bank_name">
-                <ItemStyle HorizontalAlign="Left" Width="20%" Wrap="True" />
-                <ItemTemplate>
-                    <asp:Label ID="lblbank_name" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.bank_name") %>'>
-                    </asp:Label>
-                </ItemTemplate>
-            </asp:TemplateField>
-            <asp:TemplateField HeaderText="เลขที่บัญชี" SortExpression="cheque_bank_no">
-                <ItemStyle HorizontalAlign="Center" Width="20%" Wrap="True" />
-                <ItemTemplate>
-                    <asp:Label ID="lblcheque_bank_no" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cheque_bank_no") %>'>
-                    </asp:Label>
-                </ItemTemplate>
-            </asp:TemplateField>
+          
             <asp:TemplateField>
                 <ItemTemplate>
                     <asp:ImageButton ID="imgEdit" runat="server" CausesValidation="False" CommandName="Edit" />

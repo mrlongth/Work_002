@@ -54,79 +54,18 @@ namespace myWeb.App_Control.cheque
                 }
                 else
                 {
-                    ViewState["cheque_type"] = "M";
+                    ViewState["cheque_type"] = "01";
                 }
-                if (ViewState["cheque_type"].ToString() == "M")
-                {
-                    GridView1.Columns[3].Visible = false;
-                }
+                //if (ViewState["cheque_type"].ToString() == "M")
+                //{
+                //    GridView1.Columns[3].Visible = false;
+                //}
                 #endregion
                 setData();
             }
         }
 
         #region private function
-
-        private void InitcboPay_Month()
-        {
-            string strMonth = string.Empty;
-            strMonth = cboPay_Month.SelectedValue;
-            if (strMonth.Equals(""))
-            {
-                if (DateTime.Now.Month < 10)
-                {
-                    strMonth = "0" + DateTime.Now.Month.ToString();
-                }
-                else
-                {
-                    strMonth = DateTime.Now.Month.ToString();
-                }
-            }
-            DataTable odt;
-            int i;
-            cboPay_Month.Items.Clear();
-            odt = ((DataSet)Application["xmlconfig"]).Tables["cboMonth"];
-            for (i = 0; i <= odt.Rows.Count - 1; i++)
-            {
-                cboPay_Month.Items.Add(new ListItem(odt.Rows[i]["Text"].ToString(), odt.Rows[i]["Value"].ToString()));
-            }
-            if (cboPay_Month.Items.FindByValue(strMonth) != null)
-            {
-                cboPay_Month.SelectedIndex = -1;
-                cboPay_Month.Items.FindByValue(strMonth).Selected = true;
-            }
-        }
-
-        private void InitcboPay_Year()
-        {
-            string strYear = string.Empty;
-            strYear = cboPay_Year.SelectedValue;
-            if (strYear.Equals(""))
-            {
-                if (DateTime.Now.Year < 2200)
-                {
-                    strYear = (DateTime.Now.Year + 543).ToString();
-                }
-                else
-                {
-                    strYear = DateTime.Now.Year.ToString();
-                }
-            }
-            DataTable odt;
-            int i;
-            cboPay_Year.Items.Clear();
-            odt = ((DataSet)Application["xmlconfig"]).Tables["cboYear"];
-            for (i = 0; i <= odt.Rows.Count - 1; i++)
-            {
-                cboPay_Year.Items.Add(new ListItem(odt.Rows[i]["Text"].ToString(), odt.Rows[i]["Value"].ToString()));
-            }
-            if (cboPay_Year.Items.FindByValue(strYear) != null)
-            {
-                cboPay_Year.SelectedIndex = -1;
-                cboPay_Year.Items.FindByValue(strYear).Selected = true;
-            }
-        }
-
 
         #endregion
 
@@ -199,7 +138,7 @@ namespace myWeb.App_Control.cheque
 
                     if (CheckBox1.Checked)
                     {
-                        
+
                         if (!oCheque.SP_CHEQUE_DETAIL_INS(strcheque_doc, strcheque_code, strcheque_no, strcheque_pvno, strcheque_money, strcheque_money_thai,
                                                           strcheque_comment_sub, strcheque_print, strdirector_code,
                                                           strcheque_date_print, strcheque_date_pay, strcheque_date_bank, strcheque_deka, strcheque_acccode, ref strMessage))
@@ -228,8 +167,7 @@ namespace myWeb.App_Control.cheque
             DataSet ds = new DataSet();
             string strMessage = string.Empty, strCriteria = string.Empty;
             string strcheque_doc = ViewState["cheque_doc"].ToString();
-            string strpay_month = ViewState["pay_month"].ToString();
-            string strpay_year = ViewState["pay_year"].ToString();
+            string strpay_month, strpay_year, strpay_semeter, strpay_item, strbudget_type, strcheque_type , strcheque_type_name;
             try
             {
                 strCriteria = " and cheque_doc = '" + strcheque_doc + "' ";
@@ -245,6 +183,11 @@ namespace myWeb.App_Control.cheque
                         strcheque_doc = ds.Tables[0].Rows[0]["cheque_doc"].ToString();
                         strpay_month = ds.Tables[0].Rows[0]["pay_month"].ToString();
                         strpay_year = ds.Tables[0].Rows[0]["pay_year"].ToString();
+                        strpay_item = ds.Tables[0].Rows[0]["pay_item"].ToString();
+                        strbudget_type = ds.Tables[0].Rows[0]["budget_type"].ToString();
+                        strpay_semeter = ds.Tables[0].Rows[0]["pay_semeter"].ToString();
+                        strcheque_type_name = ds.Tables[0].Rows[0]["g_name"].ToString();
+                        strcheque_type = ds.Tables[0].Rows[0]["cheque_type"].ToString();
                         #endregion
 
                         #region set Control
@@ -253,22 +196,32 @@ namespace myWeb.App_Control.cheque
                         txtcheque_date_print.Text = cCommon.CheckDate(DateTime.Now.Date.ToString());
                         txtcheque_date_pay.Text = cCommon.CheckDate(DateTime.Now.Date.ToString());
                         txtcheque_date_bank.Text = cCommon.CheckDate(DateTime.Now.Date.ToString());
-              
-
-                        InitcboPay_Year();
-                        if (cboPay_Year.Items.FindByValue(strpay_year) != null)
+                        hddpay_month.Value = strpay_month;
+          
+                        txtpay_year.Text = strpay_year;
+                        if (hddcheque_type.Value != "02")
                         {
-                            cboPay_Year.SelectedIndex = -1;
-                            cboPay_Year.Items.FindByValue(strpay_year).Selected = true;
+                            lblpay_item.Visible = false;
+                            txtpay_item.Visible = false;
+                            lblpay_year.Text = "ปีการศึกษา :";
+                            lblpay_month.Text = "รอบเดือนที่จ่าย :";
+                            txtpay_month.Text = base.GetMonth(strpay_month);
                         }
-
-                        InitcboPay_Month();
-                        if (cboPay_Month.Items.FindByValue(strpay_month) != null)
+                        else
                         {
-                            cboPay_Month.SelectedIndex = -1;
-                            cboPay_Month.Items.FindByValue(strpay_month).Selected = true;
+                            lblpay_item.Visible = true;
+                            txtpay_item.Visible = true;
+                            lblpay_year.Text = "รอบปีที่จ่าย :";
+                            lblpay_month.Text = "ภาคเรียนที่ :";
+                            txtpay_month.Text = strpay_month;
                         }
-
+                        txtpay_item.Text = strpay_item;
+                        hddbudget_type.Value = strbudget_type;
+                        txtbudget_type.Text = strbudget_type == "R" ? "เงินรายได้" : "เงินงบประมาณ";
+                        txtcheque_type.Text = strcheque_type_name;
+                        hddcheque_type.Value = strcheque_type;
+                        ViewState["cheque_type"] = strcheque_type;
+                       
                         BindGridView();
 
                         #endregion
@@ -290,25 +243,12 @@ namespace myWeb.App_Control.cheque
             DataSet ds = new DataSet();
             try
             {
-                if (ViewState["cheque_type"].ToString() == "M")
+                if (ViewState["cheque_type"].ToString() == "01")
                 {
-                   // strCriteria = " and c_created_by = '" + UserLoginName + "' ";
-                    strCriteria = " and pay_month ='" + cboPay_Month.SelectedValue + "'   and  pay_year  ='" + cboPay_Year.SelectedValue + "' ";
+                    strCriteria = " and pay_month ='" + hddpay_month.Value + "'   and  pay_year  ='" + txtpay_year.Text + "' ";
                     strCriteria += " and cheque_type ='" + ViewState["cheque_type"].ToString() + "'  ";
-                    
-                    strCriteria2 = " and pay_month ='" + cboPay_Month.SelectedValue + "'   and  pay_year  ='" + cboPay_Year.SelectedValue + "' ";
-                    if (base.myBudgetType == "B")
-                    {
-                        strCriteria += " and payment_detail_person_group_code in (" + PersonGroupList + ",'') ";
-                        strCriteria2 += " and payment_detail_person_group_code in (" + PersonGroupList + ",'') ";
-                    }
-                    //else 
-                    //{
-                    //    strCriteria += " and payment_detail_person_group_code in (" + PersonGroupList + ",'') ";
-                    //    strCriteria2 += " and payment_detail_person_group_code in (" + PersonGroupList + ",'') ";
-                    //}
 
-
+                    strCriteria2 = " and pay_month ='" + hddpay_month.Value + "'   and  pay_year  ='" + txtpay_year.Text + "' ";
 
                     if (base.myBudgetType != "M")
                     {
@@ -316,7 +256,7 @@ namespace myWeb.App_Control.cheque
                         strCriteria2 += "  And  payment_detail_budget_type ='" + base.myBudgetType + "' ";
                     }
 
-                    if (!oCheque.SP_CHEQUE_SELECT_SEL(strCriteria,strCriteria2, ref ds, ref strMessage))
+                    if (!oCheque.SP_CHEQUE_SELECT_SEL(strCriteria, strCriteria2, ref ds, ref strMessage))
                     {
                         lblError.Text = strMessage;
                     }
@@ -327,36 +267,7 @@ namespace myWeb.App_Control.cheque
                         GridView1.DataBind();
                     }
                 }
-                else
-                {
-                    //strCriteria = " and c_created_by = '" + UserLoginName + "' ";
-                    strCriteria = " and  pay_month ='" + cboPay_Month.SelectedValue + "' and pay_year  ='" + cboPay_Year.SelectedValue + "' ";
-                    strCriteria += " and cheque_type ='" + ViewState["cheque_type"].ToString() + "' ";
-                    strCriteria += " and payment_detail_person_group_code in (" + PersonGroupList + ",'') ";
-
-                    strCriteria2 = " and  pay_month ='" + cboPay_Month.SelectedValue + "' and pay_year  ='" + cboPay_Year.SelectedValue + "' ";
-                    strCriteria2 += " and cheque_type ='" + ViewState["cheque_type"].ToString() + "' ";
-
-
-                    if (base.myBudgetType != "M")
-                    {
-                        strCriteria += "  And  payment_detail_budget_type ='" + base.myBudgetType + "' ";
-                        strCriteria2 += "  And  payment_detail_budget_type ='" + base.myBudgetType + "' ";
-                    }
-
-
-                    if (!oCheque.SP_CHEQUE_UNIT_SELECT_SEL(strCriteria,strCriteria2, ref ds, ref strMessage))
-                    {
-                        lblError.Text = strMessage;
-                    }
-                    else
-                    {
-                        ds.Tables[0].DefaultView.Sort = ViewState["sort"] + " " + ViewState["direction"];
-                        GridView1.DataSource = ds.Tables[0];
-                        GridView1.DataBind();
-                    }
-
-                }
+              
             }
             catch (Exception ex)
             {

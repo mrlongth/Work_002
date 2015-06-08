@@ -107,6 +107,15 @@ namespace myWeb.App_Control.lov
                     ViewState["is_medical"] = string.Empty;
                 }
 
+                if (Request.QueryString["is_bonus"] != null)
+                {
+                    ViewState["is_bonus"] = Request.QueryString["is_bonus"].ToString();
+                }
+                else
+                {
+                    ViewState["is_bonus"] = string.Empty;
+                }
+
                 if (Request.QueryString["ctrl1"] != null)
                 {
                     ViewState["ctrl1"] = Request.QueryString["ctrl1"].ToString();
@@ -304,9 +313,10 @@ namespace myWeb.App_Control.lov
 
                 if (!stritem_type.Equals(""))
                 {
-                    strCriteria = strCriteria + "  And  (item_type = '" + stritem_type + "' OR substring(item_code,5,7) in ('09-001','09-100') ) ";
+
+                    strCriteria = strCriteria + "  And  (item_type = '" + stritem_type + "' OR substring(item_code,5,7) in (Select Code from getConfigListCode('TaxCode')) ) ";
                 }
-                strCriteria = strCriteria + "  And (substring(item_code,5,7)<>'03-002' OR (substring(item_code,5,7) in ('09-001','09-100')))";
+                strCriteria = strCriteria + "  And (substring(item_code,5,7)<>'" + this.GetConfigItem("GBKCodeAdd") + "' OR (substring(item_code,5,7) in (Select Code from getConfigListCode('TaxCode'))))";
                 if (ViewState["payment_back_type"].ToString().Equals("O"))
                 {
                     strCriteria = strCriteria + "  And substring(item_code,5,7) in(Select substring(item_code,5,7) from view_payment_debit where person_code ='" + strperson_code + "' ) ";
@@ -334,6 +344,10 @@ namespace myWeb.App_Control.lov
             else if (ViewState["is_medical"].ToString().Equals("1"))
             {
                 strCriteria = strCriteria + "  And  (item_class = 'M') ";
+            }
+            else if (ViewState["is_bonus"].ToString().Equals("1"))
+            {
+                strCriteria = strCriteria + "  And  (item_class = 'B') ";
             }
             else
             {
@@ -385,7 +399,7 @@ namespace myWeb.App_Control.lov
                                                     "ClosePopUp('" + ViewState["show"].ToString() + "');";
 
                             }
-                            else if (ViewState["from"].ToString().Equals("payment_special") || ViewState["from"].ToString().Equals("payment_medical"))
+                            else if (ViewState["from"].ToString().Equals("payment_special") || ViewState["from"].ToString().Equals("payment_medical") ||  ViewState["from"].ToString().Equals("payment_bonus"))
                             {
                                 strScript = "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl1"].ToString() + "').value='" + stritem_code + "';\n " +
                                                 "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl2"].ToString() + "').value='" + stritem_name + "';\n" +

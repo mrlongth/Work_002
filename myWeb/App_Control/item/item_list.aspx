@@ -42,16 +42,22 @@
             </td>
         </tr>
         <tr>
-            <td style="text-align: right; width: 15%; ">
+            <td style="text-align: right; width: 15%;">
                 <asp:Label runat="server" CssClass="label_h" ID="lblPage2">รหัสรายได้/จ่าย :</asp:Label>
             </td>
-            <td colspan="3">
+            <td>
                 <asp:TextBox runat="server" CssClass="textbox"   Width="120px" ID="txtitem_code"
                     MaxLength="10"></asp:TextBox>
             </td>
-            <td colspan="2">
-                &nbsp;
+            <td style="text-align: right">
+                <asp:Label runat="server" CssClass="label_h" ID="lblPage15">ชนิดรายการ :</asp:Label>
             </td>
+            <td>
+                <asp:DropDownList runat="server" CssClass="textbox"   ID="cboItem_class">
+                </asp:DropDownList>
+            </td>
+            <td colspan="2">
+                &nbsp;</td>
         </tr>
         <tr>
             <td style="text-align: right; width: 15%;">

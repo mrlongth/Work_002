@@ -93,6 +93,27 @@
                     </tr>
                     <tr align="left">
                         <td align="right" nowrap valign="middle" style="">
+                            <asp:Label
+                                ID="Label79" runat="server" CssClass="label_hbk">เลขที่บัญชี :</asp:Label>
+                        </td>
+                        <td align="left" nowrap valign="middle" style="">
+                            <asp:TextBox ID="txtperson_acc" runat="server" CssClass="textbox" Width="200px" MaxLength="13"></asp:TextBox><ajaxtoolkit:FilteredTextBoxExtender
+                                ID="txtperson_acc_FilteredTextBoxExtender" runat="server" TargetControlID="txtperson_acc" FilterType="Numbers"
+                                Enabled="True" />
+                        </td>
+                    </tr>
+                    <tr align="left">
+                        <td align="right" nowrap valign="middle" style="">
+                            <asp:Label
+                                ID="Label80" runat="server" CssClass="label_hbk">ธนาคาร :</asp:Label>
+                        </td>
+                        <td align="left" nowrap valign="middle" style="">
+                            <asp:DropDownList ID="cboBank" runat="server" CssClass="textbox">
+                            </asp:DropDownList>
+                        </td>
+                    </tr>
+                    <tr align="left">
+                        <td align="right" nowrap valign="middle" style="">
                             <asp:Label ID="Label77" runat="server" CssClass="label_hbk">Email :</asp:Label>
                         </td>
                         <td align="left" nowrap valign="middle" style="">

@@ -411,10 +411,10 @@ namespace myWeb.App_Control.payment_special
 
                     hddsp_round_id.Value = strRoundId;
                     InitcboYear();
-                    if (cboPay_Year.Items.FindByValue(strYear) != null)
+                    if (cboYear.Items.FindByValue(strYear) != null)
                     {
-                        cboPay_Year.SelectedIndex = -1;
-                        cboPay_Year.Items.FindByValue(strPay_Year).Selected = true;
+                        cboYear.SelectedIndex = -1;
+                        cboYear.Items.FindByValue(strYear).Selected = true;
                     }
 
 
@@ -888,7 +888,7 @@ namespace myWeb.App_Control.payment_special
                 #endregion
                 Label lblNo = (Label)e.Row.FindControl("lblNo");
                 Label lblitem_code = (Label)e.Row.FindControl("lblitem_code");
-
+                Label lblitem_type = (Label)e.Row.FindControl("lblitem_type");
                 int nNo = (GridView1.PageSize * GridView1.PageIndex) + e.Row.RowIndex + 1;
                 lblNo.Text = nNo.ToString();
 
@@ -897,6 +897,7 @@ namespace myWeb.App_Control.payment_special
                 cLot objLot = new cLot();
                 string strMessage = string.Empty;
 
+                if (dv["item_type"].ToString() == "D") lblitem_type.Visible = false;
 
                 #region set Image Edit & Delete
 

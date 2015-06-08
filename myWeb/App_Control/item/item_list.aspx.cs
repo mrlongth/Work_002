@@ -50,6 +50,7 @@ namespace myWeb.App_Control.item
                 RadioAll.Checked = true;
                 InitcboYear();
                 InitcboPerson_group();
+                InitcboItemClass();
                 BindGridView(0);
             }
             else
@@ -121,6 +122,32 @@ namespace myWeb.App_Control.item
             }
         }
 
+        private void InitcboItemClass()
+        {
+            cCommon oCommon = new cCommon();
+            string strMessage = string.Empty, strCriteria = string.Empty;
+            string strCode = cboItem_class.SelectedValue;
+            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
+            strCriteria = " Select * from  general where g_type = 'item_class'  Order by g_sort ";
+            if (oCommon.SEL_SQL(strCriteria, ref ds, ref strMessage))
+            {
+                dt = ds.Tables[0];
+                cboItem_class.Items.Clear();
+                cboItem_class.Items.Add(new ListItem("---- เลือกข้อมูลทั้งหมด ----", ""));
+                int i;
+                for (i = 0; i <= dt.Rows.Count - 1; i++)
+                {
+                    cboItem_class.Items.Add(new ListItem(dt.Rows[i]["g_name"].ToString(), dt.Rows[i]["g_code"].ToString()));
+                }
+                if (cboItem_class.Items.FindByValue(strCode) != null)
+                {
+                    cboItem_class.SelectedIndex = -1;
+                    cboItem_class.Items.FindByValue(strCode).Selected = true;
+                }
+            }
+        }
+
         #endregion
 
         private void cboPerPage_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -159,6 +186,7 @@ namespace myWeb.App_Control.item
             string stritem_type = string.Empty;
             string stritem_group_code = string.Empty;
             string stritem_group_name = string.Empty;
+            string stritem_class = string.Empty;
             string stractive = string.Empty;
             string strperson_group_code = string.Empty;
 
@@ -169,6 +197,7 @@ namespace myWeb.App_Control.item
             stritem_type = cboItem_type.SelectedValue;
             stritem_group_code = txtitem_group_code.Text.Replace("'", "''").Trim();
             stritem_group_name = txtitem_group_name.Text.Replace("'", "''").Trim();
+            stritem_class = cboItem_class.SelectedValue;
             if (!stritem_year.Equals(""))
             {
                 strCriteria = strCriteria + "  And  (item_year = '" + stritem_year + "') ";
@@ -193,6 +222,10 @@ namespace myWeb.App_Control.item
             {
                 strCriteria = strCriteria + "  And  (item_group_name like '%" + stritem_group_name + "%') ";
             }
+            if (!stritem_class.Equals(""))
+            {
+                strCriteria = strCriteria + "  And  (item_class like '%" + stritem_class + "%') ";
+            }            
             if (!strperson_group_code.Equals(""))
             {
                 strCriteria = strCriteria + "  And  (person_group_code='" + strperson_group_code + "') ";

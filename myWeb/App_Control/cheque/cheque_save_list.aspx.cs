@@ -35,21 +35,14 @@ namespace myWeb.App_Control.cheque
                 imgFind.Attributes.Add("onMouseOver", "src='../../images/button/Search2.png'");
                 imgFind.Attributes.Add("onMouseOut", "src='../../images/button/Search.png'");
 
-                if (Request.QueryString["cheque_type"] != null)
-                {
-                    ViewState["cheque_type"] = Request.QueryString["cheque_type"].ToString();
-                }
-                else
-                {
-                    ViewState["cheque_type"] = "M";
-                }
-                
-                imgNew.Attributes.Add("onclick", "OpenPopUp('990px','550px','95%','เพิ่มข้อมูลการจ่ายเช็ค','cheque_save_control.aspx?cheque_type=" + ViewState["cheque_type"].ToString() + "&mode=add&page=0','1');return false;");
+                   
+                imgNew.Attributes.Add("onclick", "OpenPopUp('990px','550px','95%','เพิ่มข้อมูลการจ่ายเช็ค','cheque_save_control.aspx?mode=add&page=0','1');return false;");
 
                 ViewState["sort"] = "pay_year,pay_month";
                 ViewState["direction"] = "ASC";
                 InitcboRound();
                 InitcboCheque_bank();
+                InitcboChequeType();
                 BindGridView(0);
             }
             else
@@ -203,6 +196,35 @@ namespace myWeb.App_Control.cheque
             }
         }
 
+        private void InitcboChequeType()
+        {
+            var oCommon = new cCommon();
+            string strMessage = string.Empty,
+                   strCriteria = string.Empty,
+                   strCheque_type = string.Empty;
+
+            int i;
+            var ds = new DataSet();
+            var dt = new DataTable();
+            strCheque_type = cboCheque_type.SelectedValue;
+            strCriteria = " and g_type='cheque_type' ";
+            if (oCommon.SP_SEL_OBJECT("sp_GENERAL_SEL", strCriteria, ref ds, ref strMessage))
+            {
+                dt = ds.Tables[0];
+                cboCheque_type.Items.Clear();
+                cboCheque_type.Items.Add(new ListItem("---- เลือกทั้งหมด ----", ""));
+                for (i = 0; i <= dt.Rows.Count - 1; i++)
+                {
+                    cboCheque_type.Items.Add(new ListItem(dt.Rows[i]["g_name"].ToString(), dt.Rows[i]["g_code"].ToString()));
+                }
+                if (cboCheque_type.Items.FindByValue(strCheque_type) != null)
+                {
+                    cboCheque_type.SelectedIndex = -1;
+                    cboCheque_type.Items.FindByValue(strCheque_type).Selected = true;
+                }
+            }
+        }
+
 
         private void BindGridView(int nPageNo)
         {
@@ -213,11 +235,13 @@ namespace myWeb.App_Control.cheque
             string strActive = string.Empty;
             string strYear = string.Empty;
             string strcheque_doc = string.Empty;
+            string strcheque_type = string.Empty;
             string strcheque_bank_code = string.Empty;
             
 
             strYear = cboYear.SelectedValue;
             strcheque_bank_code = cboCheque_bank_code.SelectedValue;
+            strcheque_type = cboCheque_type.SelectedValue;
             if (!strYear.Equals(""))
             {
                 strCriteria = strCriteria + "  And  (cheque_year = '" + strYear + "') ";
@@ -228,8 +252,10 @@ namespace myWeb.App_Control.cheque
                 strCriteria = strCriteria + "  And  (cheque_bank_code  = '" + strcheque_bank_code + "') ";
             }
 
-            strCriteria += "  And (cheque_type = '" + ViewState["cheque_type"].ToString() + "') ";
-            //strCriteria += " And c_created_by = '" + UserLoginName + "' ";
+            if (!strcheque_type.Equals(""))
+            {
+                strCriteria = strCriteria + "  And  (cheque_type  = '" + strcheque_type + "') ";
+            }
 
             try
             {
@@ -333,8 +359,20 @@ namespace myWeb.App_Control.cheque
                 Label lblNo = (Label)e.Row.FindControl("lblNo");
                 int nNo = (GridView1.PageSize * GridView1.PageIndex) + e.Row.RowIndex + 1;
                 lblNo.Text = nNo.ToString();
+                DataRowView dv = (DataRowView)e.Row.DataItem;
+             
                 Label lblcheque_doc = (Label)e.Row.FindControl("lblcheque_doc");
-                Label lblcheque_acc_name = (Label)e.Row.FindControl("lblcheque_acc_name");
+                Label lblpay_month = (Label)e.Row.FindControl("lblpay_month");
+
+                if (dv["cheque_type"].ToString() != "02")
+                {
+                    lblpay_month.Text = base.GetMonth(dv["pay_month"].ToString());
+                }
+                else
+                {
+                    lblpay_month.Text = dv["pay_semeter"].ToString() + "#" + dv["pay_item"].ToString();
+                }
+
 
                 #region set ImageView
                 ImageButton imgView = (ImageButton)e.Row.FindControl("imgView");
@@ -348,14 +386,15 @@ namespace myWeb.App_Control.cheque
                 #endregion
 
                 #region set Image Edit & Delete
-                lblcheque_acc_name.Text = "<a href=\"\" onclick=\"" +
-                                                        "OpenPopUp('990px','550px','95%','แก้ไขข้อมูลการจ่ายเช็ค','cheque_save_control.aspx?cheque_type=" + ViewState["cheque_type"].ToString() + "&mode=edit&cheque_doc=" +
-                                                        lblcheque_doc.Text + "&page=" + GridView1.PageIndex.ToString() + "','1');return false;\" >" + lblcheque_acc_name.Text + "</a>";
+                lblcheque_doc.Text = "<a href=\"\" onclick=\"" +
+                                                        "OpenPopUp('990px','550px','95%','แก้ไขข้อมูลการจ่ายเช็ค','cheque_save_control.aspx?mode=edit&cheque_doc=" +
+                                                        lblcheque_doc.Text + "&page=" + GridView1.PageIndex.ToString() + "','1');return false;\" >" + dv["cheque_doc"].ToString() + "</a>";
 
 
                 ImageButton imgEdit = (ImageButton)e.Row.FindControl("imgEdit");
-                imgEdit.Attributes.Add("onclick", "OpenPopUp('990px','550px','95%','แก้ไขข้อมูลการจ่ายเช็ค','cheque_save_control.aspx?cheque_type=" + ViewState["cheque_type"].ToString() + "&mode=edit&cheque_doc=" +
-                                                                                                            lblcheque_doc.Text + "&page=" + GridView1.PageIndex.ToString() + "','1');return false;");
+                imgEdit.Attributes.Add("onclick", "OpenPopUp('990px','550px','95%','แสดงข้อมูลการจ่ายเช็ค','cheque_save_control.aspx?mode=edit&cheque_doc=" +
+                                                                                            dv["cheque_doc"].ToString() + "','1');return false;");
+
 
                 imgEdit.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["img"].ToString();
                 imgEdit.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["title"].ToString());

@@ -43,11 +43,13 @@
                     ReadOnly="True"></asp:TextBox>
             </td>
             <td align="left" nowrap valign="middle" style="text-align: right">
+                <asp:Label runat="server" CssClass="label_hbk" ID="Label91">ประเภทงบประมาณ :</asp:Label>
                 &nbsp;
             </td>
-            <td align="left" nowrap valign="middle">
-                &nbsp;
-                <asp:Label runat="server" CssClass="label_error" ID="lblError"></asp:Label>
+            <td align="left" nowrap valign="middle" colspan="3">
+                <asp:TextBox runat="server" CssClass="textboxdis" Width="199px" ID="txtbudget_type"
+                    ReadOnly="True"></asp:TextBox>
+                <asp:HiddenField ID="hddbudget_type" runat="server" />
             </td>
             <td align="left" nowrap valign="middle" style="vertical-align: bottom; width: 1%;"
                 rowspan="5">
@@ -59,20 +61,27 @@
         </tr>
         <tr align="left">
             <td align="right" nowrap valign="middle">
-                <asp:Label runat="server" CssClass="label_hbk" ID="Label59">รอบเดือนที่จ่าย 
-                :</asp:Label>
-            </td>
-            <td align="left" nowrap valign="middle">
-                <asp:DropDownList runat="server" CssClass="textboxdis" ID="cboPay_Month" Enabled="False">
-                </asp:DropDownList>
-            </td>
-            <td align="left" nowrap valign="middle" style="text-align: right">
-                <asp:Label runat="server" ID="Label85">รอบปีที่จ่าย :</asp:Label>
+                <asp:Label runat="server" ID="lblpay_year">รอบปีที่จ่าย :</asp:Label>
                 &nbsp;
             </td>
             <td align="left" nowrap valign="middle">
-                <asp:DropDownList runat="server" CssClass="textboxdis" ID="cboPay_Year" Enabled="False">
-                </asp:DropDownList>
+                <asp:TextBox runat="server" CssClass="textboxdis" Width="120px" ID="txtpay_year"
+                    ReadOnly="True"></asp:TextBox>
+            </td>
+            <td align="left" nowrap valign="middle" style="text-align: right">
+                <asp:Label runat="server" CssClass="label_hbk" ID="lblpay_month">รอบเดือนที่จ่าย  :</asp:Label>
+            </td>
+            <td align="left" nowrap valign="middle">
+                <asp:TextBox runat="server" CssClass="textboxdis" Width="120px" ID="txtpay_month"
+                    ReadOnly="True"></asp:TextBox>
+                <asp:HiddenField ID="hddpay_month" runat="server" />
+            </td>
+            <td align="right" nowrap valign="middle">
+                <asp:Label runat="server" ID="lblpay_item">รอบการจ่ายที่ :</asp:Label>
+            </td>
+            <td align="left" nowrap valign="middle">
+                <asp:TextBox runat="server" CssClass="textboxdis" Width="80px" ID="txtpay_item"
+                    ReadOnly="True"></asp:TextBox>
             </td>
         </tr>
         <tr align="left">
@@ -98,6 +107,10 @@
                 <asp:ImageButton runat="server" AlternateText="Click to show calendar" ImageAlign="AbsMiddle"
                     ImageUrl="~/images/Calendar_scheduleHS.png" ID="imgcheque_date_pay"></asp:ImageButton>
             </td>
+            <td align="right" nowrap valign="middle">
+                &nbsp;</td>
+            <td align="left" nowrap valign="middle">
+                &nbsp;</td>
         </tr>
         <tr align="left">
             <td align="right" nowrap valign="middle">
@@ -112,10 +125,12 @@
                     ImageUrl="~/images/Calendar_scheduleHS.png" ID="imgcheque_date_bank"></asp:ImageButton>
             </td>
             <td align="left" nowrap valign="middle" style="text-align: right">
-                &nbsp;
+                <asp:Label runat="server" ID="Label82">ประเภทเช็ค :</asp:Label>
             </td>
-            <td align="left" nowrap valign="middle">
-                &nbsp;
+            <td align="left" nowrap valign="middle" colspan="3">
+                <asp:TextBox runat="server" CssClass="textboxdis" Width="300px" ID="txtcheque_type"
+                    ReadOnly="True"></asp:TextBox>
+                <asp:HiddenField ID="hddcheque_type" runat="server" />
             </td>
         </tr>
         <tr align="left">
@@ -129,9 +144,10 @@
             <td align="left" nowrap valign="middle" style="text-align: right">
                 <asp:Label runat="server" ID="Label90">รายจ่าย :</asp:Label>
             </td>
-            <td align="left" nowrap valign="middle">
+            <td align="left" nowrap valign="middle" colspan="3">
                 <asp:TextBox ID="txtcheque_acccode" runat="server" CssClass="textbox" Width="100px"
                     MaxLength="20" />
+                <asp:Label runat="server" CssClass="label_error" ID="lblError"></asp:Label>
             </td>
         </tr>
     </table>

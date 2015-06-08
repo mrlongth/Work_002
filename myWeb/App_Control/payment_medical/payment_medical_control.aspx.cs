@@ -12,7 +12,7 @@ using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 using myDLL;
 
-namespace myWeb.App_Control.payment_special
+namespace myWeb.App_Control.payment_medical
 {
     public partial class payment_medical_control : PageBase
     {
@@ -737,6 +737,7 @@ namespace myWeb.App_Control.payment_special
                 #endregion
                 Label lblNo = (Label)e.Row.FindControl("lblNo");
                 Label lblitem_code = (Label)e.Row.FindControl("lblitem_code");
+                Label lblitem_type = (Label)e.Row.FindControl("lblitem_type");
 
                 int nNo = (GridView1.PageSize * GridView1.PageIndex) + e.Row.RowIndex + 1;
                 lblNo.Text = nNo.ToString();
@@ -746,6 +747,7 @@ namespace myWeb.App_Control.payment_special
                 cLot objLot = new cLot();
                 string strMessage = string.Empty;
 
+                if (dv["item_type"].ToString() == "D") lblitem_type.Visible = false;
 
                 #region set Image Edit & Delete
 
@@ -1079,7 +1081,7 @@ namespace myWeb.App_Control.payment_special
                 imgList_item.Attributes.Add("onclick", "OpenPopUp('900px','500px','94%','ค้นหาข้อมูลบุคลากร' ,'../lov/person_lov.aspx?" +
                      "from=payment_medical_control&person_code='+getElementById('" + txtperson_code.ClientID + "').value+'" +
                      "&person_name='+getElementById('" + txtperson_name.ClientID + "').value+'" +
-                    "&ctrl1=" + txtperson_code.ClientID + "&ctrl2=" + txtperson_name.ClientID + "&show=2', '2');return false;"); 
+                    "&ctrl1=" + txtperson_code.ClientID + "&ctrl2=" + txtperson_name.ClientID + "&show=2', '2');return false;");
                 lblperson_name.Text = "รหัสบุคลากร :";
             }
             else

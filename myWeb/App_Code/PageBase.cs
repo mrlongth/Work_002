@@ -944,6 +944,63 @@ namespace myWeb
         }
 
 
+        public string GetMonth(string month)
+        {
+            string strMonth = string.Empty;
+            if (month.Equals("01"))
+            {
+                strMonth = "มกราคม";
+            }
+            else if (month.Equals("02"))
+            {
+                strMonth = "กุมภาพันธ์";
+            }
+            else if (month.Equals("03"))
+            {
+                strMonth = "มีนาคม";
+            }
+            else if (month.Equals("04"))
+            {
+                strMonth = "เมษายน";
+            }
+            else if (month.Equals("05"))
+            {
+                strMonth = "พฤษภาคม";
+            }
+            else if (month.Equals("06"))
+            {
+                strMonth = "มิถุนายน";
+            }
+            else if (month.Equals("07"))
+            {
+                strMonth = "กรกฎาคม";
+            }
+            else if (month.Equals("08"))
+            {
+                strMonth = "สิงหาคม";
+            }
+            else if (month.Equals("09"))
+            {
+                strMonth = "กันยายน";
+            }
+            else if (month.Equals("10"))
+            {
+                strMonth = "ตุลาคม";
+            }
+            else if (month.Equals("11"))
+            {
+                strMonth = "พฤศจิกายน";
+            }
+            else if (month.Equals("12"))
+            {
+                strMonth = "ธันวาคม";
+            }
+            return strMonth;
+        }
+
+
+
+
         //public void SetLabel(Control control, String old_str, String new_str)
         //{
         //    foreach (Control ctrl in control.Controls)

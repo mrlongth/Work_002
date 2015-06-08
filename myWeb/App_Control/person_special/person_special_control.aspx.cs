@@ -343,6 +343,7 @@ namespace myWeb.App_Control.person_retire
 
                 strperson_acc = txtperson_acc.Text.Trim();
                 strperson_bank_code = cboBank.SelectedValue;
+
                 strunit_code = cboUnit.SelectedValue;
                 strwork_code = cboWork.SelectedValue;
                 strperson_birth =txtperson_birth.Text.Trim();

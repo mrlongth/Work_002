@@ -156,7 +156,8 @@ namespace myDLL
         public bool SP_ITEM_INS(string pitem_year, string pitem_name, string pitem_type, string pitem_group_code,
                                 string plot_code, string pperson_group_code, string pactive,
                                 string pc_created_by, string pcheque_code, string pcheque_type,
-                                string pitem_acc_code, string pitem_project_code1, string pitem_project_code2, string pbudget_type, string pdirect_pay_code, ref string strMessage)
+                                string pitem_acc_code, string pitem_project_code1, string pitem_project_code2,
+                                string pbudget_type, string pdirect_pay_code, string pitem_class, ref string strMessage)
         {
             bool blnResult = false;
             SqlConnection oConn = new SqlConnection();
@@ -249,6 +250,12 @@ namespace myDLL
                 oParam_direct_pay_code.Value = pdirect_pay_code;
                 oCommand.Parameters.Add(oParam_direct_pay_code);
 
+                // - - - - - - - - - - - -             
+                SqlParameter oParam_item_class = new SqlParameter("item_class", SqlDbType.NVarChar);
+                oParam_item_class.Direction = ParameterDirection.Input;
+                oParam_item_class.Value = pitem_class;
+                oCommand.Parameters.Add(oParam_item_class);
+
 
                 oCommand.ExecuteNonQuery();
                 blnResult = true;
@@ -271,7 +278,8 @@ namespace myDLL
         public bool SP_ITEM_UPD(string pitem_code, string pitem_year, string pitem_name, string pitem_type, string pitem_group_code,
                                 string plot_code, string pperson_group_code, string pactive,
                                 string pc_updated_by, string pcheque_code, string pcheque_type,
-                                string pitem_acc_code, string pitem_project_code1, string pitem_project_code2, string pbudget_type, string pdirect_pay_code, ref string strMessage)
+                                string pitem_acc_code, string pitem_project_code1, string pitem_project_code2,
+                                string pbudget_type, string pdirect_pay_code, string pitem_class, ref string strMessage)
         {
             bool blnResult = false;
             SqlConnection oConn = new SqlConnection();
@@ -367,6 +375,12 @@ namespace myDLL
                 oParam_direct_pay_code.Direction = ParameterDirection.Input;
                 oParam_direct_pay_code.Value = pdirect_pay_code;
                 oCommand.Parameters.Add(oParam_direct_pay_code);
+
+                // - - - - - - - - - - - -             
+                SqlParameter oParam_item_class = new SqlParameter("item_class", SqlDbType.NVarChar);
+                oParam_item_class.Direction = ParameterDirection.Input;
+                oParam_item_class.Value = pitem_class;
+                oCommand.Parameters.Add(oParam_item_class);
 
 
                 // - - - - - - - - - - - -             
