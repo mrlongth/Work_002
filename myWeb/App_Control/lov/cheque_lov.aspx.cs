@@ -105,7 +105,8 @@ namespace myWeb.App_Control.lov
             }
             if (!strcheque_name.Equals(""))
             {
-                strCriteria = strCriteria + "  And  (cheque_name like '%" + strcheque_name + "%')";
+                strCriteria = strCriteria + "  And  ((cheque_name like '%" + strcheque_name + "%')";
+                strCriteria = strCriteria + "  OR (cheque_desc like '%" + strcheque_name + "%'))";
             }
             strCriteria = strCriteria + "  And  (c_active ='Y') ";
             try

@@ -13,11 +13,9 @@
                     OnSelectedIndexChanged="cboYear_SelectedIndexChanged">
                 </asp:DropDownList>
             </td>
-            <td style="text-align: right" width="15%">
-                &nbsp;
+            <td style="text-align: right" width="15%">&nbsp;
             </td>
-            <td style="text-align: right" rowspan="3">
-                &nbsp;
+            <td style="text-align: right" rowspan="3">&nbsp;
                 <asp:Label runat="server" CssClass="label_error" ID="lblError"></asp:Label>
                 <asp:ImageButton runat="server" AlternateText="ค้นหาข้อมูล" ImageUrl="~/images/button/Search.png"
                     ID="imgFind" OnClick="imgFind_Click"></asp:ImageButton>
@@ -35,8 +33,7 @@
                     OnSelectedIndexChanged="cboCheque_bank_code_SelectedIndexChanged">
                 </asp:DropDownList>
             </td>
-            <td style="text-align: right" width="15%">
-                &nbsp;
+            <td style="text-align: right" width="15%">&nbsp;
             </td>
         </tr>
         <tr>
@@ -83,7 +80,7 @@
             <asp:TemplateField HeaderText="รอบปีที่จ่าย" SortExpression="pay_year">
                 <ItemStyle HorizontalAlign="Center" Width="10%" Wrap="True" />
                 <ItemTemplate>
-                    <asp:Label ID="lblpay_year" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.pay_year") %>'>
+                    <asp:Label ID="lblpay_year" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.pay_year")%>'>
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
@@ -92,30 +89,39 @@
             <asp:TemplateField HeaderText="รอบเดือนที่จ่าย/ภาคการศึกษา" SortExpression="pay_month">
                 <ItemStyle HorizontalAlign="Left" Width="15%" Wrap="True" />
                 <ItemTemplate>
-                    <asp:Label ID="lblpay_month" runat="server" >
+                    <asp:Label ID="lblpay_month" runat="server">
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-           
-          
-              <asp:TemplateField HeaderText="ประเภทเช็ค" SortExpression="g_name">
+
+
+            <asp:TemplateField HeaderText="ประเภทเช็ค" SortExpression="g_name">
                 <ItemStyle HorizontalAlign="Left" Width="20%" Wrap="True" />
                 <ItemTemplate>
                     <asp:Label ID="lblcheque_type_name" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.g_name") %>'>
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-          
             
+            
+            <asp:TemplateField HeaderText="ประเภทงบประมาณ" SortExpression="budget_type_name">
+                <ItemStyle HorizontalAlign="Left" Width="20%" Wrap="True" />
+                <ItemTemplate>
+                    <asp:Label ID="lblbudget_type_name" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.budget_type_name")  %>'>
+                    </asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
 
-              <asp:TemplateField HeaderText="ชื่อบัญชีธนาคาร" SortExpression="cheque_acc_name">
+
+
+            <asp:TemplateField HeaderText="ชื่อบัญชีธนาคาร" SortExpression="cheque_acc_name">
                 <ItemStyle HorizontalAlign="Left" Width="20%" Wrap="True" />
                 <ItemTemplate>
                     <asp:Label ID="lblcheque_acc_name" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cheque_acc_name") %>'>
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-          
+
             <asp:TemplateField>
                 <ItemTemplate>
                     <asp:ImageButton ID="imgEdit" runat="server" CausesValidation="False" CommandName="Edit" />

@@ -79,7 +79,7 @@ namespace myDLL
         #endregion
 
         #region SP_CHEQUE_SELECT_SEL
-        public bool SP_CHEQUE_SELECT_SEL(string strCriteria,string strCriteriatmp, ref DataSet ds, ref string strMessage)
+        public bool SP_CHEQUE_SELECT_SEL(string strCriteria,ref DataSet ds, ref string strMessage)
         {
             bool blnResult = false;
             SqlConnection oConn = new SqlConnection();
@@ -96,12 +96,6 @@ namespace myDLL
                 oParamI_vc_criteria.Direction = ParameterDirection.Input;
                 oParamI_vc_criteria.Value = strCriteria;
                 oCommand.Parameters.Add(oParamI_vc_criteria);
-
-                SqlParameter oParamI_vc_criteria2 = new SqlParameter("vc_criteriatmp", SqlDbType.NVarChar);
-                oParamI_vc_criteria2.Direction = ParameterDirection.Input;
-                oParamI_vc_criteria2.Value = strCriteriatmp;
-                oCommand.Parameters.Add(oParamI_vc_criteria2);
-                
                 
                 oAdapter = new SqlDataAdapter(oCommand);
                 ds = new DataSet();
@@ -122,6 +116,121 @@ namespace myDLL
         }
         #endregion
 
+        #region SP_CHEQUE_SELECT_02_SEL
+        public bool SP_CHEQUE_SELECT_02_SEL(string strCriteria, ref DataSet ds, ref string strMessage)
+        {
+            bool blnResult = false;
+            SqlConnection oConn = new SqlConnection();
+            SqlCommand oCommand = new SqlCommand();
+            SqlDataAdapter oAdapter = new SqlDataAdapter();
+            try
+            {
+                oConn.ConnectionString = _strConn;
+                oConn.Open();
+                oCommand.Connection = oConn;
+                oCommand.CommandType = CommandType.StoredProcedure;
+                oCommand.CommandText = "sp_CHEQUE_SELECT_02_SEL";
+                SqlParameter oParamI_vc_criteria = new SqlParameter("vc_criteria", SqlDbType.NVarChar);
+                oParamI_vc_criteria.Direction = ParameterDirection.Input;
+                oParamI_vc_criteria.Value = strCriteria;
+                oCommand.Parameters.Add(oParamI_vc_criteria);
+
+                oAdapter = new SqlDataAdapter(oCommand);
+                ds = new DataSet();
+                oAdapter.Fill(ds, "sp_CHEQUE_SELECT_02_SEL");
+                blnResult = true;
+            }
+            catch (Exception ex)
+            {
+                strMessage = ex.Message.ToString();
+            }
+            finally
+            {
+                oConn.Close();
+                oCommand.Dispose();
+                oConn.Dispose();
+            }
+            return blnResult;
+        }
+        #endregion
+
+        #region SP_CHEQUE_SELECT_03_SEL
+        public bool SP_CHEQUE_SELECT_03_SEL(string strCriteria, ref DataSet ds, ref string strMessage)
+        {
+            bool blnResult = false;
+            SqlConnection oConn = new SqlConnection();
+            SqlCommand oCommand = new SqlCommand();
+            SqlDataAdapter oAdapter = new SqlDataAdapter();
+            try
+            {
+                oConn.ConnectionString = _strConn;
+                oConn.Open();
+                oCommand.Connection = oConn;
+                oCommand.CommandType = CommandType.StoredProcedure;
+                oCommand.CommandText = "sp_CHEQUE_SELECT_03_SEL";
+                SqlParameter oParamI_vc_criteria = new SqlParameter("vc_criteria", SqlDbType.NVarChar);
+                oParamI_vc_criteria.Direction = ParameterDirection.Input;
+                oParamI_vc_criteria.Value = strCriteria;
+                oCommand.Parameters.Add(oParamI_vc_criteria);
+
+                oAdapter = new SqlDataAdapter(oCommand);
+                ds = new DataSet();
+                oAdapter.Fill(ds, "sp_CHEQUE_SELECT_03_SEL");
+                blnResult = true;
+            }
+            catch (Exception ex)
+            {
+                strMessage = ex.Message.ToString();
+            }
+            finally
+            {
+                oConn.Close();
+                oCommand.Dispose();
+                oConn.Dispose();
+            }
+            return blnResult;
+        }
+        #endregion
+
+        #region SP_CHEQUE_SELECT_04_SEL
+        public bool SP_CHEQUE_SELECT_04_SEL(string strCriteria, ref DataSet ds, ref string strMessage)
+        {
+            bool blnResult = false;
+            SqlConnection oConn = new SqlConnection();
+            SqlCommand oCommand = new SqlCommand();
+            SqlDataAdapter oAdapter = new SqlDataAdapter();
+            try
+            {
+                oConn.ConnectionString = _strConn;
+                oConn.Open();
+                oCommand.Connection = oConn;
+                oCommand.CommandType = CommandType.StoredProcedure;
+                oCommand.CommandText = "sp_CHEQUE_SELECT_04_SEL";
+                SqlParameter oParamI_vc_criteria = new SqlParameter("vc_criteria", SqlDbType.NVarChar);
+                oParamI_vc_criteria.Direction = ParameterDirection.Input;
+                oParamI_vc_criteria.Value = strCriteria;
+                oCommand.Parameters.Add(oParamI_vc_criteria);
+
+                oAdapter = new SqlDataAdapter(oCommand);
+                ds = new DataSet();
+                oAdapter.Fill(ds, "sp_CHEQUE_SELECT_04_SEL");
+                blnResult = true;
+            }
+            catch (Exception ex)
+            {
+                strMessage = ex.Message.ToString();
+            }
+            finally
+            {
+                oConn.Close();
+                oCommand.Dispose();
+                oConn.Dispose();
+            }
+            return blnResult;
+        }
+        #endregion
+        
+        
         #region SP_CHEQUE_UNIT_SELECT_SEL
         public bool SP_CHEQUE_UNIT_SELECT_SEL(string strCriteria, string strCriteriatmp, ref DataSet ds, ref string strMessage)
         {

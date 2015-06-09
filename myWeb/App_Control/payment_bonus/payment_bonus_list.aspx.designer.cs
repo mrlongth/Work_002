@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace myWeb.App_Control.cheque {
+namespace myWeb.App_Control.payment_bonus {
     
     
-    public partial class cheque_print {
+    public partial class payment_bonus_list {
         
         /// <summary>
         /// lblPage4 control.
@@ -31,40 +31,22 @@ namespace myWeb.App_Control.cheque {
         protected global::System.Web.UI.WebControls.DropDownList cboYear;
         
         /// <summary>
-        /// lblPage14 control.
+        /// lblPage7 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPage14;
+        protected global::System.Web.UI.WebControls.Label lblPage7;
         
         /// <summary>
-        /// cboCheque_type control.
+        /// cboPerson_group control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList cboCheque_type;
-        
-        /// <summary>
-        /// imgFind control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgFind;
-        
-        /// <summary>
-        /// imgPrint control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgPrint;
+        protected global::System.Web.UI.WebControls.DropDownList cboPerson_group;
         
         /// <summary>
         /// lblPage8 control.
@@ -103,13 +85,22 @@ namespace myWeb.App_Control.cheque {
         protected global::System.Web.UI.WebControls.DropDownList cboPay_Month;
         
         /// <summary>
-        /// lblError control.
+        /// imgFind control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblError;
+        protected global::System.Web.UI.WebControls.ImageButton imgFind;
+        
+        /// <summary>
+        /// imgNew control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton imgNew;
         
         /// <summary>
         /// lblPage12 control.
@@ -121,31 +112,13 @@ namespace myWeb.App_Control.cheque {
         protected global::System.Web.UI.WebControls.Label lblPage12;
         
         /// <summary>
-        /// cboCheque_bank_code control.
+        /// cboDirector control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList cboCheque_bank_code;
-        
-        /// <summary>
-        /// lblPage3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPage3;
-        
-        /// <summary>
-        /// txtcheque_doc control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtcheque_doc;
+        protected global::System.Web.UI.WebControls.DropDownList cboDirector;
         
         /// <summary>
         /// lblPage13 control.
@@ -157,40 +130,121 @@ namespace myWeb.App_Control.cheque {
         protected global::System.Web.UI.WebControls.Label lblPage13;
         
         /// <summary>
-        /// txtcheque_code control.
+        /// cboUnit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtcheque_code;
+        protected global::System.Web.UI.WebControls.DropDownList cboUnit;
         
         /// <summary>
-        /// imgList_item control.
+        /// lblperson_name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgList_item;
+        protected global::System.Web.UI.WebControls.Label lblperson_name;
         
         /// <summary>
-        /// imgClear_item control.
+        /// txtperson_code control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgClear_item;
+        protected global::System.Web.UI.WebControls.TextBox txtperson_code;
         
         /// <summary>
-        /// txtcheque_name control.
+        /// imgList_person control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtcheque_name;
+        protected global::System.Web.UI.WebControls.ImageButton imgList_person;
+        
+        /// <summary>
+        /// imgClear_person control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton imgClear_person;
+        
+        /// <summary>
+        /// txtperson_name control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtperson_name;
+        
+        /// <summary>
+        /// lblPage3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPage3;
+        
+        /// <summary>
+        /// txtpayment_doc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtpayment_doc;
+        
+        /// <summary>
+        /// lblPage11 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPage11;
+        
+        /// <summary>
+        /// RadioAll control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton RadioAll;
+        
+        /// <summary>
+        /// RadioActive control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton RadioActive;
+        
+        /// <summary>
+        /// RadioCancel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton RadioCancel;
+        
+        /// <summary>
+        /// lblError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblError;
         
         /// <summary>
         /// GridView1 control.

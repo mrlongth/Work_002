@@ -59,6 +59,7 @@ namespace myWeb.App_Control.cheque
                 ViewState["direction"] = "ASC";
                 InitcboRound();
                 InitcboCheque_bank();
+                InitcboChequeType();
                 BindGridView(0);
             }
             else
@@ -280,6 +281,7 @@ namespace myWeb.App_Control.cheque
             string strcheque_bank_code = string.Empty;
             string strcheque_code = string.Empty;
             string strcheque_name = string.Empty;
+            string strcheque_type = string.Empty;
 
             strYear = cboYear.SelectedValue;
             strPay_Month = cboPay_Month.SelectedValue;
@@ -288,6 +290,7 @@ namespace myWeb.App_Control.cheque
             strcheque_doc = txtcheque_doc.Text.Trim();
             strcheque_code = txtcheque_code.Text;
             strcheque_name = txtcheque_name.Text;
+            strcheque_type = cboCheque_type.SelectedValue;
 
             if (!strYear.Equals(""))
             {
@@ -323,8 +326,15 @@ namespace myWeb.App_Control.cheque
                 strCriteria = strCriteria + "  And  (cheque_doc like '" + strcheque_doc + "%') ";
             }
 
-            strCriteria += "  And  (cheque_type ='" + ViewState["cheque_type"].ToString() + "') ";
-            strCriteria += " And c_created_by = '" + UserLoginName + "' ";
+            if (!strcheque_type.Equals(""))
+            {
+                strCriteria = strCriteria + "  And  (cheque_type = '" + strcheque_type + "') ";
+            }
+
+            
+
+            //strCriteria += "  And  (cheque_type ='" + ViewState["cheque_type"].ToString() + "') ";
+            //strCriteria += " And c_created_by = '" + UserLoginName + "' ";
 
             try
             {
@@ -414,6 +424,37 @@ namespace myWeb.App_Control.cheque
             }
             return blnResult;
         }
+
+        private void InitcboChequeType()
+        {
+            var oCommon = new cCommon();
+            string strMessage = string.Empty,
+                   strCriteria = string.Empty,
+                   strCheque_type = string.Empty;
+
+            int i;
+            var ds = new DataSet();
+            var dt = new DataTable();
+            strCheque_type = cboCheque_type.SelectedValue;
+            strCriteria = " and g_type='cheque_type' ";
+            if (oCommon.SP_SEL_OBJECT("sp_GENERAL_SEL", strCriteria, ref ds, ref strMessage))
+            {
+                dt = ds.Tables[0];
+                cboCheque_type.Items.Clear();
+                cboCheque_type.Items.Add(new ListItem("---- เลือกทั้งหมด ----", ""));
+                for (i = 0; i <= dt.Rows.Count - 1; i++)
+                {
+                    cboCheque_type.Items.Add(new ListItem(dt.Rows[i]["g_name"].ToString(), dt.Rows[i]["g_code"].ToString()));
+                }
+                if (cboCheque_type.Items.FindByValue(strCheque_type) != null)
+                {
+                    cboCheque_type.SelectedIndex = -1;
+                    cboCheque_type.Items.FindByValue(strCheque_type).Selected = true;
+                }
+            }
+        }
+
+
 
         protected void printData(string strCriteria)
         {
@@ -795,6 +836,11 @@ namespace myWeb.App_Control.cheque
                     BindGridView(0);
                 }
             }
+        }
+
+        protected void cboCheque_type_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.BindGridView(0);
         }
 
      

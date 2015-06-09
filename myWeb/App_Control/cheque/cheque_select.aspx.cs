@@ -108,11 +108,8 @@ namespace myWeb.App_Control.cheque
             DataSet ds = new DataSet();
             try
             {
-                #region set Data
                 strcheque_doc = txtcheque_doc.Text;
-                #endregion
 
-                #region insert detail
                 GridViewRow gviewRow;
                 int i;
                 for (i = 0; i <= GridView1.Rows.Count - 1; i++)
@@ -146,7 +143,6 @@ namespace myWeb.App_Control.cheque
                             lblError.Text = strMessage;
                         }
                     }
-                #endregion
                     blnResult = true;
                 }
             }
@@ -167,7 +163,7 @@ namespace myWeb.App_Control.cheque
             DataSet ds = new DataSet();
             string strMessage = string.Empty, strCriteria = string.Empty;
             string strcheque_doc = ViewState["cheque_doc"].ToString();
-            string strpay_month, strpay_year, strpay_semeter, strpay_item, strbudget_type, strcheque_type , strcheque_type_name;
+            string strpay_month, strpay_year, strpay_semeter, strpay_item, strbudget_type, strcheque_type, strcheque_type_name, strsp_round_id;
             try
             {
                 strCriteria = " and cheque_doc = '" + strcheque_doc + "' ";
@@ -188,6 +184,7 @@ namespace myWeb.App_Control.cheque
                         strpay_semeter = ds.Tables[0].Rows[0]["pay_semeter"].ToString();
                         strcheque_type_name = ds.Tables[0].Rows[0]["g_name"].ToString();
                         strcheque_type = ds.Tables[0].Rows[0]["cheque_type"].ToString();
+                        strsp_round_id = ds.Tables[0].Rows[0]["sp_round_id"].ToString();
                         #endregion
 
                         #region set Control
@@ -197,7 +194,8 @@ namespace myWeb.App_Control.cheque
                         txtcheque_date_pay.Text = cCommon.CheckDate(DateTime.Now.Date.ToString());
                         txtcheque_date_bank.Text = cCommon.CheckDate(DateTime.Now.Date.ToString());
                         hddpay_month.Value = strpay_month;
-          
+                        hddsp_round_id.Value = strsp_round_id;
+
                         txtpay_year.Text = strpay_year;
                         if (hddcheque_type.Value != "02")
                         {
@@ -221,7 +219,7 @@ namespace myWeb.App_Control.cheque
                         txtcheque_type.Text = strcheque_type_name;
                         hddcheque_type.Value = strcheque_type;
                         ViewState["cheque_type"] = strcheque_type;
-                       
+
                         BindGridView();
 
                         #endregion
@@ -245,18 +243,11 @@ namespace myWeb.App_Control.cheque
             {
                 if (ViewState["cheque_type"].ToString() == "01")
                 {
+
                     strCriteria = " and pay_month ='" + hddpay_month.Value + "'   and  pay_year  ='" + txtpay_year.Text + "' ";
-                    strCriteria += " and cheque_type ='" + ViewState["cheque_type"].ToString() + "'  ";
+                    strCriteria += "  And  payment_detail_budget_type ='" + hddbudget_type.Value + "' ";
 
-                    strCriteria2 = " and pay_month ='" + hddpay_month.Value + "'   and  pay_year  ='" + txtpay_year.Text + "' ";
-
-                    if (base.myBudgetType != "M")
-                    {
-                        strCriteria += "  And  payment_detail_budget_type ='" + base.myBudgetType + "' ";
-                        strCriteria2 += "  And  payment_detail_budget_type ='" + base.myBudgetType + "' ";
-                    }
-
-                    if (!oCheque.SP_CHEQUE_SELECT_SEL(strCriteria, strCriteria2, ref ds, ref strMessage))
+                    if (!oCheque.SP_CHEQUE_SELECT_SEL(strCriteria, ref ds, ref strMessage))
                     {
                         lblError.Text = strMessage;
                     }
@@ -267,7 +258,65 @@ namespace myWeb.App_Control.cheque
                         GridView1.DataBind();
                     }
                 }
-              
+
+                else if (ViewState["cheque_type"].ToString() == "02")
+                {
+
+                    strCriteria = " and sp_round_id = '" + hddsp_round_id.Value + "'   and  pay_year  ='" + txtpay_year.Text + "' ";
+
+                    //strCriteria += "  And  payment_detail_budget_type ='" + hddbudget_type.Value + "' ";
+                    //strCriteria2 += "  And  payment_detail_budget_type ='" + hddbudget_type.Value + "' ";
+
+                    if (!oCheque.SP_CHEQUE_SELECT_02_SEL(strCriteria, ref ds, ref strMessage))
+                    {
+                        lblError.Text = strMessage;
+                    }
+                    else
+                    {
+                        ds.Tables[0].DefaultView.Sort = ViewState["sort"] + " " + ViewState["direction"];
+                        GridView1.DataSource = ds.Tables[0];
+                        GridView1.DataBind();
+                    }
+                }
+
+                else if (ViewState["cheque_type"].ToString() == "03")
+                {
+
+                    strCriteria = " and pay_month ='" + hddpay_month.Value + "'   and  pay_year  ='" + txtpay_year.Text + "' ";
+                    strCriteria += " and person_group_code='09' ";
+
+
+                    if (!oCheque.SP_CHEQUE_SELECT_03_SEL(strCriteria, ref ds, ref strMessage))
+                    {
+                        lblError.Text = strMessage;
+                    }
+                    else
+                    {
+                        ds.Tables[0].DefaultView.Sort = ViewState["sort"] + " " + ViewState["direction"];
+                        GridView1.DataSource = ds.Tables[0];
+                        GridView1.DataBind();
+                    }
+                }
+                else if (ViewState["cheque_type"].ToString() == "04")
+                {
+
+                    strCriteria = " and pay_month ='" + hddpay_month.Value + "'   and  pay_year  ='" + txtpay_year.Text + "' ";
+
+                    strCriteria += "  And  budget_type ='" + hddbudget_type.Value + "' ";
+
+                    if (!oCheque.SP_CHEQUE_SELECT_04_SEL(strCriteria, ref ds, ref strMessage))
+                    {
+                        lblError.Text = strMessage;
+                    }
+                    else
+                    {
+                        ds.Tables[0].DefaultView.Sort = ViewState["sort"] + " " + ViewState["direction"];
+                        GridView1.DataSource = ds.Tables[0];
+                        GridView1.DataBind();
+                    }
+                }
+
+
             }
             catch (Exception ex)
             {

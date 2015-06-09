@@ -186,6 +186,7 @@ namespace myWeb.App_Control.cheque_save
             {
                 cboPay_Month.SelectedIndex = -1;
                 cboPay_Month.Items.FindByValue(strMonth).Selected = true;
+                hddpay_month.Value = strMonth;
             }
         }
 
@@ -227,6 +228,7 @@ namespace myWeb.App_Control.cheque_save
                         {
                             cboPay_Month.SelectedIndex = -1;
                             cboPay_Month.Items.FindByValue(strPay_Month).Selected = true;
+                            hddpay_month.Value = strPay_Month;
                         }
 
                         InitcboPay_Year();
@@ -545,7 +547,7 @@ namespace myWeb.App_Control.cheque_save
                 strcheque_doc = txtcheque_doc.Text;
                 strcheque_date = txtcheque_date.Text;
                 strcheque_year = cboYear.SelectedValue;
-                strpay_month = cboPay_Month.SelectedValue;
+                strpay_month = hddpay_month.Value;
                 strpay_year = cboPay_Year.SelectedValue;
                 strcheque_bank_code = cboCheque_bank_code.SelectedValue;
                 strcheque_comment = txtcomments.Text;
@@ -560,6 +562,9 @@ namespace myWeb.App_Control.cheque_save
 
                     if (cboChequeType.SelectedValue == "02")
                         strCheckDup += " and sp_round_id = " + hddsp_round_id.Value;
+
+                    if (cboChequeType.SelectedValue == "01" || cboChequeType.SelectedValue == "04")
+                        strCheckDup += " and budget_type = '" + cboBudget_type.SelectedValue + "'";
 
                     if (!oCheque.SP_CHEQUE_HEAD_SEL(strCheckDup, ref ds, ref strMessage))
                     {
@@ -580,7 +585,7 @@ namespace myWeb.App_Control.cheque_save
                             else
                             {
                                 strScript = "alert(\"ไม่สามารถเพิ่มข้อมูลได้ เนื่องจาก"
-                                            + "\\n ปัญชีธนาคาร : " + cboCheque_bank_code.SelectedItem.Text 
+                                            + "\\n ปัญชีธนาคาร : " + cboCheque_bank_code.SelectedItem.Text
                                             + "\\n ภาคการเรียนที่ : " + cboPay_Month.SelectedItem.Text + "   ปีการศึกษา : " + strpay_year
                                             + "\\n รอบการจ่ายที่: " + cboPay_Item.SelectedValue
                                             + "\\nซ้ำ\");\n";
@@ -592,7 +597,7 @@ namespace myWeb.App_Control.cheque_save
                         {
                             if (!oCheque.SP_CHEQUE_HEAD_INS(
                                 strcheque_doc, strcheque_date, strcheque_year, strpay_month, strpay_year,
-                                strcheque_bank_code, strcheque_comment, strc_user, strcheque_type, strsp_round_id , strbudget_type,  ref strMessage))
+                                strcheque_bank_code, strcheque_comment, strc_user, strcheque_type, strsp_round_id, strbudget_type, ref strMessage))
                             {
                                 lblError.Text = strMessage;
                             }
@@ -600,8 +605,13 @@ namespace myWeb.App_Control.cheque_save
                             {
                                 DataSet dsCHK = new DataSet();
                                 strCheckDup = " and cheque_bank_code = '" + strcheque_bank_code + "' and pay_year = '" + strpay_year + "' " +
-                                              " and pay_month = '" + strpay_month + "' and cheque_type='" + ViewState["cheque_type"].ToString() + "' " +
-                                              " and c_created_by = '" + UserLoginName + "' ";
+                                " and pay_month = '" + strpay_month + "' and cheque_type='" + strcheque_type + "' ";
+
+                                if (cboChequeType.SelectedValue == "02")
+                                    strCheckDup += " and sp_round_id = " + hddsp_round_id.Value;
+
+                                if (cboChequeType.SelectedValue == "01" || cboChequeType.SelectedValue == "04")
+                                    strCheckDup += " and budget_type = '" + cboBudget_type.SelectedValue + "'";
 
                                 if (!oCheque.SP_CHEQUE_HEAD_SEL(strCheckDup, ref dsCHK, ref strMessage))
                                 {
@@ -704,6 +714,8 @@ namespace myWeb.App_Control.cheque_save
             string strcheque_year = string.Empty;
             string strpay_month = string.Empty;
             string strpay_year = string.Empty;
+            string strpay_semeter = string.Empty;
+            string strpay_item = string.Empty;
             string strcheque_bank_code = string.Empty;
             string strcheque_comment = string.Empty;
             string strcheque_type = string.Empty;
@@ -734,6 +746,8 @@ namespace myWeb.App_Control.cheque_save
                         strUpdatedBy = ds.Tables[0].Rows[0]["c_updated_by"].ToString();
                         strUpdatedDate = ds.Tables[0].Rows[0]["d_updated_date"].ToString();
                         strcheque_type = ds.Tables[0].Rows[0]["cheque_type"].ToString();
+                        strpay_semeter = ds.Tables[0].Rows[0]["pay_semeter"].ToString();
+                        strpay_item = ds.Tables[0].Rows[0]["pay_item"].ToString();
                         #endregion
 
                         #region set Control
@@ -754,11 +768,37 @@ namespace myWeb.App_Control.cheque_save
                             cboPay_Year.Items.FindByValue(strpay_year).Selected = true;
                         }
 
-                        InitcboPay_Month();
-                        if (cboPay_Month.Items.FindByValue(strpay_month) != null)
+                        if (strcheque_type != "02")
                         {
-                            cboPay_Month.SelectedIndex = -1;
-                            cboPay_Month.Items.FindByValue(strpay_month).Selected = true;
+                            lblpay_month.Text = "รอบเดือนที่จ่าย :";
+                            InitcboPay_Month();
+                            if (cboPay_Month.Items.FindByValue(strpay_month) != null)
+                            {
+                                cboPay_Month.SelectedIndex = -1;
+                                cboPay_Month.Items.FindByValue(strpay_month).Selected = true;
+                            }
+                            lblpay_item.Visible = false;
+                            cboPay_Item.Visible = false;
+                        }
+                        else
+                        {
+                            hddpay_month.Value = strpay_month;
+                            lblpay_month.Text = "ภาคเรียนที่ :";
+                            this.InitcboPaySemeter();
+                            if (cboPay_Month.Items.FindByValue(strpay_semeter) != null)
+                            {
+                                cboPay_Month.SelectedIndex = -1;
+                                cboPay_Month.Items.FindByValue(strpay_semeter).Selected = true;
+                            }
+
+                            lblpay_item.Visible = true;
+                            cboPay_Item.Visible = true;
+                            this.InitcboPayItem();
+                            if (cboPay_Item.Items.FindByValue(strpay_item) != null)
+                            {
+                                cboPay_Item.SelectedIndex = -1;
+                                cboPay_Item.Items.FindByValue(strpay_item).Selected = true;
+                            }
                         }
 
                         InitcboCheque_bank();

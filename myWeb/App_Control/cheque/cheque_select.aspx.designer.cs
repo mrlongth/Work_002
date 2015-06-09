@@ -112,6 +112,15 @@ namespace myWeb.App_Control.cheque {
         protected global::System.Web.UI.WebControls.HiddenField hddpay_month;
         
         /// <summary>
+        /// hddsp_round_id control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hddsp_round_id;
+        
+        /// <summary>
         /// lblpay_item control.
         /// </summary>
         /// <remarks>

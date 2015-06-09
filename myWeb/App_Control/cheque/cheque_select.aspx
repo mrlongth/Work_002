@@ -7,30 +7,25 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <script type="text/javascript" language="javascript">
-     
-            function SelectAll(id)
-        {
+
+        function SelectAll(id) {
             var grid = document.getElementById("<%= GridView1.ClientID %>");
-            var cell;
-            
-            if (grid.rows.length > 0)
-            {
-                for (i=1; i<grid.rows.length; i++)
-                {
-                    cell = grid.rows[i].cells[0];
-                    for (j=0; j<cell.childNodes.length; j++)
-                    {           
-                        if (cell.childNodes[j].type =="checkbox")
-                        {
-                            cell.childNodes[j].checked = document.getElementById(id).checked;
+                var cell;
+
+                if (grid.rows.length > 0) {
+                    for (i = 1; i < grid.rows.length; i++) {
+                        cell = grid.rows[i].cells[0];
+                        for (j = 0; j < cell.childNodes.length; j++) {
+                            if (cell.childNodes[j].type == "checkbox") {
+                                cell.childNodes[j].checked = document.getElementById(id).checked;
+                            }
                         }
                     }
                 }
             }
-        }
-        
-    
-         
+
+
+
     </script>
 
     <table border="0" cellpadding="1" cellspacing="1" style="width: 100%">
@@ -52,8 +47,7 @@
                 <asp:HiddenField ID="hddbudget_type" runat="server" />
             </td>
             <td align="left" nowrap valign="middle" style="vertical-align: bottom; width: 1%;"
-                rowspan="5">
-                &nbsp; &nbsp;
+                rowspan="5">&nbsp; &nbsp;
                 <asp:ImageButton runat="server" ValidationGroup="A" ImageUrl="~/images/controls/save.jpg"
                     ID="imgSaveOnly" OnClick="imgSaveOnly_Click"></asp:ImageButton>
                 &nbsp;
@@ -75,6 +69,7 @@
                 <asp:TextBox runat="server" CssClass="textboxdis" Width="120px" ID="txtpay_month"
                     ReadOnly="True"></asp:TextBox>
                 <asp:HiddenField ID="hddpay_month" runat="server" />
+                <asp:HiddenField ID="hddsp_round_id" runat="server" />
             </td>
             <td align="right" nowrap valign="middle">
                 <asp:Label runat="server" ID="lblpay_item">รอบการจ่ายที่ :</asp:Label>
@@ -107,10 +102,8 @@
                 <asp:ImageButton runat="server" AlternateText="Click to show calendar" ImageAlign="AbsMiddle"
                     ImageUrl="~/images/Calendar_scheduleHS.png" ID="imgcheque_date_pay"></asp:ImageButton>
             </td>
-            <td align="right" nowrap valign="middle">
-                &nbsp;</td>
-            <td align="left" nowrap valign="middle">
-                &nbsp;</td>
+            <td align="right" nowrap valign="middle">&nbsp;</td>
+            <td align="left" nowrap valign="middle">&nbsp;</td>
         </tr>
         <tr align="left">
             <td align="right" nowrap valign="middle">
@@ -183,7 +176,7 @@
                                     </asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="คณะ/สังกัด" SortExpression="director_code">
+                            <asp:TemplateField HeaderText="คณะ/สังกัด" SortExpression="director_code" Visible="false">
                                 <ItemStyle HorizontalAlign="Left" Wrap="True" Width="20%"></ItemStyle>
                                 <ItemTemplate>
                                     <asp:Label ID="lbldirector_name" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.director_name") %>' />
@@ -207,7 +200,7 @@
                                 <ItemStyle HorizontalAlign="Right" Width="5%" Wrap="False" />
                                 <ItemTemplate>
                                     <cc1:AwNumeric ID="txtcheque_money" runat="server" Width="120px" LeadZero="Show"
-                                        DisplayMode="View" Value='<% # DataBinder.Eval(Container, "DataItem.cheque_money") %>' />
+                                        DisplayMode="View" Value='<% # DataBinder.Eval(Container, "DataItem.cheque_money")%>' />
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>

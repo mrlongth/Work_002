@@ -7,10 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace myWeb.App_Control.cheque_save {
+namespace myWeb.App_Control.payment_bonus {
     
     
-    public partial class cheque_save_control {
+    public partial class payment_bonus_item_control {
+        
+        /// <summary>
+        /// valValidationSummary control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary valValidationSummary;
         
         /// <summary>
         /// lblError control.
@@ -58,58 +67,58 @@ namespace myWeb.App_Control.cheque_save {
         protected global::System.Web.UI.WebControls.TextBox txtUpdatedDate;
         
         /// <summary>
-        /// Label79 control.
+        /// Label15 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label79;
+        protected global::System.Web.UI.WebControls.Label Label15;
         
         /// <summary>
-        /// txtcheque_doc control.
+        /// lblpayment_doc control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtcheque_doc;
+        protected global::System.Web.UI.WebControls.Label lblpayment_doc;
         
         /// <summary>
-        /// Label80 control.
+        /// Label73x control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label80;
+        protected global::System.Web.UI.WebControls.Label Label73x;
         
         /// <summary>
-        /// txtcheque_date control.
+        /// lblperson_code control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtcheque_date;
+        protected global::System.Web.UI.WebControls.Label lblperson_code;
         
         /// <summary>
-        /// txtcheque_date_CalendarExtender control.
+        /// lblPersoncode0 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender txtcheque_date_CalendarExtender;
+        protected global::System.Web.UI.WebControls.Label lblPersoncode0;
         
         /// <summary>
-        /// imgperson_start control.
+        /// lblperson_name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgperson_start;
+        protected global::System.Web.UI.WebControls.Label lblperson_name;
         
         /// <summary>
         /// Label14 control.
@@ -121,40 +130,148 @@ namespace myWeb.App_Control.cheque_save {
         protected global::System.Web.UI.WebControls.Label Label14;
         
         /// <summary>
-        /// cboYear control.
+        /// txtyear control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList cboYear;
+        protected global::System.Web.UI.WebControls.TextBox txtyear;
         
         /// <summary>
-        /// Label84 control.
+        /// RequiredFieldValidator1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label84;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
         
         /// <summary>
-        /// Label82 control.
+        /// Label71 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label82;
+        protected global::System.Web.UI.WebControls.Label Label71;
         
         /// <summary>
-        /// cboChequeType control.
+        /// lblPage9 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList cboChequeType;
+        protected global::System.Web.UI.WebControls.Label lblPage9;
+        
+        /// <summary>
+        /// hddpayment_detail_id control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hddpayment_detail_id;
+        
+        /// <summary>
+        /// txtitem_code control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtitem_code;
+        
+        /// <summary>
+        /// imgList_item control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton imgList_item;
+        
+        /// <summary>
+        /// imgClear_item control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton imgClear_item;
+        
+        /// <summary>
+        /// txtitem_name control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtitem_name;
+        
+        /// <summary>
+        /// lblPage16 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPage16;
+        
+        /// <summary>
+        /// txtcomments_sub control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtcomments_sub;
+        
+        /// <summary>
+        /// lblPage3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPage3;
+        
+        /// <summary>
+        /// txtitem_qty control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Aware.WebControls.AwNumeric txtitem_qty;
+        
+        /// <summary>
+        /// Label72 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label72;
+        
+        /// <summary>
+        /// lblPage7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPage7;
+        
+        /// <summary>
+        /// txtsp_payment_item_money control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Aware.WebControls.AwNumeric txtsp_payment_item_money;
         
         /// <summary>
         /// RequiredFieldValidator2 control.
@@ -175,166 +292,22 @@ namespace myWeb.App_Control.cheque_save {
         protected global::AjaxControlToolkit.ValidatorCalloutExtender RequiredFieldValidator2_ValidatorCalloutExtender;
         
         /// <summary>
-        /// Label83 control.
+        /// Label12 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label83;
+        protected global::System.Web.UI.WebControls.Label Label12;
         
         /// <summary>
-        /// cboBudget_type control.
+        /// chkStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList cboBudget_type;
-        
-        /// <summary>
-        /// lblpay_year control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblpay_year;
-        
-        /// <summary>
-        /// cboPay_Year control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList cboPay_Year;
-        
-        /// <summary>
-        /// hddsp_round_id control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hddsp_round_id;
-        
-        /// <summary>
-        /// lblpay_month control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblpay_month;
-        
-        /// <summary>
-        /// cboPay_Month control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList cboPay_Month;
-        
-        /// <summary>
-        /// hddpay_month control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hddpay_month;
-        
-        /// <summary>
-        /// lblpay_item control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblpay_item;
-        
-        /// <summary>
-        /// cboPay_Item control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList cboPay_Item;
-        
-        /// <summary>
-        /// Label70 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label70;
-        
-        /// <summary>
-        /// Label52 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label52;
-        
-        /// <summary>
-        /// cboCheque_bank_code control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList cboCheque_bank_code;
-        
-        /// <summary>
-        /// RequiredFieldValidator1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
-        
-        /// <summary>
-        /// RequiredFieldValidator1_ValidatorCalloutExtender control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.ValidatorCalloutExtender RequiredFieldValidator1_ValidatorCalloutExtender;
-        
-        /// <summary>
-        /// Label54 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label54;
-        
-        /// <summary>
-        /// txtcheque_bank_no control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtcheque_bank_no;
-        
-        /// <summary>
-        /// BtnR1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnR1;
+        protected global::System.Web.UI.WebControls.CheckBox chkStatus;
         
         /// <summary>
         /// imgSaveOnly control.
@@ -344,95 +317,5 @@ namespace myWeb.App_Control.cheque_save {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton imgSaveOnly;
-        
-        /// <summary>
-        /// imgClear control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgClear;
-        
-        /// <summary>
-        /// Label55 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label55;
-        
-        /// <summary>
-        /// txtbank_name control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtbank_name;
-        
-        /// <summary>
-        /// Label53 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label53;
-        
-        /// <summary>
-        /// txtbranch_name control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtbranch_name;
-        
-        /// <summary>
-        /// Label81 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label81;
-        
-        /// <summary>
-        /// txtcomments control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtcomments;
-        
-        /// <summary>
-        /// GridView1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
-        
-        /// <summary>
-        /// Label78 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label78;
-        
-        /// <summary>
-        /// txttotal_all control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Aware.WebControls.AwNumeric txttotal_all;
     }
 }

@@ -49,6 +49,27 @@
         </tr>
         <tr>
             <td style="text-align: right;">
+                <asp:Label runat="server" CssClass="label_h" ID="lblPage14">ประเภทเช็ค :
+                </asp:Label>
+            </td>
+            <td width="5%">
+                <asp:DropDownList runat="server" CssClass="textbox" ID="cboCheque_type" AutoPostBack="True"
+                    OnSelectedIndexChanged="cboCheque_type_SelectedIndexChanged">
+                </asp:DropDownList>
+            </td>
+            <td style="text-align: right" width="15%" colspan="2">
+                &nbsp;</td>
+            <td style="text-align: left">
+                &nbsp;</td>
+            <td rowspan="4" style="text-align: right; vertical-align: bottom; width: 30%;">
+                <asp:ImageButton runat="server" AlternateText="ค้นหาข้อมูล" ImageUrl="~/images/button/Search.png"
+                    ID="imgFind" OnClick="imgFind_Click"  ></asp:ImageButton>
+                <asp:ImageButton runat="server" AlternateText="พิมพ์ข้อมูล" ImageUrl="~/images/button/print.png"
+                    ID="imgPrint" OnClick="imgPrint_Click"></asp:ImageButton>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right;">
                 <asp:Label runat="server" CssClass="label_h" ID="lblPage8">รอบปีที่จ่าย :</asp:Label>
             </td>
             <td width="5%">
@@ -64,12 +85,6 @@
                     AutoPostBack="True" OnSelectedIndexChanged="cboPay_Month_SelectedIndexChanged">
                 </asp:DropDownList>
                 <asp:Label runat="server" CssClass="label_error" ID="lblError"></asp:Label>
-            </td>
-            <td rowspan="3" style="text-align: right; vertical-align: bottom; width: 30%;">
-                <asp:ImageButton runat="server" AlternateText="ค้นหาข้อมูล" ImageUrl="~/images/button/Search.png"
-                    ID="imgFind" OnClick="imgFind_Click"  ></asp:ImageButton>
-                <asp:ImageButton runat="server" AlternateText="พิมพ์ข้อมูล" ImageUrl="~/images/button/print.png"
-                    ID="imgPrint" OnClick="imgPrint_Click"></asp:ImageButton>
             </td>
         </tr>
         <tr>
@@ -170,6 +185,27 @@
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
+            
+            
+            <asp:TemplateField HeaderText="ประเภทเช็ค" SortExpression="g_name">
+                <ItemStyle HorizontalAlign="Left" Width="10%" Wrap="True" />
+                <ItemTemplate>
+                    <asp:Label ID="lblcheque_type_name" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.g_name") %>'>
+                    </asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            
+            
+            <asp:TemplateField HeaderText="ประเภทงบประมาณ" SortExpression="budget_type_name">
+                <ItemStyle HorizontalAlign="Left" Width="5%" Wrap="True" />
+                <ItemTemplate>
+                    <asp:Label ID="lblbudget_type_name" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.budget_type_name")  %>'>
+                    </asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+
+            
+
             <asp:TemplateField HeaderText="ที่อยู่จ่ายเช็ค" SortExpression="cheque_name">
                 <ItemStyle HorizontalAlign="Left" Wrap="True" Width="15%"></ItemStyle>
                 <ItemTemplate>

@@ -97,6 +97,7 @@
             <td align="left" nowrap valign="middle">
                 <asp:DropDownList runat="server" CssClass="textboxdis" ID="cboPay_Month" Enabled="False">
                 </asp:DropDownList>
+                <asp:HiddenField ID="hddpay_month" runat="server" />
             </td>
             <td align="left" nowrap valign="middle"  style="text-align: right">
                 <asp:Label runat="server" ID="lblpay_item">รอบการจ่ายที่ :</asp:Label>
