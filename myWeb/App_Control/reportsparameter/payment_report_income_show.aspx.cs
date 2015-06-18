@@ -230,7 +230,7 @@ namespace myWeb.App_Control.reportsparameter
             else if (ViewState["report_code"].ToString().Equals("Rep_paymentSOS_major") )
             {
                 ViewState["report_code"] = "Rep_paymentincomeSOS_major";
-                Retive_Rep_payment02_sum();
+                Retive_Rep_payment02_major();
             }
             else if (ViewState["report_code"].ToString().Equals("Rep_payment11"))
             {
@@ -260,6 +260,15 @@ namespace myWeb.App_Control.reportsparameter
             else if (ViewState["report_code"].ToString().Equals("Rep_payment02_major") )
             {
                 Retive_Rep_payment02_major();
+            }
+
+            else if (ViewState["report_code"].ToString().Equals("Rep_paymentPVD"))
+            {
+                Retive_Rep_paymentPVD();
+            }
+            else if (ViewState["report_code"].ToString().Equals("Rep_paymentPVD_sum"))
+            {
+                Retive_Rep_paymentPVD_sum();
             }
    
         }
@@ -849,6 +858,76 @@ namespace myWeb.App_Control.reportsparameter
             }
         }
 
+        private void Retive_Rep_paymentPVD()
+        {
+            try
+            {
+                string strPath = "~/reports/" + ViewState["report_code"].ToString() + ".rpt";
+                rptSource.Load(Server.MapPath(strPath));
+                TableLogOnInfo logOnInfo = new TableLogOnInfo();
+                TableLogOnInfos tableLogOnInfos = new TableLogOnInfos();
+                string strUsername = Session["username"].ToString();
+                string strCompanyname = ((DataSet)Application["xmlconfig"]).Tables["default"].Rows[0]["companyname"].ToString();
+                string strServername = System.Configuration.ConfigurationSettings.AppSettings["servername"];
+                string strDbname = System.Configuration.ConfigurationSettings.AppSettings["dbname"];
+                string strDbuser = System.Configuration.ConfigurationSettings.AppSettings["dbuser"];
+                string strDbpassword = System.Configuration.ConfigurationSettings.AppSettings["dbpassword"];
+                this.Title = ViewState["report_title"].ToString();
+                logOnInfo.ConnectionInfo.ServerName = strServername;
+                logOnInfo.ConnectionInfo.DatabaseName = strDbname;
+                logOnInfo.ConnectionInfo.UserID = strDbuser;
+                logOnInfo.ConnectionInfo.Password = strDbpassword;
+                tableLogOnInfos.Add(logOnInfo);
+                rptSource.SetParameterValue("@vc_criteria", Session["criteria"].ToString());
+                rptSource.SetParameterValue("@vc_yearmonth", ViewState["year"].ToString() + '/' + ViewState["months"].ToString());
+                rptSource.SetParameterValue("UserName", strUsername);
+                rptSource.SetParameterValue("CompanyName", strCompanyname);
+                rptSource.SetParameterValue("pMonth", getMonth());
+                rptSource.SetParameterValue("pYear", ViewState["year"].ToString());
+                rptSource.SetParameterValue("pReport_title", ViewState["report_title"].ToString());
+                //CrystalReportViewer1.ReportSource = rptSource;
+                CrystalReportViewer1.LogOnInfo = tableLogOnInfos;
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.ToString();
+            }
+        }
+
+        private void Retive_Rep_paymentPVD_sum()
+        {
+            try
+            {
+                string strPath = "~/reports/" + ViewState["report_code"].ToString() + ".rpt";
+                rptSource.Load(Server.MapPath(strPath));
+                TableLogOnInfo logOnInfo = new TableLogOnInfo();
+                TableLogOnInfos tableLogOnInfos = new TableLogOnInfos();
+                string strUsername = Session["username"].ToString();
+                string strCompanyname = ((DataSet)Application["xmlconfig"]).Tables["default"].Rows[0]["companyname"].ToString();
+                string strServername = System.Configuration.ConfigurationSettings.AppSettings["servername"];
+                string strDbname = System.Configuration.ConfigurationSettings.AppSettings["dbname"];
+                string strDbuser = System.Configuration.ConfigurationSettings.AppSettings["dbuser"];
+                string strDbpassword = System.Configuration.ConfigurationSettings.AppSettings["dbpassword"];
+                this.Title = ViewState["report_title"].ToString();
+                logOnInfo.ConnectionInfo.ServerName = strServername;
+                logOnInfo.ConnectionInfo.DatabaseName = strDbname;
+                logOnInfo.ConnectionInfo.UserID = strDbuser;
+                logOnInfo.ConnectionInfo.Password = strDbpassword;
+                tableLogOnInfos.Add(logOnInfo);
+                rptSource.SetParameterValue("@vc_criteria", Session["criteria"].ToString());
+                rptSource.SetParameterValue("UserName", strUsername);
+                rptSource.SetParameterValue("CompanyName", strCompanyname);
+                rptSource.SetParameterValue("pMonth", getMonth());
+                rptSource.SetParameterValue("pYear", ViewState["year"].ToString());
+                rptSource.SetParameterValue("pReport_title", ViewState["report_title"].ToString());
+                //CrystalReportViewer1.ReportSource = rptSource;
+                CrystalReportViewer1.LogOnInfo = tableLogOnInfos;
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.ToString();
+            }
+        }
 
 
 

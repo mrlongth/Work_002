@@ -177,11 +177,11 @@ namespace myWeb.App_Control.cheque
             {
                 dt = ds.Tables[0];
                 cboCheque_bank_code.Items.Clear();
-                cboCheque_bank_code.Items.Add(new ListItem("---- เลือกข้อมูลทั้งหมด ----", ""));
+                //cboCheque_bank_code.Items.Add(new ListItem("---- กรุณาเลือกข้อมูล ----", ""));
                 int i;
                 for (i = 0; i <= dt.Rows.Count - 1; i++)
                 {
-                    cboCheque_bank_code.Items.Add(new ListItem(dt.Rows[i]["cheque_acc_name"].ToString(), dt.Rows[i]["cheque_bank_code"].ToString()));
+                    cboCheque_bank_code.Items.Add(new ListItem(dt.Rows[i]["cheque_acc_name"].ToString(), dt.Rows[i]["cheque_report_code"].ToString()));
                 }
                 if (cboCheque_bank_code.Items.FindByValue(strCheque_bank_code) != null)
                 {
@@ -309,7 +309,7 @@ namespace myWeb.App_Control.cheque
 
             if (!strcheque_bank_code.Equals(""))
             {
-                strCriteria = strCriteria + "  And  (cheque_bank_code  = '" + strcheque_bank_code + "') ";
+                strCriteria = strCriteria + "  And  (cheque_report_code  = '" + strcheque_bank_code + "') ";
             }
 
             if (!strcheque_code.Equals(""))
@@ -454,13 +454,11 @@ namespace myWeb.App_Control.cheque
             }
         }
 
-
-
         protected void printData(string strCriteria)
         {
             string strReport_code = string.Empty;
             string strScript = string.Empty;
-            strReport_code = "Rep_cheque";
+            strReport_code = cboCheque_bank_code.SelectedValue;
             Session["criteria"] = strCriteria;
             strScript = "windowOpenMaximize(\"../../App_Control/reportsparameter/payment_report_show.aspx?report_code=" + strReport_code +
                                              "&months=" + cboPay_Month.Text + "&year=" + cboPay_Year.Text + "\", \"_blank\");\n";

@@ -70,13 +70,22 @@
                     Height="50px" TextMode="MultiLine"></asp:TextBox>
                 </font>
             </td>
-            <td rowspan="4" style="text-align: right">
+            <td rowspan="5" style="text-align: right">
                 &nbsp;
                 &nbsp;
                 <asp:ImageButton ID="imgSaveOnly" runat="server" ImageUrl="~/images/controls/save.jpg"
                     ValidationGroup="A" />
                 &nbsp;
                 </td>
+        </tr>
+        <tr align="left">
+            <td align="right" nowrap valign="top">
+                <asp:Label ID="Label74" runat="server">บัญชีธนาคาร :</asp:Label>
+            </td>
+            <td align="left" colspan="2" nowrap valign="top">
+                <asp:DropDownList runat="server" CssClass="textbox" ID="cboChequeBank">
+                </asp:DropDownList>
+            </td>
         </tr>
         <tr align="left">
             <td align="right" nowrap valign="top">

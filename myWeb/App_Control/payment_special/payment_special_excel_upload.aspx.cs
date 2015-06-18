@@ -90,16 +90,23 @@ namespace myWeb.App_Control.payment_special
                 string pitem_amt;
                 string pc_created_by;
                 string strMassege = string.Empty;
+
+                string str_person_code = System.Configuration.ConfigurationSettings.AppSettings["speial:person_code"];
+                string str_person_name = System.Configuration.ConfigurationSettings.AppSettings["speial:person_name"];
+                string str_person_surname = System.Configuration.ConfigurationSettings.AppSettings["speial:person_name"];
+                string str_item_qty = System.Configuration.ConfigurationSettings.AppSettings["speial:qty"];
+                string str_item_amt = System.Configuration.ConfigurationSettings.AppSettings["speial:amount"];
+
                 pc_created_by = Session["username"].ToString();
                 objPayment_special.SP_IMPORT_PAYMENT_SPECIAL_DEL(pc_created_by, ref strMassege);
                 for (int i = 0; i < odtExcelAll.Rows.Count; i++)
                 {
                     psp_round_id = ViewState["sp_round_id"].ToString();
-                    psp_person_code = Helper.CStr(odtExcelAll.Rows[i][0]);
-                    psp_person_name = Helper.CStr(odtExcelAll.Rows[i][2]);
-                    psp_person_surname = Helper.CStr(odtExcelAll.Rows[i][3]);
-                    pitem_qty = Helper.CStr(odtExcelAll.Rows[i][9]);
-                    pitem_amt = Helper.CStr(odtExcelAll.Rows[i][9]);
+                    psp_person_code = Helper.CStr(odtExcelAll.Rows[i][int.Parse(str_person_code)]);
+                    psp_person_name = Helper.CStr(odtExcelAll.Rows[i][int.Parse(str_person_name)]);
+                    psp_person_surname = Helper.CStr(odtExcelAll.Rows[i][int.Parse(str_person_surname)]);
+                    pitem_qty = Helper.CStr(odtExcelAll.Rows[i][int.Parse(str_item_qty)]);
+                    pitem_amt = Helper.CStr(odtExcelAll.Rows[i][int.Parse(str_item_amt)]);
                     pitem_code = ViewState["item_code"].ToString();
                     if (!string.IsNullOrEmpty(psp_person_code))
                     {

@@ -351,7 +351,7 @@ namespace myWeb.App_Control.lov
             }
             else
             {
-                strCriteria = strCriteria + "  And  (item_class = 'I') ";                
+                strCriteria = strCriteria + "  And  (item_class = 'I') ";
             }
 
 
@@ -399,7 +399,9 @@ namespace myWeb.App_Control.lov
                                                     "ClosePopUp('" + ViewState["show"].ToString() + "');";
 
                             }
-                            else if (ViewState["from"].ToString().Equals("payment_special") || ViewState["from"].ToString().Equals("payment_medical") ||  ViewState["from"].ToString().Equals("payment_bonus"))
+                            else if (ViewState["from"].ToString().Equals("payment_special") ||
+                                    ViewState["from"].ToString().Equals("payment_medical") ||
+                                    ViewState["from"].ToString().Equals("payment_bonus"))
                             {
                                 strScript = "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl1"].ToString() + "').value='" + stritem_code + "';\n " +
                                                 "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl2"].ToString() + "').value='" + stritem_name + "';\n" +
@@ -419,12 +421,17 @@ namespace myWeb.App_Control.lov
                         }
                         else
                         {
-                            strScript = "window.parent.document.getElementById('" + ViewState["ctrl1"].ToString() + "').value='" + stritem_code + "';\n " +
-                                                "window.parent.document.getElementById('" + ViewState["ctrl2"].ToString() + "').value='" + stritem_name + "';\n" +
-                                                "window.parent.document.getElementById('" + ViewState["ctrl3"].ToString() + "').value='" + stritem_type + "';\n" +
-                                                "window.parent.document.getElementById('" + ViewState["ctrl4"].ToString() + "').value='" + stritem_group_name + "';\n" +
-                                                "window.parent.document.getElementById('" + ViewState["ctrl5"].ToString() + "').value='" + strlot_name + "';\n" +
-                                                "ClosePopUp('" + ViewState["show"].ToString() + "');";
+                            if (!string.IsNullOrEmpty(ViewState["ctrl1"].ToString()))
+                                strScript = "window.parent.document.getElementById('" + ViewState["ctrl1"].ToString() + "').value='" + stritem_code + "';\n ";
+                            if (!string.IsNullOrEmpty(ViewState["ctrl2"].ToString()))
+                                strScript += "window.parent.document.getElementById('" + ViewState["ctrl2"].ToString() + "').value='" + stritem_name + "';\n";
+                            if (!string.IsNullOrEmpty(ViewState["ctrl3"].ToString()))
+                                strScript += "window.parent.document.getElementById('" + ViewState["ctrl3"].ToString() + "').value='" + stritem_type + "';\n";
+                            if (!string.IsNullOrEmpty(ViewState["ctrl4"].ToString()))
+                                strScript += "window.parent.document.getElementById('" + ViewState["ctrl4"].ToString() + "').value='" + stritem_group_name + "';\n";
+                            if (!string.IsNullOrEmpty(ViewState["ctrl5"].ToString()))
+                                strScript += "window.parent.document.getElementById('" + ViewState["ctrl5"].ToString() + "').value='" + strlot_name + "';\n";
+                            strScript += "ClosePopUp('" + ViewState["show"].ToString() + "');";
 
 
                             if (ViewState["from"].ToString().Equals("member") | ViewState["from"].ToString().Equals("report"))

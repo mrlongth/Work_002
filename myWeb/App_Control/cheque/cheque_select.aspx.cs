@@ -163,7 +163,8 @@ namespace myWeb.App_Control.cheque
             DataSet ds = new DataSet();
             string strMessage = string.Empty, strCriteria = string.Empty;
             string strcheque_doc = ViewState["cheque_doc"].ToString();
-            string strpay_month, strpay_year, strpay_semeter, strpay_item, strbudget_type, strcheque_type, strcheque_type_name, strsp_round_id;
+            string strpay_month, strpay_year, strpay_semeter, strpay_item, strbudget_type,
+                strcheque_type, strcheque_type_name, strsp_round_id, strcheque_bank_code;
             try
             {
                 strCriteria = " and cheque_doc = '" + strcheque_doc + "' ";
@@ -185,6 +186,7 @@ namespace myWeb.App_Control.cheque
                         strcheque_type_name = ds.Tables[0].Rows[0]["g_name"].ToString();
                         strcheque_type = ds.Tables[0].Rows[0]["cheque_type"].ToString();
                         strsp_round_id = ds.Tables[0].Rows[0]["sp_round_id"].ToString();
+                        strcheque_bank_code = ds.Tables[0].Rows[0]["cheque_bank_code"].ToString();
                         #endregion
 
                         #region set Control
@@ -195,6 +197,7 @@ namespace myWeb.App_Control.cheque
                         txtcheque_date_bank.Text = cCommon.CheckDate(DateTime.Now.Date.ToString());
                         hddpay_month.Value = strpay_month;
                         hddsp_round_id.Value = strsp_round_id;
+                        hddcheque_bank_code.Value = strcheque_bank_code;
 
                         txtpay_year.Text = strpay_year;
                         if (hddcheque_type.Value != "02")
@@ -246,8 +249,9 @@ namespace myWeb.App_Control.cheque
 
                     strCriteria = " and pay_month ='" + hddpay_month.Value + "'   and  pay_year  ='" + txtpay_year.Text + "' ";
                     strCriteria += "  And  payment_detail_budget_type ='" + hddbudget_type.Value + "' ";
+                    strCriteria += "  And  cheque_bank_code ='" + hddcheque_bank_code.Value + "' ";
 
-                    if (!oCheque.SP_CHEQUE_SELECT_SEL(strCriteria, ref ds, ref strMessage))
+                    if (!oCheque.SP_CHEQUE_SELECT_01_SEL(strCriteria, ref ds, ref strMessage))
                     {
                         lblError.Text = strMessage;
                     }
@@ -263,6 +267,7 @@ namespace myWeb.App_Control.cheque
                 {
 
                     strCriteria = " and sp_round_id = '" + hddsp_round_id.Value + "'   and  pay_year  ='" + txtpay_year.Text + "' ";
+                    strCriteria += "  And  cheque_bank_code ='" + hddcheque_bank_code.Value + "' ";
 
                     //strCriteria += "  And  payment_detail_budget_type ='" + hddbudget_type.Value + "' ";
                     //strCriteria2 += "  And  payment_detail_budget_type ='" + hddbudget_type.Value + "' ";
@@ -284,6 +289,7 @@ namespace myWeb.App_Control.cheque
 
                     strCriteria = " and pay_month ='" + hddpay_month.Value + "'   and  pay_year  ='" + txtpay_year.Text + "' ";
                     strCriteria += " and person_group_code='09' ";
+                    strCriteria += "  And  cheque_bank_code ='" + hddcheque_bank_code.Value + "' ";
 
 
                     if (!oCheque.SP_CHEQUE_SELECT_03_SEL(strCriteria, ref ds, ref strMessage))
@@ -301,8 +307,9 @@ namespace myWeb.App_Control.cheque
                 {
 
                     strCriteria = " and pay_month ='" + hddpay_month.Value + "'   and  pay_year  ='" + txtpay_year.Text + "' ";
-
                     strCriteria += "  And  budget_type ='" + hddbudget_type.Value + "' ";
+                    strCriteria += "  And  cheque_bank_code ='" + hddcheque_bank_code.Value + "' ";
+
 
                     if (!oCheque.SP_CHEQUE_SELECT_04_SEL(strCriteria, ref ds, ref strMessage))
                     {

@@ -18,13 +18,7 @@ namespace myWeb.App_Control.cheque
     {
         protected void Page_Load(object sender, System.EventArgs e)
         {
-            //if (Session["username"] == null)
-            //{
-            //    string strScript = "<script language=\"javascript\">\n self.opener.document.location.href=\"../../index.aspx\";\n self.close();\n</script>\n";
-            //    this.RegisterStartupScript("close", strScript);
-            //    return;
-            //}
-            lblError.Text = "";
+                  lblError.Text = "";
             if (!IsPostBack)
             {
                 imgSaveOnly.Attributes.Add("onMouseOver", "src='../../images/controls/save2.jpg'");
@@ -77,7 +71,8 @@ namespace myWeb.App_Control.cheque
                 }
 
                 #endregion
-                //imgClose.Attributes.Add("onclick", "ClosePopUp('1');return false;");
+
+                InitcboCheque();
             }
         }
 
@@ -103,6 +98,33 @@ namespace myWeb.App_Control.cheque
         }
         #endregion
 
+        private void InitcboCheque()
+        {
+            cCommon oCommon = new cCommon();
+            string strMessage = string.Empty, strCriteria = string.Empty;
+            string strCode = cboChequeBank.SelectedValue;
+            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
+            strCriteria = " Select * from  cheque_bank ";
+            if (oCommon.SEL_SQL(strCriteria, ref ds, ref strMessage))
+            {
+                dt = ds.Tables[0];
+                cboChequeBank.Items.Clear();
+                cboChequeBank.Items.Add(new ListItem("---- กรุณาเลือกข้อมูล ----", ""));
+              
+                int i;
+                for (i = 0; i <= dt.Rows.Count - 1; i++)
+                {
+                    cboChequeBank.Items.Add(new ListItem(dt.Rows[i]["cheque_acc_name"].ToString(), dt.Rows[i]["cheque_bank_code"].ToString()));
+                }
+                if (cboChequeBank.Items.FindByValue(strCode) != null)
+                {
+                    cboChequeBank.SelectedIndex = -1;
+                    cboChequeBank.Items.FindByValue(strCode).Selected = true;
+                }
+            }
+        }
+
         private bool saveData()
         {
             bool blnResult = false;
@@ -111,6 +133,7 @@ namespace myWeb.App_Control.cheque
             string strcheque_code = string.Empty,
                 strcheque_name = string.Empty,
                 strcheque_desc = string.Empty,
+                strcheque_bank_code = string.Empty,
                 strActive = string.Empty,
                 strCreatedBy = string.Empty,
                 strUpdatedBy = string.Empty;
@@ -123,6 +146,7 @@ namespace myWeb.App_Control.cheque
                 strcheque_code = txtcheque_code.Text.Trim();
                 strcheque_name = txtcheque_name.Text;
                 strcheque_desc = txtcheque_desc.Text;
+                strcheque_bank_code = cboChequeBank.SelectedValue;
                 if (chkStatus.Checked == true)
                 {
                     strActive = "Y";
@@ -138,8 +162,7 @@ namespace myWeb.App_Control.cheque
                 {
                     #region check dup
                     string strCheckDup = string.Empty;
-                    strCheckDup = " and cheque_name = '" + strcheque_name.Trim() + "' " +
-                                                  " and cheque_code <> '" + strcheque_code.Trim() + "' ";
+                    strCheckDup = " and cheque_name = '" + strcheque_name.Trim() + "'  and cheque_desc = '" + strcheque_desc.Trim() + "' and cheque_code <> '" + strcheque_code.Trim() + "' ";
                     if (!oCheque.SP_SEL_CHEQUE(strCheckDup, ref ds, ref strMessage))
                     {
                         lblError.Text = strMessage;
@@ -157,7 +180,7 @@ namespace myWeb.App_Control.cheque
                     #region edit
                     if (!blnDup)
                     {
-                        if (oCheque.SP_UPD_CHEQUE(strcheque_code, strcheque_name,strcheque_desc, strActive, strUpdatedBy, ref strMessage))
+                        if (oCheque.SP_UPD_CHEQUE(strcheque_code, strcheque_name,strcheque_desc,strcheque_bank_code, strActive, strUpdatedBy, ref strMessage))
                         {
                             blnResult = true;
                         }
@@ -194,7 +217,7 @@ namespace myWeb.App_Control.cheque
                     #region insert
                     if (!blnDup)
                     {
-                        if (oCheque.SP_INS_CHEQUE(strcheque_code, strcheque_name,strcheque_desc, strActive, strCreatedBy, ref strMessage))
+                        if (oCheque.SP_INS_CHEQUE(strcheque_code, strcheque_name, strcheque_desc, strcheque_bank_code , strActive, strCreatedBy, ref strMessage))
                         {
                             ViewState["cheque_code"] = strcheque_code;
                             blnResult = true;
@@ -251,6 +274,7 @@ namespace myWeb.App_Control.cheque
             string strcheque_code = string.Empty,
                 strcheque_name = string.Empty,
                 strcheque_desc = string.Empty,
+                strcheque_bank_code = string.Empty,
                 strC_active = string.Empty,
                 strCreatedBy = string.Empty,
                 strUpdatedBy = string.Empty,
@@ -272,6 +296,7 @@ namespace myWeb.App_Control.cheque
                         strcheque_name = ds.Tables[0].Rows[0]["cheque_name"].ToString();
                         strcheque_desc = ds.Tables[0].Rows[0]["cheque_desc"].ToString();
                         strC_active = ds.Tables[0].Rows[0]["c_active"].ToString();
+                        strcheque_bank_code = ds.Tables[0].Rows[0]["cheque_bank_code"].ToString();
                         strCreatedBy = ds.Tables[0].Rows[0]["c_created_by"].ToString();
                         strUpdatedBy = ds.Tables[0].Rows[0]["c_updated_by"].ToString();
                         strCreatedDate = ds.Tables[0].Rows[0]["d_created_date"].ToString();
@@ -294,6 +319,16 @@ namespace myWeb.App_Control.cheque
                             txtcheque_name.CssClass = "textboxdis";
                             chkStatus.Checked = false;
                         }
+
+                        
+                        this.InitcboCheque();
+                        if (cboChequeBank.Items.FindByValue(strcheque_bank_code) != null)
+                        {
+                            cboChequeBank.SelectedIndex = -1;
+                            cboChequeBank.Items.FindByValue(strcheque_bank_code).Selected = true;
+                        }
+                      
+
                         txtUpdatedBy.Text = strUpdatedBy;
                         txtUpdatedDate.Text = strUpdatedDate;
                         #endregion

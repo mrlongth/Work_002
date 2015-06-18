@@ -124,6 +124,7 @@
                 <asp:TextBox runat="server" CssClass="textboxdis" Width="300px" ID="txtcheque_type"
                     ReadOnly="True"></asp:TextBox>
                 <asp:HiddenField ID="hddcheque_type" runat="server" />
+                <asp:HiddenField ID="hddcheque_bank_code" runat="server" />
             </td>
         </tr>
         <tr align="left">

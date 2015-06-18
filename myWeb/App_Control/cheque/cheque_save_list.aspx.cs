@@ -118,7 +118,7 @@ namespace myWeb.App_Control.cheque
             {
                 dt = ds.Tables[0];
                 cboCheque_bank_code.Items.Clear();
-                cboCheque_bank_code.Items.Add(new ListItem("---- เลือกข้อมูลทั้งหมด ----", ""));
+                cboCheque_bank_code.Items.Add(new ListItem("---- เลือกทั้งหมด ----", ""));
                 int i;
                 for (i = 0; i <= dt.Rows.Count - 1; i++)
                 {

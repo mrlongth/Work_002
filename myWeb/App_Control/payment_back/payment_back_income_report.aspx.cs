@@ -566,7 +566,7 @@ namespace myWeb.App_Control.payment_back
             string strCriteria = " and c_active='A' ";
             strCriteria += " and  report_year = '" + cboYear.SelectedValue + "' ";
             strCriteria += " and  report_group_show in (Select report_group_show from view_payment_back_report  where  person_group_code IN (" + PersonGroupList + ",'') and  report_year = '" + cboYear.SelectedValue + "' )";
-            // strCriteria += " and  budget_type IN ('R','M') ";
+            strCriteria += " and  budget_type IN ('R','M') ";
 
             RadioButtonList1.Items.Clear();
             if (oPayment_back.SP_PAYMENT_BACK_REPORT_SEL(strCriteria, ref ds, ref strMessage))

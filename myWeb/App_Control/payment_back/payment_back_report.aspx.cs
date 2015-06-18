@@ -692,9 +692,9 @@ namespace myWeb.App_Control.payment_back
 
                     if (!stritem_code.Equals(""))
                     {
-                        strCriteria = strCriteria + "  And  view_payment_back.item_code= '" + stritem_code + "' ";
+                        strCriteria += "  And  substring(view_payment_back.item_code,1,10)= '" + stritem_code + "' ";
                     }
-                    if (stritem_code.Substring(4, 6).Equals("03-002"))
+                    if (stritem_code.Substring(4, 6).Equals(base.GetConfigItem("SOSCode2")))
                     {
                         strCriteria = strCriteria.Replace("view_payment_back.", "");
                     }
@@ -725,16 +725,23 @@ namespace myWeb.App_Control.payment_back
                         {
                             stritem_code = dt.Rows[0]["item_code"].ToString();
                             strReport_id = dt.Rows[0]["report_id"].ToString();
-                            if (stritem_code.Substring(4, 6).Equals("03-002") && dt.Rows[0]["report_code"].ToString().Contains("Rep_payment_open"))
-                            {
-                                stritem_code += "A";
-                            }
+                            //if (stritem_code.Substring(4, 6).Equals(base.GetConfigItem("SOSCode2")) && dt.Rows[0]["report_code"].ToString().Contains("Rep_payment_open"))
+                            //{
+                            //    stritem_code += "A";
+                            //}
 
                             if (!stritem_code.Equals(""))
                             {
-                                strCriteria = strCriteria + "  And  view_payment_back.item_code= '" + stritem_code + "' ";
+                                if (stritem_code.Substring(4, 6).Equals(base.GetConfigItem("GBKCode1")))
+                                {
+                                    stritem_code = stritem_code.Replace(
+                                        base.GetConfigItem("GBKCode1"),
+                                        base.GetConfigItem("GBKSalaryCode"));
+                                }
+                                
+                                strCriteria += "  And  substring(view_payment_back.item_code,1,10)= '" + stritem_code + "' ";
                             }
-                            if (stritem_code.Substring(4, 6).Equals("03-002"))
+                            if (stritem_code.Substring(4, 6).Equals(base.GetConfigItem("SOSCode2")))
                             {
                                 strCriteria = strCriteria.Replace("view_payment_back.", "");
                             }

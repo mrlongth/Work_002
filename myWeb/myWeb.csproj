@@ -109,6 +109,8 @@
     <Content Include="App_Control\lov\person_special_lov.aspx" />
     <Content Include="App_Control\menu\menu_list.aspx" />
     <Content Include="App_Control\menu\menu_control.aspx" />
+    <Content Include="App_Control\payment_bonus\payment_bonus_excel_upload.aspx" />
+    <Content Include="App_Control\payment_bonus\payment_bonus_import.aspx" />
     <Content Include="App_Control\payment_bonus\payment_bonus_list.aspx" />
     <Content Include="App_Control\payment_bonus\payment_bonus_control.aspx" />
     <Content Include="App_Control\payment_bonus\payment_bonus_item_control.aspx" />
@@ -604,6 +606,20 @@
     </Compile>
     <Compile Include="App_Control\payment_adj\payment_export.aspx.designer.cs">
       <DependentUpon>payment_export.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Control\payment_bonus\payment_bonus_excel_upload.aspx.cs">
+      <DependentUpon>payment_bonus_excel_upload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Control\payment_bonus\payment_bonus_excel_upload.aspx.designer.cs">
+      <DependentUpon>payment_bonus_excel_upload.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Control\payment_bonus\payment_bonus_import.aspx.cs">
+      <DependentUpon>payment_bonus_import.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Control\payment_bonus\payment_bonus_import.aspx.designer.cs">
+      <DependentUpon>payment_bonus_import.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Control\payment_bonus\payment_bonus_list.aspx.cs">
       <DependentUpon>payment_bonus_list.aspx</DependentUpon>

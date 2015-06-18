@@ -347,7 +347,8 @@ namespace myWeb.App_Control.reportsparameter
             {
                 Retive_Rep_payment_slip();
             }
-            else if (ViewState["report_code"].ToString().Equals("Rep_cheque"))
+            else if (ViewState["report_code"].ToString().Equals("Rep_cheque_ktb") ||
+                ViewState["report_code"].ToString().Equals("Rep_cheque_scb"))
             {
                 Retive_Rep_cheque_print();
             }
@@ -376,6 +377,18 @@ namespace myWeb.App_Control.reportsparameter
             {
                 Retive_Rep_GBK();
             }
+
+            else if (ViewState["report_code"].ToString().Equals("Rep_PVD")
+                || ViewState["report_code"].ToString().Equals("Rep_PVD_back"))
+            {
+                Retive_Rep_GBK();
+            }
+            else if (ViewState["report_code"].ToString().Equals("Rep_PVDbydirector")
+               || ViewState["report_code"].ToString().Equals("Rep_PVD_backbydirector"))
+            {
+                Retive_Rep_GBK();
+            }
+
             else if (ViewState["report_code"].ToString().Equals("Rep_payment") ||
                 ViewState["report_code"].ToString().Equals("Rep_payment_tax"))
             {
@@ -430,7 +443,8 @@ namespace myWeb.App_Control.reportsparameter
                 Retive_Rep_budget_plan_cumulative();
             }
             else if (ViewState["report_code"].ToString().Equals("Rep_paymentGBKbyyear") ||
-                    ViewState["report_code"].ToString().Equals("Rep_paymentGSJbyyear"))
+                    ViewState["report_code"].ToString().Equals("Rep_paymentGSJbyyear") ||
+                    ViewState["report_code"].ToString().Equals("Rep_paymentPVDbyyear"))
             {
                 Retive_Rep_paymentGBKbyyear();
             }
@@ -480,12 +494,12 @@ namespace myWeb.App_Control.reportsparameter
             {
                 Retive_Rep_payment_loan();
             }
-            else if (ViewState["report_code"].ToString().Equals("Rep_payment_open") | 
+            else if (ViewState["report_code"].ToString().Equals("Rep_payment_open") |
                      ViewState["report_code"].ToString().Equals("Rep_payment_open_director"))
             {
                 Retive_Rep_payment_open();
             }
-            else if (ViewState["report_code"].ToString().Equals("Rep_payment_open_all") | 
+            else if (ViewState["report_code"].ToString().Equals("Rep_payment_open_all") |
                      ViewState["report_code"].ToString().Equals("Rep_payment_open_all_director") |
                      ViewState["report_code"].ToString().Equals("Rep_payment_open_gbk") |
                      ViewState["report_code"].ToString().Equals("Rep_payment_open_gbk_director"))
@@ -500,7 +514,7 @@ namespace myWeb.App_Control.reportsparameter
             {
                 Retive_Rep_paymentdirectpay();
             }
-           
+
         }
 
         private string getMonth()
@@ -1421,7 +1435,7 @@ namespace myWeb.App_Control.reportsparameter
                 rptSource.SetParameterValue("pMonth", getMonth());
                 rptSource.SetParameterValue("pYear", ViewState["year"].ToString());
                 rptSource.SetParameterValue("Condition", Session["condition"].ToString());
-              
+
                 //CrystalReportViewer1.ReportSource = rptSource;
                 CrystalReportViewer1.LogOnInfo = tableLogOnInfos;
             }
@@ -1982,7 +1996,7 @@ namespace myWeb.App_Control.reportsparameter
                 tableLogOnInfos.Add(logOnInfo);
                 rptSource.SetParameterValue("@vc_criteria", Session["criteria"].ToString());
                 rptSource.SetParameterValue("@vc_year", ViewState["year"].ToString());
-                rptSource.SetParameterValue("@vc_itemdes", HttpUtility.HtmlDecode(ViewState["item_des"].ToString()));
+                rptSource.SetParameterValue("@vc_itemdes", Session["item_des"].ToString());
                 rptSource.SetParameterValue("UserName", strUsername);
                 rptSource.SetParameterValue("CompanyName", strCompanyname);
                 rptSource.SetParameterValue("pYear", ViewState["year"].ToString());
@@ -2296,7 +2310,7 @@ namespace myWeb.App_Control.reportsparameter
                 rptSource.SetParameterValue("UserName", strUsername);
                 rptSource.SetParameterValue("CompanyName", strCompanyname);
                 rptSource.SetParameterValue("pMonth", getMonth());
-                
+
                 string strYear = ((DataSet)Application["xmlconfig"]).Tables["default"].Rows[0]["yearnow"].ToString();
 
                 rptSource.SetParameterValue("pYear", strYear);

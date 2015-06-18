@@ -9,11 +9,16 @@
                 <asp:radiobuttonlist id="RadioButtonList1" runat="server" autopostback="True" onselectedindexchanged="RadioButtonList1_SelectedIndexChanged">
                     <asp:listitem value="9" selected="True">รายงานสรุปรวม กสจ.</asp:listitem>
                     <asp:listitem value="10">รายงานสรุป กสจ.แยกตามสังกัด</asp:listitem>
+                    <asp:listitem value="A02">รายงานการเบิกจ่าย กสจ.ประจำประจำปี</asp:listitem>
                     <asp:listitem value="11">รายงานสรุปรวม กบข.</asp:listitem>
                     <asp:listitem value="12">รายงานสรุปรวม กบข.แยกตามสังกัด</asp:listitem>
-                    <asp:listitem value="13">รายงานสรุปรวม กบข.ส่วนเพิ่ม</asp:listitem>
                     <asp:listitem value="A01">รายงานการเบิกจ่าย กบข.ประจำปี</asp:listitem>
-                    <asp:listitem value="A02">รายงานการเบิกจ่าย กสจ.ประจำประจำปี</asp:listitem>
+                    <asp:listitem value="13">รายงานสรุปรวม กบข.ส่วนเพิ่ม</asp:listitem>
+
+                    <asp:listitem value="A03">รายงานสรุปรวม กองทุนสำรองเลี้ยงชีพ</asp:listitem>
+                    <asp:listitem value="A04">รายงานสรุปรวม กองทุนสำรองเลี้ยงชีพแยกตามสังกัด</asp:listitem>
+                    <asp:listitem value="A05">รายงานการเบิกจ่าย กองทุนสำรองเลี้ยงชีพประจำปี</asp:listitem>
+
                 </asp:radiobuttonlist>
             </td>
             <td style="text-align: right; width: 70%; vertical-align: top;">

@@ -274,6 +274,15 @@ namespace myWeb.App_Control.cheque {
         protected global::System.Web.UI.WebControls.HiddenField hddcheque_type;
         
         /// <summary>
+        /// hddcheque_bank_code control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hddcheque_bank_code;
+        
+        /// <summary>
         /// Label89 control.
         /// </summary>
         /// <remarks>

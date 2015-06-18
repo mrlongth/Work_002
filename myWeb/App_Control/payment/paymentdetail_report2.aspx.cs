@@ -390,7 +390,7 @@ namespace myWeb.App_Control.payment
 
             if (!strYear.Equals(""))
             {
-                if (!RadioButtonList1.SelectedValue.Equals("A01") & !RadioButtonList1.SelectedValue.Equals("A02"))
+                if (!RadioButtonList1.SelectedValue.Equals("A01") & !RadioButtonList1.SelectedValue.Equals("A02") & !RadioButtonList1.SelectedValue.Equals("A05"))
                 {
                     strCriteria = strCriteria + "  And  view_payment.payment_year = '" + strYear + "'  ";
                 }
@@ -398,7 +398,7 @@ namespace myWeb.App_Control.payment
 
             if (!strPay_Month.Equals(""))
             {
-                if (!RadioButtonList1.SelectedValue.Equals("A01") & !RadioButtonList1.SelectedValue.Equals("A02"))
+                if (!RadioButtonList1.SelectedValue.Equals("A01") & !RadioButtonList1.SelectedValue.Equals("A02") & !RadioButtonList1.SelectedValue.Equals("A05"))
                 {
                     if (!RadioButtonList1.SelectedValue.Equals("17"))
                     {
@@ -409,7 +409,7 @@ namespace myWeb.App_Control.payment
 
             if (!strPay_Year.Equals(""))
             {
-                if (!RadioButtonList1.SelectedValue.Equals("A01") & !RadioButtonList1.SelectedValue.Equals("A02"))
+                if (!RadioButtonList1.SelectedValue.Equals("A01") & !RadioButtonList1.SelectedValue.Equals("A02") & !RadioButtonList1.SelectedValue.Equals("A05"))
                 {
 
                     if (!RadioButtonList1.SelectedValue.Equals("17"))
@@ -449,7 +449,7 @@ namespace myWeb.App_Control.payment
                 strCriteria = strCriteria + "  And  view_payment.item_lot_code= '" + strLot + "' ";
             }
 
-            if (!RadioButtonList1.SelectedValue.Equals("A01") & !RadioButtonList1.SelectedValue.Equals("A02"))
+            if (!RadioButtonList1.SelectedValue.Equals("A01") & !RadioButtonList1.SelectedValue.Equals("A02") & !RadioButtonList1.SelectedValue.Equals("A05"))
             {
                 strCriteria += " and (view_payment.payment_detail_person_group_code IN (" + PersonGroupList + ") ";
                 strCriteria += " or view_payment.person_group_item IN (" + PersonGroupList + ") )";
@@ -539,18 +539,69 @@ namespace myWeb.App_Control.payment
             else if (RadioButtonList1.SelectedValue.Equals("A01"))
             {
                 if (cboPayType.SelectedValue == "N")
-                 
-                    strReport_code = "Rep_paymentGBKbyyear&item_des=" + HttpUtility.HtmlEncode("  And  substring(pa.item_code,5,7)= '"+this.GetConfigItem("GBKCode1") +"' ");
+                {
+                    Session["item_des"] = "  And  substring(pa.item_code,5,7)= '" + this.GetConfigItem("GBKCode1") + "' ";
+                }
                 else
-                    strReport_code = "Rep_paymentGBKbyyear&item_des=" + HttpUtility.HtmlEncode("  And  substring(pa.item_code,5,7)= '" + this.GetConfigItem("GBKCode1") + "A' ");
+                {
+                    Session["item_des"] = "  And  substring(pa.item_code,5,7)= '" + this.GetConfigItem("GBKCode1") + "' ";                    
+                }
+                strReport_code = "Rep_paymentGBKbyyear";
                 strCriteria = strCriteria.Replace("view_payment.", "psa.");
             }
             else if (RadioButtonList1.SelectedValue.Equals("A02"))
             {
                 if (cboPayType.SelectedValue == "N")
-                    strReport_code = "Rep_paymentGSJbyyear&item_des=" + HttpUtility.HtmlEncode("  And  substring(pa.item_code,5,7)= '" + this.GetConfigItem("GSJCode1") + "' ");
+                {
+                    Session["item_des"] = "  And  substring(pa.item_code,5,7)= '" + this.GetConfigItem("GSJCode1") + "' ";
+                }
                 else
-                    strReport_code = "Rep_paymentGSJbyyear&item_des=" + HttpUtility.HtmlEncode("  And  substring(pa.item_code,5,7)= '" + this.GetConfigItem("GSJCode1") + "A' ");
+                {
+                    Session["item_des"] = "  And  substring(pa.item_code,5,7)= '" + this.GetConfigItem("GSJCode1") + "A' ";
+                }
+                strReport_code = "Rep_paymentGSJbyyear";
+                strCriteria = strCriteria.Replace("view_payment.", "psa.");
+            }
+
+            //PVD
+            else if (RadioButtonList1.SelectedValue.Equals("A03"))
+            {
+                if (cboPayType.SelectedValue == "N")
+                {
+                    strReport_code = "Rep_PVD";
+                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7)= '" + this.GetConfigItem("PVDCode1") + "' ";
+                }
+                else
+                {
+                    strReport_code = "Rep_PVD_back";
+                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7)= '" + this.GetConfigItem("PVDCode1") + "A' ";
+                }
+            }
+            else if (RadioButtonList1.SelectedValue.Equals("A04"))
+            {
+                if (cboPayType.SelectedValue == "N")
+                {
+                    strReport_code = "Rep_PVDbydirector";
+                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7)= '" + this.GetConfigItem("PVDCode1") + "' ";
+                }
+                else
+                {
+                    strReport_code = "Rep_GSJ_backbydirector";
+                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7)= '" + this.GetConfigItem("PVDCode1") + "A' ";
+                }
+            }
+            else if (RadioButtonList1.SelectedValue.Equals("A05"))
+            {
+                if (cboPayType.SelectedValue == "N")
+                {
+                    Session["item_des"] = "  And  substring(pa.item_code,5,7)= '" + this.GetConfigItem("PVDCode1") + "' ";
+                    strReport_code = "Rep_paymentPVDbyyear";
+                }
+                else
+                {
+                    Session["item_des"] = "  And  substring(pa.item_code,5,7)= '" + this.GetConfigItem("PVDCode1") + "A' ";
+                    strReport_code = "Rep_paymentPVDbyyear";
+                }
                 strCriteria = strCriteria.Replace("view_payment.", "psa.");
             }
 

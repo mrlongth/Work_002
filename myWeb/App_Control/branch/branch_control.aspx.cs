@@ -314,32 +314,7 @@ namespace myWeb.App_Control.branch
                 MsgBox("บันทึกข้อมูลสมบูรณ์");
             }
         }               
-        
-        //private void imgSaveOnly_Click(object sender, System.Web.UI.ImageClickEventArgs e)
-        //{
-        //    if (saveData())
-        //    {
-        //        if (ViewState["mode"].ToString().ToLower().Equals("add"))
-        //        {
-        //            Response.Redirect("branch_control.aspx?mode=edit&branch_code=" + ViewState["branch_code"].ToString() + "&page=" + ViewState["page"].ToString() + "&PageStatus=save", true);
-        //        }
-        //        else if (ViewState["mode"].ToString().ToLower().Equals("edit"))
-        //        {
-        //            txtbranch_code.Text = "";
-        //            txtbranch_name.Text = "";
-        //            txtbranch_name.ReadOnly = false;
-        //            txtbranch_name.CssClass = "textbox";
-        //            chkStatus.Checked = true;
-        //            string strScript1 =
-        //                "self.opener.document.forms[0].ctl00$ASPxRoundPanel1$ContentPlaceHolder2$txthpage.value=" + ViewState["page"].ToString() + ";\n" +
-        //                "self.opener.document.forms[0].submit();\n" +
-        //                "self.focus();\n";
-        //            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "OpenPage", strScript1, true);
-        //        }
-        //        BindGridView();
-        //    }
-        //}
-
+             
         private void setData()
         {
             cBranch oBranch = new cBranch();
@@ -410,20 +385,6 @@ namespace myWeb.App_Control.branch
                 lblError.Text = ex.Message.ToString();
             }
         }
-
-        //private void imgSave_Click(object sender, System.Web.UI.ImageClickEventArgs e)
-        //{
-        //    bool blnResult = false;
-        //    string strScript = string.Empty;
-        //    blnResult = saveData();
-        //    if (blnResult)
-        //    {
-        //        strScript = "self.opener.document.forms[0].ctl00$ASPxRoundPanel1$ContentPlaceHolder2$txthpage.value=" + ViewState["page"].ToString() + ";\n" +
-        //            "self.opener.document.forms[0].submit();\n" +
-        //            "self.close();\n";
-        //        ScriptManager.RegisterStartupScript(Page, Page.GetType(), "OpenPage", strScript, true);
-        //    }
-        //}
 
         private void BindGridView()
         {
