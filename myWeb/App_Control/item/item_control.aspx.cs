@@ -290,27 +290,29 @@ namespace myWeb.App_Control.item
             DataSet ds = new DataSet();
             string strMessage = string.Empty, strCriteria = string.Empty;
             string stritem_code = string.Empty,
-                stritem_name = string.Empty,
-                stritem_year = string.Empty,
-                stritem_type = string.Empty,
-                stritem_group_code = string.Empty,
-                stritem_group_name = string.Empty,
-                strlot_code = string.Empty,
-                strlot_name = string.Empty,
-                strperson_group_code = string.Empty,
-                strYear = string.Empty,
-                strC_active = string.Empty,
-                strCreatedBy = string.Empty,
-                strUpdatedBy = string.Empty,
-                strCreatedDate = string.Empty,
-                strUpdatedDate = string.Empty,
-                strcheque_code = string.Empty,
-                strcheque_name = string.Empty,
-                strcheque_type = string.Empty,
-                stritem_acc_code = string.Empty,
-                stritem_project_code1 = string.Empty,
-                stritem_project_code2 = string.Empty,
-                stritem_class = string.Empty;
+                   stritem_name = string.Empty,
+                   stritem_year = string.Empty,
+                   stritem_type = string.Empty,
+                   stritem_group_code = string.Empty,
+                   stritem_group_name = string.Empty,
+                   strlot_code = string.Empty,
+                   strlot_name = string.Empty,
+                   strperson_group_code = string.Empty,
+                   strYear = string.Empty,
+                   strC_active = string.Empty,
+                   strCreatedBy = string.Empty,
+                   strUpdatedBy = string.Empty,
+                   strCreatedDate = string.Empty,
+                   strUpdatedDate = string.Empty,
+                   strcheque_code = string.Empty,
+                   strcheque_name = string.Empty,
+                   strcheque_type = string.Empty,
+                   stritem_acc_code = string.Empty,
+                   stritem_project_code1 = string.Empty,
+                   stritem_project_code2 = string.Empty,
+                   stritem_class = string.Empty,
+                   stritem_tax = string.Empty;
+                
             try
             {
                 strCriteria = " and item_code = '" + ViewState["item_code"].ToString() + "' ";
@@ -346,6 +348,8 @@ namespace myWeb.App_Control.item
                         stritem_project_code2 = ds.Tables[0].Rows[0]["item_project_code2"].ToString();
 
                         stritem_class = ds.Tables[0].Rows[0]["item_class"].ToString();
+                        stritem_tax = ds.Tables[0].Rows[0]["item_tax"].ToString();
+
                         #endregion
 
                         #region set Control
@@ -484,6 +488,7 @@ namespace myWeb.App_Control.item
                             cboLot.Enabled = false;
                             cboItem_group.Enabled = false;
                         }
+                        chkItem_tax.Checked = stritem_tax == "Y";
 
 
                         txtUpdatedBy.Text = strUpdatedBy;
@@ -505,22 +510,24 @@ namespace myWeb.App_Control.item
             bool blnDebit = false;
             string strMessage = string.Empty;
             string stritem_code = string.Empty,
-                stritem_year = string.Empty,
-                stritem_type = string.Empty,
-                stritem_name = string.Empty,
-                stritem_group_code = string.Empty,
-                strlot_code = string.Empty,
-                strperson_group_code = string.Empty,
-                strActive = string.Empty,
-                strCreatedBy = string.Empty,
-                strUpdatedBy = string.Empty,
-                strcheque_code = string.Empty,
-                strcheque_type = string.Empty,
-                stritem_acc_code = string.Empty,
-                stritem_project_code1 = string.Empty,
-                stritem_project_code2 = string.Empty,
-                stritem_class = string.Empty,
-                strdirect_pay_code = string.Empty;
+                   stritem_year = string.Empty,
+                   stritem_type = string.Empty,
+                   stritem_name = string.Empty,
+                   stritem_group_code = string.Empty,
+                   strlot_code = string.Empty,
+                   strperson_group_code = string.Empty,
+                   strActive = string.Empty,
+                   strCreatedBy = string.Empty,
+                   strUpdatedBy = string.Empty,
+                   strcheque_code = string.Empty,
+                   strcheque_type = string.Empty,
+                   stritem_acc_code = string.Empty,
+                   stritem_project_code1 = string.Empty,
+                   stritem_project_code2 = string.Empty,
+                   stritem_class = string.Empty,
+                   strdirect_pay_code = string.Empty,
+                   stritem_tax = string.Empty;
+
             string strScript = string.Empty;
             cItem oItem = new cItem();
             DataSet ds = new DataSet();
@@ -541,6 +548,7 @@ namespace myWeb.App_Control.item
                 stritem_project_code2 = txtitem_project_code2.Text;
                 strdirect_pay_code = txtdirect_pay_code.Text;
                 stritem_class = cboItem_class.SelectedValue;
+                stritem_tax = chkItem_tax.Checked ? "Y" : "N";
                 if (chkStatus.Checked == true)
                 {
                     strActive = "Y";
@@ -598,7 +606,7 @@ namespace myWeb.App_Control.item
                                 if (oItem.SP_ITEM_UPD(stritem_code, stritem_year, stritem_name, stritem_type, stritem_group_code,
                                                       strlot_code, strperson_group_code, strActive, strUpdatedBy, strcheque_code,
                                                       strcheque_type, stritem_acc_code, stritem_project_code1,
-                                                      stritem_project_code2, cboBudget_type.SelectedValue, strdirect_pay_code,stritem_class, ref strMessage))
+                                                      stritem_project_code2, cboBudget_type.SelectedValue, strdirect_pay_code,stritem_class,stritem_tax, ref strMessage))
                                 {
                                     blnResult = true;
                                 }
@@ -640,7 +648,7 @@ namespace myWeb.App_Control.item
                                                       strlot_code, strperson_group_code, strActive, strCreatedBy,
                                                       strcheque_code, strcheque_type, stritem_acc_code,
                                                       stritem_project_code1, stritem_project_code2,
-                                                      cboBudget_type.SelectedValue, strdirect_pay_code, stritem_class , ref strMessage))
+                                                      cboBudget_type.SelectedValue, strdirect_pay_code, stritem_class , stritem_tax, ref strMessage))
                                 {
                                     string strGetcode = " and item_name='" + stritem_name + "' " +
                                                                           " and item_year='" + stritem_year + "' " +

@@ -12,6 +12,7 @@ using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 
 using myDLL;
+using System.Collections.Generic;
 
 namespace myWeb.App_Control.payment_back
 {
@@ -49,6 +50,35 @@ namespace myWeb.App_Control.payment_back
             }
             set { ViewState["payment_back_title"] = value; }
         }
+
+
+        public List<string> DisableCodeList
+        {
+            get
+            {
+                if (ViewState["DisableCodeList"] == null)
+                {
+                    List<string> codeList =new List<string>();
+                    codeList.Add(base.GetConfigItem("GBKCode1"));
+                    codeList.Add(base.GetConfigItem("GBKCode2"));
+                    codeList.Add(base.GetConfigItem("GBKCode3"));
+                    codeList.Add(base.GetConfigItem("GSJCode1"));
+                    codeList.Add(base.GetConfigItem("GSJCode2"));
+                    codeList.Add(base.GetConfigItem("PVDCode1"));
+                    codeList.Add(base.GetConfigItem("PVDCode2"));
+                    codeList.Add(base.GetConfigItem("SOSCode1"));
+                    codeList.Add(base.GetConfigItem("SOSCode2"));
+                    codeList.Add(base.GetConfigItem("GBKCodeAdd"));
+                    ViewState["DisableCodeList"] = codeList;
+                }
+                return (List<string>)ViewState["DisableCodeList"];
+            }
+            set
+            {
+                ViewState["DisableCodeList"] = value;
+            }
+        }
+
 
         protected void Page_Load(object sender, System.EventArgs e)
         {
@@ -771,74 +801,94 @@ namespace myWeb.App_Control.payment_back
                 ImageButton imgEdit = (ImageButton)e.Row.FindControl("imgEdit");
                 ImageButton imgDelete = (ImageButton)e.Row.FindControl("imgDelete");
 
-                if (ViewState["payment_back_type"].ToString() == "N")
+
+                if (lblitem_code.Text.Length > 4 &&  this.DisableCodeList.Contains(lblitem_code.Text.Substring(4)))
                 {
-                    #region set Image Edit & Delete
-
-                   if (lblitem_code != null && lblitem_code.Text != "" && (lblitem_code.Text.Substring(4) == base.GetConfigItem("SOSCode2")))
-                    {
-                        imgEdit.Attributes.Add("onclick", "return false;");
-                        imgEdit.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["imgdisable"].ToString();
-                        imgEdit.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["titledisable"].ToString());
-
-                        imgDelete.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["imgdisable"].ToString();
-                        imgDelete.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["titledisable"].ToString());
-                        imgDelete.Attributes.Add("onclick", "return false;");
-                    }
-                    else
-                    {
-                        imgEdit.Attributes.Add("onclick", "OpenPopUp('800px','325px','92%','แก้ไข" + strpayment_back_title + "','payment_back_item_control.aspx?mode=edit&payment_back_detail_id=" +
-                        hddpayment_back_detail_id.Value + "&payment_back_type=" + ViewState["payment_back_type"].ToString() +
-                        "&page=" + GridView1.PageIndex.ToString() + "','2');return false;");
-
-                        imgEdit.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["img"].ToString();
-                        imgEdit.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["title"].ToString());
-
-                        imgDelete.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["img"].ToString();
-                        imgDelete.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["title"].ToString());
-                        imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบข้อมูลนี้หรือไม่ ?\");");
-                    }
-
-                    #endregion
+                    imgEdit.Visible = false;
+                    imgDelete.Visible = false;
                 }
                 else
                 {
+                    imgEdit.Attributes.Add("onclick", "OpenPopUp('800px','325px','92%','แก้ไข" + strpayment_back_title + "','payment_back_item_control.aspx?mode=edit&payment_back_detail_id=" +
+                      hddpayment_back_detail_id.Value + "&payment_back_type=" + ViewState["payment_back_type"].ToString() +
+                      "&page=" + GridView1.PageIndex.ToString() + "','2');return false;");
 
-                    #region set Image Edit & Delete
+                    imgEdit.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["img"].ToString();
+                    imgEdit.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["title"].ToString());
 
-
-                    if (lblitem_code != null && lblitem_code.Text != "" && (lblitem_code.Text.Substring(4) == "03-002"))
-                    {
-                        imgEdit.Attributes.Add("onclick", "return false;");
-                        imgEdit.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["imgdisable"].ToString();
-                        imgEdit.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["titledisable"].ToString());
-
-
-                        imgDelete.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["img"].ToString();
-                        imgDelete.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["title"].ToString());
-                        imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบข้อมูลนี้หรือไม่ ?\");");
-
-                        //imgDelete.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["imgdisable"].ToString();
-                        //imgDelete.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["titledisable"].ToString());
-                        //imgDelete.Attributes.Add("onclick", "return false;");
-                    }
-                    else
-                    {
-                        imgEdit.Attributes.Add("onclick", "OpenPopUp('800px','325px','92%','แก้ไข" + strpayment_back_title + "','payment_back_item_control.aspx?mode=edit&payment_back_detail_id=" +
-                        hddpayment_back_detail_id.Value + "&payment_back_type=" + ViewState["payment_back_type"].ToString() +
-                        "&page=" + GridView1.PageIndex.ToString() + "','2');return false;");
-
-                        imgEdit.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["img"].ToString();
-                        imgEdit.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["title"].ToString());
-
-                        imgDelete.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["img"].ToString();
-                        imgDelete.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["title"].ToString());
-                        imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบข้อมูลนี้หรือไม่ ?\");");
-                    }
-
-                    #endregion
-
+                    imgDelete.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["img"].ToString();
+                    imgDelete.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["title"].ToString());
+                    imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบข้อมูลนี้หรือไม่ ?\");");
                 }
+
+                //if (ViewState["payment_back_type"].ToString() == "N")
+                //{
+                //    #region set Image Edit & Delete
+
+                //   if (lblitem_code != null && lblitem_code.Text != "" && (lblitem_code.Text.Substring(4) == base.GetConfigItem("SOSCode2")))
+                //    {
+                //        imgEdit.Attributes.Add("onclick", "return false;");
+                //        imgEdit.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["imgdisable"].ToString();
+                //        imgEdit.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["titledisable"].ToString());
+
+                //        imgDelete.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["imgdisable"].ToString();
+                //        imgDelete.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["titledisable"].ToString());
+                //        imgDelete.Attributes.Add("onclick", "return false;");
+                //    }
+                //    else
+                //    {
+                //        imgEdit.Attributes.Add("onclick", "OpenPopUp('800px','325px','92%','แก้ไข" + strpayment_back_title + "','payment_back_item_control.aspx?mode=edit&payment_back_detail_id=" +
+                //        hddpayment_back_detail_id.Value + "&payment_back_type=" + ViewState["payment_back_type"].ToString() +
+                //        "&page=" + GridView1.PageIndex.ToString() + "','2');return false;");
+
+                //        imgEdit.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["img"].ToString();
+                //        imgEdit.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["title"].ToString());
+
+                //        imgDelete.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["img"].ToString();
+                //        imgDelete.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["title"].ToString());
+                //        imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบข้อมูลนี้หรือไม่ ?\");");
+                //    }
+
+                //    #endregion
+                //}
+                //else
+                //{
+
+                //    #region set Image Edit & Delete
+
+
+                //    if (lblitem_code != null && lblitem_code.Text != "" && (lblitem_code.Text.Substring(4) == "03-002"))
+                //    {
+                //        imgEdit.Attributes.Add("onclick", "return false;");
+                //        imgEdit.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["imgdisable"].ToString();
+                //        imgEdit.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["titledisable"].ToString());
+
+
+                //        imgDelete.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["img"].ToString();
+                //        imgDelete.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["title"].ToString());
+                //        imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบข้อมูลนี้หรือไม่ ?\");");
+
+                //        //imgDelete.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["imgdisable"].ToString();
+                //        //imgDelete.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["titledisable"].ToString());
+                //        //imgDelete.Attributes.Add("onclick", "return false;");
+                //    }
+                //    else
+                //    {
+                //        imgEdit.Attributes.Add("onclick", "OpenPopUp('800px','325px','92%','แก้ไข" + strpayment_back_title + "','payment_back_item_control.aspx?mode=edit&payment_back_detail_id=" +
+                //        hddpayment_back_detail_id.Value + "&payment_back_type=" + ViewState["payment_back_type"].ToString() +
+                //        "&page=" + GridView1.PageIndex.ToString() + "','2');return false;");
+
+                //        imgEdit.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["img"].ToString();
+                //        imgEdit.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["title"].ToString());
+
+                //        imgDelete.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["img"].ToString();
+                //        imgDelete.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["title"].ToString());
+                //        imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบข้อมูลนี้หรือไม่ ?\");");
+                //    }
+
+                //    #endregion
+
+                //}
 
 
                 ViewState["total_back"] = double.Parse(ViewState["total_back"].ToString()) + double.Parse(txtpayment_item_back.Value.ToString());

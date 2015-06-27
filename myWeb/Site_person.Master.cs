@@ -20,6 +20,7 @@ namespace myWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            AddJavaScriptInclude();
             //System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("th-TH");
             if (!IsPostBack)
             {
@@ -65,6 +66,12 @@ namespace myWeb
                     ASPxMenu1.Items[3].Visible = false;
                 }
 
+                panelShow1.Style.Add("display", "none");
+                btnShow.Style.Add("display", "none");
+                imgClose1.Attributes.Add("onclick", "ClosePopUp('1');return false;");
+
+
+
             }
         }
 
@@ -83,5 +90,32 @@ namespace myWeb
             Response.Redirect("~/Default.aspx");
         }
 
+        protected void AddJavaScriptInclude()
+        {
+            HtmlGenericControl script;
+
+
+            script = new HtmlGenericControl("script");
+            script.Attributes["type"] = "text/javascript";
+            script.Attributes["src"] = (cCommon.AbsoluteWebRoot + "js/jquery-1.7.2.min.js");
+            Page.Header.Controls.Add(script);
+
+            script = new HtmlGenericControl("script");
+            script.Attributes["type"] = "text/javascript";
+            script.Attributes["src"] = (cCommon.AbsoluteWebRoot + "scripts/form.js");
+            Page.Header.Controls.Add(script);
+
+            script = new HtmlGenericControl("script");
+            script.Attributes["type"] = "text/javascript";
+            script.Attributes["src"] = (cCommon.AbsoluteWebRoot + "javascript/AwNumeric.js");
+            Page.Header.Controls.Add(script);
+
+            script = new HtmlGenericControl("script");
+            script.Attributes["type"] = "text/javascript";
+            script.Attributes["src"] = (cCommon.AbsoluteWebRoot + "javascript/AwTextBox.js");
+            Page.Header.Controls.Add(script);
+
+        }
+    
     }
 }

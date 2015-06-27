@@ -548,6 +548,16 @@ namespace myWeb.App_Control.payment
 
             }
 
+            if (RadioPayment.Checked)
+            {
+                strCriteria = strCriteria + "  And  view_payment.item_code not like  '%A'" ;
+            }
+            else if (RadioPaymentBack.Checked)
+            {
+                strCriteria = strCriteria + "  And  view_payment.item_code like  '%A'";
+            }
+           
+
             if (!strProduce.Equals(""))
             {
                 strCriteria = strCriteria + "  And  view_payment.payment_detail_produce_code= '" + strProduce + "' ";
@@ -650,14 +660,15 @@ namespace myWeb.App_Control.payment
             else if (RadioButtonList1.SelectedValue.Equals("8"))
             {
                 strReport_code = "Rep_exceldebitall";
-                if (base.myBudgetType == "R")
-                {
-                    strReport_code = "Rep_exceldebitallincome";
-                }
+                //if (base.myBudgetType == "R")
+                //{
+                //    strReport_code = "Rep_exceldebitallincome";
+                //}
                 if (!strperson_group_code.Equals(""))
                 {
                     strCriteria = strCriteria + "  And  view_payment.payment_detail_person_group_code ='" + strperson_group_code + "' ";
                 }
+                strCriteria = strCriteria + "  And  item_type= 'D' ";           
                 strCriteria = strCriteria.Replace("view_payment.", "");
             }
 

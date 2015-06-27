@@ -20,7 +20,7 @@
                                     <td align="right" nowrap style="" valign="middle" width="10%">
                                         &nbsp;
                                     </td>
-                                    <td align="left" nowrap valign="middle" width="40%">
+                                    <td align="left" nowrap valign="middle" width="40%" colspan="2">
                                         &nbsp;
                                     </td>
                                     <td align="left" nowrap valign="middle" width="20%">
@@ -31,7 +31,7 @@
                                     <td align="right" nowrap style="" valign="middle" width="10%">
                                         <asp:Label ID="Label21" runat="server" CssClass="label_h">รหัสบุคลากร :</asp:Label>
                                     </td>
-                                    <td align="left" nowrap valign="middle" width="40%">
+                                    <td align="left" nowrap valign="middle" width="40%" colspan="2">
                                         <asp:TextBox ID="txtperson_code" runat="server" CssClass="textbox" Width="120px"
                                             ReadOnly="True"></asp:TextBox>
                                     </td>
@@ -42,7 +42,7 @@
                                     <td align="right" nowrap style="" valign="middle">
                                         <asp:Label ID="Label16" runat="server" CssClass="label_h">คำนำหน้าชื่อ :</asp:Label>
                                     </td>
-                                    <td align="left" nowrap valign="middle">
+                                    <td align="left" nowrap valign="middle" colspan="2">
                                         <asp:DropDownList ID="cboTitle" runat="server" CssClass="textbox" Enabled="False">
                                         </asp:DropDownList>
                                     </td>
@@ -55,7 +55,7 @@
                                     <td align="right" nowrap valign="middle" style="">
                                         <asp:Label ID="Label14" runat="server" CssClass="label_h">ชื่อภาษาไทย :</asp:Label>
                                     </td>
-                                    <td align="left" nowrap valign="middle" style="">
+                                    <td align="left" nowrap valign="middle" style="" colspan="2">
                                         <asp:TextBox ID="txtperson_thai_name" runat="server" CssClass="textbox" Width="400px"
                                             MaxLength="50" ReadOnly="True"></asp:TextBox>
                                     </td>
@@ -64,7 +64,7 @@
                                     <td align="right" nowrap valign="middle">
                                         <asp:Label ID="Label15" runat="server" CssClass="label_h">นามสกุลภาษาไทย :</asp:Label>
                                     </td>
-                                    <td align="left" nowrap valign="middle">
+                                    <td align="left" nowrap valign="middle" colspan="2">
                                         <asp:TextBox ID="txtperson_thai_surname" runat="server" CssClass="textbox" MaxLength="50"
                                             Width="400px" ReadOnly="True"></asp:TextBox>
                                     </td>
@@ -73,7 +73,7 @@
                                     <td align="right" nowrap valign="middle">
                                         <asp:Label ID="Label17" runat="server" CssClass="label_h">ชื่อภาษาอังกฤษ :</asp:Label>
                                     </td>
-                                    <td align="left" nowrap valign="middle">
+                                    <td align="left" nowrap valign="middle" colspan="2">
                                         <asp:TextBox ID="txtperson_eng_name" runat="server" CssClass="textbox" MaxLength="50"
                                             Width="400px" ReadOnly="True"></asp:TextBox>
                                     </td>
@@ -82,7 +82,7 @@
                                     <td align="right" nowrap valign="middle">
                                         <asp:Label ID="Label18" runat="server" CssClass="label_h">นามสกุลภาษาอังกฤษ :</asp:Label>
                                     </td>
-                                    <td align="left" nowrap valign="middle">
+                                    <td align="left" nowrap valign="middle" colspan="2">
                                         <asp:TextBox ID="txtperson_eng_surname" runat="server" CssClass="textbox" Width="400px"
                                             MaxLength="50" ReadOnly="True"></asp:TextBox>
                                     </td>
@@ -91,7 +91,7 @@
                                     <td align="right" nowrap valign="middle" style="">
                                         <asp:Label ID="Label20" runat="server" CssClass="label_h">เลขที่บัตรประชาชน :</asp:Label>
                                     </td>
-                                    <td align="left" nowrap valign="middle" style="">
+                                    <td align="left" nowrap valign="middle" style="" colspan="2">
                                         <asp:TextBox ID="txtperson_id" runat="server" CssClass="textbox" Width="200px" MaxLength="13"
                                             ReadOnly="True"></asp:TextBox><ajaxtoolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender1"
                                                 runat="server" TargetControlID="txtperson_id" FilterType="Numbers" Enabled="True" />
@@ -101,7 +101,7 @@
                                     <td align="right" nowrap valign="middle">
                                         <asp:Label ID="Label19" runat="server" CssClass="label_h">ชื่อเล่น :</asp:Label>
                                     </td>
-                                    <td align="left" nowrap valign="middle">
+                                    <td align="left" nowrap valign="middle" colspan="2">
                                         <asp:TextBox ID="txtperson_nickname" runat="server" CssClass="textbox" MaxLength="50"
                                             Width="200px" ReadOnly="True"></asp:TextBox>
                                     </td>
@@ -110,9 +110,10 @@
                                     <td align="right" nowrap valign="middle">
                                         <asp:Label ID="Label76" runat="server" CssClass="label_h">สถานะ :</asp:Label>
                                     </td>
-                                    <td align="left" nowrap>
+                                    <td align="left" nowrap colspan="2">
                                         <font face="Tahoma">
                                             <asp:CheckBox ID="chkStatus" runat="server" Text="ปกติ" />
+                                        <asp:TextBox ID="txtperson_pic" runat="server" CssClass="textbox" Visible="False" Width="225px"></asp:TextBox>
                                         </font>
                                     </td>
                                 </tr>
@@ -120,26 +121,34 @@
                                     <td align="right" nowrap valign="middle">
                                         &nbsp;
                                     </td>
-                                    <td align="left" nowrap valign="middle">
-                                        <font face="Tahoma">
-                                            <asp:TextBox ID="txtperson_pic" runat="server" CssClass="textbox" Visible="False"
-                                                Width="400px"></asp:TextBox>
-                                        </font>
+                                    <td align="left" nowrap valign="middle" colspan="2">
+                                        &nbsp;</td>
+                                </tr>
+                                <tr align="left">
+                                    <td align="right" nowrap valign="middle" rowspan="4">
                                     </td>
+                                    <td align="left" nowrap valign="top" rowspan="4" style="width: 1%">
+                                        &nbsp;<asp:Image ID="Image4" runat="server" ImageUrl="~/images/password.jpg" />
+                                    </td>
+                                    <td align="left" nowrap style="width: 99%" valign="top">&nbsp;</td>
+                                    <td align="left" rowspan="4">
+                                    </td>
+                                </tr>
+                                <tr align="left">
+                                    <td align="left" nowrap valign="top">
+                                        <asp:LinkButton ID="lnkChangePass" runat="server">เปลี่ยนรหัสผ่าน</asp:LinkButton>
+                                    </td>
+                                </tr>
+                                <tr align="left">
+                                    <td align="left" nowrap valign="top">&nbsp;</td>
+                                </tr>
+                                <tr align="left">
+                                    <td align="left" nowrap valign="top">&nbsp;</td>
                                 </tr>
                                 <tr align="left">
                                     <td align="right" nowrap valign="middle">
                                     </td>
-                                    <td align="left" nowrap valign="middle">
-                                        &nbsp;&nbsp;
-                                    </td>
-                                    <td align="left">
-                                    </td>
-                                </tr>
-                                <tr align="left">
-                                    <td align="right" nowrap valign="middle">
-                                    </td>
-                                    <td align="left" nowrap valign="middle">
+                                    <td align="left" nowrap valign="middle" colspan="2">
                                         &nbsp;&nbsp;
                                     </td>
                                     <td align="left">
@@ -148,7 +157,7 @@
                                 <tr align="left">
                                     <td align="right" nowrap valign="middle" style="height: 15px">
                                     </td>
-                                    <td align="left" nowrap valign="middle" style="height: 15px">
+                                    <td align="left" nowrap valign="middle" style="height: 15px" colspan="2">
                                     </td>
                                     <td style="height: 15px">
                                     </td>
@@ -156,7 +165,7 @@
                                 <tr align="left">
                                     <td align="right" nowrap valign="middle">
                                     </td>
-                                    <td align="left" nowrap valign="middle">
+                                    <td align="left" nowrap valign="middle" colspan="2">
                                     </td>
                                     <td align="left">
                                     </td>
@@ -164,7 +173,7 @@
                                 <tr align="left">
                                     <td align="right" nowrap valign="middle">
                                     </td>
-                                    <td align="left" nowrap valign="middle">
+                                    <td align="left" nowrap valign="middle" colspan="2">
                                     </td>
                                     <td align="left">
                                     </td>
@@ -172,15 +181,15 @@
                                 <tr align="left">
                                     <td align="right" nowrap valign="middle">
                                     </td>
-                                    <td align="left" colspan="2" nowrap valign="middle">
+                                    <td align="left" colspan="3" nowrap valign="middle">
                                     </td>
                                 </tr>
                                 <tr align="left">
-                                    <td align="right" nowrap valign="middle" colspan="3">
+                                    <td align="right" nowrap valign="middle" colspan="4">
                                     </td>
                                 </tr>
                                 <tr align="left">
-                                    <td align="right" colspan="3" nowrap valign="middle">
+                                    <td align="right" colspan="4" nowrap valign="middle">
                                     </td>
                                 </tr>
                             </table>

@@ -81,7 +81,7 @@ namespace myDLL
 
     #region SP_INS_DIRECTOR
     public bool SP_INS_DIRECTOR(string pdirector_year, string pdirector_name, string pdirector_sign_name, string pdirector_sign_image, string psign_position, string pDirector_order,
-                                                                    string pActive, string pC_created_by,string pbudget_type, ref string strMessage)
+                                                                    string pActive, string pC_created_by,string pbudget_type, string pdirector_short_name, ref string strMessage)
     {
         bool blnResult = false;
         SqlConnection oConn = new SqlConnection();
@@ -148,6 +148,12 @@ namespace myDLL
             oCommand.Parameters.Add(oParam_director_order);
             // - - - - - - - - - - - -        
 
+            // - - - - - - - - - - - -             
+            SqlParameter oParam_Director_short_name = new SqlParameter("director_short_name", SqlDbType.NVarChar);
+            oParam_Director_short_name.Direction = ParameterDirection.Input;
+            oParam_Director_short_name.Value = pdirector_short_name;
+            oCommand.Parameters.Add(oParam_Director_short_name);
+
             oCommand.ExecuteNonQuery();
             blnResult = true;
         }
@@ -181,7 +187,7 @@ namespace myDLL
 
     #region SP_UPD_DIRECTOR
     public bool SP_UPD_DIRECTOR(string pdirector_code, string pdirector_year, string pdirector_name, string pdirector_sign_name, string pdirector_sign_image, string psign_position,
-        string pDirector_order , string pActive, string pC_updated_by, string pbudget_type, ref string strMessage)
+        string pDirector_order , string pActive, string pC_updated_by, string pbudget_type, string pdirector_short_name, ref string strMessage)
     {
         bool blnResult = false;
         SqlConnection oConn = new SqlConnection();
@@ -246,11 +252,18 @@ namespace myDLL
             oParam_budget_type.Value = pbudget_type;
             oCommand.Parameters.Add(oParam_budget_type);
 
+            // - - - - - - - - - - - -        
             SqlParameter oParam_director_order = new SqlParameter("director_order", SqlDbType.Int);
             oParam_director_order.Direction = ParameterDirection.Input;
             oParam_director_order.Value = int.Parse(pDirector_order);
             oCommand.Parameters.Add(oParam_director_order);
-            // - - - - - - - - - - - -        
+
+            // - - - - - - - - - - - -             
+            SqlParameter oParam_Director_short_name = new SqlParameter("director_short_name", SqlDbType.NVarChar);
+            oParam_Director_short_name.Direction = ParameterDirection.Input;
+            oParam_Director_short_name.Value = pdirector_short_name;
+            oCommand.Parameters.Add(oParam_Director_short_name);
+
 
             oCommand.ExecuteNonQuery();
             blnResult = true;
@@ -271,7 +284,7 @@ namespace myDLL
 
     #region SP_UPD_NOIMAGE_DIRECTOR
     public bool SP_UPD_NOIMAGE_DIRECTOR(string pdirector_code, string pdirector_year, string pdirector_name, string pdirector_sign_name, string psign_position,
-        string pDirector_order ,string pActive, string pC_updated_by, string pbudget_type, ref string strMessage)
+        string pDirector_order, string pActive, string pC_updated_by, string pbudget_type, string pdirector_short_name, ref string strMessage)
     {
         bool blnResult = false;
         SqlConnection oConn = new SqlConnection();
@@ -336,6 +349,12 @@ namespace myDLL
             oParam_director_order.Value = int.Parse(pDirector_order);
             oCommand.Parameters.Add(oParam_director_order);
             // - - - - - - - - - - - -      
+
+            // - - - - - - - - - - - -             
+            SqlParameter oParam_Director_short_name = new SqlParameter("director_short_name", SqlDbType.NVarChar);
+            oParam_Director_short_name.Direction = ParameterDirection.Input;
+            oParam_Director_short_name.Value = pdirector_short_name;
+            oCommand.Parameters.Add(oParam_Director_short_name);
 
             oCommand.ExecuteNonQuery();
             blnResult = true;

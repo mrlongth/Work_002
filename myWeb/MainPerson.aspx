@@ -11,7 +11,9 @@
             <td align="center">
                 <div class="main_menu_bg">
                     <div class="select">
-                        เลือกทำรายการที่ท่านต้องการ</div>
+                        เลือกทำรายการที่ท่านต้องการ
+                    <asp:Label ID="lblError" runat="server" CssClass="label_error"></asp:Label>
+                    </div>
                     <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 40px;">
                         <tr>
                             <td align="center">
@@ -24,11 +26,11 @@
                             </td>
                             <td align="center">
                                 <asp:ImageButton ID="imbCertificate" runat="server" ImageUrl="~/images/slip2.png"
-                                    OnClick="imbCertificate_Click" Height="155px" />
+                                    OnClick="imbCertificate_Click" Height="155px" Visible="false" />
                             </td>
                             <td align="center">
                                 <asp:ImageButton ID="imbLoan" runat="server" ImageUrl="~/images/slip3.png" Height="155px"
-                                    OnClick="imbLoan_Click" />
+                                    OnClick="imbLoan_Click" Visible="false" />
                             </td>
                         </tr>
                     </table>
@@ -39,4 +41,12 @@
             </td>
         </tr>
     </table>
+    <asp:LinkButton ID="lbnChangePassAlert" Style="display: none;" runat="server">LinkButton</asp:LinkButton>
+      <script type="text/javascript">
+          function RegisterScript() {
+              $("#<%=lbnChangePassAlert.ClientID%>").on("click", function () {
+                alert($(this).text());
+            });
+        }
+    </script>
 </asp:Content>

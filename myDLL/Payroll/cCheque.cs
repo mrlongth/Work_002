@@ -79,7 +79,7 @@ namespace myDLL
         #endregion
 
         #region SP_CHEQUE_SELECT_SEL
-        public bool SP_CHEQUE_SELECT_SEL(string strCriteria,ref DataSet ds, ref string strMessage)
+        public bool SP_CHEQUE_SELECT_01_SEL(string strCriteria, ref DataSet ds, ref string strMessage)
         {
             bool blnResult = false;
             SqlConnection oConn = new SqlConnection();
@@ -91,15 +91,15 @@ namespace myDLL
                 oConn.Open();
                 oCommand.Connection = oConn;
                 oCommand.CommandType = CommandType.StoredProcedure;
-                oCommand.CommandText = "sp_CHEQUE_SELECT_SEL";
+                oCommand.CommandText = "sp_CHEQUE_SELECT_01_SEL";
                 SqlParameter oParamI_vc_criteria = new SqlParameter("vc_criteria", SqlDbType.NVarChar);
                 oParamI_vc_criteria.Direction = ParameterDirection.Input;
                 oParamI_vc_criteria.Value = strCriteria;
                 oCommand.Parameters.Add(oParamI_vc_criteria);
-                
+
                 oAdapter = new SqlDataAdapter(oCommand);
                 ds = new DataSet();
-                oAdapter.Fill(ds, "sp_CHEQUE_SELECT_SEL");
+                oAdapter.Fill(ds, "sp_CHEQUE_SELECT_01_SEL");
                 blnResult = true;
             }
             catch (Exception ex)
@@ -229,8 +229,8 @@ namespace myDLL
             return blnResult;
         }
         #endregion
-        
-        
+
+
         #region SP_CHEQUE_UNIT_SELECT_SEL
         public bool SP_CHEQUE_UNIT_SELECT_SEL(string strCriteria, string strCriteriatmp, ref DataSet ds, ref string strMessage)
         {
@@ -313,7 +313,8 @@ namespace myDLL
         #endregion
 
         #region SP_INS_CHEQUE
-        public bool SP_INS_CHEQUE(string pcheque_code, string pcheque_name,string pcheque_desc , string pactive, string pC_created_by, ref string strMessage)
+        public bool SP_INS_CHEQUE(string pcheque_code, string pcheque_name, string pcheque_desc, string pcheque_bank_code,
+                                    string pactive, string pC_created_by, ref string strMessage)
         {
             bool blnResult = false;
             SqlConnection oConn = new SqlConnection();
@@ -340,7 +341,14 @@ namespace myDLL
                 SqlParameter oParam_cheque_desc = new SqlParameter("cheque_desc", SqlDbType.NVarChar);
                 oParam_cheque_desc.Direction = ParameterDirection.Input;
                 oParam_cheque_desc.Value = pcheque_desc;
-                oCommand.Parameters.Add(oParam_cheque_desc);                
+                oCommand.Parameters.Add(oParam_cheque_desc);
+
+                // - - - - - - - - - - - -             
+                SqlParameter oParam_cheque_bank_code = new SqlParameter("cheque_bank_code", SqlDbType.NVarChar);
+                oParam_cheque_bank_code.Direction = ParameterDirection.Input;
+                oParam_cheque_bank_code.Value = pcheque_bank_code;
+                oCommand.Parameters.Add(oParam_cheque_bank_code);
+                
                 // - - - - - - - - - - - -             
                 SqlParameter oParam_Active = new SqlParameter("c_active", SqlDbType.NVarChar);
                 oParam_Active.Direction = ParameterDirection.Input;
@@ -370,7 +378,7 @@ namespace myDLL
         #endregion
 
         #region SP_UPD_CHEQUE
-        public bool SP_UPD_CHEQUE(string pcheque_code, string pcheque_name, string pcheque_desc, string pactive, string pc_updated_by, ref string strMessage)
+        public bool SP_UPD_CHEQUE(string pcheque_code, string pcheque_name, string pcheque_desc, string pcheque_bank_code, string pactive, string pc_updated_by, ref string strMessage)
         {
             bool blnResult = false;
             SqlConnection oConn = new SqlConnection();
@@ -398,6 +406,14 @@ namespace myDLL
                 oParam_cheque_desc.Direction = ParameterDirection.Input;
                 oParam_cheque_desc.Value = pcheque_desc;
                 oCommand.Parameters.Add(oParam_cheque_desc);
+
+                // - - - - - - - - - - - -             
+                SqlParameter oParam_cheque_bank_code = new SqlParameter("cheque_bank_code", SqlDbType.NVarChar);
+                oParam_cheque_bank_code.Direction = ParameterDirection.Input;
+                oParam_cheque_bank_code.Value = pcheque_bank_code;
+                oCommand.Parameters.Add(oParam_cheque_bank_code);
+
+
                 // - - - - - - - - - - - -             
                 SqlParameter oParam_Active = new SqlParameter("c_active", SqlDbType.NVarChar);
                 oParam_Active.Direction = ParameterDirection.Input;
@@ -520,10 +536,10 @@ namespace myDLL
                 string ppay_year,
                 string pcheque_bank_code,
                 string pcheque_comment,
-                string pc_created_by, 
+                string pc_created_by,
                 string pcheque_type,
-                string psp_round_id ,
-	            string pbudget_type ,
+                string psp_round_id,
+                string pbudget_type,
                 ref string strMessage)
         {
             bool blnResult = false;
@@ -706,10 +722,10 @@ namespace myDLL
                 string pcheque_print,
                 string pdirector_code,
                 string pcheque_date_print,
-	            string pcheque_date_pay,
-	            string pcheque_date_bank,
-	            string pcheque_deka,
-	            string pcheque_acccode,
+                string pcheque_date_pay,
+                string pcheque_date_bank,
+                string pcheque_deka,
+                string pcheque_acccode,
                 ref string strMessage)
         {
             bool blnResult = false;
@@ -756,7 +772,7 @@ namespace myDLL
 
         #region SP_CHEQUE_DETAIL_UPD
         public bool SP_CHEQUE_DETAIL_UPD(
-                string pcheque_detail_id ,
+                string pcheque_detail_id,
                 string pcheque_doc,
                 string pcheque_code,
                 string pcheque_no,
@@ -855,7 +871,7 @@ namespace myDLL
 
         #region SP_CHEQUE_DETAIL_DEL
         public bool SP_CHEQUE_DETAIL_DEL(
-                string pcheque_detail_id ,
+                string pcheque_detail_id,
                 ref string strMessage)
         {
             bool blnResult = false;
@@ -886,7 +902,7 @@ namespace myDLL
             return blnResult;
         }
         #endregion
-        
+
         #region IDisposable Members
 
         void IDisposable.Dispose()

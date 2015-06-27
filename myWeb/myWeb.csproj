@@ -107,6 +107,8 @@
   <ItemGroup>
     <Content Include="App_Control\lov\person_retire_lov.aspx" />
     <Content Include="App_Control\lov\person_special_lov.aspx" />
+    <Content Include="App_Control\material\material_control.aspx" />
+    <Content Include="App_Control\material\material_list.aspx" />
     <Content Include="App_Control\menu\menu_list.aspx" />
     <Content Include="App_Control\menu\menu_control.aspx" />
     <Content Include="App_Control\payment_bonus\payment_bonus_excel_upload.aspx" />
@@ -264,12 +266,14 @@
     <Content Include="images\loan.png" />
     <Content Include="images\logo-90-CMRU_001.png" />
     <Content Include="images\modal.png" />
+    <Content Include="images\password.jpg" />
     <Content Include="images\slip3.png" />
     <Content Include="images\user_accounts.png" />
     <Content Include="images\user_accounts_alt.png" />
     <Content Include="images\user_group_select.png" />
     <Content Include="Person_Manage\global_payment_special_slip.aspx" />
     <Content Include="Person_Manage\global_payment_special_report_slip.aspx" />
+    <Content Include="Person_Manage\global_change_password.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -543,6 +547,20 @@
     </Compile>
     <Compile Include="App_Control\lov\open_lov.aspx.designer.cs">
       <DependentUpon>open_lov.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Control\material\material_control.aspx.cs">
+      <DependentUpon>material_control.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Control\material\material_control.aspx.designer.cs">
+      <DependentUpon>material_control.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Control\material\material_list.aspx.cs">
+      <DependentUpon>material_list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Control\material\material_list.aspx.designer.cs">
+      <DependentUpon>material_list.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Control\menu\menu_list.aspx.cs">
       <DependentUpon>menu_list.aspx</DependentUpon>
@@ -1835,6 +1853,13 @@
     </Compile>
     <Compile Include="Person_Manage\global_payment_back_report.aspx.designer.cs">
       <DependentUpon>global_payment_back_report.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Person_Manage\global_change_password.aspx.cs">
+      <DependentUpon>global_change_password.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Person_Manage\global_change_password.aspx.designer.cs">
+      <DependentUpon>global_change_password.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>

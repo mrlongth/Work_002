@@ -738,6 +738,18 @@ namespace myWeb.App_Control.payment_back
                                         base.GetConfigItem("GBKCode1"),
                                         base.GetConfigItem("GBKSalaryCode"));
                                 }
+                               else if (stritem_code.Substring(4, 6).Equals(base.GetConfigItem("GSJCode1")))
+                                {
+                                    stritem_code = stritem_code.Replace(
+                                        base.GetConfigItem("GSJCode1"),
+                                        base.GetConfigItem("GSJSalaryCode"));
+                                }
+                                //else if (stritem_code.Substring(4, 6).Equals(base.GetConfigItem("PVDCode1")))
+                                //{
+                                //    stritem_code = stritem_code.Replace(
+                                //        base.GetConfigItem("PVDCode1"),
+                                //        base.GetConfigItem("PVDSalaryCode"));
+                                //}
                                 
                                 strCriteria += "  And  substring(view_payment_back.item_code,1,10)= '" + stritem_code + "' ";
                             }

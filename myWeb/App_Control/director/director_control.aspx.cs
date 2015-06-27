@@ -165,6 +165,7 @@ namespace myWeb.App_Control.director
             string strdirector_code = string.Empty,
                 strdirector_year = string.Empty,
                 strdirector_name = string.Empty,
+                strdirector_short_name = string.Empty,
                 strdirector_sign_name = string.Empty,
                 strdirector_sign_image = string.Empty,
                 strsign_position = string.Empty,
@@ -184,6 +185,7 @@ namespace myWeb.App_Control.director
                 strdirector_sign_name = txtdirector_sign_name.Text;
                 strsign_position = txtsign_position.Text;
                 strBudget_type = cboBudget_type.SelectedItem.Value;
+                strdirector_short_name = txtdirector_short_name.Text;
                 if (txtdirector_sign_image.Text.Length > 0)
                 {
                     strdirector_sign_image = MapPath("~/person_pic/" + txtdirector_sign_image.Text);
@@ -207,7 +209,7 @@ namespace myWeb.App_Control.director
                     {                        
                         if (strdirector_sign_image != "")
                         {
-                            if (oDirector.SP_UPD_DIRECTOR(strdirector_code, strdirector_year, strdirector_name, strdirector_sign_name, strdirector_sign_image, strsign_position, txtdirector_order.Value.ToString(), strActive, strUpdatedBy, strBudget_type, ref strMessage))
+                            if (oDirector.SP_UPD_DIRECTOR(strdirector_code, strdirector_year, strdirector_name, strdirector_sign_name, strdirector_sign_image, strsign_position, txtdirector_order.Value.ToString(), strActive, strUpdatedBy, strBudget_type,strdirector_short_name, ref strMessage))
                             {
                                 blnResult = true;
                             }
@@ -218,7 +220,7 @@ namespace myWeb.App_Control.director
                         }
                         else
                         {
-                            if (oDirector.SP_UPD_NOIMAGE_DIRECTOR(strdirector_code, strdirector_year, strdirector_name, strdirector_sign_name, strsign_position, txtdirector_order.Value.ToString(), strActive, strUpdatedBy, strBudget_type, ref strMessage))
+                            if (oDirector.SP_UPD_NOIMAGE_DIRECTOR(strdirector_code, strdirector_year, strdirector_name, strdirector_sign_name, strsign_position, txtdirector_order.Value.ToString(), strActive, strUpdatedBy, strBudget_type, strdirector_short_name, ref strMessage))
                             {
                                 blnResult = true;
                             }
@@ -256,7 +258,7 @@ namespace myWeb.App_Control.director
                     #region insert
                     if (!blnDup)
                     {
-                        if (oDirector.SP_INS_DIRECTOR(strdirector_year, strdirector_name, strdirector_sign_name, strdirector_sign_image, strsign_position, txtdirector_order.Value.ToString(), strActive, strCreatedBy, strBudget_type, ref strMessage))
+                        if (oDirector.SP_INS_DIRECTOR(strdirector_year, strdirector_name, strdirector_sign_name, strdirector_sign_image, strsign_position, txtdirector_order.Value.ToString(), strActive, strCreatedBy, strBudget_type,strdirector_short_name, ref strMessage))
                         {
                             string strGetcode = " and director_name = '" + strdirector_name.Trim() + "' and director_year = '" + strdirector_year + "' ";
                             if (!oDirector.SP_SEL_DIRECTOR(strGetcode, ref ds, ref strMessage))
@@ -321,6 +323,7 @@ namespace myWeb.App_Control.director
             string strMessage = string.Empty, strCriteria = string.Empty;
             string strdirector_code = string.Empty,
                 strdirector_name = string.Empty,
+                strdirector_short_name = string.Empty,
                 strdirector_sign_name = string.Empty,
                 strsign_position = string.Empty,
                 strdirector_order = string.Empty,
@@ -356,11 +359,13 @@ namespace myWeb.App_Control.director
                         strUpdatedDate = ds.Tables[0].Rows[0]["d_updated_date"].ToString();
                         strBudget_type = ds.Tables[0].Rows[0]["budget_type"].ToString();
                         strdirector_order = ds.Tables[0].Rows[0]["director_order"].ToString();
+                        strdirector_short_name = ds.Tables[0].Rows[0]["director_short_name"].ToString();
                         #endregion
 
                         #region set Control
                         txtdirector_code.Text = strdirector_code;
                         txtdirector_name.Text = strdirector_name;
+                        txtdirector_short_name.Text = strdirector_short_name;
                         txtdirector_sign_name.Text = strdirector_sign_name;
                         txtsign_position.Text = strsign_position;
                         txtdirector_order.Value = strdirector_order;

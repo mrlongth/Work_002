@@ -72,7 +72,7 @@
                                     <Image Url="~/images/page/printer.png" />
                                 </dxm:MenuItem>
                                 <dxm:MenuItem Name="menuPaymentBack" NavigateUrl="~/Person_Manage/global_payment_back_report.aspx" Visible="false"
-                                    Text="รายงานเอกสารตกเบิก" >
+                                    Text="รายงานเอกสารตกเบิก">
                                     <Image Url="~/images/page/printer.png" />
                                 </dxm:MenuItem>
                                 <dxm:MenuItem Name="menuCumulative" NavigateUrl="~/Person_Manage/global_payment_cumulative.aspx" Visible="false"
@@ -136,6 +136,32 @@
                                                 </asp:Panel>
                                             </ProgressTemplate>
                                         </asp:UpdateProgress>
+
+                                        <asp:Panel ID="panelShow1" runat="server" CssClass="modalPopup" Style="height: 1px; width: 1px;">
+                                            <div class="div-headadd" id="div1">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                            <div id="divdes1" style="vertical-align: middle">
+                                                            </div>
+                                                        </td>
+                                                        <td style="width: 1%; vertical-align: middle">
+                                                            <asp:ImageButton ID="imgClose1" runat="server" ImageUrl="~/images/Delete.png" Style="float: right; cursor: pointer"
+                                                                AlternateText="ปิดหน้านี้" />
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <iframe id="iframeShow1" class="iframeShow" name="iframeShow1" frameborder="0" src="about:blank"
+                                                scrolling="no"></iframe>
+                                        </asp:Panel>
+                                        <ajaxToolkit:ModalPopupExtender ID="show1_ModalPopupExtender" runat="server" BackgroundCssClass="modalBackground"
+                                            PopupControlID="panelShow1" PopupDragHandleControlID="panelShow1" DropShadow="true"
+                                            TargetControlID="btnShow" BehaviorID="show1_ModalPopupExtender">
+                                        </ajaxToolkit:ModalPopupExtender>
+                                        <asp:Button ID="btnShow" runat="server" />
+
+
                                     </div>
                                 </td>
                             </tr>

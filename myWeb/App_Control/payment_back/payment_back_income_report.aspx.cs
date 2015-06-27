@@ -838,12 +838,15 @@ namespace myWeb.App_Control.payment_back
 
                     if (!stritem_code.Equals(""))
                     {
-                        strCriteria = strCriteria + "  And  view_payment_back.item_code= '" + stritem_code + "' ";
+                        strCriteria += "  And  substring(view_payment_back.item_code,1,10)= '" + stritem_code + "' ";
                     }
-                    if (stritem_code.Substring(4, 6).Equals("03-002"))
+
+
+                    if (stritem_code.Substring(4, 6).Equals(base.GetConfigItem("SOSCode2")))
                     {
                         strCriteria = strCriteria.Replace("view_payment_back.", "");
                     }
+
                     Session["criteria"] = strCriteria;
                     if (RadioButtonList2.SelectedValue.Equals("0"))
                     {
@@ -874,12 +877,15 @@ namespace myWeb.App_Control.payment_back
 
                             if (!stritem_code.Equals(""))
                             {
-                                strCriteria = strCriteria + "  And  view_payment_back.item_code= '" + stritem_code + "' ";
+                                strCriteria += "  And  substring(view_payment_back.item_code,1,10)= '" + stritem_code + "' ";
                             }
-                            if (stritem_code.Substring(4, 6).Equals("03-002"))
+
+
+                            if (stritem_code.Substring(4, 6).Equals(base.GetConfigItem("SOSCode2")))
                             {
                                 strCriteria = strCriteria.Replace("view_payment_back.", "");
                             }
+
                             Session["criteria"] = strCriteria ;                   
                             if (RadioButtonList2.SelectedValue.Equals("0"))
                             {

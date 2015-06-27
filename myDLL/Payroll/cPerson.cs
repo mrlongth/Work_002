@@ -1575,13 +1575,13 @@ namespace myDLL
                 oParam_cumulative_acc.Direction = ParameterDirection.Input;
                 oParam_cumulative_acc.Value = pcumulative_acc;
                 oCommand.Parameters.Add(oParam_cumulative_acc);
-              
+
                 // - - - - - - - - - - - -             
                 SqlParameter oParam_cumulative_money = new SqlParameter("cumulative_money", SqlDbType.Money);
                 oParam_cumulative_money.Direction = ParameterDirection.Input;
                 oParam_cumulative_money.Value = float.Parse(pcumulative_money);
                 oCommand.Parameters.Add(oParam_cumulative_money);
-              
+
                 // - - - - - - - - - - - -             
                 oCommand.ExecuteNonQuery();
                 blnResult = true;
@@ -1676,7 +1676,7 @@ namespace myDLL
         #endregion
 
         #region SP_PERSON_LOAN_DEL
-        public bool SP_PERSON_LOAN_DEL(string pPerson_code, string pLoan_code, string pLoan_acc , ref string strMessage)
+        public bool SP_PERSON_LOAN_DEL(string pPerson_code, string pLoan_code, string pLoan_acc, ref string strMessage)
         {
             bool blnResult = false;
             SqlConnection oConn = new SqlConnection();
@@ -1704,7 +1704,7 @@ namespace myDLL
                 oParam_person_loan_acc.Direction = ParameterDirection.Input;
                 oParam_person_loan_acc.Value = pLoan_acc;
                 oCommand.Parameters.Add(oParam_person_loan_acc);
-               
+
                 oCommand.ExecuteNonQuery();
                 blnResult = true;
             }
@@ -1723,7 +1723,7 @@ namespace myDLL
         #endregion
 
         #region SP_PERSON_LOAN_INS
-        public bool SP_PERSON_LOAN_INS(string pPerson_code, string pLoan_code, string pLoan_acc,string pLoan_acc_name , string pLoan_remark, string pC_created_by, ref string strMessage)
+        public bool SP_PERSON_LOAN_INS(string pPerson_code, string pLoan_code, string pLoan_acc, string pLoan_acc_name, string pLoan_remark, string pC_created_by, ref string strMessage)
         {
             bool blnResult = false;
             SqlConnection oConn = new SqlConnection();
@@ -1753,7 +1753,7 @@ namespace myDLL
                 oCommand.Parameters.Add(oParam_person_loan_acc);
 
 
-                  // - - - - - - - - - - - -             
+                // - - - - - - - - - - - -             
                 SqlParameter oParam_loan_acc_name = new SqlParameter("loan_acc_name", SqlDbType.NVarChar);
                 oParam_loan_acc_name.Direction = ParameterDirection.Input;
                 oParam_loan_acc_name.Value = pLoan_acc_name;
@@ -1765,7 +1765,7 @@ namespace myDLL
                 oParam_loan_remark.Value = pLoan_remark;
                 oCommand.Parameters.Add(oParam_loan_remark);
 
-   
+
                 // - - - - - - - - - - - -             
                 SqlParameter oParam_c_created_by = new SqlParameter("c_created_by", SqlDbType.NVarChar);
                 oParam_c_created_by.Direction = ParameterDirection.Input;
@@ -1791,7 +1791,7 @@ namespace myDLL
         #endregion
 
         #region SP_PERSON_LOAN_UPD
-        public bool SP_PERSON_LOAN_UPD(string pPerson_code, string pLoan_code, string pLoan_acc, string pLoan_acc_name , string pLoan_remark, string pC_updated_by, ref string strMessage)
+        public bool SP_PERSON_LOAN_UPD(string pPerson_code, string pLoan_code, string pLoan_acc, string pLoan_acc_name, string pLoan_remark, string pC_updated_by, ref string strMessage)
         {
             bool blnResult = false;
             SqlConnection oConn = new SqlConnection();
@@ -1840,6 +1840,43 @@ namespace myDLL
                 oCommand.Parameters.Add(oParam_c_updated_by);
                 // - - - - - - - - - - - -       
 
+                oCommand.ExecuteNonQuery();
+                blnResult = true;
+            }
+            catch (Exception ex)
+            {
+                strMessage = ex.Message.ToString();
+            }
+            finally
+            {
+                oConn.Close();
+                oCommand.Dispose();
+                oConn.Dispose();
+            }
+            return blnResult;
+        }
+        #endregion
+
+
+        #region SP_PERSON_HIS_PASS_UPD
+        public bool SP_PERSON_HIS_PASS_UPD(string pperson_code, string pperson_password, string pc_updated_by, ref string strMessage)
+        {
+            bool blnResult = false;
+            var oConn = new SqlConnection();
+            var oCommand = new SqlCommand();
+            try
+            {
+                oConn.ConnectionString = _strConn;
+                oConn.Open();
+                oCommand.Connection = oConn;
+                oCommand.CommandType = CommandType.StoredProcedure;
+                oCommand.CommandText = "SP_PERSON_HIS_PASS_UPD";
+
+                oCommand.Parameters.Add("person_code", SqlDbType.VarChar).Value = pperson_code;
+                oCommand.Parameters.Add("person_password", SqlDbType.VarChar).Value = Cryptorengine.Encrypt(pperson_password, true);
+                oCommand.Parameters.Add("c_updated_by", SqlDbType.VarChar).Value = pc_updated_by;
+
+                // - - - - - - - - - - - -             
                 oCommand.ExecuteNonQuery();
                 blnResult = true;
             }

@@ -60,7 +60,8 @@ namespace myWeb.Person_Manage
                 InitcboRound();
                 setData();
 
-                //InitcboBudgetType();
+                lnkChangePass.Attributes.Add("onclick", "OpenPopUp('600px','200px','93%','เปลี่ยนรหัสผ่าน','global_change_password.aspx','1');return false;");
+
             }
 
         }

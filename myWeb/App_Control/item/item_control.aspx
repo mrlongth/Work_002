@@ -199,7 +199,8 @@
             <td align="right" nowrap valign="middle">
                 &nbsp;</td>
             <td align="left" nowrap valign="middle">
-                &nbsp;</td>
+                <asp:CheckBox runat="server" Text="คำนวณภาษี" ID="chkItem_tax"></asp:CheckBox>
+                </td>
         </tr>
         <tr align="left">
             <td align="right" nowrap valign="middle">

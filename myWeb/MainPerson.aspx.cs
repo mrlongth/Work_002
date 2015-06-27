@@ -20,10 +20,46 @@ namespace myWeb
         {
             if (!IsPostBack)
             {
+                lbnChangePassAlert.Attributes.Add("onclick", "OpenPopUp('600px','200px','93%','เปลี่ยนรหัสผ่าน','Person_Manage/global_change_password.aspx','1');return false;");
             }
-
         }
 
+        protected void Page_LoadComplete(object sender, EventArgs e)
+        {
+            if (ChkChangePass())
+            {
+                ScriptManager.RegisterStartupScript(Page, Page.GetType(), "RegisterAlertRunScript", "$(document).ready(function () { setTimeout(function() { $('#" + lbnChangePassAlert.ClientID + "').trigger('click'); }, 1000); });", true);
+            }
+        }
+
+        private bool ChkChangePass()
+        {
+            string strCriteria = string.Empty;
+            cCommon oCommon = new cCommon();
+            var ds = new DataSet();
+            var dt = new DataTable();
+            #region Criteria
+
+            strCriteria = "Select count(1) as item_count from person_his ";
+            strCriteria += "  Where person_code = '" + base.PersonCode + "' and person_password is null ";
+
+            #endregion
+            try
+            {
+                if (oCommon.SEL_SQL(strCriteria, ref ds, ref _strMessage))
+                {
+                    dt = ds.Tables[0];
+                }
+                var result = Helper.CInt(dt.Rows[0]["item_count"])  > 0;
+                return result;
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message.ToString();
+            }
+            return false;
+        }
+        
         protected void imbSlip_Click(object sender, ImageClickEventArgs e)
         {
             Response.Redirect("~/Person_Manage/global_payment_slip.aspx");

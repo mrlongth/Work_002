@@ -341,7 +341,8 @@ namespace myWeb.App_Control.reportsparameter
             else if (ViewState["report_code"].ToString().Equals("Rep_exceldebitall")
                 || ViewState["report_code"].ToString().Equals("Rep_exceldebitallincome"))
             {
-                Retive_Rep_exceldebitall();
+               // Retive_Rep_exceldebitall();
+                Retive_Rep_excelcreditall();
             }
             else if (ViewState["report_code"].ToString().Equals("Rep_payment_slip"))
             {
@@ -390,7 +391,8 @@ namespace myWeb.App_Control.reportsparameter
             }
 
             else if (ViewState["report_code"].ToString().Equals("Rep_payment") ||
-                ViewState["report_code"].ToString().Equals("Rep_payment_tax"))
+                ViewState["report_code"].ToString().Equals("Rep_payment_tax") ||
+                ViewState["report_code"].ToString().Equals("Rep_payment_tax_year"))
             {
                 Retive_Rep_paymentbyitem();
             }

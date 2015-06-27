@@ -40,7 +40,7 @@
                 <asp:TextBox ID="txtdirector_code" runat="server" CssClass="textbox" MaxLength="5"
                     Width="144px" ValidationGroup="A"></asp:TextBox>
             </td>
-            <td rowspan="6" style="text-align: center">
+            <td rowspan="7" style="text-align: center">
                 <asp:Image runat="server" ImageUrl="~/person_pic/image_n_a2.jpg" BorderWidth="1px"
                     BorderStyle="Solid" Style="display: none" ID="imgPerson"></asp:Image>
             </td>
@@ -53,6 +53,17 @@
             <td align="left" colspan="2" nowrap>
                 <font face="Tahoma">
                     <asp:TextBox ID="txtdirector_name" runat="server" CssClass="textbox" MaxLength="100"
+                        Width="344px" CausesValidation="True" ValidationGroup="A"></asp:TextBox>
+                </font>
+            </td>
+        </tr>
+        <tr align="left">
+            <td align="right" nowrap style="height: 17px">
+                <asp:Label ID="Label76" runat="server">ชื่อย่อ :</asp:Label>
+            </td>
+            <td align="left" colspan="2" nowrap style="height: 17px">
+                <font face="Tahoma">
+                    <asp:TextBox ID="txtdirector_short_name" runat="server" CssClass="textbox" MaxLength="50"
                         Width="344px" CausesValidation="True" ValidationGroup="A"></asp:TextBox>
                 </font>
             </td>

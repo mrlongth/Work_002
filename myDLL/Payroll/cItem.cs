@@ -157,7 +157,7 @@ namespace myDLL
                                 string plot_code, string pperson_group_code, string pactive,
                                 string pc_created_by, string pcheque_code, string pcheque_type,
                                 string pitem_acc_code, string pitem_project_code1, string pitem_project_code2,
-                                string pbudget_type, string pdirect_pay_code, string pitem_class, ref string strMessage)
+                                string pbudget_type, string pdirect_pay_code, string pitem_class, string pitem_tax, ref string strMessage)
         {
             bool blnResult = false;
             SqlConnection oConn = new SqlConnection();
@@ -256,6 +256,14 @@ namespace myDLL
                 oParam_item_class.Value = pitem_class;
                 oCommand.Parameters.Add(oParam_item_class);
 
+                // - - - - - - - - - - - -             
+                SqlParameter oParam_item_tax = new SqlParameter("item_tax", SqlDbType.NVarChar);
+                oParam_item_tax.Direction = ParameterDirection.Input;
+                oParam_item_tax.Value = pitem_tax;
+                oCommand.Parameters.Add(oParam_item_tax);
+
+                
+
 
                 oCommand.ExecuteNonQuery();
                 blnResult = true;
@@ -279,7 +287,7 @@ namespace myDLL
                                 string plot_code, string pperson_group_code, string pactive,
                                 string pc_updated_by, string pcheque_code, string pcheque_type,
                                 string pitem_acc_code, string pitem_project_code1, string pitem_project_code2,
-                                string pbudget_type, string pdirect_pay_code, string pitem_class, ref string strMessage)
+                                string pbudget_type, string pdirect_pay_code, string pitem_class, string pitem_tax, ref string strMessage)
         {
             bool blnResult = false;
             SqlConnection oConn = new SqlConnection();
@@ -381,6 +389,13 @@ namespace myDLL
                 oParam_item_class.Direction = ParameterDirection.Input;
                 oParam_item_class.Value = pitem_class;
                 oCommand.Parameters.Add(oParam_item_class);
+
+                // - - - - - - - - - - - -             
+                SqlParameter oParam_item_tax = new SqlParameter("item_tax", SqlDbType.NVarChar);
+                oParam_item_tax.Direction = ParameterDirection.Input;
+                oParam_item_tax.Value = pitem_tax;
+                oCommand.Parameters.Add(oParam_item_tax);
+
 
 
                 // - - - - - - - - - - - -             

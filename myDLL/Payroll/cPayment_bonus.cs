@@ -9,42 +9,42 @@ namespace myDLL
     using System.Runtime.Remoting.Messaging;
 
     public class cPayment_bonus : IDisposable
-    {     
+    {
         private string _strConn = string.Empty;
 
         public string ConnectionString
         {
             get
-                {
-                    return _strConn;
-                }
+            {
+                return _strConn;
+            }
             set
+            {
+                if (value == string.Empty)
                 {
-                    if (value == string.Empty)
-                    {
-                        _strConn = System.Configuration.ConfigurationSettings.AppSettings["ConnectionString"];
-                    }
-                    else
-                    {
-                        _strConn = value;
-                    }
+                    _strConn = System.Configuration.ConfigurationSettings.AppSettings["ConnectionString"];
                 }
+                else
+                {
+                    _strConn = value;
+                }
+            }
         }
 
         public cPayment_bonus()
-	    {
-	    //
-	    // TODO: Add constructor logic here
-	    //
+        {
+            //
+            // TODO: Add constructor logic here
+            //
             _strConn = System.Configuration.ConfigurationSettings.AppSettings["ConnectionString"];
-	    }
+        }
 
         public void Dispose()
         {
             GC.SuppressFinalize(this);
         }
 
-        
+
         #region SP_PAYMENT_BONUS_HEAD_SEL
         public bool SP_PAYMENT_BONUS_HEAD_SEL(string strCriteria, ref DataSet ds, ref string strMessage)
         {
@@ -80,7 +80,7 @@ namespace myDLL
             }
             return blnResult;
         }
-        #endregion      
+        #endregion
 
         #region SP_PAYMENT_BONUS_HEAD_DEL
         public bool SP_PAYMENT_BONUS_HEAD_DEL(string pbn_payment_doc, ref string strMessage)
@@ -119,24 +119,24 @@ namespace myDLL
 
         #region SP_PAYMENT_BONUS_HEAD_INS
         public bool SP_PAYMENT_BONUS_HEAD_INS(
-                string pbn_payment_doc ,
-                string ppayment_date ,
-                string ppayment_year ,
-	            string ppay_month ,
-	            string ppay_year ,
-                string pbn_person_code ,            
+                string pbn_payment_doc,
+                string ppayment_date,
+                string ppayment_year,
+                string ppay_month,
+                string ppay_year,
+                string pbn_person_code,
                 string pbn_person_group_code,
-	            string pbn_budget_plan_code,
-                string pbn_payment_recv ,
-                string pbn_payment_pay ,
-                string pbn_payment_net ,
-                string pcomments ,
-                string pc_status ,
+                string pbn_budget_plan_code,
+                string pbn_payment_recv,
+                string pbn_payment_pay,
+                string pbn_payment_net,
+                string pcomments,
+                string pc_status,
                 string pc_active,
                 string pc_created_by,
                 ref string strMessage)
         {
-                        
+
             bool blnResult = false;
             var oConn = new SqlConnection();
             var oCommand = new SqlCommand();
@@ -148,10 +148,10 @@ namespace myDLL
                 oCommand.CommandType = CommandType.StoredProcedure;
                 oCommand.CommandText = "SP_PAYMENT_BONUS_HEAD_INS";
                 oCommand.Parameters.Add("pbn_payment_doc", SqlDbType.VarChar).Value = pbn_payment_doc;
-                oCommand.Parameters.Add("ppayment_date", SqlDbType.DateTime).Value = cCommon.CheckDate(ppayment_date);                
+                oCommand.Parameters.Add("ppayment_date", SqlDbType.DateTime).Value = cCommon.CheckDate(ppayment_date);
                 oCommand.Parameters.Add("ppayment_year", SqlDbType.VarChar).Value = ppayment_year;
                 oCommand.Parameters.Add("ppay_month", SqlDbType.VarChar).Value = ppay_month;
-                oCommand.Parameters.Add("ppay_year", SqlDbType.VarChar).Value = ppay_year;                              
+                oCommand.Parameters.Add("ppay_year", SqlDbType.VarChar).Value = ppay_year;
                 oCommand.Parameters.Add("pbn_person_code", SqlDbType.VarChar).Value = pbn_person_code;
                 oCommand.Parameters.Add("pbn_person_group_code", SqlDbType.VarChar).Value = pbn_person_group_code;
                 oCommand.Parameters.Add("pbn_budget_plan_code", SqlDbType.VarChar).Value = pbn_budget_plan_code;
@@ -208,7 +208,7 @@ namespace myDLL
                 oCommand.CommandType = CommandType.StoredProcedure;
                 oCommand.CommandText = "SP_PAYMENT_BONUS_HEAD_UPD";
                 oCommand.Parameters.Add("pbn_payment_doc", SqlDbType.VarChar).Value = pbn_payment_doc;
-                oCommand.Parameters.Add("ppayment_date", SqlDbType.DateTime).Value = cCommon.CheckDate(ppayment_date);                               
+                oCommand.Parameters.Add("ppayment_date", SqlDbType.DateTime).Value = cCommon.CheckDate(ppayment_date);
                 oCommand.Parameters.Add("ppayment_year", SqlDbType.VarChar).Value = ppayment_year;
                 oCommand.Parameters.Add("ppay_month", SqlDbType.VarChar).Value = ppay_month;
                 oCommand.Parameters.Add("ppay_year", SqlDbType.VarChar).Value = ppay_year;
@@ -273,10 +273,10 @@ namespace myDLL
             }
             return blnResult;
         }
-        #endregion      
+        #endregion
 
         #region SP_PAYMENT_BONUS_DETAIL_DEL
-        public bool SP_PAYMENT_BONUS_DETAIL_DEL(string pbn_payment_detail_id, string pc_updated_by,  ref string strMessage)
+        public bool SP_PAYMENT_BONUS_DETAIL_DEL(string pbn_payment_detail_id, string pc_updated_by, ref string strMessage)
         {
             bool blnResult = false;
             SqlConnection oConn = new SqlConnection();
@@ -291,7 +291,7 @@ namespace myDLL
                 // - - - - - - - - - - - -             
                 oCommand.Parameters.Add("pbn_payment_detail_id", SqlDbType.BigInt).Value = Helper.CLong(pbn_payment_detail_id);
                 oCommand.Parameters.Add("pc_updated_by", SqlDbType.VarChar).Value = pc_updated_by;
-                
+
                 oCommand.ExecuteNonQuery();
                 blnResult = true;
             }
@@ -311,11 +311,11 @@ namespace myDLL
 
         #region SP_PAYMENT_BONUS_DETAIL_INS
         public bool SP_PAYMENT_BONUS_DETAIL_INS(
-                string pbn_payment_doc ,
-                string pitem_code ,
-                string pitem_qty ,
-                string pbn_payment_item_money ,
-                string pbn_comments_sub ,
+                string pbn_payment_doc,
+                string pitem_code,
+                string pitem_qty,
+                string pbn_payment_item_money,
+                string pbn_comments_sub,
                 string pc_active,
                 string pc_created_by,
                 ref string strMessage)
@@ -405,7 +405,191 @@ namespace myDLL
         }
         #endregion
 
-        
+
+        #region SP_IMPORT_PAYMENT_BONUS_INS
+        public bool SP_IMPORT_PAYMENT_BONUS_INS
+            (
+                 string ppayment_year,
+                 string ppay_year,
+                 string ppay_month,
+                string pbn_person_code,
+                string pbn_person_name,
+                string pbn_person_surname,
+                string pitem_code,
+                string pitem_qty,
+                string pitem_amt,
+                string pc_created_by,
+                ref string strMessage
+            )
+        {
+            bool blnResult = false;
+            var oConn = new SqlConnection();
+            var oCommand = new SqlCommand();
+            var oAdapter = new SqlDataAdapter();
+            try
+            {
+                oConn.ConnectionString = _strConn;
+                oConn.Open();
+                oCommand.Connection = oConn;
+                oCommand.CommandType = CommandType.StoredProcedure;
+                oCommand.CommandText = "sp_IMPORT_PAYMENT_BONUS_INS";
+                oCommand.Parameters.Add("ppayment_year", SqlDbType.VarChar).Value = ppayment_year;
+                oCommand.Parameters.Add("ppay_year", SqlDbType.VarChar).Value = ppay_year;
+                oCommand.Parameters.Add("ppay_month", SqlDbType.VarChar).Value = ppay_month;
+                oCommand.Parameters.Add("pbn_person_code", SqlDbType.VarChar).Value = pbn_person_code;
+                oCommand.Parameters.Add("pbn_person_name", SqlDbType.VarChar).Value = pbn_person_name;
+                oCommand.Parameters.Add("pbn_person_surname", SqlDbType.VarChar).Value = pbn_person_surname;
+                oCommand.Parameters.Add("pitem_code", SqlDbType.VarChar).Value = pitem_code;
+                oCommand.Parameters.Add("pitem_qty", SqlDbType.Float).Value = float.Parse(pitem_qty);
+                oCommand.Parameters.Add("pitem_amt", SqlDbType.Money).Value = double.Parse(pitem_amt);
+                oCommand.Parameters.Add("pc_created_by", SqlDbType.VarChar).Value = pc_created_by;
+                // - - - - - - - - - - - -             
+                oCommand.ExecuteNonQuery();
+                blnResult = true;
+            }
+            catch (Exception ex)
+            {
+                strMessage = ex.Message.ToString();
+            }
+            finally
+            {
+                oConn.Close();
+                oCommand.Dispose();
+                oConn.Dispose();
+            }
+            return blnResult;
+        }
+        #endregion
+
+        #region SP_IMPORT_PAYMENT_BONUS_DEL
+        public bool SP_IMPORT_PAYMENT_BONUS_DEL
+            (
+                string pc_created_by,
+                ref string strMessage
+            )
+        {
+            bool blnResult = false;
+            var oConn = new SqlConnection();
+            var oCommand = new SqlCommand();
+            var oAdapter = new SqlDataAdapter();
+            try
+            {
+                oConn.ConnectionString = _strConn;
+                oConn.Open();
+                oCommand.Connection = oConn;
+                oCommand.CommandType = CommandType.StoredProcedure;
+                oCommand.CommandText = "sp_IMPORT_PAYMENT_BONUS_DEL";
+                oCommand.Parameters.Add("pc_created_by", SqlDbType.VarChar).Value = pc_created_by;
+                // - - - - - - - - - - - -             
+                oCommand.ExecuteNonQuery();
+                blnResult = true;
+            }
+            catch (Exception ex)
+            {
+                strMessage = ex.Message.ToString();
+            }
+            finally
+            {
+                oConn.Close();
+                oCommand.Dispose();
+                oConn.Dispose();
+            }
+            return blnResult;
+        }
+        #endregion
+
+        #region SP_IMPORT_PAYMENT_BONUS_SEL
+        public bool SP_IMPORT_PAYMENT_BONUS_SEL(string strCriteria, ref DataSet ds, ref string strMessage)
+        {
+            bool blnResult = false;
+            var oConn = new SqlConnection();
+            var oCommand = new SqlCommand();
+            var oAdapter = new SqlDataAdapter();
+            try
+            {
+                oConn.ConnectionString = _strConn;
+                oConn.Open();
+                oCommand.Connection = oConn;
+                oCommand.CommandType = CommandType.StoredProcedure;
+                oCommand.CommandText = "sp_IMPORT_PAYMENT_BONUS_SEL";
+                var oParamI_vc_criteria = new SqlParameter("vc_criteria", SqlDbType.NVarChar);
+                oParamI_vc_criteria.Direction = ParameterDirection.Input;
+                oParamI_vc_criteria.Value = strCriteria;
+                oCommand.Parameters.Add(oParamI_vc_criteria);
+                oAdapter = new SqlDataAdapter(oCommand);
+                ds = new DataSet();
+                oAdapter.Fill(ds, "sp_IMPORT_PAYMENT_BONUS_SEL");
+                blnResult = true;
+            }
+            catch (Exception ex)
+            {
+                strMessage = ex.Message.ToString();
+            }
+            finally
+            {
+                oConn.Close();
+                oCommand.Dispose();
+                oConn.Dispose();
+            }
+            return blnResult;
+        }
+        #endregion
+
+        #region SP_IMPORT_PAYMENT_BONUS_SAVE
+        public bool SP_IMPORT_PAYMENT_BONUS_SAVE
+            (
+                 string ppayment_year,
+                 string ppay_year,
+                 string ppay_month,
+                 string pbn_person_code,
+                 string pbn_person_group_code,
+                 string pbudget_plan_code,
+                 string pitem_code,
+                 string pitem_qty,
+                 string pitem_amt,
+                 string pc_created_by,
+                ref string strMessage
+            )
+        {
+            bool blnResult = false;
+            var oConn = new SqlConnection();
+            var oCommand = new SqlCommand();
+            var oAdapter = new SqlDataAdapter();
+            try
+            {
+                oConn.ConnectionString = _strConn;
+                oConn.Open();
+                oCommand.Connection = oConn;
+                oCommand.CommandType = CommandType.StoredProcedure;
+                oCommand.CommandText = "sp_IMPORT_PAYMENT_BONUS_SAVE";
+                oCommand.Parameters.Add("ppayment_year", SqlDbType.VarChar).Value = ppayment_year;
+                oCommand.Parameters.Add("ppay_year", SqlDbType.VarChar).Value = ppay_year;
+                oCommand.Parameters.Add("ppay_month", SqlDbType.VarChar).Value = ppay_month;
+                oCommand.Parameters.Add("pbn_person_code", SqlDbType.VarChar).Value = pbn_person_code;
+                oCommand.Parameters.Add("pbn_person_group_code", SqlDbType.VarChar).Value = pbn_person_group_code;                
+                oCommand.Parameters.Add("pbudget_plan_code", SqlDbType.VarChar).Value = pbudget_plan_code;
+                oCommand.Parameters.Add("pitem_code", SqlDbType.VarChar).Value = pitem_code;
+                oCommand.Parameters.Add("pitem_qty", SqlDbType.Float).Value = float.Parse(pitem_qty);
+                oCommand.Parameters.Add("pitem_amt", SqlDbType.Money).Value = double.Parse(pitem_amt);
+                oCommand.Parameters.Add("pc_created_by", SqlDbType.VarChar).Value = pc_created_by;
+                oCommand.ExecuteNonQuery();
+                blnResult = true;
+            }
+            catch (Exception ex)
+            {
+                strMessage = ex.Message.ToString();
+            }
+            finally
+            {
+                oConn.Close();
+                oCommand.Dispose();
+                oConn.Dispose();
+            }
+            return blnResult;
+        }
+        #endregion
+
+
         #region IDisposable Members
 
         void IDisposable.Dispose()

@@ -244,14 +244,27 @@ namespace myWeb.App_Control.reportsparameter
             {
                 Retive_Rep_paymentGBK();
             }
+
+            else if (ViewState["report_code"].ToString().Equals("Rep_paymentincomePVD"))
+            {
+                Retive_Rep_paymentGBK();
+            }
+
             else if (ViewState["report_code"].ToString().Equals("Rep_paymentGSJ"))
             {
                 Retive_Rep_paymentGBK();
             }
-            else if (ViewState["report_code"].ToString().Equals("Rep_paymentGBK_sum"))
+            else if (ViewState["report_code"].ToString().Equals("Rep_paymentPVD_sum"))
             {
                 Retive_Rep_paymentGBK_sum();
             }
+
+
+             else if (ViewState["report_code"].ToString().Equals("Rep_paymentPVD"))
+            {             
+                 Retive_Rep_paymentGBK();
+            }
+
             else if (ViewState["report_code"].ToString().Equals("Rep_paymentGSJ_sum"))
             {
                 Retive_Rep_paymentGBK_sum();
@@ -301,7 +314,7 @@ namespace myWeb.App_Control.reportsparameter
             else if (ViewState["report_code"].ToString().Equals("Rep_paymentincomeSOS_major"))
             {
                 ViewState["report_code"] = "Rep_paymentincomeSOS_major";
-                Retive_Rep_payment02_sum();
+                Retive_Rep_payment02_major();
             }
             else if (ViewState["report_code"].ToString().Equals("Rep_payment_open") |
                      ViewState["report_code"].ToString().Equals("Rep_payment_open_director"))
@@ -488,7 +501,7 @@ namespace myWeb.App_Control.reportsparameter
             try
             {
 
-                string strPath = "~/reports_back/" + ViewState["report_code"].ToString() + "_" + ViewState["payment_back_type"].ToString() + ".rpt";
+                string strPath = "~/reports_back/" + ViewState["report_code"].ToString()  + ".rpt";
                 rptSource.Load(Server.MapPath(strPath));
                 TableLogOnInfo logOnInfo = new TableLogOnInfo();
                 TableLogOnInfos tableLogOnInfos = new TableLogOnInfos();
@@ -523,7 +536,7 @@ namespace myWeb.App_Control.reportsparameter
         {
             try
             {
-                string strPath = "~/reports_back/" + ViewState["report_code"].ToString() + "_" + ViewState["payment_back_type"].ToString() + ".rpt";
+                string strPath = "~/reports_back/" + ViewState["report_code"].ToString()  + ".rpt";
                 rptSource.Load(Server.MapPath(strPath));
                 TableLogOnInfo logOnInfo = new TableLogOnInfo();
                 TableLogOnInfos tableLogOnInfos = new TableLogOnInfos();
@@ -558,7 +571,7 @@ namespace myWeb.App_Control.reportsparameter
         {
             try
             {
-                string strPath = "~/reports_back/" + ViewState["report_code"].ToString() + "_" + ViewState["payment_back_type"].ToString() + ".rpt";
+                string strPath = "~/reports_back/" + ViewState["report_code"].ToString()  + ".rpt";
                 rptSource.Load(Server.MapPath(strPath));
                 TableLogOnInfo logOnInfo = new TableLogOnInfo();
                 TableLogOnInfos tableLogOnInfos = new TableLogOnInfos();
@@ -596,7 +609,7 @@ namespace myWeb.App_Control.reportsparameter
         {
             try
             {
-                string strPath = "~/reports_back/" + ViewState["report_code"].ToString() + "_" + ViewState["payment_back_type"].ToString() + ".rpt";
+                string strPath = "~/reports_back/" + ViewState["report_code"].ToString()  + ".rpt";
                 rptSource.Load(Server.MapPath(strPath));
                 TableLogOnInfo logOnInfo = new TableLogOnInfo();
                 TableLogOnInfos tableLogOnInfos = new TableLogOnInfos();
@@ -631,7 +644,7 @@ namespace myWeb.App_Control.reportsparameter
         {
             try
             {
-                string strPath = "~/reports_back/" + ViewState["report_code"].ToString() + "_" + ViewState["payment_back_type"].ToString() + ".rpt";
+                string strPath = "~/reports_back/" + ViewState["report_code"].ToString()  + ".rpt";
                 rptSource.Load(Server.MapPath(strPath));
                 TableLogOnInfo logOnInfo = new TableLogOnInfo();
                 TableLogOnInfos tableLogOnInfos = new TableLogOnInfos();
@@ -666,7 +679,7 @@ namespace myWeb.App_Control.reportsparameter
         {
             try
             {
-                string strPath = "~/reports_back/" + ViewState["report_code"].ToString() + "_" + ViewState["payment_back_type"].ToString() + ".rpt";
+                string strPath = "~/reports_back/" + ViewState["report_code"].ToString()  + ".rpt";
                 rptSource.Load(Server.MapPath(strPath));
                 TableLogOnInfo logOnInfo = new TableLogOnInfo();
                 TableLogOnInfos tableLogOnInfos = new TableLogOnInfos();
@@ -704,7 +717,7 @@ namespace myWeb.App_Control.reportsparameter
         {
             try
             {
-                string strPath = "~/reports_back/" + ViewState["report_code"].ToString() + "_" + ViewState["payment_back_type"].ToString() + ".rpt";
+                string strPath = "~/reports_back/" + ViewState["report_code"].ToString()  + ".rpt";
                 rptSource.Load(Server.MapPath(strPath));
                 TableLogOnInfo logOnInfo = new TableLogOnInfo();
                 TableLogOnInfos tableLogOnInfos = new TableLogOnInfos();
@@ -741,7 +754,7 @@ namespace myWeb.App_Control.reportsparameter
         {
             try
             {
-                string strPath = "~/reports_back/" + ViewState["report_code"].ToString() + "_" + ViewState["payment_back_type"].ToString() + ".rpt";
+                string strPath = "~/reports_back/" + ViewState["report_code"].ToString()  + ".rpt";
                 rptSource.Load(Server.MapPath(strPath));
                 TableLogOnInfo logOnInfo = new TableLogOnInfo();
                 TableLogOnInfos tableLogOnInfos = new TableLogOnInfos();
@@ -777,7 +790,7 @@ namespace myWeb.App_Control.reportsparameter
         {
             try
             {
-                string strPath = "~/reports_back/" + ViewState["report_code"].ToString() + "_" + ViewState["payment_back_type"].ToString() + ".rpt";
+                string strPath = "~/reports_back/" + ViewState["report_code"].ToString()  + ".rpt";
                 rptSource.Load(Server.MapPath(strPath));
                 TableLogOnInfo logOnInfo = new TableLogOnInfo();
                 TableLogOnInfos tableLogOnInfos = new TableLogOnInfos();
@@ -812,7 +825,7 @@ namespace myWeb.App_Control.reportsparameter
         {
             try
             {
-                string strPath = "~/reports_back/" + ViewState["report_code"].ToString() + "_" + ViewState["payment_back_type"].ToString() + ".rpt";
+                string strPath = "~/reports_back/" + ViewState["report_code"].ToString()  + ".rpt";
                 rptSource.Load(Server.MapPath(strPath));
                 TableLogOnInfo logOnInfo = new TableLogOnInfo();
                 TableLogOnInfos tableLogOnInfos = new TableLogOnInfos();
@@ -847,7 +860,7 @@ namespace myWeb.App_Control.reportsparameter
         {
             try
             {
-                string strPath = "~/reports_back/" + ViewState["report_code"].ToString() + "_" + ViewState["payment_back_type"].ToString() + ".rpt";
+                string strPath = "~/reports_back/" + ViewState["report_code"].ToString()  + ".rpt";
                 rptSource.Load(Server.MapPath(strPath));
                 TableLogOnInfo logOnInfo = new TableLogOnInfo();
                 TableLogOnInfos tableLogOnInfos = new TableLogOnInfos();
@@ -883,7 +896,7 @@ namespace myWeb.App_Control.reportsparameter
         {
             try
             {
-                string strPath = "~/reports_back/" + ViewState["report_code"].ToString() + "_" + ViewState["payment_back_type"].ToString() + ".rpt";
+                string strPath = "~/reports_back/" + ViewState["report_code"].ToString()  + ".rpt";
                 rptSource.Load(Server.MapPath(strPath));
                 TableLogOnInfo logOnInfo = new TableLogOnInfo();
                 TableLogOnInfos tableLogOnInfos = new TableLogOnInfos();
@@ -918,7 +931,7 @@ namespace myWeb.App_Control.reportsparameter
         {
             try
             {
-                string strPath = "~/reports_back/" + ViewState["report_code"].ToString() + "_" + ViewState["payment_back_type"].ToString() + ".rpt";
+                string strPath = "~/reports_back/" + ViewState["report_code"].ToString()  + ".rpt";
                 rptSource.Load(Server.MapPath(strPath));
                 TableLogOnInfo logOnInfo = new TableLogOnInfo();
                 TableLogOnInfos tableLogOnInfos = new TableLogOnInfos();
@@ -956,7 +969,7 @@ namespace myWeb.App_Control.reportsparameter
         {
             try
             {
-                string strPath = "~/reports_back/" + ViewState["report_code"].ToString() + "_" + ViewState["payment_back_type"].ToString() + ".rpt";
+                string strPath = "~/reports_back/" + ViewState["report_code"].ToString()  + ".rpt";
                 rptSource.Load(Server.MapPath(strPath));
                 TableLogOnInfo logOnInfo = new TableLogOnInfo();
                 TableLogOnInfos tableLogOnInfos = new TableLogOnInfos();
@@ -992,7 +1005,7 @@ namespace myWeb.App_Control.reportsparameter
         {
             try
             {
-                string strPath = "~/reports_back/" + ViewState["report_code"].ToString() + "_" + ViewState["payment_back_type"].ToString() + ".rpt";
+                string strPath = "~/reports_back/" + ViewState["report_code"].ToString()  + ".rpt";
                 //string strPath = "~/reports/" + ViewState["report_code"].ToString() + ".rpt";
                 rptSource.Load(Server.MapPath(strPath));
                 TableLogOnInfo logOnInfo = new TableLogOnInfo();
@@ -1029,7 +1042,7 @@ namespace myWeb.App_Control.reportsparameter
             try
             {
 
-                string strPath = "~/reports_back/" + ViewState["report_code"].ToString() + "_" + ViewState["payment_back_type"].ToString() + ".rpt";
+                string strPath = "~/reports_back/" + ViewState["report_code"].ToString()  + ".rpt";
                 rptSource.Load(Server.MapPath(strPath));
                 TableLogOnInfo logOnInfo = new TableLogOnInfo();
                 TableLogOnInfos tableLogOnInfos = new TableLogOnInfos();
@@ -1063,7 +1076,7 @@ namespace myWeb.App_Control.reportsparameter
         {
             try
             {
-                string strPath = "~/reports_back/" + ViewState["report_code"].ToString() + "_" + ViewState["payment_back_type"].ToString() + ".rpt";
+                string strPath = "~/reports_back/" + ViewState["report_code"].ToString()  + ".rpt";
                 rptSource.Load(Server.MapPath(strPath));
                 TableLogOnInfo logOnInfo = new TableLogOnInfo();
                 TableLogOnInfos tableLogOnInfos = new TableLogOnInfos();
@@ -1098,7 +1111,7 @@ namespace myWeb.App_Control.reportsparameter
         {
             try
             {
-                string strPath = "~/reports_back/" + ViewState["report_code"].ToString() + "_" + ViewState["payment_back_type"].ToString() + ".rpt";
+                string strPath = "~/reports_back/" + ViewState["report_code"].ToString()  + ".rpt";
                 rptSource.Load(Server.MapPath(strPath));
                 TableLogOnInfo logOnInfo = new TableLogOnInfo();
                 TableLogOnInfos tableLogOnInfos = new TableLogOnInfos();
@@ -1135,7 +1148,7 @@ namespace myWeb.App_Control.reportsparameter
         {
             try
             {
-                string strPath = "~/reports_back/" + ViewState["report_code"].ToString() + "_" + ViewState["payment_back_type"].ToString() + ".rpt";
+                string strPath = "~/reports_back/" + ViewState["report_code"].ToString()  + ".rpt";
                 rptSource.Load(Server.MapPath(strPath));
                 TableLogOnInfo logOnInfo = new TableLogOnInfo();
                 TableLogOnInfos tableLogOnInfos = new TableLogOnInfos();
@@ -1172,7 +1185,7 @@ namespace myWeb.App_Control.reportsparameter
             try
             {
 
-                string strPath = "~/reports_back/" + ViewState["report_code"].ToString() + "_" + ViewState["payment_back_type"].ToString() + ".rpt";
+                string strPath = "~/reports_back/" + ViewState["report_code"].ToString()  + ".rpt";
                 rptSource.Load(Server.MapPath(strPath));
                 TableLogOnInfo logOnInfo = new TableLogOnInfo();
                 TableLogOnInfos tableLogOnInfos = new TableLogOnInfos();
@@ -1211,7 +1224,7 @@ namespace myWeb.App_Control.reportsparameter
             try
             {
 
-                string strPath = "~/reports_back/" + ViewState["report_code"].ToString() + "_" + ViewState["payment_back_type"].ToString() + ".rpt";
+                string strPath = "~/reports_back/" + ViewState["report_code"].ToString()  + ".rpt";
                 rptSource.Load(Server.MapPath(strPath));
                 TableLogOnInfo logOnInfo = new TableLogOnInfo();
                 TableLogOnInfos tableLogOnInfos = new TableLogOnInfos();
@@ -1227,7 +1240,9 @@ namespace myWeb.App_Control.reportsparameter
                 logOnInfo.ConnectionInfo.UserID = strDbuser;
                 logOnInfo.ConnectionInfo.Password = strDbpassword;
                 tableLogOnInfos.Add(logOnInfo);
-                rptSource.SetParameterValue("@vc_criteria", Session["criteria"].ToString().Replace("view_payment.", "view_payment_all."));
+                var strCriteria = Session["criteria"].ToString().Replace("view_payment_back.", "view_payment_all.");
+                strCriteria = strCriteria.Replace("view_payment_all.payment_back_type", "payment_back_head.payment_back_type");
+                rptSource.SetParameterValue("@vc_criteria", strCriteria);
                 rptSource.SetParameterValue("UserName", strUsername);
                 rptSource.SetParameterValue("CompanyName", strCompanyname);
                 rptSource.SetParameterValue("pMonth", getMonth());

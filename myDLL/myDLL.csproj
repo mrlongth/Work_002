@@ -83,6 +83,7 @@
     <Compile Include="Payroll\cOpen.cs" />
     <Compile Include="Payroll\cMaterial.cs" />
     <Compile Include="Payroll\cMenu.cs" />
+    <Compile Include="Payroll\c3dMaterial.cs" />
     <Compile Include="Payroll\cPayment_bonus.cs" />
     <Compile Include="Payroll\cPayment_medical.cs" />
     <Compile Include="Payroll\cPayment_special.cs" />

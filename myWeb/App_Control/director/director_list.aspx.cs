@@ -38,7 +38,7 @@ namespace myWeb.App_Control.director
                 imgFind.Attributes.Add("onMouseOver", "src='../../images/button/Search2.png'");
                 imgFind.Attributes.Add("onMouseOut", "src='../../images/button/Search.png'");
 
-                imgNew.Attributes.Add("onclick", "OpenPopUp('800px','350px','90%','เพิ่มข้อมูลสังกัด','director_control.aspx?mode=add&page=0','1');return false;");
+                imgNew.Attributes.Add("onclick", "OpenPopUp('800px','380px','92%','เพิ่มข้อมูลสังกัด','director_control.aspx?mode=add&page=0','1');return false;");
                 ViewState["sort"] = "director_code";
                 ViewState["direction"] = "ASC";
                 RadioAll.Checked = true;
@@ -273,7 +273,7 @@ namespace myWeb.App_Control.director
 
                 ImageButton imgEdit = (ImageButton)e.Row.FindControl("imgEdit");
                 Label lblCanEdit = (Label)e.Row.FindControl("lblCanEdit");
-                imgEdit.Attributes.Add("onclick", "OpenPopUp('800px','350px','90%','แสดงข้อมูลสังกัด','director_control.aspx?mode=edit&director_code=" + 
+                imgEdit.Attributes.Add("onclick", "OpenPopUp('800px','380px','92%','แสดงข้อมูลสังกัด','director_control.aspx?mode=edit&director_code=" + 
                                     lbldirector_code.Text + "&page=" + GridView1.PageIndex.ToString() + "&canEdit=Y','1');return false;");
                 imgEdit.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["img"].ToString();
                 imgEdit.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["title"].ToString());
