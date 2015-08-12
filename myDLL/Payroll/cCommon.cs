@@ -729,6 +729,27 @@ namespace myDLL
             }
         }
 
+        public static string GetChequeBankCode(string strBudgetType)
+        {
+            string strMessage = string.Empty;
+
+            var objCommon = new cCommon();
+            var ds = new DataSet();
+            DataTable table;
+            var strCriteria = "Select [dbo].[getChequeBankCode]('" + strBudgetType + "') as Code";
+            objCommon.SEL_SQL(strCriteria, ref ds, ref strMessage);
+            if (ds.Tables.Count <= 0)
+            {
+                return string.Empty;
+            }
+            table = ds.Tables[0];
+            if (table.Rows.Count > 0)
+            {
+                var rowArray = table.Rows[0];
+                return rowArray["Code"].ToString();
+            }
+            return string.Empty;
+        }
 
 
 

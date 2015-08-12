@@ -398,6 +398,7 @@ namespace myDLL
         public bool SP_IMPORT_PAYMENT_SPECIAL_INS
             (
                 string psp_round_id,
+                string psp_person_id,
                 string psp_person_code,
                 string psp_person_name,
                 string psp_person_surname,
@@ -420,6 +421,7 @@ namespace myDLL
                 oCommand.CommandType = CommandType.StoredProcedure;
                 oCommand.CommandText = "sp_IMPORT_PAYMENT_SPECIAL_INS";
                 oCommand.Parameters.Add("psp_round_id", SqlDbType.Int).Value =  Helper.CLong(psp_round_id);
+                oCommand.Parameters.Add("psp_person_id", SqlDbType.VarChar).Value = psp_person_id;
                 oCommand.Parameters.Add("psp_person_code", SqlDbType.VarChar).Value = psp_person_code;
                 oCommand.Parameters.Add("psp_person_name", SqlDbType.VarChar).Value = psp_person_name;
                 oCommand.Parameters.Add("psp_person_surname", SqlDbType.VarChar).Value = psp_person_surname;
@@ -523,7 +525,7 @@ namespace myDLL
         public bool SP_IMPORT_PAYMENT_SPECIAL_SAVE
             (
                  string psp_round_id ,
-                 string psp_person_code  ,
+                 string psp_person_id  ,
 	             string punit_code  ,
 	             string pwork_code ,
                  string pitem_code ,
@@ -545,7 +547,7 @@ namespace myDLL
                 oCommand.CommandType = CommandType.StoredProcedure;
                 oCommand.CommandText = "sp_IMPORT_PAYMENT_SPECIAL_SAVE";
                 oCommand.Parameters.Add("psp_round_id", SqlDbType.Int).Value = Helper.CLong(psp_round_id);
-                oCommand.Parameters.Add("psp_person_code", SqlDbType.VarChar).Value = psp_person_code;
+                oCommand.Parameters.Add("psp_person_id", SqlDbType.VarChar).Value = psp_person_id;
                 oCommand.Parameters.Add("punit_code", SqlDbType.VarChar).Value = punit_code;
                 oCommand.Parameters.Add("pwork_code", SqlDbType.VarChar).Value = pwork_code;
                 oCommand.Parameters.Add("pitem_code", SqlDbType.VarChar).Value = pitem_code;

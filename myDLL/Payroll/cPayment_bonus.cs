@@ -412,6 +412,7 @@ namespace myDLL
                  string ppayment_year,
                  string ppay_year,
                  string ppay_month,
+                string pbn_person_id,
                 string pbn_person_code,
                 string pbn_person_name,
                 string pbn_person_surname,
@@ -436,6 +437,7 @@ namespace myDLL
                 oCommand.Parameters.Add("ppayment_year", SqlDbType.VarChar).Value = ppayment_year;
                 oCommand.Parameters.Add("ppay_year", SqlDbType.VarChar).Value = ppay_year;
                 oCommand.Parameters.Add("ppay_month", SqlDbType.VarChar).Value = ppay_month;
+                oCommand.Parameters.Add("pbn_person_id", SqlDbType.VarChar).Value = pbn_person_id;
                 oCommand.Parameters.Add("pbn_person_code", SqlDbType.VarChar).Value = pbn_person_code;
                 oCommand.Parameters.Add("pbn_person_name", SqlDbType.VarChar).Value = pbn_person_name;
                 oCommand.Parameters.Add("pbn_person_surname", SqlDbType.VarChar).Value = pbn_person_surname;
@@ -541,7 +543,7 @@ namespace myDLL
                  string ppayment_year,
                  string ppay_year,
                  string ppay_month,
-                 string pbn_person_code,
+                 string pbn_person_id,
                  string pbn_person_group_code,
                  string pbudget_plan_code,
                  string pitem_code,
@@ -565,7 +567,7 @@ namespace myDLL
                 oCommand.Parameters.Add("ppayment_year", SqlDbType.VarChar).Value = ppayment_year;
                 oCommand.Parameters.Add("ppay_year", SqlDbType.VarChar).Value = ppay_year;
                 oCommand.Parameters.Add("ppay_month", SqlDbType.VarChar).Value = ppay_month;
-                oCommand.Parameters.Add("pbn_person_code", SqlDbType.VarChar).Value = pbn_person_code;
+                oCommand.Parameters.Add("pbn_person_id", SqlDbType.VarChar).Value = pbn_person_id;
                 oCommand.Parameters.Add("pbn_person_group_code", SqlDbType.VarChar).Value = pbn_person_group_code;                
                 oCommand.Parameters.Add("pbudget_plan_code", SqlDbType.VarChar).Value = pbudget_plan_code;
                 oCommand.Parameters.Add("pitem_code", SqlDbType.VarChar).Value = pitem_code;

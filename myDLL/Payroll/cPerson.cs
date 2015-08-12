@@ -1873,7 +1873,7 @@ namespace myDLL
                 oCommand.CommandText = "SP_PERSON_HIS_PASS_UPD";
 
                 oCommand.Parameters.Add("person_code", SqlDbType.VarChar).Value = pperson_code;
-                oCommand.Parameters.Add("person_password", SqlDbType.VarChar).Value = Cryptorengine.Encrypt(pperson_password, true);
+                oCommand.Parameters.Add("person_password", SqlDbType.VarChar).Value = string.IsNullOrEmpty(pperson_password) ? null : Cryptorengine.Encrypt(pperson_password, true);
                 oCommand.Parameters.Add("c_updated_by", SqlDbType.VarChar).Value = pc_updated_by;
 
                 // - - - - - - - - - - - -             
