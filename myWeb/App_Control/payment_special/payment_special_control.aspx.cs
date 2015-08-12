@@ -90,7 +90,7 @@ namespace myWeb.App_Control.payment_special
 
                 #region Set Image
 
-                imgList_item.Attributes.Add("onclick", "OpenPopUp('900px','500px','94%','ค้นหาข้อมูลบุคลากร' ,'../lov/person_lov.aspx?" +
+                imgList_item.Attributes.Add("onclick", "OpenPopUp('900px','500px','94%','ค้นหาข้อมูลบุคลากร/อาจารย์พิเศษ' ,'../lov/person_lov.aspx?" +
                      "from=payment_special_control&person_code='+getElementById('" + txtperson_code.ClientID + "').value+'" +
                      "&person_name='+getElementById('" + txtperson_name.ClientID + "').value+'" +
                     "&ctrl1=" + txtperson_code.ClientID + "&ctrl2=" + txtperson_name.ClientID + "&show=2', '2');return false;");

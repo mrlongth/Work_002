@@ -52,7 +52,7 @@ namespace myWeb.App_Control.payment_round
             {
                 imgNew.Attributes.Add("onMouseOver", "src='../../images/button/save2.png'");
                 imgNew.Attributes.Add("onMouseOut", "src='../../images/button/save.png'");
-
+              
                 imgFind.Attributes.Add("onMouseOver", "src='../../images/button/Search2.png'");
                 imgFind.Attributes.Add("onMouseOut", "src='../../images/button/Search.png'");
                 imgNew.Attributes.Add("onclick", "OpenPopUp('800px','270px','90%','ประมวลผลประจำเดือน','payment_round_control.aspx?mode=add&page=0','1');return false;");
@@ -64,6 +64,7 @@ namespace myWeb.App_Control.payment_round
                 {
                     imgNew.Visible = true;
                 }
+                imgNew.Visible = base.IsUserNew;            
 
                 ViewState["sort"] = "pay_year,pay_month";
                 ViewState["direction"] = "ASC";

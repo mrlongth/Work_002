@@ -27,6 +27,8 @@ namespace myWeb.App_Control.payment_round
                 ViewState["sort"] = "person_code";
                 ViewState["direction"] = "ASC";
 
+                txtComments.Text = cCommon.CheckDate(DateTime.Now.Date.ToString("dd/MM/yyyy"));
+
                 #region set QueryString
                 if (Request.QueryString["round_id"] != null)
                 {
@@ -581,6 +583,13 @@ namespace myWeb.App_Control.payment_round
             }
         }
 
+
+        //protected void Page_LoadComplete(object sender, EventArgs e)
+        //{
+
+        //    ScriptManager.RegisterStartupScript(Page, Page.GetType(), "RegisterScript", "createDate('" + txtComments.ClientID + "','" + DateTime.Now.Date.ToString("dd/MM/yyyy") + "');", true);
+
+        //}
 
     }
 }

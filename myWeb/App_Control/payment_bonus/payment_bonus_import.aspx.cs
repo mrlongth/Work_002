@@ -266,18 +266,17 @@ namespace myWeb.App_Control.payment_bonus
                     var hddbudget_plan_code = (HiddenField)gviewRow.FindControl("hddbudget_plan_code");
                     var txtitem_qty = (AwNumeric)gviewRow.FindControl("txtitem_qty");
                     var txtmoney_credit = (AwNumeric)gviewRow.FindControl("txtmoney_credit");
-                    var lblperson_code = (Label)gviewRow.FindControl("lblperson_code");
+                    var txtperson_id = (TextBox)gviewRow.FindControl("txtperson_id");
                     var hddperson_group_code = (HiddenField)gviewRow.FindControl("hddperson_group_code");
-
                     var CheckBox1 = (CheckBox)gviewRow.FindControl("CheckBox1");
 
                     if (CheckBox1.Checked)
                     {
                         if (!oPayment_bonus.SP_IMPORT_PAYMENT_BONUS_SAVE(cboPay_Year.SelectedValue, cboPay_Year.SelectedValue, cboPay_Month.SelectedValue,
-                            lblperson_code.Text, hddperson_group_code.Value, hddbudget_plan_code.Value,
+                            txtperson_id.Text , hddperson_group_code.Value, hddbudget_plan_code.Value,
                             pitem_code, txtitem_qty.Value.ToString(), txtmoney_credit.Value.ToString(), strCreatedBy, ref strMessage))
                         {
-                            lblError.Text = strMessage + " : " + lblperson_code.Text;
+                            lblError.Text = strMessage + " : " + txtperson_id.Text;
                             return false;
                         }
 
@@ -343,6 +342,11 @@ namespace myWeb.App_Control.payment_bonus
                 lblNo.Text = nNo.ToString();
                 AwNumeric txtmoney_credit = (AwNumeric)e.Row.FindControl("txtmoney_credit");
                 txtmoney_credit.Attributes.Add("onchange", "funcsum();");
+
+                RequiredFieldValidator reqperson_id = (RequiredFieldValidator)e.Row.FindControl("reqperson_id");
+                reqperson_id.ErrorMessage = "กรุณาเลือกเลขที่ประจำตัวประชาชน#" + (e.Row.RowIndex + 1);
+                
+
 
                 ViewState["sumall"] = String.Format("{0:#,##0.00}", decimal.Parse(ViewState["sumall"].ToString()) + decimal.Parse(txtmoney_credit.Text));
             }
@@ -525,6 +529,12 @@ namespace myWeb.App_Control.payment_bonus
         }
 
 
+        protected void Page_LoadComplete(object sender, EventArgs e)
+        {
+
+            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "RegisterScript", "RegisterScript();", true);
+
+        }
 
 
     }

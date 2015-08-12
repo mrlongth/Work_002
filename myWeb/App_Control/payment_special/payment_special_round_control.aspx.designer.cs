@@ -310,6 +310,24 @@ namespace myWeb.App_Control.payment_round {
         protected global::System.Web.UI.WebControls.TextBox txtComments;
         
         /// <summary>
+        /// CalendarExtender1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender CalendarExtender1;
+        
+        /// <summary>
+        /// imgtxtComments control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton imgtxtComments;
+        
+        /// <summary>
         /// Label12 control.
         /// </summary>
         /// <remarks>

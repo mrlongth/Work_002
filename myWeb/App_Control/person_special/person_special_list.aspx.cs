@@ -31,6 +31,7 @@ namespace myWeb.App_Control.person
             {
                 imgNew.Attributes.Add("onMouseOver", "src='../../images/button/save2.png'");
                 imgNew.Attributes.Add("onMouseOut", "src='../../images/button/save.png'");
+                imgNew.Visible = base.IsUserNew;
 
                 //imgPrint.Attributes.Add("onMouseOver", "src='../../images/button/print2.png'");
                 //imgPrint.Attributes.Add("onMouseOut", "src='../../images/button/print.png'");
@@ -364,8 +365,11 @@ namespace myWeb.App_Control.person
                 imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบ " + lblsp_person_code.Text + " : " + lblperson_name.Text + " ?\");");
                 #endregion
 
-                imgDelete.Visible = IsUserDelete;
-                imgEdit.Visible = IsUserEdit;
+                #region check user can edit/delete
+                imgEdit.Visible = base.IsUserEdit;
+                imgDelete.Visible = base.IsUserDelete;
+                #endregion
+
 
             }
         }

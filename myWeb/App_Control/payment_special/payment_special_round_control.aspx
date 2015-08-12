@@ -54,7 +54,7 @@
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="cboPay_Semeter"
                     Display="None" ErrorMessage="กรุณาเลือกภาคเรียนที่" ValidationGroup="A"
                     SetFocusOnError="True"></asp:RequiredFieldValidator>
-                  <ajaxtoolkit:ValidatorCalloutExtender ID="RequiredFieldValidator15_ValidatorCalloutExtender"
+                <ajaxtoolkit:ValidatorCalloutExtender ID="RequiredFieldValidator15_ValidatorCalloutExtender"
                     runat="server" Enabled="True" TargetControlID="RequiredFieldValidator15" HighlightCssClass="validatorCalloutHighlight">
                 </ajaxtoolkit:ValidatorCalloutExtender>
             </td>
@@ -67,7 +67,7 @@
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="cboPay_Item"
                     Display="None" ErrorMessage="กรุณาเลือกรอบการจ่ายที่ " ValidationGroup="A"
                     SetFocusOnError="True"></asp:RequiredFieldValidator>
-                  <ajaxtoolkit:ValidatorCalloutExtender ID="RequiredFieldValidator16_ValidatorCalloutExtender"
+                <ajaxtoolkit:ValidatorCalloutExtender ID="RequiredFieldValidator16_ValidatorCalloutExtender"
                     runat="server" Enabled="True" TargetControlID="RequiredFieldValidator16" HighlightCssClass="validatorCalloutHighlight">
                 </ajaxtoolkit:ValidatorCalloutExtender>
             </td>
@@ -87,7 +87,7 @@
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="txtpay_begin_date"
                     Display="None" ErrorMessage="กรุณาเลือกตั้งแต่วันที่" ValidationGroup="A"
                     SetFocusOnError="True"></asp:RequiredFieldValidator>
-                  <ajaxtoolkit:ValidatorCalloutExtender ID="RequiredFieldValidator13_ValidatorCalloutExtender"
+                <ajaxtoolkit:ValidatorCalloutExtender ID="RequiredFieldValidator13_ValidatorCalloutExtender"
                     runat="server" Enabled="True" TargetControlID="RequiredFieldValidator13" HighlightCssClass="validatorCalloutHighlight">
                 </ajaxtoolkit:ValidatorCalloutExtender>
             </td>
@@ -105,7 +105,7 @@
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="txtpay_end_date"
                     Display="None" ErrorMessage="กรุณาเลือกถึงวันที่" ValidationGroup="A"
                     SetFocusOnError="True"></asp:RequiredFieldValidator>
-                   <ajaxtoolkit:ValidatorCalloutExtender ID="ValidatorCalloutExtender1"
+                <ajaxtoolkit:ValidatorCalloutExtender ID="ValidatorCalloutExtender1"
                     runat="server" Enabled="True" TargetControlID="RequiredFieldValidator14" HighlightCssClass="validatorCalloutHighlight">
                 </ajaxtoolkit:ValidatorCalloutExtender>
             </td>
@@ -119,14 +119,25 @@
         </tr>
         <tr align="left">
             <td align="right" nowrap valign="middle">
-                <asp:Label runat="server" ID="Label81">หมายเหตุ :</asp:Label>
+                <asp:Label runat="server" ID="Label81">กำหนดจ่ายเงิน :</asp:Label>
             </td>
             <td align="left" nowrap valign="middle" colspan="5">
                 <font face="Tahoma">
                     <asp:TextBox ID="txtComments" runat="server" CssClass="textbox"
-                        MaxLength="255"
-                        Width="500px" CausesValidation="True" ValidationGroup="A"
-                        Height="60px" TextMode="MultiLine"></asp:TextBox>
+                        MaxLength="255" CausesValidation="True" ValidationGroup="A" Width="120px"></asp:TextBox>
+
+
+                    <ajaxtoolkit:CalendarExtender
+                        ID="CalendarExtender1" runat="server" BehaviorID="txtComments_CalendarExtender"
+                        Enabled="True" PopupButtonID="imgtxtComments" TargetControlID="txtComments">
+                    </ajaxtoolkit:CalendarExtender>
+                    <asp:ImageButton ID="imgtxtComments" runat="server" AlternateText="Click to show calendar"
+                        ImageAlign="AbsMiddle" ImageUrl="~/images/Calendar_scheduleHS.png" />
+                   
+
+
+
+
                 </font>
             </td>
             <td align="left" nowrap valign="middle" style="vertical-align: bottom; width: 1%;">&nbsp;</td>

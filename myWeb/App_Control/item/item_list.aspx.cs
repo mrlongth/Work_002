@@ -44,6 +44,7 @@ namespace myWeb.App_Control.item
                 #endregion
 
                 imgNew.Attributes.Add("onclick", "OpenPopUp('800px','450px','94%','เพิ่มข้อมูลรายได้/ค่าใช้จ่าย','item_control.aspx?mode=add&page=0','1');return false;");
+                imgNew.Visible = base.IsUserNew;
 
                 ViewState["sort"] = "item_code";
                 ViewState["direction"] = "ASC";
@@ -370,6 +371,11 @@ namespace myWeb.App_Control.item
                 imgDelete.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["img"].ToString();
                 imgDelete.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["title"].ToString());
                 imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบผังงบประมาณ  : " + lblitem_code.Text + " ?\");");
+                #endregion
+
+                #region check user can edit/delete
+                imgEdit.Visible = base.IsUserEdit;
+                imgDelete.Visible = base.IsUserDelete;
                 #endregion
 
             }

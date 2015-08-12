@@ -247,6 +247,15 @@ namespace myWeb.App_Control.payment {
         protected global::System.Web.UI.WebControls.RadioButton RadioPaymentBack;
         
         /// <summary>
+        /// chkNegative control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkNegative;
+        
+        /// <summary>
         /// Label15 control.
         /// </summary>
         /// <remarks>

@@ -42,7 +42,7 @@
                             </asp:dropdownlist>
                             <asp:label runat="server" cssclass="label_error" id="lblError"></asp:label>
                         </td>
-                        <td style="width: 20%; text-align: right;">
+                        <td style="width: 20%; text-align: right;" colspan="2">
                             <asp:label runat="server" cssclass="label_h" id="lblPage2">กลุ่มบุคลากร :</asp:label>
                         </td>
                         <td style="height: 23px; text-align: left;">
@@ -58,7 +58,7 @@
                             <asp:dropdownlist runat="server" cssclass="textbox" id="cboPay_Year">
                             </asp:dropdownlist>
                         </td>
-                        <td style="width: 20%; text-align: right;">
+                        <td style="width: 20%; text-align: right;" colspan="2">
                             <asp:label runat="server" cssclass="label_h" id="lblPage1">รอบเดือนที่จ่าย :</asp:label>
                         </td>
                         <td style="height: 23px; text-align: left;">
@@ -76,7 +76,7 @@
                                 onselectedindexchanged="cboDirector_SelectedIndexChanged">
                             </asp:dropdownlist>
                         </td>
-                        <td style="width: 20%; text-align: right;">
+                        <td style="width: 20%; text-align: right;" colspan="2">
                             <asp:label runat="server" cssclass="label_h" id="lblPage8">หน่วยงาน :
                             </asp:label>
                         </td>
@@ -90,7 +90,7 @@
                             <asp:label runat="server" cssclass="label_error" id="Label71">*</asp:label>
                             <asp:label runat="server" id="lblPage9" cssclass="label_h">รายได้/จ่าย :</asp:label>
                         </td>
-                        <td style="text-align: left;" colspan="3">
+                        <td style="text-align: left;" colspan="4">
                             <asp:textbox runat="server" cssclass="textbox" width="80px" id="txtitem_code" maxlength="20">
                             </asp:textbox>
                             &nbsp;<asp:imagebutton runat="server" imagealign="AbsBottom" imageurl="../../images/controls/view2.gif"
@@ -112,7 +112,7 @@
                             <asp:label runat="server" cssclass="label_h" id="lblPage11">ประเภทข้อมูล :
                             </asp:label>
                         </td>
-                        <td style="text-align: left;" colspan="3">
+                        <td style="text-align: left;" colspan="2">
                             
                               <asp:RadioButton runat="server" GroupName="A" Checked="True" Text="ทั้งหมด" CssClass="label_h"
                     ID="RadioAll"  ></asp:RadioButton>
@@ -120,6 +120,14 @@
                      ></asp:RadioButton>
                 <asp:RadioButton runat="server" GroupName="A" Text="ตกเบิกอย่างเดียว" CssClass="label_h" ID="RadioPaymentBack"
                      ></asp:RadioButton>
+                            
+                            </td>
+                        <td style="text-align: right;">
+                            
+                              &nbsp;</td>
+                        <td style="text-align: left;">
+                            
+                              <asp:CheckBox ID="chkNegative" runat="server" CssClass="label_h" Text="แสดงเฉพาะยอดติดลบ" />
                             
                             </td>
                     </tr>
@@ -133,7 +141,7 @@
                                 </asp:dropdownlist>
                             </font>
                         </td>
-                        <td style="text-align: right;">
+                        <td style="text-align: right;" colspan="2">
                             <asp:label runat="server" id="lblLot" cssclass="label_h" visible="False">งบ :</asp:label>
                         </td>
                         <td style="height: 23px; text-align: left;">
@@ -146,7 +154,7 @@
                             &nbsp;<asp:label runat="server" id="lblBank" cssclass="label_h" visible="False">ธนาคาร :</asp:label>
                             &nbsp;
                         </td>
-                        <td style="text-align: left;" colspan="2">
+                        <td style="text-align: left;" colspan="3">
                             <asp:dropdownlist runat="server" cssclass="textbox" id="cboBank" visible="False">
                             </asp:dropdownlist>
                         </td>

@@ -30,6 +30,7 @@ namespace myWeb.App_Control.person_manage
             {
                 imgNew.Attributes.Add("onMouseOver", "src='../../images/button/save2.png'");
                 imgNew.Attributes.Add("onMouseOut", "src='../../images/button/save.png'");
+                imgNew.Visible = base.IsUserNew;
 
                 imgFind.Attributes.Add("onMouseOver", "src='../../images/button/Search2.png'");
                 imgFind.Attributes.Add("onMouseOut", "src='../../images/button/Search.png'");
@@ -208,6 +209,12 @@ namespace myWeb.App_Control.person_manage
                 imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบแผนงาน   " + lblperson_manage_code.Text + " : " + lblperson_manage_name.Text + " ?\");");
 
                 #endregion
+
+                #region check user can edit/delete
+                imgEdit.Visible = base.IsUserEdit;
+                imgDelete.Visible = base.IsUserDelete;
+                #endregion
+
             }
         }
 

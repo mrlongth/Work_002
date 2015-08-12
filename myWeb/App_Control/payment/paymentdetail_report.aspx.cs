@@ -55,6 +55,7 @@ namespace myWeb.App_Control.payment
                 cboProduce.Visible = false;
                 lblBank.Visible = false;
                 cboBank.Visible = false;
+
                 RequiredFieldValidator1.Enabled = false;
 
                 //if (this.BudgetType == "R")
@@ -556,6 +557,11 @@ namespace myWeb.App_Control.payment
             {
                 strCriteria = strCriteria + "  And  view_payment.item_code like  '%A'";
             }
+
+            if (chkNegative.Visible && chkNegative.Checked)
+            {
+                strCriteria = strCriteria + "  And  view_payment.payment_net < 0 ";
+            }
            
 
             if (!strProduce.Equals(""))
@@ -813,6 +819,16 @@ namespace myWeb.App_Control.payment
             cboLot.Visible = false;
             Label15.Visible = false;
             RequiredFieldValidator1.Enabled = false;
+
+            if (RadioButtonList1.SelectedValue == "0")
+            {
+                chkNegative.Visible = true;
+            }
+            else
+            {
+                chkNegative.Visible = false;
+            }
+           
 
             if ((RadioButtonList1.SelectedValue == "2") || (RadioButtonList1.SelectedValue == "A3"))
             {

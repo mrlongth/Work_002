@@ -385,7 +385,7 @@ namespace myWeb
 
 
         #endregion
-     
+
         public void InitUserAccessRight()
         {
             string currentUrl = this.GetCurrentUrl();
@@ -491,6 +491,7 @@ namespace myWeb
                     if (Master.FindControl("ASPxRoundPanel1") != null)
                     {
                         ((ASPxRoundPanel)Master.FindControl("ASPxRoundPanel1")).HeaderText = PageDes;
+                    
                     }
                     //GenerateMenu();
                 }
@@ -506,6 +507,44 @@ namespace myWeb
         {
             SetProfile();
             base.OnLoad(e);
+        }
+
+        //protected override void OnLoadComplete(System.EventArgs e)
+        //{
+        //    base.OnLoadComplete(e);
+        //    if (!IsPostBack)
+        //    {
+        //        if (ViewState["IsUserNew"] != null && !this.IsUserNew)
+        //        {
+        //            var imgNew = this.Page.FindControl("imgNew");
+        //            //var imgNew = GetControlByName(this.Page.Controls, "imgNew");
+        //            //if (imgNew != null)
+        //            //{
+        //            //    ((ImageButton)imgNew).Visible = this.IsUserNew;
+        //            //}
+        //        }
+        //    }
+        //}
+
+        private Control GetControlByName(Control control, string Name)
+        {
+            
+            //foreach (Control ctrl in control.Controls)
+            //{
+            //    if (ctrl is ImageButton)
+            //    {
+            //        if (ctrl.ClientID.Contains(Name))
+            //            return ctrl;
+            //    }
+            //    else
+            //    {
+            //        if (ctrl.Controls.Count > 0)
+            //        {
+            //            return GetControlByName(ctrl, Name);
+            //        }
+            //    }
+            //}
+            return null;
         }
 
         protected void SetProfile()
@@ -885,11 +924,11 @@ namespace myWeb
                     #endregion
                 }
                 catch (Exception ex)
-                {                  
+                {
                     return;
                 }
             }
-            
+
         }
 
         public string GetConfigItem(string strCode)

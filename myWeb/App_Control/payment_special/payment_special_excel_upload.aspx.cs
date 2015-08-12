@@ -82,6 +82,7 @@ namespace myWeb.App_Control.payment_special
                 oExcelReader.SheetName = "data";
                 odtExcelAll = oExcelReader.GetTable("data", "");
                 string psp_round_id;
+                string psp_person_id;
                 string psp_person_code;
                 string psp_person_name;
                 string psp_person_surname;
@@ -91,9 +92,10 @@ namespace myWeb.App_Control.payment_special
                 string pc_created_by;
                 string strMassege = string.Empty;
 
+                string str_person_id = System.Configuration.ConfigurationSettings.AppSettings["speial:person_id"];
                 string str_person_code = System.Configuration.ConfigurationSettings.AppSettings["speial:person_code"];
                 string str_person_name = System.Configuration.ConfigurationSettings.AppSettings["speial:person_name"];
-                string str_person_surname = System.Configuration.ConfigurationSettings.AppSettings["speial:person_name"];
+                string str_person_surname = System.Configuration.ConfigurationSettings.AppSettings["speial:person_surname"];
                 string str_item_qty = System.Configuration.ConfigurationSettings.AppSettings["speial:qty"];
                 string str_item_amt = System.Configuration.ConfigurationSettings.AppSettings["speial:amount"];
 
@@ -102,15 +104,16 @@ namespace myWeb.App_Control.payment_special
                 for (int i = 0; i < odtExcelAll.Rows.Count; i++)
                 {
                     psp_round_id = ViewState["sp_round_id"].ToString();
+                    psp_person_id = Helper.CStr(odtExcelAll.Rows[i][int.Parse(str_person_id)]);
                     psp_person_code = Helper.CStr(odtExcelAll.Rows[i][int.Parse(str_person_code)]);
                     psp_person_name = Helper.CStr(odtExcelAll.Rows[i][int.Parse(str_person_name)]);
                     psp_person_surname = Helper.CStr(odtExcelAll.Rows[i][int.Parse(str_person_surname)]);
-                    pitem_qty = Helper.CStr(odtExcelAll.Rows[i][int.Parse(str_item_qty)]);
+                    pitem_qty =  str_item_qty!="null" ? Helper.CStr(odtExcelAll.Rows[i][int.Parse(str_item_qty)]) : "1";
                     pitem_amt = Helper.CStr(odtExcelAll.Rows[i][int.Parse(str_item_amt)]);
                     pitem_code = ViewState["item_code"].ToString();
                     if (!string.IsNullOrEmpty(psp_person_code))
                     {
-                        objPayment_special.SP_IMPORT_PAYMENT_SPECIAL_INS(psp_round_id, psp_person_code, psp_person_name, psp_person_surname, pitem_code, pitem_qty, pitem_amt, pc_created_by, ref strMassege);
+                        objPayment_special.SP_IMPORT_PAYMENT_SPECIAL_INS(psp_round_id,psp_person_id, psp_person_code, psp_person_name, psp_person_surname, pitem_code, pitem_qty, pitem_amt, pc_created_by, ref strMassege);
                     }
                 }
                 boolResult = true;

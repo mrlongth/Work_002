@@ -114,6 +114,6 @@
             HorizontalAlign="Center" />
         <AlternatingRowStyle BackColor="#EAEAEA" />
     </asp:GridView>
-    <input id="txthpage" type="hidden" name="txthpage" runat="server">
-    <input id="txthTotalRecord" type="hidden" name="txthTotalRecord" runat="server">
+    <input id="txthpage" type="hidden" name="txthpage" runat="server"/>
+    <input id="txthTotalRecord" type="hidden" name="txthTotalRecord" runat="server" />
     </asp:Content>

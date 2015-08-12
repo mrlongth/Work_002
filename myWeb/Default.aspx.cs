@@ -433,7 +433,7 @@ namespace myWeb
                 DataSet ds = new DataSet();
                 string strCriteria = " and user_group_code = '" + user_group_code + "' ";
                 string strMessage = string.Empty;
-                objUserGroup.SP_User_Group_SEL(strCriteria, ref ds, ref strMessage);
+                objUserGroup.SP_USER_GROUP_SEL(strCriteria, ref ds, ref strMessage);
                 dt = ds.Tables[0];
                 if (dt.Rows.Count > 0)
                 {

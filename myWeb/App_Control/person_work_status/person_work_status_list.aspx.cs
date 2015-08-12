@@ -30,6 +30,7 @@ namespace myWeb.App_Control.person_work_status
             {
                 imgNew.Attributes.Add("onMouseOver", "src='../../images/button/save2.png'");
                 imgNew.Attributes.Add("onMouseOut", "src='../../images/button/save.png'");
+                imgNew.Visible = base.IsUserNew;
 
                 imgFind.Attributes.Add("onMouseOver", "src='../../images/button/Search2.png'");
                 imgFind.Attributes.Add("onMouseOut", "src='../../images/button/Search.png'");
@@ -207,6 +208,12 @@ namespace myWeb.App_Control.person_work_status
                 imgDelete.Attributes.Add("person_work_status", ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["title"].ToString());
                 imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบแผนงาน   " + lblperson_work_status_code.Text + " : " + lblperson_work_status_name.Text + " ?\");");
                 #endregion
+
+                #region check user can edit/delete
+                imgEdit.Visible = base.IsUserEdit;
+                imgDelete.Visible = base.IsUserDelete;
+                #endregion
+
             }
 
         }

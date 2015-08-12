@@ -16,6 +16,7 @@
         </tr>
         <tr>
             <td align="left" nowrap style="text-align: right">
+                <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True" ShowSummary="False" ValidationGroup="A" />
                 <asp:Label runat="server" CssClass="text" ID="lblLastUpdatedDate">Last Updated Date :</asp:Label>
             </td>
             <td align="left">
@@ -43,7 +44,7 @@
                 <asp:ImageButton runat="server" AlternateText="Click to show calendar" ImageAlign="AbsMiddle"
                     ImageUrl="~/images/Calendar_scheduleHS.png" ID="imgperson_start"></asp:ImageButton>
             </td>
-            <td align="left" nowrap valign="middle" style="vertical-align: bottom; width: 1%;" colspan="2">
+            <td align="left" nowrap valign="middle" style="vertical-align: bottom; width: 1%;">
                 &nbsp;
             </td>
         </tr>
@@ -66,20 +67,21 @@
                     <asp:RequiredFieldValidator runat="server" ControlToValidate="cboChequeType"
                         ErrorMessage="กรุณาเลือกประเภทเช็ค" Display="None" ValidationGroup="A" ID="RequiredFieldValidator2"
                         SetFocusOnError="True"></asp:RequiredFieldValidator>
-                    <ajaxtoolkit:ValidatorCalloutExtender runat="server" Enabled="True" TargetControlID="RequiredFieldValidator2"
-                        ID="RequiredFieldValidator2_ValidatorCalloutExtender" HighlightCssClass="validatorCalloutHighlight">
-                    </ajaxtoolkit:ValidatorCalloutExtender>
                 </font>
             </td>
             <td align="right" nowrap valign="middle">
+                                        <asp:Label runat="server" CssClass="label_error" ID="Label71">*</asp:Label>
                 <asp:Label runat="server" ID="Label83">ประเภทงบประมาณ :</asp:Label>
             </td>
-            <td align="left" nowrap valign="middle" style="vertical-align: bottom; width: 1%;">
-                <asp:DropDownList runat="server" CssClass="textbox" ID="cboBudget_type">
+            <td align="left" nowrap valign="middle" style="vertical-align: bottom; ">
+                <asp:DropDownList runat="server" CssClass="textbox" ID="cboBudget_type" AutoPostBack="True" OnSelectedIndexChanged="cboBudget_type_SelectedIndexChanged">
                 </asp:DropDownList>
+                <font face="Tahoma">
+                    <asp:RequiredFieldValidator runat="server" ControlToValidate="cboBudget_type"
+                        ErrorMessage="กรุณาเลือกประเภทงบประมาณ" Display="None" ValidationGroup="A" ID="RequiredFieldValidator3"
+                        SetFocusOnError="True"></asp:RequiredFieldValidator>
+                </font>
             </td>
-            <td align="left" nowrap valign="middle" style="vertical-align: bottom; width: 1%;">
-                &nbsp;</td>
         </tr>
         <tr align="left">
             <td align="right" nowrap valign="middle">
@@ -102,7 +104,7 @@
             <td align="left" nowrap valign="middle"  style="text-align: right">
                 <asp:Label runat="server" ID="lblpay_item">รอบการจ่ายที่ :</asp:Label>
                 </td>
-            <td align="left" nowrap valign="middle" style="vertical-align: bottom; width: 1%;" colspan="2">
+            <td align="left" nowrap valign="middle" style="vertical-align: bottom; width: 1%;">
                 <asp:DropDownList runat="server" CssClass="textboxdis" ID="cboPay_Item" Enabled="False">
                 </asp:DropDownList>
             </td>
@@ -120,9 +122,6 @@
                     <asp:RequiredFieldValidator runat="server" ControlToValidate="cboCheque_bank_code"
                         ErrorMessage="กรุณาเลือกบัญชีธนาคาร" Display="None" ValidationGroup="A" ID="RequiredFieldValidator1"
                         SetFocusOnError="True"></asp:RequiredFieldValidator>
-                    <ajaxtoolkit:ValidatorCalloutExtender runat="server" Enabled="True" TargetControlID="RequiredFieldValidator1"
-                        ID="RequiredFieldValidator1_ValidatorCalloutExtender" HighlightCssClass="validatorCalloutHighlight">
-                    </ajaxtoolkit:ValidatorCalloutExtender>
                 </font>
             </td>
             <td align="left" nowrap valign="middle" style="text-align: right">
@@ -133,7 +132,7 @@
                     ReadOnly="True"></asp:TextBox>
                 &nbsp;
             </td>
-            <td align="left" nowrap valign="middle" rowspan="3" colspan="2">
+            <td align="left" nowrap valign="middle" rowspan="3">
                 <asp:Button ID="BtnR1" runat="server" OnClick="BtnR1_Click" />
                 <asp:ImageButton runat="server" ValidationGroup="A" ImageUrl="~/images/controls/save.jpg"
                     ID="imgSaveOnly" OnClick="imgSaveOnly_Click"></asp:ImageButton>

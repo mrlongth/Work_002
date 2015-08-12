@@ -13,6 +13,24 @@ namespace myWeb.App_Control.lov {
     public partial class person_special_lov {
         
         /// <summary>
+        /// lblPage10 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPage10;
+        
+        /// <summary>
+        /// cboPerson_group control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList cboPerson_group;
+        
+        /// <summary>
         /// lblPage9 control.
         /// </summary>
         /// <remarks>

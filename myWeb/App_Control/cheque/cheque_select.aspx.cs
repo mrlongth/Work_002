@@ -249,7 +249,7 @@ namespace myWeb.App_Control.cheque
 
                     strCriteria = " and pay_month ='" + hddpay_month.Value + "'   and  pay_year  ='" + txtpay_year.Text + "' ";
                     strCriteria += "  And  payment_detail_budget_type ='" + hddbudget_type.Value + "' ";
-                    strCriteria += "  And  cheque_bank_code ='" + hddcheque_bank_code.Value + "' ";
+                    //strCriteria += "  And  cheque_bank_code ='" + hddcheque_bank_code.Value + "' ";
 
                     if (!oCheque.SP_CHEQUE_SELECT_01_SEL(strCriteria, ref ds, ref strMessage))
                     {
@@ -267,7 +267,7 @@ namespace myWeb.App_Control.cheque
                 {
 
                     strCriteria = " and sp_round_id = '" + hddsp_round_id.Value + "'   and  pay_year  ='" + txtpay_year.Text + "' ";
-                    strCriteria += "  And  cheque_bank_code ='" + hddcheque_bank_code.Value + "' ";
+                    //strCriteria += "  And  cheque_bank_code ='" + hddcheque_bank_code.Value + "' ";
 
                     //strCriteria += "  And  payment_detail_budget_type ='" + hddbudget_type.Value + "' ";
                     //strCriteria2 += "  And  payment_detail_budget_type ='" + hddbudget_type.Value + "' ";
@@ -289,7 +289,7 @@ namespace myWeb.App_Control.cheque
 
                     strCriteria = " and pay_month ='" + hddpay_month.Value + "'   and  pay_year  ='" + txtpay_year.Text + "' ";
                     strCriteria += " and person_group_code='09' ";
-                    strCriteria += "  And  cheque_bank_code ='" + hddcheque_bank_code.Value + "' ";
+                    //strCriteria += "  And  cheque_bank_code ='" + hddcheque_bank_code.Value + "' ";
 
 
                     if (!oCheque.SP_CHEQUE_SELECT_03_SEL(strCriteria, ref ds, ref strMessage))
@@ -308,7 +308,7 @@ namespace myWeb.App_Control.cheque
 
                     strCriteria = " and pay_month ='" + hddpay_month.Value + "'   and  pay_year  ='" + txtpay_year.Text + "' ";
                     strCriteria += "  And  budget_type ='" + hddbudget_type.Value + "' ";
-                    strCriteria += "  And  cheque_bank_code ='" + hddcheque_bank_code.Value + "' ";
+                    //strCriteria += "  And  cheque_bank_code ='" + hddcheque_bank_code.Value + "' ";
 
 
                     if (!oCheque.SP_CHEQUE_SELECT_04_SEL(strCriteria, ref ds, ref strMessage))

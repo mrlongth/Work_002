@@ -833,5 +833,14 @@ namespace myWeb.App_Control.payment
             InitcboPerson_group();
         }
 
+
+        protected void Page_LoadComplete(object sender, EventArgs e)
+        {
+
+            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "RegisterScript", "createDate('" + txtpayment_date.ClientID + "','" + DateTime.Now.Date.ToString("dd/MM/yyyy") + "');", true);
+
+        }
+
+
     }
 }

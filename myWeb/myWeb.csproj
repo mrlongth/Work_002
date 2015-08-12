@@ -105,12 +105,16 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Control\user_group\user_group_control.aspx" />
+    <Content Include="App_Control\user_group\user_group_list.aspx" />
     <Content Include="App_Control\lov\person_retire_lov.aspx" />
     <Content Include="App_Control\lov\person_special_lov.aspx" />
     <Content Include="App_Control\material\material_control.aspx" />
     <Content Include="App_Control\material\material_list.aspx" />
     <Content Include="App_Control\menu\menu_list.aspx" />
     <Content Include="App_Control\menu\menu_control.aspx" />
+    <Content Include="App_Control\payment_back\payment_back_import.aspx" />
+    <Content Include="App_Control\payment_back\payment_back_excel_upload.aspx" />
     <Content Include="App_Control\payment_bonus\payment_bonus_excel_upload.aspx" />
     <Content Include="App_Control\payment_bonus\payment_bonus_import.aspx" />
     <Content Include="App_Control\payment_bonus\payment_bonus_list.aspx" />
@@ -271,6 +275,9 @@
     <Content Include="images\user_accounts.png" />
     <Content Include="images\user_accounts_alt.png" />
     <Content Include="images\user_group_select.png" />
+    <Content Include="js\jquery-ui-1.8.22.custom.js" />
+    <Content Include="Person_Manage\global_payment_bonus_report_slip.aspx" />
+    <Content Include="Person_Manage\global_payment_bonus_slip.aspx" />
     <Content Include="Person_Manage\global_payment_special_slip.aspx" />
     <Content Include="Person_Manage\global_payment_special_report_slip.aspx" />
     <Content Include="Person_Manage\global_change_password.aspx" />
@@ -513,6 +520,20 @@
     <Compile Include="App_Control\cheque\cheque_print.aspx.designer.cs">
       <DependentUpon>cheque_print.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_Control\user_group\user_group_control.aspx.cs">
+      <DependentUpon>user_group_control.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Control\user_group\user_group_control.aspx.designer.cs">
+      <DependentUpon>user_group_control.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Control\user_group\user_group_list.aspx.cs">
+      <DependentUpon>user_group_list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Control\user_group\user_group_list.aspx.designer.cs">
+      <DependentUpon>user_group_list.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Control\lov\person_retire_lov.aspx.cs">
       <DependentUpon>person_retire_lov.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -624,6 +645,20 @@
     </Compile>
     <Compile Include="App_Control\payment_adj\payment_export.aspx.designer.cs">
       <DependentUpon>payment_export.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Control\payment_back\payment_back_import.aspx.cs">
+      <DependentUpon>payment_back_import.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Control\payment_back\payment_back_import.aspx.designer.cs">
+      <DependentUpon>payment_back_import.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Control\payment_back\payment_back_excel_upload.aspx.cs">
+      <DependentUpon>payment_back_excel_upload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Control\payment_back\payment_back_excel_upload.aspx.designer.cs">
+      <DependentUpon>payment_back_excel_upload.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Control\payment_bonus\payment_bonus_excel_upload.aspx.cs">
       <DependentUpon>payment_bonus_excel_upload.aspx</DependentUpon>
@@ -1762,6 +1797,20 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Person_Manage\global_payment_bonus_report_slip.aspx.cs">
+      <DependentUpon>global_payment_bonus_report_slip.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Person_Manage\global_payment_bonus_report_slip.aspx.designer.cs">
+      <DependentUpon>global_payment_bonus_report_slip.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Person_Manage\global_payment_bonus_slip.aspx.cs">
+      <DependentUpon>global_payment_bonus_slip.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Person_Manage\global_payment_bonus_slip.aspx.designer.cs">
+      <DependentUpon>global_payment_bonus_slip.aspx</DependentUpon>
     </Compile>
     <Compile Include="Person_Manage\global_payment_special_slip.aspx.cs">
       <DependentUpon>global_payment_special_slip.aspx</DependentUpon>

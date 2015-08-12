@@ -257,7 +257,6 @@ namespace myWeb.App_Control.cheque_save
             }
         }
 
-
         private void InitcboCheque_bank()
         {
             cCheque oCheque = new cCheque();
@@ -272,7 +271,7 @@ namespace myWeb.App_Control.cheque_save
             {
                 dt = ds.Tables[0];
                 cboCheque_bank_code.Items.Clear();
-                cboCheque_bank_code.Items.Add(new ListItem("---- เลือกข้อมูลทั้งหมด ----", ""));
+                cboCheque_bank_code.Items.Add(new ListItem("---- กรุณาเลือกข้อมูล ----", ""));
                 int i;
                 for (i = 0; i <= dt.Rows.Count - 1; i++)
                 {
@@ -355,6 +354,7 @@ namespace myWeb.App_Control.cheque_save
             {
                 dt = ds.Tables[0];
                 cboBudget_type.Items.Clear();
+                cboBudget_type.Items.Add(new ListItem("---- กรุณาเลือกข้อมูล ----", ""));
                 int i;
                 for (i = 0; i <= dt.Rows.Count - 1; i++)
                 {
@@ -1207,13 +1207,40 @@ namespace myWeb.App_Control.cheque_save
 
         protected void cboChequeType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboChequeType.SelectedValue == "02")
+
+            cboCheque_bank_code.Enabled = true;
+            if (cboChequeType.SelectedValue == "01" || cboChequeType.SelectedValue == "04")
             {
-                InitcboRoundSpecial();
+                InitcboRound();
+                cboCheque_bank_code.CssClass = "textboxdis";
+                cboCheque_bank_code.Enabled = false;
             }
             else
             {
-                InitcboRound();
+                cboCheque_bank_code.CssClass = "textbox";
+                if (cboChequeType.SelectedValue == "02")
+                {
+                    InitcboRoundSpecial();
+                }
+                else
+                {
+                    InitcboRound();
+                }                
+            }
+            
+            
+        }
+
+        protected void cboBudget_type_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboChequeType.SelectedValue == "01" || cboChequeType.SelectedValue == "04")
+            {
+                var strChequeBankCode = cCommon.GetChequeBankCode(cboBudget_type.SelectedValue);
+                if (cboCheque_bank_code.Items.FindByValue(strChequeBankCode) != null)
+                {
+                    cboCheque_bank_code.SelectedIndex = -1;
+                    cboCheque_bank_code.Items.FindByValue(strChequeBankCode).Selected = true;
+                }
             }
         }
 

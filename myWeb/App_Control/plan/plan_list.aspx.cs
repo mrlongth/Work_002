@@ -50,6 +50,7 @@ namespace myWeb.App_Control.plan
             {
                 imgNew.Attributes.Add("onMouseOver", "src='../../images/button/save2.png'");
                 imgNew.Attributes.Add("onMouseOut", "src='../../images/button/save.png'");
+                imgNew.Visible = base.IsUserNew;
 
                 imgFind.Attributes.Add("onMouseOver", "src='../../images/button/Search2.png'");
                 imgFind.Attributes.Add("onMouseOut", "src='../../images/button/Search.png'");
@@ -289,11 +290,18 @@ namespace myWeb.App_Control.plan
                                                                          "&page=" + GridView1.PageIndex.ToString() + "&canEdit=Y','1');return false;");
 
                 imgEdit.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["img"].ToString();
-                imgEdit.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["title"].ToString());                
+                imgEdit.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["title"].ToString());
+                
                 ImageButton imgDelete = (ImageButton)e.Row.FindControl("imgDelete");
                 imgDelete.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["img"].ToString();
                 imgDelete.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["title"].ToString());
                 imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบยุทธศาสตร์การจัดสรรงบประมาณ   " + lblplan_code.Text + " : " + lblplan_name.Text + " ?\");");
+
+                #region check user can edit/delete
+                imgEdit.Visible = base.IsUserEdit;
+                imgDelete.Visible = base.IsUserDelete;
+                #endregion
+                
                 #endregion
 
             }

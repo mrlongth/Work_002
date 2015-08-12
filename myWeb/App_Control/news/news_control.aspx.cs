@@ -263,7 +263,7 @@ namespace myWeb.App_Control.news
                         #region set Control
                         ViewState["new_id"] = strnew_id;
                         txtnew_title.Text = strnews_title;
-                        txtnew_des.Text = strnews_title;
+                        txtnew_des.Text = strnews_des;
                         cboNew_type.SelectedValue = strnews_type;
                         cboNew_status.SelectedValue = strnews_status;
                         txtnews_file_name.Text = strnews_file_name;

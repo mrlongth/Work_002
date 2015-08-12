@@ -7,6 +7,16 @@
     <table cellpadding="1" cellspacing="1" style="width: 100%" border="0">
         <tr>
             <td style="text-align: right;">
+                <asp:Label runat="server" CssClass="label_h" ID="lblPage10">กลุ่มบุคลากร :
+                </asp:Label>
+            </td>
+            <td colspan="4">
+                                <asp:DropDownList runat="server" CssClass="textbox" ID="cboPerson_group"></asp:DropDownList>
+
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right;">
                 <asp:Label runat="server" CssClass="label_h" ID="lblPage9">สังกัด :
                 </asp:Label>
             </td>

@@ -321,15 +321,15 @@ namespace myWeb.App_Control.payment_special
                     var hddwork_code = (HiddenField)gviewRow.FindControl("hddwork_code");
                     var txtitem_qty = (AwNumeric)gviewRow.FindControl("txtitem_qty");
                     var txtmoney_credit = (AwNumeric)gviewRow.FindControl("txtmoney_credit");
-                    var lblperson_code = (Label)gviewRow.FindControl("lblperson_code");
+                    var txtperson_id = (TextBox)gviewRow.FindControl("txtperson_id");
                     var CheckBox1 = (CheckBox)gviewRow.FindControl("CheckBox1");
 
                     if (CheckBox1.Checked)
                     {
-                        if (!oPayment_special.SP_IMPORT_PAYMENT_SPECIAL_SAVE(hddsp_round_id.Value , lblperson_code.Text , hddunit_code.Value ,
+                        if (!oPayment_special.SP_IMPORT_PAYMENT_SPECIAL_SAVE(hddsp_round_id.Value, txtperson_id.Text, hddunit_code.Value,
                             hddwork_code.Value, pitem_code, txtitem_qty.Value.ToString(), txtmoney_credit.Value.ToString(), strCreatedBy, ref strMessage))
                         {
-                            lblError.Text = strMessage + " : " + lblperson_code.Text;
+                            lblError.Text = strMessage + " : " + txtperson_id.Text;
                             return false;
                         }
 
@@ -390,11 +390,19 @@ namespace myWeb.App_Control.payment_special
                     e.Row.Attributes.Add("onMouseOut", "this.style.backgroundColor='" + strEvenColor + "'");
                 }
                 #endregion
+
+                ((CheckBox)e.Row.FindControl("CheckBox1")).Attributes.Add("onclick", "ToggleValidator(this);");
+                
                 Label lblNo = (Label)e.Row.FindControl("lblNo");
                 int nNo = (GridView1.PageSize * GridView1.PageIndex) + e.Row.RowIndex + 1;
                 lblNo.Text = nNo.ToString();
                 AwNumeric txtmoney_credit = (AwNumeric)e.Row.FindControl("txtmoney_credit");
                 txtmoney_credit.Attributes.Add("onchange", "funcsum();");
+                
+                RequiredFieldValidator reqperson_id = (RequiredFieldValidator)e.Row.FindControl("reqperson_id");
+                reqperson_id.ErrorMessage = "กรุณาเลือกเลขที่ประจำตัวประชาชน#" + (e.Row.RowIndex + 1);
+                
+
 
                 ViewState["sumall"] = String.Format("{0:#,##0.00}", decimal.Parse(ViewState["sumall"].ToString()) + decimal.Parse(txtmoney_credit.Text));
             }
@@ -570,7 +578,12 @@ namespace myWeb.App_Control.payment_special
             }
         }
 
+        protected void Page_LoadComplete(object sender, EventArgs e)
+        {
 
+            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "RegisterScript", "RegisterScript();", true);
+
+        }
 
 
     }

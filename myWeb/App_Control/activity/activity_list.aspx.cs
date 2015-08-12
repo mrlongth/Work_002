@@ -67,6 +67,7 @@ namespace myWeb.App_Control.activity
                 InitcboProduce();
                 BindGridView(0);
 
+                imgNew.Visible = base.IsUserNew;
 
                 //if (this.BudgetType == "R")
                 //{
@@ -404,6 +405,12 @@ namespace myWeb.App_Control.activity
                 imgDelete.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["title"].ToString());
                 imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบกิจกรรม   " + lblactivity_code.Text + " : " + lblactivity_name.Text + " ?\");");
                 #endregion
+
+                #region check user can edit/delete
+                imgEdit.Visible = base.IsUserEdit;
+                imgDelete.Visible = base.IsUserDelete;
+                #endregion
+
             }
         }
 

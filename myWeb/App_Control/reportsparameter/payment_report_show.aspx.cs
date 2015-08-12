@@ -1606,6 +1606,7 @@ namespace myWeb.App_Control.reportsparameter
                 TableLogOnInfo logOnInfo = new TableLogOnInfo();
                 TableLogOnInfos tableLogOnInfos = new TableLogOnInfos();
                 string strUsername = Session["username"].ToString();
+                string strAcOnly = Session["AcOnly"].ToString();
                 string strCompanyname = ((DataSet)Application["xmlconfig"]).Tables["default"].Rows[0]["companyname"].ToString();
                 string strServername = System.Configuration.ConfigurationSettings.AppSettings["servername"];
                 string strDbname = System.Configuration.ConfigurationSettings.AppSettings["dbname"];
@@ -1619,6 +1620,7 @@ namespace myWeb.App_Control.reportsparameter
                 rptSource.SetParameterValue("@vc_criteria", Session["criteria"].ToString());
                 rptSource.SetParameterValue("UserName", strUsername);
                 rptSource.SetParameterValue("CompanyName", strCompanyname);
+                rptSource.SetParameterValue("AcOnly", strAcOnly);
                 CrystalReportViewer1.LogOnInfo = tableLogOnInfos;
             }
             catch (Exception ex)

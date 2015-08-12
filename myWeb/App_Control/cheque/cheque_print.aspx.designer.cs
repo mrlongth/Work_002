@@ -49,6 +49,24 @@ namespace myWeb.App_Control.cheque {
         protected global::System.Web.UI.WebControls.DropDownList cboCheque_type;
         
         /// <summary>
+        /// lblPage15 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPage15;
+        
+        /// <summary>
+        /// chkACPayeeOnly control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkACPayeeOnly;
+        
+        /// <summary>
         /// imgFind control.
         /// </summary>
         /// <remarks>

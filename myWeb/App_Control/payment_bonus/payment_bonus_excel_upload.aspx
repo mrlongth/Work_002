@@ -41,7 +41,7 @@
                 <td style="text-align: center" colspan="2">
                     &nbsp;
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="FileUpload1"
-                    Display="None" ErrorMessage="กรุณาเลือกรูป" 
+                    Display="None" ErrorMessage="กรุณาไฟล์ upload" 
                     ValidationGroup="A" SetFocusOnError="True"></asp:RequiredFieldValidator>
                 <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True"
                     ShowSummary="False" ValidationGroup="A" />

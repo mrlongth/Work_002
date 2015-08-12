@@ -71,6 +71,11 @@
                                     Text="พิมพ์สลิปเงินเดือนภาคพิเศษ">
                                     <Image Url="~/images/page/printer.png" />
                                 </dxm:MenuItem>
+                                <dxm:MenuItem Name="menuSlipBonus" NavigateUrl="~/Person_Manage/global_payment_bonus_slip.aspx"
+                                    Text="พิมพ์สลิปเงินรางวัล">
+                                    <Image Url="~/images/page/printer.png" />
+                                </dxm:MenuItem>
+
                                 <dxm:MenuItem Name="menuPaymentBack" NavigateUrl="~/Person_Manage/global_payment_back_report.aspx" Visible="false"
                                     Text="รายงานเอกสารตกเบิก">
                                     <Image Url="~/images/page/printer.png" />

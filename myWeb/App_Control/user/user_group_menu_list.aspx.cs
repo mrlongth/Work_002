@@ -201,7 +201,7 @@ namespace myWeb.App_Control.user
                 cUser_group oUser_group = new cUser_group();
                 string strCheck = string.Empty;
                 strCheck = " and [user_group_code] = '" + struser_group_code + "' ";
-                if (!oUser_group.SP_User_Group_SEL(strCheck, ref ds, ref strMessage))
+                if (!oUser_group.SP_USER_GROUP_SEL(strCheck, ref ds, ref strMessage))
                 {
                     lblError.Text = strMessage;
                 }
@@ -564,7 +564,7 @@ namespace myWeb.App_Control.user
             {
                 string strCheck = string.Empty;
                 strCheck = " and [user_group_code] = '" + cboUserGroup.SelectedValue + "' ";
-                if (!oUser_group.SP_User_Group_SEL(strCheck, ref ds, ref strMessage))
+                if (!oUser_group.SP_USER_GROUP_SEL(strCheck, ref ds, ref strMessage))
                 {
                     lblError.Text = strMessage;
                 }

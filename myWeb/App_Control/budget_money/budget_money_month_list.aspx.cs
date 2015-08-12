@@ -629,6 +629,11 @@ namespace myWeb.App_Control.budget_money
                 imgEdit.Visible = IsUserEdit;
 
                 #endregion
+
+                #region check user can edit/delete
+                imgEdit.Visible = base.IsUserEdit;
+                #endregion
+            
             }
 
             if (e.Row.RowType.Equals(DataControlRowType.Footer))

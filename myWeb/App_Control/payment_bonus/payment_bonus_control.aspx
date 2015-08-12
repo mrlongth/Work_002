@@ -30,7 +30,7 @@
             BorderWidth="0px" Style="text-align: left" Width="98%">
             <ajaxtoolkit:TabPanel ID="TabPanel1" runat="server" HeaderText="ข้อมูลการจ่ายค่ารักษาพยาบาล">
                 <HeaderTemplate>
-                    ข้อมูลการจ่ายค่ารักษาพยาบาล
+                    ข้อมูลการจ่ายเงินรางวัล
                 </HeaderTemplate>
                 <ContentTemplate>
                     <table border="0" cellpadding="1" cellspacing="1" style="width: 100%">
@@ -247,7 +247,7 @@
             </ajaxtoolkit:TabPanel>
             <ajaxtoolkit:TabPanel ID="TabPanel2" runat="server" HeaderText="ข้อมูลรายการค่ารักษาพยาบาล">
                 <HeaderTemplate>
-                    ข้อมูลรายการค่ารักษาพยาบาล
+                    ข้อมูลรายการเงินรางวัล
                 </HeaderTemplate>
                 <ContentTemplate>
                     <table border="0" cellpadding="1" cellspacing="1" style="width: 100%">

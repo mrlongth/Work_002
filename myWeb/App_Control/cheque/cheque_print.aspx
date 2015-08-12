@@ -58,9 +58,11 @@
                 </asp:DropDownList>
             </td>
             <td style="text-align: right" width="15%" colspan="2">
-                &nbsp;</td>
+                <asp:Label runat="server" CssClass="label_h" ID="lblPage15">AC/  Payee Only:</asp:Label>
+            </td>
             <td style="text-align: left">
-                &nbsp;</td>
+                <asp:CheckBox ID="chkACPayeeOnly" runat="server" />
+            </td>
             <td rowspan="4" style="text-align: right; vertical-align: bottom; width: 30%;">
                 <asp:ImageButton runat="server" AlternateText="ค้นหาข้อมูล" ImageUrl="~/images/button/Search.png"
                     ID="imgFind" OnClick="imgFind_Click"  ></asp:ImageButton>

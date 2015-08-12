@@ -81,7 +81,7 @@ namespace myWeb.App_Control.user
                 }
                 if (txthpage.Value != string.Empty)
                 {
-                    BindGridView(int.Parse(txthpage.Value)-1);
+                    BindGridView(int.Parse(txthpage.Value) - 1);
                     txthpage.Value = string.Empty;
                 }
             }
@@ -411,6 +411,9 @@ namespace myWeb.App_Control.user
 
                 Label lbluser_group_list = (Label)e.Row.FindControl("lbluser_group_list");
                 string[] user_group_list = lbluser_group_list.Text.Split(',');
+
+                var dataView = (DataRowView)e.Row.DataItem;
+                
                 DataView dv = null;
                 lbluser_group_list.Text = "";
                 foreach (var value in user_group_list)
@@ -444,6 +447,7 @@ namespace myWeb.App_Control.user
                 #region set Image Edit & Delete
 
                 ImageButton imgEdit = (ImageButton)e.Row.FindControl("imgEdit");
+                ImageButton imgReset = (ImageButton)e.Row.FindControl("imgReset");
                 Label lblperson_names = (Label)e.Row.FindControl("lblperson_names");
                 if (IsUserEdit)
                 {
@@ -457,8 +461,19 @@ namespace myWeb.App_Control.user
 
                 imgEdit.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["img"].ToString();
                 imgEdit.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["title"].ToString());
+
+                imgReset.ImageUrl = "~/images/unlock.png";
+                imgReset.Attributes.Add("title", "Reset รหัสผ่าน");
+                imgReset.Visible = base.IsUserExtra;
+                if (base.IsUserExtra)
+                    imgReset.Attributes.Add("onclick", "return confirm(\"คุณต้องการ Reset รหัสผ่านของ : " + Helper.CStr(dataView["title_name"]) + Helper.CStr(dataView["person_thai_name"]) + " " + Helper.CStr(dataView["person_thai_surname"]) + " หรือไม่ ?\");");
+
+                #endregion
+
+                #region check user can edit/delete
                 imgEdit.Visible = base.IsUserEdit;
                 #endregion
+
 
             }
         }
@@ -643,6 +658,28 @@ namespace myWeb.App_Control.user
                 #endregion
             }
         }
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            GridViewRow gvRow;
+            if (e.CommandName.ToUpper().Equals("RESET"))
+            {
+                gvRow = GridView1.Rows[Helper.CInt(e.CommandArgument) - 1];
+                Label lblperson_code = (Label)gvRow.FindControl("lblperson_code");
+                _strMessage = string.Empty;
+                var oPerson = new cPerson();
+                if (oPerson.SP_PERSON_HIS_PASS_UPD(lblperson_code.Text, null, base.UserLoginName, ref _strMessage))
+                {
+                    MsgBox("Reset รหัสผ่านสมบูรณ์");
+                }
+                else
+                {
+                    lblError.Text = _strMessage;
+                    lblError.Visible = true;
+                }
+            }
+        }
+
 
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {

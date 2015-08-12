@@ -201,6 +201,11 @@ namespace myWeb.App_Control.material
 
                 #endregion
 
+                #region check user can edit/delete
+                imgEdit.Visible = base.IsUserEdit;
+                imgDelete.Visible = base.IsUserDelete;
+                #endregion
+
             }
         }
 

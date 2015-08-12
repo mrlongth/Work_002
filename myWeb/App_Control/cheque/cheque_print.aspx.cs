@@ -460,6 +460,8 @@ namespace myWeb.App_Control.cheque
             string strScript = string.Empty;
             strReport_code = cboCheque_bank_code.SelectedValue;
             Session["criteria"] = strCriteria;
+            Session["AcOnly"] = chkACPayeeOnly.Checked ? "Y" : "N";
+
             strScript = "windowOpenMaximize(\"../../App_Control/reportsparameter/payment_report_show.aspx?report_code=" + strReport_code +
                                              "&months=" + cboPay_Month.Text + "&year=" + cboPay_Year.Text + "\", \"_blank\");\n";
 

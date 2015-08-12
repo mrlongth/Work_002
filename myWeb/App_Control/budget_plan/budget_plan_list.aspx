@@ -84,7 +84,7 @@
                 <asp:ImageButton runat="server" AlternateText="เพิ่มข้อมุล" ImageUrl="~/images/button/Save.png"
                     ID="imgNew"></asp:ImageButton>
                 <asp:ImageButton runat="server" AlternateText="พิมพ์ข้อมูล" ImageUrl="~/images/button/print.png"
-                    ID="imgPrint" OnClick="imgPrint_Click"></asp:ImageButton>
+                    ID="imgPrint" OnClick="imgPrint_Click" Visible="False"></asp:ImageButton>
             </td>
         </tr>
         <tr>
@@ -219,6 +219,6 @@
         <PagerStyle HorizontalAlign="Center" Wrap="True" BackColor="Gainsboro" ForeColor="#8C4510">
         </PagerStyle>
     </asp:GridView>
-    <input id="txthpage" type="hidden" name="txthpage" runat="server">
-    <input id="txthTotalRecord" type="hidden" name="txthTotalRecord" runat="server">
+    <input id="txthpage" type="hidden" name="txthpage" runat="server"/>
+    <input id="txthTotalRecord" type="hidden" name="txthTotalRecord" runat="server"/>
 </asp:Content>

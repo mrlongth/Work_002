@@ -80,19 +80,19 @@
         </tr>
         <tr align="left">
             <td align="right" nowrap valign="top">
-                <asp:Label ID="Label74" runat="server">บัญชีธนาคาร :</asp:Label>
-            </td>
-            <td align="left" colspan="2" nowrap valign="top">
-                <asp:DropDownList runat="server" CssClass="textbox" ID="cboChequeBank">
-                </asp:DropDownList>
-            </td>
-        </tr>
-        <tr align="left">
-            <td align="right" nowrap valign="top">
                 <asp:Label ID="Label12" runat="server">สถานะ :</asp:Label>
             </td>
             <td align="left" colspan="2" nowrap valign="top">
                 <asp:CheckBox ID="chkStatus" runat="server" Text="ปกติ" />
+            </td>
+        </tr>
+        <tr align="left">
+            <td align="right" nowrap valign="top">
+                <asp:Label ID="Label74" runat="server" Visible="False">บัญชีธนาคาร :</asp:Label>
+            </td>
+            <td align="left" colspan="2" nowrap valign="top">
+                <asp:DropDownList runat="server" CssClass="textbox" ID="cboChequeBank" Visible="False">
+                </asp:DropDownList>
             </td>
         </tr>
         <tr align="left">

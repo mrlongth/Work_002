@@ -10,19 +10,19 @@
 
         function SelectAll(id) {
             var grid = document.getElementById("<%= GridView1.ClientID %>");
-                var cell;
+            var cell;
 
-                if (grid.rows.length > 0) {
-                    for (i = 1; i < grid.rows.length; i++) {
-                        cell = grid.rows[i].cells[0];
-                        for (j = 0; j < cell.childNodes.length; j++) {
-                            if (cell.childNodes[j].type == "checkbox") {
-                                cell.childNodes[j].checked = document.getElementById(id).checked;
-                            }
+            if (grid.rows.length > 0) {
+                for (i = 1; i < grid.rows.length; i++) {
+                    cell = grid.rows[i].cells[0];
+                    for (j = 0; j < cell.childNodes.length; j++) {
+                        if (cell.childNodes[j].type == "checkbox") {
+                            cell.childNodes[j].checked = document.getElementById(id).checked;
                         }
                     }
                 }
             }
+        }
 
     </script>
 
@@ -44,7 +44,7 @@
                 <asp:Label runat="server" ID="Label7">ปีงบประมาณ :</asp:Label>
             </td>
             <td align="left" nowrap valign="middle" style="width: 20%;">
-                <asp:DropDownList runat="server" CssClass="textboxdis" ID="cboYear"  Enabled="False">
+                <asp:DropDownList runat="server" CssClass="textboxdis" ID="cboYear" Enabled="False">
                 </asp:DropDownList>
             </td>
             <td align="left" nowrap valign="middle" style="text-align: right; width: 10%;">&nbsp;</td>
@@ -60,14 +60,16 @@
             <td align="left" nowrap valign="middle">
                 <asp:DropDownList runat="server" CssClass="textboxdis" ID="cboPay_Year" Enabled="False"></asp:DropDownList>
             </td>
-            <td align="left" nowrap valign="middle" style="text-align: right;"><asp:Label runat="server" ID="Label84">รอบเดือนที่จ่าย :</asp:Label></td>
-            <td align="left" nowrap valign="middle"><asp:DropDownList runat="server" CssClass="textboxdis" ID="cboPay_Month" Enabled="False"></asp:DropDownList>
-                </td>
+            <td align="left" nowrap valign="middle" style="text-align: right;">
+                <asp:Label runat="server" ID="Label84">รอบเดือนที่จ่าย :</asp:Label></td>
+            <td align="left" nowrap valign="middle">
+                <asp:DropDownList runat="server" CssClass="textboxdis" ID="cboPay_Month" Enabled="False"></asp:DropDownList>
+            </td>
             <td align="left" nowrap rowspan="2" style="vertical-align: middle; width: 1%;" valign="middle">
                 <asp:ImageButton ID="imgImport" runat="server" AlternateText="นำเข้า Excel" ImageUrl="~/images/button/import.png"
-                    OnClick="imgImport_Click" ValidationGroup="A" />
+                    OnClick="imgImport_Click" />
                 <asp:ImageButton ID="imgSaveOnly" runat="server" AlternateText="บันทึกข้อมุล" ImageUrl="~/images/button/save_add.png"
-                    OnClick="imgSaveOnly_Click" ValidationGroup="A" />
+                    OnClick="imgSaveOnly_Click" />
                 <asp:ImageButton ID="imgCancel" runat="server" AlternateText="ยกเลิก" CausesValidation="False"
                     ImageUrl="~/images/button/cancel.png" OnClick="imgCancel_Click" />
             </td>
@@ -89,6 +91,7 @@
                 <ajaxtoolkit:ValidatorCalloutExtender ID="ValidatorCalloutExtender2" runat="server" Enabled="True" HighlightCssClass="validatorCalloutHighlight" TargetControlID="RequiredFieldValidator2">
                 </ajaxtoolkit:ValidatorCalloutExtender>
                 <asp:Label ID="lblError" runat="server" CssClass="label_error"></asp:Label>
+                <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True" ShowSummary="False" />
             </td>
         </tr>
     </table>
@@ -115,26 +118,32 @@
                 </ItemTemplate>
                 <ItemStyle HorizontalAlign="Center" Wrap="False" Width="2%"></ItemStyle>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="รหัสบุคลากร" SortExpression="sp_person_code">
+            <asp:TemplateField HeaderText="เลขที่ประจำตัวประชาชน" SortExpression="sp_person_code">
                 <ItemStyle HorizontalAlign="Center" Width="8%" Wrap="True" />
                 <ItemTemplate>
-                    <asp:Label ID="lblperson_code" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.bn_person_code") %>'>
-                    </asp:Label>
-                    <asp:HiddenField ID="hddbudget_plan_code" runat="server"  Value='<%# DataBinder.Eval(Container, "DataItem.budget_plan_code") %>' />
-                    <asp:HiddenField ID="hddperson_group_code" runat="server"  Value='<%# DataBinder.Eval(Container, "DataItem.person_group_code") %>' />
+                    <asp:TextBox ID="txtperson_id" runat="server" CssClass="textbox" MaxLength="100"
+                        Width="120" Text='<%# DataBinder.Eval(Container, "DataItem.person_id") %>'>                        
+                    </asp:TextBox>
+                    &nbsp;
+                    <asp:ImageButton ID="imgList_person" runat="server" CausesValidation="False" ImageAlign="AbsBottom" ImageUrl="../../images/controls/view2.gif" />
+                    <asp:ImageButton ID="imgClear_person" runat="server" CausesValidation="False" ImageAlign="AbsBottom"
+                        ImageUrl="../../images/controls/erase.gif" Style="width: 18px" />
+                    <asp:RequiredFieldValidator ID="reqperson_id" runat="server" ErrorMessage="กรุณาเลือกเลขที่ประจำตัวประชาชน" ControlToValidate="txtperson_id" SetFocusOnError="True" Display="None"></asp:RequiredFieldValidator>
+                    <asp:HiddenField ID="hddbudget_plan_code" runat="server" Value='<%# DataBinder.Eval(Container, "DataItem.budget_plan_code") %>' />
+                    <asp:HiddenField ID="hddperson_group_code" runat="server" Value='<%# DataBinder.Eval(Container, "DataItem.person_group_code") %>' />
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="ชื่อ" SortExpression="person_thai_name">
                 <ItemStyle HorizontalAlign="Left" Width="12%" Wrap="True" />
                 <ItemTemplate>
-                    <asp:Label ID="lblperson_name" runat="server" Text='<%  # DataBinder.Eval(Container, "DataItem.person_thai_name") %>'>
+                    <asp:Label ID="lblperson_name" runat="server" Text='<%  # DataBinder.Eval(Container, "DataItem.bn_person_name")%>'>
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="นามสกุล" SortExpression="person_thai_surname">
                 <ItemStyle HorizontalAlign="Left" Width="12%" Wrap="True" />
                 <ItemTemplate>
-                    <asp:Label ID="lblperson_thai_surname" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.person_thai_surname")%>'>
+                    <asp:Label ID="lblperson_thai_surname" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.bn_person_surname")%>'>
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
@@ -160,4 +169,42 @@
         </Columns>
         <HeaderStyle HorizontalAlign="Center" CssClass="stGridHeader" Font-Bold="True"></HeaderStyle>
     </asp:GridView>
+    
+    <script type="text/javascript">
+        function RegisterScript() {
+            $("input[id*=imgClear_person]").click(function () {
+                $('#' + this.id.replace('imgClear_person', 'txtperson_id')).val('');
+                $('#' + this.id.replace('imgClear_person', 'lblperson_name')).html('');
+                $('#' + this.id.replace('imgClear_person', 'lblperson_thai_surname')).html('');
+                return false;
+            });
+            $("input[id*=imgList_person]").click(function () {
+                var txtperson_id = $('#' + this.id.replace('imgList_person', 'txtperson_id'));
+                var lblperson_name = $('#' + this.id.replace('imgList_person', 'lblperson_name'));
+                var lblperson_thai_surname = $('#' + this.id.replace('imgList_person', 'lblperson_thai_surname'));
+                var url = "../lov/person_special_lov.aspx?" +
+                          "person_id=" + txtperson_id.val() +
+                          "&txtperson_id=" + $(txtperson_id).attr('id') +
+                          "&lblperson_name=" + $(lblperson_name).attr('id') +
+                          "&lblperson_thai_surname=" + $(lblperson_thai_surname).attr('id') +
+                          "&show=1&from=payment_special_import";
+                OpenPopUp('900px', '500px', '95%', 'ค้นหาข้อมูลบุคลากร/อาจารย์พิเศษ', url, '1');
+                return false;
+            });
+
+        };
+
+        function ToggleValidator(chk) {
+            var requiredFieldValidator = chk.id.replace('CheckBox1', 'reqperson_id');
+
+            var validatorObject = document.getElementById(requiredFieldValidator);
+            console.log(validatorObject);
+            validatorObject.enabled = chk.checked;
+            validatorObject.isvalid = chk.checked;
+            ValidatorUpdateDisplay(validatorObject);
+
+        }
+
+    </script>
+
 </asp:Content>

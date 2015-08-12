@@ -346,4 +346,9 @@ a:active { color: #495E88; }
 	height:20px ;
 }
 
-
+.ui-datepicker-trigger 
+{
+	padding-left: 3px;
+	vertical-align: middle;
+	cursor: pointer;
+}

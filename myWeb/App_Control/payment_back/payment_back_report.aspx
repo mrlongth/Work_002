@@ -109,11 +109,11 @@
                         <td style="width: 1%; text-align: left;">
                             <asp:TextBox ID="txtpayment_date" runat="server" CssClass="textbox"
                                 Width="130px"></asp:TextBox>
-                            <ajaxtoolkit:calendarextender id="txtpayment_date_CalendarExtender" runat="server"
+                          <%--  <ajaxtoolkit:calendarextender id="txtpayment_date_CalendarExtender" runat="server"
                                 enabled="True" popupbuttonid="imgpayment_date" targetcontrolid="txtpayment_date">
                             </ajaxtoolkit:calendarextender>
                             <asp:ImageButton ID="imgpayment_date" runat="server" AlternateText="Click to show calendar"
-                                ImageAlign="AbsMiddle" ImageUrl="~/images/Calendar_scheduleHS.png" />
+                                ImageAlign="AbsMiddle" ImageUrl="~/images/Calendar_scheduleHS.png" />--%>
                         </td>
                         <td style="width: 20%; text-align: right;">
                             &nbsp;

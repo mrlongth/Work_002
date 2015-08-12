@@ -58,14 +58,22 @@
         </tr>
         <tr align="left">
             <td align="right" nowrap valign="middle">
-                <asp:Label runat="server" ID="Label81">หมายเหตุ :</asp:Label>
+                <asp:Label runat="server" ID="Label81">กำหนดจ่ายเงินเดือน :</asp:Label>
             </td>
             <td align="left" nowrap valign="middle" colspan="3">
                 <font face="Tahoma">
-                    <asp:TextBox ID="txtComments" runat="server" CssClass="textbox" 
-                    MaxLength="255"  
-                        Width="500px" CausesValidation="True" ValidationGroup="A" 
-                    Height="60px" TextMode="MultiLine"></asp:TextBox>
+                   
+                     <asp:TextBox ID="txtComments" runat="server" CssClass="textbox" 
+                    MaxLength="255" CausesValidation="True" ValidationGroup="A"></asp:TextBox>
+                    
+                    
+                    <ajaxtoolkit:CalendarExtender
+                        ID="CalendarExtender1" runat="server" BehaviorID="txtComments_CalendarExtender"
+                        Enabled="True" PopupButtonID="imgtxtComments" TargetControlID="txtComments">
+                    </ajaxtoolkit:CalendarExtender>
+                    <asp:ImageButton ID="imgtxtComments" runat="server" AlternateText="Click to show calendar"
+                        ImageAlign="AbsMiddle" ImageUrl="~/images/Calendar_scheduleHS.png" />
+
                 </font>
             </td>
             <td align="left" nowrap valign="middle" style="vertical-align: bottom;

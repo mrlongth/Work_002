@@ -420,6 +420,7 @@ namespace myWeb.App_Control.person
                 imgView.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgView"].Rows[0]["title"].ToString());
                 #endregion
 
+
             }
         }
 

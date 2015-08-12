@@ -21,7 +21,7 @@ namespace myWeb.App_Control.open
         private string strRecordPerPage;
         private string strPageNo = "1";
         private bool[] blnAccessRight = new bool[5] { false, false, false, false, false };
-     
+
         private string BudgetType
         {
             get
@@ -44,7 +44,7 @@ namespace myWeb.App_Control.open
                 ViewState["BudgetType"] = value;
             }
         }
-        
+
         #endregion
 
         protected void Page_Load(object sender, EventArgs e)
@@ -58,7 +58,7 @@ namespace myWeb.App_Control.open
                 imgFind.Attributes.Add("onMouseOver", "src='../../images/button/Search2.png'");
                 imgFind.Attributes.Add("onMouseOut", "src='../../images/button/Search.png'");
 
-                imgList_open.Attributes.Add("onclick", "OpenPopUp('800px','400px','93%','ค้นหาข้อมูลรายการขออนุมัติเบิกจ่าย' ,'../lov/open_lov.aspx?"+
+                imgList_open.Attributes.Add("onclick", "OpenPopUp('800px','400px','93%','ค้นหาข้อมูลรายการขออนุมัติเบิกจ่าย' ,'../lov/open_lov.aspx?" +
                                                     "budget_type='+document.forms[0]." + cboBudget_type.UniqueID + ".options[document.forms[0]." + cboBudget_type.UniqueID + ".selectedIndex].value+" +
                                                     "'&year='+document.forms[0]." + cboYear.UniqueID + ".options[document.forms[0]." + cboYear.UniqueID + ".selectedIndex].value+" +
                                                     "'&item_code='+document.forms[0]." + txtopen_code.UniqueID + ".value+" +
@@ -68,7 +68,7 @@ namespace myWeb.App_Control.open
                 imgClear_open.Attributes.Add("onclick", "document.forms[0]." + txtopen_code.UniqueID + ".value='';" +
                                         "document.forms[0]." + txtopen_title.UniqueID + ".value='';return false;");
 
-                imgNew.Attributes.Add("onclick", "OpenPopUp('950px','550px','95%','เพิ่ม" + base.PageDes + "','open_control.aspx?budget_type='+document.forms[0]." + cboBudget_type.UniqueID + ".options[document.forms[0]." + cboBudget_type.UniqueID + ".selectedIndex].value+"  +"'&mode=add&page=0','1');return false;");
+                imgNew.Attributes.Add("onclick", "OpenPopUp('950px','550px','95%','เพิ่ม" + base.PageDes + "','open_control.aspx?budget_type='+document.forms[0]." + cboBudget_type.UniqueID + ".options[document.forms[0]." + cboBudget_type.UniqueID + ".selectedIndex].value+" + "'&mode=add&page=0','1');return false;");
                 ViewState["sort"] = "open_doc";
                 ViewState["direction"] = "ASC";
                 InitcboYear();
@@ -77,7 +77,7 @@ namespace myWeb.App_Control.open
                 InitcboDirector();
                 InitcboBudget();
                 InitcboPlan();
-                BindGridView(0);              
+                BindGridView(0);
 
             }
             else
@@ -125,7 +125,7 @@ namespace myWeb.App_Control.open
             cDirector oDirector = new cDirector();
             string strMessage = string.Empty, strCriteria = string.Empty;
             string strDirector_code = string.Empty;
-            string strYear = cboYear.SelectedValue; 
+            string strYear = cboYear.SelectedValue;
             strDirector_code = cboDirector.SelectedValue;
             DataSet ds = new DataSet();
             DataTable dt = new DataTable();
@@ -167,7 +167,7 @@ namespace myWeb.App_Control.open
             string strMessage = string.Empty, strCriteria = string.Empty;
             string strUnit_code = cboUnit.SelectedValue;
             string strDirector_code = cboDirector.SelectedValue;
-            string strYear = cboYear.SelectedValue; 
+            string strYear = cboYear.SelectedValue;
             DataSet ds = new DataSet();
             DataTable dt = new DataTable();
             strCriteria = " and unit.unit_year = '" + strYear + "'  and  unit.c_active='Y' ";
@@ -176,7 +176,7 @@ namespace myWeb.App_Control.open
             {
                 strCriteria += " and substring(unit.unit_code,4,5) in (" + this.UnitCodeList + ") ";
             }
-           
+
             if (this.BudgetType == "R")
             {
                 strCriteria = strCriteria + " and unit.budget_type <> 'B' ";
@@ -207,7 +207,7 @@ namespace myWeb.App_Control.open
         {
             cBudget oBudget = new cBudget();
             string strMessage = string.Empty, strCriteria = string.Empty;
-            string strYear = cboYear.SelectedValue; 
+            string strYear = cboYear.SelectedValue;
             string strbudget_code = cboBudget.SelectedValue;
             DataSet ds = new DataSet();
             DataTable dt = new DataTable();
@@ -240,7 +240,7 @@ namespace myWeb.App_Control.open
                         strbudget_code = string.Empty,
                         strproduce_code = string.Empty,
                         strproduce_name = string.Empty;
-            string strYear = cboYear.SelectedValue; 
+            string strYear = cboYear.SelectedValue;
             strbudget_code = cboBudget.SelectedValue;
             strproduce_code = cboProduce.SelectedValue;
             int i;
@@ -251,7 +251,7 @@ namespace myWeb.App_Control.open
 
             //if (!strbudget_code.Equals(""))
             //{
-                strCriteria = strCriteria + " and produce.budget_code= '" + strbudget_code + "' ";
+            strCriteria = strCriteria + " and produce.budget_code= '" + strbudget_code + "' ";
             //}
 
             if (oProduce.SP_SEL_PRODUCE(strCriteria, ref ds, ref strMessage))
@@ -291,12 +291,12 @@ namespace myWeb.App_Control.open
 
             //if (!strbudget_code.Equals(""))
             //{
-                strCriteria = strCriteria + " and  produce.budget_code= '" + strbudget_code + "' ";
+            strCriteria = strCriteria + " and  produce.budget_code= '" + strbudget_code + "' ";
             //}
 
             //if (!strproduce_code.Equals(""))
             //{
-                strCriteria = strCriteria + " and activity.produce_code= '" + strproduce_code + "' ";
+            strCriteria = strCriteria + " and activity.produce_code= '" + strproduce_code + "' ";
             //}
 
 
@@ -323,7 +323,7 @@ namespace myWeb.App_Control.open
             string strMessage = string.Empty,
                         strCriteria = string.Empty,
                         strplan_code = string.Empty;
-            string strYear =  cboYear.SelectedValue; 
+            string strYear = cboYear.SelectedValue;
             strplan_code = cboPlan_code.SelectedValue;
             int i;
             DataSet ds = new DataSet();
@@ -373,7 +373,7 @@ namespace myWeb.App_Control.open
         }
 
         #endregion
-        
+
         private void cboPerPage_SelectedIndexChanged(object sender, System.EventArgs e)
         {
             GridView1.PageSize = int.Parse(strRecordPerPage);
@@ -432,7 +432,7 @@ namespace myWeb.App_Control.open
             {
                 strCriteria = strCriteria + "  And  (budget_type = '" + strbudget_type + "') ";
             }
-            
+
             if (!stropen_doc.Equals(""))
             {
                 strCriteria = strCriteria + "  And  (open_doc ='" + stropen_doc + "') ";
@@ -494,10 +494,10 @@ namespace myWeb.App_Control.open
                 strCriteria += " and substring(budget_unit_code,4,5) in (" + this.UnitCodeList + ") ";
             }
 
-            
-            
+
+
             #endregion
-         
+
             //strCriteria = strCriteria + " and budget_type ='" + this.BudgetType + "' ";           
 
             try
@@ -580,7 +580,7 @@ namespace myWeb.App_Control.open
                 lblNo.Text = nNo.ToString();
                 DataRowView dv = (DataRowView)e.Row.DataItem;
                 HiddenField hhdopen_head_id = (HiddenField)e.Row.FindControl("hhdopen_head_id");
-              
+
                 #region set Image Edit & Delete
                 ImageButton imgEdit = (ImageButton)e.Row.FindControl("imgEdit");
                 Label lblCanEdit = (Label)e.Row.FindControl("lblCanEdit");
@@ -599,12 +599,16 @@ namespace myWeb.App_Control.open
                 imgPrint.Attributes.Add("title", "พิมพ์");
                 string strScript = "windowOpenMaximize(\"../../App_Control/reportsparameter/open_report_show.aspx?open_head_id=" + hhdopen_head_id.Value + "\", \"_blank\");return false;\n";
                 imgPrint.Attributes.Add("onclick", strScript);
-        
-                
+
+
                 #endregion
-            
-            
-            
+
+                #region check user can edit/delete
+                imgEdit.Visible = base.IsUserEdit;
+                imgDelete.Visible = base.IsUserDelete;
+                #endregion
+
+
             }
         }
 
@@ -867,19 +871,19 @@ namespace myWeb.App_Control.open
 
         protected void cboActivity_SelectedIndexChanged(object sender, EventArgs e)
         {
-              BindGridView(1);  
+            BindGridView(1);
         }
 
         protected void cboPlan_code_SelectedIndexChanged(object sender, EventArgs e)
         {
-           // InitcboPlan();
-           BindGridView(1);  
+            // InitcboPlan();
+            BindGridView(1);
         }
 
         protected void cboUnit_SelectedIndexChanged(object sender, EventArgs e)
         {
             BindGridView(1);
-          //  InitcboUnit();
+            //  InitcboUnit();
         }
 
         protected void cboYear_SelectedIndexChanged(object sender, EventArgs e)

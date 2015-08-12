@@ -529,22 +529,29 @@ namespace myWeb.App_Control.payment
             if (stritem_code.Length > 0)
                 strCondition += "รายได้/จ่าย : " + txtitem_code.Text + "-" + txtitem_name.Text + "   ";
 
-            strperson_group_code = cboPerson_group.SelectedValue;
-            if (strperson_group_code.Length > 0)
-                strCondition += "กลุ่มบุคลากร : " + cboPerson_group.SelectedItem.Text + "   ";
+            if (cboPerson_group.Enabled)
+            {
+                strperson_group_code = cboPerson_group.SelectedValue;
+                if (strperson_group_code.Length > 0) strCondition += "กลุ่มบุคลากร : " + cboPerson_group.SelectedItem.Text + "   ";
+            }
 
-            strdirector_code = cboDirector.SelectedValue;
-            if (strdirector_code.Length > 0)
-                strCondition += "สังกัด : " + cboDirector.SelectedItem.Text + "   ";
+            if (cboDirector.Enabled)
+            {
+                strdirector_code = cboDirector.SelectedValue;
+                if (strdirector_code.Length > 0) strCondition += "สังกัด : " + cboDirector.SelectedItem.Text + "   ";
+            }
 
-            strunit_code = cboUnit.SelectedValue;
-            if (strunit_code.Length > 0)
-                strCondition += "หน่วยงาน : " + cboUnit.SelectedItem.Text + "   ";
+            if (cboUnit.Enabled)
+            {
+                strunit_code = cboUnit.SelectedValue;
+                if (strunit_code.Length > 0) strCondition += "หน่วยงาน : " + cboUnit.SelectedItem.Text + "   ";
+            }
 
-            strProduce = cboProduce.SelectedValue;
-            if (strProduce.Length > 0)
-                strCondition += "ผลผลิต : " + cboProduce.SelectedItem.Text + "   ";
-
+            if (cboProduce.Enabled)
+            {
+                strProduce = cboProduce.SelectedValue;
+                if (strProduce.Length > 0) strCondition += "ผลผลิต : " + cboProduce.SelectedItem.Text + "   ";
+            }
             if (txtposition_code.Enabled) strPosition_code = txtposition_code.Text;
             if (txtposition_name.Enabled) strPosition_name = txtposition_name.Text;
             if (cboType_position.Enabled && cboType_position.SelectedIndex != 0) strType_position = cboType_position.SelectedItem.Text;

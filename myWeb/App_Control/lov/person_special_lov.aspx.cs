@@ -24,15 +24,9 @@ namespace myWeb.App_Control.lov
                 imgFind.Attributes.Add("onMouseOver", "src='../../images/button/Search2.png'");
                 imgFind.Attributes.Add("onMouseOut", "src='../../images/button/Search.png'");
 
-                //imgList_unit.Attributes.Add("onclick", "OpenPopUp('800px','400px','93%','ค้นหาข้อมูลหน่วยงาน' ,'../lov/unit_lov.aspx?" +
-                // "unit_year='+document.forms[0]." + strPrefixCtr + "txtyear.value+" +
-                // "'&unit_code='+document.forms[0]." + strPrefixCtr + "txtunit_code.value+" +
-                // "'&unit_name='+document.forms[0]." + strPrefixCtr + "txtunit_name.value+" +
-                // "'&ctrl1=" + strPrefixCtr + "txtunit_code&ctrl2=" + strPrefixCtr + "txtunit_name&show=2', '2');return false;");
-
-                //imgClear_unit.Attributes.Add("onclick", "document.getElementById('" + txtunit_code.ClientID + "').value='';document.getElementById('" + txtunit_name.ClientID + "').value=''; return false;");
 
                 InitcboDirector();
+                InitcboPerson_group();
 
                 if (Request.QueryString["year"] != null)
                 {
@@ -109,6 +103,38 @@ namespace myWeb.App_Control.lov
                     ViewState["ctrl5"] = string.Empty;
                 }
 
+
+                if (Request.QueryString["txtperson_id"] != null)
+                {
+                    ViewState["txtperson_id"] = Request.QueryString["txtperson_id"].ToString();
+                }
+                else
+                {
+                    ViewState["txtperson_id"] = string.Empty;
+                }
+
+                if (Request.QueryString["lblperson_name"] != null)
+                {
+                    ViewState["lblperson_name"] = Request.QueryString["lblperson_name"].ToString();
+                }
+                else
+                {
+                    ViewState["lblperson_name"] = string.Empty;
+                }
+
+                if (Request.QueryString["lblperson_thai_surname"] != null)
+                {
+                    ViewState["lblperson_thai_surname"] = Request.QueryString["lblperson_thai_surname"].ToString();
+                }
+                else
+                {
+                    ViewState["lblperson_thai_surname"] = string.Empty;
+                }
+
+
+
+
+
                 if (Request.QueryString["show"] != null)
                 {
                     ViewState["show"] = Request.QueryString["show"].ToString();
@@ -140,7 +166,36 @@ namespace myWeb.App_Control.lov
 
         #region private function
 
-      
+        private void InitcboPerson_group()
+        {
+            cPerson_group oPerson_group = new cPerson_group();
+            string strMessage = string.Empty, strCriteria = string.Empty, strperson_group_code = string.Empty;
+            strperson_group_code = cboPerson_group.SelectedValue;
+            int i;
+            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
+            strCriteria = " and c_active='Y' ";
+            strCriteria += " and person_group_code IN (" + PersonGroupList + ") ";
+            if (oPerson_group.SP_PERSON_GROUP_SEL(strCriteria, ref ds, ref strMessage))
+            {
+                dt = ds.Tables[0];
+                cboPerson_group.Items.Clear();
+                cboPerson_group.Items.Add(new ListItem("---- เลือกข้อมูลทั้งหมด ----", ""));
+                for (i = 0; i <= dt.Rows.Count - 1; i++)
+                {
+                    cboPerson_group.Items.Add(
+                        new ListItem(
+                            dt.Rows[i]["person_group_name"].ToString(),
+                            dt.Rows[i]["person_group_code"].ToString()));
+                }
+                if (cboPerson_group.Items.FindByValue(strperson_group_code) != null)
+                {
+                    cboPerson_group.SelectedIndex = -1;
+                    cboPerson_group.Items.FindByValue(strperson_group_code).Selected = true;
+                }
+            }
+        }
+
         private void InitcboDirector()
         {
             var oDirector = new cDirector();
@@ -224,13 +279,14 @@ namespace myWeb.App_Control.lov
             string strunit_code = string.Empty;
             string strdirector_code = string.Empty;
             string strperson_code = string.Empty;
+            string strperson_group_code = string.Empty;
             string strperson_name = string.Empty;
             string strperson_work_status_code = string.Empty;
             strdirector_code = cboDirector.SelectedValue;
             strunit_code = cboUnit.SelectedValue;
             strperson_code = txtperson_code.Text.Replace("'", "''").Trim();
             strperson_name = txtperson_name.Text.Replace("'", "''").Trim();
-          
+            strperson_group_code = cboPerson_group.SelectedValue;
          
             if (!strdirector_code.Equals(""))
             {
@@ -246,6 +302,12 @@ namespace myWeb.App_Control.lov
             {
                 strCriteria = strCriteria + "  And  (sp_person_code= '" + strperson_code + "') ";
             }
+
+            if (!strperson_group_code.Equals(""))
+            {
+                strCriteria = strCriteria + "  And  (person_group_code= '" + strperson_group_code + "') ";
+            }
+            
 
             if (!strperson_name.Equals(""))
             {
@@ -371,8 +433,8 @@ namespace myWeb.App_Control.lov
                 }
                 else if (!ViewState["show"].ToString().Equals("1"))
                 {
+                    
                     lblperson_code.Text = "<a href=\"\" onclick=\"" +
-                                                             "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl1"].ToString() + "').value='" + lblperson_code.Text + "';\n " +
                                                              "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl2"].ToString() + "').value='" + lblperson_name.Text + " " + dv["person_thai_surname"].ToString() + "';\n" +
                                                              "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].__doPostBack('ctl00$ContentPlaceHolder1$LinkButton1','');"+
                                                              "ClosePopUp('" + ViewState["show"].ToString() + "');" +
@@ -385,23 +447,45 @@ namespace myWeb.App_Control.lov
                     string strPersonCode = lblperson_code.Text;
                     string strPersonName = lblperson_name.Text + " " + dv["person_thai_surname"].ToString();
                    
-                    lblperson_code.Text = "<a href=\"\" onclick=\"";
-                    lblperson_code.Text += "window.parent.document.getElementById('" + ViewState["ctrl1"].ToString() + "').value='" + strPersonCode + "';\n ";
-                    lblperson_code.Text += "window.parent.document.getElementById('" + ViewState["ctrl2"].ToString() + "').value='" + strPersonName + "';\n";
-                    if (ViewState["from"].ToString() == "payment_control")
-                        lblperson_code.Text += "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].__doPostBack('ctl00$ContentPlaceHolder1$LinkButton1','');";
-                    lblperson_code.Text += "ClosePopUp('" + ViewState["show"].ToString() + "');";
-                    lblperson_code.Text += "return false;\" >" + strPersonCode + "</a>";
-                }
-                //if (ViewState["from"].ToString().Equals("payment_control"))
-                //{
-                //    lblperson_code.Text = "<a href=\"\" onclick=\"" +
-                //                                             "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl1"].ToString() + "').value='" + lblperson_code.Text + "';\n " +
-                //                                             "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl2"].ToString() + "').value='" + lblperson_name.Text + "';\n" +
-                //                                             "ClosePopUp('" + ViewState["show"].ToString() + "');" +
-                //                                             "return false;\" >" + lblperson_code.Text + "</a>";
-                //}
+               
+                    
+                   var strSript = "<a href=\"\" onclick=\"";
+                   if (!string.IsNullOrEmpty(ViewState["ctrl1"].ToString()))
+                    {
+                        strSript += "window.parent.document.getElementById('" + ViewState["ctrl1"].ToString() + "').value='" + strPersonCode + "';\n ";
 
+                    }
+                   if (!string.IsNullOrEmpty(ViewState["ctrl2"].ToString()))
+                   {
+                       strSript += "window.parent.document.getElementById('" + ViewState["ctrl2"].ToString() + "').value='" + strPersonName + "';\n ";
+                   }
+                    
+                    if (!string.IsNullOrEmpty(ViewState["txtperson_id"].ToString()))
+                    {
+                        strSript += "window.parent.document.getElementById('" + ViewState["txtperson_id"].ToString() + "').value='" + dv["person_id"].ToString() + "';\n ";
+                    }
+
+                    if (!string.IsNullOrEmpty(ViewState["lblperson_name"].ToString()))
+                    {
+                        strSript += "window.parent.document.getElementById('" + ViewState["lblperson_name"].ToString() + "').innerHTML ='" + dv["person_thai_name"].ToString() + "';\n ";
+
+                    }
+
+                    if (!string.IsNullOrEmpty(ViewState["lblperson_thai_surname"].ToString()))
+                    {
+                        strSript += "window.parent.document.getElementById('" + ViewState["lblperson_thai_surname"].ToString() + "').innerHTML='" + dv["person_thai_surname"].ToString() + "';\n ";                        
+                    }
+
+                    if (ViewState["from"].ToString() == "payment_control")
+                    {
+                        strSript += "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].__doPostBack('ctl00$ContentPlaceHolder1$LinkButton1','');";                        
+                    }
+                    strSript += "ClosePopUp('" + ViewState["show"].ToString() + "');";
+                    strSript += "return false;\" >" + strPersonCode + "</a>";
+
+                    lblperson_code.Text = strSript;
+                }
+               
             }
         }
 

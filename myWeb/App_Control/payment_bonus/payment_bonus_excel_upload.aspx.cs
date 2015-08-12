@@ -92,13 +92,15 @@ namespace myWeb.App_Control.payment_bonus
                 string ppayment_year;
                 string ppay_year;
                 string ppay_month;
-                string pbn_person_code ;
+                string pbn_person_id;
+                string pbn_person_code;
                 string pbn_person_name ;
                 string pbn_person_surname ;
                 string pitem_code ;
                 string pitem_qty  ;
                 string pitem_amt ;
 
+                string str_person_id = System.Configuration.ConfigurationSettings.AppSettings["bonus:person_id"];
                 string str_person_code = System.Configuration.ConfigurationSettings.AppSettings["bonus:person_code"];
                 string str_person_name = System.Configuration.ConfigurationSettings.AppSettings["bonus:person_name"];
                 string str_person_surname = System.Configuration.ConfigurationSettings.AppSettings["bonus:person_surname"];
@@ -114,15 +116,16 @@ namespace myWeb.App_Control.payment_bonus
                     ppayment_year = ViewState["year"].ToString();
                     ppay_year = ViewState["pay_year"].ToString();
                     ppay_month = ViewState["pay_month"].ToString();
-                    pbn_person_code = Helper.CStr(odtExcelAll.Rows[i][int.Parse(str_person_code)]);
-                    pbn_person_name = Helper.CStr(odtExcelAll.Rows[i][int.Parse(str_person_name)]);
+                    pbn_person_id = Helper.CStr(odtExcelAll.Rows[i][int.Parse(str_person_id)]);
+                    pbn_person_code = str_person_code != "null" ? Helper.CStr(odtExcelAll.Rows[i][int.Parse(str_person_code)]) : "";
+                    pbn_person_name = str_person_name != "null" ? Helper.CStr(odtExcelAll.Rows[i][int.Parse(str_person_name)]) : "";
                     pbn_person_surname = Helper.CStr(odtExcelAll.Rows[i][int.Parse(str_person_surname)]);
                     pitem_qty =  str_item_qty != "null" ? Helper.CStr(odtExcelAll.Rows[i][int.Parse(str_item_qty)]) : "1";
                     pitem_amt = Helper.CStr(odtExcelAll.Rows[i][int.Parse(str_item_amt)]);
                     pitem_code = ViewState["item_code"].ToString();
-                    if (!string.IsNullOrEmpty(pbn_person_code))
+                    if (!string.IsNullOrEmpty(pbn_person_name) && !string.IsNullOrEmpty(pbn_person_surname))
                     {
-                        objPayment_bonus.SP_IMPORT_PAYMENT_BONUS_INS(ppayment_year,ppay_year ,ppay_month,  pbn_person_code, pbn_person_name, pbn_person_surname, 
+                        objPayment_bonus.SP_IMPORT_PAYMENT_BONUS_INS(ppayment_year,ppay_year ,ppay_month, pbn_person_id, pbn_person_code, pbn_person_name, pbn_person_surname, 
                             pitem_code, pitem_qty, pitem_amt, pc_created_by, ref strMassege);
                     }
                 }

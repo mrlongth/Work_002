@@ -25,6 +25,7 @@ namespace myWeb.App_Control.payment_round
 
                 txtpay_begin_date.Text = cCommon.CheckDate(DateTime.Now.Date.ToString("dd/MM/yyyy"));
                 txtpay_end_date.Text = cCommon.CheckDate(DateTime.Now.Date.ToString("dd/MM/yyyy"));
+                txtComments.Text = cCommon.CheckDate(DateTime.Now.Date.ToString("dd/MM/yyyy"));
 
                 #region set QueryString
                 if (Request.QueryString["round_id"] != null)
@@ -415,6 +416,12 @@ namespace myWeb.App_Control.payment_round
             }
         }
 
+        //protected void Page_LoadComplete(object sender, EventArgs e)
+        //{
+
+        //    ScriptManager.RegisterStartupScript(Page, Page.GetType(), "RegisterScript", "createDate('" + txtComments.ClientID + "','" + DateTime.Now.Date.ToString("dd/MM/yyyy") + "');", true);
+
+        //}
 
     }
 }

@@ -34,6 +34,7 @@ namespace myWeb.App_Control.news
             {
                 imgNew.Attributes.Add("onMouseOver", "src='../../images/button/save2.png'");
                 imgNew.Attributes.Add("onMouseOut", "src='../../images/button/save.png'");
+                imgNew.Visible = base.IsUserNew;
 
                 imgFind.Attributes.Add("onMouseOver", "src='../../images/button/Search2.png'");
                 imgFind.Attributes.Add("onMouseOut", "src='../../images/button/Search.png'");
@@ -242,8 +243,6 @@ namespace myWeb.App_Control.news
                 imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบข่าวประชาสัมพันธ์   " + lblnew_title.Text + " ?\");");                
                 
                 #endregion
-
-
                 
                 #region set ImageStatus
                 Label lblnew_status = (Label)e.Row.FindControl("lblnew_status");
@@ -285,6 +284,11 @@ namespace myWeb.App_Control.news
                     imgNew_type.Attributes.Add("onclick", "return false;");
                 }
 
+                #endregion
+
+                #region check user can edit/delete
+                imgEdit.Visible = base.IsUserEdit;
+                imgDelete.Visible = base.IsUserDelete;
                 #endregion
 
             }

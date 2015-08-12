@@ -724,3 +724,11 @@ li
     background-repeat: no-repeat;
     background-position: center center;
 }
+
+.ui-datepicker-trigger 
+{
+	padding-left: 3px;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
