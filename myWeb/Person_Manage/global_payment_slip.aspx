@@ -11,17 +11,13 @@
     <center>
         <table cellpadding="1" cellspacing="1" style="width: 700px" border="0">
             <tr>
-                <td style="text-align: right;" width="15%">
-                    &nbsp;
+                <td style="text-align: right;" width="15%">&nbsp;
                 </td>
-                <td>
-                    &nbsp;
+                <td>&nbsp;
                 </td>
-                <td style="text-align: right" width="15%">
-                    &nbsp;
+                <td style="text-align: right" width="15%">&nbsp;
                 </td>
-                <td style="text-align: left">
-                    &nbsp;
+                <td style="text-align: left">&nbsp;
                 </td>
                 <td style="text-align: left" rowspan="3">
                     <asp:ImageButton runat="server" AlternateText="พิมพ์ข้อมูล" ImageUrl="~/images/button/print.png"
@@ -46,11 +42,9 @@
                 </td>
             </tr>
             <tr>
-                <td style="text-align: right;">
-                    &nbsp;
+                <td style="text-align: right;">&nbsp;
                 </td>
-                <td colspan="3">
-                    &nbsp;
+                <td colspan="3">&nbsp;
                     <asp:Label runat="server" CssClass="label_error" ID="lblError"></asp:Label>
                 </td>
             </tr>
@@ -59,8 +53,8 @@
         </div>
         <div id="divLoad" class="printslip_load" style="display: none;">
         </div>
-        <div id="divIframeShow" class="printslip_report" style="display: none;">
-            <iframe id="IframeShow" name="IframeShow" frameborder="0" height="100%" width="100%"
+        <div id="divIframeShow" class="printslip_report" style="display: none; min-width: 1024px; min-height: 500px;">
+            <iframe id="IframeShow" name="IframeShow" frameborder="0" height="500px" width="1024px"
                 scrolling="no"></iframe>
         </div>
     </center>

@@ -234,6 +234,8 @@ namespace myWeb.App_Control.menu
                 Label lblc_active = (Label)e.Row.FindControl("lblc_active");
                 HiddenField hddMenuID = (HiddenField)e.Row.FindControl("hddMenuID");
                 string strStatus = lblc_active.Text;
+                var dataView = (DataRowView)e.Row.DataItem;
+               
 
                 #region set ImageStatus
                 ImageButton imgStatus = (ImageButton)e.Row.FindControl("imgStatus");
@@ -278,7 +280,7 @@ namespace myWeb.App_Control.menu
                 ImageButton imgDelete = (ImageButton)e.Row.FindControl("imgDelete");
                 imgDelete.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["img"].ToString();
                 imgDelete.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["title"].ToString());
-                imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบ " +  lblMenuName.Text + " ?\");");
+                imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบ : " + Helper.CStr(dataView["MenuName"]) + " ?\");");
                 #endregion
 
                 #region check user can edit/delete
