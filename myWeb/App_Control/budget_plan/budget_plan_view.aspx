@@ -143,14 +143,14 @@
         </tr>
         <tr align="left">
             <td align="right" nowrap valign="middle">
-                <asp:Label runat="server" ID="lblPage6">รหัสยุทธศาสตร์การจัดสรรงบประมาณ :</asp:Label>
+                <asp:Label runat="server" ID="lblPage6">รหัสยุทธศาสตร์:</asp:Label>
             </td>
             <td align="left" nowrap valign="middle">
                 <asp:TextBox ID="txtplan_code" runat="server" CssClass="textboxdis" MaxLength="100"
                     ReadOnly="True"   Width="100px"></asp:TextBox>
             </td>
             <td align="left" nowrap valign="middle" style="text-align: right">
-                <asp:Label ID="Label20" runat="server">ยุทธศาสตร์การจัดสรรงบประมาณ :</asp:Label>
+                <asp:Label ID="Label20" runat="server">ยุทธศาสตร์ :</asp:Label>
             </td>
             <td align="left" nowrap valign="middle">
                 <font face="Tahoma"><asp:TextBox ID="txtplan_name" runat="server" CssClass="textboxdis"
@@ -167,7 +167,7 @@
                     ReadOnly="True"   Width="100px"></asp:TextBox>
             </td>
             <td align="left" nowrap valign="middle" style="text-align: right">
-                <asp:Label runat="server" ID="lblPage11">งาน :</asp:Label>
+                <asp:Label runat="server" ID="lblPage11">งาน/หลักสูตร :</asp:Label>
             </td>
             <td align="left" nowrap valign="middle">
                 <font face="Tahoma"><asp:TextBox ID="txtwork_name" runat="server" CssClass="textboxdis"

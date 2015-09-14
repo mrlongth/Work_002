@@ -165,7 +165,7 @@
                                         DisplayMode="View" CssClass="numberbox" />
                                 </FooterTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="งาน/โครงการ">
+                            <asp:TemplateField HeaderText="งาน/หลักสูตร/โครงการ">
                                 <ItemStyle HorizontalAlign="center" Wrap="false" Width="5%"></ItemStyle>
                                 <ItemTemplate>
                                     <asp:TextBox runat="server" ReadOnly="false" CssClass="textbox" Width="80px" ID="txtitem_project_code"

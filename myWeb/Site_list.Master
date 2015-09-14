@@ -74,7 +74,7 @@
                         </table>
                     </div>
                     <div id="master_page">
-                        <asp:ScriptManager ID="ScriptManager1" runat="server">
+                        <asp:ScriptManager ID="ScriptManager1" runat="server"  AsyncPostBackTimeOut= "360000">
                         </asp:ScriptManager>
                         <asp:UpdatePanel ID="updatePanel1" runat="server">
                             <ContentTemplate>

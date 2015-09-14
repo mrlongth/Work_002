@@ -54,9 +54,7 @@
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="cboPay_Semeter"
                     Display="None" ErrorMessage="กรุณาเลือกภาคเรียนที่" ValidationGroup="A"
                     SetFocusOnError="True"></asp:RequiredFieldValidator>
-                <ajaxtoolkit:ValidatorCalloutExtender ID="RequiredFieldValidator15_ValidatorCalloutExtender"
-                    runat="server" Enabled="True" TargetControlID="RequiredFieldValidator15" HighlightCssClass="validatorCalloutHighlight">
-                </ajaxtoolkit:ValidatorCalloutExtender>
+
             </td>
             <td align="right" nowrap valign="middle">
                 <asp:Label runat="server" ID="Label86">รอบการจ่ายที่ :</asp:Label>
@@ -67,9 +65,7 @@
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="cboPay_Item"
                     Display="None" ErrorMessage="กรุณาเลือกรอบการจ่ายที่ " ValidationGroup="A"
                     SetFocusOnError="True"></asp:RequiredFieldValidator>
-                <ajaxtoolkit:ValidatorCalloutExtender ID="RequiredFieldValidator16_ValidatorCalloutExtender"
-                    runat="server" Enabled="True" TargetControlID="RequiredFieldValidator16" HighlightCssClass="validatorCalloutHighlight">
-                </ajaxtoolkit:ValidatorCalloutExtender>
+
             </td>
         </tr>
         <tr align="left">
@@ -87,9 +83,7 @@
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="txtpay_begin_date"
                     Display="None" ErrorMessage="กรุณาเลือกตั้งแต่วันที่" ValidationGroup="A"
                     SetFocusOnError="True"></asp:RequiredFieldValidator>
-                <ajaxtoolkit:ValidatorCalloutExtender ID="RequiredFieldValidator13_ValidatorCalloutExtender"
-                    runat="server" Enabled="True" TargetControlID="RequiredFieldValidator13" HighlightCssClass="validatorCalloutHighlight">
-                </ajaxtoolkit:ValidatorCalloutExtender>
+
             </td>
             <td align="left" nowrap valign="middle" style="text-align: right">
                 <asp:Label runat="server" ID="Label88">ถึงวันที่ :</asp:Label>
@@ -105,9 +99,6 @@
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="txtpay_end_date"
                     Display="None" ErrorMessage="กรุณาเลือกถึงวันที่" ValidationGroup="A"
                     SetFocusOnError="True"></asp:RequiredFieldValidator>
-                <ajaxtoolkit:ValidatorCalloutExtender ID="ValidatorCalloutExtender1"
-                    runat="server" Enabled="True" TargetControlID="RequiredFieldValidator14" HighlightCssClass="validatorCalloutHighlight">
-                </ajaxtoolkit:ValidatorCalloutExtender>
             </td>
             <td align="right" nowrap valign="middle">
                 <asp:Label runat="server" ID="Label89">จำนวนวัน :</asp:Label>
@@ -133,7 +124,7 @@
                     </ajaxtoolkit:CalendarExtender>
                     <asp:ImageButton ID="imgtxtComments" runat="server" AlternateText="Click to show calendar"
                         ImageAlign="AbsMiddle" ImageUrl="~/images/Calendar_scheduleHS.png" />
-                   
+
 
 
 
@@ -157,7 +148,10 @@
         </tr>
         <tr align="left">
             <td align="right" nowrap valign="middle" style="height: 17px"></td>
-            <td align="left" nowrap valign="middle" colspan="5" style="height: 17px">&nbsp;</td>
+            <td align="left" nowrap valign="middle" colspan="5" style="height: 17px">
+                <asp:ValidationSummary ID="ValidationSummary2" runat="server" ShowMessageBox="True"
+                    ShowSummary="False" ValidationGroup="A" />
+            </td>
         </tr>
         <tr align="left">
             <td align="right" nowrap valign="middle">&nbsp;</td>

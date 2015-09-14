@@ -80,7 +80,7 @@
             </td>
             <td align="left" nowrap valign="middle">
                 <asp:TextBox ID="txtdate_begin" runat="server" CssClass="textbox" Width="100px" />
-<%--                <ajaxtoolkit:CalendarExtender ID="txtdate_begin_CalendarExtender" runat="server"
+                <%--                <ajaxtoolkit:CalendarExtender ID="txtdate_begin_CalendarExtender" runat="server"
                     Enabled="True" PopupButtonID="imgdate_begin" TargetControlID="txtdate_begin" />
                 <asp:ImageButton ID="imgdate_begin" runat="server" AlternateText="Click to show calendar"
                     ImageAlign="AbsMiddle" ImageUrl="~/images/Calendar_scheduleHS.png" />--%>
@@ -90,7 +90,7 @@
             </td>
             <td align="left" nowrap valign="middle">
                 <asp:TextBox ID="txtdate_end" runat="server" CssClass="textbox" Width="100px" />
-<%--                <ajaxtoolkit:CalendarExtender ID="txtdate_end_CalendarExtender" runat="server" Enabled="True"
+                <%--                <ajaxtoolkit:CalendarExtender ID="txtdate_end_CalendarExtender" runat="server" Enabled="True"
                     PopupButtonID="imgdate_end" TargetControlID="txtdate_end" />
                 <asp:ImageButton ID="imgdate_end" runat="server" AlternateText="Click to show calendar"
                     ImageAlign="AbsMiddle" ImageUrl="~/images/Calendar_scheduleHS.png" />--%>
@@ -144,8 +144,9 @@
                     <asp:TextBox ID="txtitem_name" runat="server" CssClass="textbox" MaxLength="100"
                         Width="250px"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtitem_code" Display="None" ErrorMessage="กรุณาป้อนรหัสรายได้" SetFocusOnError="True" ValidationGroup="A"></asp:RequiredFieldValidator>
-                <ajaxtoolkit:ValidatorCalloutExtender ID="ValidatorCalloutExtender2" runat="server" Enabled="True" HighlightCssClass="validatorCalloutHighlight" TargetControlID="RequiredFieldValidator2">
-                </ajaxtoolkit:ValidatorCalloutExtender>
+
+                <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True" ShowSummary="False" ValidationGroup="A" />
+
                 <asp:Label ID="lblError" runat="server" CssClass="label_error"></asp:Label>
             </td>
         </tr>
@@ -176,7 +177,7 @@
             <asp:TemplateField HeaderText="เลขที่การจ่ายเงินเดือน" SortExpression="sp_person_code">
                 <ItemStyle HorizontalAlign="Center" Width="8%" Wrap="True" />
                 <ItemTemplate>
-                        <asp:TextBox ID="txtpayment_doc" runat="server" CssClass="textbox" MaxLength="100"
+                    <asp:TextBox ID="txtpayment_doc" runat="server" CssClass="textbox" MaxLength="100"
                         Width="100" Text='<%# DataBinder.Eval(Container, "DataItem.payment_doc") %>'></asp:TextBox>
                 </ItemTemplate>
             </asp:TemplateField>

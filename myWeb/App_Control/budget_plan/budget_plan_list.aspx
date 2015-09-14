@@ -70,7 +70,7 @@
         </tr>
         <tr>
             <td style="text-align: right;">
-                <asp:Label runat="server" CssClass="label_h" ID="lblPage17">ยุทธศาสตร์การจัดสรรงบประมาณ :</asp:Label>
+                <asp:Label runat="server" CssClass="label_h" ID="lblPage17">ยุทธศาสตร์ :</asp:Label>
             </td>
             <td colspan="3">
                 <asp:DropDownList ID="cboPlan_code" runat="server" CssClass="textbox" AutoPostBack="True"
@@ -84,7 +84,7 @@
                 <asp:ImageButton runat="server" AlternateText="เพิ่มข้อมุล" ImageUrl="~/images/button/Save.png"
                     ID="imgNew"></asp:ImageButton>
                 <asp:ImageButton runat="server" AlternateText="พิมพ์ข้อมูล" ImageUrl="~/images/button/print.png"
-                    ID="imgPrint" OnClick="imgPrint_Click" Visible="False"></asp:ImageButton>
+                    ID="imgPrint" OnClick="imgPrint_Click" ></asp:ImageButton>
             </td>
         </tr>
         <tr>
@@ -131,7 +131,7 @@
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="หน่วยงาน" SortExpression="unit_code">
+            <asp:TemplateField HeaderText="หน่วยงาน" SortExpression="unit_name">
                 <ItemStyle HorizontalAlign="Left" Wrap="True" Width="15%"></ItemStyle>
                 <ItemTemplate>
                     <asp:Label ID="lblunit_code" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.unit_code") %>'
@@ -140,7 +140,7 @@
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="แผนงาน" SortExpression="budget_code" Visible="false">
+            <asp:TemplateField HeaderText="แผนงาน" SortExpression="budget_name" Visible="false">
                 <ItemStyle HorizontalAlign="Left" Wrap="True" Width="12%"></ItemStyle>
                 <ItemTemplate>
                     <asp:Label ID="lblbudget_code" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.budget_code") %>'
@@ -149,7 +149,7 @@
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="ผลผลิต" SortExpression="produce_code" Visible="false">
+            <asp:TemplateField HeaderText="ผลผลิต" SortExpression="produce_name" Visible="false">
                 <ItemStyle HorizontalAlign="Left" Wrap="True" Width="12%"></ItemStyle>
                 <ItemTemplate>
                     <asp:Label ID="lblproduce_code" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.produce_code") %>'
@@ -157,7 +157,7 @@
                     <asp:Label ID="lblproduce_name" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.produce_name") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="กิจกรรม" SortExpression="activity_code">
+            <asp:TemplateField HeaderText="กิจกรรม" SortExpression="activity_name">
                 <ItemStyle HorizontalAlign="Left" Wrap="True" Width="15%"></ItemStyle>
                 <ItemTemplate>
                     <asp:Label ID="lblactivity_code" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.activity_code") %>'
@@ -165,7 +165,7 @@
                     <asp:Label ID="lblactivity_name" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.activity_name") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="ยุทธศาสตร์การจัดสรรงบประมาณ" SortExpression="plan_code">
+            <asp:TemplateField HeaderText="ยุทธศาสตร์" SortExpression="plan_name">
                 <ItemStyle HorizontalAlign="Left" Wrap="True" Width="15%"></ItemStyle>
                 <ItemTemplate>
                     <asp:Label ID="lblplan_code" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.plan_code") %>'
@@ -173,7 +173,7 @@
                     <asp:Label ID="lblplan_name" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.plan_name") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="งาน" SortExpression="work_code">
+            <asp:TemplateField HeaderText="งาน/หลักสูตร" SortExpression="work_name">
                 <ItemStyle HorizontalAlign="Left" Wrap="True" Width="15%"></ItemStyle>
                 <ItemTemplate>
                     <asp:Label ID="lblwork_code" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.work_code") %>'
@@ -181,7 +181,7 @@
                     <asp:Label ID="lblwork_name" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.work_name") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="กองทุน" SortExpression="fund_code">
+            <asp:TemplateField HeaderText="กองทุน" SortExpression="fund_name">
                 <ItemStyle HorizontalAlign="Left" Wrap="True" Width="15%"></ItemStyle>
                 <ItemTemplate>
                     <asp:Label ID="lblfund_code" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.fund_code") %>'

@@ -7,8 +7,7 @@
     <script src="../../js/jquery.min.js" type="text/javascript"></script>
     <table border="0" cellpadding="1" cellspacing="1" style="width: 100%">
         <tr>
-            <td align="right" nowrap valign="middle">
-                &nbsp;
+            <td align="right" nowrap valign="middle">&nbsp;
             </td>
             <td align="left" nowrap valign="middle" style="text-align: right">
                 <asp:Label ID="lblError" runat="server" CssClass="label_error"></asp:Label>
@@ -19,11 +18,9 @@
             </td>
         </tr>
         <tr>
-            <td align="right" nowrap valign="middle">
-                &nbsp;
+            <td align="right" nowrap valign="middle">&nbsp;
             </td>
-            <td align="left" nowrap valign="middle" style="text-align: right">
-                &nbsp;<asp:Label runat="server" ID="lblLastUpdatedDate">Last Updated Date :</asp:Label>
+            <td align="left" nowrap valign="middle" style="text-align: right">&nbsp;<asp:Label runat="server" ID="lblLastUpdatedDate">Last Updated Date :</asp:Label>
             </td>
             <td align="left" style="width: 1px;">
                 <asp:TextBox runat="server" ReadOnly="True" CssClass="textboxdis" Width="148px" ID="txtUpdatedDate"></asp:TextBox>
@@ -42,8 +39,7 @@
                         <td align="right" nowrap valign="middle" width="17%">
                             <asp:Label runat="server" ID="Label15">รหัสบุคลากร :</asp:Label>
                         </td>
-                        <td align="left" nowrap valign="middle" colspan="2" height="20px">
-                            &nbsp;<asp:Label runat="server" ID="lblperson_code" Font-Bold="True" ForeColor="#3366CC">P001</asp:Label>
+                        <td align="left" nowrap valign="middle" colspan="2" height="20px">&nbsp;<asp:Label runat="server" ID="lblperson_code" Font-Bold="True" ForeColor="#3366CC">P001</asp:Label>
                             <asp:Label runat="server" ID="lblPersoncode0" Font-Bold="True" ForeColor="#3366CC">-</asp:Label>
                             <asp:Label runat="server" ID="lblperson_name" Font-Bold="True" ForeColor="#3366CC">XXXXX</asp:Label>
                         </td>
@@ -79,9 +75,8 @@
                             <asp:TextBox runat="server" CssClass="textboxdis" Width="120px" ID="txtitem_type"></asp:TextBox>
                             <asp:RequiredFieldValidator runat="server" ControlToValidate="txtitem_code" ErrorMessage="กรุณาป้อนรหัสรายได้/จ่าย"
                                 Display="None" SetFocusOnError="True" ValidationGroup="A" ID="RequiredFieldValidator1"></asp:RequiredFieldValidator>
-                            <ajaxtoolkit:ValidatorCalloutExtender runat="server" HighlightCssClass="validatorCalloutHighlight"
-                                Enabled="True" TargetControlID="RequiredFieldValidator1" ID="RequiredFieldValidator1_ValidatorCalloutExtender">
-                            </ajaxtoolkit:ValidatorCalloutExtender>
+                            <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True" ShowSummary="False" ValidationGroup="A" />
+
                         </td>
                     </tr>
                     <tr align="left">
@@ -113,12 +108,8 @@
                                 TargetControlID="txtamount" FilterType="Custom, Numbers" ValidChars="." />
                             <asp:RequiredFieldValidator runat="server" ControlToValidate="txtamount" ErrorMessage="กรุณาป้อนจำนวนเงิน"
                                 Display="None" SetFocusOnError="True" ValidationGroup="A" ID="RequiredFieldValidator2"></asp:RequiredFieldValidator>
-                            <ajaxtoolkit:ValidatorCalloutExtender runat="server" HighlightCssClass="validatorCalloutHighlight"
-                                Enabled="True" TargetControlID="RequiredFieldValidator2" ID="RequiredFieldValidator2_ValidatorCalloutExtender">
-                            </ajaxtoolkit:ValidatorCalloutExtender>
                         </td>
-                        <td nowrap rowspan="4" style="text-align: right; width: 8%; vertical-align: bottom;">
-                        </td>
+                        <td nowrap rowspan="4" style="text-align: right; width: 8%; vertical-align: bottom;"></td>
                     </tr>
                     <tr align="left">
                         <td align="right" nowrap valign="middle">
@@ -129,19 +120,15 @@
                         </td>
                     </tr>
                     <tr align="left">
-                        <td align="right" nowrap valign="middle">
-                            &nbsp;
+                        <td align="right" nowrap valign="middle">&nbsp;
                         </td>
-                        <td align="left" nowrap valign="middle">
-                            &nbsp;
+                        <td align="left" nowrap valign="middle">&nbsp;
                         </td>
                     </tr>
                     <tr align="left">
-                        <td align="right" nowrap valign="middle">
-                            &nbsp;
+                        <td align="right" nowrap valign="middle">&nbsp;
                         </td>
-                        <td align="left" nowrap valign="middle">
-                            &nbsp;
+                        <td align="left" nowrap valign="middle">&nbsp;
                         </td>
                     </tr>
                 </table>
@@ -162,11 +149,9 @@
                                 OnSelectedIndexChanged="cboBudget_type_SelectedIndexChanged">
                             </asp:DropDownList>
                         </td>
-                        <td nowrap style="text-align: right">
-                            &nbsp;
+                        <td nowrap style="text-align: right">&nbsp;
                         </td>
-                        <td align="left">
-                            &nbsp;
+                        <td align="left">&nbsp;
                         </td>
                     </tr>
                     <tr align="left">
@@ -177,8 +162,7 @@
                         <td align="left" nowrap valign="middle">
                             <asp:TextBox ID="txtbudget_plan_code" runat="server" CssClass="textbox" MaxLength="10"
                                 Width="80px"></asp:TextBox>&nbsp;<asp:ImageButton ID="imgList_budget_plan" runat="server"
-                                    ImageAlign="AbsBottom" ImageUrl="../../images/controls/view2.gif" CausesValidation="False">
-                                </asp:ImageButton>
+                                    ImageAlign="AbsBottom" ImageUrl="../../images/controls/view2.gif" CausesValidation="False"></asp:ImageButton>
                             <asp:ImageButton ID="imgClear_budget_plan" runat="server" CausesValidation="False"
                                 ImageAlign="AbsBottom" ImageUrl="../../images/controls/erase.gif"></asp:ImageButton>
                         </td>
@@ -205,13 +189,13 @@
                     </tr>
                     <tr align="left">
                         <td align="right" nowrap valign="middle">
-                            <asp:Label ID="Label56" runat="server" CssClass="label_hbk">ยุทธศาสตร์การจัดสรรงบประมาณ :</asp:Label>
+                            <asp:Label ID="Label56" runat="server" CssClass="label_hbk">ยุทธศาสตร์ :</asp:Label>
                         </td>
                         <td align="left" nowrap valign="middle">
                             <asp:TextBox ID="txtplan_name" runat="server" CssClass="textboxdis" Width="250px"></asp:TextBox>
                         </td>
                         <td nowrap style="text-align: right">
-                            <asp:Label ID="Label57" runat="server" CssClass="label_hbk">งาน :</asp:Label>
+                            <asp:Label ID="Label57" runat="server" CssClass="label_hbk">งาน/หลักสูตร :</asp:Label>
                         </td>
                         <td align="left">
                             <asp:TextBox ID="txtwork_name" runat="server" CssClass="textboxdis" Width="250px"></asp:TextBox>
@@ -253,64 +237,46 @@
                             <asp:DropDownList runat="server" CssClass="textbox" ID="cboLot">
                             </asp:DropDownList>
                         </td>
-                        <td nowrap style="text-align: right">
-                            &nbsp;
+                        <td nowrap style="text-align: right">&nbsp;
                         </td>
-                        <td align="left">
-                            &nbsp;
+                        <td align="left">&nbsp;
                         </td>
                     </tr>
                     <tr align="left">
-                        <td align="right" nowrap valign="middle">
-                            &nbsp;&nbsp;
+                        <td align="right" nowrap valign="middle">&nbsp;&nbsp;
                         </td>
-                        <td align="left" nowrap valign="middle">
-                            &nbsp;&nbsp;
+                        <td align="left" nowrap valign="middle">&nbsp;&nbsp;
                         </td>
-                        <td nowrap style="text-align: right">
-                            &nbsp;&nbsp;
+                        <td nowrap style="text-align: right">&nbsp;&nbsp;
                         </td>
-                        <td align="left">
-                            &nbsp;&nbsp;
+                        <td align="left">&nbsp;&nbsp;
                         </td>
                     </tr>
                     <tr align="left">
-                        <td align="right" nowrap valign="middle">
-                            &nbsp;&nbsp;
+                        <td align="right" nowrap valign="middle">&nbsp;&nbsp;
                         </td>
-                        <td align="left" nowrap valign="middle">
-                            &nbsp;&nbsp;
+                        <td align="left" nowrap valign="middle">&nbsp;&nbsp;
                         </td>
-                        <td nowrap style="text-align: right">
-                            &nbsp;&nbsp;
+                        <td nowrap style="text-align: right">&nbsp;&nbsp;
                         </td>
-                        <td align="left">
-                            &nbsp;&nbsp;
+                        <td align="left">&nbsp;&nbsp;
                         </td>
                     </tr>
                     <tr align="left">
-                        <td align="right" nowrap valign="middle">
-                        </td>
-                        <td align="left" nowrap valign="middle">
-                        </td>
-                        <td nowrap style="">
-                        </td>
-                        <td align="left">
-                        </td>
+                        <td align="right" nowrap valign="middle"></td>
+                        <td align="left" nowrap valign="middle"></td>
+                        <td nowrap style=""></td>
+                        <td align="left"></td>
                     </tr>
                     <tr align="left">
-                        <td align="right" nowrap valign="middle">
-                        </td>
-                        <td align="left" nowrap valign="middle" colspan="3">
-                        </td>
+                        <td align="right" nowrap valign="middle"></td>
+                        <td align="left" nowrap valign="middle" colspan="3"></td>
                     </tr>
                     <tr align="left">
-                        <td align="right" nowrap valign="middle" colspan="4">
-                        </td>
+                        <td align="right" nowrap valign="middle" colspan="4"></td>
                     </tr>
                     <tr align="left">
-                        <td align="right" colspan="4" nowrap valign="middle">
-                        </td>
+                        <td align="right" colspan="4" nowrap valign="middle"></td>
                     </tr>
                 </table>
             </ContentTemplate>

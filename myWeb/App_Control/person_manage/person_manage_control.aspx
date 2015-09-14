@@ -7,9 +7,8 @@
         <tr>
             <td align="left" nowrap>
                 <asp:Label runat="server" CssClass="label_error" ID="lblError"></asp:Label>
-                </td>
-            <td align="left" style="width: 1%">
-                &nbsp;</td>
+            </td>
+            <td align="left" style="width: 1%">&nbsp;</td>
         </tr>
         <tr>
             <td align="left" nowrap style="text-align: right">
@@ -31,36 +30,33 @@
     <table border="0" cellpadding="1" cellspacing="1" style="width: 100%">
         <tr align="left">
             <td align="right" nowrap valign="top" style="width: 20%">
-                                        <asp:Label runat="server" CssClass="label_error" ID="Label71">*</asp:Label>
+                <asp:Label runat="server" CssClass="label_error" ID="Label71">*</asp:Label>
                 <asp:Label runat="server" ID="lblFName">รหัสตำแหน่งการบริหาร :</asp:Label>
             </td>
             <td align="left" colspan="2" nowrap valign="top">
                 <asp:TextBox ID="txtperson_manage_code" runat="server" CssClass="textbox" MaxLength="5"
-                      Width="144px" ValidationGroup="A"></asp:TextBox>
+                    Width="144px" ValidationGroup="A"></asp:TextBox>
             </td>
-            <td>
-                &nbsp;
+            <td>&nbsp;
             </td>
-            <td>
-                &nbsp;
+            <td>&nbsp;
             </td>
         </tr>
         <tr align="left">
             <td align="right" nowrap valign="top" style="width: 20%">
-                                        <asp:Label runat="server" CssClass="label_error" 
+                <asp:Label runat="server" CssClass="label_error"
                     ID="Label72">*</asp:Label>
                 <asp:Label ID="Label11" runat="server">ตำแหน่งการบริหาร :</asp:Label>
             </td>
             <td align="left" colspan="2" nowrap valign="top">
-                <font face="Tahoma"><asp:TextBox ID="txtperson_manage_name" runat="server"
-                    CssClass="textbox" MaxLength="100"   Width="344px" CausesValidation="True"
-                    ValidationGroup="A"></asp:TextBox>
+                <font face="Tahoma">
+                    <asp:TextBox ID="txtperson_manage_name" runat="server"
+                        CssClass="textbox" MaxLength="100" Width="344px" CausesValidation="True"
+                        ValidationGroup="A"></asp:TextBox>
                 </font>
             </td>
-            <td>
-                &nbsp;</td>
-            <td>
-                &nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
         </tr>
         <tr align="left">
             <td align="right" nowrap valign="top" style="width: 20%">
@@ -69,14 +65,11 @@
             <td align="left" colspan="2" nowrap valign="top">
                 <asp:CheckBox ID="chkStatus" runat="server" Text="ปกติ" />
             </td>
-            <td>
-                &nbsp;</td>
-            <td>
-                &nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
         </tr>
         <tr align="left">
-            <td align="right" nowrap valign="top">
-                &nbsp;</td>
+            <td align="right" nowrap valign="top">&nbsp;</td>
             <td align="left" colspan="2" nowrap valign="top">
                 <font face="Tahoma">&nbsp;</font></td>
             <td nowrap rowspan="3" align="center" colspan="2">
@@ -85,35 +78,25 @@
             </td>
         </tr>
         <tr align="left">
-            <td align="right" nowrap valign="top">
-                &nbsp;</td>
-            <td align="left" nowrap valign="top">
-                &nbsp;</td>
-            <td align="right" nowrap valign="top">
-                &nbsp;
+            <td align="right" nowrap valign="top">&nbsp;</td>
+            <td align="left" nowrap valign="top">&nbsp;</td>
+            <td align="right" nowrap valign="top">&nbsp;
             </td>
         </tr>
         <tr align="left">
-            <td align="right" nowrap valign="top">
-                &nbsp;
+            <td align="right" nowrap valign="top">&nbsp;
             </td>
-            <td align="left" nowrap valign="top">
-                &nbsp;
+            <td align="left" nowrap valign="top">&nbsp;
             </td>
             <td align="right" nowrap valign="top" style="text-align: left">
+                <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True" ShowSummary="False" ValidationGroup="A" />
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtperson_manage_code"
                     Display="None" ErrorMessage="กรุณาป้อนรหัสตำแหน่งการบริหาร" ValidationGroup="A"
                     SetFocusOnError="True"></asp:RequiredFieldValidator>
-                <cc1:ValidatorCalloutExtender ID="RequiredFieldValidator1_ValidatorCalloutExtender"
-                    runat="server" Enabled="True" TargetControlID="RequiredFieldValidator1" HighlightCssClass="validatorCalloutHighlight">
-                </cc1:ValidatorCalloutExtender>
                 <br />
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtperson_manage_name"
                     Display="None" ErrorMessage="กรุณาป้อนตำแหน่งการบริหาร" ValidationGroup="A" SetFocusOnError="True"></asp:RequiredFieldValidator>
-                <cc1:ValidatorCalloutExtender ID="RequiredFieldValidator2_ValidatorCalloutExtender"
-                    runat="server" Enabled="True" TargetControlID="RequiredFieldValidator2" HighlightCssClass="validatorCalloutHighlight">
-                </cc1:ValidatorCalloutExtender>
             </td>
         </tr>
-        </table>
+    </table>
 </asp:Content>

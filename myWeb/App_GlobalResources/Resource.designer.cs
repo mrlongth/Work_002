@@ -277,7 +277,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ใช้งาน.
+        ///   Looks up a localized string similar to ใช้งาน/หลักสูตร.
         /// </summary>
         internal static string StatusActive {
             get {

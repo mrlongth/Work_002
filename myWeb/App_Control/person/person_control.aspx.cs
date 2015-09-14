@@ -130,18 +130,7 @@ namespace myWeb.App_Control.person
 
                 #endregion
 
-                #region add ajax method to control
-                string strGBK = string.Empty,
-                            strGSJ = string.Empty,
-                            strSOS = string.Empty;
-                strGBK = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["GBK"].ToString();
-                strGSJ = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["GSJ"].ToString();
-                strSOS = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["SOS"].ToString();
-
-                cboPerson_group.Attributes.Add("onchange", "changeMembertype(this,'" + strGBK + "','" + strGSJ + "','" + strSOS + "');");
-                cboPerson_group.AutoPostBack = false;
-                #endregion
-
+            
                 #region Set Image
 
                 imgperson_pic.Attributes.Add("onclick", "OpenPopUp('500px','200px','80%','อัพโหลดรูปบุคลากร' ,'../person/person_upload.aspx?" +
@@ -460,11 +449,11 @@ namespace myWeb.App_Control.person
             //    Label54.Text = "แผนงาน :";
             //    Label55.Text = "ผลผลิต :";
             //    Label53.Text = "กิจกรรม :";
-            //    Label56.Text = "ยุทธศาสตร์การจัดสรรงบประมาณ :";
+            //    Label56.Text = "ยุทธศาสตร์ :";
             //}
             //else
             //{
-            //    Label54.Text = "ยุทธศาสตร์การจัดสรรงบประมาณ :";
+            //    Label54.Text = "ยุทธศาสตร์ :";
             //    Label55.Text = "งานหลัก :";
             //    Label53.Text = "งานรอง :";
             //    Label56.Text = "งานย่อย :";
@@ -620,7 +609,7 @@ namespace myWeb.App_Control.person
                         {
                             strScript =
                                 "alert(\"ไม่สามารถแก้ไขข้อมูลได้ เนื่องจาก" +
-                                "\\nข้อมูลบุคคลกร : " + strperson_thai_name.Trim() + "  " + strperson_thai_surname.Trim() +
+                                "\\nข้อมูลบุคลากร : " + strperson_thai_name.Trim() + "  " + strperson_thai_surname.Trim() +
                                 "\\nซ้ำ\");\n";
                             blnDup = true;
                         }
@@ -664,7 +653,7 @@ namespace myWeb.App_Control.person
                         {
                             strScript =
                                 "alert(\"ไม่สามารถแก้ไขข้อมูลได้ เนื่องจาก" +
-                                "\\nข้อมูลบุคคลกร : " + strperson_thai_name.Trim() + "  " + strperson_thai_surname.Trim() +
+                                "\\nข้อมูลบุคลากร : " + strperson_thai_name.Trim() + "  " + strperson_thai_surname.Trim() +
                                 "\\nซ้ำ\");\n";
                             blnDup = true;
                         }
@@ -1675,7 +1664,7 @@ namespace myWeb.App_Control.person
                 ImageButton imgAdd = (ImageButton)e.Row.FindControl("imgAdd1");
                 imgAdd.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgGridAdd"].Rows[0]["img"].ToString();
                 imgAdd.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgGridAdd"].Rows[0]["title"].ToString());
-                imgAdd.Attributes.Add("onclick", "OpenPopUp('800px','300px','91%','เพิ่มข้อมูลสมาชิก(เครดิตยูเนี่ยน) บุคลากร','person_member_control.aspx?mode=add&person_code=" + txtperson_code.Text +
+                imgAdd.Attributes.Add("onclick", "OpenPopUp('800px','300px','91%','เพิ่มข้อมูลการเป็นสมาชิก','person_member_control.aspx?mode=add&person_code=" + txtperson_code.Text +
                                                               "&person_name=" + txtperson_thai_name.Text + "  " + txtperson_thai_surname.Text +
                                                               "&year=" + txtbudget_plan_year.Text + "','2');return false;");
 
@@ -1731,7 +1720,7 @@ namespace myWeb.App_Control.person
 
                 ImageButton imgEdit = (ImageButton)e.Row.FindControl("imgEdit1");
                 //Label lblCanEdit = (Label)e.Row.FindControl("lblCanEdit2");
-                imgEdit.Attributes.Add("onclick", "OpenPopUp('800px','300px','91%','แก้ไขข้อมูลสมาชิก(เครดิตยูเนี่ยน) บุคลากร','person_member_control.aspx?mode=edit&person_code=" +
+                imgEdit.Attributes.Add("onclick", "OpenPopUp('800px','300px','91%','แก้ไขข้อมูลการเป็นสมาชิก','person_member_control.aspx?mode=edit&person_code=" +
                                                               txtperson_code.Text + "&person_name=" + txtperson_thai_name.Text + "  " + txtperson_thai_surname.Text + "&member_code=" +
                                                               lblmember_code.Text + "&year=" + txtbudget_plan_year.Text + "','2');return false;");
 
@@ -1741,7 +1730,7 @@ namespace myWeb.App_Control.person
                 ImageButton imgDelete = (ImageButton)e.Row.FindControl("imgDelete1");
                 imgDelete.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["img"].ToString();
                 imgDelete.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["title"].ToString());
-                imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบข้อมูลสมาชิก(เครดิตยูเนี่ยน) บุคลากร " + lblmember_code.Text + " : " + lblmember_name.Text + " ?\");");
+                imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบข้อมูลการเป็นสมาชิก" + lblmember_code.Text + " : " + lblmember_name.Text + " ?\");");
                 #endregion
 
             }
@@ -2868,6 +2857,11 @@ namespace myWeb.App_Control.person
         protected void BtnR4_Click(object sender, EventArgs e)
         {
             BindGridViewLoan();
+        }
+
+        protected void cboPerson_group_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            InitcboMember_type();
         }
 
     }

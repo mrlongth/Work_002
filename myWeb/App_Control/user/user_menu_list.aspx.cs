@@ -276,6 +276,13 @@ namespace myWeb.App_Control.user
             strperson_code = txtperson_code.Text.Replace("'", "''").Trim();
             strperson_name = txtperson_name.Text.Replace("'", "''").Trim();
             struser_group_list = cboUserGroup.SelectedValue;
+
+            var strperson_id = txtperson_id.Text.Replace("'", "''").Trim();
+            if (!strperson_id.Equals(""))
+            {
+                strCriteria = strCriteria + "  And  (person_id like '%" + strperson_id + "%') ";
+            }
+
             if (Request.Form[strPrefixCtr + "cboPerson_work_status"] != null)
             {
                 strperson_work_status_code = Request.Form[strPrefixCtr + "cboPerson_work_status"].ToString();

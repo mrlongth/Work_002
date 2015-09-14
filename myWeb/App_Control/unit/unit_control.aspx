@@ -51,18 +51,16 @@
             txtunit_code.value = '';
             txtunit_name.value = '';
             txtunit_name.focus();
-        }    
-    
-    
+        }
+
+
     </script>
 
     <table border="0" cellpadding="1" cellspacing="1" style="width: 100%">
         <tr>
-            <td align="left" nowrap style="width: 90%;">
-                &nbsp;
+            <td align="left" nowrap style="width: 90%;">&nbsp;
             </td>
-            <td align="left" style="width: 0%">
-                &nbsp;
+            <td align="left" style="width: 0%">&nbsp;
             </td>
         </tr>
         <tr>
@@ -88,18 +86,14 @@
             <td align="right" nowrap valign="middle" style="width: 15%">
                 <asp:Label runat="server" ID="Label14">ปีงบประมาณ :</asp:Label>
             </td>
-            <td align="left" nowrap valign="middle">
-                &nbsp;<asp:DropDownList runat="server" CssClass="textbox" ID="cboYear">
-                </asp:DropDownList>
+            <td align="left" nowrap valign="middle">&nbsp;<asp:DropDownList runat="server" CssClass="textbox" ID="cboYear">
+            </asp:DropDownList>
             </td>
-            <td align="center" nowrap style="width: 60px">
-                &nbsp;
+            <td align="center" nowrap style="width: 60px">&nbsp;
             </td>
-            <td align="center" nowrap style="width: 80px">
-                &nbsp;
+            <td align="center" nowrap style="width: 80px">&nbsp;
             </td>
-            <td align="center">
-                &nbsp;
+            <td align="center">&nbsp;
             </td>
         </tr>
         <tr align="left">
@@ -108,14 +102,10 @@
                 <asp:Label runat="server" ID="Label13">สังกัด :</asp:Label>
             </td>
             <td align="left" colspan="4" nowrap valign="middle">
-                <font face="Tahoma">&nbsp;<asp:DropDownList runat="server" CssClass="textbox" ID="cboDirector">
+                <asp:DropDownList runat="server" CssClass="textbox" ID="cboDirector">
                 </asp:DropDownList>
-                    <asp:RequiredFieldValidator runat="server" ControlToValidate="cboDirector" ErrorMessage="กรุณาเลือกแผนวบประมาณ"
-                        Display="None" ValidationGroup="A" ID="RequiredFieldValidator1" SetFocusOnError="True"></asp:RequiredFieldValidator>
-                    <ajaxtoolkit:ValidatorCalloutExtender runat="server" Enabled="True" TargetControlID="RequiredFieldValidator1"
-                        HighlightCssClass="validatorCalloutHighlight" ID="RequiredFieldValidator1_ValidatorCalloutExtender">
-                    </ajaxtoolkit:ValidatorCalloutExtender>
-                </font>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="cboDirector" ErrorMessage="กรุณาเลือกแผนวบประมาณ"
+                    Display="None" ValidationGroup="A" ID="RequiredFieldValidator1" SetFocusOnError="True"></asp:RequiredFieldValidator>
                 <br />
             </td>
         </tr>
@@ -173,9 +163,8 @@
                                     <td align="right" nowrap valign="middle">
                                         <asp:Label ID="lblFName" runat="server">รหัสหน่วยงาน :</asp:Label>
                                     </td>
-                                    <td align="left" nowrap valign="middle">
-                                        &nbsp;<asp:TextBox ID="txtunit_code" runat="server" CssClass="textbox" MaxLength="5"
-                                            ValidationGroup="A" Width="144px"></asp:TextBox>
+                                    <td align="left" nowrap valign="middle">&nbsp;<asp:TextBox ID="txtunit_code" runat="server" CssClass="textbox" MaxLength="5"
+                                        ValidationGroup="A" Width="144px"></asp:TextBox>
                                     </td>
                                     <td align="center" nowrap rowspan="3" style="width: 1%">
                                         <asp:ImageButton ID="imgSaveOnly" runat="server" ImageUrl="~/images/controls/save.jpg"
@@ -200,19 +189,17 @@
                                     <td align="right" nowrap valign="middle">
                                         <asp:Label ID="Label1" runat="server">ประเภทงบประมาณ :</asp:Label>
                                     </td>
-                                    <td align="left" nowrap valign="middle">
-                                        &nbsp;<asp:DropDownList runat="server" CssClass="textbox" ID="cboBudget_type">
-                                        </asp:DropDownList>
+                                    <td align="left" nowrap valign="middle">&nbsp;<asp:DropDownList runat="server" CssClass="textbox" ID="cboBudget_type">
+                                    </asp:DropDownList>
                                     </td>
                                 </tr>
                                 <tr align="left">
                                     <td align="right" nowrap valign="middle">
                                         <asp:Label ID="Label2" runat="server">ลำดับที่ :</asp:Label>
                                     </td>
-                                    <td align="left" nowrap valign="middle">
-                                        &nbsp;<cc2:AwNumeric ID="txtunit_order" runat="server" CssClass="textbox" LeadZero="Show"
-                                            MaxValue="99999999" MinValue="0" Width="100px" DecimalPlaces="0">
-                                        </cc2:AwNumeric>
+                                    <td align="left" nowrap valign="middle">&nbsp;<cc2:AwNumeric ID="txtunit_order" runat="server" CssClass="textbox" LeadZero="Show"
+                                        MaxValue="99999999" MinValue="0" Width="100px" DecimalPlaces="0">
+                                    </cc2:AwNumeric>
                                     </td>
                                 </tr>
                                 <tr align="left">
@@ -221,13 +208,9 @@
                                     </td>
                                     <td align="left" nowrap valign="middle">
                                         <asp:CheckBox ID="chkStatus" runat="server" Text="ปกติ" />
-                                        <font face="Tahoma">
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtunit_name"
-                                                Display="None" ErrorMessage="กรุณาป้อนหน่วยงาน" SetFocusOnError="True" ValidationGroup="A"></asp:RequiredFieldValidator>
-                                            <ajaxtoolkit:ValidatorCalloutExtender ID="RequiredFieldValidator2_ValidatorCalloutExtender"
-                                                runat="server" Enabled="True" TargetControlID="RequiredFieldValidator2" HighlightCssClass="validatorCalloutHighlight">
-                                            </ajaxtoolkit:ValidatorCalloutExtender>
-                                        </font>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtunit_name"
+                                            Display="None" ErrorMessage="กรุณาป้อนหน่วยงาน" SetFocusOnError="True" ValidationGroup="A"></asp:RequiredFieldValidator>
+                                        <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True" ShowSummary="False" ValidationGroup="A" />
                                     </td>
                                 </tr>
                             </table>
@@ -263,7 +246,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="ชื่อหน่วยงาน " SortExpression="unit_name">
                                 <ItemTemplate>
-                                    <asp:Label ID="lblunit_name" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.unit_name") %>'>
+                                    <asp:Label ID="lblunit_name" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.unit_name")%>'>
                                     </asp:Label>
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Left" Wrap="True" Width="60%"></ItemStyle>
@@ -271,7 +254,7 @@
                             <asp:TemplateField HeaderText="ลำดับที่" SortExpression="unit_order">
                                 <ItemStyle HorizontalAlign="Center" Width="10%" Wrap="True" />
                                 <ItemTemplate>
-                                    <asp:Label ID="lblunit_order" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.unit_order") %>'>
+                                    <asp:Label ID="lblunit_order" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.unit_order")%>'>
                                     </asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>

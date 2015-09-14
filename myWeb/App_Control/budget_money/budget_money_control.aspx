@@ -115,8 +115,8 @@
                     document.getElementById("ctl00_ASPxRoundPanel1_ContentPlaceHolder2_GridView1_ctl" + j + "_txtsummoney_credit").value = sum;
                 }
             }
-        }        
-         
+        }
+
     </script>
 
     <table border="0" cellpadding="1" cellspacing="1" style="width: 100%">
@@ -155,14 +155,10 @@
                 <asp:DropDownList runat="server" CssClass="textbox" ID="cboYear" OnSelectedIndexChanged="cboYear_SelectedIndexChanged"
                     AutoPostBack="True">
                 </asp:DropDownList>
-                <font face="Tahoma">
-                    <asp:RequiredFieldValidator runat="server" ControlToValidate="txtbudget_plan_code"
-                        ErrorMessage="กรุณาป้อนผังงบประมาณ" Display="None" ValidationGroup="A" ID="RequiredFieldValidator1"
-                        SetFocusOnError="True"></asp:RequiredFieldValidator>
-                    <ajaxtoolkit:ValidatorCalloutExtender runat="server" Enabled="True" TargetControlID="RequiredFieldValidator1"
-                        ID="RequiredFieldValidator1_ValidatorCalloutExtender" HighlightCssClass="validatorCalloutHighlight">
-                    </ajaxtoolkit:ValidatorCalloutExtender>
-                </font>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="txtbudget_plan_code"
+                    ErrorMessage="กรุณาป้อนผังงบประมาณ" Display="None" ValidationGroup="A" ID="RequiredFieldValidator1"
+                    SetFocusOnError="True"></asp:RequiredFieldValidator>
+                <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True" ShowSummary="False" ValidationGroup="A" />
             </td>
             <td align="left" nowrap valign="middle" style="vertical-align: bottom; width: 1%;">
                 <asp:TextBox runat="server" ReadOnly="True" CssClass="textbox" Width="110px" ID="txtbudget_money_date"
@@ -171,8 +167,7 @@
                     TargetControlID="txtbudget_money_date" ID="txtbudget_money_date_CalendarExtender">
                 </ajaxtoolkit:CalendarExtender>
                 <asp:ImageButton runat="server" AlternateText="Click to show calendar" ImageAlign="AbsMiddle"
-                    ImageUrl="~/images/Calendar_scheduleHS.png" ID="imgperson_start" Visible="False">
-                </asp:ImageButton>
+                    ImageUrl="~/images/Calendar_scheduleHS.png" ID="imgperson_start" Visible="False"></asp:ImageButton>
             </td>
         </tr>
         <tr align="left">
@@ -193,8 +188,7 @@
             <td align="left" nowrap valign="middle">
                 <asp:TextBox runat="server" CssClass="textboxdis" Width="300px" ID="txtbudget_name"></asp:TextBox>
             </td>
-            <td align="left" nowrap valign="middle" style="vertical-align: bottom; width: 1%;">
-                &nbsp;
+            <td align="left" nowrap valign="middle" style="vertical-align: bottom; width: 1%;">&nbsp;
                 <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">LinkButton</asp:LinkButton>
             </td>
         </tr>
@@ -218,19 +212,18 @@
         </tr>
         <tr align="left">
             <td align="right" nowrap valign="middle" style="height: 17px">
-                <asp:Label runat="server" CssClass="label_hbk" ID="Label56">ยุทธศาสตร์การจัดสรรงบประมาณ :</asp:Label>
+                <asp:Label runat="server" CssClass="label_hbk" ID="Label56">ยุทธศาสตร์ :</asp:Label>
             </td>
             <td align="left" nowrap valign="middle" style="height: 17px">
                 <asp:TextBox runat="server" CssClass="textboxdis" Width="300px" ID="txtplan_name"></asp:TextBox>
             </td>
             <td align="left" nowrap valign="middle" style="height: 17px; text-align: right">
-                <asp:Label runat="server" CssClass="label_hbk" ID="Label57">งาน :</asp:Label>
+                <asp:Label runat="server" CssClass="label_hbk" ID="Label57">งาน/หลักสูตร :</asp:Label>
             </td>
             <td align="left" nowrap valign="middle" style="height: 17px">
                 <asp:TextBox runat="server" CssClass="textboxdis" Width="300px" ID="txtwork_name"></asp:TextBox>
             </td>
-            <td align="left" nowrap valign="middle" rowspan="3" style="vertical-align: bottom;
-                width: 1%;">
+            <td align="left" nowrap valign="middle" rowspan="3" style="vertical-align: bottom; width: 1%;">
                 <asp:Button ID="BtnR1" runat="server" OnClick="BtnR1_Click" />
                 <asp:ImageButton runat="server" ValidationGroup="A" ImageUrl="~/images/controls/save.jpg"
                     ID="imgSaveOnly" OnClick="imgSaveOnly_Click"></asp:ImageButton>
@@ -335,28 +328,28 @@
                                 <ItemStyle HorizontalAlign="Center" Width="10%" Wrap="False" />
                                 <ItemTemplate>
                                     <cc1:AwNumeric ID="txtbudget_money_suball" runat="server" Width="80px" LeadZero="Show"
-                                        CssClass="numberbox" Value='<% # DataBinder.Eval(Container, "DataItem.budget_money_suball") %>'></cc1:AwNumeric>
+                                        CssClass="numberbox" Value='<% # DataBinder.Eval(Container, "DataItem.budget_money_suball")%>'></cc1:AwNumeric>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                               <asp:TemplateField HeaderText="ยอดจัดสรรระหว่างปี">
+                            <asp:TemplateField HeaderText="ยอดจัดสรรระหว่างปี">
                                 <ItemStyle HorizontalAlign="Center" Width="10%" Wrap="False" />
                                 <ItemTemplate>
                                     <cc1:AwNumeric ID="txtbudget_money_subadjust" runat="server" Width="80px" LeadZero="Show"
-                                        CssClass="numberbox" Value='<% # DataBinder.Eval(Container, "DataItem.budget_money_subadjust") %>'></cc1:AwNumeric>
+                                        CssClass="numberbox" Value='<% # DataBinder.Eval(Container, "DataItem.budget_money_subadjust")%>'></cc1:AwNumeric>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="ยอดใช้แล้ว">
                                 <ItemStyle HorizontalAlign="Center" Width="10%" Wrap="False" />
                                 <ItemTemplate>
                                     <cc1:AwNumeric ID="txtbudget_money_subuse" runat="server" Width="80px" LeadZero="Show"
-                                        CssClass="numberbox" Value='<% # DataBinder.Eval(Container, "DataItem.budget_money_subuse") %>'></cc1:AwNumeric>
+                                        CssClass="numberbox" Value='<% # DataBinder.Eval(Container, "DataItem.budget_money_subuse")%>'></cc1:AwNumeric>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="ยอดคงเหลือ">
                                 <ItemStyle HorizontalAlign="Center" Width="10%" Wrap="False" />
                                 <ItemTemplate>
                                     <cc1:AwNumeric ID="txtbudget_money_subremain" runat="server" Width="80px" LeadZero="Show"
-                                        CssClass="numberdis" Value='<% # DataBinder.Eval(Container, "DataItem.budget_money_subremain") %>'
+                                        CssClass="numberdis" Value='<% # DataBinder.Eval(Container, "DataItem.budget_money_subremain")%>'
                                         TabIndex="-1"></cc1:AwNumeric>
                                 </ItemTemplate>
                             </asp:TemplateField>
@@ -376,7 +369,7 @@
                 <cc1:AwNumeric ID="txtbudget_money_all" runat="server" Text="0.00" Font-Bold="True" Width="120px"
                     CssClass="numberdis" LeadZero="Show" MaxValue="99999999999" MinValue="-99999999999"></cc1:AwNumeric>
             </td>
-             <td style="text-align: right">
+            <td style="text-align: right">
                 <asp:Label runat="server" ID="Label1" Font-Bold="True">ยอดจัดสรรระหว่างปี :</asp:Label>
             </td>
             <td style="text-align: right; width: 1%;">

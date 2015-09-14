@@ -81,7 +81,7 @@ namespace myWeb.Person_Manage
             oCommon.SEL_SQL(strSQL, ref ds, ref _strMessage);
             string strYear = string.Empty;
             strYear = cboPay_Year.SelectedValue;
-            if (strYear.Equals(""))
+            if (ds.Tables[0].Rows.Count > 0)
             {
                 strYear = ds.Tables[0].Rows[ds.Tables[0].Rows.Count - 1]["pay_year"].ToString();
             }
@@ -106,8 +106,9 @@ namespace myWeb.Person_Manage
         protected void imgPrint_Click(object sender, ImageClickEventArgs e)
         {
             //divIframeShow.Height = Unit.Pixel(10);
-            PrintIframe();
-         }
+            //PrintIframe();
+            PrintData();
+        }
 
         protected void PrintData()
         {

@@ -1,39 +1,46 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site_list.Master" EnableEventValidation="false"
     AutoEventWireup="true" CodeBehind="payment_medical_list.aspx.cs" Inherits="myWeb.App_Control.payment_medical.payment_medical_list"
     Title="แสดงข้อมูลการจ่ายเงินค่ารักษาพยาบาล" %>
+
 <%@ Register TagPrefix="cc1" Namespace="Aware.WebControls" Assembly="Aware.WebControls" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <table cellpadding="1" cellspacing="1" style="width: 100%" border="0">
         <tr>
-            <td style="text-align: right;" width="15%">
+            <td style="text-align: right;" width="10%">
                 <asp:Label runat="server" CssClass="label_h" ID="lblPage4">ปีงบประมาณ :</asp:Label>
             </td>
-            <td>
+            <td width="25%">
                 <asp:DropDownList runat="server" CssClass="textbox" ID="cboYear" AutoPostBack="True"
                     OnSelectedIndexChanged="cboYear_SelectedIndexChanged">
                 </asp:DropDownList>
             </td>
-            <td style="text-align: right" width="15%" colspan="2">
+            <td style="text-align: right" width="10%">
                 <asp:Label runat="server" CssClass="label_h" ID="lblPage7">กลุ่มบุคลากร :
                 </asp:Label>
             </td>
-            <td style="text-align: left" colspan="2">
+            <td style="text-align: left" width="15%">
                 <asp:DropDownList runat="server" CssClass="textbox" ID="cboPerson_group"
                     AutoPostBack="True" OnSelectedIndexChanged="cboPerson_group_SelectedIndexChanged">
                 </asp:DropDownList>
+            </td>
+            <td rowspan="5" style="text-align: right; vertical-align: bottom; width: 15%;">
+                <asp:ImageButton runat="server" AlternateText="ค้นหาข้อมูล" ImageUrl="~/images/button/Search.png"
+                    ID="imgFind" OnClick="imgFind_Click"></asp:ImageButton>
+                <asp:ImageButton runat="server" AlternateText="เพิ่มข้อมุล" ImageUrl="~/images/button/Save.png"
+                    ID="imgNew"></asp:ImageButton>
             </td>
         </tr>
         <tr>
             <td style="text-align: right;">
                 <asp:Label runat="server" CssClass="label_h" ID="lblPage8">รอบปีที่จ่าย :</asp:Label>
             </td>
-            <td width="5%">
+            <td>
                 <asp:DropDownList runat="server" CssClass="textbox" ID="cboPay_Year"
                     AutoPostBack="True" OnSelectedIndexChanged="cboPay_Year_SelectedIndexChanged">
                 </asp:DropDownList>
             </td>
-            <td style="text-align: right" width="15%" colspan="2">
+            <td style="text-align: right">
                 <asp:Label runat="server" CssClass="label_h" ID="lblPage1">รอบเดือนที่จ่าย :</asp:Label>
             </td>
             <td style="text-align: left">
@@ -41,12 +48,7 @@
                     AutoPostBack="True" OnSelectedIndexChanged="cboPay_Month_SelectedIndexChanged">
                 </asp:DropDownList>
             </td>
-            <td rowspan="4" style="text-align: right; vertical-align: bottom; width: 30%;">
-                <asp:ImageButton runat="server" AlternateText="ค้นหาข้อมูล" ImageUrl="~/images/button/Search.png"
-                    ID="imgFind" OnClick="imgFind_Click"></asp:ImageButton>
-                <asp:ImageButton runat="server" AlternateText="เพิ่มข้อมุล" ImageUrl="~/images/button/Save.png"
-                    ID="imgNew"></asp:ImageButton>
-            </td>
+
         </tr>
         <tr>
             <td style="text-align: right;">
@@ -62,25 +64,34 @@
                 <asp:Label runat="server" CssClass="label_h" ID="lblPage13">หน่วยงาน :
                 </asp:Label>
             </td>
-            <td colspan="2">
+            <td style="text-align: left">
                 <asp:DropDownList runat="server" CssClass="textbox" ID="cboUnit"
                     AutoPostBack="True" OnSelectedIndexChanged="cboUnit_SelectedIndexChanged">
                 </asp:DropDownList>
             </td>
+
         </tr>
         <tr>
             <td style="text-align: right;">
                 <asp:Label runat="server" CssClass="label_h" ID="lblperson_name">รหัสบุคลากร :</asp:Label>
             </td>
-            <td colspan="4">
+            <td>
                 <asp:TextBox runat="server" CssClass="textbox" Width="100px" ID="txtperson_code"></asp:TextBox>
                 &nbsp;<asp:ImageButton runat="server" ImageAlign="AbsBottom" ImageUrl="../../images/controls/view2.gif"
                     ID="imgList_person"></asp:ImageButton>
                 <asp:ImageButton runat="server" CausesValidation="False" ImageAlign="AbsBottom" ImageUrl="../../images/controls/erase.gif"
                     ID="imgClear_person"></asp:ImageButton>
-                &nbsp;<asp:TextBox runat="server" CssClass="textbox" Width="300px"
+                &nbsp;<asp:TextBox runat="server" CssClass="textbox" Width="200px"
                     ID="txtperson_name"></asp:TextBox>
             </td>
+            <td style="text-align: right">
+                <asp:Label runat="server" CssClass="label_h" ID="lblPage14">เลขที่บัตรประชาชน :
+                </asp:Label>
+            </td>
+            <td style="text-align: left">
+                <asp:TextBox runat="server" CssClass="textbox" Width="175px" ID="txtperson_id"></asp:TextBox>
+            </td>
+
         </tr>
         <tr>
             <td style="text-align: right;">
@@ -89,7 +100,7 @@
             <td>
                 <asp:TextBox runat="server" CssClass="textbox" Width="100px" ID="txtpayment_doc"></asp:TextBox>
             </td>
-            <td style="text-align: right" colspan="2">
+            <td style="text-align: right">
                 <asp:Label runat="server" CssClass="label_h" ID="lblPage11">สถานะ : </asp:Label>
             </td>
             <td>
@@ -128,8 +139,8 @@
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            
-             <asp:TemplateField HeaderText="วันที่" SortExpression="payment_date">
+
+            <asp:TemplateField HeaderText="วันที่" SortExpression="payment_date" Visible="false">
                 <ItemStyle HorizontalAlign="Center" Width="10%" Wrap="True" />
                 <ItemTemplate>
                     <cc1:AwLabelDateTime ID="lblpayment_date" runat="server" Value='<% # DataBinder.Eval(Container, "DataItem.payment_date") %>' DateFormat="dd/MM/yyyy">
@@ -141,6 +152,14 @@
                 <ItemStyle HorizontalAlign="Center" Width="8%" Wrap="True" />
                 <ItemTemplate>
                     <asp:Label ID="lblperson_code" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.mc_person_code") %>'>
+                    </asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+
+            <asp:TemplateField HeaderText="เลขทีบัตรประชาชน " SortExpression="person_id">
+                <ItemStyle HorizontalAlign="Center" Width="10%" Wrap="True" />
+                <ItemTemplate>
+                    <asp:Label ID="lblperson_id" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.person_id") %>'>
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>

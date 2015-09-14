@@ -166,6 +166,15 @@ namespace myWeb.App_Control.payment {
         protected global::System.Web.UI.WebControls.DropDownList cboPay_Year;
         
         /// <summary>
+        /// Label87 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label87;
+        
+        /// <summary>
         /// Label21 control.
         /// </summary>
         /// <remarks>
@@ -211,6 +220,15 @@ namespace myWeb.App_Control.payment {
         protected global::System.Web.UI.WebControls.TextBox txtperson_name;
         
         /// <summary>
+        /// Label88 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label88;
+        
+        /// <summary>
         /// Label50 control.
         /// </summary>
         /// <remarks>
@@ -229,22 +247,13 @@ namespace myWeb.App_Control.payment {
         protected global::System.Web.UI.WebControls.DropDownList cboPerson_group;
         
         /// <summary>
-        /// RequiredFieldValidator2 control.
+        /// RequiredFieldValidator4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
-        
-        /// <summary>
-        /// RequiredFieldValidator2_ValidatorCalloutExtender control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.ValidatorCalloutExtender RequiredFieldValidator2_ValidatorCalloutExtender;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator4;
         
         /// <summary>
         /// Label49 control.
@@ -290,6 +299,15 @@ namespace myWeb.App_Control.payment {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtposition_name;
+        
+        /// <summary>
+        /// RequiredFieldValidator3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
         
         /// <summary>
         /// Label86 control.
@@ -679,22 +697,13 @@ namespace myWeb.App_Control.payment {
         protected global::System.Web.UI.WebControls.CheckBox chkStatus;
         
         /// <summary>
-        /// RequiredFieldValidator1 control.
+        /// ValidationSummary1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
-        
-        /// <summary>
-        /// RequiredFieldValidator1_ValidatorCalloutExtender control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.ValidatorCalloutExtender RequiredFieldValidator1_ValidatorCalloutExtender;
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
         
         /// <summary>
         /// TabPanel3 control.

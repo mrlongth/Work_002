@@ -15,7 +15,8 @@
                 <asp:Label runat="server" CssClass="label_error" ID="lblError"></asp:Label>
             </td>
             <td style="width: 20%; text-align: right;">&nbsp;</td>
-            <td colspan="2" style="height: 23px">&nbsp;</td>
+            <td style="height: 23px">&nbsp;</td>
+            <td style="height: 23px">&nbsp;</td>
         </tr>
         <tr>
             <td style="text-align: right; width: 20%;">
@@ -31,19 +32,28 @@
                 <asp:Label runat="server" CssClass="label_h" ID="lblPage8">หน่วยงาน :
                 </asp:Label>
             </td>
-            <td colspan="2" style="height: 23px">
+            <td style="height: 23px">
                 <asp:DropDownList runat="server" CssClass="textbox" ID="cboUnit" AutoPostBack="True"
                     OnSelectedIndexChanged="cboUnit_SelectedIndexChanged">
                 </asp:DropDownList>
             </td>
+            <td style="height: 23px">
+                &nbsp;</td>
         </tr>
         <tr>
             <td style="text-align: right; width: 20%;">
                 <asp:Label runat="server" CssClass="label_h" ID="lblPage1">อาจารย์พิเศษ :</asp:Label>
             </td>
-            <td colspan="3">
-                <asp:TextBox runat="server" CssClass="textbox" Width="100px" ID="txtsp_person_code"></asp:TextBox>
-                &nbsp;<asp:TextBox runat="server" CssClass="textbox" Width="350px" ID="txtperson_name"></asp:TextBox>
+            <td>
+                <asp:TextBox runat="server" CssClass="textbox" Width="80px" ID="txtsp_person_code"></asp:TextBox>
+                &nbsp;<asp:TextBox runat="server" CssClass="textbox" Width="200px" ID="txtperson_name"></asp:TextBox>
+            </td>
+            <td style="text-align: right">
+                <asp:Label runat="server" CssClass="label_h" ID="lblPage9">เลขที่บัตรประชาชน :
+                </asp:Label>
+            </td>
+            <td>
+                <asp:TextBox runat="server" CssClass="textbox" Width="175px" ID="txtperson_id"></asp:TextBox>
             </td>
             <td style="text-align: right; vertical-align: bottom;" rowspan="2">
                 <asp:ImageButton runat="server" AlternateText="ค้นหาข้อมูล" ImageUrl="~/images/button/Search.png"
@@ -92,6 +102,13 @@
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
+              <asp:TemplateField HeaderText="เลขทีบัตรประชาชน " SortExpression="person_id">
+                <ItemStyle HorizontalAlign="Center" Width="10%" Wrap="True" />
+                <ItemTemplate>
+                    <asp:Label ID="lblperson_id" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.person_id") %>'>
+                    </asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:TemplateField HeaderText="ชื่อบุคลากร" SortExpression="person_thai_name">
                 <ItemStyle HorizontalAlign="Left" Width="12%" Wrap="True" />
                 <ItemTemplate>
@@ -127,7 +144,7 @@
             </asp:TemplateField>
             
             
-             <asp:TemplateField HeaderText="งาน/สาขา" SortExpression="work_name">
+             <asp:TemplateField HeaderText="งาน/หลักสูตร/สาขา" SortExpression="work_name">
                 <ItemStyle HorizontalAlign="Left" Width="15%" Wrap="True" />
                 <ItemTemplate>
                     <asp:Label ID="lblwork_name" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.work_name")%>'>

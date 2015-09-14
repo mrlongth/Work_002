@@ -3,25 +3,23 @@
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxtoolkit" %>
 <%@ Register Assembly="Aware.WebControls" Namespace="Aware.WebControls" TagPrefix="cc1" %>
-<asp:content id="Content1" contentplaceholderid="ContentPlaceHolder1" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <script src="../../js/jquery.min.js" type="text/javascript"></script>
 
-    <asp:ValidationSummary runat="server" id="valValidationSummary" >
-    </asp:ValidationSummary>
-    
+    <asp:ValidationSummary runat="server" ID="valValidationSummary"></asp:ValidationSummary>
+
     <table border="0" cellpadding="1" cellspacing="1" style="width: 100%">
         <tr>
-            <td align="right" nowrap valign="middle">
-                &nbsp;
+            <td align="right" nowrap valign="middle">&nbsp;
             </td>
             <td align="left" nowrap valign="middle" style="text-align: right">
-                <asp:label id="lblError" runat="server" cssclass="label_error"></asp:label>
-                <asp:label runat="server" id="lblLastUpdatedBy">Last Updated By :</asp:label>
+                <asp:Label ID="lblError" runat="server" CssClass="label_error"></asp:Label>
+                <asp:Label runat="server" ID="lblLastUpdatedBy">Last Updated By :</asp:Label>
             </td>
             <td align="left" style="width: 1%">
-                <asp:textbox runat="server" readonly="True" cssclass="textboxdis" width="148px" id="txtUpdatedBy">
-                </asp:textbox>
+                <asp:TextBox runat="server" ReadOnly="True" CssClass="textboxdis" Width="148px" ID="txtUpdatedBy">
+                </asp:TextBox>
             </td>
         </tr>
         <t>
@@ -45,113 +43,108 @@
                 <table border="0" cellpadding="1" cellspacing="1" style="width: 100%">
                     <tr align="left">
                         <td align="right" nowrap valign="middle" width="17%">
-                            <asp:label runat="server" id="Label15">เลขที่เอกสาร :</asp:label>
+                            <asp:Label runat="server" ID="Label15">เลขที่เอกสาร :</asp:Label>
                         </td>
                         <td align="left" nowrap valign="middle" colspan="2" style="width: 55%">
-                            <asp:label runat="server" id="lblpayment_doc" font-bold="True" forecolor="#3366CC">XXXXX</asp:label>
+                            <asp:Label runat="server" ID="lblpayment_doc" Font-Bold="True" ForeColor="#3366CC">XXXXX</asp:Label>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <asp:label runat="server" id="Label73x">รหัสบุคลากร :</asp:label>
-                            &nbsp;<asp:label runat="server" id="lblperson_code" font-bold="True" forecolor="#3366CC">P001</asp:label>
-                            <asp:label runat="server" id="lblPersoncode0" font-bold="True" forecolor="#3366CC">-</asp:label>
-                            <asp:label runat="server" id="lblperson_name" font-bold="True" forecolor="#3366CC">XXXXX</asp:label>
+                            <asp:Label runat="server" ID="Label73x">รหัสบุคลากร :</asp:Label>
+                            &nbsp;<asp:Label runat="server" ID="lblperson_code" Font-Bold="True" ForeColor="#3366CC">P001</asp:Label>
+                            <asp:Label runat="server" ID="lblPersoncode0" Font-Bold="True" ForeColor="#3366CC">-</asp:Label>
+                            <asp:Label runat="server" ID="lblperson_name" Font-Bold="True" ForeColor="#3366CC">XXXXX</asp:Label>
                         </td>
                     </tr>
                     <tr align="left">
                         <td align="right" nowrap valign="middle">
-                            <asp:label runat="server" id="Label14">ปีงบประมาณ :</asp:label>
+                            <asp:Label runat="server" ID="Label14">ปีงบประมาณ :</asp:Label>
                         </td>
                         <td align="left" nowrap valign="middle" colspan="2">
-                            <asp:textbox runat="server" cssclass="textboxdis" width="100px" id="txtyear">
-                            </asp:textbox>
+                            <asp:TextBox runat="server" CssClass="textboxdis" Width="100px" ID="txtyear">
+                            </asp:TextBox>
                         </td>
                     </tr>
                     <tr align="left">
                         <td align="right" nowrap valign="middle">
-                            <asp:label runat="server" cssclass="label_error" id="Label71">*</asp:label>
-                            <asp:label runat="server" id="lblPage9">รายได้/จ่าย :</asp:label>
+                            <asp:Label runat="server" CssClass="label_error" ID="Label71">*</asp:Label>
+                            <asp:Label runat="server" ID="lblPage9">รายได้/จ่าย :</asp:Label>
                         </td>
                         <td align="left" colspan="2" nowrap valign="middle">
                             <asp:HiddenField ID="hddpayment_detail_id" runat="server" />
-                            <asp:textbox runat="server" cssclass="textbox" width="100px" id="txtitem_code" maxlength="10">
-                            </asp:textbox>
-                            &nbsp;<asp:imagebutton runat="server" imagealign="AbsBottom" imageurl="../../images/controls/view2.gif"
-                                id="imgList_item"></asp:imagebutton>
-                            <asp:imagebutton runat="server" causesvalidation="False" imagealign="AbsBottom" imageurl="../../images/controls/erase.gif"
-                                id="imgClear_item">
-                            </asp:imagebutton>
-                            &nbsp;<asp:textbox runat="server" cssclass="textbox" width="330px" id="txtitem_name"
-                                maxlength="100"></asp:textbox>
+                            <asp:TextBox runat="server" CssClass="textbox" Width="100px" ID="txtitem_code" MaxLength="10">
+                            </asp:TextBox>
+                            &nbsp;<asp:ImageButton runat="server" ImageAlign="AbsBottom" ImageUrl="../../images/controls/view2.gif"
+                                ID="imgList_item"></asp:ImageButton>
+                            <asp:ImageButton runat="server" CausesValidation="False" ImageAlign="AbsBottom" ImageUrl="../../images/controls/erase.gif"
+                                ID="imgClear_item"></asp:ImageButton>
+                            &nbsp;<asp:TextBox runat="server" CssClass="textbox" Width="330px" ID="txtitem_name"
+                                MaxLength="100"></asp:TextBox>
                         </td>
                     </tr>
                     <tr align="left">
                         <td align="right" nowrap valign="middle">
-                            <asp:label runat="server" id="lblPage16">รายละเอียดรายการ :</asp:label>
+                            <asp:Label runat="server" ID="lblPage16">รายละเอียดรายการ :</asp:Label>
                         </td>
                         <td align="left" colspan="2" nowrap valign="middle">
-                            <asp:textbox runat="server" cssclass="textbox" width="490px" id="txtcomments_sub"
-                                maxlength="255">
-                            </asp:textbox>
+                            <asp:TextBox runat="server" CssClass="textbox" Width="490px" ID="txtcomments_sub"
+                                MaxLength="255">
+                            </asp:TextBox>
                         </td>
                     </tr>
                     <tr align="left">
                         <td align="right" nowrap valign="middle">
-                            <asp:label runat="server" id="lblPage3">ประเภทรายการ :</asp:label>
+                            <asp:Label runat="server" ID="lblPage3">ประเภทรายการ :</asp:Label>
                         </td>
                         <td align="left" colspan="2" nowrap valign="middle">
-                            <asp:textbox runat="server" cssclass="textboxdis" width="100px" id="txtitem_type">
-                            </asp:textbox>
-                            <asp:requiredfieldvalidator runat="server" controltovalidate="txtitem_code" errormessage="กรุณาป้อนรหัสรายได้/จ่าย"
-                                display="None" setfocusonerror="True" validationgroup="A" id="RequiredFieldValidator1">
-                            </asp:requiredfieldvalidator>
+                            <asp:TextBox runat="server" CssClass="textboxdis" Width="100px" ID="txtitem_type">
+                            </asp:TextBox>
+                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtitem_code" ErrorMessage="กรุณาป้อนรหัสรายได้/จ่าย"
+                                Display="None" SetFocusOnError="True" ValidationGroup="A" ID="RequiredFieldValidator1">
+                            </asp:RequiredFieldValidator>
                         </td>
                     </tr>
                     <tr align="left">
                         <td align="right" nowrap valign="middle" style="height: 22px">
-                            <asp:label runat="server" id="lblPage4">หมวดรายได้/จ่าย :</asp:label>
+                            <asp:Label runat="server" ID="lblPage4">หมวดรายได้/จ่าย :</asp:Label>
                         </td>
                         <td align="left" colspan="2" nowrap valign="middle">
-                            <asp:textbox runat="server" autopostback="True" cssclass="textboxdis" width="330px"
-                                id="txtitem_group_name" maxlength="100" readonly="True">
-                            </asp:textbox>
+                            <asp:TextBox runat="server" AutoPostBack="True" CssClass="textboxdis" Width="330px"
+                                ID="txtitem_group_name" MaxLength="100" ReadOnly="True">
+                            </asp:TextBox>
                         </td>
                     </tr>
                     <tr align="left">
                         <td align="right" nowrap valign="middle">
-                            <asp:label runat="server" id="lblPage15">งบ :</asp:label>
+                            <asp:Label runat="server" ID="lblPage15">งบ :</asp:Label>
                         </td>
                         <td align="left" nowrap valign="middle">
-                            <asp:textbox runat="server" cssclass="textboxdis" width="330px" id="txtlot_name"
-                                maxlength="100" readonly="True">
-                            </asp:textbox>
+                            <asp:TextBox runat="server" CssClass="textboxdis" Width="330px" ID="txtlot_name"
+                                MaxLength="100" ReadOnly="True">
+                            </asp:TextBox>
                         </td>
-                        <td align="left" nowrap valign="middle" rowspan="3" style="width: 1%; vertical-align: bottom;
-                            text-align: right;">
+                        <td align="left" nowrap valign="middle" rowspan="3" style="width: 1%; vertical-align: bottom; text-align: right;"></td>
+                    </tr>
+                    <tr align="left">
+                        <td align="right" nowrap valign="middle">
+                            <asp:Label runat="server" CssClass="label_error" ID="Label72">*</asp:Label>
+                            <asp:Label runat="server" ID="lblPage7">จำนวนเงิน :</asp:Label>
+                        </td>
+                        <td align="left" nowrap valign="middle">
+                            <cc1:AwNumeric ID="txtamount" runat="server" CssClass="textbox" LeadZero="Show" MaxValue="99999999"
+                                MinValue="-99999999" Width="100px">
+                            </cc1:AwNumeric>
+                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtamount" ErrorMessage="กรุณาป้อนจำนวนเงิน"
+                                Display="None" SetFocusOnError="True" ValidationGroup="A" ID="RequiredFieldValidator2">
+                            </asp:RequiredFieldValidator>
+                            <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True" ShowSummary="False" ValidationGroup="A" />
+
                         </td>
                     </tr>
                     <tr align="left">
                         <td align="right" nowrap valign="middle">
-                            <asp:label runat="server" cssclass="label_error" id="Label72">*</asp:label>
-                            <asp:label runat="server" id="lblPage7">จำนวนเงิน :</asp:label>
+                            <asp:Label runat="server" ID="Label12">สถานะ :</asp:Label>
                         </td>
                         <td align="left" nowrap valign="middle">
-                            <cc1:awnumeric id="txtamount" runat="server" cssclass="textbox" leadzero="Show" maxvalue="99999999"
-                                minvalue="-99999999" width="100px">
-                            </cc1:awnumeric>
-                            <asp:requiredfieldvalidator runat="server" controltovalidate="txtamount" errormessage="กรุณาป้อนจำนวนเงิน"
-                                display="None" setfocusonerror="True" validationgroup="A" id="RequiredFieldValidator2">
-                            </asp:requiredfieldvalidator>
-                            <ajaxtoolkit:ValidatorCalloutExtender runat="server" HighlightCssClass="validatorCalloutHighlight"
-                                Enabled="True" TargetControlID="RequiredFieldValidator2" ID="RequiredFieldValidator2_ValidatorCalloutExtender">
-                            </ajaxtoolkit:ValidatorCalloutExtender>
-                        </td>
-                    </tr>
-                    <tr align="left">
-                        <td align="right" nowrap valign="middle">
-                            <asp:label runat="server" id="Label12">สถานะ :</asp:label>
-                        </td>
-                        <td align="left" nowrap valign="middle">
-                            <asp:checkbox runat="server" text="ปกติ" id="chkStatus">
-                            </asp:checkbox>
+                            <asp:CheckBox runat="server" Text="ปกติ" ID="chkStatus"></asp:CheckBox>
                         </td>
                     </tr>
                 </table>
@@ -165,182 +158,162 @@
                 <table border="0" cellpadding="2" cellspacing="2" style="width: 100%;">
                     <tr align="left">
                         <td align="right" nowrap valign="middle">
-                            <asp:label id="Label1" runat="server">ประเภทงบประมาณ :</asp:label>
+                            <asp:Label ID="Label1" runat="server">ประเภทงบประมาณ :</asp:Label>
                         </td>
                         <td align="left" nowrap valign="middle">
                             <asp:HiddenField ID="hddBudget_type_old" runat="server" />
-                            <asp:dropdownlist runat="server" cssclass="textbox" id="cboBudget_type" autopostback="true"
-                                onselectedindexchanged="cboBudget_type_SelectedIndexChanged">
-                            </asp:dropdownlist>
+                            <asp:DropDownList runat="server" CssClass="textbox" ID="cboBudget_type" AutoPostBack="true"
+                                OnSelectedIndexChanged="cboBudget_type_SelectedIndexChanged">
+                            </asp:DropDownList>
                         </td>
-                        <td nowrap style="text-align: right">
-                            &nbsp;
+                        <td nowrap style="text-align: right">&nbsp;
                         </td>
-                        <td align="left">
-                            &nbsp;
+                        <td align="left">&nbsp;
                         </td>
                     </tr>
                     <tr align="left">
                         <td align="right" nowrap valign="middle">
-                            <asp:label id="Label70" runat="server" cssclass="label_error">*</asp:label>
-                            <asp:label id="Label52" runat="server" cssclass="label_hbk">ผังงบประมาณ :</asp:label>
+                            <asp:Label ID="Label70" runat="server" CssClass="label_error">*</asp:Label>
+                            <asp:Label ID="Label52" runat="server" CssClass="label_hbk">ผังงบประมาณ :</asp:Label>
                         </td>
                         <td align="left" nowrap valign="middle">
-                            <asp:textbox id="txtbudget_plan_code" runat="server" cssclass="textbox" maxlength="10"
-                                width="80px">
-                            </asp:textbox>&nbsp;<asp:imagebutton id="imgList_budget_plan" runat="server" imagealign="AbsBottom"
-                                imageurl="../../images/controls/view2.gif" causesvalidation="False">
-                            </asp:imagebutton>
-                            <asp:imagebutton id="imgClear_budget_plan" runat="server" causesvalidation="False"
-                                imagealign="AbsBottom" imageurl="../../images/controls/erase.gif">
-                            </asp:imagebutton>
+                            <asp:TextBox ID="txtbudget_plan_code" runat="server" CssClass="textbox" MaxLength="10"
+                                Width="80px">
+                            </asp:TextBox>&nbsp;<asp:ImageButton ID="imgList_budget_plan" runat="server" ImageAlign="AbsBottom"
+                                ImageUrl="../../images/controls/view2.gif" CausesValidation="False"></asp:ImageButton>
+                            <asp:ImageButton ID="imgClear_budget_plan" runat="server" CausesValidation="False"
+                                ImageAlign="AbsBottom" ImageUrl="../../images/controls/erase.gif"></asp:ImageButton>
                         </td>
                         <td nowrap style="text-align: right">
-                            <asp:label id="Label54" runat="server" cssclass="label_hbk">แผนงาน :</asp:label>
+                            <asp:Label ID="Label54" runat="server" CssClass="label_hbk">แผนงาน :</asp:Label>
                         </td>
                         <td align="left">
-                            <asp:textbox id="txtbudget_name" runat="server" cssclass="textboxdis" width="250px">
-                            </asp:textbox>
+                            <asp:TextBox ID="txtbudget_name" runat="server" CssClass="textboxdis" Width="250px">
+                            </asp:TextBox>
                         </td>
                     </tr>
                     <tr align="left">
                         <td align="right" nowrap valign="middle">
-                            <asp:label id="Label55" runat="server" cssclass="label_hbk">ผลผลิต :</asp:label>
+                            <asp:Label ID="Label55" runat="server" CssClass="label_hbk">ผลผลิต :</asp:Label>
                         </td>
                         <td align="left" nowrap valign="middle">
-                            <asp:textbox id="txtproduce_name" runat="server" cssclass="textboxdis" width="250px">
-                            </asp:textbox>
+                            <asp:TextBox ID="txtproduce_name" runat="server" CssClass="textboxdis" Width="250px">
+                            </asp:TextBox>
                         </td>
                         <td nowrap style="text-align: right">
-                            <asp:label id="Label53" runat="server" cssclass="label_hbk">กิจกรรม :</asp:label>
+                            <asp:Label ID="Label53" runat="server" CssClass="label_hbk">กิจกรรม :</asp:Label>
                         </td>
                         <td align="left">
-                            <asp:textbox id="txtactivity_name" runat="server" cssclass="textboxdis" width="250px">
-                            </asp:textbox>
+                            <asp:TextBox ID="txtactivity_name" runat="server" CssClass="textboxdis" Width="250px">
+                            </asp:TextBox>
                         </td>
                     </tr>
                     <tr align="left">
                         <td align="right" nowrap valign="middle">
-                            <asp:label id="Label56" runat="server" cssclass="label_hbk">ยุทธศาสตร์การจัดสรรงบประมาณ :</asp:label>
+                            <asp:Label ID="Label56" runat="server" CssClass="label_hbk">ยุทธศาสตร์ :</asp:Label>
                         </td>
                         <td align="left" nowrap valign="middle">
-                            <asp:textbox id="txtplan_name" runat="server" cssclass="textboxdis" width="250px">
-                            </asp:textbox>
+                            <asp:TextBox ID="txtplan_name" runat="server" CssClass="textboxdis" Width="250px">
+                            </asp:TextBox>
                         </td>
                         <td nowrap style="text-align: right">
-                            <asp:label id="Label57" runat="server" cssclass="label_hbk">งาน :</asp:label>
+                            <asp:Label ID="Label57" runat="server" CssClass="label_hbk">งาน/หลักสูตร :</asp:Label>
                         </td>
                         <td align="left">
-                            <asp:textbox id="txtwork_name" runat="server" cssclass="textboxdis" width="250px">
-                            </asp:textbox>
+                            <asp:TextBox ID="txtwork_name" runat="server" CssClass="textboxdis" Width="250px">
+                            </asp:TextBox>
                         </td>
                     </tr>
                     <tr align="left">
                         <td align="right" nowrap valign="middle" style="height: 22px">
-                            <asp:label id="Label58" runat="server" cssclass="label_hbk">กองทุน :</asp:label>
+                            <asp:Label ID="Label58" runat="server" CssClass="label_hbk">กองทุน :</asp:Label>
                         </td>
                         <td align="left" nowrap valign="middle" style="height: 22px">
-                            <asp:textbox id="txtfund_name" runat="server" cssclass="textboxdis" width="250px">
-                            </asp:textbox>
+                            <asp:TextBox ID="txtfund_name" runat="server" CssClass="textboxdis" Width="250px">
+                            </asp:TextBox>
                         </td>
                         <td nowrap style="text-align: right; height: 22px;">
-                            <asp:label id="Label60" runat="server" cssclass="label_hbk">สังกัด :</asp:label>
+                            <asp:Label ID="Label60" runat="server" CssClass="label_hbk">สังกัด :</asp:Label>
                         </td>
                         <td align="left" style="height: 22px">
-                            <asp:textbox id="txtdirector_name" runat="server" cssclass="textboxdis" width="250px">
-                            </asp:textbox>
+                            <asp:TextBox ID="txtdirector_name" runat="server" CssClass="textboxdis" Width="250px">
+                            </asp:TextBox>
                         </td>
                     </tr>
                     <tr align="left">
                         <td align="right" nowrap valign="middle">
-                            <asp:label id="Label61" runat="server" cssclass="label_hbk">หน่วยงาน :</asp:label>
+                            <asp:Label ID="Label61" runat="server" CssClass="label_hbk">หน่วยงาน :</asp:Label>
                         </td>
                         <td align="left" nowrap valign="middle">
-                            <asp:textbox id="txtunit_name" runat="server" cssclass="textboxdis" width="250px">
-                            </asp:textbox>
+                            <asp:TextBox ID="txtunit_name" runat="server" CssClass="textboxdis" Width="250px">
+                            </asp:TextBox>
                         </td>
                         <td nowrap style="text-align: right;">
-                            <asp:label id="Label64" runat="server" cssclass="label_hbk">ปีงบประมาณ :</asp:label>
+                            <asp:Label ID="Label64" runat="server" CssClass="label_hbk">ปีงบประมาณ :</asp:Label>
                         </td>
                         <td align="left">
-                            <asp:textbox id="txtbudget_plan_year" runat="server" cssclass="textboxdis" width="130px">
-                            </asp:textbox>
+                            <asp:TextBox ID="txtbudget_plan_year" runat="server" CssClass="textboxdis" Width="130px">
+                            </asp:TextBox>
                         </td>
                     </tr>
                     <tr align="left">
                         <td align="right" nowrap valign="middle">
-                            <asp:label id="Label73" runat="server" cssclass="label_hbk">งบ :</asp:label>
+                            <asp:Label ID="Label73" runat="server" CssClass="label_hbk">งบ :</asp:Label>
                         </td>
                         <td align="left" nowrap valign="middle">
-                            <asp:dropdownlist runat="server" cssclass="textbox" id="cboLot">
-                            </asp:dropdownlist>
+                            <asp:DropDownList runat="server" CssClass="textbox" ID="cboLot">
+                            </asp:DropDownList>
                         </td>
                         <td align="left" nowrap style="text-align: right" valign="middle">
-                                <asp:Label ID="Label50" runat="server" CssClass="label_hbk">กลุ่มบุคลากร :</asp:Label>
-                            </td>
-                            <td align="left" nowrap valign="middle">
-                                <asp:DropDownList ID="cboPerson_group" runat="server" CssClass="textbox">
-                                </asp:DropDownList>
-                        </td>
-                    </tr>
-                    <tr align="left">
-                        <td align="right" nowrap valign="middle">
-                            &nbsp;&nbsp;
+                            <asp:Label ID="Label50" runat="server" CssClass="label_hbk">กลุ่มบุคลากร :</asp:Label>
                         </td>
                         <td align="left" nowrap valign="middle">
-                            &nbsp;&nbsp;
-                        </td>
-                        <td nowrap style="text-align: right">
-                            &nbsp;&nbsp;
-                        </td>
-                        <td align="left">
-                            &nbsp;&nbsp;
+                            <asp:DropDownList ID="cboPerson_group" runat="server" CssClass="textbox">
+                            </asp:DropDownList>
                         </td>
                     </tr>
                     <tr align="left">
-                        <td align="right" nowrap valign="middle">
-                            &nbsp;&nbsp;
+                        <td align="right" nowrap valign="middle">&nbsp;&nbsp;
                         </td>
-                        <td align="left" nowrap valign="middle">
-                            &nbsp;&nbsp;
+                        <td align="left" nowrap valign="middle">&nbsp;&nbsp;
                         </td>
-                        <td nowrap style="text-align: right">
-                            &nbsp;&nbsp;
+                        <td nowrap style="text-align: right">&nbsp;&nbsp;
                         </td>
-                        <td align="left">
-                            &nbsp;&nbsp;
+                        <td align="left">&nbsp;&nbsp;
                         </td>
                     </tr>
                     <tr align="left">
-                        <td align="right" nowrap valign="middle">
+                        <td align="right" nowrap valign="middle">&nbsp;&nbsp;
                         </td>
-                        <td align="left" nowrap valign="middle">
+                        <td align="left" nowrap valign="middle">&nbsp;&nbsp;
                         </td>
-                        <td nowrap style="">
+                        <td nowrap style="text-align: right">&nbsp;&nbsp;
                         </td>
-                        <td align="left">
-                        </td>
-                    </tr>
-                    <tr align="left">
-                        <td align="right" nowrap valign="middle">
-                        </td>
-                        <td align="left" nowrap valign="middle" colspan="3">
+                        <td align="left">&nbsp;&nbsp;
                         </td>
                     </tr>
                     <tr align="left">
-                        <td align="right" nowrap valign="middle" colspan="4">
-                        </td>
+                        <td align="right" nowrap valign="middle"></td>
+                        <td align="left" nowrap valign="middle"></td>
+                        <td nowrap style=""></td>
+                        <td align="left"></td>
                     </tr>
                     <tr align="left">
-                        <td align="right" colspan="4" nowrap valign="middle">
-                        </td>
+                        <td align="right" nowrap valign="middle"></td>
+                        <td align="left" nowrap valign="middle" colspan="3"></td>
+                    </tr>
+                    <tr align="left">
+                        <td align="right" nowrap valign="middle" colspan="4"></td>
+                    </tr>
+                    <tr align="left">
+                        <td align="right" colspan="4" nowrap valign="middle"></td>
                     </tr>
                 </table>
             </ContentTemplate>
         </ajaxtoolkit:TabPanel>
     </ajaxtoolkit:TabContainer>
     <div style="float: right;">
-        <asp:imagebutton id="imgSaveOnly" runat="server" imageurl="~/images/controls/save.jpg"
-            validationgroup="A" />&nbsp;&nbsp;&nbsp;
+        <asp:ImageButton ID="imgSaveOnly" runat="server" ImageUrl="~/images/controls/save.jpg"
+            ValidationGroup="A" />&nbsp;&nbsp;&nbsp;
     </div>
-</asp:content>
+</asp:Content>

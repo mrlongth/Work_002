@@ -77,7 +77,7 @@
                 </asp:DropDownList>
             </td>
         </tr>
-        <tr align="left">
+        <tr align="left" style="display: none;">
             <td align="right" nowrap>
                 <asp:Label ID="Label73" runat="server">ชื่อลงนามในสลิป :</asp:Label>
             </td>
@@ -88,7 +88,7 @@
                 </font>
             </td>
         </tr>
-        <tr align="left">
+        <tr align="left" style="display: none;">
             <td align="right" nowrap>
                 <asp:Label ID="Label75" runat="server">ตำแหน่ง :</asp:Label>
             </td>
@@ -99,7 +99,7 @@
                 </font>
             </td>
         </tr>
-        <tr align="left">
+        <tr align="left" style="display: none;">
             <td align="right" nowrap>
                 <asp:Label ID="Label74" runat="server">สายเซ็นต์ :</asp:Label>
             </td>
@@ -120,7 +120,7 @@
                 </asp:DropDownList>
             </td>
         </tr>
-        <tr align="left">
+        <tr align="left" style="display: none;">
             <td align="right" nowrap>
                 <asp:Label ID="Label2" runat="server">ลำดับที่ :</asp:Label>
             </td>
@@ -152,9 +152,7 @@
             <td align="right" nowrap style="text-align: left">
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtdirector_name"
                     Display="None" ErrorMessage="กรุณาป้อนสังกัด" ValidationGroup="A" SetFocusOnError="True"></asp:RequiredFieldValidator>
-                <ajaxtoolkit:ValidatorCalloutExtender ID="RequiredFieldValidator1_ValidatorCalloutExtender"
-                    runat="server" Enabled="True" TargetControlID="RequiredFieldValidator1" HighlightCssClass="validatorCalloutHighlight">
-                </ajaxtoolkit:ValidatorCalloutExtender>
+                <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True" ShowSummary="False" ValidationGroup="A" />
             </td>
         </tr>
     </table>

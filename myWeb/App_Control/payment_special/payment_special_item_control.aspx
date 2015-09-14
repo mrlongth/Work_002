@@ -23,10 +23,8 @@
             </td>
         </tr>
         <tr>
-            <td align="right" nowrap valign="middle" >
-                &nbsp;</td>
-            <td align="left" nowrap valign="middle" style="text-align: right" >
-                &nbsp;<asp:Label runat="server" ID="lblLastUpdatedDate">Last Updated Date :</asp:Label>
+            <td align="right" nowrap valign="middle">&nbsp;</td>
+            <td align="left" nowrap valign="middle" style="text-align: right">&nbsp;<asp:Label runat="server" ID="lblLastUpdatedDate">Last Updated Date :</asp:Label>
             </td>
             <td align="left">
                 <asp:TextBox runat="server" ReadOnly="True" CssClass="textboxdis" Width="148px" ID="txtUpdatedDate"></asp:TextBox>
@@ -97,8 +95,6 @@
             <td align="left" nowrap valign="middle">
                 <cc1:AwNumeric ID="txtsp_payment_item_money" runat="server" CssClass="textbox" MaxValue="99999999" MinValue="-99999999" Width="100px"></cc1:AwNumeric>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtsp_payment_item_money" Display="None" ErrorMessage="กรุณาป้อนจำนวนเงิน" SetFocusOnError="True" ValidationGroup="A"></asp:RequiredFieldValidator>
-                <ajaxtoolkit:ValidatorCalloutExtender ID="RequiredFieldValidator2_ValidatorCalloutExtender" runat="server" Enabled="True" HighlightCssClass="validatorCalloutHighlight" TargetControlID="RequiredFieldValidator2">
-                </ajaxtoolkit:ValidatorCalloutExtender>
             </td>
             <td align="left" nowrap rowspan="2" style="width: 1%; vertical-align: bottom; text-align: right;"
                 valign="middle"></td>

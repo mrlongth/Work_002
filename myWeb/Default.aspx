@@ -112,7 +112,7 @@
                 <asp:Image ID="Image1" runat="server" ImageUrl="~/images/user_accounts_alt.png" />
             </div>
             <div style="float: left; width: 300px;">
-                <h2 class="style2">เลือกประเภทการใช้งาน</h2>
+                <h2 class="style2">เลือกประเภทกลุ่มผู้ใช้งาน</h2>
                 <br />
                 <asp:Repeater ID="rptUserGroupSelect" runat="server">
                     <ItemTemplate>

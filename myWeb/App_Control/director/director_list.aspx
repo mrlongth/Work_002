@@ -86,7 +86,7 @@
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="ลำดับที่" SortExpression="director_order">
+            <asp:TemplateField HeaderText="ลำดับที่" SortExpression="director_order" Visible="False">
                 <ItemStyle HorizontalAlign="Center" Width="10%" Wrap="False" />
                 <ItemTemplate>
                     <asp:Label ID="lbldirector_order" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.director_order") %>'>

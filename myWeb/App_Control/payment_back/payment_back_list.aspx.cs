@@ -374,6 +374,11 @@ namespace myWeb.App_Control.payment_back
             strPerson_name = txtperson_name.Text.Trim();
             strPayment_doc = txtpayment_doc.Text.Trim();
 
+            var strperson_id = txtperson_id.Text.Replace("'", "''").Trim();
+            if (!strperson_id.Equals(""))
+            {
+                strCriteria = strCriteria + "  And  (person_id like '%" + strperson_id + "%') ";
+            }
             if (!strYear.Equals(""))
             {
                 strCriteria = strCriteria + "  And  (payment_year = '" + strYear + "') ";

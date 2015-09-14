@@ -144,13 +144,14 @@ namespace myWeb.Person_Manage
                 string strReportDirectoryTempPhysicalPath = Server.MapPath(this.ReportDirectoryTemp);
                 Helper.DeleteUnusedFile(strReportDirectoryTempPhysicalPath, ReportAliveTime);
 
-                string strFilename;
-                strFilename = "report_" + DateTime.Now.ToString("yyyyMMddHH-mm-ss");
-                rptSource.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("~/temp/") + strFilename + ".pdf");
-                lnkPdfFile.NavigateUrl = "~/temp/" + strFilename + ".pdf";
-                imgPdf.Src = "~/images/icon_pdf.gif";
-                lnkPdfFile.Visible = true;
-                CrystalReportViewer1.ReportSource = rptSource;
+                string strFilename = "report_" + DateTime.Now.ToString("yyyyMMddHH-mm-ss");               
+                string path = "~/temp/" + strFilename + ".pdf";
+                rptSource.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath(path));
+                Response.Redirect(path);
+                //lnkPdfFile.NavigateUrl = "~/temp/" + strFilename + ".pdf";
+                //imgPdf.Src = "~/images/icon_pdf.gif";
+                //lnkPdfFile.Visible = true;
+                //CrystalReportViewer1.ReportSource = rptSource;
 
 
             }

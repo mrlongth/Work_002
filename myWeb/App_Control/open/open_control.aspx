@@ -49,8 +49,7 @@
                                 <asp:DropDownList ID="cboYear" runat="server" CssClass="textbox">
                                 </asp:DropDownList>
                             </td>
-                            <td align="left" nowrap valign="middle" style="vertical-align: bottom; width: 1%;">
-                                &nbsp;&nbsp;
+                            <td align="left" nowrap valign="middle" style="vertical-align: bottom; width: 1%;">&nbsp;&nbsp;
                             </td>
                         </tr>
                         <tr align="left">
@@ -72,8 +71,7 @@
                                 <asp:ImageButton runat="server" AlternateText="Click to show calendar" ImageAlign="AbsMiddle"
                                     ImageUrl="~/images/Calendar_scheduleHS.png" ID="imgcheque_date_print"></asp:ImageButton>
                             </td>
-                            <td align="left" nowrap style="vertical-align: bottom; width: 1%;" valign="middle">
-                                &nbsp;&nbsp;
+                            <td align="left" nowrap style="vertical-align: bottom; width: 1%;" valign="middle">&nbsp;&nbsp;
                             </td>
                         </tr>
                         <tr align="left">
@@ -88,10 +86,7 @@
                                         ImageUrl="../../images/controls/erase.gif" OnClick="imgClear_item_Click" Style="width: 18px" />&nbsp;<asp:HiddenField
                                             ID="hddopen_id" runat="server" />
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtopen_code"
-                                    Display="None" ErrorMessage="กรุณาป้อนรหัสขอเบิก" SetFocusOnError="True" ValidationGroup="A"></asp:RequiredFieldValidator><ajaxtoolkit:ValidatorCalloutExtender
-                                        ID="RequiredFieldValidator1_ValidatorCalloutExtender" runat="server" Enabled="True"
-                                        HighlightCssClass="validatorCalloutHighlight" TargetControlID="RequiredFieldValidator1">
-                                    </ajaxtoolkit:ValidatorCalloutExtender>
+                                    Display="None" ErrorMessage="กรุณาป้อนรหัสขอเบิก" SetFocusOnError="True" ValidationGroup="A"></asp:RequiredFieldValidator>
                             </td>
                             <td align="left" colspan="2" nowrap style="text-align: right" valign="middle">
                                 <asp:Label ID="Label87" runat="server">เรียน :</asp:Label>
@@ -100,8 +95,7 @@
                                 <asp:DropDownList ID="cboopen_to" runat="server" CssClass="textbox">
                                 </asp:DropDownList>
                             </td>
-                            <td align="left" nowrap style="vertical-align: bottom; width: 1%;" valign="middle">
-                                &nbsp;&nbsp;
+                            <td align="left" nowrap style="vertical-align: bottom; width: 1%;" valign="middle">&nbsp;&nbsp;
                             </td>
                         </tr>
                         <tr align="left">
@@ -113,8 +107,7 @@
                                     Width="500px" TextMode="MultiLine" Rows="1"></asp:TextBox>
                             </td>
                             <td align="left" nowrap valign="middle" style="vertical-align: bottom; width: 1%;"
-                                rowspan="9">
-                                &nbsp;&nbsp;
+                                rowspan="9">&nbsp;&nbsp;
                             </td>
                         </tr>
                         <tr align="left">
@@ -149,15 +142,16 @@
                             </td>
                             <td align="left" nowrap valign="middle">
                                 <asp:TextBox ID="txtbudget_plan_code" runat="server" CssClass="textbox" MaxLength="10"
-                                    Width="100px"></asp:TextBox>&nbsp;<asp:ImageButton ID="imgList_budget_plan" runat="server"
-                                        CausesValidation="False" ImageAlign="AbsBottom" ImageUrl="../../images/controls/view2.gif" /><asp:ImageButton
-                                            ID="imgClear_budget_plan" runat="server" CausesValidation="False" ImageAlign="AbsBottom"
-                                            ImageUrl="../../images/controls/erase.gif" /><asp:RequiredFieldValidator ID="RequiredFieldValidator2"
-                                                runat="server" ControlToValidate="txtbudget_plan_code" Display="None" ErrorMessage="กรุณาป้อนรหัสผังงบประมาณ"
-                                                SetFocusOnError="True" ValidationGroup="A"></asp:RequiredFieldValidator><ajaxtoolkit:ValidatorCalloutExtender
-                                                    ID="RequiredFieldValidator2_ValidatorCalloutExtender" runat="server" Enabled="True"
-                                                    HighlightCssClass="validatorCalloutHighlight" TargetControlID="RequiredFieldValidator2">
-                                                </ajaxtoolkit:ValidatorCalloutExtender>
+                                    Width="100px"></asp:TextBox>&nbsp;
+                                <asp:ImageButton ID="imgList_budget_plan" runat="server"
+                                    CausesValidation="False" ImageAlign="AbsBottom" ImageUrl="../../images/controls/view2.gif" />
+                                <asp:ImageButton ID="imgClear_budget_plan" runat="server" CausesValidation="False" ImageAlign="AbsBottom"
+                                    ImageUrl="../../images/controls/erase.gif" />
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2"
+                                    runat="server" ControlToValidate="txtbudget_plan_code" Display="None" ErrorMessage="กรุณาป้อนรหัสผังงบประมาณ"
+                                    SetFocusOnError="True" ValidationGroup="A"></asp:RequiredFieldValidator>
+                                <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True" ShowSummary="False" ValidationGroup="A" />
+
                             </td>
                             <td align="left" nowrap style="text-align: right" valign="middle">
                                 <asp:Label ID="Label54" runat="server" CssClass="label_hbk">แผนงาน :</asp:Label>
@@ -182,13 +176,13 @@
                         </tr>
                         <tr align="left">
                             <td align="right" nowrap valign="middle">
-                                <asp:Label ID="Label56" runat="server" CssClass="label_hbk">ยุทธศาสตร์การจัดสรรงบประมาณ :</asp:Label>
+                                <asp:Label ID="Label56" runat="server" CssClass="label_hbk">ยุทธศาสตร์ :</asp:Label>
                             </td>
                             <td align="left" nowrap valign="middle">
                                 <asp:TextBox ID="txtplan_name" runat="server" CssClass="textboxdis" Width="300px"></asp:TextBox>
                             </td>
                             <td align="left" nowrap style="text-align: right" valign="middle">
-                                <asp:Label ID="Label57" runat="server" CssClass="label_hbk">งาน :</asp:Label>
+                                <asp:Label ID="Label57" runat="server" CssClass="label_hbk">งาน/หลักสูตร :</asp:Label>
                             </td>
                             <td align="left" colspan="2" nowrap valign="middle">
                                 <asp:TextBox ID="txtwork_name" runat="server" CssClass="textboxdis" Width="300px"></asp:TextBox>
@@ -235,10 +229,8 @@
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="cboOpen_level"
                                     Display="None" ErrorMessage="กรุณาเลือกระดับการเบิก" SetFocusOnError="True" ValidationGroup="A"></asp:RequiredFieldValidator>
                             </td>
-                            <td align="left" nowrap style="text-align: right" valign="middle">
-                            </td>
-                            <td align="left" colspan="2" nowrap valign="middle">
-                            </td>
+                            <td align="left" nowrap style="text-align: right" valign="middle"></td>
+                            <td align="left" colspan="2" nowrap valign="middle"></td>
                         </tr>
                         <tr align="left">
                             <td align="right" nowrap valign="middle">
@@ -254,17 +246,13 @@
                             </td>
                         </tr>
                         <tr align="left">
-                            <td align="right" nowrap valign="middle">
-                                &nbsp;&nbsp;
+                            <td align="right" nowrap valign="middle">&nbsp;&nbsp;
                             </td>
-                            <td align="left" nowrap valign="middle">
-                                &nbsp;&nbsp;
+                            <td align="left" nowrap valign="middle">&nbsp;&nbsp;
                             </td>
-                            <td align="left" nowrap style="text-align: right" valign="middle">
-                                &nbsp;&nbsp;
+                            <td align="left" nowrap style="text-align: right" valign="middle">&nbsp;&nbsp;
                             </td>
-                            <td align="left" colspan="2" nowrap valign="middle">
-                                &nbsp;&nbsp;
+                            <td align="left" colspan="2" nowrap valign="middle">&nbsp;&nbsp;
                             </td>
                         </tr>
                     </table>
@@ -284,7 +272,8 @@
                             <Columns>
                                 <asp:TemplateField HeaderText="No.">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblNo" runat="server"> </asp:Label></ItemTemplate>
+                                        <asp:Label ID="lblNo" runat="server"> </asp:Label>
+                                    </ItemTemplate>
                                     <ItemStyle HorizontalAlign="Center" Wrap="False" Width="2%"></ItemStyle>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="คำสั่งเลขที่">
@@ -302,19 +291,23 @@
                                                 ID="txtopen_date_print_CalendarExtender">
                                             </ajaxtoolkit:CalendarExtender>
                                         <asp:ImageButton runat="server" AlternateText="Click to show calendar" ImageAlign="AbsMiddle"
-                                            ImageUrl="~/images/Calendar_scheduleHS.png" ID="imgcheque_date_print"></asp:ImageButton></ItemTemplate>
+                                            ImageUrl="~/images/Calendar_scheduleHS.png" ID="imgcheque_date_print"></asp:ImageButton>
+                                    </ItemTemplate>
                                     <ItemStyle HorizontalAlign="Center" Width="10%" Wrap="True" />
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="เรื่อง">
                                     <ItemTemplate>
-                                        <asp:TextBox runat="server" CssClass="textbox" Width="98%" ID="txtopen_desc" Text='<%# DataBinder.Eval(Container, "DataItem.open_desc") %>' /></ItemTemplate>
+                                        <asp:TextBox runat="server" CssClass="textbox" Width="98%" ID="txtopen_desc" Text='<%# DataBinder.Eval(Container, "DataItem.open_desc") %>' />
+                                    </ItemTemplate>
                                     <ItemStyle HorizontalAlign="Center" Width="20%" Wrap="True" />
                                 </asp:TemplateField>
                                 <asp:TemplateField>
                                     <ItemTemplate>
-                                        <asp:ImageButton ID="imgDelete" runat="server" CausesValidation="False" CommandName="Delete" /></ItemTemplate>
+                                        <asp:ImageButton ID="imgDelete" runat="server" CausesValidation="False" CommandName="Delete" />
+                                    </ItemTemplate>
                                     <HeaderTemplate>
-                                        <asp:ImageButton ID="imgAdd" runat="server" CommandName="ADD" /></HeaderTemplate>
+                                        <asp:ImageButton ID="imgAdd" runat="server" CommandName="ADD" />
+                                    </HeaderTemplate>
                                     <ItemStyle HorizontalAlign="Center" Width="1%" Wrap="False" />
                                 </asp:TemplateField>
                             </Columns>
@@ -348,7 +341,8 @@
                                 <asp:TemplateField HeaderText="No.">
                                     <ItemTemplate>
                                         <asp:HiddenField ID="hddopen_detail_id" runat="server" Value='<%# DataBinder.Eval(Container, "DataItem.open_detail_id") %>' />
-                                        <asp:Label ID="lblNo" runat="server"> </asp:Label></ItemTemplate>
+                                        <asp:Label ID="lblNo" runat="server"> </asp:Label>
+                                    </ItemTemplate>
                                     <ItemStyle HorizontalAlign="Center" Wrap="False" Width="2%"></ItemStyle>
                                     <FooterStyle HorizontalAlign="Right" />
                                     <FooterTemplate>
@@ -370,7 +364,7 @@
                                 <asp:TemplateField HeaderText="อัตราเดือนล่ะ">
                                     <ItemTemplate>
                                         <cc1:AwNumeric ID="txtopen_rate" runat="server" Width="70px" LeadZero="Show" DisplayMode="Control"
-                                            Value='<% # getNumber(DataBinder.Eval(Container, "DataItem.open_rate")) %>'>
+                                            Value='<% # getNumber(DataBinder.Eval(Container, "DataItem.open_rate"))%>'>
                                         </cc1:AwNumeric>
                                     </ItemTemplate>
                                     <FooterTemplate>
@@ -417,7 +411,7 @@
                                 <asp:TemplateField HeaderText="เดือน">
                                     <ItemTemplate>
                                         <cc1:AwNumeric ID="txtopen_qty_month" runat="server" Width="30px" LeadZero="Show"
-                                            DisplayMode="Control" Value='<% # getNumber(DataBinder.Eval(Container, "DataItem.open_qty_month")) %>'
+                                            DisplayMode="Control" Value='<% # getNumber(DataBinder.Eval(Container, "DataItem.open_qty_month"))%>'
                                             DecimalPlaces="0">
                                         </cc1:AwNumeric>
                                     </ItemTemplate>
@@ -426,7 +420,7 @@
                                 <asp:TemplateField HeaderText="วัน">
                                     <ItemTemplate>
                                         <cc1:AwNumeric ID="txtopen_qty_day" runat="server" Width="30px" LeadZero="Show" DisplayMode="Control"
-                                            DecimalPlaces="0" Value='<% # getNumber(DataBinder.Eval(Container, "DataItem.open_qty_day")) %>'>
+                                            DecimalPlaces="0" Value='<% # getNumber(DataBinder.Eval(Container, "DataItem.open_qty_day"))%>'>
                                         </cc1:AwNumeric>
                                     </ItemTemplate>
                                     <ItemStyle HorizontalAlign="Center" Width="1%" Wrap="True" />
@@ -440,7 +434,7 @@
                                 <asp:TemplateField HeaderText="จำนวนราย">
                                     <ItemTemplate>
                                         <cc1:AwNumeric ID="txtopen_qty_person" runat="server" Width="98%" LeadZero="Show"
-                                            DecimalPlaces="0" DisplayMode="Control" Value='<% # getNumber(DataBinder.Eval(Container, "DataItem.open_qty_person")) %>'>
+                                            DecimalPlaces="0" DisplayMode="Control" Value='<% # getNumber(DataBinder.Eval(Container, "DataItem.open_qty_person"))%>'>
                                         </cc1:AwNumeric>
                                     </ItemTemplate>
                                     <ItemStyle HorizontalAlign="Center" Width="5%" Wrap="True" />
@@ -453,16 +447,18 @@
                                 <asp:TemplateField HeaderText="รวมเงิน">
                                     <ItemTemplate>
                                         <cc1:AwNumeric ID="txtopen_all_rate" runat="server" Width="70px" LeadZero="Show"
-                                            DisplayMode="Control" Value='<% # getNumber(DataBinder.Eval(Container, "DataItem.open_rate_all")) %>'>
+                                            DisplayMode="Control" Value='<% # getNumber(DataBinder.Eval(Container, "DataItem.open_rate_all"))%>'>
                                         </cc1:AwNumeric>
                                     </ItemTemplate>
                                     <ItemStyle HorizontalAlign="Center" Width="5%" Wrap="True" />
                                 </asp:TemplateField>
                                 <asp:TemplateField>
                                     <ItemTemplate>
-                                        <asp:ImageButton ID="imgDelete" runat="server" CausesValidation="False" CommandName="Delete" /></ItemTemplate>
+                                        <asp:ImageButton ID="imgDelete" runat="server" CausesValidation="False" CommandName="Delete" />
+                                    </ItemTemplate>
                                     <HeaderTemplate>
-                                        <asp:ImageButton ID="imgAdd" runat="server" CommandName="Add" /></HeaderTemplate>
+                                        <asp:ImageButton ID="imgAdd" runat="server" CommandName="Add" />
+                                    </HeaderTemplate>
                                     <ItemStyle HorizontalAlign="Center" Width="1%" Wrap="False" />
                                 </asp:TemplateField>
                             </Columns>
@@ -486,7 +482,8 @@
                                 <asp:TemplateField HeaderText="No.">
                                     <ItemTemplate>
                                         <asp:HiddenField ID="hddopen_person_id" runat="server" Value='<%# DataBinder.Eval(Container, "DataItem.open_person_id") %>' />
-                                        <asp:Label ID="lblNo" runat="server"> </asp:Label></ItemTemplate>
+                                        <asp:Label ID="lblNo" runat="server"> </asp:Label>
+                                    </ItemTemplate>
                                     <ItemStyle HorizontalAlign="Center" Wrap="False" Width="2%"></ItemStyle>
                                     <FooterStyle HorizontalAlign="Right" />
                                     <FooterTemplate>
@@ -508,7 +505,7 @@
                                 <asp:TemplateField HeaderText="อัตราเดือนล่ะ">
                                     <ItemTemplate>
                                         <cc1:AwNumeric ID="txtopen_rate" runat="server" Width="70px" LeadZero="Show" DisplayMode="Control"
-                                            Value='<% # getNumber(DataBinder.Eval(Container, "DataItem.open_rate")) %>'>
+                                            Value='<% # getNumber(DataBinder.Eval(Container, "DataItem.open_rate"))%>'>
                                         </cc1:AwNumeric>
                                     </ItemTemplate>
                                     <ItemStyle HorizontalAlign="Center" Width="5%" Wrap="True" />
@@ -555,7 +552,7 @@
                                 <asp:TemplateField HeaderText="เดือน">
                                     <ItemTemplate>
                                         <cc1:AwNumeric ID="txtopen_qty_month" runat="server" Width="30px" LeadZero="Show"
-                                            DisplayMode="Control" Value='<% # getNumber(DataBinder.Eval(Container, "DataItem.open_qty_month")) %>'
+                                            DisplayMode="Control" Value='<% # getNumber(DataBinder.Eval(Container, "DataItem.open_qty_month"))%>'
                                             DecimalPlaces="0">
                                         </cc1:AwNumeric>
                                     </ItemTemplate>
@@ -570,7 +567,7 @@
                                 <asp:TemplateField HeaderText="วัน">
                                     <ItemTemplate>
                                         <cc1:AwNumeric ID="txtopen_qty_day" runat="server" Width="30px" LeadZero="Show" DisplayMode="Control"
-                                            DecimalPlaces="0" Value='<% # getNumber(DataBinder.Eval(Container, "DataItem.open_qty_day")) %>'>
+                                            DecimalPlaces="0" Value='<% # getNumber(DataBinder.Eval(Container, "DataItem.open_qty_day"))%>'>
                                         </cc1:AwNumeric>
                                     </ItemTemplate>
                                     <ItemStyle HorizontalAlign="Center" Width="1%" Wrap="True" />
@@ -578,7 +575,7 @@
                                 <asp:TemplateField HeaderText="จำนวนราย" Visible="False">
                                     <ItemTemplate>
                                         <cc1:AwNumeric ID="txtopen_qty_person" runat="server" Width="98%" LeadZero="Show"
-                                            DecimalPlaces="0" DisplayMode="Control" Value='<% # getNumber(DataBinder.Eval(Container, "DataItem.open_qty_month")) %>'>
+                                            DecimalPlaces="0" DisplayMode="Control" Value='<% # getNumber(DataBinder.Eval(Container, "DataItem.open_qty_month"))%>'>
                                         </cc1:AwNumeric>
                                     </ItemTemplate>
                                     <ItemStyle HorizontalAlign="Center" Width="5%" Wrap="True" />
@@ -586,16 +583,18 @@
                                 <asp:TemplateField HeaderText="รวมเงิน">
                                     <ItemTemplate>
                                         <cc1:AwNumeric ID="txtopen_all_rate" runat="server" Width="90px" LeadZero="Show"
-                                            DisplayMode="Control" Value='<% # getNumber(DataBinder.Eval(Container, "DataItem.open_rate_all")) %>'>
+                                            DisplayMode="Control" Value='<% # getNumber(DataBinder.Eval(Container, "DataItem.open_rate_all"))%>'>
                                         </cc1:AwNumeric>
                                     </ItemTemplate>
                                     <ItemStyle HorizontalAlign="Center" Width="5%" Wrap="True" />
                                 </asp:TemplateField>
                                 <asp:TemplateField>
                                     <ItemTemplate>
-                                        <asp:ImageButton ID="imgDelete" runat="server" CausesValidation="False" CommandName="Delete" /></ItemTemplate>
+                                        <asp:ImageButton ID="imgDelete" runat="server" CausesValidation="False" CommandName="Delete" />
+                                    </ItemTemplate>
                                     <HeaderTemplate>
-                                        <asp:ImageButton ID="imgAdd" runat="server" CommandName="Add" /></HeaderTemplate>
+                                        <asp:ImageButton ID="imgAdd" runat="server" CommandName="Add" />
+                                    </HeaderTemplate>
                                     <ItemStyle HorizontalAlign="Center" Width="1%" Wrap="False" />
                                 </asp:TemplateField>
                             </Columns>
@@ -623,10 +622,10 @@
         function load_total_all() {
             var strTableName2 = "<%=GridView2.ClientID%>";
             var strTableName = "<%=GridView3.ClientID%>";
-            $("#" + strTableName2 + " input[id*=txtopen_rate]").each(function(index) {
+            $("#" + strTableName2 + " input[id*=txtopen_rate]").each(function (index) {
                 calTotalDetail(this, strTableName2);
             });
-            $("#" + strTableName + " input[id*=txtopen_rate]").each(function(index) {
+            $("#" + strTableName + " input[id*=txtopen_rate]").each(function (index) {
                 calTotalDetail(this, strTableName);
             });
         }
@@ -637,7 +636,7 @@
 
 
 
-            $(document).on('keypress', 'form input[type=text]', function(event) {
+            $(document).on('keypress', 'form input[type=text]', function (event) {
                 event.stopImmediatePropagation();
                 if (event.which == 13) {
                     event.preventDefault();
@@ -650,14 +649,14 @@
                 }
             });
 
-            $("input[id*=imgClear_material]").live("click", function() {
+            $("input[id*=imgClear_material]").live("click", function () {
                 $('#' + this.id.replace('imgClear_material', 'hddmaterial_id')).val('0');
                 $('#' + this.id.replace('imgClear_material', 'txtmaterial_code')).val('');
                 $('#' + this.id.replace('imgClear_material', 'txtmaterial_name')).val('');
                 return false;
             });
 
-            $("input[id*=imgList_material]").live("click", function() {
+            $("input[id*=imgList_material]").live("click", function () {
                 var hddmaterial_id = $('#' + this.id.replace('imgList_material', 'hddmaterial_id'));
                 var txtmaterial_code = $('#' + this.id.replace('imgList_material', 'txtmaterial_code'));
                 var txtmaterial_name = $('#' + this.id.replace('imgList_material', 'txtmaterial_name'));
@@ -672,11 +671,11 @@
                 return false;
             });
 
-            $("#" + strTableName2 + " input[id*=imgCalDateBegin]").live("click", function() {
+            $("#" + strTableName2 + " input[id*=imgCalDateBegin]").live("click", function () {
                 var result = confirm("คุณต้องการคำนวณวันที่เริ่มต้นเหมือนรายการแรกทั้งหมดหรือไม่ ?");
                 if (result) {
                     var strValue = "";
-                    $("#" + strTableName2 + " input[id*=txtopen_begin_date]").each(function(index) {
+                    $("#" + strTableName2 + " input[id*=txtopen_begin_date]").each(function (index) {
                         if (index == 0) {
                             strValue = $(this).val();
                         }
@@ -689,11 +688,11 @@
                 return false;
             });
 
-            $("#" + strTableName2 + " input[id*=imgCalDateEnd]").live("click", function() {
+            $("#" + strTableName2 + " input[id*=imgCalDateEnd]").live("click", function () {
                 var result = confirm("คุณต้องการคำนวณถึงวันที่เหมือนรายการแรกทั้งหมดหรือไม่ ?");
                 if (result) {
                     var strValue = "";
-                    $("#" + strTableName2 + " input[id*=txtopen_end_date]").each(function(index) {
+                    $("#" + strTableName2 + " input[id*=txtopen_end_date]").each(function (index) {
                         if (index == 0) {
                             strValue = $(this).val();
                         }
@@ -706,40 +705,40 @@
                 return false;
             });
 
-            $("#" + strTableName2 + " input[id*=txtopen_rate]").live("keyup", function() {
+            $("#" + strTableName2 + " input[id*=txtopen_rate]").live("keyup", function () {
                 calTotalDetail(this, strTableName2);
             });
-            $("#" + strTableName2 + " input[id*=txtopen_rate]").live("blur", function() {
-                calTotalDetail(this, strTableName2);
-            });
-
-            $("#" + strTableName2 + " input[id*=txtopen_begin_date]").live("change", function() {
-                calTotalDetail(this, strTableName2);
-            });
-            $("#" + strTableName2 + " input[id*=txtopen_begin_date]").live("blur", function() {
+            $("#" + strTableName2 + " input[id*=txtopen_rate]").live("blur", function () {
                 calTotalDetail(this, strTableName2);
             });
 
-            $("#" + strTableName2 + " input[id*=txtopen_end_date]").live("change", function() {
+            $("#" + strTableName2 + " input[id*=txtopen_begin_date]").live("change", function () {
                 calTotalDetail(this, strTableName2);
             });
-            $("#" + strTableName2 + " input[id*=txtopen_end_date]").live("blur", function() {
+            $("#" + strTableName2 + " input[id*=txtopen_begin_date]").live("blur", function () {
                 calTotalDetail(this, strTableName2);
             });
 
-            $("#" + strTableName2 + " input[id*=txtopen_qty_person]").live("keyup", function() {
+            $("#" + strTableName2 + " input[id*=txtopen_end_date]").live("change", function () {
                 calTotalDetail(this, strTableName2);
             });
-            $("#" + strTableName2 + " input[id*=txtopen_qty_person]").live("blur", function() {
+            $("#" + strTableName2 + " input[id*=txtopen_end_date]").live("blur", function () {
+                calTotalDetail(this, strTableName2);
+            });
+
+            $("#" + strTableName2 + " input[id*=txtopen_qty_person]").live("keyup", function () {
+                calTotalDetail(this, strTableName2);
+            });
+            $("#" + strTableName2 + " input[id*=txtopen_qty_person]").live("blur", function () {
                 calTotalDetail(this, strTableName2);
             });
 
             //========================================================
-            $("#" + strTableName + " input[id*=imgCalDateBegin]").live("click", function() {
+            $("#" + strTableName + " input[id*=imgCalDateBegin]").live("click", function () {
                 var result = confirm("คุณต้องการคำนวณวันที่เริ่มต้นเหมือนรายการแรกทั้งหมดหรือไม่ ?");
                 if (result) {
                     var strValue = "";
-                    $("#" + strTableName + " input[id*=txtopen_begin_date]").each(function(index) {
+                    $("#" + strTableName + " input[id*=txtopen_begin_date]").each(function (index) {
                         if (index == 0) {
                             strValue = $(this).val();
                         }
@@ -752,11 +751,11 @@
                 return false;
             });
 
-            $("#" + strTableName + " input[id*=imgCalDateEnd]").live("click", function() {
+            $("#" + strTableName + " input[id*=imgCalDateEnd]").live("click", function () {
                 var result = confirm("คุณต้องการคำนวณถึงวันที่เหมือนรายการแรกทั้งหมดหรือไม่ ?");
                 if (result) {
                     var strValue = "";
-                    $("#" + strTableName + " input[id*=txtopen_end_date]").each(function(index) {
+                    $("#" + strTableName + " input[id*=txtopen_end_date]").each(function (index) {
                         if (index == 0) {
                             strValue = $(this).val();
                         }
@@ -768,31 +767,31 @@
                 }
                 return false;
             });
-            $("#" + strTableName + " input[id*=txtopen_rate]").live("keyup", function() {
+            $("#" + strTableName + " input[id*=txtopen_rate]").live("keyup", function () {
                 calTotalDetail(this, strTableName);
             });
-            $("#" + strTableName + " input[id*=txtopen_rate]").live("blur", function() {
-                calTotalDetail(this, strTableName);
-            });
-
-            $("#" + strTableName + " input[id*=txtopen_qty_person]").live("keyup", function() {
-                calTotalDetail(this, strTableName);
-            });
-            $("#" + strTableName + " input[id*=txtopen_qty_person]").live("blur", function() {
+            $("#" + strTableName + " input[id*=txtopen_rate]").live("blur", function () {
                 calTotalDetail(this, strTableName);
             });
 
-            $("#" + strTableName + " input[id*=txtopen_begin_date]").live("change", function() {
+            $("#" + strTableName + " input[id*=txtopen_qty_person]").live("keyup", function () {
                 calTotalDetail(this, strTableName);
             });
-            $("#" + strTableName + " input[id*=txtopen_begin_date]").live("blur", function() {
+            $("#" + strTableName + " input[id*=txtopen_qty_person]").live("blur", function () {
                 calTotalDetail(this, strTableName);
             });
 
-            $("#" + strTableName + " input[id*=txtopen_end_date]").live("change", function() {
+            $("#" + strTableName + " input[id*=txtopen_begin_date]").live("change", function () {
                 calTotalDetail(this, strTableName);
             });
-            $("#" + strTableName + " input[id*=txtopen_end_date]").live("blur", function() {
+            $("#" + strTableName + " input[id*=txtopen_begin_date]").live("blur", function () {
+                calTotalDetail(this, strTableName);
+            });
+
+            $("#" + strTableName + " input[id*=txtopen_end_date]").live("change", function () {
+                calTotalDetail(this, strTableName);
+            });
+            $("#" + strTableName + " input[id*=txtopen_end_date]").live("blur", function () {
                 calTotalDetail(this, strTableName);
             });
 
@@ -853,12 +852,12 @@
 
             var sumtotal_open_rate = 0.00;
             var sumtotal_open_all_rate = 0.00;
-            $("#" + tablename + " input[id*=txtopen_rate]").each(function(index) {
+            $("#" + tablename + " input[id*=txtopen_rate]").each(function (index) {
                 if ($(this).val() != '') {
                     sumtotal_open_rate += parseFloat(RemoveCommasStringAwNumeric($(this).val()));
                 }
             });
-            $("#" + tablename + " input[id*=txtopen_all_rate]").each(function(index) {
+            $("#" + tablename + " input[id*=txtopen_all_rate]").each(function (index) {
                 if ($(this).val() != '') {
                     sumtotal_open_all_rate += parseFloat(RemoveCommasStringAwNumeric($(this).val()));
                 };
@@ -881,7 +880,7 @@
         }
 
         function delimitNumbers(str) {
-            return (str + "").replace(/\b(\d+)((\.\d+)*)\b/g, function(a, b, c) {
+            return (str + "").replace(/\b(\d+)((\.\d+)*)\b/g, function (a, b, c) {
                 return (b.charAt(0) > 0 && !(c || ".").lastIndexOf(".") ? b.replace(/(\d)(?=(\d{3})+$)/g, "$1,") : b) + c;
             });
         }
@@ -889,7 +888,7 @@
         function daysInMonth(month, year) {
             return new Date(year, month, 0).getDate();
         }
-        
+
 
     </script>
 

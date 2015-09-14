@@ -106,25 +106,23 @@
                         </tr>
                         <tr align="left">
                             <td align="right" nowrap valign="middle">
+                                <asp:Label ID="Label80" runat="server" cssclass="label_error">*</asp:Label>
                                 <asp:Label ID="Label50" runat="server" CssClass="label_hbk">กลุ่มบุคลากร :</asp:Label>
                             </td>
                             <td align="left" nowrap valign="middle">
                                 <asp:DropDownList ID="cboPerson_group" runat="server" CssClass="textbox" AutoPostBack="True" OnSelectedIndexChanged="cboPerson_group_SelectedIndexChanged">
                                 </asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="cboPerson_group" Display="None" ErrorMessage="กรุณาเลือกกลุ่มบุคลากร" SetFocusOnError="True" ValidationGroup="A"></asp:RequiredFieldValidator>
-                                <ajaxtoolkit:ValidatorCalloutExtender ID="RequiredFieldValidator2_ValidatorCalloutExtender" runat="server" Enabled="True" HighlightCssClass="validatorCalloutHighlight" TargetControlID="RequiredFieldValidator2">
-                                </ajaxtoolkit:ValidatorCalloutExtender>
                             </td>
                             <td align="left" colspan="2" nowrap style="text-align: right" valign="middle">&nbsp;</td>
                             <td align="left" nowrap valign="middle">
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtperson_code" Display="None" ErrorMessage="กรุณาป้อนรหัสบุคลากร" SetFocusOnError="True" ValidationGroup="A"></asp:RequiredFieldValidator>
-                                <ajaxtoolkit:ValidatorCalloutExtender ID="RequiredFieldValidator1_ValidatorCalloutExtender" runat="server" Enabled="True" HighlightCssClass="validatorCalloutHighlight" TargetControlID="RequiredFieldValidator1">
-                                </ajaxtoolkit:ValidatorCalloutExtender>
                             </td>
                             <td align="left" nowrap style="vertical-align: bottom; width: 1%;" valign="middle">&nbsp;</td>
                         </tr>
                         <tr align="left">
                             <td align="right" nowrap valign="middle">
+                                <asp:Label ID="Label96" runat="server" cssclass="label_error">*</asp:Label>
                                 <asp:Label ID="lblperson_name" runat="server" CssClass="label_hbk">รหัสบุคลากร :</asp:Label>
                             </td>
                             <td align="left" nowrap valign="middle">
@@ -160,7 +158,7 @@
                         </tr>
                         <tr align="left">
                             <td align="right" nowrap valign="middle">
-                                <asp:Label ID="Label83" runat="server" CssClass="label_hbk">สาขา/งาน :</asp:Label>
+                                <asp:Label ID="Label83" runat="server" CssClass="label_hbk">งาน/หลักสูตร:</asp:Label>
                             </td>
                             <td align="left" colspan="4" nowrap valign="middle">
                                 <asp:DropDownList ID="cboWork" runat="server" CssClass="textbox">
@@ -192,7 +190,9 @@
                         </tr>
                         <tr align="left">
                             <td align="right" nowrap valign="middle">&nbsp;</td>
-                            <td align="left" nowrap valign="middle">&nbsp;</td>
+                            <td align="left" nowrap valign="middle">
+                                <asp:ValidationSummary ID="ValidationSummary1" runat="server" showmessagebox="True" showsummary="False" validationgroup="A" />
+                            </td>
                             <td align="left" nowrap style="text-align: right" valign="middle">&nbsp;</td>
                             <td align="left" colspan="2" nowrap valign="middle">&nbsp;</td>
                         </tr>
@@ -243,14 +243,14 @@
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="จำนวนเงิน" SortExpression="sp_payment_item_money">
                                                 <ItemTemplate>
-                                                     <asp:Label ID="lblitem_type" runat="server" Text="-" />
+                                                    <asp:Label ID="lblitem_type" runat="server" Text="-" />
                                                     <cc1:AwNumeric ID="txtsp_payment_item_money" runat="server" Width="80px" LeadZero="Show"
                                                         DisplayMode="View" Text='<% # getNumber(DataBinder.Eval(Container, "DataItem.sp_payment_item_money"))%>'>
                                                     </cc1:AwNumeric>
                                                 </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Right" Width="8%" Wrap="False" />
                                             </asp:TemplateField>
-                                           
+
                                             <asp:TemplateField>
                                                 <ItemTemplate>
                                                     <asp:ImageButton ID="imgEdit" runat="server" CausesValidation="False" CommandName="Edit" />

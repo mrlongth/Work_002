@@ -94,7 +94,7 @@
         </tr>
         <tr>
             <td style="text-align: right;">
-                <asp:Label runat="server" CssClass="label_h" ID="lblPage17">ยุทธศาสตร์การจัดสรรงบประมาณ :</asp:Label>
+                <asp:Label runat="server" CssClass="label_h" ID="lblPage17">ยุทธศาสตร์ :</asp:Label>
             </td>
             <td colspan="3">
                 <asp:DropDownList ID="cboPlan_code" runat="server" CssClass="textbox" AutoPostBack="True"
@@ -198,7 +198,7 @@
                     <asp:Label ID="lblactivity_name" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.activity_name") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="ยุทธศาสตร์การจัดสรรงบประมาณ" SortExpression="plan_code" Visible="false">
+            <asp:TemplateField HeaderText="ยุทธศาสตร์" SortExpression="plan_code" Visible="false">
                 <ItemStyle HorizontalAlign="Left" Wrap="True" Width="15%"></ItemStyle>
                 <ItemTemplate>
                     <asp:Label ID="lblplan_code" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.plan_code") %>'
@@ -206,7 +206,7 @@
                     <asp:Label ID="lblplan_name" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.plan_name") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="งาน" SortExpression="work_code" Visible="false">
+            <asp:TemplateField HeaderText="งาน/หลักสูตร" SortExpression="work_code" Visible="false">
                 <ItemStyle HorizontalAlign="Left" Wrap="True" Width="15%"></ItemStyle>
                 <ItemTemplate>
                     <asp:Label ID="lblwork_code" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.work_code") %>'

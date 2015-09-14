@@ -111,13 +111,10 @@
                 &nbsp;
             </td>
             <td align="right" nowrap style="text-align: left" valign="top">
+                <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True" ShowSummary="False" ValidationGroup="A" />
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtbudget_name"
                     Display="None" ErrorMessage="กรุณาป้อนแผนงาน" ValidationGroup="A" 
                     SetFocusOnError="True"></asp:RequiredFieldValidator>
-                <cc1:ValidatorCalloutExtender ID="RequiredFieldValidator2_ValidatorCalloutExtender"
-                    runat="server" Enabled="True" TargetControlID="RequiredFieldValidator2" 
-                    HighlightCssClass="validatorCalloutHighlight">
-                </cc1:ValidatorCalloutExtender>
             </td>
         </tr>
     </table>

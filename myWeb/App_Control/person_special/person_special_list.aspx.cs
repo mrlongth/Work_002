@@ -199,6 +199,13 @@ namespace myWeb.App_Control.person
             strYear = cboYear.SelectedValue;
             strsp_person_code = txtsp_person_code.Text.Replace("'", "''").Trim();
             strperson_name = txtperson_name.Text.Replace("'", "''").Trim();
+            string strperson_id = txtperson_id.Text.Replace("'", "''").Trim();
+         
+            if (!strperson_id.Equals(""))
+            {
+                strCriteria = strCriteria + "  And  (person_id like '%" + strperson_id + "%') ";
+            }
+
 
             if (!strdirector_code.Equals(""))
             {
@@ -235,6 +242,9 @@ namespace myWeb.App_Control.person
             {
                 strCriteria += " and substring(director_code,4,2) = substring('" + DirectorCode + "',4,2) ";
             }
+
+            strCriteria = strCriteria + "  And  (isspecial = 1) ";
+         
             
             try
             {

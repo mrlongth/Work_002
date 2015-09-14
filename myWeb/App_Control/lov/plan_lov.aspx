@@ -22,7 +22,7 @@
         </tr>
         <tr>
             <td style="text-align: right; width: 21%;">
-                <asp:Label runat="server" CssClass="label_h" ID="lblPage2">รหัสยุทธศาสตร์การจัดสรรงบประมาณ :
+                <asp:Label runat="server" CssClass="label_h" ID="lblPage2">รหัสยุทธศาสตร์:
                 </asp:Label>
             </td>
             <td>
@@ -31,7 +31,7 @@
         </tr>
         <tr>
             <td style="text-align: right; width: 21%; height: 26px;">
-                <asp:Label runat="server" CssClass="label_h" ID="lblPage1">ยุทธศาสตร์การจัดสรรงบประมาณ : </asp:Label>
+                <asp:Label runat="server" CssClass="label_h" ID="lblPage1">ยุทธศาสตร์ : </asp:Label>
             </td>
             <td style="height: 26px">
                 &nbsp;<asp:TextBox runat="server" CssClass="textbox" Width="300px" 
@@ -54,14 +54,14 @@
                     <asp:Label ID="lblNo" runat="server"> </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="รหัสยุทธศาสตร์การจัดสรรงบประมาณ " SortExpression="plan_code">
+            <asp:TemplateField HeaderText="รหัสยุทธศาสตร์" SortExpression="plan_code">
                 <ItemStyle HorizontalAlign="Center" Width="20%" Wrap="True" />
                 <ItemTemplate>
                     <asp:Label ID="lblplan_code" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.plan_code") %>'>
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="ชื่อยุทธศาสตร์การจัดสรรงบประมาณ " SortExpression="plan_name">
+            <asp:TemplateField HeaderText="ชื่อยุทธศาสตร์" SortExpression="plan_name">
                 <ItemStyle HorizontalAlign="Left" Width="50%" Wrap="True" />
                 <ItemTemplate>
                     <asp:Label ID="lblplan_name" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.plan_name") %>'>

@@ -122,7 +122,7 @@ namespace myWeb.Person_Manage
         protected void imgPrint_Click(object sender, ImageClickEventArgs e)
         {
             //divIframeShow.Height = Unit.Pixel(10);
-            PrintIframe();
+            PrintData();
          }
 
         protected void PrintData()

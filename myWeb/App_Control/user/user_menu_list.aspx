@@ -5,76 +5,81 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <table cellpadding="1" cellspacing="1" style="width: 100%" border="0">
         <tr>
-            <td style="text-align: right; width: 20%;">
+            <td style="text-align: right; width: 10%;">
                 <asp:Label runat="server" CssClass="label_h" ID="lblPage4">กลุ่มผู้ใช้งาน :</asp:Label>
             </td>
-            <td style="width: 1%;">
+            <td style="width: 25%;">
                 <asp:DropDownList runat="server" CssClass="textbox" ID="cboUserGroup" AutoPostBack="True"
                     OnSelectedIndexChanged="cboUserGroup_SelectedIndexChanged">
                 </asp:DropDownList>
                 <asp:Label runat="server" CssClass="label_error" ID="lblError"></asp:Label>
             </td>
-            <td style="width: 20%; text-align: right;">
+            <td style="width: 15%; text-align: right;">
                 <asp:Label runat="server" CssClass="label_h" ID="lblPage2">กลุ่มบุคคลากร :</asp:Label>
             </td>
-            <td colspan="2" style="height: 23px">
+            <td style="width: 15%">
                 <asp:DropDownList runat="server" CssClass="textbox" ID="cboPerson_group" AutoPostBack="True"
                     OnSelectedIndexChanged="cboPerson_group_SelectedIndexChanged">
                 </asp:DropDownList>
             </td>
+            <td rowspan="4" style="vertical-align: bottom; text-align: right; width: 15%;">
+                <asp:ImageButton runat="server" AlternateText="ค้นหาข้อมูล" ImageUrl="~/images/button/Search.png"
+                    ID="imgFind" OnClick="imgFind_Click"></asp:ImageButton>
+            </td>
         </tr>
         <tr>
-            <td style="text-align: right; width: 20%;">
+            <td style="text-align: right;">
                 <asp:Label runat="server" CssClass="label_h" ID="lblPage7">สังกัด :
                 </asp:Label>
             </td>
-            <td style="width: 1%;">
+            <td>
                 <asp:DropDownList runat="server" CssClass="textbox" ID="cboDirector" AutoPostBack="True"
                     OnSelectedIndexChanged="cboDirector_SelectedIndexChanged">
                 </asp:DropDownList>
             </td>
-            <td style="width: 20%; text-align: right;">
+            <td style="text-align: right;">
                 <asp:Label runat="server" CssClass="label_h" ID="lblPage8">หน่วยงาน :
                 </asp:Label>
             </td>
-            <td colspan="2" style="height: 23px">
+            <td>
                 <asp:DropDownList runat="server" CssClass="textbox" ID="cboUnit" AutoPostBack="True"
                     OnSelectedIndexChanged="cboUnit_SelectedIndexChanged">
                 </asp:DropDownList>
             </td>
         </tr>
         <tr>
-            <td style="text-align: right; width: 20%;">
+            <td style="text-align: right;">
                 <asp:Label runat="server" CssClass="label_h" ID="lblPage1">รหัสบุคคลากร :</asp:Label>
             </td>
-            <td colspan="3">
+            <td>
                 <asp:TextBox runat="server" CssClass="textbox" Width="100px" ID="txtperson_code"></asp:TextBox>
-                &nbsp;<asp:TextBox runat="server" CssClass="textbox" Width="350px" ID="txtperson_name"></asp:TextBox>
+                &nbsp;<asp:TextBox runat="server" CssClass="textbox" Width="200px" ID="txtperson_name"></asp:TextBox>
             </td>
-            <td style="text-align: right; vertical-align: bottom;" rowspan="2">
-                <asp:ImageButton runat="server" AlternateText="ค้นหาข้อมูล" ImageUrl="~/images/button/Search.png"
-                    ID="imgFind" OnClick="imgFind_Click"></asp:ImageButton>
+            <td style="text-align: right;">
+                <asp:Label runat="server" CssClass="label_h" ID="lblPage14">เลขที่บัตรประชาชน :
+                </asp:Label>
+            </td>
+            <td>
+                <asp:TextBox runat="server" CssClass="textbox" Width="175px" ID="txtperson_id"></asp:TextBox>
             </td>
         </tr>
         <tr>
-            <td style="text-align: right; width: 20%;">
+            <td style="text-align: right;">
                 <asp:Label runat="server" CssClass="label_h" ID="lblPage5">สถานะการทำงาน : </asp:Label>
             </td>
-            <td style="width: 1%;">
+            <td>
                 <asp:DropDownList runat="server" CssClass="textbox" ID="cboPerson_work_status" OnSelectedIndexChanged="cboPerson_work_status_SelectedIndexChanged"
                     AutoPostBack="True">
                 </asp:DropDownList>
             </td>
-            <td style="width: 20%; text-align: right;">
+            <td style="text-align: right;">
                 <asp:Label runat="server" CssClass="label_h" ID="lblPage3">สถานะ : </asp:Label>
             </td>
-            <td style="height: 23px">
+            <td>
                 <asp:RadioButton runat="server" GroupName="A" Checked="True" Text="ทั้งหมด" CssClass="label_h"
                     ID="RadioAll"></asp:RadioButton>
-                <asp:RadioButton runat="server" GroupName="A" Text="ปกติ" CssClass="label_h" ID="RadioActive">
-                </asp:RadioButton>
-                <asp:RadioButton runat="server" GroupName="A" Text="ยกเลิก" CssClass="label_h" ID="RadioCancel">
-                </asp:RadioButton>
+                <asp:RadioButton runat="server" GroupName="A" Text="ปกติ" CssClass="label_h" ID="RadioActive"></asp:RadioButton>
+                <asp:RadioButton runat="server" GroupName="A" Text="ยกเลิก" CssClass="label_h" ID="RadioCancel"></asp:RadioButton>
             </td>
         </tr>
     </table>
@@ -105,13 +110,20 @@
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
+            <asp:TemplateField HeaderText="เลขทีบัตรประชาชน " SortExpression="person_id">
+                <ItemStyle HorizontalAlign="Center" Width="10%" Wrap="True" />
+                <ItemTemplate>
+                    <asp:Label ID="lblperson_id" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.person_id") %>'>
+                    </asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:TemplateField HeaderText="ชื่อ-สกุล บุคคลากร " SortExpression="person_thai_name">
                 <ItemStyle HorizontalAlign="Left" Width="12%" Wrap="True" />
                 <ItemTemplate>
                     <asp:Label ID="lblperson_name" runat="server" Text='<%  # DataBinder.Eval(Container, "DataItem.person_thai_name") %>'
                         Visible="false">
                     </asp:Label>
-                    <asp:Label ID="lblperson_names" runat="server" Text='<%  # DataBinder.Eval(Container, "DataItem.title_name")+""+DataBinder.Eval(Container, "DataItem.person_thai_name") + " " + DataBinder.Eval(Container, "DataItem.person_thai_surname") %>'>
+                    <asp:Label ID="lblperson_names" runat="server" Text='<%  # DataBinder.Eval(Container, "DataItem.title_name") + "" + DataBinder.Eval(Container, "DataItem.person_thai_name") + " " + DataBinder.Eval(Container, "DataItem.person_thai_surname") %>'>
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>

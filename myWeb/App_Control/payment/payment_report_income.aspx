@@ -87,7 +87,7 @@
                     
                      <tr>
                         <td style="text-align: right; width: 20%;">
-                            <asp:Label runat="server" ID="lblPage5" CssClass="label_h">งาน :</asp:Label>
+                            <asp:Label runat="server" ID="lblPage5" CssClass="label_h">งาน/หลักสูตร :</asp:Label>
                         </td>
                         <td style="width: 1%; text-align: left;" colspan="3">
                 <asp:DropDownList ID="cboWork" runat="server" CssClass="textbox">

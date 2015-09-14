@@ -55,7 +55,7 @@ namespace myWeb.App_Control.payment_round
               
                 imgFind.Attributes.Add("onMouseOver", "src='../../images/button/Search2.png'");
                 imgFind.Attributes.Add("onMouseOut", "src='../../images/button/Search.png'");
-                imgNew.Attributes.Add("onclick", "OpenPopUp('800px','270px','90%','ประมวลผลประจำเดือน','payment_round_control.aspx?mode=add&page=0','1');return false;");
+                imgNew.Attributes.Add("onclick", "OpenPopUp('800px','350px','92%','ประมวลผลประจำเดือน','payment_round_control.aspx?mode=add&page=0','1');return false;");
                 if (chkRound())
                 {
                     imgNew.Visible = false;

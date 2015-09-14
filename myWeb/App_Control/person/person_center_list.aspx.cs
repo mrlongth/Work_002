@@ -422,7 +422,7 @@ namespace myWeb.App_Control.person
                 {
 
                     string strScript = "<a href=\"\" onclick=\"" +
-                                        "OpenPopUp('990px','550px','95%','แก้ไขข้อมูลพนังาน','person_control.aspx?mode=edit&person_code=" +
+                                        "OpenPopUp('990px','550px','95%','แก้ไขข้อมูลพนังาน/หลักสูตร','person_control.aspx?mode=edit&person_code=" +
                                         ds.Tables[0].Rows[0]["person_code"].ToString() + "&FromPage=person_center&page=" + GridView1.PageIndex.ToString() +
                                          "&IsUserEdit=" + (IsUserEdit ? "Y" : "N") + "&IsUserDelete=" + (IsUserDelete ? "Y" : "N") +
                                          "','1');return false;\" >" + lblCITIZEN_ID2.Text + "</a>";

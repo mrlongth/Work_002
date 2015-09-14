@@ -95,6 +95,7 @@
         </tr>
         <tr align="left">
             <td align="right" nowrap valign="middle" width="20%">
+                            <asp:label id="Label80" runat="server" cssclass="label_error">*</asp:label>
                 <asp:Label runat="server" ID="Label11">รหัสค่าดำเนินงาน :</asp:Label>
             </td>
             <td align="left" nowrap valign="middle" colspan="3">
@@ -107,10 +108,9 @@
                     <asp:TextBox ID="txtitem_name" runat="server" CssClass="textbox" MaxLength="100"
                         Width="250px"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtitem_code" Display="None" ErrorMessage="กรุณาป้อนรหัสค่าดำเนินงาน" SetFocusOnError="True" ValidationGroup="A"></asp:RequiredFieldValidator>
-                <ajaxtoolkit:ValidatorCalloutExtender ID="ValidatorCalloutExtender2" runat="server" Enabled="True" HighlightCssClass="validatorCalloutHighlight" TargetControlID="RequiredFieldValidator2">
-                </ajaxtoolkit:ValidatorCalloutExtender>
+                <asp:ValidationSummary ID="ValidationSummary2" runat="server" ShowMessageBox="True" ShowSummary="False" ValidationGroup="A" />
+
                 <asp:Label ID="lblError" runat="server" CssClass="label_error"></asp:Label>
-                <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True" ShowSummary="False" />
             </td>
         </tr>
     </table>
@@ -127,7 +127,7 @@
                     <asp:CheckBox ID="cbSelectAll" runat="server" Checked="True" />
                 </HeaderTemplate>
                 <ItemTemplate>
-                    <asp:CheckBox ID="CheckBox1" runat="server" Checked="True" TabIndex="-1"  />
+                    <asp:CheckBox ID="CheckBox1" runat="server" Checked="True" TabIndex="-1" />
                 </ItemTemplate>
                 <ItemStyle HorizontalAlign="Center" Wrap="False" Width="1%"></ItemStyle>
             </asp:TemplateField>
@@ -189,7 +189,7 @@
         </Columns>
         <HeaderStyle HorizontalAlign="Center" CssClass="stGridHeader" Font-Bold="True"></HeaderStyle>
     </asp:GridView>
-   
+
     <script type="text/javascript">
         function RegisterScript() {
             $("input[id*=imgClear_person]").click(function () {
@@ -214,10 +214,9 @@
 
         };
 
-        function ToggleValidator(chk)
-        {
-            var requiredFieldValidator =  chk.id.replace('CheckBox1', 'reqperson_id');
-          
+        function ToggleValidator(chk) {
+            var requiredFieldValidator = chk.id.replace('CheckBox1', 'reqperson_id');
+
             var validatorObject = document.getElementById(requiredFieldValidator);
             console.log(validatorObject);
             validatorObject.enabled = chk.checked;

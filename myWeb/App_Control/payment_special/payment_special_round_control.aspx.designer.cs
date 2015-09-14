@@ -121,15 +121,6 @@ namespace myWeb.App_Control.payment_round {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator15;
         
         /// <summary>
-        /// RequiredFieldValidator15_ValidatorCalloutExtender control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.ValidatorCalloutExtender RequiredFieldValidator15_ValidatorCalloutExtender;
-        
-        /// <summary>
         /// Label86 control.
         /// </summary>
         /// <remarks>
@@ -155,15 +146,6 @@ namespace myWeb.App_Control.payment_round {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator16;
-        
-        /// <summary>
-        /// RequiredFieldValidator16_ValidatorCalloutExtender control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.ValidatorCalloutExtender RequiredFieldValidator16_ValidatorCalloutExtender;
         
         /// <summary>
         /// Label87 control.
@@ -211,15 +193,6 @@ namespace myWeb.App_Control.payment_round {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator13;
         
         /// <summary>
-        /// RequiredFieldValidator13_ValidatorCalloutExtender control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.ValidatorCalloutExtender RequiredFieldValidator13_ValidatorCalloutExtender;
-        
-        /// <summary>
         /// Label88 control.
         /// </summary>
         /// <remarks>
@@ -263,15 +236,6 @@ namespace myWeb.App_Control.payment_round {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator14;
-        
-        /// <summary>
-        /// ValidatorCalloutExtender1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.ValidatorCalloutExtender ValidatorCalloutExtender1;
         
         /// <summary>
         /// Label89 control.
@@ -353,5 +317,14 @@ namespace myWeb.App_Control.payment_round {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton imgSaveOnly;
+        
+        /// <summary>
+        /// ValidationSummary2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary2;
     }
 }

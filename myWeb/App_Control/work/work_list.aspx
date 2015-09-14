@@ -79,7 +79,7 @@
                 </ItemTemplate>
                 <ItemStyle Wrap="False" />
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="งาน " SortExpression="work_name">
+            <asp:TemplateField HeaderText="งาน/หลักสูตร " SortExpression="work_name">
                 <ItemTemplate>
                     <asp:Label ID="lblwork_name" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.work_name") %>'>
                     </asp:Label>

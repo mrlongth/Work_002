@@ -3,7 +3,7 @@
     AutoEventWireup="true" 
     CodeBehind="Menu_control.aspx.cs" 
     Inherits="myWeb.Menu_control" 
-    Title="เมนูการใช้งาน" %>
+    Title="เมนูการใช้งาน/หลักสูตร" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
    <center>
         <br />

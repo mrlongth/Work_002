@@ -87,6 +87,7 @@ namespace myWeb.App_Control.item
 
                 #endregion
                 InitcboBudgetType();
+                InitcboLot();
                 InitcboItemClass();
             }
         }

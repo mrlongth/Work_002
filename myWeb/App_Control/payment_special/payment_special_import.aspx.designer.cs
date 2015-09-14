@@ -157,6 +157,15 @@ namespace myWeb.App_Control.payment_special {
         protected global::System.Web.UI.WebControls.DropDownList cboPay_Item;
         
         /// <summary>
+        /// Label80 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label80;
+        
+        /// <summary>
         /// Label11 control.
         /// </summary>
         /// <remarks>
@@ -211,13 +220,13 @@ namespace myWeb.App_Control.payment_special {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
         
         /// <summary>
-        /// ValidatorCalloutExtender2 control.
+        /// ValidationSummary2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.ValidatorCalloutExtender ValidatorCalloutExtender2;
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary2;
         
         /// <summary>
         /// lblError control.
@@ -227,15 +236,6 @@ namespace myWeb.App_Control.payment_special {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblError;
-        
-        /// <summary>
-        /// ValidationSummary1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
         
         /// <summary>
         /// GridView1 control.

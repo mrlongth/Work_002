@@ -31,6 +31,24 @@ namespace myWeb.App_Control.payment_special {
         protected global::System.Web.UI.WebControls.DropDownList cboYear;
         
         /// <summary>
+        /// imgFind control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton imgFind;
+        
+        /// <summary>
+        /// imgNew control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton imgNew;
+        
+        /// <summary>
         /// lblPage15 control.
         /// </summary>
         /// <remarks>
@@ -139,24 +157,6 @@ namespace myWeb.App_Control.payment_special {
         protected global::System.Web.UI.WebControls.DropDownList cboUnit;
         
         /// <summary>
-        /// imgFind control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgFind;
-        
-        /// <summary>
-        /// imgNew control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgNew;
-        
-        /// <summary>
         /// lblPage9 control.
         /// </summary>
         /// <remarks>
@@ -200,6 +200,24 @@ namespace myWeb.App_Control.payment_special {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtperson_name;
+        
+        /// <summary>
+        /// lblPage16 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPage16;
+        
+        /// <summary>
+        /// txtperson_id control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtperson_id;
         
         /// <summary>
         /// lblPage3 control.

@@ -238,6 +238,15 @@ namespace myWeb.Person_Manage {
         protected global::System.Web.UI.WebControls.LinkButton lnkChangePass;
         
         /// <summary>
+        /// Label78 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label78;
+        
+        /// <summary>
         /// TabPanel2 control.
         /// </summary>
         /// <remarks>
@@ -922,15 +931,6 @@ namespace myWeb.Person_Manage {
         protected global::System.Web.UI.WebControls.TextBox txtperson_birth;
         
         /// <summary>
-        /// calendarButtonExtender control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender calendarButtonExtender;
-        
-        /// <summary>
         /// lblAge control.
         /// </summary>
         /// <remarks>
@@ -947,6 +947,15 @@ namespace myWeb.Person_Manage {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label26;
+        
+        /// <summary>
+        /// TextBox1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox1;
         
         /// <summary>
         /// cboPerson_marry control.

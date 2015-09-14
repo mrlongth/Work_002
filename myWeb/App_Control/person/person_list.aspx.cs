@@ -259,6 +259,7 @@ namespace myWeb.App_Control.person
             string strdirector_code = string.Empty;
             string strunit_code = string.Empty;
             string strperson_code = string.Empty;
+            string strperson_id = string.Empty;
             string strperson_name = string.Empty;
             string strperson_work_status_code = string.Empty;
             strperson_group_code = cboPerson_group.SelectedValue;
@@ -268,15 +269,16 @@ namespace myWeb.App_Control.person
             strYear = cboYear.SelectedValue;
             strperson_code = txtperson_code.Text.Replace("'", "''").Trim();
             strperson_name = txtperson_name.Text.Replace("'", "''").Trim();
+            strperson_id = txtperson_id.Text.Replace("'", "''").Trim();
             if (Request.Form[strPrefixCtr + "cboPerson_work_status"] != null)
             {
                 strperson_work_status_code = Request.Form[strPrefixCtr + "cboPerson_work_status"].ToString();
             }
 
-            //if (!strYear.Equals(""))
-            //{
-            //    strCriteria = strCriteria + "  And  (budget_plan_year = '" + strYear + "') ";
-            //}
+            if (!strperson_id.Equals(""))
+            {
+                strCriteria = strCriteria + "  And  (person_id like '%" + strperson_id + "%') ";
+            }
 
             if (!strperson_group_code.Equals(""))
             {

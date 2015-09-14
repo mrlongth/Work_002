@@ -5,8 +5,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <table cellpadding="1" cellspacing="1" style="width: 100%" border="0">
         <tr>
-            <td style="text-align: right; width: 20%;">
-                &nbsp;
+            <td style="text-align: right; width: 20%;">&nbsp;
             </td>
             <td colspan="2">
                 <asp:Label runat="server" CssClass="label_error" ID="lblError"></asp:Label>
@@ -20,11 +19,20 @@
                 <asp:TextBox runat="server" CssClass="textbox" Width="100px" ID="txtpr_person_code"></asp:TextBox>
                 &nbsp;<asp:TextBox runat="server" CssClass="textbox" Width="350px" ID="txtperson_retire_name"></asp:TextBox>
             </td>
-            <td style="text-align: right; vertical-align: bottom;" rowspan="2">
+            <td style="text-align: right; vertical-align: bottom;" rowspan="3">
                 <asp:ImageButton runat="server" AlternateText="ค้นหาข้อมูล" ImageUrl="~/images/button/Search.png"
                     ID="imgFind" OnClick="imgFind_Click"></asp:ImageButton>
                 <asp:ImageButton runat="server" AlternateText="เพิ่มข้อมุล" ImageUrl="~/images/button/Save.png"
                     ID="imgNew"></asp:ImageButton>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; width: 20%;">
+                <asp:Label runat="server" CssClass="label_h" ID="lblPage9">เลขที่บัตรประชาชน :
+                </asp:Label>
+            </td>
+            <td>
+                <asp:TextBox runat="server" CssClass="textbox" Width="175px" ID="txtperson_id"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -34,10 +42,8 @@
             <td>
                 <asp:RadioButton runat="server" GroupName="A" Checked="True" Text="ทั้งหมด" CssClass="label_h"
                     ID="RadioAll"></asp:RadioButton>
-                <asp:RadioButton runat="server" GroupName="A" Text="ปกติ" CssClass="label_h" ID="RadioActive">
-                </asp:RadioButton>
-                <asp:RadioButton runat="server" GroupName="A" Text="ยกเลิก" CssClass="label_h" ID="RadioCancel">
-                </asp:RadioButton>
+                <asp:RadioButton runat="server" GroupName="A" Text="ปกติ" CssClass="label_h" ID="RadioActive"></asp:RadioButton>
+                <asp:RadioButton runat="server" GroupName="A" Text="ยกเลิก" CssClass="label_h" ID="RadioCancel"></asp:RadioButton>
             </td>
         </tr>
     </table>
@@ -61,13 +67,6 @@
                     <asp:Label ID="lblNo" runat="server"> </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="เลขที่บัตรประชาชน" SortExpression="person_id">
-                <ItemStyle HorizontalAlign="Center" Width="5%" Wrap="True" />
-                <ItemTemplate>
-                    <asp:Label ID="lblperson_id" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.person_id") %>'>
-                    </asp:Label>
-                </ItemTemplate>
-            </asp:TemplateField>
             <asp:TemplateField HeaderText="รหัสบุคลากร " SortExpression="pr_person_code">
                 <ItemStyle HorizontalAlign="Center" Width="5%" Wrap="True" />
                 <ItemTemplate>
@@ -75,20 +74,27 @@
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
+            <asp:TemplateField HeaderText="เลขที่บัตรประชาชน" SortExpression="person_id">
+                <ItemStyle HorizontalAlign="Center" Width="5%" Wrap="True" />
+                <ItemTemplate>
+                    <asp:Label ID="lblperson_id" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.person_id") %>'>
+                    </asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:TemplateField HeaderText="ชื่อบุคลากร " SortExpression="person_thai_name">
                 <ItemStyle HorizontalAlign="Left" Width="12%" Wrap="True" />
                 <ItemTemplate>
-                    <asp:Label ID="lblperson_retire_name" runat="server" Text='<%  # DataBinder.Eval(Container, "DataItem.person_thai_name") %>'
+                    <asp:Label ID="lblperson_retire_name" runat="server" Text='<%  # DataBinder.Eval(Container, "DataItem.person_thai_name")%>'
                         Visible="false">
                     </asp:Label>
-                    <asp:Label ID="lblperson_retire_names" runat="server" Text='<%  # DataBinder.Eval(Container, "DataItem.title_name")+""+DataBinder.Eval(Container, "DataItem.person_thai_name") %>'>
+                    <asp:Label ID="lblperson_retire_names" runat="server" Text='<%  # DataBinder.Eval(Container, "DataItem.title_name") + "" + DataBinder.Eval(Container, "DataItem.person_thai_name")%>'>
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="นามสกุล" SortExpression="person_thai_surname">
                 <ItemStyle HorizontalAlign="Left" Width="12%" Wrap="True" />
                 <ItemTemplate>
-                    <asp:Label ID="lblperson_thai_surname" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.person_thai_surname") %>'>
+                    <asp:Label ID="lblperson_thai_surname" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.person_thai_surname")%>'>
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>

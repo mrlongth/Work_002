@@ -7,8 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace myWeb.App_Control.user
-{
+namespace myWeb.App_Control.user {
     
     
     public partial class user_menu_list {
@@ -57,6 +56,15 @@ namespace myWeb.App_Control.user
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList cboPerson_group;
+        
+        /// <summary>
+        /// imgFind control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton imgFind;
         
         /// <summary>
         /// lblPage7 control.
@@ -122,13 +130,22 @@ namespace myWeb.App_Control.user
         protected global::System.Web.UI.WebControls.TextBox txtperson_name;
         
         /// <summary>
-        /// imgFind control.
+        /// lblPage14 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgFind;
+        protected global::System.Web.UI.WebControls.Label lblPage14;
+        
+        /// <summary>
+        /// txtperson_id control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtperson_id;
         
         /// <summary>
         /// lblPage5 control.

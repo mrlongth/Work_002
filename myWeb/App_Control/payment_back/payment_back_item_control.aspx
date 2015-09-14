@@ -109,9 +109,6 @@
                     MaxLength="100"></asp:TextBox>
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="txtitem_code" ErrorMessage="กรุณาป้อนรหัสรายได้/จ่าย"
                     Display="None" SetFocusOnError="True" ValidationGroup="A" ID="RequiredFieldValidator1"></asp:RequiredFieldValidator>
-                <ajaxtoolkit:ValidatorCalloutExtender runat="server" HighlightCssClass="validatorCalloutHighlight"
-                    Enabled="True" TargetControlID="RequiredFieldValidator1" ID="RequiredFieldValidator1_ValidatorCalloutExtender">
-                </ajaxtoolkit:ValidatorCalloutExtender>
             </td>
         </tr>
         <tr align="left">
@@ -140,9 +137,7 @@
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="txtpayment_item_back"
                     ErrorMessage="กรุณาป้อนจำนวนเงิน" Display="None" SetFocusOnError="True" ValidationGroup="A"
                     ID="RequiredFieldValidator2"></asp:RequiredFieldValidator>
-                <ajaxtoolkit:ValidatorCalloutExtender runat="server" HighlightCssClass="validatorCalloutHighlight"
-                    Enabled="True" TargetControlID="RequiredFieldValidator2" ID="RequiredFieldValidator2_ValidatorCalloutExtender">
-                </ajaxtoolkit:ValidatorCalloutExtender>
+                <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True" ShowSummary="False" ValidationGroup="A" />
             </td>
             <td align="left" colspan="2" nowrap valign="middle" style="text-align: right">
                 <asp:Label runat="server" CssClass="label_error" ID="Label72">*</asp:Label>

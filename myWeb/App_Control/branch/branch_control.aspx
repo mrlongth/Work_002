@@ -1,15 +1,12 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site_popup.Master" EnableEventValidation="false"
     AutoEventWireup="true" CodeBehind="branch_control.aspx.cs" Inherits="myWeb.App_Control.branch.branch_control" %>
 
-<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxtoolkit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <table border="0" cellpadding="1" cellspacing="1" style="width: 100%">
         <tr>
-            <td align="left" nowrap style="width: 90%;">
-                &nbsp;
+            <td align="left" nowrap style="width: 90%;">&nbsp;
             </td>
-            <td align="left" style="width: 0%">
-                &nbsp;
+            <td align="left" style="width: 0%">&nbsp;
             </td>
         </tr>
         <tr>
@@ -33,7 +30,7 @@
     <table border="0" cellpadding="1" cellspacing="1" style="width: 100%">
         <tr align="left">
             <td align="right" nowrap valign="middle" width="13%">
-                                        <asp:Label runat="server" CssClass="label_error" ID="Label71">*</asp:Label>
+                <asp:Label runat="server" CssClass="label_error" ID="Label71">*</asp:Label>
                 <asp:Label runat="server" ID="Label13">ธนาคาร:</asp:Label>
             </td>
             <td align="left" nowrap valign="middle">
@@ -41,11 +38,9 @@
                 </asp:DropDownList>
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="cboBank" ErrorMessage="กรุณาเลือกธนาคาร"
                     Display="None" ValidationGroup="A" ID="RequiredFieldValidator1" SetFocusOnError="True"></asp:RequiredFieldValidator>
-                <ajaxtoolkit:ValidatorCalloutExtender runat="server" Enabled="True" TargetControlID="RequiredFieldValidator1"
-                    ID="RequiredFieldValidator1_ValidatorCalloutExtender" HighlightCssClass="validatorCalloutHighlight">
-                </ajaxtoolkit:ValidatorCalloutExtender>
+                <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True" ShowSummary="False" ValidationGroup="A" />
             </td>
-            <td align="center" nowrap rowspan="5" 
+            <td align="center" nowrap rowspan="5"
                 style="vertical-align: bottom; width: 1%;">
                 <asp:ImageButton runat="server" ValidationGroup="A" ImageUrl="~/images/controls/save.jpg"
                     ID="imgSaveOnly"></asp:ImageButton>
@@ -60,18 +55,18 @@
             </td>
             <td align="left" nowrap valign="middle">
                 <asp:TextBox runat="server" MaxLength="5" ValidationGroup="A" CssClass="textbox"
-                      Width="144px" ID="txtbranch_code"></asp:TextBox>
+                    Width="144px" ID="txtbranch_code"></asp:TextBox>
             </td>
         </tr>
         <tr align="left">
             <td align="right" nowrap valign="middle">
-                                        <asp:Label runat="server" CssClass="label_error" 
+                <asp:Label runat="server" CssClass="label_error"
                     ID="Label72">*</asp:Label>
                 <asp:Label runat="server" ID="Label11">สาขา :</asp:Label>
             </td>
             <td align="left" nowrap valign="middle">
                 <asp:TextBox runat="server" CausesValidation="True" MaxLength="100" ValidationGroup="A"
-                    CssClass="textbox"   Width="344px" ID="txtbranch_name"></asp:TextBox>
+                    CssClass="textbox" Width="344px" ID="txtbranch_name"></asp:TextBox>
             </td>
         </tr>
         <tr align="left">
@@ -80,21 +75,14 @@
             </td>
             <td align="left" nowrap valign="middle">
                 <asp:CheckBox runat="server" Text="ปกติ" ID="chkStatus"></asp:CheckBox>
-                <font face="Tahoma">
-                    <asp:RequiredFieldValidator runat="server" ControlToValidate="txtbranch_name" ErrorMessage="กรุณาป้อนชื่อสาขา"
-                        Display="None" SetFocusOnError="True" ValidationGroup="A" ID="RequiredFieldValidator2"></asp:RequiredFieldValidator>
-                    <ajaxtoolkit:ValidatorCalloutExtender runat="server" Enabled="True" TargetControlID="RequiredFieldValidator2"
-                        ID="RequiredFieldValidator2_ValidatorCalloutExtender" HighlightCssClass="validatorCalloutHighlight">
-                    </ajaxtoolkit:ValidatorCalloutExtender>
-                </font>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="txtbranch_name" ErrorMessage="กรุณาป้อนชื่อสาขา"
+                    Display="None" SetFocusOnError="True" ValidationGroup="A" ID="RequiredFieldValidator2"></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr align="left">
-            <td align="right" nowrap valign="middle">
-                &nbsp;
+            <td align="right" nowrap valign="middle">&nbsp;
             </td>
-            <td align="left" nowrap valign="middle">
-                &nbsp;
+            <td align="left" nowrap valign="middle">&nbsp;
             </td>
         </tr>
     </table>
@@ -124,7 +112,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="ชื่อสาขา " SortExpression="branch_name">
                                 <ItemTemplate>
-                                    <asp:Label ID="lblbranch_name" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.branch_name") %>'>
+                                    <asp:Label ID="lblbranch_name" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.branch_name")%>'>
                                     </asp:Label>
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Left" Wrap="True" Width="40%"></ItemStyle>

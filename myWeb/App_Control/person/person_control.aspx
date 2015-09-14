@@ -71,7 +71,7 @@
                     BorderWidth="0px" Style="text-align: left">
                     <ajaxtoolkit:TabPanel runat="server" HeaderText="ข้อมูลประวัติบุคลากร" ID="TabPanel1">
                         <HeaderTemplate>
-                            ประวัติบุคคลกร
+                            ประวัติบุคลากร
                         </HeaderTemplate>
                         <ContentTemplate>
                             <table border="0" cellpadding="1" cellspacing="1" style="width: 100%">
@@ -174,9 +174,12 @@
                                             ID="Label20" runat="server" CssClass="label_hbk">เลขที่บัตรประชาชน :</asp:Label>
                                     </td>
                                     <td align="left" nowrap valign="middle" style="">
-                                        <asp:TextBox ID="txtperson_id" runat="server" CssClass="textbox" Width="200px" MaxLength="13"></asp:TextBox><ajaxtoolkit:FilteredTextBoxExtender
+                                        <asp:TextBox ID="txtperson_id" runat="server" CssClass="textbox" Width="200px" MaxLength="13"></asp:TextBox>
+                                        
+                                       <%-- <ajaxtoolkit:FilteredTextBoxExtender
                                             ID="FilteredTextBoxExtender1" runat="server" TargetControlID="txtperson_id" FilterType="Numbers"
-                                            Enabled="True" />
+                                            Enabled="True" />--%>
+
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtperson_id"
                                             Display="None" ErrorMessage="กรุณาป้อนเลขที่บัตรประชาชน" ValidationGroup="A"
                                             SetFocusOnError="True"></asp:RequiredFieldValidator>
@@ -208,7 +211,7 @@
                                     </td>
                                     <td align="left" nowrap valign="middle">
                                         <font face="Tahoma">
-                                            <asp:CheckBox ID="chkStatus" runat="server" Text="ปกติ" />
+                                            <asp:CheckBox ID="chkStatus" runat="server" Text="ปกติ" Checked="True" />
                                         </font>
                                     </td>
                                 </tr>
@@ -363,33 +366,33 @@
                                         <asp:TextBox ID="txtbank_no" runat="server" CssClass="textbox" MaxLength="20" Width="130px"></asp:TextBox>
                                     </td>
                                 </tr>
-                                <tr align="left">
+                                <tr align="left" style="display: none;">
                                     <td align="right" nowrap valign="middle">
-                                        <asp:Label ID="Label78" runat="server" CssClass="label_hbk">สาขาธนาคาร(รด.) :</asp:Label>
+                                        <asp:Label ID="Label78" runat="server" CssClass="label_hbk" Visible="False">สาขาธนาคาร(รด.) :</asp:Label>
                                     </td>
                                     <td align="left" nowrap valign="middle">
                                         <asp:TextBox ID="txtbranch_code_2" runat="server" CssClass="textbox" MaxLength="6"
-                                            Width="80px"></asp:TextBox>
+                                            Width="80px" Visible="False"></asp:TextBox>
                                         &nbsp;<asp:ImageButton ID="imgList_branch_2" runat="server" CausesValidation="False"
-                                            ImageAlign="AbsBottom" ImageUrl="../../images/controls/view2.gif" />
+                                            ImageAlign="AbsBottom" ImageUrl="../../images/controls/view2.gif" Visible="False" />
                                         <asp:ImageButton ID="imgClear_branch_2" runat="server" CausesValidation="False" ImageAlign="AbsBottom"
-                                            ImageUrl="../../images/controls/erase.gif" />
+                                            ImageUrl="../../images/controls/erase.gif" Visible="False" />
                                         &nbsp;<asp:TextBox ID="txtbranch_name_2" runat="server" CssClass="textboxdis" MaxLength="100"
-                                            Width="200px"></asp:TextBox>
+                                            Width="200px" Visible="False"></asp:TextBox>
                                     </td>
                                     <td nowrap style="text-align: right;">
-                                        <asp:Label ID="Label80" runat="server" CssClass="label_hbk">เลขที่บัญชี(รด.) :</asp:Label>
+                                        <asp:Label ID="Label80" runat="server" CssClass="label_hbk" Visible="False">เลขที่บัญชี(รด.) :</asp:Label>
                                     </td>
                                     <td align="left">
-                                        <asp:TextBox ID="txtbank_no_2" runat="server" CssClass="textbox" MaxLength="20" Width="130px"></asp:TextBox>
+                                        <asp:TextBox ID="txtbank_no_2" runat="server" CssClass="textbox" MaxLength="20" Width="130px" Visible="False"></asp:TextBox>
                                     </td>
                                 </tr>
-                                <tr align="left">
+                                <tr align="left" style="display: none;">
                                     <td align="right" nowrap valign="middle">
-                                        <asp:Label ID="Label79" runat="server" CssClass="label_hbk">ธนาคาร(รด.) :</asp:Label>
+                                        <asp:Label ID="Label79" runat="server" CssClass="label_hbk" Visible="False">ธนาคาร(รด.) :</asp:Label>
                                     </td>
                                     <td align="left" nowrap valign="middle">
-                                        <asp:TextBox ID="txtbank_name_2" runat="server" CssClass="textboxdis" Width="260px"></asp:TextBox>
+                                        <asp:TextBox ID="txtbank_name_2" runat="server" CssClass="textboxdis" Width="260px" Visible="False"></asp:TextBox>
                                     </td>
                                     <td nowrap style="text-align: right;">
                                         &nbsp;
@@ -418,7 +421,7 @@
                                         <asp:Label ID="Label50" runat="server" CssClass="label_hbk">กลุ่มบุคลากร :</asp:Label>
                                     </td>
                                     <td>
-                                        <asp:DropDownList ID="cboPerson_group" runat="server" CssClass="textbox">
+                                        <asp:DropDownList ID="cboPerson_group" runat="server" CssClass="textbox" AutoPostBack="True" OnSelectedIndexChanged="cboPerson_group_SelectedIndexChanged">
                                         </asp:DropDownList>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="cboPerson_group"
                                             Display="None" ErrorMessage="กรุณาเลือกกลุ่มบุคลากร" SetFocusOnError="True"
@@ -536,7 +539,7 @@
                                         <asp:TextBox ID="txtplan_name" runat="server" CssClass="textboxdis" Width="300px"></asp:TextBox>
                                     </td>
                                     <td nowrap style="text-align: right;">
-                                        <asp:Label ID="Label57" runat="server" CssClass="label_hbk">งาน :</asp:Label>
+                                        <asp:Label ID="Label57" runat="server" CssClass="label_hbk">งาน/หลักสูตร :</asp:Label>
                                     </td>
                                     <td align="left">
                                         <asp:TextBox ID="txtwork_name" runat="server" CssClass="textboxdis" Width="300px"></asp:TextBox>
@@ -1058,7 +1061,7 @@
                         </HeaderTemplate>
                         <ContentTemplate>
                             <table border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
-                                <tr align="center">
+                                <tr align="center" style="display: none;">
                                     <td align="left" nowrap style="height: 30px; width: 42%" valign="top">
                                         <asp:Label ID="Label13" runat="server" CssClass="label_hbk">เลขที่บัญชีเงินสะสมพนักงาน  :</asp:Label>
                                         <asp:TextBox ID="txtCumulative_acc" runat="server" CssClass="textbox" Width="180px"></asp:TextBox>
@@ -1221,10 +1224,10 @@
                             </table>
                         </ContentTemplate>
                     </ajaxtoolkit:TabPanel>
-                    <ajaxtoolkit:TabPanel ID="TabPanel6" runat="server" HeaderText="สมาชิก(เครดิตยูเนี่ยน)"
+                    <ajaxtoolkit:TabPanel ID="TabPanel6" runat="server" HeaderText="การเป็นสมาชิก"
                         ScrollBars="Vertical">
                         <HeaderTemplate>
-                            สมาชิก(เครดิตยูเนี่ยน)
+                            การเป็นสมาชิก
                         </HeaderTemplate>
                         <ContentTemplate>
                             <table border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
@@ -1245,12 +1248,12 @@
                                                             <asp:Label ID="lblNo1" runat="server"> </asp:Label></ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" Width="2%" Wrap="False" />
                                                     </asp:TemplateField>
-                                                    <asp:TemplateField HeaderText="รหัสสมาชิก(เครดิตยูเนี่ยน)" SortExpression="member_code">
+                                                    <asp:TemplateField HeaderText="รหัสการเป็นสมาชิก" SortExpression="member_code">
                                                         <ItemTemplate>
                                                             <asp:Label ID="lblmember_code" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.member_code") %>'> </asp:Label></ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" Width="15%" Wrap="True" />
                                                     </asp:TemplateField>
-                                                    <asp:TemplateField HeaderText="ชื่อสมาชิก(เครดิตยูเนี่ยน)" SortExpression="member_name">
+                                                    <asp:TemplateField HeaderText="ชื่อการเป็นสมาชิก" SortExpression="member_name">
                                                         <ItemTemplate>
                                                             <asp:Label ID="lblmember_name" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.member_name") %>'> </asp:Label></ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Left" Width="45%" Wrap="True" />

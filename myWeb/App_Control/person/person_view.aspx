@@ -77,7 +77,7 @@
                     BorderWidth="0px" Style="text-align: left">
                     <ajaxtoolkit:TabPanel runat="server" HeaderText="ข้อมูลประวัติบุคลากร" ID="TabPanel1">
                         <HeaderTemplate>
-                            ประวัติบุคคลกร
+                            ประวัติบุคลากร
                         </HeaderTemplate>
                         <ContentTemplate>
                             <table border="0" cellpadding="1" cellspacing="1" style="width: 100%">
@@ -441,14 +441,14 @@
                                 </tr>
                                 <tr align="left">
                                     <td align="right" nowrap valign="middle">
-                                        <asp:Label ID="Label56" runat="server" CssClass="label_hbk">ยุทธศาสตร์การจัดสรรงบประมาณ :</asp:Label>
+                                        <asp:Label ID="Label56" runat="server" CssClass="label_hbk">ยุทธศาสตร์ :</asp:Label>
                                     </td>
                                     <td align="left" nowrap valign="middle">
                                         <asp:TextBox ID="txtplan_name" runat="server" CssClass="textboxdis"  
                                             Width="260px" ReadOnly="True"></asp:TextBox>
                                     </td>
                                     <td nowrap style="text-align: right;">
-                                        <asp:Label ID="Label57" runat="server" CssClass="label_hbk">งาน :</asp:Label>
+                                        <asp:Label ID="Label57" runat="server" CssClass="label_hbk">งาน/หลักสูตร :</asp:Label>
                                     </td>
                                     <td align="left">
                                         <asp:TextBox ID="txtwork_name" runat="server" CssClass="textboxdis"  
@@ -987,10 +987,10 @@
                             </table>
                         </ContentTemplate>
                     </ajaxtoolkit:TabPanel>
-                    <ajaxtoolkit:TabPanel ID="TabPanel6" runat="server" HeaderText="สมาชิก(เครดิตยูเนี่ยน)"
+                    <ajaxtoolkit:TabPanel ID="TabPanel6" runat="server" HeaderText="การเป็นสมาชิก"
                         ScrollBars="Vertical">
                         <HeaderTemplate>
-                            สมาชิก(เครดิตยูเนี่ยน)
+                            การเป็นสมาชิก
                         </HeaderTemplate>
                         <ContentTemplate>
                             <table border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
@@ -1012,12 +1012,12 @@
                                                             <asp:Label ID="lblNo1" runat="server"> </asp:Label></ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" Width="2%" Wrap="False" />
                                                     </asp:TemplateField>
-                                                    <asp:TemplateField HeaderText="รหัสสมาชิก(เครดิตยูเนี่ยน)" SortExpression="member_code">
+                                                    <asp:TemplateField HeaderText="รหัสการเป็นสมาชิก" SortExpression="member_code">
                                                         <ItemTemplate>
                                                             <asp:Label ID="lblmember_code" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.member_code") %>'> </asp:Label></ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" Width="15%" Wrap="True" />
                                                     </asp:TemplateField>
-                                                    <asp:TemplateField HeaderText="ชื่อสมาชิก(เครดิตยูเนี่ยน)" SortExpression="member_name">
+                                                    <asp:TemplateField HeaderText="ชื่อการเป็นสมาชิก" SortExpression="member_name">
                                                         <ItemTemplate>
                                                             <asp:Label ID="lblmember_name" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.member_name") %>'> </asp:Label></ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Left" Width="45%" Wrap="True" />

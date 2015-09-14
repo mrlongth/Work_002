@@ -456,6 +456,8 @@ namespace myWeb.App_Control.payment_special
                 strCriteria = strCriteria + "  And  (c_active ='N') ";
             }
 
+            
+
             //strCriteria += " and person_group_code IN (" + PersonGroupList + ") ";
 
             //if (DirectorLock == "Y")

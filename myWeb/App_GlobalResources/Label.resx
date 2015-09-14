@@ -127,7 +127,7 @@
     <value>ทั้งหมด</value>
   </data>
   <data name="RdStatusInactive" xml:space="preserve">
-    <value>ไม่่ใช้งาน</value>
+    <value>ไม่่ใช้งาน/หลักสูตร</value>
   </data>
   <data name="LabelMenuName" xml:space="preserve">
     <value>ชื่อเมนู</value>
@@ -170,7 +170,7 @@
     <value>รหัสพนักงาน</value>
   </data>
   <data name="LabelLoginName" xml:space="preserve">
-    <value>ชื่อผู้ใช้งาน</value>
+    <value>ชื่อผู้ใช้งาน/หลักสูตร</value>
   </data>
   <data name="LabelNameEN" xml:space="preserve">
     <value>ชื่อ (ภาษาอังกฤษ)</value>
@@ -190,7 +190,7 @@
     <comment>UserMenuAccess.aspx</comment>
   </data>
   <data name="LabelUser" xml:space="preserve">
-    <value>ข้อมูลผู้ใช้งาน</value>
+    <value>ข้อมูลผู้ใช้งาน/หลักสูตร</value>
   </data>
   <data name="LovTitleUser" xml:space="preserve">
     <value>ข้อมูลผู้ใช้งานระบบ</value>

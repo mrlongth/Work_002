@@ -474,7 +474,7 @@ namespace myWeb.App_Control.payment_member_type
                                 string strBudgetType = ds.Tables[0].Rows[0]["payment_detail_budget_type"].ToString();
                                 string strpayment_detail_id = ds.Tables[0].Rows[0]["payment_detail_id"].ToString();
                                 if (!oPayment.SP_PAYMENT_DETAIL_UPD(hdfpayment_doc.Value, pitem_code, "0", txtmebertype_credit.Value.ToString(), ppayment_item_tax,
-                                                                                            ppayment_item_sos, pcomments_sub, strActive, strUpdatedBy, strBudgetType,strpayment_detail_id, ref strMessage))
+                                                                                            ppayment_item_sos, pcomments_sub, strActive, strUpdatedBy, strBudgetType, strpayment_detail_id, ref strMessage))
                                 {
                                     lblError.Text = strMessage;
                                 }
@@ -575,8 +575,10 @@ namespace myWeb.App_Control.payment_member_type
             string strpay_year = cboPay_Year.SelectedValue;
             string strGBK = string.Empty;
             string strGBK2 = string.Empty;
+            
             strGBK = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["GBK"].ToString();
             strGBK2 = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["GBK2"].ToString();
+            string strPVD = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["PVD"].ToString();
             try
             {
                 if (!strmember_type_code.Equals(strGBK2))
@@ -591,7 +593,7 @@ namespace myWeb.App_Control.payment_member_type
                 else
                 {
                     strmember_type_code = strGBK;
-                    strCriteria = "  and  member_type_code= '%" + strmember_type_code + "%' " +
+                    strCriteria = "  and  member_type_code like '%" + strmember_type_code + "%' " +
                                            " and person_work_status_code='01' " +
                                            " and payment_year='" + strpayment_year + "' " +
                                            " and member_type_add > 0 " +
@@ -653,6 +655,13 @@ namespace myWeb.App_Control.payment_member_type
                             {
                                 ds.Tables[0].Rows[i]["membertype_credit"] = Math.Round(((double.Parse(txtrate1.Value.ToString())) * dblperson_salaly) / 100, 0, MidpointRounding.AwayFromZero);
                             }
+                            else if (strmember_type_code.Equals(strPVD))
+                            {
+                                    ds.Tables[0].Rows[i]["membertype_credit"] = Math.Round(
+                                            ((double.Parse(txtrate1.Value.ToString())) * dblperson_salaly) / 100,
+                                            0,
+                                            MidpointRounding.AwayFromZero);
+                            }
                             else
                             {
                                 ds.Tables[0].Rows[i]["membertype_credit"] = ((double.Parse(txtrate1.Value.ToString())) * dblperson_salaly) / 100;
@@ -665,6 +674,10 @@ namespace myWeb.App_Control.payment_member_type
                         if (double.Parse(txtrate2.Value.ToString()) > 0.0)
                         {
                             if (strmember_type_code.Equals(strSOS))
+                            {
+                                ds.Tables[0].Rows[i]["company_credit"] = Math.Round((double.Parse(txtrate2.Value.ToString()) * dblperson_salaly) / 100, 0, MidpointRounding.AwayFromZero);
+                            }
+                            else if (strmember_type_code.Equals(strPVD))
                             {
                                 ds.Tables[0].Rows[i]["company_credit"] = Math.Round((double.Parse(txtrate2.Value.ToString()) * dblperson_salaly) / 100, 0, MidpointRounding.AwayFromZero);
                             }
@@ -969,7 +982,9 @@ namespace myWeb.App_Control.payment_member_type
                 lbldebitextra_code.Visible = false;
                 lbldebitextra_name.Visible = false;
                 lblextra_mid.Visible = false;
-                BindGridView();
+
+                BindGridViewTmp();
+                //BindGridView();
 
                 //cboYear.Enabled = true;
                 //cboPay_Month.Enabled = true;

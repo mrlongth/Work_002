@@ -66,7 +66,7 @@ namespace myWeb.App_Control.plan
                 //{
                 //    foreach (Control c in Page.Controls)
                 //    {
-                //        base.SetLabel(c, "ยุทธศาสตร์การจัดสรรงบประมาณ", "งานย่อย");
+                //        base.SetLabel(c, "ยุทธศาสตร์", "งานย่อย");
                 //    }
                 //}
 
@@ -201,7 +201,7 @@ namespace myWeb.App_Control.plan
                 //{
                 //    foreach (Control c in Page.Controls)
                 //    {
-                //        base.SetLabel(c, "ยุทธศาสตร์การจัดสรรงบประมาณ", "งานย่อย");
+                //        base.SetLabel(c, "ยุทธศาสตร์", "งานย่อย");
                 //    }
                 //}
                 oPlan.Dispose();
@@ -295,7 +295,7 @@ namespace myWeb.App_Control.plan
                 ImageButton imgDelete = (ImageButton)e.Row.FindControl("imgDelete");
                 imgDelete.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["img"].ToString();
                 imgDelete.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["title"].ToString());
-                imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบยุทธศาสตร์การจัดสรรงบประมาณ   " + lblplan_code.Text + " : " + lblplan_name.Text + " ?\");");
+                imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบยุทธศาสตร์  " + lblplan_code.Text + " : " + lblplan_name.Text + " ?\");");
 
                 #region check user can edit/delete
                 imgEdit.Visible = base.IsUserEdit;

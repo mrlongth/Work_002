@@ -7,28 +7,23 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <script type="text/javascript" language="javascript">
-     
-            function SelectAll(id)
-        {
+
+        function SelectAll(id) {
             var grid = document.getElementById("<%= GridView2.ClientID %>");
-            var cell;
-            
-            if (grid.rows.length > 0)
-            {
-                for (i=1; i<grid.rows.length; i++)
-                {
-                    cell = grid.rows[i].cells[0];
-                    for (j=0; j<cell.childNodes.length; j++)
-                    {           
-                        if (cell.childNodes[j].type =="checkbox")
-                        {
-                            cell.childNodes[j].checked = document.getElementById(id).checked;
+                var cell;
+
+                if (grid.rows.length > 0) {
+                    for (i = 1; i < grid.rows.length; i++) {
+                        cell = grid.rows[i].cells[0];
+                        for (j = 0; j < cell.childNodes.length; j++) {
+                            if (cell.childNodes[j].type == "checkbox") {
+                                cell.childNodes[j].checked = document.getElementById(id).checked;
+                            }
                         }
                     }
                 }
             }
-        }
-        
+
     </script>
 
     <table border="0" cellpadding="1" cellspacing="1" style="width: 100%">
@@ -78,7 +73,7 @@
                     <asp:Label runat="server" ID="lblPage2">กลุ่มบุคลากร :</asp:Label>
                 </td>
                 <td align="left" nowrap valign="middle" colspan="2">
-                    <asp:DropDownList runat="server" CssClass="textbox" ID="cboPerson_group"  >
+                    <asp:DropDownList runat="server" CssClass="textbox" ID="cboPerson_group">
                     </asp:DropDownList>
                     <asp:Label ID="lblError" runat="server" CssClass="label_error"></asp:Label>
                 </td>
@@ -100,9 +95,6 @@
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtitem_code"
                         Display="None" ErrorMessage="กรุณาป้อนรหัสค่าใช้จ่าย" SetFocusOnError="True"
                         ValidationGroup="A"></asp:RequiredFieldValidator>
-                    <ajaxtoolkit:ValidatorCalloutExtender ID="RequiredFieldValidator3_ValidatorCalloutExtender"
-                        runat="server" Enabled="True" HighlightCssClass="validatorCalloutHighlight" TargetControlID="RequiredFieldValidator3">
-                    </ajaxtoolkit:ValidatorCalloutExtender>
                 </td>
                 <td align="left" nowrap rowspan="3" style="vertical-align: middle; width: 1%;" valign="middle">
                     <asp:ImageButton ID="imgFind" runat="server" AlternateText="ค้นหาข้อมูล" ImageUrl="~/images/button/Search.png"
@@ -118,20 +110,18 @@
                     <asp:Label runat="server" ID="Label73">รหัสค่าใช้จ่าย :</asp:Label>
                 </td>
                 <td align="left" nowrap valign="middle" colspan="3">
-                    <asp:TextBox ID="txtitem_code" runat="server" CssClass="textbox" MaxLength="10"  
+                    <asp:TextBox ID="txtitem_code" runat="server" CssClass="textbox" MaxLength="10"
                         Width="100px"></asp:TextBox>
-                    <asp:ImageButton ID="imgList_item" runat="server" ImageAlign="AbsBottom" ImageUrl="../../images/controls/view2.gif"
-                          />
+                    <asp:ImageButton ID="imgList_item" runat="server" ImageAlign="AbsBottom" ImageUrl="../../images/controls/view2.gif" />
                     <asp:ImageButton ID="imgClear_item" runat="server" CausesValidation="False" ImageAlign="AbsBottom"
-                        ImageUrl="../../images/controls/erase.gif"   />
+                        ImageUrl="../../images/controls/erase.gif" />
                     &nbsp;
                     <asp:TextBox ID="txtitem_name" runat="server" CssClass="textbox" MaxLength="100"
-                          Width="250px"></asp:TextBox>
+                        Width="250px"></asp:TextBox>
                 </td>
             </tr>
             <tr align="left">
-                <td align="right" nowrap valign="middle" width="20%">
-                    &nbsp;
+                <td align="right" nowrap valign="middle" width="20%">&nbsp;
                 </td>
                 <td align="left" colspan="3" nowrap valign="middle">
                     <asp:HyperLink ID="lnkExcelFile" runat="server" Target="_blank">
@@ -153,8 +143,7 @@
                         OnSelectedIndexChanged="cboYear_SelectedIndexChanged" Enabled="False">
                     </asp:DropDownList>
                 </td>
-                <td align="left" nowrap valign="middle" style="text-align: right; width: 10%;">
-                    &nbsp;
+                <td align="left" nowrap valign="middle" style="text-align: right; width: 10%;">&nbsp;
                 </td>
                 <td align="left" nowrap valign="middle" colspan="2">
                     <asp:HiddenField ID="hddGUID" runat="server" />
@@ -179,9 +168,7 @@
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtitem_code2"
                         Display="None" ErrorMessage="กรุณาป้อนรหัสค่าใช้จ่าย" SetFocusOnError="True"
                         ValidationGroup="A"></asp:RequiredFieldValidator>
-                    <ajaxtoolkit:ValidatorCalloutExtender ID="ValidatorCalloutExtender2" runat="server"
-                        Enabled="True" HighlightCssClass="validatorCalloutHighlight" TargetControlID="RequiredFieldValidator2">
-                    </ajaxtoolkit:ValidatorCalloutExtender>
+                    <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True" ShowSummary="False" ValidationGroup="A" />
                 </td>
                 <td align="left" nowrap rowspan="2" style="vertical-align: middle; width: 1%;" valign="middle">
                     <asp:ImageButton ID="imgImport" runat="server" AlternateText="นำเข้า Excel" ImageUrl="~/images/button/import.png"
@@ -198,14 +185,13 @@
                 </td>
                 <td align="left" nowrap valign="middle" colspan="3">
                     <asp:TextBox ID="txtitem_code2" runat="server" CssClass="textbox" MaxLength="10"
-                          Width="100px"></asp:TextBox>&nbsp;&nbsp;&nbsp;<asp:ImageButton ID="imgList_item2"
-                            runat="server" ImageAlign="AbsBottom" ImageUrl="../../images/controls/view2.gif"
-                              />
+                        Width="100px"></asp:TextBox>&nbsp;&nbsp;&nbsp;<asp:ImageButton ID="imgList_item2"
+                            runat="server" ImageAlign="AbsBottom" ImageUrl="../../images/controls/view2.gif" />
                     <asp:ImageButton ID="imgClear_item2" runat="server" CausesValidation="False" ImageAlign="AbsBottom"
-                        ImageUrl="../../images/controls/erase.gif"   />
+                        ImageUrl="../../images/controls/erase.gif" />
                     &nbsp;
                     <asp:TextBox ID="txtitem_name2" runat="server" CssClass="textbox" MaxLength="100"
-                          Width="250px"></asp:TextBox>
+                        Width="250px"></asp:TextBox>
                 </td>
             </tr>
         </table>
@@ -252,14 +238,14 @@
             <asp:TemplateField HeaderText="ชื่อบุคลากร " SortExpression="person_thai_name">
                 <ItemStyle HorizontalAlign="Left" Width="12%" Wrap="True" />
                 <ItemTemplate>
-                    <asp:Label ID="lblperson_name" runat="server" Text='<%  # DataBinder.Eval(Container, "DataItem.title_name")+""+DataBinder.Eval(Container, "DataItem.person_thai_name") %>'>
+                    <asp:Label ID="lblperson_name" runat="server" Text='<%  # DataBinder.Eval(Container, "DataItem.title_name") + "" + DataBinder.Eval(Container, "DataItem.person_thai_name")%>'>
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="นามสกุล" SortExpression="person_thai_surname">
                 <ItemStyle HorizontalAlign="Left" Width="12%" Wrap="True" />
                 <ItemTemplate>
-                    <asp:Label ID="lblperson_thai_surname" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.person_thai_surname") %>'>
+                    <asp:Label ID="lblperson_thai_surname" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.person_thai_surname")%>'>
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
@@ -267,7 +253,7 @@
                 <ItemStyle HorizontalAlign="Right" Width="10%" Wrap="False" />
                 <ItemTemplate>
                     <cc1:AwNumeric ID="txtperson_salaly" runat="server" Width="95%" LeadZero="Show" DisplayMode="View"
-                        Text='<% # getNumber(DataBinder.Eval(Container, "DataItem.person_salaly")) %>' />
+                        Text='<% # getNumber(DataBinder.Eval(Container, "DataItem.person_salaly"))%>' />
                 </ItemTemplate>
                 <FooterStyle HorizontalAlign="Right" Width="10%" Wrap="False" />
                 <FooterTemplate>
@@ -278,7 +264,7 @@
                 <ItemStyle HorizontalAlign="Right" Width="10%" Wrap="False" />
                 <ItemTemplate>
                     <cc1:AwNumeric ID="txtmoney_credit" runat="server" Width="95%" LeadZero="Show" DisplayMode="Control"
-                        CssClass="numberbox" Text='<% # getNumber(DataBinder.Eval(Container, "DataItem.money_credit")) %>' />
+                        CssClass="numberbox" Text='<% # getNumber(DataBinder.Eval(Container, "DataItem.money_credit"))%>' />
                 </ItemTemplate>
                 <FooterStyle HorizontalAlign="Right" Width="10%" Wrap="False" />
                 <FooterTemplate>
@@ -327,14 +313,14 @@
             <asp:TemplateField HeaderText="ชื่อบุคลากร " SortExpression="person_thai_name">
                 <ItemStyle HorizontalAlign="Left" Width="12%" Wrap="True" />
                 <ItemTemplate>
-                    <asp:Label ID="lblperson_name" runat="server" Text='<%  # DataBinder.Eval(Container, "DataItem.title_name")+""+DataBinder.Eval(Container, "DataItem.person_thai_name") %>'>
+                    <asp:Label ID="lblperson_name" runat="server" Text='<%  # DataBinder.Eval(Container, "DataItem.title_name") + "" + DataBinder.Eval(Container, "DataItem.person_thai_name")%>'>
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="นามสกุล" SortExpression="person_thai_surname">
                 <ItemStyle HorizontalAlign="Left" Width="12%" Wrap="True" />
                 <ItemTemplate>
-                    <asp:Label ID="lblperson_thai_surname" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.person_thai_surname") %>'>
+                    <asp:Label ID="lblperson_thai_surname" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.person_thai_surname")%>'>
                     </asp:Label>
                 </ItemTemplate>
                 <FooterStyle HorizontalAlign="Right" Width="10%" Wrap="False" />
@@ -346,7 +332,7 @@
                 <ItemStyle HorizontalAlign="Right" Width="10%" Wrap="False" />
                 <ItemTemplate>
                     <cc1:AwNumeric ID="txtmoney_credit" runat="server" Width="95%" LeadZero="Show" DisplayMode="Control"
-                        CssClass="numberbox" Text='<% # getNumber(DataBinder.Eval(Container, "DataItem.payment_item_pay")) %>' />
+                        CssClass="numberbox" Text='<% # getNumber(DataBinder.Eval(Container, "DataItem.payment_item_pay"))%>' />
                 </ItemTemplate>
                 <FooterStyle HorizontalAlign="Right" Width="10%" Wrap="False" />
                 <FooterTemplate>
@@ -359,7 +345,7 @@
                     <asp:ImageButton ID="imgAdd" runat="server" CommandName="Add" />
                 </HeaderTemplate>
                 <ItemTemplate>
-                    <asp:ImageButton ID="imgDelete" runat="server" CausesValidation="False" CommandName="Delete" TabIndex =-1 />
+                    <asp:ImageButton ID="imgDelete" runat="server" CausesValidation="False" CommandName="Delete" TabIndex="-1" />
                 </ItemTemplate>
                 <ItemStyle HorizontalAlign="Center" Width="3%" Wrap="False" />
             </asp:TemplateField>

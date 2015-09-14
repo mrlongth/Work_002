@@ -12,7 +12,7 @@
                     BorderWidth="0px" Style="text-align: left" Width="900px">
                     <ajaxtoolkit:TabPanel runat="server" HeaderText="ข้อมูลประวัติบุคลากร" ID="TabPanel1">
                         <HeaderTemplate>
-                            ประวัติบุคคลกร
+                            ประวัติบุคลากร
                         </HeaderTemplate>
                         <ContentTemplate>
                             <table border="0" cellpadding="2" cellspacing="2" style="width: 100%;">
@@ -112,7 +112,7 @@
                                     </td>
                                     <td align="left" nowrap colspan="2">
                                         <font face="Tahoma">
-                                            <asp:CheckBox ID="chkStatus" runat="server" Text="ปกติ" />
+                                            <asp:CheckBox ID="chkStatus" runat="server" Text="ปกติ" Enabled="False" />
                                         <asp:TextBox ID="txtperson_pic" runat="server" CssClass="textbox" Visible="False" Width="225px"></asp:TextBox>
                                         </font>
                                     </td>
@@ -146,12 +146,8 @@
                                     <td align="left" nowrap valign="top">&nbsp;</td>
                                 </tr>
                                 <tr align="left">
-                                    <td align="right" nowrap valign="middle">
-                                    </td>
-                                    <td align="left" nowrap valign="middle" colspan="2">
-                                        &nbsp;&nbsp;
-                                    </td>
-                                    <td align="left">
+                                    <td nowrap valign="middle" colspan="4" style="text-align: center">
+                                        <asp:Label ID="Label78" runat="server">*หากข้อมูลส่วนตัวของท่านไม่ถูกต้องสามารถแจ้งแก้ไขได้ที่กองบริหารงานบุคคล ติดต่องานทะเบียนประวัติกองบุคคล 5339</asp:Label>
                                     </td>
                                 </tr>
                                 <tr align="left">
@@ -381,7 +377,7 @@
                                         <asp:TextBox ID="txtplan_name" runat="server" CssClass="textbox" Width="300px" ReadOnly="True"></asp:TextBox>
                                     </td>
                                     <td nowrap style="text-align: right">
-                                        <asp:Label ID="Label57" runat="server" CssClass="label_h">งาน :</asp:Label>
+                                        <asp:Label ID="Label57" runat="server" CssClass="label_h">งาน/หลักสูตร :</asp:Label>
                                     </td>
                                     <td align="left">
                                         <asp:TextBox ID="txtwork_name" runat="server" CssClass="textbox" Width="300px" ReadOnly="True"></asp:TextBox>
@@ -570,10 +566,11 @@
                                     </td>
                                     <td align="left" nowrap style="vertical-align: middle" width="10%">
                                         <asp:TextBox ID="txtperson_birth" runat="server" CssClass="textbox" Width="120px"
-                                            ReadOnly="True"></asp:TextBox><ajaxtoolkit:CalendarExtender ID="calendarButtonExtender"
+                                            ReadOnly="True"></asp:TextBox>
+                                        <%--<ajaxtoolkit:CalendarExtender ID="calendarButtonExtender"
                                                 runat="server" BehaviorID="txtperson_birth_CalendarExtender" Enabled="True" PopupButtonID="imgperson_birth"
                                                 TargetControlID="txtperson_birth">
-                                            </ajaxtoolkit:CalendarExtender>
+                                            </ajaxtoolkit:CalendarExtender>--%>
                                     </td>
                                     <td align="left" nowrap style="vertical-align: middle">
                                         <asp:Label ID="lblAge" runat="server" CssClass="label_h" Font-Bold="True">อายุ :</asp:Label>
@@ -583,8 +580,10 @@
                                     <td align="right" nowrap valign="middle">
                                         <asp:Label ID="Label26" runat="server" CssClass="label_h">สถานะสมรส :</asp:Label>
                                     </td>
-                                    <td align="left" nowrap valign="middle" colspan="2">
-                                        <asp:DropDownList ID="cboPerson_marry" runat="server" CssClass="textbox" Enabled="False">
+                                    <td align="left" nowrap valign="middle" colspan="2" >
+                                        <asp:TextBox ID="TextBox1" runat="server" CssClass="textbox" Width="120px"
+                                            ReadOnly="True"></asp:TextBox>
+                                        <asp:DropDownList ID="cboPerson_marry" runat="server" CssClass="textbox" Visible="False" >
                                             <asp:ListItem Selected="True">---- ไม่ได้ระบุข้อมูล ----</asp:ListItem>
                                             <asp:ListItem Value="1">โสด</asp:ListItem>
                                             <asp:ListItem Value="2">สมรส</asp:ListItem>
@@ -976,10 +975,10 @@
                             </table>
                         </ContentTemplate>
                     </ajaxtoolkit:TabPanel>
-                    <ajaxtoolkit:TabPanel ID="TabPanel6" runat="server" HeaderText="สมาชิก(เครดิตยูเนี่ยน)"
+                    <ajaxtoolkit:TabPanel ID="TabPanel6" runat="server" HeaderText="การเป็นสมาชิก"
                         ScrollBars="Vertical">
                         <HeaderTemplate>
-                            สมาชิก(เครดิตยูเนี่ยน)
+                            การเป็นสมาชิก
                         </HeaderTemplate>
                         <ContentTemplate>
                             <table border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
@@ -1000,12 +999,12 @@
                                                             <asp:Label ID="lblNo1" runat="server"> </asp:Label></ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" Width="2%" Wrap="False" />
                                                     </asp:TemplateField>
-                                                    <asp:TemplateField HeaderText="รหัสสมาชิก(เครดิตยูเนี่ยน)" SortExpression="member_code">
+                                                    <asp:TemplateField HeaderText="รหัสการเป็นสมาชิก" SortExpression="member_code">
                                                         <ItemTemplate>
                                                             <asp:Label ID="lblmember_code" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.member_code") %>'> </asp:Label></ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" Width="15%" Wrap="True" />
                                                     </asp:TemplateField>
-                                                    <asp:TemplateField HeaderText="ชื่อสมาชิก(เครดิตยูเนี่ยน)" SortExpression="member_name">
+                                                    <asp:TemplateField HeaderText="ชื่อการเป็นสมาชิก" SortExpression="member_name">
                                                         <ItemTemplate>
                                                             <asp:Label ID="lblmember_name" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.member_name") %>'> </asp:Label></ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Left" Width="45%" Wrap="True" />
@@ -1174,7 +1173,7 @@
                                                 &nbsp;
                                             </div>
                                             <div style="width: 35%; float: left; text-align: right; padding: 2px 0px 3px 0px">
-                                                <span class="label_hbk">รวมทั้งสิ้น</span>
+                                                <span class="label_hbk">คงเหลือ</span>
                                             </div>
                                             <div style="width: 15%; float: left; text-align: right; padding: 2px 0px 2px 0px">
                                                 <cc1:AwNumeric ID="txttotal_all" runat="server" Width="120px" LeadZero="Show" Font-Bold="true"

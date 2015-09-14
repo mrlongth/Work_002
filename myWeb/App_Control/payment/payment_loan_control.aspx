@@ -68,9 +68,7 @@
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="cboLoan_code" ErrorMessage="กรุณาเลือกข้อมูลเงินกู้"
                     Display="None" SetFocusOnError="True" ValidationGroup="A" 
                     ID="RequiredFieldValidator2"></asp:RequiredFieldValidator>
-                <ajaxtoolkit:ValidatorCalloutExtender runat="server" HighlightCssClass="validatorCalloutHighlight"
-                    Enabled="True" TargetControlID="RequiredFieldValidator2" ID="RequiredFieldValidator2_ValidatorCalloutExtender">
-                </ajaxtoolkit:ValidatorCalloutExtender>
+                <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True" ShowSummary="False" ValidationGroup="A" />
             </td>
         </tr>
         <tr align="left">

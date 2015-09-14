@@ -103,13 +103,13 @@
         </tr>
         <tr align="left">
             <td align="right" nowrap valign="middle" style="height: 17px">
-                <asp:Label runat="server" CssClass="label_hbk" ID="Label56">ยุทธศาสตร์การจัดสรรงบประมาณ :</asp:Label>
+                <asp:Label runat="server" CssClass="label_hbk" ID="Label56">ยุทธศาสตร์ :</asp:Label>
             </td>
             <td align="left" nowrap valign="middle" style="height: 17px">
                 <asp:TextBox runat="server" CssClass="textboxdis" Width="300px" ID="txtplan_name"></asp:TextBox>
             </td>
             <td align="left" nowrap valign="middle" style="height: 17px; text-align: right">
-                <asp:Label runat="server" CssClass="label_hbk" ID="Label57">งาน :</asp:Label>
+                <asp:Label runat="server" CssClass="label_hbk" ID="Label57">งาน/หลักสูตร :</asp:Label>
             </td>
             <td align="left" nowrap valign="middle" style="height: 17px">
                 <asp:TextBox runat="server" CssClass="textboxdis" Width="300px" ID="txtwork_name"></asp:TextBox>

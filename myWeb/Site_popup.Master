@@ -15,7 +15,7 @@
 </head>
 <body onload="on_load_list()">
     <form id="form1" runat="server">
-    <asp:ScriptManager ID="ScriptManager1" EnableScriptGlobalization="true" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" EnableScriptGlobalization="true" runat="server" AsyncPostBackTimeOut= "360000">
     </asp:ScriptManager>
     <asp:UpdatePanel ID="updatePanel1" runat="server">
         <ContentTemplate>

@@ -86,6 +86,7 @@
                         </tr>
                         <tr align="left">
                             <td align="right" nowrap valign="middle">
+                                <asp:Label ID="Label87" runat="server" cssclass="label_error">*</asp:Label>
                                 <asp:Label ID="Label21" runat="server" CssClass="label_hbk">รหัสบุคลากร :</asp:Label>
                             </td>
                             <td align="left" nowrap valign="middle">
@@ -99,14 +100,13 @@
                                     Width="200px"></asp:TextBox>
                             </td>
                             <td align="left" colspan="2" nowrap style="text-align: right" valign="middle">
+                                <asp:Label ID="Label88" runat="server" cssclass="label_error">*</asp:Label>
                                 <asp:Label ID="Label50" runat="server" CssClass="label_hbk">กลุ่มบุคลากร :</asp:Label>
                             </td>
                             <td align="left" nowrap valign="middle">
                                 <asp:DropDownList ID="cboPerson_group" runat="server" CssClass="textbox">
                                 </asp:DropDownList>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtperson_code" Display="None" ErrorMessage="กรุณาเลือกกลุ่มบุคลากร" SetFocusOnError="True" ValidationGroup="A"></asp:RequiredFieldValidator>
-                                <ajaxtoolkit:ValidatorCalloutExtender ID="RequiredFieldValidator2_ValidatorCalloutExtender" runat="server" Enabled="True" HighlightCssClass="validatorCalloutHighlight" TargetControlID="RequiredFieldValidator2">
-                                </ajaxtoolkit:ValidatorCalloutExtender>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="cboPerson_group" Display="None" ErrorMessage="กรุณาเลือกกลุ่มบุคลากร" SetFocusOnError="True" ValidationGroup="A"></asp:RequiredFieldValidator>
                             </td>
                             <td align="left" nowrap style="vertical-align: bottom; width: 1%;" valign="middle">&nbsp;
                             </td>
@@ -124,6 +124,7 @@
                                     ImageUrl="../../images/controls/erase.gif" />
                                 &nbsp;<asp:TextBox ID="txtposition_name" runat="server" CssClass="textboxdis" ReadOnly="True"
                                     Width="300px"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtperson_code" Display="None" ErrorMessage="กรุณาเลือกรหัสบุคลากร" SetFocusOnError="True" ValidationGroup="A"></asp:RequiredFieldValidator>
                             </td>
                             <td align="left" nowrap valign="middle" style="vertical-align: bottom; width: 1%;"
                                 rowspan="11">&nbsp;&nbsp;
@@ -178,7 +179,7 @@
                             <td align="right" nowrap valign="middle">
                                 <asp:Label ID="Label1" runat="server">ประเภทงบประมาณ :</asp:Label>
                             </td>
-                            <td align="left" nowrap valign="middle">&nbsp;<asp:DropDownList runat="server" CssClass="textbox" ID="cboBudget_type" AutoPostBack="True"
+                            <td align="left" nowrap valign="middle"><asp:DropDownList runat="server" CssClass="textbox" ID="cboBudget_type" AutoPostBack="True"
                                 OnSelectedIndexChanged="cboBudget_type_SelectedIndexChanged">
                             </asp:DropDownList>
                             </td>
@@ -226,7 +227,7 @@
                                 <asp:TextBox ID="txtplan_name" runat="server" CssClass="textboxdis" Width="300px"></asp:TextBox>
                             </td>
                             <td align="left" nowrap style="text-align: right" valign="middle">
-                                <asp:Label ID="Label57" runat="server" CssClass="label_hbk">งาน :</asp:Label>
+                                <asp:Label ID="Label57" runat="server" CssClass="label_hbk">งาน/หลักสูตร :</asp:Label>
                             </td>
                             <td align="left" colspan="2" nowrap valign="middle">
                                 <asp:TextBox ID="txtwork_name" runat="server" CssClass="textboxdis" Width="300px"></asp:TextBox>
@@ -274,12 +275,8 @@
                                 <asp:Label ID="Label12" runat="server">สถานะ :</asp:Label>
                             </td>
                             <td align="left" colspan="2" nowrap valign="middle">
-                                <asp:CheckBox ID="chkStatus" runat="server" Text="ปกติ" /><asp:RequiredFieldValidator
-                                    ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtperson_code"
-                                    Display="None" ErrorMessage="กรุณาป้อนรหัสบุคลากร" SetFocusOnError="True" ValidationGroup="A"></asp:RequiredFieldValidator><ajaxtoolkit:ValidatorCalloutExtender
-                                        ID="RequiredFieldValidator1_ValidatorCalloutExtender" runat="server" Enabled="True"
-                                        HighlightCssClass="validatorCalloutHighlight" TargetControlID="RequiredFieldValidator1">
-                                    </ajaxtoolkit:ValidatorCalloutExtender>
+                                <asp:CheckBox ID="chkStatus" runat="server" Text="ปกติ" />
+                                <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True" ShowSummary="False" ValidationGroup="A" />
                             </td>
                         </tr>
                         <tr align="left">

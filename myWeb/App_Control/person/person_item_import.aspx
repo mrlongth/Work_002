@@ -49,6 +49,7 @@
                     </asp:DropDownList>
                 </td>
                 <td align="left" nowrap valign="middle" style="text-align: right">
+                    <asp:Label ID="Label74" runat="server" CssClass="label_error">*</asp:Label>
                     <asp:Label ID="lblPage3" runat="server">ประเภทรายการ :</asp:Label>
                 </td>
                 <td align="left" nowrap valign="middle">
@@ -70,6 +71,7 @@
             </tr>
             <tr align="left">
                 <td align="right" nowrap valign="middle" width="20%">
+                    <asp:Label ID="Label67" runat="server" CssClass="label_error">*</asp:Label>
                     <asp:Label ID="Label73" runat="server"> รหัสรายได้/ค่าใช้จ่าย :</asp:Label>
                 </td>
                 <td align="left" nowrap valign="middle" colspan="3">
@@ -108,6 +110,7 @@
         <table border="0" cellpadding="1" cellspacing="1" style="width: 100%">
             <tr align="left">
                 <td align="right" nowrap valign="middle" width="20%">
+                    <asp:Label ID="Label75" runat="server" CssClass="label_error">*</asp:Label>
                     <asp:Label ID="Label11" runat="server">รหัสรายได้/ค่าใช้จ่าย :</asp:Label>
                 </td>
                 <td align="left" nowrap valign="middle">

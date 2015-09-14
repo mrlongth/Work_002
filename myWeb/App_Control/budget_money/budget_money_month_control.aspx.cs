@@ -101,9 +101,9 @@ namespace myWeb.App_Control.budget_money
                 //{
                 //    foreach (Control c in Page.Controls)
                 //    {
-                //        base.SetLabel(c, "ยุทธศาสตร์การจัดสรรงบประมาณ", "งานย่อย");
+                //        base.SetLabel(c, "ยุทธศาสตร์", "งานย่อย");
                 //        base.SetLabel(c, "กิจกรรม", "งานรอง");
-                //        base.SetLabel(c, "แผนงาน", "ยุทธศาสตร์การจัดสรรงบประมาณ");
+                //        base.SetLabel(c, "แผนงาน", "ยุทธศาสตร์");
                 //        base.SetLabel(c, "ผลผลิต", "งานหลัก");
                 //    }
                 //}

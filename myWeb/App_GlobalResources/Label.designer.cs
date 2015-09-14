@@ -277,7 +277,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ชื่อผู้ใช้งาน.
+        ///   Looks up a localized string similar to ชื่อผู้ใช้งาน/หลักสูตร.
         /// </summary>
         internal static string LabelLoginName {
             get {
@@ -484,7 +484,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ข้อมูลผู้ใช้งาน.
+        ///   Looks up a localized string similar to ข้อมูลผู้ใช้งาน/หลักสูตร.
         /// </summary>
         internal static string LabelUser {
             get {
@@ -556,7 +556,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ไม่่ใช้งาน.
+        ///   Looks up a localized string similar to ไม่่ใช้งาน/หลักสูตร.
         /// </summary>
         internal static string RdStatusInactive {
             get {

@@ -67,31 +67,30 @@
             </td>
             <td align="left" nowrap rowspan="2" style="vertical-align: middle; width: 1%;" valign="middle">
                 <asp:ImageButton ID="imgImport" runat="server" AlternateText="นำเข้า Excel" ImageUrl="~/images/button/import.png"
-                    OnClick="imgImport_Click" />
+                    OnClick="imgImport_Click" ValidationGroup="A" />
                 <asp:ImageButton ID="imgSaveOnly" runat="server" AlternateText="บันทึกข้อมุล" ImageUrl="~/images/button/save_add.png"
-                    OnClick="imgSaveOnly_Click" />
+                    OnClick="imgSaveOnly_Click" ValidationGroup="A" />
                 <asp:ImageButton ID="imgCancel" runat="server" AlternateText="ยกเลิก" CausesValidation="False"
                     ImageUrl="~/images/button/cancel.png" OnClick="imgCancel_Click" />
             </td>
         </tr>
         <tr align="left">
             <td align="right" nowrap valign="middle" width="20%">
+                            <asp:label id="Label86" runat="server" cssclass="label_error">*</asp:label>
                 <asp:Label runat="server" ID="Label11">รหัสเงินรางวัล :</asp:Label>
             </td>
             <td align="left" nowrap valign="middle" colspan="3">
                 <asp:TextBox ID="txtitem_code" runat="server" CssClass="textbox" MaxLength="10"
                     Width="100px"></asp:TextBox>&nbsp;&nbsp;&nbsp;<asp:ImageButton ID="imgList_item"
-                        runat="server" ImageAlign="AbsBottom" ImageUrl="../../images/controls/view2.gif" />
+                        runat="server" ImageAlign="AbsBottom" ImageUrl="../../images/controls/view2.gif" CausesValidation="False" />
                 <asp:ImageButton ID="imgClear_item" runat="server" CausesValidation="False" ImageAlign="AbsBottom"
                     ImageUrl="../../images/controls/erase.gif" />
                 &nbsp;
                     <asp:TextBox ID="txtitem_name" runat="server" CssClass="textbox" MaxLength="100"
                         Width="250px"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtitem_code" Display="None" ErrorMessage="กรุณาป้อนรหัสค่าดำเนินงาน" SetFocusOnError="True" ValidationGroup="A"></asp:RequiredFieldValidator>
-                <ajaxtoolkit:ValidatorCalloutExtender ID="ValidatorCalloutExtender2" runat="server" Enabled="True" HighlightCssClass="validatorCalloutHighlight" TargetControlID="RequiredFieldValidator2">
-                </ajaxtoolkit:ValidatorCalloutExtender>
+                <asp:ValidationSummary ID="ValidationSummary2" runat="server" ShowMessageBox="True" ShowSummary="False" ValidationGroup="A" />
                 <asp:Label ID="lblError" runat="server" CssClass="label_error"></asp:Label>
-                <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True" ShowSummary="False" />
             </td>
         </tr>
     </table>
@@ -169,7 +168,7 @@
         </Columns>
         <HeaderStyle HorizontalAlign="Center" CssClass="stGridHeader" Font-Bold="True"></HeaderStyle>
     </asp:GridView>
-    
+
     <script type="text/javascript">
         function RegisterScript() {
             $("input[id*=imgClear_person]").click(function () {

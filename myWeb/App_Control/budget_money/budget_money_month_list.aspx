@@ -144,7 +144,7 @@
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="ยุทธศาสตร์การจัดสรรงบประมาณ" SortExpression="plan_name">
+            <asp:TemplateField HeaderText="ยุทธศาสตร์" SortExpression="plan_name">
                 <ItemStyle HorizontalAlign="Left" Wrap="True" Width="15%"></ItemStyle>
                 <ItemTemplate>
                     <asp:Label ID="lblplan_name" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.plan_name") %>'></asp:Label>
@@ -153,7 +153,7 @@
                     <asp:Label ID="lbltotal" runat="server" Text="รวมทั้งสิ้น" Font-Bold="True"></asp:Label>
                 </FooterTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="งาน" SortExpression="work_name" Visible="false">
+            <asp:TemplateField HeaderText="งาน/หลักสูตร" SortExpression="work_name" Visible="false">
                 <ItemStyle HorizontalAlign="Left" Wrap="True" Width="10%"></ItemStyle>
                 <ItemTemplate>
                     <asp:Label ID="lblwork_name" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.work_name") %>'></asp:Label>

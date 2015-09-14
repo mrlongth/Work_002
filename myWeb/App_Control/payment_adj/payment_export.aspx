@@ -2,11 +2,9 @@
     AutoEventWireup="true" CodeBehind="payment_export.aspx.cs" Inherits="myWeb.App_Control.payment_adj.payment_export"
     Title="ส่งออกข้อมูลค่าใช้จ่ายประจำเดือน" %>
 
-<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxtoolkit" %>
-<%@ Register Assembly="Aware.WebControls" Namespace="Aware.WebControls" TagPrefix="cc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-  
+
     <table border="0" cellpadding="1" cellspacing="1" style="width: 100%">
         <tr align="left">
             <td align="right" nowrap valign="middle" width="20%">
@@ -52,7 +50,7 @@
                     <asp:Label runat="server" ID="lblPage2">กลุ่มบุคลากร :</asp:Label>
                 </td>
                 <td align="left" nowrap valign="middle" colspan="2">
-                    <asp:DropDownList runat="server" CssClass="textbox" ID="cboPerson_group"  >
+                    <asp:DropDownList runat="server" CssClass="textbox" ID="cboPerson_group">
                     </asp:DropDownList>
                     <asp:Label ID="lblError" runat="server" CssClass="label_error"></asp:Label>
                 </td>
@@ -74,9 +72,7 @@
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtdirect_pay_code_list"
                         Display="None" ErrorMessage="กรุณาป้อนรหัสค่าใช้จ่าย-เบิกตรง" SetFocusOnError="True"
                         ValidationGroup="A"></asp:RequiredFieldValidator>
-                    <ajaxtoolkit:ValidatorCalloutExtender ID="RequiredFieldValidator3_ValidatorCalloutExtender"
-                        runat="server" Enabled="True" HighlightCssClass="validatorCalloutHighlight" TargetControlID="RequiredFieldValidator3">
-                    </ajaxtoolkit:ValidatorCalloutExtender>
+                    <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True" ShowSummary="False" ValidationGroup="A" />
                 </td>
                 <td align="left" nowrap rowspan="3" style="vertical-align: middle; width: 1%;" valign="middle">
                     <asp:ImageButton ID="imgExport" runat="server" AlternateText="ส่งออกข้อมูล" ImageUrl="~/images/button/export.jpg"
@@ -90,18 +86,16 @@
                     <asp:Label runat="server" ID="Label73">รหัสค่าใช้จ่าย-เบิกตรง :</asp:Label>
                 </td>
                 <td align="left" nowrap valign="middle" colspan="3">
-                    <asp:TextBox ID="txtdirect_pay_code_list" runat="server" CssClass="textbox"  
+                    <asp:TextBox ID="txtdirect_pay_code_list" runat="server" CssClass="textbox"
                         Width="400px" Rows="3" TextMode="MultiLine"></asp:TextBox>
-                    <asp:ImageButton ID="imgList_item" runat="server" ImageAlign="AbsBottom" ImageUrl="../../images/controls/view2.gif"
-                          />
+                    <asp:ImageButton ID="imgList_item" runat="server" ImageAlign="AbsBottom" ImageUrl="../../images/controls/view2.gif" />
                     <asp:ImageButton ID="imgClear_item" runat="server" CausesValidation="False" ImageAlign="AbsBottom"
-                        ImageUrl="../../images/controls/erase.gif"   />
+                        ImageUrl="../../images/controls/erase.gif" />
                     &nbsp;
                 </td>
             </tr>
             <tr align="left">
-                <td align="right" nowrap valign="middle" width="20%">
-                    &nbsp;
+                <td align="right" nowrap valign="middle" width="20%">&nbsp;
                 </td>
                 <td align="left" colspan="3" nowrap valign="middle">
                     <asp:HyperLink ID="lnkTxtFile" runat="server" Target="_blank">
@@ -116,4 +110,4 @@
     </asp:Panel>
 </asp:Content>
 <asp:Content ID="Content2" runat="server" ContentPlaceHolderID="ContentPlaceHolder2">
-    </asp:Content>
+</asp:Content>

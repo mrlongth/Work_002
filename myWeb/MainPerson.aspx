@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site_person.Master" AutoEventWireup="true"
-    CodeBehind="MainPerson.aspx.cs" Inherits="myWeb.MainPerson" Title="เมนูการใช้งาน" %>
+    CodeBehind="MainPerson.aspx.cs" Inherits="myWeb.MainPerson" Title="เมนูการใช้งาน/หลักสูตร" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF">

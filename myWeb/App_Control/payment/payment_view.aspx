@@ -42,14 +42,11 @@
                                 <asp:TextBox runat="server" CssClass="textboxdis" Width="100px" ID="txtpayment_doc"
                                     ReadOnly="True"></asp:TextBox>
                             </td>
-                            <td align="left" nowrap valign="middle" style="text-align: right; width: 10%;" colspan="2">
-                                &nbsp;&nbsp;
+                            <td align="left" nowrap valign="middle" style="text-align: right; width: 10%;" colspan="2">&nbsp;&nbsp;
                             </td>
-                            <td align="left" nowrap valign="middle">
-                                &nbsp;
+                            <td align="left" nowrap valign="middle">&nbsp;
                             </td>
-                            <td align="left" nowrap valign="middle" style="vertical-align: bottom; width: 1%;">
-                                &nbsp;&nbsp;
+                            <td align="left" nowrap valign="middle" style="vertical-align: bottom; width: 1%;">&nbsp;&nbsp;
                             </td>
                         </tr>
                         <tr align="left">
@@ -66,8 +63,7 @@
                                 <asp:DropDownList runat="server" CssClass="textboxdis" ID="cboYear" Enabled="False">
                                 </asp:DropDownList>
                             </td>
-                            <td align="left" nowrap valign="middle" style="vertical-align: bottom; width: 1%;">
-                                &nbsp;&nbsp;
+                            <td align="left" nowrap valign="middle" style="vertical-align: bottom; width: 1%;">&nbsp;&nbsp;
                             </td>
                         </tr>
                         <tr align="left">
@@ -85,8 +81,7 @@
                                 <asp:DropDownList runat="server" CssClass="textboxdis" ID="cboPay_Year" Enabled="False">
                                 </asp:DropDownList>
                             </td>
-                            <td align="left" nowrap valign="middle" style="vertical-align: bottom; width: 1%;">
-                                &nbsp;&nbsp;
+                            <td align="left" nowrap valign="middle" style="vertical-align: bottom; width: 1%;">&nbsp;&nbsp;
                             </td>
                         </tr>
                         <tr align="left">
@@ -105,8 +100,7 @@
                                 <asp:DropDownList ID="cboPerson_group" runat="server" CssClass="textbox">
                                 </asp:DropDownList>
                             </td>
-                            <td align="left" nowrap style="vertical-align: bottom; width: 1%;" valign="middle">
-                                &nbsp;
+                            <td align="left" nowrap style="vertical-align: bottom; width: 1%;" valign="middle">&nbsp;
                             </td>
                         </tr>
                         <tr align="left">
@@ -120,8 +114,7 @@
                                     ReadOnly="True" Width="300px"></asp:TextBox>
                             </td>
                             <td align="left" nowrap valign="middle" style="vertical-align: bottom; width: 1%;"
-                                rowspan="11">
-                                &nbsp;&nbsp;
+                                rowspan="11">&nbsp;&nbsp;
                             </td>
                         </tr>
                         <tr align="left">
@@ -161,14 +154,11 @@
                             <td align="right" nowrap valign="middle">
                                 <asp:Label ID="Label1" runat="server">ประเภทงบประมาณ :</asp:Label>
                             </td>
-                            <td align="left" nowrap valign="middle">
-                                &nbsp;<asp:DropDownList runat="server" CssClass="textbox" ID="cboBudget_type">
-                                </asp:DropDownList>
+                            <td align="left" nowrap valign="middle">&nbsp;<asp:DropDownList runat="server" CssClass="textbox" ID="cboBudget_type">
+                            </asp:DropDownList>
                             </td>
-                            <td align="left" nowrap style="text-align: right" valign="middle">
-                            </td>
-                            <td align="left" colspan="2" nowrap valign="middle">
-                            </td>
+                            <td align="left" nowrap style="text-align: right" valign="middle"></td>
+                            <td align="left" colspan="2" nowrap valign="middle"></td>
                         </tr>
                         <tr align="left">
                             <td align="right" nowrap valign="middle">
@@ -202,13 +192,13 @@
                         </tr>
                         <tr align="left">
                             <td align="right" nowrap valign="middle">
-                                <asp:Label ID="Label56" runat="server" CssClass="label_hbk">ยุทธศาสตร์การจัดสรรงบประมาณ :</asp:Label>
+                                <asp:Label ID="Label56" runat="server" CssClass="label_hbk">ยุทธศาสตร์ :</asp:Label>
                             </td>
                             <td align="left" nowrap valign="middle">
                                 <asp:TextBox ID="txtplan_name" runat="server" CssClass="textboxdis" Width="300px"></asp:TextBox>
                             </td>
                             <td align="left" nowrap style="text-align: right" valign="middle">
-                                <asp:Label ID="Label57" runat="server" CssClass="label_hbk">งาน :</asp:Label>
+                                <asp:Label ID="Label57" runat="server" CssClass="label_hbk">งาน/หลักสูตร :</asp:Label>
                             </td>
                             <td align="left" colspan="2" nowrap valign="middle">
                                 <asp:TextBox ID="txtwork_name" runat="server" CssClass="textboxdis" Width="300px"></asp:TextBox>
@@ -256,26 +246,17 @@
                                 <asp:Label ID="Label12" runat="server">สถานะ :</asp:Label>
                             </td>
                             <td align="left" colspan="2" nowrap valign="middle">
-                                <asp:CheckBox ID="chkStatus" runat="server" Text="ปกติ" /><asp:RequiredFieldValidator
-                                    ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtperson_code"
-                                    Display="None" ErrorMessage="กรุณาป้อนรหัสบุคลากร" SetFocusOnError="True" ValidationGroup="A"></asp:RequiredFieldValidator><ajaxtoolkit:ValidatorCalloutExtender
-                                        ID="RequiredFieldValidator1_ValidatorCalloutExtender" runat="server" Enabled="True"
-                                        HighlightCssClass="validatorCalloutHighlight" TargetControlID="RequiredFieldValidator1">
-                                    </ajaxtoolkit:ValidatorCalloutExtender>
+                                <asp:CheckBox ID="chkStatus" runat="server" Text="ปกติ" />
                             </td>
                         </tr>
                         <tr align="left">
-                            <td align="right" nowrap valign="middle">
-                                &nbsp;
+                            <td align="right" nowrap valign="middle">&nbsp;
                             </td>
-                            <td align="left" nowrap valign="middle">
-                                &nbsp;
+                            <td align="left" nowrap valign="middle">&nbsp;
                             </td>
-                            <td align="left" nowrap style="text-align: right" valign="middle">
-                                &nbsp;
+                            <td align="left" nowrap style="text-align: right" valign="middle">&nbsp;
                             </td>
-                            <td align="left" colspan="2" nowrap valign="middle">
-                                &nbsp;
+                            <td align="left" colspan="2" nowrap valign="middle">&nbsp;
                             </td>
                         </tr>
                     </table>
@@ -298,17 +279,19 @@
                                         <Columns>
                                             <asp:TemplateField HeaderText="No.">
                                                 <ItemTemplate>
-                                                    <asp:Label ID="lblNo" runat="server"> </asp:Label></ItemTemplate>
+                                                    <asp:Label ID="lblNo" runat="server"> </asp:Label>
+                                                </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Center" Wrap="False" Width="2%"></ItemStyle>
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="รหัสรายได้/จ่าย" SortExpression="item_code">
                                                 <ItemTemplate>
-                                                    <asp:Label ID="lblitem_code" runat="server" CssClass="label_hbk" Text='<%# DataBinder.Eval(Container, "DataItem.item_code") %>'> </asp:Label></ItemTemplate>
+                                                    <asp:Label ID="lblitem_code" runat="server" CssClass="label_hbk" Text='<%# DataBinder.Eval(Container, "DataItem.item_code") %>'> </asp:Label>
+                                                </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Left" Width="10%" Wrap="True" />
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="รายได้/ค่าใช้จ่าย" SortExpression="item_name">
                                                 <ItemTemplate>
-                                                    <asp:Label ID="lblitem_name" runat="server" CssClass="label_hbk" Text='<% # DataBinder.Eval(Container, "DataItem.item_name") %>'> </asp:Label><asp:HiddenField
+                                                    <asp:Label ID="lblitem_name" runat="server" CssClass="label_hbk" Text='<% # DataBinder.Eval(Container, "DataItem.item_name")%>'> </asp:Label><asp:HiddenField
                                                         ID="hdfpayment_item_tax" runat="server" Value='<%# DataBinder.Eval(Container, "DataItem.payment_item_tax") %>' />
                                                     <asp:HiddenField ID="hdfpayment_item_sos" runat="server" Value='<%# DataBinder.Eval(Container, "DataItem.payment_item_sos") %>' />
                                                 </ItemTemplate>
@@ -324,7 +307,8 @@
                                             <asp:TemplateField HeaderText="ผังงบประมาณ" SortExpression="payment_detail_budget_plan_code">
                                                 <ItemTemplate>
                                                     <asp:Label ID="lblpayment_detail_budget_plan_code" runat="server" CssClass="label_hbk"
-                                                        Text='<%# DataBinder.Eval(Container, "DataItem.payment_detail_budget_plan_code") %>'> </asp:Label></ItemTemplate>
+                                                        Text='<%# DataBinder.Eval(Container, "DataItem.payment_detail_budget_plan_code") %>'> </asp:Label>
+                                                </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Left" Width="10%" Wrap="True" />
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="งบ" SortExpression="payment_detail_lot_code">
@@ -338,7 +322,7 @@
                                             <asp:TemplateField HeaderText="Debit" SortExpression="payment_item_recv">
                                                 <ItemTemplate>
                                                     <cc1:AwNumeric ID="txtpayment_item_pay" runat="server" Width="80px" LeadZero="Show"
-                                                        DisplayMode="View" Text='<% # getNumber(DataBinder.Eval(Container, "DataItem.payment_item_recv")) %>'>
+                                                        DisplayMode="View" Text='<% # getNumber(DataBinder.Eval(Container, "DataItem.payment_item_recv"))%>'>
                                                     </cc1:AwNumeric>
                                                 </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Right" Width="8%" Wrap="False" />
@@ -346,28 +330,32 @@
                                             <asp:TemplateField HeaderText="Credit" SortExpression="payment_item_pay">
                                                 <ItemTemplate>
                                                     <cc1:AwNumeric ID="txtipayment_item_pay" runat="server" Width="80px" LeadZero="Show"
-                                                        DisplayMode="View" Text='<% # getNumber(DataBinder.Eval(Container, "DataItem.payment_item_pay")) %>'>
+                                                        DisplayMode="View" Text='<% # getNumber(DataBinder.Eval(Container, "DataItem.payment_item_pay"))%>'>
                                                     </cc1:AwNumeric>
                                                 </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Right" Width="8%" Wrap="False" />
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="สถานะ" Visible="False">
                                                 <ItemTemplate>
-                                                    <asp:Label ID="lblc_active" runat="server" CssClass="label_hbk" Text='<%# DataBinder.Eval(Container, "DataItem.c_active_detail") %>'> </asp:Label></ItemTemplate>
+                                                    <asp:Label ID="lblc_active" runat="server" CssClass="label_hbk" Text='<%# DataBinder.Eval(Container, "DataItem.c_active_detail") %>'> </asp:Label>
+                                                </ItemTemplate>
                                                 <HeaderStyle HorizontalAlign="Center" Width="2%"></HeaderStyle>
                                                 <ItemStyle HorizontalAlign="Center" />
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="สถานะ" SortExpression="c_active">
                                                 <ItemTemplate>
-                                                    <asp:ImageButton ID="imgStatus" runat="server" CausesValidation="False" /></ItemTemplate>
+                                                    <asp:ImageButton ID="imgStatus" runat="server" CausesValidation="False" />
+                                                </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Center" Width="5%"></ItemStyle>
                                             </asp:TemplateField>
                                             <asp:TemplateField>
                                                 <ItemTemplate>
                                                     <asp:ImageButton ID="imgEdit" runat="server" CausesValidation="False" CommandName="Edit" />
-                                                    <asp:ImageButton ID="imgDelete" runat="server" CausesValidation="False" CommandName="Delete" /></ItemTemplate>
+                                                    <asp:ImageButton ID="imgDelete" runat="server" CausesValidation="False" CommandName="Delete" />
+                                                </ItemTemplate>
                                                 <HeaderTemplate>
-                                                    <asp:ImageButton ID="imgAdd" runat="server" CommandName="Add" /></HeaderTemplate>
+                                                    <asp:ImageButton ID="imgAdd" runat="server" CommandName="Add" />
+                                                </HeaderTemplate>
                                                 <ItemStyle HorizontalAlign="Center" Width="5%" Wrap="False" />
                                             </asp:TemplateField>
                                         </Columns>
@@ -379,8 +367,7 @@
                     </table>
                     <table>
                         <tr align="left">
-                            <td style="text-align: right">
-                            </td>
+                            <td style="text-align: right"></td>
                             <td style="text-align: right">
                                 <asp:Label runat="server" ID="Label76" Font-Bold="True">ยอดรับ :</asp:Label>
                             </td>
@@ -426,24 +413,27 @@
                                         <Columns>
                                             <asp:TemplateField HeaderText="No.">
                                                 <ItemTemplate>
-                                                    <asp:Label ID="lblNo" runat="server"> </asp:Label></ItemTemplate>
+                                                    <asp:Label ID="lblNo" runat="server"> </asp:Label>
+                                                </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Center" Wrap="False" Width="2%"></ItemStyle>
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="รหัสรายได้/จ่าย" SortExpression="item_code">
                                                 <ItemTemplate>
-                                                    <asp:Label ID="lblitem_code" runat="server" CssClass="label_hbk" Text='<%# DataBinder.Eval(Container, "DataItem.item_code") %>'> </asp:Label></ItemTemplate>
+                                                    <asp:Label ID="lblitem_code" runat="server" CssClass="label_hbk" Text='<%# DataBinder.Eval(Container, "DataItem.item_code") %>'> </asp:Label>
+                                                </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Left" Width="10%" Wrap="True" />
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="รายได้/ค่าใช้จ่าย" SortExpression="item_name">
                                                 <ItemTemplate>
-                                                    <asp:Label ID="lblitem_name" runat="server" CssClass="label_hbk" Text='<% # DataBinder.Eval(Container, "DataItem.item_name") %>'> </asp:Label>
+                                                    <asp:Label ID="lblitem_name" runat="server" CssClass="label_hbk" Text='<% # DataBinder.Eval(Container, "DataItem.item_name")%>'> </asp:Label>
                                                 </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Left" Width="30%" Wrap="True" />
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="ผังงบประมาณ" SortExpression="payment_detail_budget_plan_code">
                                                 <ItemTemplate>
                                                     <asp:Label ID="lblpayment_detail_budget_plan_code" runat="server" CssClass="label_hbk"
-                                                        Text='<%# DataBinder.Eval(Container, "DataItem.payment_detail_budget_plan_code") %>'> </asp:Label></ItemTemplate>
+                                                        Text='<%# DataBinder.Eval(Container, "DataItem.payment_detail_budget_plan_code") %>'> </asp:Label>
+                                                </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Left" Width="10%" Wrap="True" />
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="งบ" SortExpression="payment_detail_lot_code">
@@ -457,7 +447,7 @@
                                             <asp:TemplateField HeaderText="Debit" SortExpression="payment_acc">
                                                 <ItemTemplate>
                                                     <cc1:AwNumeric ID="txtpayment_acc" runat="server" Width="80px" LeadZero="Show" DisplayMode="View"
-                                                        Text='<% # getNumber(DataBinder.Eval(Container, "DataItem.payment_acc")) %>'>
+                                                        Text='<% # getNumber(DataBinder.Eval(Container, "DataItem.payment_acc"))%>'>
                                                     </cc1:AwNumeric>
                                                 </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Right" Width="8%" Wrap="False" />
@@ -465,9 +455,11 @@
                                             <asp:TemplateField>
                                                 <ItemTemplate>
                                                     <asp:ImageButton ID="imgEdit" runat="server" CausesValidation="False" CommandName="Edit" />
-                                                    <asp:ImageButton ID="imgDelete" runat="server" CausesValidation="False" CommandName="Delete" /></ItemTemplate>
+                                                    <asp:ImageButton ID="imgDelete" runat="server" CausesValidation="False" CommandName="Delete" />
+                                                </ItemTemplate>
                                                 <HeaderTemplate>
-                                                    <asp:ImageButton ID="imgAdd" runat="server" CommandName="Add" /></HeaderTemplate>
+                                                    <asp:ImageButton ID="imgAdd" runat="server" CommandName="Add" />
+                                                </HeaderTemplate>
                                                 <ItemStyle HorizontalAlign="Center" Width="5%" Wrap="False" />
                                             </asp:TemplateField>
                                         </Columns>

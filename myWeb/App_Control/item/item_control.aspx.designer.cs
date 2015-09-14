@@ -112,15 +112,6 @@ namespace myWeb.App_Control.item {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
         
         /// <summary>
-        /// RequiredFieldValidator3_ValidatorCalloutExtender control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.ValidatorCalloutExtender RequiredFieldValidator3_ValidatorCalloutExtender;
-        
-        /// <summary>
         /// lblPage8 control.
         /// </summary>
         /// <remarks>
@@ -139,6 +130,15 @@ namespace myWeb.App_Control.item {
         protected global::System.Web.UI.WebControls.TextBox txtitem_code;
         
         /// <summary>
+        /// Label72 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label72;
+        
+        /// <summary>
         /// lblPage9 control.
         /// </summary>
         /// <remarks>
@@ -155,6 +155,15 @@ namespace myWeb.App_Control.item {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtitem_name;
+        
+        /// <summary>
+        /// RequiredFieldValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
         
         /// <summary>
         /// lblPage7 control.
@@ -418,21 +427,12 @@ namespace myWeb.App_Control.item {
         protected global::System.Web.UI.WebControls.CheckBox chkStatus;
         
         /// <summary>
-        /// RequiredFieldValidator1 control.
+        /// ValidationSummary1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
-        
-        /// <summary>
-        /// RequiredFieldValidator1_ValidatorCalloutExtender control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.ValidatorCalloutExtender RequiredFieldValidator1_ValidatorCalloutExtender;
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
     }
 }

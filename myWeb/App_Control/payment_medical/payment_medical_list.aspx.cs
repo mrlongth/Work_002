@@ -323,7 +323,6 @@ namespace myWeb.App_Control.payment_medical
             }
         }
 
-
         private void BindGridView(int nPageNo)
         {
             cPayment_medical oPayment_medical = new cPayment_medical();
@@ -350,6 +349,12 @@ namespace myWeb.App_Control.payment_medical
             strPerson_code = txtperson_code.Text.Trim();
             strPerson_name = txtperson_name.Text.Trim();
             strPayment_doc = txtpayment_doc.Text.Trim();
+
+            var strperson_id = txtperson_id.Text.Replace("'", "''").Trim();
+            if (!strperson_id.Equals(""))
+            {
+                strCriteria = strCriteria + "  And  (person_id like '%" + strperson_id + "%') ";
+            }
 
             if (!strYear.Equals(""))
             {

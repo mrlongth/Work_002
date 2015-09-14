@@ -190,7 +190,7 @@
     <value>{0} ({1})</value>
   </data>
   <data name="StatusActive" xml:space="preserve">
-    <value>ใช้งาน</value>
+    <value>ใช้งาน/หลักสูตร</value>
   </data>
   <data name="StatusAll" xml:space="preserve">
     <value>ทั้งหมด</value>

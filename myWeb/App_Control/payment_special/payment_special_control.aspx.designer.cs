@@ -211,6 +211,15 @@ namespace myWeb.App_Control.payment_special {
         protected global::Aware.WebControls.AwLabelDateTime lblPay_end_date;
         
         /// <summary>
+        /// Label80 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label80;
+        
+        /// <summary>
         /// Label50 control.
         /// </summary>
         /// <remarks>
@@ -238,15 +247,6 @@ namespace myWeb.App_Control.payment_special {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
         
         /// <summary>
-        /// RequiredFieldValidator2_ValidatorCalloutExtender control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.ValidatorCalloutExtender RequiredFieldValidator2_ValidatorCalloutExtender;
-        
-        /// <summary>
         /// RequiredFieldValidator1 control.
         /// </summary>
         /// <remarks>
@@ -256,13 +256,13 @@ namespace myWeb.App_Control.payment_special {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
         
         /// <summary>
-        /// RequiredFieldValidator1_ValidatorCalloutExtender control.
+        /// Label96 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.ValidatorCalloutExtender RequiredFieldValidator1_ValidatorCalloutExtender;
+        protected global::System.Web.UI.WebControls.Label Label96;
         
         /// <summary>
         /// lblperson_name control.
@@ -398,6 +398,15 @@ namespace myWeb.App_Control.payment_special {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chkStatus;
+        
+        /// <summary>
+        /// ValidationSummary1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
         
         /// <summary>
         /// TabPanel2 control.

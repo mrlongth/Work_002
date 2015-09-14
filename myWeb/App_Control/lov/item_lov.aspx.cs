@@ -303,10 +303,10 @@ namespace myWeb.App_Control.lov
             {
                 strCriteria = strCriteria + "  And  (item_group_name like '%" + stritem_group_name + "%') ";
             }
-            //if (!strperson_group_code.Equals(""))
-            //{
-            //    strCriteria = strCriteria + "  And  (person_group_code ='" + strperson_group_code + "' Or  person_group_code='') ";
-            //}
+            if (!strperson_group_code.Equals(""))
+            {
+                strCriteria = strCriteria + "  And  (person_group_code ='" + strperson_group_code + "' ) ";
+            }
 
             if (!strperson_code.Equals(""))
             {

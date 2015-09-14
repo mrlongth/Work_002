@@ -546,11 +546,11 @@ namespace myWeb.App_Control.person
             //    Label54.Text = "แผนงาน :";
             //    Label55.Text = "ผลผลิต :";
             //    Label53.Text = "กิจกรรม :";
-            //    Label56.Text = "ยุทธศาสตร์การจัดสรรงบประมาณ :";
+            //    Label56.Text = "ยุทธศาสตร์ :";
             //}
             //else
             //{
-            //    Label54.Text = "ยุทธศาสตร์การจัดสรรงบประมาณ :";
+            //    Label54.Text = "ยุทธศาสตร์ :";
             //    Label55.Text = "งานหลัก :";
             //    Label53.Text = "งานรอง :";
             //    Label56.Text = "งานย่อย :";

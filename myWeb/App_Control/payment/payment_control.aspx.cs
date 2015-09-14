@@ -459,6 +459,7 @@ namespace myWeb.App_Control.payment
             string strCreatedBy = string.Empty;
             string strUpdatedBy = string.Empty;
             cPayment oPayment = new cPayment();
+            DataSet ds = null;
             try
             {
                 #region set Data
@@ -487,6 +488,17 @@ namespace myWeb.App_Control.payment
                     }
                     else
                     {
+
+
+                        //string strGetcode = " and person_code = '" + txtperson_code.Text + "' and pay_year = '" + cboPay_Year.SelectedValue + "' and pay_month = '" + cboPay_Month.SelectedValue + "' ";
+                        //if (!oPayment.SP_PAYMENT_HEAD_SEL(strGetcode, ref ds, ref strMessage))
+                        //{
+                        //    lblError.Text = strMessage;
+                        //}
+                        //if (ds.Tables[0].Rows.Count > 0)
+                        //{
+                        //    ViewState["payment_doc"] = ds.Tables[0].Rows[0]["payment_doc"].ToString();
+                        //}                        
                         blnResult = true;
                     }
                     #endregion
@@ -526,6 +538,16 @@ namespace myWeb.App_Control.payment
                 string strScript1 = "ClosePopUpListPost('" + ViewState["page"].ToString() + "','1');";
                 ScriptManager.RegisterStartupScript(Page, Page.GetType(), "OpenPage", strScript1, true);
                 MsgBox("บันทึกข้อมูลสมบูรณ์");
+                //if (ViewState["mode"].ToString().ToLower().Equals("add"))
+                //{                    
+                //    Response.Redirect(
+                //        "payment_control.aspx?mode=edit&payment_doc=" + ViewState["payment_doc"].ToString() + "&page="
+                //        + ViewState["page"].ToString() + "&PageStatus=save",
+                //        true);
+                //}
+                //else
+                //{
+                //}
             }
         }
 
@@ -902,7 +924,7 @@ namespace myWeb.App_Control.payment
                 imgAdd.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgGridAdd"].Rows[0]["title"].ToString());
                 imgAdd.Attributes.Add("onclick", "OpenPopUp('750px','330px','95%','เพิ่มข้อมูลเงินกู้รายเดือน','payment_loan_control.aspx?mode=add&payment_doc=" + txtpayment_doc.Text +
                                                    "&person_code=" + txtperson_code.Text + "&person_name=" + txtperson_name.Text + "','2');return false;");
-                 
+
             }
             else if (e.Row.RowType.Equals(DataControlRowType.DataRow) || e.Row.RowState.Equals(DataControlRowState.Alternate))
             {
@@ -942,12 +964,12 @@ namespace myWeb.App_Control.payment
                 ImageButton imgEdit = (ImageButton)e.Row.FindControl("imgEdit");
                 imgEdit.Attributes.Add("onclick", "OpenPopUp('750px','330px','95%','แก้ไขข้อมูลเงินกู้รายเดือน','payment_loan_control.aspx?mode=edit&payment_doc=" + txtpayment_doc.Text +
                                 "&person_name=" + txtperson_name.Text + "&loan_code=" + lblloan_code.Text +
-                                "&person_code=" + txtperson_code.Text +  "&loan_acc=" + lblloan_acc.Text + "','2');return false;");
+                                "&person_code=" + txtperson_code.Text + "&loan_acc=" + lblloan_acc.Text + "','2');return false;");
 
                 Label lblCanEdit = (Label)e.Row.FindControl("lblCanEdit");
                 imgEdit.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["img"].ToString();
                 imgEdit.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["title"].ToString());
-               
+
 
                 ImageButton imgDelete = (ImageButton)e.Row.FindControl("imgDelete");
                 imgDelete.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["img"].ToString();
@@ -1721,11 +1743,11 @@ namespace myWeb.App_Control.payment
             //    Label54.Text = "แผนงาน :";
             //    Label55.Text = "ผลผลิต :";
             //    Label53.Text = "กิจกรรม :";
-            //    Label56.Text = "ยุทธศาสตร์การจัดสรรงบประมาณ :";
+            //    Label56.Text = "ยุทธศาสตร์ :";
             //}
             //else
             //{
-            //    Label54.Text = "ยุทธศาสตร์การจัดสรรงบประมาณ :";
+            //    Label54.Text = "ยุทธศาสตร์ :";
             //    Label55.Text = "งานหลัก :";
             //    Label53.Text = "งานรอง :";
             //    Label56.Text = "งานย่อย :";

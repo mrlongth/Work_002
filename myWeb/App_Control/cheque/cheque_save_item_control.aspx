@@ -69,9 +69,6 @@
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="txtcheque_code" ErrorMessage="กรุณาป้อนจ่ายเช็คให้"
                     Display="None" SetFocusOnError="True" ValidationGroup="A" 
                     ID="RequiredFieldValidator1"></asp:RequiredFieldValidator>
-                <ajaxtoolkit:ValidatorCalloutExtender runat="server" HighlightCssClass="validatorCalloutHighlight"
-                    Enabled="True" TargetControlID="RequiredFieldValidator1" ID="RequiredFieldValidator1_ValidatorCalloutExtender">
-                </ajaxtoolkit:ValidatorCalloutExtender>
             </td>
             <td align="left" nowrap valign="middle" style="text-align: right; width: 72px;">
                 <asp:Label runat="server" ID="lblPage9">PVNo :</asp:Label>

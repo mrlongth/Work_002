@@ -70,7 +70,7 @@ namespace myWeb.App_Control.produce
                 //    foreach (Control c in Page.Controls)
                 //    {
                 //        base.SetLabel(c, old_str, new_str);
-                //        base.SetLabel(c, "แผนงาน", "ยุทธศาสตร์การจัดสรรงบประมาณ(เงินรายได้)");
+                //        base.SetLabel(c, "แผนงาน", "ยุทธศาสตร์(เงินรายได้)");
                 //    }
                 //}
 
@@ -290,7 +290,7 @@ namespace myWeb.App_Control.produce
                 //    foreach (Control c in GridView1.Controls)
                 //    {
                 //        base.SetLabel(c, old_str, new_str);
-                //        base.SetLabel(c, "แผนงาน", "ยุทธศาสตร์การจัดสรรงบประมาณ(เงินรายได้)");
+                //        base.SetLabel(c, "แผนงาน", "ยุทธศาสตร์(เงินรายได้)");
                 //    }
                 //}
             }

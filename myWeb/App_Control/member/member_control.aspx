@@ -112,17 +112,12 @@
                 &nbsp;
             </td>
             <td align="right" nowrap valign="top" style="text-align: left">
+                <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True" ShowSummary="False" ValidationGroup="A" />
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtmember_code"
                     Display="None" ErrorMessage="กรุณาป้อนรหัสเงินสมาชิก" ValidationGroup="A" SetFocusOnError="True"></asp:RequiredFieldValidator>
-                <cc1:ValidatorCalloutExtender ID="RequiredFieldValidator1_ValidatorCalloutExtender"
-                    runat="server" Enabled="True" TargetControlID="RequiredFieldValidator1" HighlightCssClass="validatorCalloutHighlight">
-                </cc1:ValidatorCalloutExtender>
                 <br />
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtmember_name"
                     Display="None" ErrorMessage="กรุณาป้อนเงินสมาชิก" ValidationGroup="A" SetFocusOnError="True"></asp:RequiredFieldValidator>
-                <cc1:ValidatorCalloutExtender ID="RequiredFieldValidator2_ValidatorCalloutExtender"
-                    runat="server" Enabled="True" TargetControlID="RequiredFieldValidator2" HighlightCssClass="validatorCalloutHighlight">
-                </cc1:ValidatorCalloutExtender>
             </td>
         </tr>
         </table>

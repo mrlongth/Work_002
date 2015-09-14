@@ -155,7 +155,7 @@
                                     <asp:Label runat="server" ID="lbldirector_name" Text='<%# DataBinder.Eval(Container, "DataItem.director_name") %>' />
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="งาน">
+                            <asp:TemplateField HeaderText="งาน/หลักสูตร">
                                 <ItemStyle HorizontalAlign="Left" Wrap="True" Width="150px"></ItemStyle>
                                 <HeaderStyle HorizontalAlign="Center" Wrap="true" Width="150px"></HeaderStyle>
                                 <ItemTemplate>

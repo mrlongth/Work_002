@@ -50,7 +50,7 @@
         </tr>
         <tr align="left">
             <td align="right" nowrap valign="top">
-                <asp:Label ID="Label11" runat="server">งาน :</asp:Label>
+                <asp:Label ID="Label11" runat="server">งาน/หลักสูตร :</asp:Label>
             </td>
             <td align="left" nowrap valign="top">
                 <font face="Tahoma"><asp:TextBox ID="txtwork_name" runat="server" CssClass="textboxdis"

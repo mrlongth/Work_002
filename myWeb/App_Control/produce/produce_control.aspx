@@ -57,14 +57,12 @@
     }    
     
     
-    </script>--%>    
+    </script>--%>
     <table border="0" cellpadding="1" cellspacing="1" style="width: 100%">
         <tr>
-            <td align="left" nowrap style="width: 90%;">
-                &nbsp;
+            <td align="left" nowrap style="width: 90%;">&nbsp;
             </td>
-            <td align="left" style="width: 0%">
-                &nbsp;
+            <td align="left" style="width: 0%">&nbsp;
             </td>
         </tr>
         <tr>
@@ -90,24 +88,20 @@
             <td align="right" nowrap valign="middle" style="width: 15%">
                 <asp:Label runat="server" ID="Label14">ปีงบประมาณ :</asp:Label>
             </td>
-            <td align="left" nowrap valign="middle">
-                &nbsp;<asp:DropDownList runat="server" CssClass="textbox" ID="cboYear" 
-                    AutoPostBack="True" onselectedindexchanged="cboYear_SelectedIndexChanged">
-                </asp:DropDownList>
+            <td align="left" nowrap valign="middle">&nbsp;<asp:DropDownList runat="server" CssClass="textbox" ID="cboYear"
+                AutoPostBack="True" OnSelectedIndexChanged="cboYear_SelectedIndexChanged">
+            </asp:DropDownList>
             </td>
-            <td align="center" nowrap style="width: 60px">
-                &nbsp;
+            <td align="center" nowrap style="width: 60px">&nbsp;
             </td>
-            <td align="center" nowrap style="width: 80px">
-                &nbsp;
+            <td align="center" nowrap style="width: 80px">&nbsp;
             </td>
-            <td align="center">
-                &nbsp;
+            <td align="center">&nbsp;
             </td>
         </tr>
         <tr align="left">
             <td align="right" nowrap valign="middle">
-                                        <asp:Label runat="server" CssClass="label_error" ID="Label71">*</asp:Label>
+                <asp:Label runat="server" CssClass="label_error" ID="Label71">*</asp:Label>
                 <asp:Label runat="server" ID="Label13">แผนงาน :</asp:Label>
             </td>
             <td align="left" colspan="4" nowrap valign="middle">
@@ -115,9 +109,8 @@
                 </asp:DropDownList>
                     <asp:RequiredFieldValidator runat="server" ControlToValidate="cboBudget" ErrorMessage="กรุณาเลือกแผนวบประมาณ"
                         Display="None" ValidationGroup="A" ID="RequiredFieldValidator1" SetFocusOnError="True"></asp:RequiredFieldValidator>
-                    <ajaxtoolkit:ValidatorCalloutExtender runat="server" Enabled="True" TargetControlID="RequiredFieldValidator1"
-                        HighlightCssClass="validatorCalloutHighlight" ID="RequiredFieldValidator1_ValidatorCalloutExtender">
-                    </ajaxtoolkit:ValidatorCalloutExtender>
+                    <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True" ShowSummary="False" ValidationGroup="A" />
+
                 </font>
                 <br />
             </td>
@@ -178,7 +171,7 @@
                                     </td>
                                     <td align="left" nowrap valign="middle">
                                         <asp:TextBox ID="txtproduce_code" runat="server" CssClass="textbox" MaxLength="5"
-                                              ValidationGroup="A" Width="144px"></asp:TextBox>
+                                            ValidationGroup="A" Width="144px"></asp:TextBox>
                                     </td>
                                     <td align="center" nowrap rowspan="3" style="vertical-align: bottom; width: 1%">
                                         <asp:ImageButton ID="imgSaveOnly" runat="server" ImageUrl="~/images/controls/save.jpg"
@@ -196,7 +189,7 @@
                                     <td align="left" nowrap valign="middle">
                                         <font face="Tahoma">
                                             <asp:TextBox ID="txtproduce_name" runat="server" CausesValidation="True" CssClass="textbox"
-                                                MaxLength="100"   ValidationGroup="A" Width="344px"></asp:TextBox>
+                                                MaxLength="100" ValidationGroup="A" Width="344px"></asp:TextBox>
                                         </font>
                                     </td>
                                 </tr>
@@ -206,13 +199,8 @@
                                     </td>
                                     <td align="left" nowrap valign="middle">
                                         <asp:CheckBox ID="chkStatus" runat="server" Text="ปกติ" />
-                                        <font face="Tahoma">
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtproduce_name"
                                                 Display="None" ErrorMessage="กรุณาป้อนข้อมูล" SetFocusOnError="True" ValidationGroup="A"></asp:RequiredFieldValidator>
-                                            <ajaxtoolkit:ValidatorCalloutExtender ID="RequiredFieldValidator2_ValidatorCalloutExtender"
-                                                runat="server" Enabled="True" TargetControlID="RequiredFieldValidator2" HighlightCssClass="validatorCalloutHighlight">
-                                            </ajaxtoolkit:ValidatorCalloutExtender>
-                                        </font>
                                     </td>
                                 </tr>
                             </table>
@@ -250,7 +238,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="ชื่อผลผลิต " SortExpression="produce_name">
                                 <ItemTemplate>
-                                    <asp:Label ID="lblproduce_name" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.produce_name") %>'>
+                                    <asp:Label ID="lblproduce_name" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.produce_name")%>'>
                                     </asp:Label>
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Left" Wrap="True" Width="40%"></ItemStyle>

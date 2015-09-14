@@ -30,9 +30,6 @@ namespace myWeb.App_Control.lov
                 imgFind.Attributes.Add("onMouseOver", "src='../../images/button/Search2.png'");
                 imgFind.Attributes.Add("onMouseOut", "src='../../images/button/Search.png'");
 
-                Session["menulov_name"] = "ค้นหาข้อมูลสมาชิก/เครดิตยูเนี่ยน";
-        
-
                 if (Request.QueryString["member_code"] != null)
                 {
                     ViewState["member_code"] = Request.QueryString["member_code"].ToString();

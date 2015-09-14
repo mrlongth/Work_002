@@ -22,7 +22,7 @@ namespace myWeb.App_Control.budget
         private string strRecordPerPage;
         private string strPageNo = "1";
         private string old_str = "แผนงาน";
-        private string new_str = "ยุทธศาสตร์การจัดสรรงบประมาณ";
+        private string new_str = "ยุทธศาสตร์";
         private string BudgetType
         {
             get

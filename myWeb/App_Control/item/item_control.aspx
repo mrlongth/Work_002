@@ -54,9 +54,6 @@
                 </asp:DropDownList>
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="cboItem_type" ErrorMessage="กรุณาเลือกประเภทรายการ"
                     Display="None" SetFocusOnError="True" ValidationGroup="A" ID="RequiredFieldValidator3"></asp:RequiredFieldValidator>
-                <ajaxtoolkit:ValidatorCalloutExtender runat="server" HighlightCssClass="validatorCalloutHighlight"
-                    Enabled="True" TargetControlID="RequiredFieldValidator3" ID="RequiredFieldValidator3_ValidatorCalloutExtender">
-                </ajaxtoolkit:ValidatorCalloutExtender>
             </td>
             <td align="left" nowrap valign="middle">
                 &nbsp;</td>
@@ -74,10 +71,13 @@
         </tr>
         <tr align="left">
             <td align="right" nowrap valign="middle">
+                                        <asp:Label runat="server" CssClass="label_error" ID="Label72">*</asp:Label>
                 <asp:Label runat="server" ID="lblPage9">รายได้/จ่าย :</asp:Label>
             </td>
             <td align="left" nowrap valign="middle" colspan="3">
                 <asp:TextBox runat="server" CssClass="textbox"   Width="350px" ID="txtitem_name"></asp:TextBox>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="txtitem_name" ErrorMessage="กรุณาป้อนข้อมูลรายได้/ค่าใช้จ่าย"
+                    Display="None" SetFocusOnError="True" ValidationGroup="A" ID="RequiredFieldValidator1"></asp:RequiredFieldValidator>
             </td>
             <td align="left" nowrap valign="middle">
                 &nbsp;</td>
@@ -143,22 +143,22 @@
                     onselectedindexchanged="cboItem_type_SelectedIndexChanged">
                     <asp:ListItem Value="">---- กรุณาเลือกข้อมูล ----</asp:ListItem>
                     <asp:ListItem Value="M">เช็คกลาง</asp:ListItem>
-                    <asp:ListItem Value="U">เช็คหน่วยงาน</asp:ListItem>
+                   <%-- <asp:ListItem Value="U">เช็คหน่วยงาน</asp:ListItem>--%>
                 </asp:DropDownList>
             </td>
         </tr>
-        <tr align="left">
+        <tr align="left" style="display: none;">
             <td align="right" nowrap valign="middle">
                 <asp:Label runat="server" ID="lblPage13">รหัสบัญชี :</asp:Label>
             </td>
-            <td align="left" nowrap valign="middle" colspan="3">
+            <td align="left" nowrap valign="middle" colspan="3" >
                 <asp:DropDownList runat="server" CssClass="textbox"   ID="cboItem_acc">
                 </asp:DropDownList>
             </td>
         </tr>
-        <tr align="left">
+        <tr align="left"  style="display: none;">
             <td align="right" nowrap valign="middle">
-                <asp:Label runat="server" ID="lblPage14">งาน/โครงการ :</asp:Label>
+                <asp:Label runat="server" ID="lblPage14">โครงการ :</asp:Label>
             </td>
             <td align="left" nowrap valign="middle">
                 <asp:TextBox runat="server" CssClass="textbox"   Width="150px" ID="txtitem_project_code1"
@@ -208,11 +208,7 @@
             </td>
             <td align="left" nowrap valign="middle" colspan="3">
                 <asp:CheckBox runat="server" Text="ปกติ" ID="chkStatus"></asp:CheckBox>
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="txtitem_name" ErrorMessage="กรุณาป้อนรหัสกิจกรรม"
-                    Display="None" SetFocusOnError="True" ValidationGroup="A" ID="RequiredFieldValidator1"></asp:RequiredFieldValidator>
-                <ajaxtoolkit:ValidatorCalloutExtender runat="server" HighlightCssClass="validatorCalloutHighlight"
-                    Enabled="True" TargetControlID="RequiredFieldValidator1" ID="RequiredFieldValidator1_ValidatorCalloutExtender">
-                </ajaxtoolkit:ValidatorCalloutExtender>
+                <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True" ShowSummary="False" ValidationGroup="A" />
             </td>
         </tr>
         

@@ -131,17 +131,12 @@
                 &nbsp;
             </td>
             <td align="left" nowrap valign="top" colspan="2">
+                <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True" ShowSummary="False" ValidationGroup="A" />
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtitem_group_name"
                     Display="None" ErrorMessage="กรุณาป้อนหมวดรายได้/ค่าใช้จ่าย" ValidationGroup="A"
                     SetFocusOnError="True"></asp:RequiredFieldValidator>
-                <cc1:ValidatorCalloutExtender ID="RequiredFieldValidator2_ValidatorCalloutExtender"
-                    runat="server" Enabled="True" TargetControlID="RequiredFieldValidator2" HighlightCssClass="validatorCalloutHighlight">
-                </cc1:ValidatorCalloutExtender>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="cboLot_code"
                     Display="None" ErrorMessage="กรุณาเลือกงบประมาณ" ValidationGroup="A" SetFocusOnError="True"></asp:RequiredFieldValidator>
-                <cc1:ValidatorCalloutExtender ID="RequiredFieldValidator3_ValidatorCalloutExtender"
-                    runat="server" Enabled="True" TargetControlID="RequiredFieldValidator3" HighlightCssClass="validatorCalloutHighlight">
-                </cc1:ValidatorCalloutExtender>
             </td>
         </tr>
         <tr align="left">

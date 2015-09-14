@@ -5,31 +5,26 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxtoolkit" %>
 <%@ Register Assembly="Aware.WebControls" Namespace="Aware.WebControls" TagPrefix="cc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
- <script type="text/javascript" language="javascript">
-     
-            function SelectAll(id)
-        {
+    <script type="text/javascript" language="javascript">
+
+        function SelectAll(id) {
             var grid = document.getElementById("<%= GridView1.ClientID %>");
-            var cell;
-            
-            if (grid.rows.length > 0)
-            {
-                for (i=1; i<grid.rows.length; i++)
-                {
-                    cell = grid.rows[i].cells[0];
-                    for (j=0; j<cell.childNodes.length; j++)
-                    {           
-                        if (cell.childNodes[j].type =="checkbox")
-                        {
-                            cell.childNodes[j].checked = document.getElementById(id).checked;
+                var cell;
+
+                if (grid.rows.length > 0) {
+                    for (i = 1; i < grid.rows.length; i++) {
+                        cell = grid.rows[i].cells[0];
+                        for (j = 0; j < cell.childNodes.length; j++) {
+                            if (cell.childNodes[j].type == "checkbox") {
+                                cell.childNodes[j].checked = document.getElementById(id).checked;
+                            }
                         }
                     }
                 }
             }
-        }
-        
-   
-         
+
+
+
     </script>
     <table border="0" cellpadding="1" cellspacing="1" style="width: 100%">
         <tr align="left">
@@ -96,7 +91,7 @@
                     <asp:Label runat="server" ID="lblPage2">กลุ่มบุคลากร :</asp:Label>
                 </td>
                 <td align="left" nowrap valign="middle" colspan="2">
-                    <asp:DropDownList runat="server" CssClass="textbox"   ID="cboPerson_group">
+                    <asp:DropDownList runat="server" CssClass="textbox" ID="cboPerson_group">
                     </asp:DropDownList>
                 </td>
             </tr>
@@ -116,12 +111,9 @@
                     </asp:DropDownList>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtitem_code"
                         Display="None" ErrorMessage="กรุณาป้อนรหัสค่าใช้จ่าย" ValidationGroup="A" SetFocusOnError="True"></asp:RequiredFieldValidator>
-                    <ajaxtoolkit:ValidatorCalloutExtender ID="RequiredFieldValidator1_ValidatorCalloutExtender"
-                        runat="server" Enabled="True" TargetControlID="RequiredFieldValidator1" HighlightCssClass="validatorCalloutHighlight">
-                    </ajaxtoolkit:ValidatorCalloutExtender>
+                    <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True" ShowSummary="False" ValidationGroup="A" />
                 </td>
-                <td align="left" nowrap valign="middle" rowspan="3" style="vertical-align: middle;
-                    width: 1%;">
+                <td align="left" nowrap valign="middle" rowspan="3" style="vertical-align: middle; width: 1%;">
                     <asp:ImageButton runat="server" AlternateText="ค้นหาข้อมูล" ImageUrl="~/images/button/Search.png"
                         ID="imgFind" OnClick="imgFind_Click" ValidationGroup="A"></asp:ImageButton>
                     <asp:ImageButton runat="server" AlternateText="บันทึกข้อมุล" ImageUrl="~/images/button/save_add.png"
@@ -135,13 +127,13 @@
                     <asp:Label ID="Label73" runat="server">รหัสค่าใช้จ่าย :</asp:Label>
                 </td>
                 <td align="left" nowrap valign="middle" colspan="3">
-                    <asp:TextBox runat="server" CssClass="textbox"   Width="100px" ID="txtitem_code"
+                    <asp:TextBox runat="server" CssClass="textbox" Width="100px" ID="txtitem_code"
                         MaxLength="10"></asp:TextBox>
                     &nbsp;<asp:ImageButton runat="server" ImageAlign="AbsBottom" ImageUrl="../../images/controls/view2.gif"
-                          ID="imgList_item"></asp:ImageButton>
+                        ID="imgList_item"></asp:ImageButton>
                     <asp:ImageButton runat="server" CausesValidation="False" ImageAlign="AbsBottom" ImageUrl="../../images/controls/erase.gif"
-                          ID="imgClear_item"></asp:ImageButton>
-                    &nbsp;<asp:TextBox runat="server" CssClass="textbox"   Width="250px" ID="txtitem_name"
+                        ID="imgClear_item"></asp:ImageButton>
+                    &nbsp;<asp:TextBox runat="server" CssClass="textbox" Width="250px" ID="txtitem_name"
                         MaxLength="100"></asp:TextBox>
                 </td>
             </tr>
@@ -210,14 +202,14 @@
             <asp:TemplateField HeaderText="ชื่อบุคลากร " SortExpression="person_thai_name">
                 <ItemStyle HorizontalAlign="Left" Width="12%" Wrap="True" />
                 <ItemTemplate>
-                    <asp:Label ID="lblperson_name" runat="server" Text='<%  # DataBinder.Eval(Container, "DataItem.title_name")+""+DataBinder.Eval(Container, "DataItem.person_thai_name") %>'>
+                    <asp:Label ID="lblperson_name" runat="server" Text='<%  # DataBinder.Eval(Container, "DataItem.title_name") + "" + DataBinder.Eval(Container, "DataItem.person_thai_name")%>'>
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="นามสกุล" SortExpression="person_thai_surname">
                 <ItemStyle HorizontalAlign="Left" Width="12%" Wrap="True" />
                 <ItemTemplate>
-                    <asp:Label ID="lblperson_thai_surname" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.person_thai_surname") %>'>
+                    <asp:Label ID="lblperson_thai_surname" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.person_thai_surname")%>'>
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
@@ -225,7 +217,7 @@
                 <ItemStyle HorizontalAlign="Right" Width="10%" Wrap="False" />
                 <ItemTemplate>
                     <cc1:AwNumeric ID="txtperson_salaly" runat="server" Width="95%" LeadZero="Show" DisplayMode="View"
-                        Value='<% # DataBinder.Eval(Container, "DataItem.person_salaly_all") %>' />
+                        Value='<% # DataBinder.Eval(Container, "DataItem.person_salaly_all")%>' />
                 </ItemTemplate>
                 <FooterStyle HorizontalAlign="Right" Width="10%" Wrap="False" />
                 <FooterTemplate>
@@ -236,7 +228,7 @@
                 <ItemStyle HorizontalAlign="Right" Width="10%" Wrap="False" />
                 <ItemTemplate>
                     <cc1:AwNumeric ID="txtmoney_credit" runat="server" Width="95%" LeadZero="Show" DisplayMode="Control"
-                        CssClass="numberbox" Value='<% # DataBinder.Eval(Container, "DataItem.money_credit") %>' />
+                        CssClass="numberbox" Value='<% # DataBinder.Eval(Container, "DataItem.money_credit")%>' />
                 </ItemTemplate>
                 <FooterStyle HorizontalAlign="Right" Width="10%" Wrap="False" />
                 <FooterTemplate>

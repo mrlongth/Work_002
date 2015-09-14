@@ -26,6 +26,7 @@
     <table border="0" cellpadding="1" cellspacing="1" style="width: 100%">
         <tr align="left">
             <td align="right" nowrap valign="middle" width="12%">
+                            <asp:label id="Label93" runat="server" cssclass="label_error">*</asp:label>
                 <asp:Label runat="server" ID="Label79">เลขที่เอกสาร :</asp:Label>
             </td>
             <td align="left" nowrap valign="middle" width="20%">
@@ -43,9 +44,8 @@
                 &nbsp;
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtpayment_doc"
                     Display="None" ErrorMessage="กรุณาป้อนเลขที่เอกสาร" ValidationGroup="A" SetFocusOnError="True"></asp:RequiredFieldValidator>
-                <ajaxtoolkit:ValidatorCalloutExtender ID="RequiredFieldValidator1_ValidatorCalloutExtender"
-                    runat="server" Enabled="True" TargetControlID="RequiredFieldValidator1" HighlightCssClass="validatorCalloutHighlight">
-                </ajaxtoolkit:ValidatorCalloutExtender>
+                 <asp:validationsummary id="ValidationSummary1" runat="server" showmessagebox="True"
+                                showsummary="False" validationgroup="A" />
             </td>
             <td align="left" nowrap valign="middle" style="vertical-align: bottom; width: 1%;">
                 &nbsp;

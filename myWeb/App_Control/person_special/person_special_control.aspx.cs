@@ -369,7 +369,7 @@ namespace myWeb.App_Control.person_retire
                         {
                             strScript =
                                 "alert(\"ไม่สามารถแก้ไขข้อมูลได้ เนื่องจาก" +
-                                "\\nข้อมูลบุคคลกร : " + strperson_thai_name.Trim() + "  " + strperson_thai_surname.Trim() +
+                                "\\nข้อมูลบุคลากร : " + strperson_thai_name.Trim() + "  " + strperson_thai_surname.Trim() +
                                 "\\nซ้ำ\");\n";
                             blnDup = true;
                         }
@@ -410,7 +410,7 @@ namespace myWeb.App_Control.person_retire
                         {
                             strScript =
                                 "alert(\"ไม่สามารถแก้ไขข้อมูลได้ เนื่องจาก" +
-                                "\\nข้อมูลบุคคลกร : " + strperson_thai_name.Trim() + "  " + strperson_thai_surname.Trim() +
+                                "\\nข้อมูลบุคลากร : " + strperson_thai_name.Trim() + "  " + strperson_thai_surname.Trim() +
                                 "\\nซ้ำ\");\n";
                             blnDup = true;
                         }

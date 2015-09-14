@@ -146,7 +146,7 @@
                     <tr align="left">
                         <td align="right" nowrap valign="middle" style="">
                             <asp:Label
-                                ID="Label83" runat="server" CssClass="label_hbk">สาขา/งาน :</asp:Label>
+                                ID="Label83" runat="server" CssClass="label_hbk">งาน/หลักสูตร:</asp:Label>
                         </td>
                         <td align="left" nowrap valign="middle" style="" colspan="2">
                             <asp:DropDownList ID="cboWork" runat="server" CssClass="textbox">

@@ -5,18 +5,24 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <table cellpadding="1" cellspacing="1" style="width: 100%" border="0">
         <tr>
-            <td style="text-align: right;" width="15%">
+            <td style="text-align: right;" width="10%">
                 <asp:Label runat="server" CssClass="label_h" ID="lblPage4">ปีงบประมาณ :</asp:Label>
             </td>
-            <td>
+            <td style="width:25%;">
                 <asp:DropDownList runat="server" CssClass="textbox" ID="cboYear" AutoPostBack="True"
                     OnSelectedIndexChanged="cboYear_SelectedIndexChanged">
                 </asp:DropDownList>
             </td>
-            <td style="text-align: right" width="15%" colspan="2">
+            <td style="text-align: right" width="15%">
                 &nbsp;</td>
-            <td style="text-align: left" colspan="2">
+            <td style="text-align: left" width="15%">
                 &nbsp;</td>
+            <td style="text-align: left; vertical-align:bottom;" rowspan="6" width="15%">
+                <asp:ImageButton runat="server" AlternateText="ค้นหาข้อมูล" ImageUrl="~/images/button/Search.png"
+                    ID="imgFind" OnClick="imgFind_Click"  ></asp:ImageButton>
+                <asp:ImageButton runat="server" AlternateText="เพิ่มข้อมุล" ImageUrl="~/images/button/Save.png"
+                    ID="imgNew"></asp:ImageButton>
+            </td>
         </tr>
         <tr>
             <td style="text-align: right;" width="15%">
@@ -28,11 +34,11 @@
                     AutoPostBack="True" OnSelectedIndexChanged="cboPay_Year_SelectedIndexChanged">
                 </asp:DropDownList>
             </td>
-            <td style="text-align: right" width="15%" colspan="2">
+            <td style="text-align: right" width="15%">
                 <asp:Label runat="server" CssClass="label_h" ID="lblPage7">กลุ่มบุคลากร :
                 </asp:Label>
             </td>
-            <td style="text-align: left" colspan="2">
+            <td style="text-align: left">
                 <asp:DropDownList runat="server" CssClass="textbox"   ID="cboPerson_group"
                     AutoPostBack="True" OnSelectedIndexChanged="cboPerson_group_SelectedIndexChanged">
                 </asp:DropDownList>
@@ -46,16 +52,16 @@
                 <asp:DropDownList runat="server" CssClass="textbox" ID="cboPay_Semeter">
                 </asp:DropDownList>
             </td>
-            <td style="text-align: right" width="15%" colspan="2">
+            <td style="text-align: right" width="15%">
                 <asp:Label runat="server" CssClass="label_h" ID="lblPage14">รอบการจ่ายที่ :</asp:Label>
             </td>
-            <td style="text-align: left" colspan="2">
+            <td style="text-align: left">
                 <asp:DropDownList runat="server" CssClass="textbox" ID="cboPay_Item">
                 </asp:DropDownList>
             </td>
         </tr>
         <tr>
-            <td style="text-align: right;">
+            <td style="text-align: right;" width="15%">
                 <asp:Label runat="server" CssClass="label_h" ID="lblPage12">สังกัด :
                 </asp:Label>
             </td>
@@ -64,34 +70,35 @@
                     AutoPostBack="True" onselectedindexchanged="cboDirector_SelectedIndexChanged">
                 </asp:DropDownList>
             </td>
-            <td style="text-align: right">
+            <td style="text-align: right" width="15%">
                 <asp:Label runat="server" CssClass="label_h" ID="lblPage13">หน่วยงาน :
                 </asp:Label>
             </td>
-            <td colspan="2">
+            <td style="text-align: left">
                 <asp:DropDownList runat="server" CssClass="textbox" ID="cboUnit" 
                     AutoPostBack="True" onselectedindexchanged="cboUnit_SelectedIndexChanged">
                 </asp:DropDownList>
             </td>
-            <td rowspan="3" style="text-align: right; vertical-align: bottom; width: 30%;">
-                <asp:ImageButton runat="server" AlternateText="ค้นหาข้อมูล" ImageUrl="~/images/button/Search.png"
-                    ID="imgFind" OnClick="imgFind_Click"  ></asp:ImageButton>
-                <asp:ImageButton runat="server" AlternateText="เพิ่มข้อมุล" ImageUrl="~/images/button/Save.png"
-                    ID="imgNew"></asp:ImageButton>
-            </td>
         </tr>
         <tr>
-            <td style="text-align: right;">
+            <td style="text-align: right;" width="15%">
                 <asp:Label runat="server" CssClass="label_h" ID="lblPage9">รหัสบุคลากร :</asp:Label>
             </td>
-            <td colspan="4">
-                <asp:TextBox runat="server" CssClass="textbox"   Width="100px" ID="txtperson_code"></asp:TextBox>
+            <td>
+                <asp:TextBox runat="server" CssClass="textbox"   Width="80px" ID="txtperson_code"></asp:TextBox>
                 &nbsp;<asp:ImageButton runat="server" ImageAlign="AbsBottom" ImageUrl="../../images/controls/view2.gif"
                       ID="imgList_person"></asp:ImageButton>
                 <asp:ImageButton runat="server" CausesValidation="False" ImageAlign="AbsBottom" ImageUrl="../../images/controls/erase.gif"
                       ID="imgClear_person"></asp:ImageButton>
-                &nbsp;<asp:TextBox runat="server" CssClass="textbox"   Width="300px"
+                &nbsp;<asp:TextBox runat="server" CssClass="textbox"   Width="200px"
                     ID="txtperson_name"></asp:TextBox>
+            </td>
+            <td style="text-align: right" width="15%">
+                <asp:Label runat="server" CssClass="label_h" ID="lblPage16">เลขที่บัตรประชาชน :
+                </asp:Label>
+            </td>
+            <td style="text-align: left">
+                <asp:TextBox runat="server" CssClass="textbox" Width="175px" ID="txtperson_id"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -101,7 +108,7 @@
             <td>
                 <asp:TextBox runat="server" CssClass="textbox"   Width="100px" ID="txtpayment_doc"></asp:TextBox>
             </td>
-            <td style="text-align: right" colspan="2">
+            <td style="text-align: right">
                 <asp:Label runat="server" CssClass="label_h" ID="lblPage11">สถานะ : </asp:Label>
             </td>
             <td>
@@ -206,6 +213,6 @@
         <HeaderStyle CssClass="stGridHeader" HorizontalAlign="Center" />
         <AlternatingRowStyle BackColor="#EAEAEA" />
     </asp:GridView>
-    <input id="txthpage" type="hidden" name="txthpage" runat="server">
-    <input id="txthTotalRecord" type="hidden" name="txthTotalRecord" runat="server">
+    <input id="txthpage" type="hidden" name="txthpage" runat="server"/>
+    <input id="txthTotalRecord" type="hidden" name="txthTotalRecord" runat="server"/>
 </asp:Content>
