@@ -201,16 +201,16 @@ namespace myDLL
                 oParam_user_group_code.Direction = ParameterDirection.Input;
                 oParam_user_group_code.Value = puser_group_code;
                 oCommand.Parameters.Add(oParam_user_group_code);
-                // - - - - - - - - - - - -             
-                SqlParameter oParam_Active = new SqlParameter("C_active", SqlDbType.NVarChar);
-                oParam_Active.Direction = ParameterDirection.Input;
-                oParam_Active.Value = pActive;
-                oCommand.Parameters.Add(oParam_Active);
-                // - - - - - - - - - - - -             
-                SqlParameter oParam_c_updated_by = new SqlParameter("c_updated_by", SqlDbType.NVarChar);
-                oParam_c_updated_by.Direction = ParameterDirection.Input;
-                oParam_c_updated_by.Value = pC_updated_by;
-                oCommand.Parameters.Add(oParam_c_updated_by);
+                //// - - - - - - - - - - - -             
+                //SqlParameter oParam_Active = new SqlParameter("C_active", SqlDbType.NVarChar);
+                //oParam_Active.Direction = ParameterDirection.Input;
+                //oParam_Active.Value = pActive;
+                //oCommand.Parameters.Add(oParam_Active);
+                //// - - - - - - - - - - - -             
+                //SqlParameter oParam_c_updated_by = new SqlParameter("c_updated_by", SqlDbType.NVarChar);
+                //oParam_c_updated_by.Direction = ParameterDirection.Input;
+                //oParam_c_updated_by.Value = pC_updated_by;
+                //oCommand.Parameters.Add(oParam_c_updated_by);
                 // - - - - - - - - - - - -             
                 oCommand.ExecuteNonQuery();
                 blnResult = true;
