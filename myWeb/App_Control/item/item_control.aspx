@@ -186,6 +186,14 @@
             <td align="left" nowrap valign="middle">
                 <asp:TextBox runat="server" CssClass="textbox"   Width="150px" ID="txtdirect_pay_code"
                     MaxLength="50"></asp:TextBox>
+                
+                
+                 &nbsp;<asp:ImageButton runat="server" ImageAlign="AbsBottom" ImageUrl="../../images/controls/view2.gif"
+                      ID="imgList_item2"></asp:ImageButton>
+                <asp:ImageButton runat="server" CausesValidation="False" ImageAlign="AbsBottom" ImageUrl="../../images/controls/erase.gif"
+                      ID="imgClear_item2"></asp:ImageButton>
+                
+
             </td>
         </tr>
         <tr align="left">

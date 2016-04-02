@@ -4,6 +4,8 @@
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxtoolkit" %>
 <%@ Register Assembly="Aware.WebControls" Namespace="Aware.WebControls" TagPrefix="cc1" %>
+<%@ Register Assembly="DropDownCheckBoxes" Namespace="Saplin.Controls" TagPrefix="dcb" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <table border="0" cellpadding="1" cellspacing="1" style="width: 100%">
         <tr align="left">
@@ -47,14 +49,18 @@
                 <td align="left" nowrap valign="middle">
                     <asp:DropDownList ID="cboPerson_group" runat="server" CssClass="textbox">
                     </asp:DropDownList>
+                    <dcb:DropDownCheckBoxes ID="cboPerson_group_dropdown_checkboxes" runat="server"
+                        AddJQueryReference="True" UseButtons="False" UseSelectAllNode="True" Visible="False">
+                        <Texts SelectBoxCaption="--- เลือกข้อมูลกลุ่มบุคลากร ---" />
+                    </dcb:DropDownCheckBoxes>
                 </td>
                 <td align="left" nowrap valign="middle" style="text-align: right">
                     <asp:Label ID="Label74" runat="server" CssClass="label_error">*</asp:Label>
                     <asp:Label ID="lblPage3" runat="server">ประเภทรายการ :</asp:Label>
                 </td>
                 <td align="left" nowrap valign="middle">
-                    <asp:DropDownList ID="cboItem_type" runat="server" CssClass="textbox" 
-                        AutoPostBack="True" onselectedindexchanged="cboItem_type_SelectedIndexChanged">
+                    <asp:DropDownList ID="cboItem_type" runat="server" CssClass="textbox"
+                        AutoPostBack="True" OnSelectedIndexChanged="cboItem_type_SelectedIndexChanged">
                         <asp:ListItem Value="">---- กรุณาเลือกข้อมูล ----</asp:ListItem>
                         <asp:ListItem Value="D">Debit</asp:ListItem>
                         <asp:ListItem Value="C">Credit</asp:ListItem>
@@ -77,7 +83,7 @@
                 <td align="left" nowrap valign="middle" colspan="3">
                     <asp:TextBox ID="txtitem_code" runat="server" CssClass="textbox" MaxLength="10" ValidationGroup="A"
                         Width="100px"></asp:TextBox>
-                    <asp:ImageButton ID="imgList_item" runat="server" ImageAlign="AbsBottom" 
+                    <asp:ImageButton ID="imgList_item" runat="server" ImageAlign="AbsBottom"
                         ImageUrl="../../images/controls/view2.gif" ValidationGroup="A" />
                     <asp:ImageButton ID="imgClear_item" runat="server" CausesValidation="False" ImageAlign="AbsBottom"
                         ImageUrl="../../images/controls/erase.gif" />
@@ -87,8 +93,7 @@
                 </td>
             </tr>
             <tr align="left">
-                <td align="right" nowrap valign="middle" width="20%">
-                    &nbsp;
+                <td align="right" nowrap valign="middle" width="20%">&nbsp;
                 </td>
                 <td align="left" colspan="3" nowrap valign="middle">
                     <asp:HyperLink ID="lnkExcelFile" runat="server" Target="_blank">
@@ -98,9 +103,9 @@
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtitem_code"
                         Display="None" ErrorMessage="กรุณาป้อนรหัสรายได้/ค่าใช้จ่าย" SetFocusOnError="True"
                         ValidationGroup="A"></asp:RequiredFieldValidator>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" 
-                        ControlToValidate="cboItem_type" Display="None" 
-                        ErrorMessage="กรุณาเลือกประเภทรายการ" SetFocusOnError="True" 
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
+                        ControlToValidate="cboItem_type" Display="None"
+                        ErrorMessage="กรุณาเลือกประเภทรายการ" SetFocusOnError="True"
                         ValidationGroup="A"></asp:RequiredFieldValidator>
                 </td>
             </tr>
@@ -164,24 +169,41 @@
                 </ItemTemplate>
                 <ItemStyle HorizontalAlign="Center" Wrap="False" Width="2%"></ItemStyle>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="รหัสบุคลากร " SortExpression="person_code">
+
+            <asp:TemplateField HeaderText="เลขที่ประจำตัวประชาชน" SortExpression="sp_person_id">
                 <ItemStyle HorizontalAlign="Center" Width="8%" Wrap="True" />
                 <ItemTemplate>
-                    <asp:Label ID="lblperson_code" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.person_code") %>'>
-                    </asp:Label>
+                    <asp:TextBox ID="txtperson_id" runat="server" CssClass="textbox" MaxLength="100"
+                        Width="120" Text='<%# DataBinder.Eval(Container, "DataItem.person_id") %>'>                        
+                    </asp:TextBox>
+                    &nbsp;
+                    <asp:ImageButton ID="imgList_person" runat="server" CausesValidation="False" ImageAlign="AbsBottom" ImageUrl="../../images/controls/view2.gif" />
+                    <asp:ImageButton ID="imgClear_person" runat="server" CausesValidation="False" ImageAlign="AbsBottom"
+                        ImageUrl="../../images/controls/erase.gif" Style="width: 18px" />
+                    <asp:RequiredFieldValidator ID="reqperson_id" runat="server" ErrorMessage="กรุณาเลือกเลขที่ประจำตัวประชาชน" ControlToValidate="txtperson_id" SetFocusOnError="True" Display="None"></asp:RequiredFieldValidator>
+                    <asp:HiddenField ID="hddperson_code" runat="server" Value='<%# DataBinder.Eval(Container, "DataItem.person_code") %>' />
                 </ItemTemplate>
             </asp:TemplateField>
+            <%--            
+                <asp:TemplateField HeaderText="รหัสบุคลากร " SortExpression="person_code">
+                <ItemStyle HorizontalAlign="Center" Width="8%" Wrap="True" />
+                <ItemTemplate>
+                    <asp:TextBox ID="txtperson_code" CssClass="textbox" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.person_code") %>'>
+                    </asp:TextBox>
+                </ItemTemplate>
+            </asp:TemplateField>--%>
+
             <asp:TemplateField HeaderText="ชื่อบุคลากร " SortExpression="person_thai_name">
                 <ItemStyle HorizontalAlign="Left" Width="12%" Wrap="True" />
                 <ItemTemplate>
-                    <asp:Label ID="lblperson_name" runat="server" Text='<%  # DataBinder.Eval(Container, "DataItem.title_name")+""+DataBinder.Eval(Container, "DataItem.person_thai_name") %>'>
+                    <asp:Label ID="lblperson_name" runat="server" Text='<%  # DataBinder.Eval(Container, "DataItem.title_name") + "" + DataBinder.Eval(Container, "DataItem.person_thai_name")%>'>
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="นามสกุล" SortExpression="person_thai_surname">
                 <ItemStyle HorizontalAlign="Left" Width="12%" Wrap="True" />
                 <ItemTemplate>
-                    <asp:Label ID="lblperson_thai_surname" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.person_thai_surname") %>'>
+                    <asp:Label ID="lblperson_thai_surname" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.person_thai_surname")%>'>
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
@@ -189,7 +211,7 @@
                 <ItemStyle HorizontalAlign="Right" Width="10%" Wrap="False" />
                 <ItemTemplate>
                     <cc1:AwNumeric ID="txtmoney_credit" runat="server" Width="95%" LeadZero="Show" DisplayMode="Control"
-                        CssClass="numberbox" Text='<% # getNumber(DataBinder.Eval(Container, "DataItem.money_credit")) %>' />
+                        CssClass="numberbox" Text='<% # getNumber(DataBinder.Eval(Container, "DataItem.money_credit"))%>' />
                 </ItemTemplate>
                 <FooterStyle HorizontalAlign="Right" Width="10%" Wrap="False" />
                 <FooterTemplate>
@@ -209,4 +231,67 @@
     </asp:GridView>
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True"
         ShowSummary="False" ValidationGroup="A" />
+
+
+    <script type="text/javascript">
+        function RegisterScript() {
+            $("input[id*=imgClear_person]").click(function () {
+                $('#' + this.id.replace('imgClear_person', 'txtperson_id')).val('');
+                $('#' + this.id.replace('imgClear_person', 'hddperson_code')).val('');
+                $('#' + this.id.replace('imgClear_person', 'lblperson_name')).html('');
+                $('#' + this.id.replace('imgClear_person', 'lblperson_thai_surname')).html('');
+                return false;
+            });
+            $("input[id*=imgList_person]").click(function () {
+                var txtperson_id = $('#' + this.id.replace('imgList_person', 'txtperson_id'));
+                var hddperson_code = $('#' + this.id.replace('imgList_person', 'hddperson_code'));
+                var lblperson_name = $('#' + this.id.replace('imgList_person', 'lblperson_name'));
+                var lblperson_thai_surname = $('#' + this.id.replace('imgList_person', 'lblperson_thai_surname'));
+                var url = "../lov/person_lov.aspx?" +
+                          "person_id=" + txtperson_id.val() +
+                          "&person_name=" + (lblperson_name.text() + ' ' + lblperson_thai_surname.text()) +
+                          "&txtperson_id=" + $(txtperson_id).attr('id') +
+                          "&hddperson_code=" + $(hddperson_code).attr('id') +
+                          "&lblperson_name=" + $(lblperson_name).attr('id') +
+                          "&lblperson_thai_surname=" + $(lblperson_thai_surname).attr('id') +
+                          "&show=1&from=payment_item_import";
+                OpenPopUp('900px', '500px', '95%', 'ค้นหาข้อมูลบุคลากร', url, '1');
+                return false;
+            });
+
+        };
+
+        function ToggleValidator(chk) {
+            var requiredFieldValidator = chk.id.replace('CheckBox1', 'reqperson_id');
+
+            var validatorObject = document.getElementById(requiredFieldValidator);
+            console.log(validatorObject);
+            validatorObject.enabled = chk.checked;
+            validatorObject.isvalid = chk.checked;
+            ValidatorUpdateDisplay(validatorObject);
+
+        }
+
+        function funcsum() {
+            var table = document.getElementById("<%= GridView1.ClientID %>");
+            var sum = 0;
+            for (var i = 1; i <= table.rows.length - 1; i++) //setting the incrementor=0, but if you have a header set it to 1 
+            {
+                var j = parseInt(i) + 1;
+                if (j < 10) {
+                    j = "0" + j;
+                }
+                if (i != table.rows.length - 1) {
+                    var txtmoney_credit = document.getElementById(table.id + "_ctl" + j + "_txtmoney_credit");
+                    sum = parseFloat(sum) + parseFloat(ToNumber(txtmoney_credit));
+                }
+                else
+                {
+                    document.getElementById(table.id + "_ctl" + j + "_txtsummoney_credit").value = sum;
+                }
+            }
+        }
+
+    </script>
+
 </asp:Content>

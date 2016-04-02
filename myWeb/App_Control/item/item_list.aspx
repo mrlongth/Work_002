@@ -12,8 +12,7 @@
                 <asp:DropDownList runat="server" CssClass="textbox" ID="cboYear">
                 </asp:DropDownList>
             </td>
-            <td colspan="2">
-                &nbsp;
+            <td colspan="2">&nbsp;
             </td>
         </tr>
         <tr>
@@ -21,8 +20,8 @@
                 <asp:Label runat="server" CssClass="label_h" ID="lblPage13">ประเภทรายการ :</asp:Label>
             </td>
             <td>
-                <asp:DropDownList runat="server" CssClass="textbox" ID="cboItem_type" 
-                    AutoPostBack="True" onselectedindexchanged="cboItem_type_SelectedIndexChanged">
+                <asp:DropDownList runat="server" CssClass="textbox" ID="cboItem_type"
+                    AutoPostBack="True" OnSelectedIndexChanged="cboItem_type_SelectedIndexChanged">
                     <asp:ListItem Value="">---- เลือกข้อมูลทั้งหมด ----</asp:ListItem>
                     <asp:ListItem Value="D">Debit</asp:ListItem>
                     <asp:ListItem Value="C">Credit</asp:ListItem>
@@ -32,13 +31,13 @@
                 <asp:Label runat="server" CssClass="label_h" ID="lblPage14">กลุ่มบุคลากร :</asp:Label>
             </td>
             <td>
-                <asp:DropDownList runat="server" CssClass="textbox"   
-                    ID="cboPerson_group" AutoPostBack="True" 
-                    onselectedindexchanged="cboPerson_group_SelectedIndexChanged"></asp:DropDownList>
+                <asp:DropDownList runat="server" CssClass="textbox"
+                    ID="cboPerson_group" AutoPostBack="True"
+                    OnSelectedIndexChanged="cboPerson_group_SelectedIndexChanged">
+                </asp:DropDownList>
 
             </td>
-            <td colspan="2">
-                &nbsp;
+            <td colspan="2">&nbsp;
             </td>
         </tr>
         <tr>
@@ -46,28 +45,26 @@
                 <asp:Label runat="server" CssClass="label_h" ID="lblPage2">รหัสรายได้/จ่าย :</asp:Label>
             </td>
             <td>
-                <asp:TextBox runat="server" CssClass="textbox"   Width="120px" ID="txtitem_code"
+                <asp:TextBox runat="server" CssClass="textbox" Width="120px" ID="txtitem_code"
                     MaxLength="10"></asp:TextBox>
             </td>
             <td style="text-align: right">
                 <asp:Label runat="server" CssClass="label_h" ID="lblPage15">ชนิดรายการ :</asp:Label>
             </td>
             <td>
-                <asp:DropDownList runat="server" CssClass="textbox"   ID="cboItem_class">
+                <asp:DropDownList runat="server" CssClass="textbox" ID="cboItem_class">
                 </asp:DropDownList>
             </td>
-            <td colspan="2">
-                &nbsp;</td>
+            <td colspan="2">&nbsp;</td>
         </tr>
         <tr>
             <td style="text-align: right; width: 15%;">
                 <asp:Label runat="server" CssClass="label_h" ID="lblPage12">ชื่อรายได้/จ่าย :</asp:Label>
             </td>
             <td colspan="3">
-                <asp:TextBox runat="server" CssClass="textbox"   Width="520px" ID="txtitem_name"></asp:TextBox>
+                <asp:TextBox runat="server" CssClass="textbox" Width="520px" ID="txtitem_name"></asp:TextBox>
             </td>
-            <td colspan="2">
-                &nbsp;
+            <td colspan="2">&nbsp;
             </td>
         </tr>
         <tr>
@@ -75,20 +72,20 @@
                 <asp:Label runat="server" CssClass="label_h" ID="lblPage1">รหัสหมวดรายได้/จ่าย :</asp:Label>
             </td>
             <td colspan="4">
-                <asp:TextBox runat="server" CssClass="textbox"   Width="120px" ID="txtitem_group_code"
+                <asp:TextBox runat="server" CssClass="textbox" Width="120px" ID="txtitem_group_code"
                     MaxLength="6"></asp:TextBox>
                 &nbsp;<asp:ImageButton runat="server" ImageAlign="AbsBottom" ImageUrl="../../images/controls/view2.gif"
-                      ID="imgList_item_group"></asp:ImageButton>
+                    ID="imgList_item_group"></asp:ImageButton>
                 <asp:ImageButton runat="server" CausesValidation="False" ImageAlign="AbsBottom" ImageUrl="../../images/controls/erase.gif"
-                      ID="imgClear_item_group"></asp:ImageButton>
-                &nbsp;<asp:TextBox runat="server" CssClass="textbox"   Width="340px" ID="txtitem_group_name"></asp:TextBox>
+                    ID="imgClear_item_group"></asp:ImageButton>
+                &nbsp;<asp:TextBox runat="server" CssClass="textbox" Width="340px" ID="txtitem_group_name"></asp:TextBox>
             </td>
             <td rowspan="2" style="text-align: right">
                 <asp:ImageButton runat="server" AlternateText="ค้นหาข้อมูล" ImageUrl="~/images/button/Search.png"
                     ID="imgFind" OnClick="imgFind_Click"></asp:ImageButton>
                 &nbsp;<asp:ImageButton runat="server" AlternateText="เพิ่มข้อมุล" ImageUrl="~/images/button/Save.png"
                     ID="imgNew"></asp:ImageButton>
-            &nbsp;</td>
+                &nbsp;</td>
         </tr>
         <tr>
             <td style="text-align: right; width: 15%;">
@@ -97,10 +94,8 @@
             <td colspan="4">
                 <asp:RadioButton runat="server" GroupName="A" Checked="True" Text="ทั้งหมด" CssClass="label_h"
                     ID="RadioAll"></asp:RadioButton>
-                <asp:RadioButton runat="server" GroupName="A" Text="ปกติ" CssClass="label_h" ID="RadioActive">
-                </asp:RadioButton>
-                <asp:RadioButton runat="server" GroupName="A" Text="ยกเลิก" CssClass="label_h" ID="RadioCancel">
-                </asp:RadioButton>
+                <asp:RadioButton runat="server" GroupName="A" Text="ปกติ" CssClass="label_h" ID="RadioActive"></asp:RadioButton>
+                <asp:RadioButton runat="server" GroupName="A" Text="ยกเลิก" CssClass="label_h" ID="RadioCancel"></asp:RadioButton>
                 <asp:Label runat="server" CssClass="label_error" ID="lblError"></asp:Label>
             </td>
         </tr>
@@ -144,7 +139,7 @@
             <asp:TemplateField HeaderText="รายได้/ค่าใช้จ่าย" SortExpression="item_name">
                 <ItemStyle HorizontalAlign="Left" Wrap="True" Width="15%"></ItemStyle>
                 <ItemTemplate>
-                    <asp:Label ID="lblitem_name" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.item_name") %>'>
+                    <asp:Label ID="lblitem_name" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.item_name")%>'>
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
@@ -153,28 +148,36 @@
                 <ItemTemplate>
                     <asp:Label ID="lblitem_group_code" runat="server" Visible="false" Text='<%# DataBinder.Eval(Container, "DataItem.item_group_code") %>'>
                     </asp:Label>
-                    <asp:Label ID="lblitem_group_name" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.item_group_name") %>'>
+                    <asp:Label ID="lblitem_group_name" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.item_group_name")%>'>
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="งบ " SortExpression="lot_name">
                 <ItemStyle HorizontalAlign="Left" Width="5%" Wrap="False" />
                 <ItemTemplate>
-                    <asp:Label ID="lbllot_name" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.lot_name") %>'>
+                    <asp:Label ID="lbllot_name" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.lot_name")%>'>
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="กลุ่มบุคลากร" SortExpression="person_group_name">
                 <ItemStyle HorizontalAlign="Left" Width="10%" Wrap="True" />
                 <ItemTemplate>
-                    <asp:Label ID="lblperson_group_name" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.person_group_name") %>'>
+                    <asp:Label ID="lblperson_group_name" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.person_group_name")%>'>
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-               <asp:TemplateField HeaderText="ที่อยู่/รายละเอียดจ่ายเช็ค " SortExpression="cheque_desc">
+            <asp:TemplateField HeaderText="รหัสจ่ายตรง" SortExpression="direct_pay_code">
+                <ItemStyle HorizontalAlign="Left" Width="10%" Wrap="True" />
+                <ItemTemplate>
+                    <asp:Label ID="lbldirect_pay_code" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.direct_pay_code")%>'>
+                    </asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+
+            <asp:TemplateField HeaderText="ที่อยู่/รายละเอียดจ่ายเช็ค " SortExpression="cheque_desc">
                 <ItemStyle HorizontalAlign="Left" Width="15%" Wrap="True" />
                 <ItemTemplate>
-                    <asp:Label ID="lblcheque_name" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.cheque_name") %>'/>/<asp:Label ID="lblcheque_desc" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.cheque_desc") %>'/>
+                    <asp:Label ID="lblcheque_name" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.cheque_name")%>' />/<asp:Label ID="lblcheque_desc" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.cheque_desc")%>' />
                 </ItemTemplate>
             </asp:TemplateField>
 
@@ -203,11 +206,9 @@
         <EmptyDataRowStyle HorizontalAlign="Center"></EmptyDataRowStyle>
         <HeaderStyle HorizontalAlign="Center" CssClass="stGridHeader" Font-Bold="True"></HeaderStyle>
         <PagerSettings Mode="NextPrevious" NextPageImageUrl="~/images/next.gif" NextPageText="Next &amp;gt;&amp;gt;"
-            Position="Top" PreviousPageImageUrl="~/images/prev.gif" PreviousPageText="&amp;lt;&amp;lt; Previous">
-        </PagerSettings>
-        <PagerStyle HorizontalAlign="Center" Wrap="True" BackColor="Gainsboro" ForeColor="#8C4510">
-        </PagerStyle>
+            Position="Top" PreviousPageImageUrl="~/images/prev.gif" PreviousPageText="&amp;lt;&amp;lt; Previous"></PagerSettings>
+        <PagerStyle HorizontalAlign="Center" Wrap="True" BackColor="Gainsboro" ForeColor="#8C4510"></PagerStyle>
     </asp:GridView>
-    <input id="txthpage" type="hidden" name="txthpage" runat="server">
-    <input id="txthTotalRecord" type="hidden" name="txthTotalRecord" runat="server">
+    <input id="txthpage" type="hidden" name="txthpage" runat="server"/>
+    <input id="txthTotalRecord" type="hidden" name="txthTotalRecord" runat="server"/>
 </asp:Content>

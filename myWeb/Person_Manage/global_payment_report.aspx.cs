@@ -116,7 +116,7 @@ namespace myWeb.Person_Manage
                 Helper.DeleteUnusedFile(strReportDirectoryTempPhysicalPath, ReportAliveTime);
 
                 string strFilename;
-                strFilename = "report_" + DateTime.Now.ToString("yyyyMMddHH-mm-ss");
+                strFilename = "report_" + DateTime.Now.ToString("yyyyMMddHH-mm-ss-fff");
                 rptSource.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("~/temp/") + strFilename + ".pdf");
                 lnkPdfFile.NavigateUrl = "~/temp/" + strFilename + ".pdf";
                 imgPdf.Src = "~/images/icon_pdf.gif";
@@ -180,7 +180,7 @@ namespace myWeb.Person_Manage
                 Helper.DeleteUnusedFile(strReportDirectoryTempPhysicalPath, ReportAliveTime);
 
                 string strFilename;
-                strFilename = "report_" + DateTime.Now.ToString("yyyyMMddHH-mm-ss");
+                strFilename = "report_" + DateTime.Now.ToString("yyyyMMddHH-mm-ss-fff");
                 rptSource.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("~/temp/") + strFilename + ".pdf");
                 lnkPdfFile.NavigateUrl = "~/temp/" + strFilename + ".pdf";
                 imgPdf.Src = "~/images/icon_pdf.gif";
@@ -485,7 +485,7 @@ namespace myWeb.Person_Manage
             Helper.DeleteUnusedFile(strReportDirectoryTempPhysicalPath, ReportAliveTime);
 
             string strFilename;
-            strFilename = "report_" + DateTime.Now.ToString("yyyyMMddHH-mm-ss");
+            strFilename = "report_" + DateTime.Now.ToString("yyyyMMddHH-mm-ss-fff");
 
             rptSource.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("~/temp/") + strFilename + ".pdf");
             lnkPdfFile.NavigateUrl = "~/temp/" + strFilename + ".pdf";

@@ -3,6 +3,8 @@
     Title="รายงานข้อมูลการจ่ายเงินเดือน" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+<%@ Register Assembly="DropDownCheckBoxes" Namespace="Saplin.Controls" TagPrefix="dcb" %>
+
 
 <asp:content id="Content1" contentplaceholderid="ContentPlaceHolder1" runat="server">
     <table cellpadding="1" cellspacing="1" style="width: 100%" border="0">
@@ -25,6 +27,7 @@
                     <asp:ListItem Value="A2">รายงานยอดเงินส่งธนาคารประจำเดือน</asp:ListItem>
                     <asp:ListItem Value="A4">ใบนำส่งเช็คและรายละเอียดจำนวนเงินสุทธิ</asp:ListItem>
                     <asp:ListItem Value="A6">รายละเอียดการนำส่งเงินชำระหนี้เงินกู้ธนาคาร</asp:ListItem>
+                    <asp:ListItem Value="A9">ส่งออก Text ไฟล์สำหรับธนาคารไทยพานิชย์ประจำเดือน</asp:ListItem>                    
                     <asp:ListItem Value="A7">รายงานสรุปการรับ - จ่ายเงิน ประจำเดือน ระบบเบิกตรง</asp:ListItem>
                     <asp:ListItem Value="A8">รายงานสรุปการรับ - จ่ายเงินแยกตามผลผลิต ประจำเดือน ระบบเบิกตรง </asp:ListItem>
 
@@ -46,8 +49,14 @@
                             <asp:Label runat="server" CssClass="label_h" ID="lblPage2">กลุ่มบุคลากร :</asp:Label>
                         </td>
                         <td style="height: 23px; text-align: left;">
-                            <asp:DropDownList runat="server" CssClass="textbox" ID="cboPerson_group">
+                            <asp:DropDownList runat="server" CssClass="textbox" ID="cboPerson_group" Visible="False">
                             </asp:DropDownList>
+                            <dcb:DropDownCheckBoxes ID="cboPerson_group_dropdown_checkboxes" runat="server"
+                                AddJQueryReference="True" UseButtons="False" UseSelectAllNode="True" AutoPostBack="True" OnSelectedIndexChanged="cboPerson_group_dropdown_checkboxes_SelectedIndexChanged" >
+                                <Texts SelectBoxCaption="--- เลือกข้อมูลกลุ่มบุคลากร ---" />
+                            </dcb:DropDownCheckBoxes>
+                            <br />
+                            <asp:Label runat="server" ID="lblperson_group_name"></asp:Label>
                         </td>
                     </tr>
                     <tr>
@@ -149,6 +158,17 @@
                         <td style="text-align: left;" colspan="3">
                             <asp:DropDownList runat="server" CssClass="textbox" ID="cboBank" Visible="False">
                             </asp:DropDownList>
+                        </td>
+                        <td style="height: 23px; text-align: right;">
+                             &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right; width: 20%;">&nbsp;</td>
+                        <td style="text-align: left;" colspan="3">
+                            <asp:HyperLink ID="lnkTxtFile" runat="server" Target="_blank">
+                        <img id="imgTxt" runat="server" alt="ดาวน์โหลดไฟล์" src="~/images/icon_txtdisable.gif"
+                            border="0" />
+                    </asp:HyperLink>
                         </td>
                         <td style="height: 23px; text-align: right;">
                             <asp:ImageButton runat="server" AlternateText="พิมพ์ข้อมูล" ImageUrl="~/images/button/print.png"

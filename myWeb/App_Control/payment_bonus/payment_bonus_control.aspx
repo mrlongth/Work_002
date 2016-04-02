@@ -28,7 +28,7 @@
     <div style="text-align: center;">
         <ajaxtoolkit:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="0" Height="370px"
             BorderWidth="0px" Style="text-align: left" Width="98%">
-            <ajaxtoolkit:TabPanel ID="TabPanel1" runat="server" HeaderText="ข้อมูลการจ่ายค่ารักษาพยาบาล">
+            <ajaxtoolkit:TabPanel ID="TabPanel1" runat="server" HeaderText="ข้อมูลการจ่ายค่าสวัสดิการข้าราชการ/ลูกจ้างประจำ">
                 <HeaderTemplate>
                     ข้อมูลการจ่ายเงินรางวัล
                 </HeaderTemplate>
@@ -240,7 +240,7 @@
                     </table>
                 </ContentTemplate>
             </ajaxtoolkit:TabPanel>
-            <ajaxtoolkit:TabPanel ID="TabPanel2" runat="server" HeaderText="ข้อมูลรายการค่ารักษาพยาบาล">
+            <ajaxtoolkit:TabPanel ID="TabPanel2" runat="server" HeaderText="ข้อมูลรายการค่าสวัสดิการข้าราชการ/ลูกจ้างประจำ">
                 <HeaderTemplate>
                     ข้อมูลรายการเงินรางวัล
                 </HeaderTemplate>

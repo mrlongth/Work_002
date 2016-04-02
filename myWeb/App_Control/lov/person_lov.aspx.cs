@@ -66,6 +66,44 @@ namespace myWeb.App_Control.lov
                     txtperson_name.Text = string.Empty;
                 }
 
+
+                if (Request.QueryString["hddperson_code"] != null)
+                {
+                    ViewState["hddperson_code"] = Request.QueryString["hddperson_code"].ToString();
+                }
+                else
+                {
+                    ViewState["hddperson_code"] = string.Empty;
+                }
+
+
+                if (Request.QueryString["txtperson_id"] != null)
+                {
+                    ViewState["txtperson_id"] = Request.QueryString["txtperson_id"].ToString();
+                }
+                else
+                {
+                    ViewState["txtperson_id"] = string.Empty;
+                }
+
+                if (Request.QueryString["lblperson_name"] != null)
+                {
+                    ViewState["lblperson_name"] = Request.QueryString["lblperson_name"].ToString();
+                }
+                else
+                {
+                    ViewState["lblperson_name"] = string.Empty;
+                }
+
+                if (Request.QueryString["lblperson_thai_surname"] != null)
+                {
+                    ViewState["lblperson_thai_surname"] = Request.QueryString["lblperson_thai_surname"].ToString();
+                }
+                else
+                {
+                    ViewState["lblperson_thai_surname"] = string.Empty;
+                }
+
                 if (Request.QueryString["ctrl1"] != null)
                 {
                     ViewState["ctrl1"] = Request.QueryString["ctrl1"].ToString();
@@ -322,7 +360,7 @@ namespace myWeb.App_Control.lov
             {
                 strCriteria = strCriteria + "  And  (person_thai_name like '%" + strperson_name + "%'  " +
                                                               "  OR person_thai_surname like '%" + strperson_name + "%'  " +
-                                                              "  OR (person_thai_surname + ' ' +person_eng_surname) like '%" + strperson_name + "%')" ;
+                                                              "  OR (person_thai_surname + ' ' +person_eng_surname) like '%" + strperson_name + "%')";
             }
 
             if (!strperson_work_status_code.Equals(""))
@@ -343,7 +381,7 @@ namespace myWeb.App_Control.lov
 
             if (ViewState["from"].ToString().Equals("payment_medical_control"))
             {
-                strCriteria += " and person_group_code = '01'";        
+                strCriteria += " and person_group_code = '01'";
             }
 
             if (DirectorLock == "Y")
@@ -360,29 +398,29 @@ namespace myWeb.App_Control.lov
                 }
                 else
                 {
-                    if (ds.Tables[0].Rows.Count == 1)
-                    {
-                        string strScript = string.Empty;
-                        strperson_code = ds.Tables[0].Rows[0]["person_code"].ToString();
-                        strperson_name = ds.Tables[0].Rows[0]["person_thai_name"].ToString() + " " + ds.Tables[0].Rows[0]["person_thai_surname"].ToString();
+                    //if (ds.Tables[0].Rows.Count == 1)
+                    //{
+                    //    string strScript = string.Empty;
+                    //    strperson_code = ds.Tables[0].Rows[0]["person_code"].ToString();
+                    //    strperson_name = ds.Tables[0].Rows[0]["person_thai_name"].ToString() + " " + ds.Tables[0].Rows[0]["person_thai_surname"].ToString();
 
-                        if (!ViewState["show"].ToString().Equals("1"))
-                        {
-                            strScript = "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl1"].ToString() + "').value='" + strperson_code + "';\n " +
-                                        "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl2"].ToString() + "').value='" + strperson_name + "';\n" +
-                                        "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].__doPostBack('ctl00$ContentPlaceHolder1$LinkButton1','');" +
-                                        "ClosePopUp('" + ViewState["show"].ToString() + "');";
-                        }
-                        else
-                        {
-                            strScript = "window.parent.document.getElementById('" + ViewState["ctrl1"].ToString() + "').value='" + strperson_code + "';\n " +
-                                        "window.parent.document.getElementById('" + ViewState["ctrl2"].ToString() + "').value='" + strperson_name + "';\n" +
-                                        "window.parent.__doPostBack('ctl00$ContentPlaceHolder1$LinkButton1','');" +
-                                        "ClosePopUp('" + ViewState["show"].ToString() + "');";
-                        }
-                        ScriptManager.RegisterStartupScript(Page, Page.GetType(), "close", strScript, true);
-                    }
-                    else
+                    //    if (!ViewState["show"].ToString().Equals("1"))
+                    //    {
+                    //        strScript = "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl1"].ToString() + "').value='" + strperson_code + "';\n " +
+                    //                    "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl2"].ToString() + "').value='" + strperson_name + "';\n" +
+                    //                    "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].__doPostBack('ctl00$ContentPlaceHolder1$LinkButton1','');" +
+                    //                    "ClosePopUp('" + ViewState["show"].ToString() + "');";
+                    //    }
+                    //    else
+                    //    {
+                    //        strScript = "window.parent.document.getElementById('" + ViewState["ctrl1"].ToString() + "').value='" + strperson_code + "';\n " +
+                    //                    "window.parent.document.getElementById('" + ViewState["ctrl2"].ToString() + "').value='" + strperson_name + "';\n" +
+                    //                    "window.parent.__doPostBack('ctl00$ContentPlaceHolder1$LinkButton1','');" +
+                    //                    "ClosePopUp('" + ViewState["show"].ToString() + "');";
+                    //    }
+                    //    ScriptManager.RegisterStartupScript(Page, Page.GetType(), "close", strScript, true);
+                    //}
+                    //else
                     {
                         ds.Tables[0].DefaultView.Sort = ViewState["sort"] + " " + ViewState["direction"];
                         GridView1.DataSource = ds.Tables[0];
@@ -457,33 +495,48 @@ namespace myWeb.App_Control.lov
                     lblperson_code.Text = "<a href=\"\" onclick=\"" +
                                                              "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl1"].ToString() + "').value='" + lblperson_code.Text + "';\n " +
                                                              "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl2"].ToString() + "').value='" + lblperson_name.Text + " " + dv["person_thai_surname"].ToString() + "';\n" +
-                                                             "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].__doPostBack('ctl00$ContentPlaceHolder1$LinkButton1','');"+
+                                                             "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].__doPostBack('ctl00$ContentPlaceHolder1$LinkButton1','');" +
                                                              "ClosePopUp('" + ViewState["show"].ToString() + "');" +
                                                              "return false;\" >" + lblperson_code.Text + "</a>";
-               
-                
+
+
                 }
                 else
                 {
                     string strPersonCode = lblperson_code.Text;
                     string strPersonName = lblperson_name.Text + " " + dv["person_thai_surname"].ToString();
-                   
+                    string strPersonSurName = dv["person_thai_surname"].ToString();
+                    string strPersonId = dv["person_id"].ToString();
+
                     lblperson_code.Text = "<a href=\"\" onclick=\"";
-                    lblperson_code.Text += "window.parent.document.getElementById('" + ViewState["ctrl1"].ToString() + "').value='" + strPersonCode + "';\n ";
-                    lblperson_code.Text += "window.parent.document.getElementById('" + ViewState["ctrl2"].ToString() + "').value='" + strPersonName + "';\n";
+
+                    if (!string.IsNullOrEmpty(ViewState["ctrl1"].ToString()))
+                        lblperson_code.Text += "window.parent.document.getElementById('" + ViewState["ctrl1"].ToString() + "').value='" + strPersonCode + "';\n ";
+                    if (!string.IsNullOrEmpty(ViewState["ctrl2"].ToString()))
+                        lblperson_code.Text += "window.parent.document.getElementById('" + ViewState["ctrl2"].ToString() + "').value='" + strPersonName + "';\n";
+
+                    if (!string.IsNullOrEmpty(ViewState["txtperson_id"].ToString()))
+                        lblperson_code.Text += "window.parent.document.getElementById('" + ViewState["txtperson_id"].ToString() + "').value='" + strPersonId + "';\n";
+
+
+                    if (!string.IsNullOrEmpty(ViewState["hddperson_code"].ToString()))
+                        lblperson_code.Text += "window.parent.document.getElementById('" + ViewState["hddperson_code"].ToString() + "').value='" + strPersonCode + "';\n";
+
+
+                    if (!string.IsNullOrEmpty(ViewState["lblperson_name"].ToString()))
+                        lblperson_code.Text += "window.parent.document.getElementById('" + ViewState["lblperson_name"].ToString() + "').text='" + strPersonId + "';\n";
+
+                    if (!string.IsNullOrEmpty(ViewState["lblperson_thai_surname"].ToString()))
+                        lblperson_code.Text += "window.parent.document.getElementById('" + ViewState["lblperson_thai_surname"].ToString() + "').text='" + strPersonSurName + "';\n";
+
+
                     if (ViewState["from"].ToString() == "payment_control")
                         lblperson_code.Text += "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].__doPostBack('ctl00$ContentPlaceHolder1$LinkButton1','');";
+                   
                     lblperson_code.Text += "ClosePopUp('" + ViewState["show"].ToString() + "');";
                     lblperson_code.Text += "return false;\" >" + strPersonCode + "</a>";
                 }
-                //if (ViewState["from"].ToString().Equals("payment_control"))
-                //{
-                //    lblperson_code.Text = "<a href=\"\" onclick=\"" +
-                //                                             "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl1"].ToString() + "').value='" + lblperson_code.Text + "';\n " +
-                //                                             "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl2"].ToString() + "').value='" + lblperson_name.Text + "';\n" +
-                //                                             "ClosePopUp('" + ViewState["show"].ToString() + "');" +
-                //                                             "return false;\" >" + lblperson_code.Text + "</a>";
-                //}
+             
 
             }
         }

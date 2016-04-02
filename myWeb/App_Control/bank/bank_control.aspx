@@ -93,7 +93,7 @@
             <td align="right" nowrap valign="top">
                                         &nbsp;</td>
             <td align="left" nowrap valign="top">
-                <asp:CheckBox ID="chkfee_charge_medical" runat="server" Text="การจ่ายค่ารักษาพยาบาล (ข้าราชการบำนาญ)" />
+                <asp:CheckBox ID="chkfee_charge_medical" runat="server" Text="การจ่ายค่าสวัสดิการข้าราชการ/ลูกจ้างประจำ (ข้าราชการบำนาญ)" />
             </td>
             <td align="left" nowrap valign="top">
                 <asp:CheckBox ID="chkfee_charge_bonus" runat="server" Text="การจ่ายเงินรางวัล" />

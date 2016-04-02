@@ -13,6 +13,7 @@ using CrystalDecisions.Shared;
 using CrystalDecisions.CrystalReports.Engine;
 using myDLL;
 using System.IO;
+using System.Text;
 
 namespace myWeb.App_Control.reportsparameter
 {
@@ -116,7 +117,7 @@ namespace myWeb.App_Control.reportsparameter
                 Helper.DeleteUnusedFile(strReportDirectoryTempPhysicalPath, ReportAliveTime);
 
                 string strFilename;
-                strFilename = "report_" + DateTime.Now.ToString("yyyyMMddHH-mm-ss");
+                strFilename = "report_" + DateTime.Now.ToString("yyyyMMddHH-mm-ss-fff");
                 rptSource.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("~/temp/") + strFilename + ".pdf");
                 lnkPdfFile.NavigateUrl = "~/temp/" + strFilename + ".pdf";
                 imgPdf.Src = "~/images/icon_pdf.gif";
@@ -183,7 +184,7 @@ namespace myWeb.App_Control.reportsparameter
                 Helper.DeleteUnusedFile(strReportDirectoryTempPhysicalPath, ReportAliveTime);
 
                 string strFilename;
-                strFilename = "report_" + DateTime.Now.ToString("yyyyMMddHH-mm-ss");
+                strFilename = "report_" + DateTime.Now.ToString("yyyyMMddHH-mm-ss-fff");
                 rptSource.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("~/temp/") + strFilename + ".pdf");
                 lnkPdfFile.NavigateUrl = "~/temp/" + strFilename + ".pdf";
                 imgPdf.Src = "~/images/icon_pdf.gif";
@@ -341,7 +342,7 @@ namespace myWeb.App_Control.reportsparameter
             else if (ViewState["report_code"].ToString().Equals("Rep_exceldebitall")
                 || ViewState["report_code"].ToString().Equals("Rep_exceldebitallincome"))
             {
-               // Retive_Rep_exceldebitall();
+                // Retive_Rep_exceldebitall();
                 Retive_Rep_excelcreditall();
             }
             else if (ViewState["report_code"].ToString().Equals("Rep_payment_slip"))
@@ -2443,6 +2444,32 @@ namespace myWeb.App_Control.reportsparameter
         }
 
 
+        public string ExportSBCTextFile()
+        {
+            string fullFilePath = string.Empty;
+            string strFilename;
+            strFilename = "~/temp/DATA_" + DateTime.Now.ToString("yyyyMMddHH-mm-ss") + ".TXT";
+            var oPayment = new cPayment();
+            var ds = new DataSet();
+            oPayment.SP_EXPORT_SCB_SEL(Session["criteria"].ToString(), Session["pay_date"].ToString(),ref ds, ref _strMessage);
+
+            DataTable dtExportData = ds.Tables[0];
+            StringBuilder result;
+            StreamWriter wr = default(StreamWriter);
+            wr = File.CreateText(fullFilePath);
+            foreach (DataRow data in dtExportData.Rows)
+            {
+                result = new StringBuilder();
+                result.Append(data[0]);
+                wr.WriteLine(result);
+            }
+            // end data
+            wr.Close();
+            FileInfo file = new FileInfo(fullFilePath);
+            return fullFilePath;
+        }
+
+
         protected void CrystalReportViewer1_Navigate(object source, CrystalDecisions.Web.NavigateEventArgs e)
         {
             getQueryString();
@@ -2486,7 +2513,7 @@ namespace myWeb.App_Control.reportsparameter
             Helper.DeleteUnusedFile(strReportDirectoryTempPhysicalPath, ReportAliveTime);
 
             string strFilename;
-            strFilename = "report_" + DateTime.Now.ToString("yyyyMMddHH-mm-ss");
+            strFilename = "report_" + DateTime.Now.ToString("yyyyMMddHH-mm-ss-fff");
             rptSource.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("~/temp/") + strFilename + ".pdf");
             lnkPdfFile.NavigateUrl = "~/temp/" + strFilename + ".pdf";
             imgPdf.Src = "~/images/icon_pdf.gif";
@@ -2501,6 +2528,34 @@ namespace myWeb.App_Control.reportsparameter
             CrystalReportViewer1.ReportSource = rptSource;
         }
 
+        private void Page_Unload(object sender, EventArgs e)
+        {
+            CloseReports(rptSource);
+            rptSource.Dispose();
+            CrystalReportViewer1.Dispose();
+            CrystalReportViewer1 = null;
+            GC.Collect();
+        }
+
+
+        private void CloseReports(ReportDocument reportDocument)
+        {
+            Sections sections = reportDocument.ReportDefinition.Sections;
+            foreach (Section section in sections)
+            {
+                ReportObjects reportObjects = section.ReportObjects;
+                foreach (ReportObject reportObject in reportObjects)
+                {
+                    if (reportObject.Kind == ReportObjectKind.SubreportObject)
+                    {
+                        SubreportObject subreportObject = (SubreportObject)reportObject;
+                        ReportDocument subReportDocument = subreportObject.OpenSubreport(subreportObject.SubreportName);
+                        subReportDocument.Close();
+                    }
+                }
+            }
+            reportDocument.Close();
+        }
 
 
     }

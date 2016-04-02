@@ -32,8 +32,6 @@ namespace myWeb.App_Control.reportsparameter
         string strDbuser = System.Configuration.ConfigurationSettings.AppSettings["dbuser"];
         string strDbpassword = System.Configuration.ConfigurationSettings.AppSettings["dbpassword"];
 
-      
-
         public string ReportDirectoryTemp
         {
             get
@@ -121,7 +119,7 @@ namespace myWeb.App_Control.reportsparameter
                 Helper.DeleteUnusedFile(strReportDirectoryTempPhysicalPath, ReportAliveTime);
 
                 //string strFilename;
-                //strFilename = "report_" + DateTime.Now.ToString("yyyyMMddHH-mm-ss");
+                //strFilename = "report_" + DateTime.Now.ToString("yyyyMMddHH-mm-ss-fff");
                 //rptSource.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("~/temp/") + strFilename + ".pdf");
                 
                 //lnkPdfFile.NavigateUrl = "~/temp/" + strFilename + ".pdf";
@@ -129,11 +127,11 @@ namespace myWeb.App_Control.reportsparameter
                 //lnkPdfFile.Visible = true;
                 //CrystalReportViewer1.ReportSource = rptSource;
 
-                string strFilename = "report_" + DateTime.Now.ToString("yyyyMMddHH-mm-ss");
+                string strFilename = "report_" + DateTime.Now.ToString("yyyyMMddHH-mm-ss-fff");
                 string path = "~/temp/" + strFilename + ".pdf";
                 rptSource.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath(path));
-                Response.Redirect(path);
-
+                //Response.Redirect(path);
+                downloadOpenFile(Server.MapPath(path));
 
             }
         }
@@ -189,7 +187,7 @@ namespace myWeb.App_Control.reportsparameter
                 //Helper.DeleteUnusedFile(strReportDirectoryTempPhysicalPath, ReportAliveTime);
 
                 //string strFilename;
-                //strFilename = "report_" + DateTime.Now.ToString("yyyyMMddHH-mm-ss");
+                //strFilename = "report_" + DateTime.Now.ToString("yyyyMMddHH-mm-ss-fff");
                 //rptSource.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("~/temp/") + strFilename + ".pdf");
                 //lnkPdfFile.NavigateUrl = "~/temp/" + strFilename + ".pdf";
                 //imgPdf.Src = "~/images/icon_pdf.gif";
@@ -416,6 +414,15 @@ namespace myWeb.App_Control.reportsparameter
             {
                 lblError.Text = ex.ToString();
             }
+        }
+
+        private void downloadOpenFile(string filePath)
+        {
+            Response.Clear();
+            Response.ContentType = "application/pdf";
+            Response.AppendHeader("Content-Disposition", "attachment; filename=cmru-pay-slip.pdf");
+            Response.TransmitFile(filePath);
+            Response.End();
         }
 
     }

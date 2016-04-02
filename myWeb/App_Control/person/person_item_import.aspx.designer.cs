@@ -103,6 +103,15 @@ namespace myWeb.App_Control.person {
         protected global::System.Web.UI.WebControls.DropDownList cboPerson_group;
         
         /// <summary>
+        /// cboPerson_group_dropdown_checkboxes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Saplin.Controls.DropDownCheckBoxes cboPerson_group_dropdown_checkboxes;
+        
+        /// <summary>
         /// Label74 control.
         /// </summary>
         /// <remarks>

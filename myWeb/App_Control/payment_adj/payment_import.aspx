@@ -10,19 +10,19 @@
 
         function SelectAll(id) {
             var grid = document.getElementById("<%= GridView2.ClientID %>");
-                var cell;
+            var cell;
 
-                if (grid.rows.length > 0) {
-                    for (i = 1; i < grid.rows.length; i++) {
-                        cell = grid.rows[i].cells[0];
-                        for (j = 0; j < cell.childNodes.length; j++) {
-                            if (cell.childNodes[j].type == "checkbox") {
-                                cell.childNodes[j].checked = document.getElementById(id).checked;
-                            }
+            if (grid.rows.length > 0) {
+                for (i = 1; i < grid.rows.length; i++) {
+                    cell = grid.rows[i].cells[0];
+                    for (j = 0; j < cell.childNodes.length; j++) {
+                        if (cell.childNodes[j].type == "checkbox") {
+                            cell.childNodes[j].checked = document.getElementById(id).checked;
                         }
                     }
                 }
             }
+        }
 
     </script>
 
@@ -75,6 +75,9 @@
                 <td align="left" nowrap valign="middle" colspan="2">
                     <asp:DropDownList runat="server" CssClass="textbox" ID="cboPerson_group">
                     </asp:DropDownList>
+
+                  
+
                     <asp:Label ID="lblError" runat="server" CssClass="label_error"></asp:Label>
                 </td>
             </tr>
@@ -222,10 +225,15 @@
             <asp:TemplateField HeaderText="เลขที่เอกสาร" SortExpression="payment_doc">
                 <ItemStyle HorizontalAlign="Left" Width="8%" Wrap="True" />
                 <ItemTemplate>
-                    <asp:Label ID="lblpayment_doc" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.payment_doc") %>'>
-                    </asp:Label>
+                    <asp:TextBox ID="txtpayment_doc" runat="server" CssClass="textbox" MaxLength="100"
+                        Width="100" Text='<%# DataBinder.Eval(Container, "DataItem.payment_doc") %>'></asp:TextBox>
                     <asp:HiddenField ID="hdfpayment_doc" runat="server" Value='<%# DataBinder.Eval(Container, "DataItem.payment_doc") %>' />
                     <asp:HiddenField ID="hdfitem_has" runat="server" Value='<%# DataBinder.Eval(Container, "DataItem.item_has") %>' />
+                    &nbsp;
+                    <asp:ImageButton ID="imgList_person" runat="server" CausesValidation="False" ImageAlign="AbsBottom" ImageUrl="../../images/controls/view2.gif" />
+                    <asp:ImageButton ID="imgClear_person" runat="server" CausesValidation="False" ImageAlign="AbsBottom"
+                        ImageUrl="../../images/controls/erase.gif" Style="width: 18px" />
+                    <asp:RequiredFieldValidator ID="reqpayment_doc" runat="server" ErrorMessage="กรุณาเลือกเลขที่เอกสาร" ControlToValidate="txtpayment_doc" SetFocusOnError="True" Display="None" />
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="รหัสบุคลากร " SortExpression="person_code">
@@ -352,4 +360,45 @@
         </Columns>
         <HeaderStyle HorizontalAlign="Center" CssClass="stGridHeader" Font-Bold="True"></HeaderStyle>
     </asp:GridView>
+
+    <script type="text/javascript">
+        function RegisterScript() {
+            $("input[id*=imgClear_person]").click(function () {
+                $('#' + this.id.replace('imgClear_person', 'txtpayment_doc')).text('');
+                $('#' + this.id.replace('imgClear_person', 'lblperson_code')).html('');
+                $('#' + this.id.replace('imgClear_person', 'lblperson_name')).html('');
+                $('#' + this.id.replace('imgClear_person', 'lblperson_thai_surname')).html('');
+                return false;
+            });
+            $("input[id*=imgList_person]").click(function () {
+                var txtpayment_doc = $('#' + this.id.replace('imgList_person', 'txtpayment_doc'));
+                var lblperson_code = $('#' + this.id.replace('imgList_person', 'lblperson_code'));
+                var lblperson_name = $('#' + this.id.replace('imgList_person', 'lblperson_name'));
+                var lblperson_thai_surname = $('#' + this.id.replace('imgList_person', 'lblperson_thai_surname'));
+                var url = "../lov/payment_lov.aspx?" +
+                          "person_name=" + (lblperson_name.text() + ' ' + lblperson_thai_surname.text()) +
+                          "&txtpayment_doc=" + $(txtpayment_doc).attr('id') +
+                          "&lblperson_code=" + $(lblperson_code).attr('id') +
+                          "&lblperson_name=" + $(lblperson_name).attr('id') +
+                          "&lblperson_thai_surname=" + $(lblperson_thai_surname).attr('id') +
+                          "&show=1&from=payment_import";
+                OpenPopUp('900px', '500px', '95%', 'ค้นหาข้อมูลการจ่ายเงินเดือน', url, '1');
+                return false;
+            });
+
+        };
+
+        function ToggleValidator(chk) {
+            var requiredFieldValidator = chk.id.replace('CheckBox1', 'reqperson_id');
+
+            var validatorObject = document.getElementById(requiredFieldValidator);
+            console.log(validatorObject);
+            validatorObject.enabled = chk.checked;
+            validatorObject.isvalid = chk.checked;
+            ValidatorUpdateDisplay(validatorObject);
+
+        }
+
+    </script>
+
 </asp:Content>

@@ -432,6 +432,14 @@ namespace myWeb.App_Control.payment_back
             GridView1.Visible = false;
             imgSaveOnly.Visible = false;
 
+            InitcboRound();
+            imgCancel.Visible = false;
+            imgImport.Visible = true;
+
+
+            txtdate_begin.Text = cCommon.CheckDate(DateTime.Now.ToShortDateString());
+            txtdate_end.Text = cCommon.CheckDate(DateTime.Now.ToShortDateString());
+
         }
 
         protected void imgCancel_Click(object sender, ImageClickEventArgs e)

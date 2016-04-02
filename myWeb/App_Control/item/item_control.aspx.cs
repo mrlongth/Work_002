@@ -63,6 +63,20 @@ namespace myWeb.App_Control.item
                                         "document.forms[0]." + strPrefixCtr_main + "txtcheque_name.value=''; return false;");
 
 
+
+
+
+                imgList_item2.Attributes.Add("onclick", "OpenPopUp('750px','400px','93%','ค้นหาข้อมูลค่าใช้จ่าย-เบิกตรง' ,'../lov/direct_pay_lov.aspx?year='+document.forms[0]." + strPrefixCtr_main +
+              "cboYear.options[document.forms[0]." + strPrefixCtr_main + "cboYear.selectedIndex].value+" +
+              "'&item_description='+document.forms[0]." + strPrefixCtr_main + "txtdirect_pay_code.value+" +
+              "'&ctrl1=" + txtdirect_pay_code.ClientID + "&show=2', '2');return false;");
+
+                imgClear_item2.Attributes.Add("onclick", "document.forms[0]." + strPrefixCtr_main + "txtdirect_pay_code.value=''; return false;");
+
+
+
+
+
                 if (ViewState["mode"].ToString().ToLower().Equals("add"))
                 {
                     InitcboYear();
@@ -188,7 +202,11 @@ namespace myWeb.App_Control.item
             DataSet ds = new DataSet();
             DataTable dt = new DataTable();
             strCriteria = "and item_group_year='" + stritem_group_year + "' ";
-            strCriteria += "and lot_code='" + strlot_code + "' and c_active='Y' ";
+            if (cboItem_type.SelectedValue == "D")
+            {
+                strCriteria += " and lot_code='" + strlot_code + "' and c_active='Y' ";
+            }
+
             if (oItem_group.SP_SEL_item_group(strCriteria, ref ds, ref strMessage))
             {
                 dt = ds.Tables[0];
@@ -447,8 +465,8 @@ namespace myWeb.App_Control.item
                             txtitem_name.ReadOnly = true;
                             txtitem_name.CssClass = "textboxdis";
 
-                            cboItem_group.Enabled = false;
-                            cboItem_group.CssClass = "textboxdis";
+                            //cboItem_group.Enabled = false;
+                            //cboItem_group.CssClass = "textboxdis";
 
                             cboLot.Enabled = false;
                             cboLot.CssClass = "textboxdis";
@@ -475,20 +493,23 @@ namespace myWeb.App_Control.item
                                 cboLot.SelectedIndex = -1;
                                 cboLot.Items.FindByValue(strlot_code).Selected = true;
                             }
-                            InitcboItem_group();
-                            if (cboItem_group.Items.FindByValue(stritem_group_code) != null)
-                            {
-                                cboItem_group.SelectedIndex = -1;
-                                cboItem_group.Items.FindByValue(stritem_group_code).Selected = true;
-                            }
-                            cboLot.Enabled = true;
+
                             cboItem_group.Enabled = true;
                         }
                         else
                         {
                             cboLot.Enabled = false;
-                            cboItem_group.Enabled = false;
+                            //cboItem_group.Enabled = false;
                         }
+
+                        InitcboItem_group();
+                        if (cboItem_group.Items.FindByValue(stritem_group_code) != null)
+                        {
+                            cboItem_group.SelectedIndex = -1;
+                            cboItem_group.Items.FindByValue(stritem_group_code).Selected = true;
+                        }
+                        cboLot.Enabled = true;
+                     
                         chkItem_tax.Checked = stritem_tax == "Y";
 
 
@@ -750,6 +771,7 @@ namespace myWeb.App_Control.item
             {
                 cboLot.SelectedIndex = 0;
                 cboLot.Enabled = false;
+                cboItem_group.Enabled = true;
                 //cboItem_group.SelectedIndex = 0;
                 //cboItem_group.Enabled = false;
 

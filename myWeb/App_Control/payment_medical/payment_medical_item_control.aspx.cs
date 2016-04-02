@@ -74,7 +74,7 @@ namespace myWeb.App_Control.payment_medical
                 #endregion
                 #region Set Image
 
-                imgList_item.Attributes.Add("onclick", "OpenPopUp('800px','400px','93%','ค้นหาข้อมูลค่ารักษาพยาบาล' ,'../lov/item_lov.aspx?" +
+                imgList_item.Attributes.Add("onclick", "OpenPopUp('800px','400px','93%','ค้นหาข้อมูลค่าสวัสดิการข้าราชการ/ลูกจ้างประจำ' ,'../lov/item_lov.aspx?" +
                                                 "item_code='+ $('#" + txtitem_code.ClientID + "').val()+" +
                                                 "'&item_name='+ $('#" + txtitem_name.ClientID + "').val()+" +
                                                 "'&ctrl1=" + txtitem_code.ClientID + "&ctrl2=" + txtitem_name.ClientID +

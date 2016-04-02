@@ -36,7 +36,7 @@ namespace myWeb.App_Control.payment_medical
                 imgFind.Attributes.Add("onMouseOver", "src='../../images/button/Search2.png'");
                 imgFind.Attributes.Add("onMouseOut", "src='../../images/button/Search.png'");
 
-                imgNew.Attributes.Add("onclick", "OpenPopUp('990px','550px','95%','เพิ่มข้อมูลการจ่ายเงินค่ารักษาพยาบาล','payment_medical_control.aspx?mode=add&page=0','1');return false;");
+                imgNew.Attributes.Add("onclick", "OpenPopUp('990px','550px','95%','เพิ่มข้อมูลการจ่ายเงินค่าสวัสดิการข้าราชการ/ลูกจ้างประจำ','payment_medical_control.aspx?mode=add&page=0','1');return false;");
 
                 imgList_person.Attributes.Add("onclick", "OpenPopUp('900px','500px','94%','ค้นหาข้อมูลบุคลากร' ,'../lov/person_lov.aspx?year='+document.forms[0]." + strPrefixCtr +
                  "cboYear.options[document.forms[0]." + strPrefixCtr + "cboYear.selectedIndex].value+" +
@@ -545,7 +545,7 @@ namespace myWeb.App_Control.payment_medical
                 #region set ImageView
                 ImageButton imgView = (ImageButton)e.Row.FindControl("imgView");
 
-                imgView.Attributes.Add("onclick", "OpenPopUp('990px','550px','95%','แสดงข้อมูลการจ่ายเงินค่ารักษาพยาบาล','payment_medical_control.aspx?mode=view&payment_doc=" +
+                imgView.Attributes.Add("onclick", "OpenPopUp('990px','550px','95%','แสดงข้อมูลการจ่ายเงินค่าสวัสดิการข้าราชการ/ลูกจ้างประจำ','payment_medical_control.aspx?mode=view&payment_doc=" +
                                                                                             lblpayment_doc.Text + "','1');return false;");
 
 
@@ -556,7 +556,7 @@ namespace myWeb.App_Control.payment_medical
                 #region set Image Edit & Delete
                 string strScript;
                 strScript = "<a href=\"\" onclick=\"" +
-                                                        "OpenPopUp('990px','550px','95%','แก้ไขข้อมูลการจ่ายเงินค่ารักษาพยาบาล','payment_medical_control.aspx?mode=edit&payment_doc=" +
+                                                        "OpenPopUp('990px','550px','95%','แก้ไขข้อมูลการจ่ายเงินค่าสวัสดิการข้าราชการ/ลูกจ้างประจำ','payment_medical_control.aspx?mode=edit&payment_doc=" +
                                                         lblpayment_doc.Text + "&page=" + GridView1.PageIndex.ToString() +
                                                          "&IsUserEdit=" + (IsUserEdit ? "Y" : "N") + "&IsUserDelete=" + (IsUserDelete ? "Y" : "N") + "','1');return false;\" >" + lblperson_name.Text + "</a>";
                 if (!IsUserEdit)
@@ -568,7 +568,7 @@ namespace myWeb.App_Control.payment_medical
                 lblperson_name.Text = strScript;
 
                 ImageButton imgEdit = (ImageButton)e.Row.FindControl("imgEdit");
-                strScript = "OpenPopUp('990px','550px','95%','แก้ไขข้อมูลการจ่ายเงินค่ารักษาพยาบาล','payment_medical_control.aspx?mode=edit&payment_doc=" +
+                strScript = "OpenPopUp('990px','550px','95%','แก้ไขข้อมูลการจ่ายเงินค่าสวัสดิการข้าราชการ/ลูกจ้างประจำ','payment_medical_control.aspx?mode=edit&payment_doc=" +
                                                                                                             lblpayment_doc.Text + "&page=" + GridView1.PageIndex.ToString() +
                                                                                                             "&IsUserEdit=" + (IsUserEdit ? "Y" : "N") + "&IsUserDelete=" + (IsUserDelete ? "Y" : "N") + "','1');return false;";
                 imgEdit.Attributes.Add("onclick", strScript);

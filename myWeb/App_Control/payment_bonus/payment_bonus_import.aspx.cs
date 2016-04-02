@@ -272,7 +272,7 @@ namespace myWeb.App_Control.payment_bonus
 
                     if (CheckBox1.Checked)
                     {
-                        if (!oPayment_bonus.SP_IMPORT_PAYMENT_BONUS_SAVE(cboPay_Year.SelectedValue, cboPay_Year.SelectedValue, cboPay_Month.SelectedValue,
+                        if (!oPayment_bonus.SP_IMPORT_PAYMENT_BONUS_SAVE(cboYear.SelectedValue, cboPay_Year.SelectedValue, cboPay_Month.SelectedValue,
                             txtperson_id.Text , hddperson_group_code.Value, hddbudget_plan_code.Value,
                             pitem_code, txtitem_qty.Value.ToString(), txtmoney_credit.Value.ToString(), strCreatedBy, ref strMessage))
                         {

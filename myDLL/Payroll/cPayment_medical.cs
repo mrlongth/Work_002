@@ -442,6 +442,191 @@ namespace myDLL
         }
         #endregion
 
+        #region SP_IMPORT_PAYMENT_MEDICAL_INS
+        public bool SP_IMPORT_PAYMENT_MEDICAL_INS
+            (
+                 string ppayment_year,
+                 string ppay_year,
+                 string ppay_month,
+                string pmc_person_id,
+                string pmc_person_code,
+                string pmc_person_name,
+                string pmc_person_surname,
+                string pitem_code,
+                string pitem_qty,
+                string pitem_amt,
+                string pc_created_by,
+                ref string strMessage
+            )
+        {
+            bool blnResult = false;
+            var oConn = new SqlConnection();
+            var oCommand = new SqlCommand();
+            var oAdapter = new SqlDataAdapter();
+            try
+            {
+                oConn.ConnectionString = _strConn;
+                oConn.Open();
+                oCommand.Connection = oConn;
+                oCommand.CommandType = CommandType.StoredProcedure;
+                oCommand.CommandText = "sp_IMPORT_PAYMENT_MEDICAL_INS";
+                oCommand.Parameters.Add("ppayment_year", SqlDbType.VarChar).Value = ppayment_year;
+                oCommand.Parameters.Add("ppay_year", SqlDbType.VarChar).Value = ppay_year;
+                oCommand.Parameters.Add("ppay_month", SqlDbType.VarChar).Value = ppay_month;
+                oCommand.Parameters.Add("pmc_person_id", SqlDbType.VarChar).Value = pmc_person_id;
+                oCommand.Parameters.Add("pmc_person_code", SqlDbType.VarChar).Value = pmc_person_code;
+                oCommand.Parameters.Add("pmc_person_name", SqlDbType.VarChar).Value = pmc_person_name;
+                oCommand.Parameters.Add("pmc_person_surname", SqlDbType.VarChar).Value = pmc_person_surname;
+                oCommand.Parameters.Add("pitem_code", SqlDbType.VarChar).Value = pitem_code;
+                oCommand.Parameters.Add("pitem_qty", SqlDbType.Float).Value = float.Parse(pitem_qty);
+                oCommand.Parameters.Add("pitem_amt", SqlDbType.Money).Value = double.Parse(pitem_amt);
+                oCommand.Parameters.Add("pc_created_by", SqlDbType.VarChar).Value = pc_created_by;
+                // - - - - - - - - - - - -             
+                oCommand.ExecuteNonQuery();
+                blnResult = true;
+            }
+            catch (Exception ex)
+            {
+                strMessage = ex.Message.ToString();
+            }
+            finally
+            {
+                oConn.Close();
+                oCommand.Dispose();
+                oConn.Dispose();
+            }
+            return blnResult;
+        }
+        #endregion
+
+        #region SP_IMPORT_PAYMENT_MEDICAL_DEL
+        public bool SP_IMPORT_PAYMENT_MEDICAL_DEL
+            (
+                string pc_created_by,
+                ref string strMessage
+            )
+        {
+            bool blnResult = false;
+            var oConn = new SqlConnection();
+            var oCommand = new SqlCommand();
+            var oAdapter = new SqlDataAdapter();
+            try
+            {
+                oConn.ConnectionString = _strConn;
+                oConn.Open();
+                oCommand.Connection = oConn;
+                oCommand.CommandType = CommandType.StoredProcedure;
+                oCommand.CommandText = "sp_IMPORT_PAYMENT_MEDICAL_DEL";
+                oCommand.Parameters.Add("pc_created_by", SqlDbType.VarChar).Value = pc_created_by;
+                // - - - - - - - - - - - -             
+                oCommand.ExecuteNonQuery();
+                blnResult = true;
+            }
+            catch (Exception ex)
+            {
+                strMessage = ex.Message.ToString();
+            }
+            finally
+            {
+                oConn.Close();
+                oCommand.Dispose();
+                oConn.Dispose();
+            }
+            return blnResult;
+        }
+        #endregion
+
+        #region SP_IMPORT_PAYMENT_MEDICAL_SEL
+        public bool SP_IMPORT_PAYMENT_MEDICAL_SEL(string strCriteria, ref DataSet ds, ref string strMessage)
+        {
+            bool blnResult = false;
+            var oConn = new SqlConnection();
+            var oCommand = new SqlCommand();
+            var oAdapter = new SqlDataAdapter();
+            try
+            {
+                oConn.ConnectionString = _strConn;
+                oConn.Open();
+                oCommand.Connection = oConn;
+                oCommand.CommandType = CommandType.StoredProcedure;
+                oCommand.CommandText = "sp_IMPORT_PAYMENT_MEDICAL_SEL";
+                var oParamI_vc_criteria = new SqlParameter("vc_criteria", SqlDbType.NVarChar);
+                oParamI_vc_criteria.Direction = ParameterDirection.Input;
+                oParamI_vc_criteria.Value = strCriteria;
+                oCommand.Parameters.Add(oParamI_vc_criteria);
+                oAdapter = new SqlDataAdapter(oCommand);
+                ds = new DataSet();
+                oAdapter.Fill(ds, "sp_IMPORT_PAYMENT_MEDICAL_SEL");
+                blnResult = true;
+            }
+            catch (Exception ex)
+            {
+                strMessage = ex.Message.ToString();
+            }
+            finally
+            {
+                oConn.Close();
+                oCommand.Dispose();
+                oConn.Dispose();
+            }
+            return blnResult;
+        }
+        #endregion
+
+        #region SP_IMPORT_PAYMENT_MEDICAL_SAVE
+        public bool SP_IMPORT_PAYMENT_MEDICAL_SAVE
+            (
+                 string ppayment_year,
+                 string ppay_year,
+                 string ppay_month,
+                 string pmc_person_id,
+                 string pmc_person_group_code,
+                 string pbudget_plan_code,
+                 string pitem_code,
+                 string pitem_qty,
+                 string pitem_amt,
+                 string pc_created_by,
+                ref string strMessage
+            )
+        {
+            bool blnResult = false;
+            var oConn = new SqlConnection();
+            var oCommand = new SqlCommand();
+            var oAdapter = new SqlDataAdapter();
+            try
+            {
+                oConn.ConnectionString = _strConn;
+                oConn.Open();
+                oCommand.Connection = oConn;
+                oCommand.CommandType = CommandType.StoredProcedure;
+                oCommand.CommandText = "sp_IMPORT_PAYMENT_MEDICAL_SAVE";
+                oCommand.Parameters.Add("ppayment_year", SqlDbType.VarChar).Value = ppayment_year;
+                oCommand.Parameters.Add("ppay_year", SqlDbType.VarChar).Value = ppay_year;
+                oCommand.Parameters.Add("ppay_month", SqlDbType.VarChar).Value = ppay_month;
+                oCommand.Parameters.Add("pmc_person_id", SqlDbType.VarChar).Value = pmc_person_id;
+                oCommand.Parameters.Add("pmc_person_group_code", SqlDbType.VarChar).Value = pmc_person_group_code;
+                oCommand.Parameters.Add("pbudget_plan_code", SqlDbType.VarChar).Value = pbudget_plan_code;
+                oCommand.Parameters.Add("pitem_code", SqlDbType.VarChar).Value = pitem_code;
+                oCommand.Parameters.Add("pitem_qty", SqlDbType.Float).Value = float.Parse(pitem_qty);
+                oCommand.Parameters.Add("pitem_amt", SqlDbType.Money).Value = double.Parse(pitem_amt);
+                oCommand.Parameters.Add("pc_created_by", SqlDbType.VarChar).Value = pc_created_by;
+                oCommand.ExecuteNonQuery();
+                blnResult = true;
+            }
+            catch (Exception ex)
+            {
+                strMessage = ex.Message.ToString();
+            }
+            finally
+            {
+                oConn.Close();
+                oCommand.Dispose();
+                oConn.Dispose();
+            }
+            return blnResult;
+        }
+        #endregion
+
         
         #region IDisposable Members
 
@@ -451,6 +636,7 @@ namespace myDLL
         }
 
         #endregion
+
 
     }
 }

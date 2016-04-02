@@ -93,6 +93,8 @@ namespace myWeb.App_Control.payment_adj
                 string strpay_month;
                 string strppay_year;
                 string strperson_code;
+                string strperson_name;
+                string strperson_surname;
                 string stritem_code;
                 string stritem_amt;
                 string strc_created_by;
@@ -104,12 +106,14 @@ namespace myWeb.App_Control.payment_adj
                     strpayment_year = ViewState["payment_year"].ToString();
                     strpay_month = ViewState["pay_month"].ToString();
                     strppay_year = ViewState["pay_year"].ToString();
-                    strperson_code = Helper.CStr(odtExcelAll.Rows[i][0]);
-                    stritem_code = ViewState["item_code"].ToString();
+                    strperson_code = Helper.CStr(odtExcelAll.Rows[i][0]).Trim();
+                    stritem_code = ViewState["item_code"].ToString().Trim();
+                    strperson_name = Helper.CStr(odtExcelAll.Rows[i][1]).Trim();
+                    strperson_surname = Helper.CStr(odtExcelAll.Rows[i][2]).Trim();       
                     stritem_amt = Helper.CStr(Helper.CDbl(odtExcelAll.Rows[i][3]));
                     if (!string.IsNullOrEmpty(strperson_code))
                     {
-                        objPayment.SP_IMPORT_PAYMENT_ITEM_INS(strpayment_year, strpay_month, strppay_year, strperson_code, stritem_code, stritem_amt ,UserGUID, strc_created_by, ref strMassege);
+                        objPayment.SP_IMPORT_PAYMENT_ITEM_INS(strpayment_year, strpay_month, strppay_year, strperson_code,strperson_name , strperson_surname, stritem_code, stritem_amt ,UserGUID, strc_created_by, ref strMassege);
                     }
                 }
                 boolResult = true;

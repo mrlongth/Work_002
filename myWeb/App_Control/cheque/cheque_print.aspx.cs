@@ -282,6 +282,8 @@ namespace myWeb.App_Control.cheque
             string strcheque_code = string.Empty;
             string strcheque_name = string.Empty;
             string strcheque_type = string.Empty;
+            string strcheque_acc_name = string.Empty;
+
 
             strYear = cboYear.SelectedValue;
             strPay_Month = cboPay_Month.SelectedValue;
@@ -291,6 +293,8 @@ namespace myWeb.App_Control.cheque
             strcheque_code = txtcheque_code.Text;
             strcheque_name = txtcheque_name.Text;
             strcheque_type = cboCheque_type.SelectedValue;
+            strcheque_acc_name = cboCheque_bank_code.SelectedItem.Text;
+
 
             if (!strYear.Equals(""))
             {
@@ -312,6 +316,12 @@ namespace myWeb.App_Control.cheque
                 strCriteria = strCriteria + "  And  (cheque_report_code  = '" + strcheque_bank_code + "') ";
             }
 
+            if (!strcheque_bank_code.Equals(""))
+            {
+                strCriteria = strCriteria + "  And  (cheque_acc_name  = '" + strcheque_acc_name + "') ";
+            }
+
+
             if (!strcheque_code.Equals(""))
             {
                 strCriteria = strCriteria + "  And  (cheque_code = '" + strcheque_code + "') ";
@@ -331,7 +341,7 @@ namespace myWeb.App_Control.cheque
                 strCriteria = strCriteria + "  And  (cheque_type = '" + strcheque_type + "') ";
             }
 
-            
+
 
             //strCriteria += "  And  (cheque_type ='" + ViewState["cheque_type"].ToString() + "') ";
             //strCriteria += " And c_created_by = '" + UserLoginName + "' ";
@@ -376,7 +386,7 @@ namespace myWeb.App_Control.cheque
                 }
             }
         }
-        
+
         private bool saveData(ref string strCriteria)
         {
             bool blnResult = false;
@@ -399,7 +409,7 @@ namespace myWeb.App_Control.cheque
                     HiddenField hddcheque_detail_id = (HiddenField)gviewRow.FindControl("hddcheque_detail_id");
                     CheckBox CheckBox1 = (CheckBox)gviewRow.FindControl("CheckBox1");
                     if (CheckBox1.Checked)
-                   { 
+                    {
                         strcheque_print = "Y";
                         strCriteria = strCriteria + "  (cheque_detail_id='" + hddcheque_detail_id.Value.ToString() + "') or";
                         if (!oCheque.SP_CHEQUE_DETAIL_PRINT_UPD(hddcheque_detail_id.Value.ToString(), strcheque_print, ref strMessage))
@@ -843,6 +853,6 @@ namespace myWeb.App_Control.cheque
             this.BindGridView(0);
         }
 
-     
+
     }
 }

@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site_list.Master" EnableEventValidation="false"
     AutoEventWireup="true" CodeBehind="payment_medical_list.aspx.cs" Inherits="myWeb.App_Control.payment_medical.payment_medical_list"
-    Title="แสดงข้อมูลการจ่ายเงินค่ารักษาพยาบาล" %>
+    Title="แสดงข้อมูลการจ่ายเงินค่าสวัสดิการข้าราชการ/ลูกจ้างประจำ" %>
 
 <%@ Register TagPrefix="cc1" Namespace="Aware.WebControls" Assembly="Aware.WebControls" %>
 

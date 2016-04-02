@@ -24,7 +24,7 @@ namespace myWeb.App_Control.menu
         private string strPrefixCtr = "ctl00$ASPxRoundPanel1$ASPxRoundPanel2$ContentPlaceHolder1$";
         private string strPrefixCtr_2 = "ctl00$ASPxRoundPanel1$ContentPlaceHolder2$";
         #endregion
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -35,13 +35,14 @@ namespace myWeb.App_Control.menu
 
                 imgFind.Attributes.Add("onMouseOver", "src='../../images/button/Search2.png'");
                 imgFind.Attributes.Add("onMouseOut", "src='../../images/button/Search.png'");
-                
+
                 imgNew.Attributes.Add("onclick", "OpenPopUp('800px','400px','92%','เพิ่มข้อมูลผู้ใช้งานระบบ','menu_control.aspx?mode=add&page=0','1');return false;");
 
                 ViewState["sort"] = "MenuOrder";
                 ViewState["direction"] = "ASC";
                 InitcboMenuParent();
                 BindGridView(0);
+                CheckBox1.Checked = this.CheckClosePayment();
             }
             else
             {
@@ -89,7 +90,6 @@ namespace myWeb.App_Control.menu
             }
         }
 
-
         #endregion
 
         private void cboPerPage_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -127,7 +127,7 @@ namespace myWeb.App_Control.menu
 
             strMenuName = txtMenuName.Text.Replace("'", "''").Trim();
             strUrl = txtUrl.Text.Replace("'", "''").Trim();
-            stMenuParent = cboMenuParent.SelectedValue; 
+            stMenuParent = cboMenuParent.SelectedValue;
 
             if (!strMenuName.Equals(""))
             {
@@ -143,7 +143,7 @@ namespace myWeb.App_Control.menu
             {
                 strCriteria = strCriteria + "  And  (MenuParent = '" + stMenuParent + "') ";
             }
-            
+
 
             if (RadioActive.Checked)
             {
@@ -153,7 +153,7 @@ namespace myWeb.App_Control.menu
             {
                 strCriteria = strCriteria + "  And  ([Status] ='N') ";
             }
-         
+
             try
             {
                 if (!oMenu.SP_MENU_SEL(strCriteria, ref ds, ref strMessage))
@@ -194,7 +194,7 @@ namespace myWeb.App_Control.menu
                 }
             }
         }
-        
+
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType.Equals(DataControlRowType.Header))
@@ -227,7 +227,7 @@ namespace myWeb.App_Control.menu
                     e.Row.Attributes.Add("bgcolor", strEvenColor);
                     e.Row.Attributes.Add("onMouseOut", "this.style.backgroundColor='" + strEvenColor + "'");
                 }
-                #endregion                
+                #endregion
                 Label lblNo = (Label)e.Row.FindControl("lblNo");
                 int nNo = (GridView1.PageSize * GridView1.PageIndex) + e.Row.RowIndex + 1;
                 lblNo.Text = nNo.ToString();
@@ -235,7 +235,7 @@ namespace myWeb.App_Control.menu
                 HiddenField hddMenuID = (HiddenField)e.Row.FindControl("hddMenuID");
                 string strStatus = lblc_active.Text;
                 var dataView = (DataRowView)e.Row.DataItem;
-               
+
 
                 #region set ImageStatus
                 ImageButton imgStatus = (ImageButton)e.Row.FindControl("imgStatus");
@@ -272,8 +272,8 @@ namespace myWeb.App_Control.menu
                                                                                                             hddMenuID.Value.ToString() + "&page=" + GridView1.PageIndex.ToString() + "','1');return false;\" >" + lblMenuName.Text + "</a>";
 
                 imgEdit.Attributes.Add("onclick", "OpenPopUp( '750px','400px','92%','แก้ไขข้อมูลเมนูใช้งานระบบ','menu_control.aspx?mode=edit&MenuId=" +
-                                                                                                            hddMenuID.Value.ToString() + "&page=" + GridView1.PageIndex.ToString() + "','1');return false;");                
-                
+                                                                                                            hddMenuID.Value.ToString() + "&page=" + GridView1.PageIndex.ToString() + "','1');return false;");
+
                 imgEdit.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["img"].ToString();
                 imgEdit.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["title"].ToString());
 
@@ -527,7 +527,44 @@ namespace myWeb.App_Control.menu
             }
             BindGridView(0);
         }
-   
-    
+
+        protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            SaveClosePayment();
+        }
+
+        private bool CheckClosePayment()
+        {
+            cCommon oCommon = new cCommon();
+            string strMessage = string.Empty, strCriteria = string.Empty;
+            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
+            strCriteria = " Select * from  general where g_type = 'close_payment'  ";
+            if (oCommon.SEL_SQL(strCriteria, ref ds, ref strMessage))
+            {
+                dt = ds.Tables[0];
+                if (dt.Rows.Count == 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    return Helper.CStr(dt.Rows[0]["g_code"]) == "Y";
+                }
+            }
+            return false;
+        }
+
+
+        private void SaveClosePayment()
+        {
+            bool blnResult = false;
+            string strMessage = string.Empty;
+            cCommon oCommon = new cCommon();
+            var strIsClosePayment = CheckBox1.Checked ? "Y" : "N";
+            var strCriteria = " Update general set g_code = '" + strIsClosePayment + "' where g_type = 'close_payment' ";
+            oCommon.EXE_SQL(strCriteria , ref _strMessage);
+        }
+
     }
 }

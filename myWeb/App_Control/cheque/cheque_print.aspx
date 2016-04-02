@@ -6,28 +6,23 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <script type="text/javascript" language="javascript">
-     
-        function SelectAll(id)
-        {
+
+        function SelectAll(id) {
             var grid = document.getElementById("<%= GridView1.ClientID %>");
             var cell;
-            
-            if (grid.rows.length > 0)
-            {
-                for (i=1; i<grid.rows.length; i++)
-                {
+
+            if (grid.rows.length > 0) {
+                for (i = 1; i < grid.rows.length; i++) {
                     cell = grid.rows[i].cells[0];
-                    for (j=0; j<cell.childNodes.length; j++)
-                    {           
-                        if (cell.childNodes[j].type =="checkbox")
-                        {
+                    for (j = 0; j < cell.childNodes.length; j++) {
+                        if (cell.childNodes[j].type == "checkbox") {
                             cell.childNodes[j].checked = document.getElementById(id).checked;
                         }
                     }
                 }
             }
-        }   
-         
+        }
+
     </script>
 
     <table cellpadding="1" cellspacing="1" style="width: 100%" border="0">
@@ -40,11 +35,9 @@
                     OnSelectedIndexChanged="cboYear_SelectedIndexChanged">
                 </asp:DropDownList>
             </td>
-            <td style="text-align: right" width="15%" colspan="2">
-                &nbsp;
+            <td style="text-align: right" width="15%" colspan="2">&nbsp;
             </td>
-            <td style="text-align: left" colspan="2">
-                &nbsp;
+            <td style="text-align: left" colspan="2">&nbsp;
             </td>
         </tr>
         <tr>
@@ -61,11 +54,11 @@
                 <asp:Label runat="server" CssClass="label_h" ID="lblPage15">AC/  Payee Only:</asp:Label>
             </td>
             <td style="text-align: left">
-                <asp:CheckBox ID="chkACPayeeOnly" runat="server" />
+                <asp:CheckBox ID="chkACPayeeOnly" runat="server" Checked="True" />
             </td>
             <td rowspan="4" style="text-align: right; vertical-align: bottom; width: 30%;">
                 <asp:ImageButton runat="server" AlternateText="ค้นหาข้อมูล" ImageUrl="~/images/button/Search.png"
-                    ID="imgFind" OnClick="imgFind_Click"  ></asp:ImageButton>
+                    ID="imgFind" OnClick="imgFind_Click"></asp:ImageButton>
                 <asp:ImageButton runat="server" AlternateText="พิมพ์ข้อมูล" ImageUrl="~/images/button/print.png"
                     ID="imgPrint" OnClick="imgPrint_Click"></asp:ImageButton>
             </td>
@@ -75,7 +68,7 @@
                 <asp:Label runat="server" CssClass="label_h" ID="lblPage8">รอบปีที่จ่าย :</asp:Label>
             </td>
             <td width="5%">
-                <asp:DropDownList runat="server" CssClass="textbox" ID="cboPay_Year"  
+                <asp:DropDownList runat="server" CssClass="textbox" ID="cboPay_Year"
                     AutoPostBack="True" OnSelectedIndexChanged="cboPay_Year_SelectedIndexChanged">
                 </asp:DropDownList>
             </td>
@@ -83,7 +76,7 @@
                 <asp:Label runat="server" CssClass="label_h" ID="lblPage1">รอบเดือนที่จ่าย :</asp:Label>
             </td>
             <td style="text-align: left">
-                <asp:DropDownList runat="server" CssClass="textbox" ID="cboPay_Month"  
+                <asp:DropDownList runat="server" CssClass="textbox" ID="cboPay_Month"
                     AutoPostBack="True" OnSelectedIndexChanged="cboPay_Month_SelectedIndexChanged">
                 </asp:DropDownList>
                 <asp:Label runat="server" CssClass="label_error" ID="lblError"></asp:Label>
@@ -103,7 +96,7 @@
                 <asp:Label runat="server" CssClass="label_h" ID="lblPage3">เลขที่เอกสาร : </asp:Label>
             </td>
             <td colspan="2">
-                <asp:TextBox runat="server" CssClass="textbox"   Width="100px" ID="txtcheque_doc"></asp:TextBox>
+                <asp:TextBox runat="server" CssClass="textbox" Width="100px" ID="txtcheque_doc"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -111,13 +104,13 @@
                 <asp:Label runat="server" CssClass="label_h" ID="lblPage13">จ่ายเช็คให้ :</asp:Label>
             </td>
             <td colspan="4">
-                <asp:TextBox runat="server" CssClass="textbox"   Width="100px" ID="txtcheque_code"
+                <asp:TextBox runat="server" CssClass="textbox" Width="100px" ID="txtcheque_code"
                     MaxLength="10"></asp:TextBox>
                 &nbsp;<asp:ImageButton runat="server" ImageAlign="AbsBottom" ImageUrl="../../images/controls/view2.gif"
-                      ID="imgList_item"></asp:ImageButton>
+                    ID="imgList_item"></asp:ImageButton>
                 <asp:ImageButton runat="server" CausesValidation="False" ImageAlign="AbsBottom" ImageUrl="../../images/controls/erase.gif"
-                      ID="imgClear_item"></asp:ImageButton>
-                &nbsp;<asp:TextBox runat="server" CssClass="textbox"   Width="250px" ID="txtcheque_name"
+                    ID="imgClear_item"></asp:ImageButton>
+                &nbsp;<asp:TextBox runat="server" CssClass="textbox" Width="250px" ID="txtcheque_name"
                     MaxLength="100"></asp:TextBox>
             </td>
         </tr>
@@ -187,8 +180,8 @@
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            
-            
+
+
             <asp:TemplateField HeaderText="ประเภทเช็ค" SortExpression="g_name">
                 <ItemStyle HorizontalAlign="Left" Width="10%" Wrap="True" />
                 <ItemTemplate>
@@ -196,8 +189,8 @@
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            
-            
+
+
             <asp:TemplateField HeaderText="ประเภทงบประมาณ" SortExpression="budget_type_name">
                 <ItemStyle HorizontalAlign="Left" Width="5%" Wrap="True" />
                 <ItemTemplate>
@@ -206,7 +199,7 @@
                 </ItemTemplate>
             </asp:TemplateField>
 
-            
+
 
             <asp:TemplateField HeaderText="ที่อยู่จ่ายเช็ค" SortExpression="cheque_name">
                 <ItemStyle HorizontalAlign="Left" Wrap="True" Width="15%"></ItemStyle>
@@ -214,10 +207,10 @@
                     <asp:Label ID="lblcheque_name" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cheque_name") %>' />
                 </ItemTemplate>
             </asp:TemplateField>
-              <asp:TemplateField HeaderText="รายละเอียดจ่ายเช็ค " SortExpression="cheque_desc">
+            <asp:TemplateField HeaderText="รายละเอียดจ่ายเช็ค " SortExpression="cheque_desc">
                 <ItemStyle HorizontalAlign="Left" Wrap="True" Width="15%"></ItemStyle>
                 <ItemTemplate>
-                    <asp:Label ID="lblcheque_desc" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.cheque_desc") %>'>
+                    <asp:Label ID="lblcheque_desc" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.cheque_desc")%>'>
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
@@ -225,13 +218,13 @@
                 <ItemStyle HorizontalAlign="Right" Width="8%" Wrap="False" />
                 <ItemTemplate>
                     <cc1:AwNumeric ID="txtcheque_money" runat="server" Width="120px" LeadZero="Show"
-                        DisplayMode="View" Value='<% # DataBinder.Eval(Container, "DataItem.cheque_money") %>' />
+                        DisplayMode="View" Value='<% # DataBinder.Eval(Container, "DataItem.cheque_money")%>' />
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="สถานะ" SortExpression="cheque_print">
                 <ItemTemplate>
                     <asp:ImageButton ID="imgStatus" runat="server" CausesValidation="False" />
-                    <asp:HiddenField ID="hddcheque_print" runat="server" Value='<% # DataBinder.Eval(Container, "DataItem.cheque_print") %>' />
+                    <asp:HiddenField ID="hddcheque_print" runat="server" Value='<% # DataBinder.Eval(Container, "DataItem.cheque_print")%>' />
                 </ItemTemplate>
                 <ItemStyle HorizontalAlign="Center" Width="3%"></ItemStyle>
             </asp:TemplateField>

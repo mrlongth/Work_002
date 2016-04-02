@@ -116,6 +116,7 @@ namespace myWeb.App_Control.lov
                     ViewState["is_bonus"] = string.Empty;
                 }
 
+
                 if (Request.QueryString["ctrl1"] != null)
                 {
                     ViewState["ctrl1"] = Request.QueryString["ctrl1"].ToString();
@@ -542,6 +543,14 @@ namespace myWeb.App_Control.lov
                                             "return false;\" >" + lblitem_code.Text + "</a>";
 
                     }
+                    else if (ViewState["from"].ToString().Equals("payment_medical"))
+                    {
+                        lblitem_code.Text = "<a href=\"\" onclick=\"" +
+                        "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl1"].ToString() + "').value='" + lblitem_code.Text + "';\n " +
+                        "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl2"].ToString() + "').value='" + lblitem_name.Text + "';\n" +
+                        "ClosePopUp('" + ViewState["show"].ToString() + "');" +
+                        "return false;\" >" + lblitem_code.Text + "</a>";
+                    }
                     else if (ViewState["from"].ToString().Equals("payment_special"))
                     {
                         lblitem_code.Text = "<a href=\"\" onclick=\"" +
@@ -581,7 +590,7 @@ namespace myWeb.App_Control.lov
                                             "return false;\" >" + lblitem_code.Text + "</a>";
 
                     }
-                    if (ViewState["from"].ToString().Equals("back") || ViewState["from"].ToString().Equals("payment_special"))
+                    if (ViewState["from"].ToString().Equals("back") || ViewState["from"].ToString().Equals("payment_special") || ViewState["from"].ToString().Equals("payment_medical"))
                     {
                         lblitem_code.Text = "<a href=\"\" onclick=\"" +
                                             "window.parent.document.getElementById('" + ViewState["ctrl1"].ToString() + "').value='" + lblitem_code.Text + "';\n " +

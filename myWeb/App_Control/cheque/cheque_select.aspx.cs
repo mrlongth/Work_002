@@ -218,7 +218,19 @@ namespace myWeb.App_Control.cheque
                         }
                         txtpay_item.Text = strpay_item;
                         hddbudget_type.Value = strbudget_type;
-                        txtbudget_type.Text = strbudget_type == "R" ? "เงินรายได้" : "เงินงบประมาณ";
+                        if (strbudget_type == "R")
+                        {
+                            strbudget_type = "เงินรายได้";
+                        }
+                        else if (strbudget_type == "B")
+                        {
+                            strbudget_type = "เงินงบประมาณ";
+                        }
+                        else
+                        {
+                            strbudget_type = "เงินอุดหนุน";
+                        }
+                        txtbudget_type.Text = strbudget_type;
                         txtcheque_type.Text = strcheque_type_name;
                         hddcheque_type.Value = strcheque_type;
                         ViewState["cheque_type"] = strcheque_type;
@@ -248,7 +260,7 @@ namespace myWeb.App_Control.cheque
                 {
 
                     strCriteria = " and pay_month ='" + hddpay_month.Value + "'   and  pay_year  ='" + txtpay_year.Text + "' ";
-                    strCriteria += "  And  payment_detail_budget_type ='" + hddbudget_type.Value + "' ";
+                    strCriteria += "  And  dbo.getPersonBudgetType(person_group_code) ='" + hddbudget_type.Value + "' ";
                     //strCriteria += "  And  cheque_bank_code ='" + hddcheque_bank_code.Value + "' ";
 
                     if (!oCheque.SP_CHEQUE_SELECT_01_SEL(strCriteria, ref ds, ref strMessage))

@@ -707,7 +707,7 @@ namespace myWeb.App_Control.payment_medical
                 ImageButton imgAdd = (ImageButton)e.Row.FindControl("imgAdd");
                 imgAdd.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgGridAdd"].Rows[0]["img"].ToString();
                 imgAdd.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgGridAdd"].Rows[0]["title"].ToString());
-                imgAdd.Attributes.Add("onclick", "OpenPopUp('800px','325px','94%','เพิ่มข้อมูลรายการค่ารักษาพยาบาล','payment_medical_item_control.aspx?mode=add&person_code=" +
+                imgAdd.Attributes.Add("onclick", "OpenPopUp('800px','325px','94%','เพิ่มข้อมูลรายการค่าสวัสดิการข้าราชการ/ลูกจ้างประจำ','payment_medical_item_control.aspx?mode=add&person_code=" +
                                                                                 txtperson_code.Text + "&person_name=" + txtperson_name.Text + "&payment_doc=" +
                                                                                 txtpayment_doc.Text + "&year=" + cboYear.SelectedValue + "','2');return false;");
 
@@ -752,7 +752,7 @@ namespace myWeb.App_Control.payment_medical
                 #region set Image Edit & Delete
 
                 ImageButton imgEdit = (ImageButton)e.Row.FindControl("imgEdit");
-                imgEdit.Attributes.Add("onclick", "OpenPopUp('800px','325px','94%','แก้ไขข้อมูลรายการค่ารักษาพยาบาล','payment_medical_item_control.aspx?mode=edit&payment_doc=" +
+                imgEdit.Attributes.Add("onclick", "OpenPopUp('800px','325px','94%','แก้ไขข้อมูลรายการค่าสวัสดิการข้าราชการ/ลูกจ้างประจำ','payment_medical_item_control.aspx?mode=edit&payment_doc=" +
                             txtpayment_doc.Text + "&item_code=" + lblitem_code.Text +
                             "&page=" + GridView1.PageIndex.ToString() + "','2');return false;");
 

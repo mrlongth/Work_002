@@ -72,6 +72,11 @@ namespace myWeb.App_Control.cheque_save
                     ViewState["cheque_type"] = "M";
                 }
 
+
+                InitcboCheque_bank();
+                InitcboChequeType();
+                InitcboBudgetType();
+
                 if (ViewState["mode"].ToString().ToLower().Equals("add"))
                 {
                     txtcheque_date.Text = cCommon.CheckDate(DateTime.Now.ToShortDateString());
@@ -95,9 +100,6 @@ namespace myWeb.App_Control.cheque_save
 
                 #endregion
 
-                InitcboCheque_bank();
-                InitcboChequeType();
-                InitcboBudgetType();
                 BtnR1.Style.Add("display", "none");
             }
         }
@@ -718,6 +720,7 @@ namespace myWeb.App_Control.cheque_save
             string strpay_item = string.Empty;
             string strcheque_bank_code = string.Empty;
             string strcheque_comment = string.Empty;
+            string strbudget_type = string.Empty;
             string strcheque_type = string.Empty;
             string strCreatedBy = string.Empty,
                 strUpdatedBy = string.Empty,
@@ -748,6 +751,7 @@ namespace myWeb.App_Control.cheque_save
                         strcheque_type = ds.Tables[0].Rows[0]["cheque_type"].ToString();
                         strpay_semeter = ds.Tables[0].Rows[0]["pay_semeter"].ToString();
                         strpay_item = ds.Tables[0].Rows[0]["pay_item"].ToString();
+                        strbudget_type = ds.Tables[0].Rows[0]["budget_type"].ToString();
                         #endregion
 
                         #region set Control
@@ -815,6 +819,12 @@ namespace myWeb.App_Control.cheque_save
                             cboChequeType.Items.FindByValue(strcheque_type).Selected = true;
                         }
 
+                        this.InitcboBudgetType();
+                        if (cboBudget_type.Items.FindByValue(strbudget_type) != null)
+                        {
+                            cboBudget_type.SelectedIndex = -1;
+                            cboBudget_type.Items.FindByValue(strbudget_type).Selected = true;
+                        }
 
                         txtcheque_bank_no.Text = ds.Tables[0].Rows[0]["cheque_bank_no"].ToString();
                         txtbank_name.Text = ds.Tables[0].Rows[0]["bank_name"].ToString();

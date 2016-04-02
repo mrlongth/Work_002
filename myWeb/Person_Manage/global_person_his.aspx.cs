@@ -62,9 +62,45 @@ namespace myWeb.Person_Manage
 
                 lnkChangePass.Attributes.Add("onclick", "OpenPopUp('600px','200px','93%','เปลี่ยนรหัสผ่าน','global_change_password.aspx','1');return false;");
 
+
+                var boolHideSaraly = CheckClosePayment();
+                if (boolHideSaraly)
+                {
+                    TabContainer1.Tabs[0].Visible = true;
+                    TabContainer1.Tabs[1].Visible = false;
+                    TabContainer1.Tabs[2].Visible = false;
+                    TabContainer1.Tabs[3].Visible = false;
+                    TabContainer1.Tabs[4].Visible = false;
+                    TabContainer1.Tabs[5].Visible = false;
+                    TabContainer1.Tabs[6].Visible = false;
+                }
+
             }
 
         }
+
+        private bool CheckClosePayment()
+        {
+            cCommon oCommon = new cCommon();
+            string strMessage = string.Empty, strCriteria = string.Empty;
+            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
+            strCriteria = " Select * from  general where g_type = 'close_payment'  ";
+            if (oCommon.SEL_SQL(strCriteria, ref ds, ref strMessage))
+            {
+                dt = ds.Tables[0];
+                if (dt.Rows.Count == 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    return Helper.CStr(dt.Rows[0]["g_code"]) == "Y";
+                }
+            }
+            return false;
+        }
+
 
         #region private function
 

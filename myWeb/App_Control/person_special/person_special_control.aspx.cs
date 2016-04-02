@@ -308,6 +308,7 @@ namespace myWeb.App_Control.person_retire
                 strperson_id = string.Empty,
                 strperson_acc = string.Empty,
                 strperson_bank_code = string.Empty,
+                strdirector_code = string.Empty,
                 strunit_code = string.Empty,
                 strwork_code = string.Empty,
                 strperson_birth = string.Empty,
@@ -343,7 +344,7 @@ namespace myWeb.App_Control.person_retire
 
                 strperson_acc = txtperson_acc.Text.Trim();
                 strperson_bank_code = cboBank.SelectedValue;
-
+                strdirector_code = cboDirector.SelectedValue;
                 strunit_code = cboUnit.SelectedValue;
                 strwork_code = cboWork.SelectedValue;
                 strperson_birth =txtperson_birth.Text.Trim();
@@ -379,7 +380,7 @@ namespace myWeb.App_Control.person_retire
                     if (!blnDup)
                     {
                         if (oPerson_special.SP_PERSON_SPECIAL_UPD(strsp_person_code, strtitle_code, strperson_thai_name, strperson_thai_surname,
-                            strperson_id, strperson_acc ,strperson_bank_code ,strunit_code , strwork_code , strperson_birth , strperson_password,  
+                            strperson_id, strperson_acc ,strperson_bank_code , strdirector_code, strunit_code , strwork_code , strperson_birth , strperson_password,  
                             strperson_email , strperson_remark , strC_active, strUpdatedBy , ref strMessage))
                         {
                             blnResult = true;
@@ -422,7 +423,7 @@ namespace myWeb.App_Control.person_retire
 
 
                         if (oPerson_special.SP_PERSON_SPECIAL_INS(strsp_person_code, strtitle_code, strperson_thai_name, strperson_thai_surname,
-                            strperson_id, strperson_acc, strperson_bank_code, strunit_code, strwork_code, strperson_birth, strperson_password,
+                            strperson_id, strperson_acc, strperson_bank_code, strdirector_code, strunit_code, strwork_code, strperson_birth, strperson_password,
                             strperson_email, strperson_remark, strC_active, strCreatedBy, ref strMessage))
                         {
                             string strGetcode = " and person_thai_name = '" + strperson_thai_name.Trim() + "' and person_thai_surname = '" + strperson_thai_surname + "' ";

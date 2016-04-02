@@ -36,7 +36,7 @@ namespace myWeb.Person_Manage
             string strYear = string.Empty;
             strYear = cboPay_Year.SelectedValue;
 
-            string strSQL = " SELECT pay_month FROM [payment_round] Where [round_status]='C' and pay_year = '" + strYear + "' Group by pay_month order by pay_month";
+            string strSQL = " SELECT pay_month FROM [payment_round] Where [round_status]='C' and pay_year = '" + strYear + "' Group by pay_month order by pay_month desc";
             oCommon.SEL_SQL(strSQL, ref ds, ref _strMessage);
 
             string strMonth = string.Empty;
@@ -77,7 +77,7 @@ namespace myWeb.Person_Manage
         {
             cCommon oCommon = new cCommon();
             DataSet ds = new DataSet();
-            string strSQL = " SELECT pay_year FROM payment_round where [round_status]='C' Group by pay_year order by pay_year";
+            string strSQL = " SELECT pay_year FROM payment_round where [round_status]='C' Group by pay_year order by pay_year desc";
             oCommon.SEL_SQL(strSQL, ref ds, ref _strMessage);
             string strYear = string.Empty;
             strYear = cboPay_Year.SelectedValue;

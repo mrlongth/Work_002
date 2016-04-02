@@ -358,9 +358,9 @@ namespace myWeb.App_Control.payment_adj
             panelSeek.Visible = true;
             panelSeek2.Visible = false;
 
-            imgTxt.Visible = true;
             RequiredFieldValidator3.Enabled = false;
 
+            imgTxt.Visible = true;
             lnkTxtFile.NavigateUrl = string.Empty;
             imgTxt.Src = "~/images/icon_txtdisable.gif";
 

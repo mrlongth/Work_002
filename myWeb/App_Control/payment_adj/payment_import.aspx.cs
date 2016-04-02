@@ -76,7 +76,7 @@ namespace myWeb.App_Control.payment_adj
                 panelSeek2.Visible = false;
                 panelSeek.Visible = true;
 
-                ViewState["sort"] = "person_code";
+                ViewState["sort"] = "payment_doc";
                 ViewState["direction"] = "ASC";
                 InitcboRound();
                 InitcboPerson_group();
@@ -208,6 +208,7 @@ namespace myWeb.App_Control.payment_adj
             {
                 dt = ds.Tables[0];
                 cboPerson_group.Items.Clear();
+              
                 cboPerson_group.Items.Add(new ListItem("---- เลือกข้อมูลทั้งหมด ----", ""));
                 for (i = 0; i <= dt.Rows.Count - 1; i++)
                 {
@@ -218,6 +219,8 @@ namespace myWeb.App_Control.payment_adj
                     cboPerson_group.SelectedIndex = -1;
                     cboPerson_group.Items.FindByValue(strperson_group_code).Selected = true;
                 }
+
+
             }
         }
 
@@ -406,7 +409,7 @@ namespace myWeb.App_Control.payment_adj
                 for (i = 0; i <= GridView1.Rows.Count - 1; i++)
                 {
                     gviewRow = GridView1.Rows[i];
-                    HiddenField hdfpayment_doc = (HiddenField)gviewRow.FindControl("hdfpayment_doc");
+                    TextBox txtpayment_doc = (TextBox)gviewRow.FindControl("txtpayment_doc");
                     AwNumeric txtmoney_credit = (AwNumeric)gviewRow.FindControl("txtmoney_credit");
                     CheckBox CheckBox1 = (CheckBox)gviewRow.FindControl("CheckBox1");
 
@@ -414,7 +417,7 @@ namespace myWeb.App_Control.payment_adj
                     {
                         DataSet ds = new DataSet();
                         string strCheckDup = string.Empty;
-                        strCheckDup = " and payment_doc = '" + hdfpayment_doc.Value + "' " +
+                        strCheckDup = " and payment_doc = '" + txtpayment_doc.Text + "' " +
                                                       " and item_code = '" + pitem_code + "' ";
                         if (!oPayment.SP_PAYMENT_SEL(strCheckDup, ref ds, ref strMessage))
                         {
@@ -426,7 +429,7 @@ namespace myWeb.App_Control.payment_adj
                             {
                                 string strpayment_detail_id = ds.Tables[0].Rows[0]["payment_detail_id"].ToString();                                
                                 string strBudgetType = ds.Tables[0].Rows[0]["payment_detail_budget_type"].ToString();
-                                if (!oPayment.SP_PAYMENT_DETAIL_UPD(hdfpayment_doc.Value, pitem_code, "0", txtmoney_credit.Value.ToString(), ppayment_item_tax,
+                                if (!oPayment.SP_PAYMENT_DETAIL_UPD(txtpayment_doc.Text, pitem_code, "0", txtmoney_credit.Value.ToString(), ppayment_item_tax,
                                                                                             ppayment_item_sos, pcomments_sub, strActive, strUpdatedBy, strBudgetType ,strpayment_detail_id,
                                                                                             ref strMessage))
                                 {
@@ -435,7 +438,7 @@ namespace myWeb.App_Control.payment_adj
                             }
                             else
                             {
-                                if (!oPayment.SP_PAYMENT_DETAIL_INS(hdfpayment_doc.Value, pitem_code, "0", txtmoney_credit.Value.ToString(), ppayment_item_tax,
+                                if (!oPayment.SP_PAYMENT_DETAIL_INS(txtpayment_doc.Text, pitem_code, "0", txtmoney_credit.Value.ToString(), ppayment_item_tax,
                                                                                             ppayment_item_sos, pcomments_sub, strActive, strCreatedBy, ref strMessage))
                                 {
                                     lblError.Text = strMessage;
@@ -492,7 +495,7 @@ namespace myWeb.App_Control.payment_adj
                 for (i = 0; i <= GridView2.Rows.Count - 1; i++)
                 {
                     gviewRow = GridView2.Rows[i];
-                    Label lblpayment_doc = (Label)gviewRow.FindControl("lblpayment_doc");
+                    TextBox txtpayment_doc = (TextBox)gviewRow.FindControl("txtpayment_doc");
                     AwNumeric txtmoney_credit = (AwNumeric)gviewRow.FindControl("txtmoney_credit");
                     CheckBox CheckBox1 = (CheckBox)gviewRow.FindControl("CheckBox1");
 
@@ -500,7 +503,7 @@ namespace myWeb.App_Control.payment_adj
                     {
                         DataSet ds = new DataSet();
                         string strCheckDup = string.Empty;
-                        strCheckDup = " and payment_doc = '" + lblpayment_doc.Text + "' " +
+                        strCheckDup = " and payment_doc = '" + txtpayment_doc.Text + "' " +
                                                       " and item_code = '" + pitem_code + "' ";
                         if (!oPayment.SP_PAYMENT_SEL(strCheckDup, ref ds, ref strMessage))
                         {
@@ -512,7 +515,7 @@ namespace myWeb.App_Control.payment_adj
                             {
                                 string strpayment_detail_id = ds.Tables[0].Rows[0]["payment_detail_id"].ToString();       
                                 string strBudgetType = ds.Tables[0].Rows[0]["payment_detail_budget_type"].ToString();
-                                if (!oPayment.SP_PAYMENT_DETAIL_UPD(lblpayment_doc.Text, pitem_code, "0", txtmoney_credit.Value.ToString(), ppayment_item_tax,
+                                if (!oPayment.SP_PAYMENT_DETAIL_UPD(txtpayment_doc.Text, pitem_code, "0", txtmoney_credit.Value.ToString(), ppayment_item_tax,
                                                              ppayment_item_sos, pcomments_sub, strActive, strUpdatedBy,strBudgetType,strpayment_detail_id, ref strMessage))
                                 {
                                     lblError.Text = strMessage;
@@ -520,7 +523,7 @@ namespace myWeb.App_Control.payment_adj
                             }
                             else
                             {
-                                if (!oPayment.SP_PAYMENT_DETAIL_INS(lblpayment_doc.Text, pitem_code, "0", txtmoney_credit.Value.ToString(), ppayment_item_tax,
+                                if (!oPayment.SP_PAYMENT_DETAIL_INS(txtpayment_doc.Text, pitem_code, "0", txtmoney_credit.Value.ToString(), ppayment_item_tax,
                                                                                             ppayment_item_sos, pcomments_sub, strActive, strCreatedBy, ref strMessage))
                                 {
                                     lblError.Text = strMessage;
@@ -754,6 +757,9 @@ namespace myWeb.App_Control.payment_adj
                     e.Row.Attributes.Add("onMouseOut", "this.style.backgroundColor='" + strEvenColor + "'");
                 }
                 #endregion
+
+                ((CheckBox)e.Row.FindControl("CheckBox1")).Attributes.Add("onclick", "ToggleValidator(this);");
+
                 Label lblNo = (Label)e.Row.FindControl("lblNo");
                 int nNo = (GridView1.PageSize * GridView1.PageIndex) + e.Row.RowIndex + 1;
                 lblNo.Text = nNo.ToString();
@@ -959,11 +965,11 @@ namespace myWeb.App_Control.payment_adj
             string strCheck = string.Empty;
             string strScript = string.Empty;
             string strUpdatedBy = Session["username"].ToString();
-            Label lblpayment_doc = (Label)GridView2.Rows[e.RowIndex].FindControl("lblpayment_doc");
+            TextBox txtpayment_doc = (TextBox)GridView2.Rows[e.RowIndex].FindControl("txtpayment_doc");
             cPayment oPayment = new cPayment();
             try
             {
-                if (!oPayment.SP_PAYMENT_DETAIL_DEL(lblpayment_doc.Text, txtitem_code.Text, "N", strUpdatedBy, ref strMessage))
+                if (!oPayment.SP_PAYMENT_DETAIL_DEL(txtpayment_doc.Text, txtitem_code.Text, "N", strUpdatedBy, ref strMessage))
                 {
                     lblError.Text = strMessage;
                 }
@@ -1279,6 +1285,13 @@ namespace myWeb.App_Control.payment_adj
                 oPayment.Dispose();
                 ds.Dispose();
             }
+        }
+
+        protected void Page_LoadComplete(object sender, EventArgs e)
+        {
+
+            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "RegisterScript", "RegisterScript();", true);
+
         }
 
 

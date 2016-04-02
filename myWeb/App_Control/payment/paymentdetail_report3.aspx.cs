@@ -24,7 +24,7 @@ namespace myWeb.App_Control.payment
         {
             if (!IsPostBack)
             {
-                imgList_item.Attributes.Add("onclick", "OpenPopUp('800px','400px','93%','ค้นหาข้อมูลรายได้/ค่าใช้จ่าย' ,'../lov/direct_pay_item_lov.aspx?year='+document.forms[0]." + strPrefixCtr +
+                imgList_item.Attributes.Add("onclick", "OpenPopUp('800px','400px','93%','ค้นหาข้อมูลรายได้/ค่าใช้จ่าย' ,'../lov/item_lov.aspx?year='+document.forms[0]." + strPrefixCtr +
                                                        "cboYear.options[document.forms[0]." + strPrefixCtr + "cboYear.selectedIndex].value+" +
                                                        "'&item_code='+document.forms[0]." + strPrefixCtr + "txtitem_code.value+" +
                                                        "'&item_name='+document.forms[0]." + strPrefixCtr + "txtitem_name.value+" +
@@ -574,7 +574,14 @@ namespace myWeb.App_Control.payment
                     RadioButtonList1.SelectedValue.Equals("A6")  ||
                     RadioButtonList1.SelectedValue.Equals("A7"))
                 {
-                    strCriteria = "  And  budget_type = '" + cboBudget_type.SelectedValue + "'  ";                    
+                    if (cboBudget_type.SelectedValue == "B")
+                    {
+                        strCriteria = "  And  budget_type IN ('S','B')  ";
+                    }
+                    else
+                    {
+                        strCriteria = "  And  budget_type = '" + cboBudget_type.SelectedValue + "'  ";                        
+                    }
                 }
                 
             }
@@ -845,7 +852,7 @@ namespace myWeb.App_Control.payment
             else if (RadioButtonList1.SelectedValue.Equals("20"))
             {
                 //strCriteria += "  And  c_created_by = '" + base.UserLoginName + "' ";
-                strCriteria += "  And  cheque_print= 'Y' ";
+                //strCriteria += "  And  cheque_print= 'Y' ";
                 strCriteria += "  And  cheque_money > 0 ";
 
                 strReport_code = "Rep_cheque_record";
@@ -855,7 +862,7 @@ namespace myWeb.App_Control.payment
             else if (RadioButtonList1.SelectedValue.Equals("A6"))
             {
                 //strCriteria += "  And  c_created_by = '" + base.UserLoginName + "' ";
-                strCriteria += "  And  cheque_print= 'Y' ";
+                //strCriteria += "  And  cheque_print= 'Y' ";
                 strCriteria += "  And  cheque_money > 0 ";
                 strReport_code = "Rep_cheque_recv";
                 strCriteria = strCriteria.Replace("view_payment.", "");
@@ -864,7 +871,7 @@ namespace myWeb.App_Control.payment
             else if (RadioButtonList1.SelectedValue.Equals("A7"))
             {
                 //strCriteria += "  And  c_created_by = '" + base.UserLoginName + "' ";
-                strCriteria += "  And  cheque_print= 'Y' ";
+                //strCriteria += "  And  cheque_print= 'Y' ";
                 strCriteria += "  And  cheque_money > 0 ";
                 strReport_code = "Rep_cheque_recv2";
                 strCriteria = strCriteria.Replace("view_payment.", "");
@@ -908,6 +915,10 @@ namespace myWeb.App_Control.payment
             else if (RadioButtonList1.SelectedValue.Equals("A9"))
             {
                 strReport_code = "Rep_payment_tax_year";
+
+                if (strPay_Month.Length > 0)
+                    strCriteria += " and (payment_head.pay_year + payment_head.pay_month) >= '" +  (cboPay_Year.SelectedValue + cboPay_Month.SelectedValue) + "' ";
+
                 strCriteria = strCriteria.Replace("view_payment.", "view_person_list.").Replace(".payment_detail_", ".");
             }
 

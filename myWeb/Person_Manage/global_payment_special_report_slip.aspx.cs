@@ -145,17 +145,18 @@ namespace myWeb.Person_Manage
                 Helper.DeleteUnusedFile(strReportDirectoryTempPhysicalPath, ReportAliveTime);
 
                 //string strFilename;
-                //strFilename = "report_" + DateTime.Now.ToString("yyyyMMddHH-mm-ss");
+                //strFilename = "report_" + DateTime.Now.ToString("yyyyMMddHH-mm-ss-fff");
                 //rptSource.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("~/temp/") + strFilename + ".pdf");
                 //lnkPdfFile.NavigateUrl = "~/temp/" + strFilename + ".pdf";
                 //imgPdf.Src = "~/images/icon_pdf.gif";
                 //lnkPdfFile.Visible = true;
                 //CrystalReportViewer1.ReportSource = rptSource;
 
-                string strFilename = "report_" + DateTime.Now.ToString("yyyyMMddHH-mm-ss");
+                string strFilename = "report_" + DateTime.Now.ToString("yyyyMMddHH-mm-ss-fff");
                 string path = "~/temp/" + strFilename + ".pdf";
                 rptSource.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath(path));
-                Response.Redirect(path);
+                //Response.Redirect(path);
+                downloadOpenFile(Server.MapPath(path));
 
             }
         }
@@ -211,7 +212,7 @@ namespace myWeb.Person_Manage
                 //Helper.DeleteUnusedFile(strReportDirectoryTempPhysicalPath, ReportAliveTime);
 
                 //string strFilename;
-                //strFilename = "report_" + DateTime.Now.ToString("yyyyMMddHH-mm-ss");
+                //strFilename = "report_" + DateTime.Now.ToString("yyyyMMddHH-mm-ss-fff");
                 //rptSource.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("~/temp/") + strFilename + ".pdf");
                 //lnkPdfFile.NavigateUrl = "~/temp/" + strFilename + ".pdf";
                 //imgPdf.Src = "~/images/icon_pdf.gif";
@@ -408,6 +409,14 @@ namespace myWeb.Person_Manage
             }
         }
 
+        private void downloadOpenFile(string filePath)
+        {
+            Response.Clear();
+            Response.ContentType = "application/pdf";
+            Response.AppendHeader("Content-Disposition", "attachment; filename=cmru-pay-slip.pdf");
+            Response.TransmitFile(filePath);
+            Response.End();
+        }
 
     }
 }

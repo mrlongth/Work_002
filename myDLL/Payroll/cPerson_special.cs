@@ -125,6 +125,7 @@ namespace myDLL
                 , string pperson_id
                 , string pperson_acc
                 , string pperson_bank_code
+                , string pdirector_code
                 , string punit_code
                 , string pwork_code
                 , string pperson_birth
@@ -154,6 +155,7 @@ namespace myDLL
                 oCommand.Parameters.Add("person_acc", SqlDbType.VarChar).Value = pperson_acc;
                 oCommand.Parameters.Add("person_bank_code", SqlDbType.VarChar).Value = pperson_bank_code;
                 oCommand.Parameters.Add("unit_code", SqlDbType.VarChar).Value = punit_code;
+                oCommand.Parameters.Add("director_code", SqlDbType.VarChar).Value = pdirector_code;
                 oCommand.Parameters.Add("work_code", SqlDbType.VarChar).Value = pwork_code;
                 oCommand.Parameters.Add("person_birth", SqlDbType.DateTime).Value = cCommon.CheckDate(pperson_birth); 
                 oCommand.Parameters.Add("person_password", SqlDbType.VarChar).Value = Cryptorengine.Encrypt(pperson_password, true);
@@ -191,6 +193,7 @@ namespace myDLL
                 , string pperson_id
                 , string pperson_acc
                 , string pperson_bank_code
+                , string pdirector_code
                 , string punit_code
                 , string pwork_code
                 , string pperson_birth
@@ -219,6 +222,7 @@ namespace myDLL
                 oCommand.Parameters.Add("person_id", SqlDbType.VarChar).Value = pperson_id;
                 oCommand.Parameters.Add("person_acc", SqlDbType.VarChar).Value = pperson_acc;
                 oCommand.Parameters.Add("person_bank_code", SqlDbType.VarChar).Value = pperson_bank_code;
+                oCommand.Parameters.Add("director_code", SqlDbType.VarChar).Value = pdirector_code;
                 oCommand.Parameters.Add("unit_code", SqlDbType.VarChar).Value = punit_code;
                 oCommand.Parameters.Add("work_code", SqlDbType.VarChar).Value = pwork_code;
                 oCommand.Parameters.Add("person_birth", SqlDbType.DateTime).Value = cCommon.CheckDate(pperson_birth); ;

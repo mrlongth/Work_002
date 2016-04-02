@@ -105,16 +105,26 @@ namespace myWeb.App_Control.person
             {
                 dt = ds.Tables[0];
                 cboPerson_group.Items.Clear();
+                cboPerson_group_dropdown_checkboxes.Items.Clear();
+
                 cboPerson_group.Items.Add(new ListItem("---- เลือกข้อมูลทั้งหมด ----", ""));
                 for (i = 0; i <= dt.Rows.Count - 1; i++)
                 {
                     cboPerson_group.Items.Add(new ListItem(dt.Rows[i]["person_group_name"].ToString(), dt.Rows[i]["person_group_code"].ToString()));
+                    cboPerson_group_dropdown_checkboxes.Items.Add(new ListItem(dt.Rows[i]["person_group_name"].ToString(), dt.Rows[i]["person_group_code"].ToString()));
                 }
                 if (cboPerson_group.Items.FindByValue(strperson_group_code) != null)
                 {
                     cboPerson_group.SelectedIndex = -1;
                     cboPerson_group.Items.FindByValue(strperson_group_code).Selected = true;
                 }
+
+                cboPerson_group_dropdown_checkboxes.Style.SelectBoxCssClass = "dd_chk_select_cust";
+                cboPerson_group_dropdown_checkboxes.Style.SelectBoxWidth = 200;
+                cboPerson_group_dropdown_checkboxes.Style.DropDownBoxBoxWidth = 300;
+
+
+
             }
         }
 
@@ -240,7 +250,7 @@ namespace myWeb.App_Control.person
                 for (i = 0; i <= GridView1.Rows.Count - 1; i++)
                 {
                     gviewRow = GridView1.Rows[i];
-                    Label lblperson_code = (Label)gviewRow.FindControl("lblperson_code");
+                    HiddenField hddperson_code = (HiddenField)gviewRow.FindControl("hddperson_code");
                     AwNumeric txtmoney_credit = (AwNumeric)gviewRow.FindControl("txtmoney_credit");
                     CheckBox CheckBox1 = (CheckBox)gviewRow.FindControl("CheckBox1");
 
@@ -258,7 +268,7 @@ namespace myWeb.App_Control.person
                         {
                             strDebit = txtmoney_credit.Value.ToString();
                         }
-                        if (!oPerson.SP_PERSON_ITEM_UPD(lblperson_code.Text, strYear, pitem_code, strDebit, strCredit, ppayment_item_tax,
+                        if (!oPerson.SP_PERSON_ITEM_UPD(hddperson_code.Value.ToString(), strYear, pitem_code, strDebit, strCredit, ppayment_item_tax,
                                   ppayment_item_sos, strActive, strUpdatedBy, "", "", "", ref strMessage))
                         {
                             lblError.Text = strMessage;
@@ -443,6 +453,7 @@ namespace myWeb.App_Control.person
                 ((CheckBox)e.Row.FindControl("cbSelectAll")).Attributes.Add("onclick", "javascript:SelectAll('" +
                         ((CheckBox)e.Row.FindControl("cbSelectAll")).ClientID + "')");
 
+
                 for (int iCol = 0; iCol < e.Row.Cells.Count; iCol++)
                 {
                     e.Row.Cells[iCol].Attributes.Add("class", "table_h");
@@ -473,6 +484,9 @@ namespace myWeb.App_Control.person
                     e.Row.Attributes.Add("onMouseOut", "this.style.backgroundColor='" + strEvenColor + "'");
                 }
                 #endregion
+
+                ((CheckBox)e.Row.FindControl("CheckBox1")).Attributes.Add("onclick", "ToggleValidator(this);");
+
                 Label lblNo = (Label)e.Row.FindControl("lblNo");
                 int nNo = (GridView1.PageSize * GridView1.PageIndex) + e.Row.RowIndex + 1;
                 lblNo.Text = nNo.ToString();
@@ -572,12 +586,12 @@ namespace myWeb.App_Control.person
             string strScript = string.Empty;
             string strUpdatedBy = Session["username"].ToString();
             string strYear = ((DataSet)Application["xmlconfig"]).Tables["default"].Rows[0]["yearnow"].ToString();
-            Label lblperson_code = (Label)GridView1.Rows[e.RowIndex].FindControl("lblperson_code");
+            HiddenField hddperson_code = (HiddenField)GridView1.Rows[e.RowIndex].FindControl("hddperson_code");
             CheckBox CheckBox = (CheckBox)GridView1.Rows[e.RowIndex].FindControl("CheckBox");
             cPerson oPerson = new cPerson();
             try
             {
-                if (!oPerson.SP_PERSON_ITEM_DEL(lblperson_code.Text, strYear, txtitem_code.Text, "N", strUpdatedBy, ref strMessage))
+                if (!oPerson.SP_PERSON_ITEM_DEL(hddperson_code.Value.ToString(), strYear, txtitem_code.Text, "N", strUpdatedBy, ref strMessage))
                 {
                     lblError.Text = strMessage;
                 }
@@ -786,6 +800,9 @@ namespace myWeb.App_Control.person
                 {
                     strCriteria += " and substring(director_code,4,2) = substring('" + DirectorCode + "',4,2) ";
                 }
+                strCriteria += " and  person_work_status_code = '01' ";
+
+
                 if (!oPerson.SP_PERSON_ITEM_SEL(strCriteria, ref ds, ref strMessage))
                 {
                     lblError.Text = strMessage;
@@ -900,6 +917,13 @@ namespace myWeb.App_Control.person
         {
             txtitem_code.Text = "";
             txtitem_name.Text = "";
+        }
+
+        protected void Page_LoadComplete(object sender, EventArgs e)
+        {
+
+            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "RegisterScript", "RegisterScript();", true);
+
         }
 
 

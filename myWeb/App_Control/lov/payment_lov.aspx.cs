@@ -30,6 +30,84 @@ namespace myWeb.App_Control.lov
             if (!IsPostBack)
             {
 
+                if (Request.QueryString["person_code"] != null)
+                {
+                    ViewState["person_code"] = Request.QueryString["person_code"].ToString();
+                    txtperson_code.Text = ViewState["person_code"].ToString();
+                }
+                else
+                {
+                    ViewState["person_code"] = string.Empty;
+                    txtperson_code.Text = string.Empty;
+                }
+
+                if (Request.QueryString["person_name"] != null)
+                {
+                    ViewState["person_name"] = Request.QueryString["person_name"].ToString();
+                    txtperson_name.Text = ViewState["person_name"].ToString();
+                }
+                else
+                {
+                    ViewState["person_name"] = string.Empty;
+                    txtperson_name.Text = string.Empty;
+                }
+
+                if (Request.QueryString["txtpayment_doc"] != null)
+                {
+                    ViewState["txtpayment_doc"] = Request.QueryString["txtpayment_doc"].ToString();
+                }
+                else
+                {
+                    ViewState["txtpayment_doc"] = string.Empty;
+                }
+
+
+                if (Request.QueryString["hddperson_code"] != null)
+                {
+                    ViewState["hddperson_code"] = Request.QueryString["hddperson_code"].ToString();
+                }
+                else
+                {
+                    ViewState["hddperson_code"] = string.Empty;
+                }
+
+
+                if (Request.QueryString["txtperson_id"] != null)
+                {
+                    ViewState["txtperson_id"] = Request.QueryString["txtperson_id"].ToString();
+                }
+                else
+                {
+                    ViewState["txtperson_id"] = string.Empty;
+                }
+
+                if (Request.QueryString["lblperson_code"] != null)
+                {
+                    ViewState["lblperson_code"] = Request.QueryString["lblperson_code"].ToString();
+                }
+                else
+                {
+                    ViewState["lblperson_code"] = string.Empty;
+                }
+
+                if (Request.QueryString["lblperson_name"] != null)
+                {
+                    ViewState["lblperson_name"] = Request.QueryString["lblperson_name"].ToString();
+                }
+                else
+                {
+                    ViewState["lblperson_name"] = string.Empty;
+                }
+
+                if (Request.QueryString["lblperson_thai_surname"] != null)
+                {
+                    ViewState["lblperson_thai_surname"] = Request.QueryString["lblperson_thai_surname"].ToString();
+                }
+                else
+                {
+                    ViewState["lblperson_thai_surname"] = string.Empty;
+                }
+
                 if (Request.QueryString["ctrl1"] != null)
                 {
                     ViewState["ctrl1"] = Request.QueryString["ctrl1"].ToString();
@@ -59,8 +137,18 @@ namespace myWeb.App_Control.lov
                 if (Request.QueryString["payment_doc"] != null)
                 {
                     ViewState["payment_doc"] = Request.QueryString["payment_doc"].ToString();
-                    txtpayment_doc.Text = ViewState["payment_doc"].ToString(); 
+                    txtpayment_doc.Text = ViewState["payment_doc"].ToString();
                 }
+                else
+                {
+                    ViewState["payment_doc"] = string.Empty;                
+                }
+
+                if (Request.QueryString["person_name"] != null)
+                {
+                    txtperson_name.Text = Request.QueryString["person_name"].ToString();
+                }
+
 
                 imgFind.Attributes.Add("onMouseOver", "src='../../images/button/Search2.png'");
                 imgFind.Attributes.Add("onMouseOut", "src='../../images/button/Search.png'");
@@ -435,7 +523,7 @@ namespace myWeb.App_Control.lov
 
         #endregion
 
-    
+
 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
@@ -474,6 +562,7 @@ namespace myWeb.App_Control.lov
                 int nNo = (GridView1.PageSize * GridView1.PageIndex) + e.Row.RowIndex + 1;
                 lblNo.Text = nNo.ToString();
                 Label lblpayment_doc = (Label)e.Row.FindControl("lblpayment_doc");
+                DataRowView dv = (DataRowView)e.Row.DataItem;                
                 string strScript;
                 if (!ViewState["show"].ToString().Equals("1"))
                 {
@@ -489,10 +578,25 @@ namespace myWeb.App_Control.lov
                 }
                 else
                 {
-                    strScript = "<a href=\"\" onclick=\"";
-                    strScript = strScript + "window.parent.document.forms[0]." + ViewState["ctrl1"].ToString() + ".value='" + lblpayment_doc.Text + "';\n ";
-                    strScript = strScript + "ClosePopUp('" + ViewState["show"].ToString() + "');";
-                    strScript = strScript + "return false;\" >" + lblpayment_doc.Text + "</a>";
+                    lblpayment_doc.Text = "<a href=\"\" onclick=\"";
+
+                    if (!string.IsNullOrEmpty(ViewState["ctrl1"].ToString()))
+                        lblpayment_doc.Text += "window.parent.document.forms[0]." + ViewState["ctrl1"].ToString() + ".value='" + dv["payment_doc"].ToString() + "';\n ";
+                    
+                    if (!string.IsNullOrEmpty(ViewState["txtpayment_doc"].ToString()))
+                        lblpayment_doc.Text += "window.parent.$('#" + ViewState["txtpayment_doc"].ToString() + "').val('" + dv["payment_doc"].ToString() + "');\n ";
+                    
+                    if (!string.IsNullOrEmpty(ViewState["lblperson_code"].ToString()))
+                        lblpayment_doc.Text += "window.parent.$('#" + ViewState["lblperson_code"].ToString() + "').html('" + dv["person_code"].ToString() + "');\n ";
+
+                    if (!string.IsNullOrEmpty(ViewState["lblperson_name"].ToString()))
+                        lblpayment_doc.Text += "window.parent.$('#" + ViewState["lblperson_name"].ToString() + "').html('" + dv["person_thai_name"].ToString() + "');\n";
+
+                    if (!string.IsNullOrEmpty(ViewState["lblperson_thai_surname"].ToString()))
+                        lblpayment_doc.Text += "window.parent.$('#" + ViewState["lblperson_thai_surname"].ToString() + "').html('" + dv["person_thai_surname"].ToString() + "');\n";
+                                        
+                     lblpayment_doc.Text += "ClosePopUp('" + ViewState["show"].ToString() + "');";
+                     lblpayment_doc.Text += "return false;\" >" + dv["payment_doc"].ToString() + "</a>";
                 }
 
 

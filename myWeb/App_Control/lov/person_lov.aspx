@@ -106,6 +106,13 @@
                         </asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
+                 <asp:TemplateField HeaderText="เลขที่บัตรประชาชน" SortExpression="person_id">
+                    <ItemStyle HorizontalAlign="Center" Width="10%" Wrap="True" />
+                    <ItemTemplate>
+                        <asp:Label ID="lblperson_id" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.person_id") %>'>
+                        </asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:TemplateField HeaderText="ชื่อบุคลากร " SortExpression="person_thai_name">
                     <ItemStyle HorizontalAlign="Left" Width="18%" Wrap="True" />
                     <ItemTemplate>

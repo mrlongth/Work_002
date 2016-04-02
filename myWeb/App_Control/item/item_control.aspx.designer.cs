@@ -382,6 +382,24 @@ namespace myWeb.App_Control.item {
         protected global::System.Web.UI.WebControls.TextBox txtdirect_pay_code;
         
         /// <summary>
+        /// imgList_item2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton imgList_item2;
+        
+        /// <summary>
+        /// imgClear_item2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton imgClear_item2;
+        
+        /// <summary>
         /// lblPage17 control.
         /// </summary>
         /// <remarks>

@@ -13,6 +13,7 @@ using CrystalDecisions.Shared;
 using CrystalDecisions.CrystalReports.Engine;
 using myDLL;
 using System.Net;
+using System.IO;
 
 namespace myWeb.Person_Manage
 {
@@ -34,48 +35,48 @@ namespace myWeb.Person_Manage
         string strDbuser = System.Configuration.ConfigurationSettings.AppSettings["dbuser"];
         string strDbpassword = System.Configuration.ConfigurationSettings.AppSettings["dbpassword"];
 
-        public int myCount
-        {
-            get
-            {
-                if (Session["myCount"] != null)
-                {
-                    return (int)(Session["myCount"]);
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-            set { Session["myCount"] = value; }
-        }
+        //public int myCount
+        //{
+        //    get
+        //    {
+        //        if (Session["myCount"] != null)
+        //        {
+        //            return (int)(Session["myCount"]);
+        //        }
+        //        else
+        //        {
+        //            return 0;
+        //        }
+        //    }
+        //    set { Session["myCount"] = value; }
+        //}
 
-        public DataSet myds
-        {
-            get
-            {
-                return (DataSet)(Session["myds"]);
-            }
-            set { Session["myds"] = value; }
-        }
+        //public DataSet myds
+        //{
+        //    get
+        //    {
+        //        return (DataSet)(Session["myds"]);
+        //    }
+        //    set { Session["myds"] = value; }
+        //}
 
-        public DataSet mydsC
-        {
-            get
-            {
-                return (DataSet)(Session["mydsC"]);
-            }
-            set { Session["mydsC"] = value; }
-        }
+        //public DataSet mydsC
+        //{
+        //    get
+        //    {
+        //        return (DataSet)(Session["mydsC"]);
+        //    }
+        //    set { Session["mydsC"] = value; }
+        //}
 
-        public DataSet mydsD
-        {
-            get
-            {
-                return (DataSet)(Session["mydsD"]);
-            }
-            set { Session["mydsD"] = value; }
-        }
+        //public DataSet mydsD
+        //{
+        //    get
+        //    {
+        //        return (DataSet)(Session["mydsD"]);
+        //    }
+        //    set { Session["mydsD"] = value; }
+        //}
 
 
         public string ReportDirectoryTemp
@@ -144,10 +145,11 @@ namespace myWeb.Person_Manage
                 string strReportDirectoryTempPhysicalPath = Server.MapPath(this.ReportDirectoryTemp);
                 Helper.DeleteUnusedFile(strReportDirectoryTempPhysicalPath, ReportAliveTime);
 
-                string strFilename = "report_" + DateTime.Now.ToString("yyyyMMddHH-mm-ss");               
+                string strFilename = "report_" + Guid.NewGuid() + "_" + DateTime.Now.ToString("yyyyMMddHH-mm-ss-fff");
                 string path = "~/temp/" + strFilename + ".pdf";
                 rptSource.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath(path));
-                Response.Redirect(path);
+                downloadOpenFile(Server.MapPath(path));
+                //Response.Redirect(path);
                 //lnkPdfFile.NavigateUrl = "~/temp/" + strFilename + ".pdf";
                 //imgPdf.Src = "~/images/icon_pdf.gif";
                 //lnkPdfFile.Visible = true;
@@ -155,6 +157,15 @@ namespace myWeb.Person_Manage
 
 
             }
+        }
+
+        private void downloadOpenFile(string filePath)
+        {
+            Response.Clear();
+            Response.ContentType = "application/pdf";
+            Response.AppendHeader("Content-Disposition", "attachment; filename=cmru-pay-slip.pdf");            
+            Response.TransmitFile(filePath);
+            Response.End(); 
         }
 
         protected void Page_Init(object sender, EventArgs e)
@@ -208,12 +219,15 @@ namespace myWeb.Person_Manage
                 //Helper.DeleteUnusedFile(strReportDirectoryTempPhysicalPath, ReportAliveTime);
 
                 //string strFilename;
-                //strFilename = "report_" + DateTime.Now.ToString("yyyyMMddHH-mm-ss");
+                //strFilename = "report_" + DateTime.Now.ToString("yyyyMMddHH-mm-ss-fff");
                 //rptSource.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("~/temp/") + strFilename + ".pdf");
                 //lnkPdfFile.NavigateUrl = "~/temp/" + strFilename + ".pdf";
                 //imgPdf.Src = "~/images/icon_pdf.gif";
                 imgPdf.Visible = false;
                 CrystalReportViewer1.ReportSource = rptSource;
+
+                CrystalReportViewer1.Dispose();
+                rptSource.Dispose();
 
             }
 
@@ -365,10 +379,49 @@ namespace myWeb.Person_Manage
 
         }
 
+        public static bool DeleteMediaFile(string pFilePath, int pAliveTime)
+        {
+            bool blnResult = false;
+
+            DateTime dtNow = DateTime.Now;
+            TimeSpan span;
+
+            DirectoryInfo dirInfo = new DirectoryInfo(pFilePath);
+            if (dirInfo.Exists)
+            {
+                foreach (FileInfo fi in dirInfo.GetFiles().Where(f => f.Name.Contains("Rep_payment_slip")))
+                {
+                    span = dtNow.Subtract(fi.LastWriteTime);
+                    if (span.TotalMinutes > pAliveTime)
+                    {
+                        try
+                        {
+                            fi.IsReadOnly = false;
+                            fi.Delete();
+                        }
+                        catch (Exception ex)
+                        {
+                            throw new Exception(ex.Message);
+                        }
+                    }
+                }
+                blnResult = true;
+            }
+
+            return blnResult;
+        }
+
+
+
         private void Retive_Rep_payment_slip()
         {
             try
             {
+
+
+                //string strCRTempImagPath = @"C:\\WINDOWS\Temp\cr_tmp_image_";
+                //DeleteMediaFile(strCRTempImagPath, 60);
+
                 string strPath = "~/reports/" + ViewState["report_code"].ToString() + ".rpt";
                 rptSource.Load(Server.MapPath(strPath));
                 TableLogOnInfo logOnInfo = new TableLogOnInfo();
@@ -397,45 +450,37 @@ namespace myWeb.Person_Manage
 
                 string strMessage = string.Empty;
                 string strCriteria = string.Empty;
-                if (this.mydsC == null)
+                //if (this.mydsC == null)
                 {
                     if (!oPayment.SP_PAYMENT_SLIP_CREDIT(ViewState["criteriaC"].ToString(), ref dsC, ref strMessage))
                     {
                         lblError.Text = strMessage;
+                        return;
                     }
-                    else
-                    {
-                        this.mydsC = dsC;
-                    }
+
                 }
 
-                if (this.mydsD == null)
+                //if (this.mydsD == null)
                 {
                     if (!oPayment.SP_PAYMENT_SLIP_DEBIT(ViewState["criteriaD"].ToString(), ref dsD, ref strMessage))
                     {
                         lblError.Text = strMessage;
-                    }
-                    else
-                    {
-                        this.mydsD = dsD;
+                        return;
                     }
                 }
 
-                if (this.myds == null)
+                //if (this.myds == null)
                 {
                     if (!oPayment.SP_PAYMENT_SLIP_SEL(Session["criteria"].ToString(), ref ds, ref strMessage))
                     {
                         lblError.Text = strMessage;
-                    }
-                    else
-                    {
-                        this.myds = ds;
+                        return;
                     }
                 }
 
-                rptSource.SetDataSource(this.myds.Tables[0]);
-                rptSource.OpenSubreport("sub_debit").SetDataSource(this.mydsD.Tables[0]);
-                rptSource.OpenSubreport("sub_credit").SetDataSource(this.mydsC.Tables[0]);
+                rptSource.SetDataSource(ds.Tables[0]);
+                rptSource.OpenSubreport("sub_debit").SetDataSource(dsD.Tables[0]);
+                rptSource.OpenSubreport("sub_credit").SetDataSource(dsC.Tables[0]);
 
                 rptSource.SetParameterValue("UserName", strUsername);
                 rptSource.SetParameterValue("CompanyName", strCompanyname);
@@ -455,6 +500,36 @@ namespace myWeb.Person_Manage
             {
                 lblError.Text = ex.ToString();
             }
+
+        }
+
+        private void Page_Unload(object sender, EventArgs e)
+        {
+            CloseReports(rptSource);
+            rptSource.Dispose();
+            CrystalReportViewer1.Dispose();
+            CrystalReportViewer1 = null;
+            GC.Collect();
+        }
+
+
+        private void CloseReports(ReportDocument reportDocument)
+        {
+            Sections sections = reportDocument.ReportDefinition.Sections;
+            foreach (Section section in sections)
+            {
+                ReportObjects reportObjects = section.ReportObjects;
+                foreach (ReportObject reportObject in reportObjects)
+                {
+                    if (reportObject.Kind == ReportObjectKind.SubreportObject)
+                    {
+                        SubreportObject subreportObject = (SubreportObject)reportObject;
+                        ReportDocument subReportDocument = subreportObject.OpenSubreport(subreportObject.SubreportName);
+                        subReportDocument.Close();
+                    }
+                }
+            }
+            reportDocument.Close();
         }
 
 

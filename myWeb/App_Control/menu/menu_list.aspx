@@ -50,7 +50,7 @@
             <td style="text-align: right; width: 20%;">
                 <asp:Label runat="server" CssClass="label_h" ID="lblPage3">สถานะ : </asp:Label>
             </td>
-            <td colspan="3">
+            <td>
                 <asp:RadioButton runat="server" GroupName="A" Checked="True" Text="ทั้งหมด" CssClass="label_h"
                     ID="RadioAll"></asp:RadioButton>
                 <asp:RadioButton runat="server" GroupName="A" Text="ปกติ" CssClass="label_h" ID="RadioActive">
@@ -59,6 +59,11 @@
                 </asp:RadioButton>
                 <asp:Label ID="lblError0" runat="server" CssClass="label_error"></asp:Label>
             </td>
+            <td>
+                <asp:CheckBox ID="CheckBox1" runat="server" AutoPostBack="True" CssClass="label_h" OnCheckedChanged="CheckBox1_CheckedChanged" Text="ปิดหน้าจอข้อมูลเงินเดือน" />
+            </td>
+            <td>
+                &nbsp;</td>
         </tr>
     </table>
 </asp:Content>

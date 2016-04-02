@@ -545,6 +545,8 @@ namespace myDLL
                 string ppay_month,
                 string ppay_year,
                 string pperson_code,
+                string pperson_name,
+                string pperson_surname,
                 string pitem_code,
                 string pitem_amt,
                 string puser_guid,
@@ -567,6 +569,8 @@ namespace myDLL
                 oCommand.Parameters.Add("ppay_month", SqlDbType.VarChar).Value = ppay_month;
                 oCommand.Parameters.Add("ppay_year", SqlDbType.VarChar).Value = ppay_year;
                 oCommand.Parameters.Add("pperson_code", SqlDbType.VarChar).Value = pperson_code;
+                oCommand.Parameters.Add("pperson_name", SqlDbType.VarChar).Value = pperson_name;
+                oCommand.Parameters.Add("pperson_surname", SqlDbType.VarChar).Value = pperson_surname;
                 oCommand.Parameters.Add("pitem_code", SqlDbType.VarChar).Value = pitem_code;
                 oCommand.Parameters.Add("pitem_amt", SqlDbType.Money).Value = float.Parse(pitem_amt);
                 oCommand.Parameters.Add("puser_guid", SqlDbType.VarChar).Value = puser_guid;
@@ -1966,6 +1970,49 @@ namespace myDLL
         #endregion
 
 
+        #region SP_EXPORT_SCB_SEL
+        public bool SP_EXPORT_SCB_SEL(string strCriteria, string strDate_pay, ref DataSet ds, ref string strMessage)
+        {
+            bool blnResult = false;
+            SqlConnection oConn = new SqlConnection();
+            SqlCommand oCommand = new SqlCommand();
+            SqlDataAdapter oAdapter = new SqlDataAdapter();
+            try
+            {
+                oConn.ConnectionString = _strConn;
+                oConn.Open();
+                oCommand.Connection = oConn;
+                oCommand.CommandType = CommandType.StoredProcedure;
+                oCommand.CommandText = "sp_EXPORT_SCB_SEL";
+
+                SqlParameter oParamI_vc_criteria = new SqlParameter("vc_criteria", SqlDbType.NVarChar);
+                oParamI_vc_criteria.Direction = ParameterDirection.Input;
+                oParamI_vc_criteria.Value = strCriteria;
+                oCommand.Parameters.Add(oParamI_vc_criteria);
+
+                SqlParameter oParamDate_pay = new SqlParameter("date_pay", SqlDbType.DateTime);
+                oParamDate_pay.Direction = ParameterDirection.Input;
+                oParamDate_pay.Value = cCommon.CheckDate(strDate_pay);
+                oCommand.Parameters.Add(oParamDate_pay);
+
+                oAdapter = new SqlDataAdapter(oCommand);
+                ds = new DataSet();
+                oAdapter.Fill(ds, "sp_EXPORT_SCB_SEL");
+                blnResult = true;
+            }
+            catch (Exception ex)
+            {
+                strMessage = ex.Message.ToString();
+            }
+            finally
+            {
+                oConn.Close();
+                oCommand.Dispose();
+                oConn.Dispose();
+            }
+            return blnResult;
+        }
+        #endregion
   
 
 
