@@ -426,7 +426,7 @@ namespace myDLL
                 oCommand.Parameters.Add("psp_person_name", SqlDbType.VarChar).Value = psp_person_name;
                 oCommand.Parameters.Add("psp_person_surname", SqlDbType.VarChar).Value = psp_person_surname;
                 oCommand.Parameters.Add("pitem_code", SqlDbType.VarChar).Value = pitem_code;
-                oCommand.Parameters.Add("pitem_qty", SqlDbType.Float).Value = float.Parse(pitem_qty);
+                oCommand.Parameters.Add("pitem_qty", SqlDbType.Float).Value = double.Parse(pitem_qty);
                 oCommand.Parameters.Add("pitem_amt", SqlDbType.Money).Value = double.Parse(pitem_amt);
                 oCommand.Parameters.Add("pc_created_by", SqlDbType.VarChar).Value = pc_created_by;
                 // - - - - - - - - - - - -             
@@ -551,7 +551,7 @@ namespace myDLL
                 oCommand.Parameters.Add("punit_code", SqlDbType.VarChar).Value = punit_code;
                 oCommand.Parameters.Add("pwork_code", SqlDbType.VarChar).Value = pwork_code;
                 oCommand.Parameters.Add("pitem_code", SqlDbType.VarChar).Value = pitem_code;
-                oCommand.Parameters.Add("pitem_qty", SqlDbType.Float).Value = float.Parse(pitem_qty);
+                oCommand.Parameters.Add("pitem_qty", SqlDbType.Float).Value = double.Parse(pitem_qty);
                 oCommand.Parameters.Add("pitem_amt", SqlDbType.Money).Value = double.Parse(pitem_amt);
                 oCommand.Parameters.Add("pc_created_by", SqlDbType.VarChar).Value = pc_created_by;
                 oCommand.ExecuteNonQuery();

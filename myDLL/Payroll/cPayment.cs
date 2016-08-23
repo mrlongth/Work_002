@@ -6,6 +6,8 @@ using System.Data.SqlClient;
 
 namespace myDLL
 {
+    using System.Net.Configuration;
+
     public class cPayment : IDisposable
     {
         private string _strConn = string.Empty;
@@ -221,6 +223,11 @@ namespace myDLL
                 string pc_active,
                 string ptype_position_code,
                 string pc_created_by,
+                string pbranch_code,
+                string pbank_no,
+                string ptitle_code ,
+	            string pperson_thai_name ,
+	            string pperson_thai_surname , 
                 ref string strMessage)
         {
             bool blnResult = false;
@@ -245,14 +252,19 @@ namespace myDLL
                 oCommand.Parameters.Add("pperson_manage_code", SqlDbType.VarChar).Value = pperson_manage_code;
                 oCommand.Parameters.Add("pbudget_plan_code", SqlDbType.VarChar).Value = pbudget_plan_code;
                 oCommand.Parameters.Add("pperson_work_status_code", SqlDbType.VarChar).Value = pperson_work_status_code;
-                oCommand.Parameters.Add("ppayment_recv", SqlDbType.Money).Value = float.Parse(ppayment_recv);
-                oCommand.Parameters.Add("ppayment_pay", SqlDbType.Money).Value = float.Parse(ppayment_pay);
-                oCommand.Parameters.Add("ppayment_net", SqlDbType.Money).Value = float.Parse(ppayment_net);
+                oCommand.Parameters.Add("ppayment_recv", SqlDbType.Money).Value = double.Parse(ppayment_recv);
+                oCommand.Parameters.Add("ppayment_pay", SqlDbType.Money).Value = double.Parse(ppayment_pay);
+                oCommand.Parameters.Add("ppayment_net", SqlDbType.Money).Value = double.Parse(ppayment_net);
                 oCommand.Parameters.Add("pcomments", SqlDbType.VarChar).Value = pcomments;
                 oCommand.Parameters.Add("pc_status", SqlDbType.VarChar).Value = pc_status;
                 oCommand.Parameters.Add("pc_active", SqlDbType.VarChar).Value = pc_active;
                 oCommand.Parameters.Add("pc_created_by", SqlDbType.VarChar).Value = pc_created_by;
                 oCommand.Parameters.Add("ptype_position_code", SqlDbType.VarChar).Value = ptype_position_code;
+                oCommand.Parameters.Add("pbranch_code", SqlDbType.VarChar).Value = pbranch_code;
+                oCommand.Parameters.Add("pbank_no", SqlDbType.VarChar).Value = pbank_no;
+                oCommand.Parameters.Add("ptitle_code ", SqlDbType.VarChar).Value = ptitle_code ;
+                oCommand.Parameters.Add("pperson_thai_name", SqlDbType.VarChar).Value = pperson_thai_name;
+                oCommand.Parameters.Add("pperson_thai_surname", SqlDbType.VarChar).Value = pperson_thai_surname;
                 // - - - - - - - - - - - -             
                 oCommand.ExecuteNonQuery();
                 blnResult = true;
@@ -285,6 +297,11 @@ namespace myDLL
                 string pc_active,
                 string pc_created_by,
                 string ptype_position_code,
+                string pbranch_code,
+                string pbank_no,
+                string ptitle_code,
+                string pperson_thai_name,
+                string pperson_thai_surname, 
                 ref string strMessage)
         {
             bool blnResult = false;
@@ -310,7 +327,11 @@ namespace myDLL
                 oCommand.Parameters.Add("pc_active", SqlDbType.VarChar).Value = pc_active;
                 oCommand.Parameters.Add("pc_updated_by", SqlDbType.VarChar).Value = pc_created_by;
                 oCommand.Parameters.Add("ptype_position_code", SqlDbType.VarChar).Value = ptype_position_code;
-
+                oCommand.Parameters.Add("pbranch_code", SqlDbType.VarChar).Value = pbranch_code;
+                oCommand.Parameters.Add("pbank_no", SqlDbType.VarChar).Value = pbank_no;
+                oCommand.Parameters.Add("ptitle_code ", SqlDbType.VarChar).Value = ptitle_code;
+                oCommand.Parameters.Add("pperson_thai_name", SqlDbType.VarChar).Value = pperson_thai_name;
+                oCommand.Parameters.Add("pperson_thai_surname", SqlDbType.VarChar).Value = pperson_thai_surname;
                 // - - - - - - - - - - - -             
                 oCommand.ExecuteNonQuery();
                 blnResult = true;
@@ -352,9 +373,9 @@ namespace myDLL
                 oCommand.CommandType = CommandType.StoredProcedure;
                 oCommand.CommandText = "sp_PAYMENT_SUM_UPD";
                 oCommand.Parameters.Add("ppayment_doc", SqlDbType.VarChar).Value = ppayment_doc;
-                oCommand.Parameters.Add("ppayment_recv", SqlDbType.Money).Value = float.Parse(ppayment_recv);
-                oCommand.Parameters.Add("ppayment_pay", SqlDbType.Money).Value = float.Parse(ppayment_pay);
-                oCommand.Parameters.Add("ppayment_net", SqlDbType.Money).Value = float.Parse(ppayment_net);
+                oCommand.Parameters.Add("ppayment_recv", SqlDbType.Money).Value = double.Parse(ppayment_recv);
+                oCommand.Parameters.Add("ppayment_pay", SqlDbType.Money).Value = double.Parse(ppayment_pay);
+                oCommand.Parameters.Add("ppayment_net", SqlDbType.Money).Value = double.Parse(ppayment_net);
                 oCommand.Parameters.Add("pcomments", SqlDbType.VarChar).Value = pcomments;
                 oCommand.Parameters.Add("pc_active", SqlDbType.VarChar).Value = pc_active;
                 oCommand.Parameters.Add("pc_updated_by", SqlDbType.VarChar).Value = pc_updated_by;
@@ -445,8 +466,8 @@ namespace myDLL
                 oCommand.CommandText = "sp_PAYMENT_DETAIL_INS";
                 oCommand.Parameters.Add("ppayment_doc", SqlDbType.VarChar).Value = ppayment_doc;
                 oCommand.Parameters.Add("pitem_code", SqlDbType.VarChar).Value = pitem_code;
-                oCommand.Parameters.Add("ppayment_item_recv", SqlDbType.Money).Value = float.Parse(ppayment_item_recv);
-                oCommand.Parameters.Add("ppayment_item_pay", SqlDbType.Money).Value = float.Parse(ppayment_item_pay);
+                oCommand.Parameters.Add("ppayment_item_recv", SqlDbType.Money).Value = double.Parse(ppayment_item_recv);
+                oCommand.Parameters.Add("ppayment_item_pay", SqlDbType.Money).Value = double.Parse(ppayment_item_pay);
                 oCommand.Parameters.Add("ppayment_item_tax", SqlDbType.VarChar).Value = ppayment_item_tax;
                 oCommand.Parameters.Add("ppayment_item_sos", SqlDbType.VarChar).Value = ppayment_item_sos;
                 oCommand.Parameters.Add("pcomments_sub", SqlDbType.VarChar).Value = pcomments_sub;
@@ -504,8 +525,8 @@ namespace myDLL
                 oCommand.CommandText = "sp_PAYMENT_DETAIL_BUDGET_INS";
                 oCommand.Parameters.Add("ppayment_doc", SqlDbType.VarChar).Value = ppayment_doc;
                 oCommand.Parameters.Add("pitem_code", SqlDbType.VarChar).Value = pitem_code;
-                oCommand.Parameters.Add("ppayment_item_recv", SqlDbType.Money).Value = float.Parse(ppayment_item_recv);
-                oCommand.Parameters.Add("ppayment_item_pay", SqlDbType.Money).Value = float.Parse(ppayment_item_pay);
+                oCommand.Parameters.Add("ppayment_item_recv", SqlDbType.Money).Value = double.Parse(ppayment_item_recv);
+                oCommand.Parameters.Add("ppayment_item_pay", SqlDbType.Money).Value = double.Parse(ppayment_item_pay);
                 oCommand.Parameters.Add("ppayment_item_tax", SqlDbType.VarChar).Value = ppayment_item_tax;
                 oCommand.Parameters.Add("ppayment_item_sos", SqlDbType.VarChar).Value = ppayment_item_sos;
                 oCommand.Parameters.Add("pcomments_sub", SqlDbType.VarChar).Value = pcomments_sub;
@@ -535,7 +556,6 @@ namespace myDLL
             return blnResult;
         }
         #endregion
-
 
 
         #region SP_IMPORT_PAYMENT_ITEM_INS
@@ -572,7 +592,7 @@ namespace myDLL
                 oCommand.Parameters.Add("pperson_name", SqlDbType.VarChar).Value = pperson_name;
                 oCommand.Parameters.Add("pperson_surname", SqlDbType.VarChar).Value = pperson_surname;
                 oCommand.Parameters.Add("pitem_code", SqlDbType.VarChar).Value = pitem_code;
-                oCommand.Parameters.Add("pitem_amt", SqlDbType.Money).Value = float.Parse(pitem_amt);
+                oCommand.Parameters.Add("pitem_amt", SqlDbType.Money).Value = double.Parse(pitem_amt);
                 oCommand.Parameters.Add("puser_guid", SqlDbType.VarChar).Value = puser_guid;
                 oCommand.Parameters.Add("pc_created_by", SqlDbType.VarChar).Value = pc_created_by;
                 // - - - - - - - - - - - -             
@@ -607,6 +627,7 @@ namespace myDLL
                 string pc_updated_by,
                 string pbudget_type,
                 string strpayment_detail_id,
+                string ppayment_direct_pay,
                 ref string strMessage
             )
         {
@@ -623,8 +644,8 @@ namespace myDLL
                 oCommand.CommandText = "sp_PAYMENT_DETAIL_UPD";
                 oCommand.Parameters.Add("ppayment_doc", SqlDbType.VarChar).Value = ppayment_doc;
                 oCommand.Parameters.Add("pitem_code", SqlDbType.VarChar).Value = pitem_code;
-                oCommand.Parameters.Add("ppayment_item_recv", SqlDbType.Money).Value = float.Parse(ppayment_item_recv);
-                oCommand.Parameters.Add("ppayment_item_pay", SqlDbType.Money).Value = float.Parse(ppayment_item_pay);
+                oCommand.Parameters.Add("ppayment_item_recv", SqlDbType.Money).Value = double.Parse(ppayment_item_recv);
+                oCommand.Parameters.Add("ppayment_item_pay", SqlDbType.Money).Value = double.Parse(ppayment_item_pay);
                 oCommand.Parameters.Add("ppayment_item_tax", SqlDbType.VarChar).Value = ppayment_item_tax;
                 oCommand.Parameters.Add("ppayment_item_sos", SqlDbType.VarChar).Value = ppayment_item_sos;
                 oCommand.Parameters.Add("pcomments_sub", SqlDbType.VarChar).Value = pcomments_sub;
@@ -632,7 +653,7 @@ namespace myDLL
                 oCommand.Parameters.Add("pc_updated_by", SqlDbType.VarChar).Value = pc_updated_by;
                 oCommand.Parameters.Add("pbudget_type", SqlDbType.VarChar).Value = pbudget_type;
                 oCommand.Parameters.Add("ppayment_detail_id", SqlDbType.BigInt).Value = long.Parse(strpayment_detail_id);
-
+                oCommand.Parameters.Add("ppayment_direct_pay", SqlDbType.Money).Value = double.Parse(ppayment_direct_pay);
                 // - - - - - - - - - - - -             
                 oCommand.ExecuteNonQuery();
                 blnResult = true;
@@ -1014,7 +1035,7 @@ namespace myDLL
                 oCommand.CommandText = "sp_PAYMENT_ACC_INS";
                 oCommand.Parameters.Add("ppayment_doc", SqlDbType.VarChar).Value = ppayment_doc;
                 oCommand.Parameters.Add("pitem_code", SqlDbType.VarChar).Value = pitem_code;
-                oCommand.Parameters.Add("ppayment_acc", SqlDbType.Money).Value = float.Parse(ppayment_acc);
+                oCommand.Parameters.Add("ppayment_acc", SqlDbType.Money).Value = double.Parse(ppayment_acc);
                 oCommand.Parameters.Add("pc_active", SqlDbType.VarChar).Value = pc_active;
                 oCommand.Parameters.Add("pc_created_by", SqlDbType.VarChar).Value = pc_created_by;
                 // - - - - - - - - - - - -             
@@ -1059,7 +1080,7 @@ namespace myDLL
                 oCommand.CommandText = "sp_PAYMENT_ACC_UPD";
                 oCommand.Parameters.Add("ppayment_doc", SqlDbType.VarChar).Value = ppayment_doc;
                 oCommand.Parameters.Add("pitem_code", SqlDbType.VarChar).Value = pitem_code;
-                oCommand.Parameters.Add("ppayment_acc", SqlDbType.Money).Value = float.Parse(ppayment_acc);
+                oCommand.Parameters.Add("ppayment_acc", SqlDbType.Money).Value = double.Parse(ppayment_acc);
                 oCommand.Parameters.Add("pc_active", SqlDbType.VarChar).Value = pc_active;
                 oCommand.Parameters.Add("pc_updated_by", SqlDbType.VarChar).Value = pc_updated_by;
                 // - - - - - - - - - - - -             
@@ -1110,7 +1131,7 @@ namespace myDLL
                 oCommand.CommandText = "sp_PAYMENT_ACC_TWIN_UPD";
                 oCommand.Parameters.Add("ppayment_doc", SqlDbType.VarChar).Value = ppayment_doc;
                 oCommand.Parameters.Add("pitem_code", SqlDbType.VarChar).Value = pitem_code;
-                oCommand.Parameters.Add("ppayment_acc", SqlDbType.Money).Value = float.Parse(ppayment_acc);
+                oCommand.Parameters.Add("ppayment_acc", SqlDbType.Money).Value = double.Parse(ppayment_acc);
                 oCommand.Parameters.Add("pc_active", SqlDbType.VarChar).Value = pc_active;
                 oCommand.Parameters.Add("pc_updated_by", SqlDbType.VarChar).Value = pc_updated_by;
 
@@ -1346,7 +1367,7 @@ namespace myDLL
         #endregion
 
 
-        
+
 
         #region SP_PAYMENT_REPORT_SEL
         public bool SP_PAYMENT_REPORT_SEL(string strCriteria, ref DataSet ds, ref string strMessage)
@@ -1835,7 +1856,7 @@ namespace myDLL
                 // - - - - - - - - - - - -             
                 SqlParameter oParam_loan_money = new SqlParameter("loan_money", SqlDbType.Money);
                 oParam_loan_money.Direction = ParameterDirection.Input;
-                oParam_loan_money.Value = float.Parse(pLoan_money);
+                oParam_loan_money.Value = double.Parse(pLoan_money);
                 oCommand.Parameters.Add(oParam_loan_money);
 
                 // - - - - - - - - - - - -             
@@ -1896,7 +1917,7 @@ namespace myDLL
                 // - - - - - - - - - - - -             
                 SqlParameter oParam_loan_money = new SqlParameter("loan_money", SqlDbType.Money);
                 oParam_loan_money.Direction = ParameterDirection.Input;
-                oParam_loan_money.Value = float.Parse(pLoan_money);
+                oParam_loan_money.Value = double.Parse(pLoan_money);
                 oCommand.Parameters.Add(oParam_loan_money);
 
                 // - - - - - - - - - - - -             
@@ -1926,7 +1947,7 @@ namespace myDLL
 
 
         #region SP_EXPORT_DIRECT_PAY_ITEM_SEL
-        public bool SP_EXPORT_DIRECT_PAY_ITEM_SEL(string strCriteria,string strCodeList, ref DataSet ds, ref string strMessage)
+        public bool SP_EXPORT_DIRECT_PAY_ITEM_SEL(string strCriteria, string strCodeList, ref DataSet ds, ref string strMessage)
         {
             bool blnResult = false;
             SqlConnection oConn = new SqlConnection();
@@ -1939,7 +1960,7 @@ namespace myDLL
                 oCommand.Connection = oConn;
                 oCommand.CommandType = CommandType.StoredProcedure;
                 oCommand.CommandText = "sp_EXPORT_DIRECT_PAY_ITEM_SEL";
-                
+
                 SqlParameter oParamI_vc_criteria = new SqlParameter("vc_criteria", SqlDbType.NVarChar);
                 oParamI_vc_criteria.Direction = ParameterDirection.Input;
                 oParamI_vc_criteria.Value = strCriteria;
@@ -2013,7 +2034,7 @@ namespace myDLL
             return blnResult;
         }
         #endregion
-  
+
 
 
         #region IDisposable Members

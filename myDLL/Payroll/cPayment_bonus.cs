@@ -442,7 +442,7 @@ namespace myDLL
                 oCommand.Parameters.Add("pbn_person_name", SqlDbType.VarChar).Value = pbn_person_name;
                 oCommand.Parameters.Add("pbn_person_surname", SqlDbType.VarChar).Value = pbn_person_surname;
                 oCommand.Parameters.Add("pitem_code", SqlDbType.VarChar).Value = pitem_code;
-                oCommand.Parameters.Add("pitem_qty", SqlDbType.Float).Value = float.Parse(pitem_qty);
+                oCommand.Parameters.Add("pitem_qty", SqlDbType.Float).Value = double.Parse(pitem_qty);
                 oCommand.Parameters.Add("pitem_amt", SqlDbType.Money).Value = double.Parse(pitem_amt);
                 oCommand.Parameters.Add("pc_created_by", SqlDbType.VarChar).Value = pc_created_by;
                 // - - - - - - - - - - - -             
@@ -571,7 +571,7 @@ namespace myDLL
                 oCommand.Parameters.Add("pbn_person_group_code", SqlDbType.VarChar).Value = pbn_person_group_code;                
                 oCommand.Parameters.Add("pbudget_plan_code", SqlDbType.VarChar).Value = pbudget_plan_code;
                 oCommand.Parameters.Add("pitem_code", SqlDbType.VarChar).Value = pitem_code;
-                oCommand.Parameters.Add("pitem_qty", SqlDbType.Float).Value = float.Parse(pitem_qty);
+                oCommand.Parameters.Add("pitem_qty", SqlDbType.Float).Value = double.Parse(pitem_qty);
                 oCommand.Parameters.Add("pitem_amt", SqlDbType.Money).Value = double.Parse(pitem_amt);
                 oCommand.Parameters.Add("pc_created_by", SqlDbType.VarChar).Value = pc_created_by;
                 oCommand.ExecuteNonQuery();

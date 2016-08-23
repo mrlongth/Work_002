@@ -112,10 +112,10 @@ namespace myDLL
             oCommand.Parameters.Add(oParam_director_sign_name);
 
             // - - - - - - - - - - - -             
-            SqlParameter oParam_director_sign_image = new SqlParameter("director_sign_image", SqlDbType.Image);
-            oParam_director_sign_image.Direction = ParameterDirection.Input;
-            oParam_director_sign_image.Value = getImage(pdirector_sign_image);
-            oCommand.Parameters.Add(oParam_director_sign_image);
+            //SqlParameter oParam_director_sign_image = new SqlParameter("director_sign_image", SqlDbType.Image);
+            //oParam_director_sign_image.Direction = ParameterDirection.Input;
+            //oParam_director_sign_image.Value = getImage(pdirector_sign_image);
+            //oCommand.Parameters.Add(oParam_director_sign_image);
 
             // - - - - - - - - - - - -             
             SqlParameter oParam_sign_position = new SqlParameter("sign_position", SqlDbType.NVarChar);
