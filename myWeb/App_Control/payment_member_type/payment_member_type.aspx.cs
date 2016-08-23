@@ -474,7 +474,7 @@ namespace myWeb.App_Control.payment_member_type
                                 string strBudgetType = ds.Tables[0].Rows[0]["payment_detail_budget_type"].ToString();
                                 string strpayment_detail_id = ds.Tables[0].Rows[0]["payment_detail_id"].ToString();
                                 if (!oPayment.SP_PAYMENT_DETAIL_UPD(hdfpayment_doc.Value, pitem_code, "0", txtmebertype_credit.Value.ToString(), ppayment_item_tax,
-                                                                                            ppayment_item_sos, pcomments_sub, strActive, strUpdatedBy, strBudgetType, strpayment_detail_id, ref strMessage))
+                                                      ppayment_item_sos, pcomments_sub, strActive, strUpdatedBy, strBudgetType, strpayment_detail_id, txtmebertype_credit.Value.ToString(), ref strMessage))
                                 {
                                     lblError.Text = strMessage;
                                 }

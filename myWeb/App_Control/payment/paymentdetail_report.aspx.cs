@@ -747,16 +747,8 @@ namespace myWeb.App_Control.payment
                      RadioButtonList1.SelectedValue.Equals("A5"))
             {
                 if (!strBankCode.Equals(""))
-                {
-                    if (base.myBudgetType != "R")
-                    {
-                        strCriteria += "  And  branch.bank_code ='" + strBankCode + "' ";
-                    }
-                    else
-                    {
-                        strCriteria += "  And  (case when nullif(branch_2.bank_code,'') is not null then branch_2.bank_code else branch.bank_code end)='" + strBankCode + "'  ";
-                    }
-
+                {                    
+                    strCriteria += "  And  branch.bank_code ='" + strBankCode + "' ";
                 }
 
                 Session["MoneyType"] = "";

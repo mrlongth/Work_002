@@ -203,7 +203,7 @@
                 var lblperson_name = $('#' + this.id.replace('imgList_person', 'lblperson_name'));
                 var lblperson_thai_surname = $('#' + this.id.replace('imgList_person', 'lblperson_thai_surname'));
                 var url = "../lov/person_special_lov.aspx?" +
-                          "person_id=" + txtperson_id.val() +
+                          "person_name=" + lblperson_name.text() + ' ' + lblperson_thai_surname.text() +
                           "&txtperson_id=" + $(txtperson_id).attr('id') +
                           "&lblperson_name=" + $(lblperson_name).attr('id') +
                           "&lblperson_thai_surname=" + $(lblperson_thai_surname).attr('id') +

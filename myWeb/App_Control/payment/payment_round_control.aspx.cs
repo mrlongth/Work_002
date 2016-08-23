@@ -227,7 +227,11 @@ namespace myWeb.App_Control.payment_round
             string pc_status = string.Empty;
             string ptype_position_code = string.Empty;
             string strLastPayment_doc = string.Empty;
-
+            string strbranch_code = string.Empty;
+            string strbank_no = string.Empty;
+            string strtitle_code = string.Empty;
+	        string strperson_thai_name = string.Empty;
+            string strperson_thai_surname = string.Empty;
 
             cPayment_round oPayment_round = new cPayment_round();
             cPayment oPayment = new cPayment();
@@ -322,6 +326,15 @@ namespace myWeb.App_Control.payment_round
                         pbudget_plan_code = ds3.Tables[0].Rows[i]["budget_plan_code"].ToString();
                         pperson_work_status_code = ds3.Tables[0].Rows[i]["person_work_status_code"].ToString();
                         ptype_position_code = ds3.Tables[0].Rows[i]["type_position_code"].ToString();
+
+                        strbranch_code = ds3.Tables[0].Rows[i]["branch_code"].ToString();
+                        strbank_no = ds3.Tables[0].Rows[i]["bank_no"].ToString();
+
+                        strtitle_code = ds3.Tables[0].Rows[i]["title_code"].ToString();
+                        strperson_thai_name = ds3.Tables[0].Rows[i]["person_thai_name"].ToString();
+                        strperson_thai_surname = ds3.Tables[0].Rows[i]["person_thai_surname"].ToString();
+
+
                         ppayment_recv = "0";
                         ppayment_pay = "0";
                         ppayment_net = "0";
@@ -344,7 +357,8 @@ namespace myWeb.App_Control.payment_round
 
                         if (!oPayment.SP_PAYMENT_HEAD_INS(ppayment_date, ppayment_year, ppay_month, ppay_year, pperson_code, pposition_code, pperson_level,
                                     pperson_group_code, pperson_manage_code, pbudget_plan_code, pperson_work_status_code, ppayment_recv,
-                                    ppayment_pay, ppayment_net, pcomments, pc_status, strActive, ptype_position_code, strCreatedBy, ref strMessage))
+                                    ppayment_pay, ppayment_net, pcomments, pc_status, strActive, ptype_position_code, strCreatedBy, strbranch_code , strbank_no, 
+                                    strtitle_code , strperson_thai_name , strperson_thai_surname, ref strMessage))
                         {
                             lblError.Text = strMessage + " Code : " + pperson_code;
                             return false;

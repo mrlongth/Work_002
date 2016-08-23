@@ -42,9 +42,12 @@
                                 <asp:TextBox runat="server" CssClass="textboxdis" Width="100px" ID="txtpayment_doc"
                                     ReadOnly="True"></asp:TextBox>
                             </td>
-                            <td align="left" nowrap valign="middle" style="text-align: right; width: 10%;" colspan="2">&nbsp;&nbsp;
+                            <td align="left" nowrap valign="middle" style="text-align: right; width: 10%;" colspan="2">
+                                <asp:Label ID="Label89" runat="server">ปีงบประมาณ :</asp:Label>
                             </td>
-                            <td align="left" nowrap valign="middle">&nbsp;
+                            <td align="left" nowrap valign="middle">
+                                <asp:DropDownList ID="cboYear" runat="server" CssClass="textboxdis" Enabled="False">
+                                </asp:DropDownList>
                             </td>
                             <td align="left" nowrap valign="middle" style="vertical-align: bottom; width: 1%;">&nbsp;&nbsp;
                             </td>
@@ -57,10 +60,10 @@
                                 <asp:TextBox runat="server" ReadOnly="True" CssClass="textboxdis" Width="100px" ID="txtpayment_date"></asp:TextBox>
                             </td>
                             <td align="left" nowrap valign="middle" style="text-align: right; width: 10%;" colspan="2">
-                                <asp:Label runat="server" ID="Label82">ปีงบประมาณ :</asp:Label>
+                                <asp:Label ID="Label90" runat="server">รอบปีที่จ่าย :</asp:Label>
                             </td>
                             <td align="left" nowrap valign="middle">
-                                <asp:DropDownList runat="server" CssClass="textboxdis" ID="cboYear" Enabled="False">
+                                <asp:DropDownList ID="cboPay_Year" runat="server" CssClass="textboxdis" Enabled="False">
                                 </asp:DropDownList>
                             </td>
                             <td align="left" nowrap valign="middle" style="vertical-align: bottom; width: 1%;">&nbsp;&nbsp;
@@ -75,11 +78,13 @@
                                 </asp:DropDownList>
                             </td>
                             <td align="left" nowrap valign="middle" style="text-align: right" colspan="2">
-                                <asp:Label runat="server" ID="Label85">รอบปีที่จ่าย :</asp:Label>
+                                <asp:Label ID="Label91" runat="server" CssClass="label_error">*</asp:Label>
+                                <asp:Label ID="Label92" runat="server" CssClass="label_hbk">กลุ่มบุคลากร :</asp:Label>
                             </td>
                             <td align="left" nowrap valign="middle">
-                                <asp:DropDownList runat="server" CssClass="textboxdis" ID="cboPay_Year" Enabled="False">
+                                <asp:DropDownList ID="cboPerson_group" runat="server" CssClass="textbox">
                                 </asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="cboPerson_group" Display="None" ErrorMessage="กรุณาเลือกกลุ่มบุคลากร" SetFocusOnError="True" ValidationGroup="A"></asp:RequiredFieldValidator>
                             </td>
                             <td align="left" nowrap valign="middle" style="vertical-align: bottom; width: 1%;">&nbsp;&nbsp;
                             </td>
@@ -89,24 +94,19 @@
                                 <asp:Label ID="Label87" runat="server" cssclass="label_error">*</asp:Label>
                                 <asp:Label ID="Label21" runat="server" CssClass="label_hbk">รหัสบุคลากร :</asp:Label>
                             </td>
-                            <td align="left" nowrap valign="middle">
+                            <td align="left" nowrap valign="middle" colspan="4">
                                 <asp:TextBox ID="txtperson_code" runat="server" CssClass="textboxdis" Width="100px"></asp:TextBox>
                                 &nbsp;<asp:ImageButton ID="imgList_item" runat="server" ImageAlign="AbsBottom" ImageUrl="../../images/controls/view2.gif"
                                     Visible="False" />
                                 <asp:ImageButton ID="imgClear_item" runat="server" CausesValidation="False" ImageAlign="AbsBottom"
                                     ImageUrl="../../images/controls/erase.gif" OnClick="imgClear_item_Click" Style="width: 18px"
                                     Visible="False" />
-                                &nbsp;<asp:TextBox ID="txtperson_name" runat="server" CssClass="textboxdis" ReadOnly="True"
-                                    Width="200px"></asp:TextBox>
-                            </td>
-                            <td align="left" colspan="2" nowrap style="text-align: right" valign="middle">
-                                <asp:Label ID="Label88" runat="server" cssclass="label_error">*</asp:Label>
-                                <asp:Label ID="Label50" runat="server" CssClass="label_hbk">กลุ่มบุคลากร :</asp:Label>
-                            </td>
-                            <td align="left" nowrap valign="middle">
-                                <asp:DropDownList ID="cboPerson_group" runat="server" CssClass="textbox">
+                                &nbsp;<asp:DropDownList ID="cboTitle" runat="server" CssClass="textboxdis">
                                 </asp:DropDownList>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="cboPerson_group" Display="None" ErrorMessage="กรุณาเลือกกลุ่มบุคลากร" SetFocusOnError="True" ValidationGroup="A"></asp:RequiredFieldValidator>
+                                <asp:TextBox ID="txtperson_thai_name" runat="server" CssClass="textboxdis" ReadOnly="True"
+                                    Width="150px"></asp:TextBox>
+                                &nbsp;<asp:TextBox ID="txtperson_thai_surname" runat="server" CssClass="textboxdis" ReadOnly="True" Width="150px"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="cboTitle" Display="None" ErrorMessage="กรุณาเลือกคำนำหน้าชื่อ" SetFocusOnError="True" ValidationGroup="A"></asp:RequiredFieldValidator>
                             </td>
                             <td align="left" nowrap style="vertical-align: bottom; width: 1%;" valign="middle">&nbsp;
                             </td>
@@ -177,11 +177,30 @@
                         </tr>
                         <tr align="left">
                             <td align="right" nowrap valign="middle">
+                                <asp:Label ID="Label66" runat="server" CssClass="label_error">*</asp:Label>
+                                <asp:Label ID="Label8" runat="server" CssClass="label_hbk">สาขาธนาคาร :</asp:Label>
+                            </td>
+                            <td align="left" nowrap valign="middle">
+                                <asp:DropDownList ID="cboBranch_code" runat="server" CssClass="textbox">
+                                </asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="cboBranch_code" Display="None" ErrorMessage="กรุณาเลือกสาขาธนาคาร" SetFocusOnError="True" ValidationGroup="A"></asp:RequiredFieldValidator>
+                            </td>
+                            <td align="left" nowrap style="text-align: right" valign="middle">
+                                <asp:Label ID="Label68" runat="server" CssClass="label_error">*</asp:Label>
+                                <asp:Label ID="Label38" runat="server" CssClass="label_hbk">เลขที่บัญชี :</asp:Label>
+                            </td>
+                            <td align="left" colspan="2" nowrap valign="middle">
+                                <asp:TextBox ID="txtbank_no" runat="server" CssClass="textbox" MaxLength="20" Width="130px"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtbank_no" Display="None" ErrorMessage="กรุณาระบุเลขที่บัญชี" SetFocusOnError="True" ValidationGroup="A"></asp:RequiredFieldValidator>
+                            </td>
+                        </tr>
+                        <tr align="left">
+                            <td align="right" nowrap valign="middle">
                                 <asp:Label ID="Label1" runat="server">ประเภทงบประมาณ :</asp:Label>
                             </td>
-                            <td align="left" nowrap valign="middle"><asp:DropDownList runat="server" CssClass="textbox" ID="cboBudget_type" AutoPostBack="True"
-                                OnSelectedIndexChanged="cboBudget_type_SelectedIndexChanged">
-                            </asp:DropDownList>
+                            <td align="left" nowrap valign="middle">
+                                <asp:DropDownList ID="cboBudget_type" runat="server" AutoPostBack="True" CssClass="textbox" OnSelectedIndexChanged="cboBudget_type_SelectedIndexChanged">
+                                </asp:DropDownList>
                             </td>
                             <td align="left" nowrap style="text-align: right" valign="middle"></td>
                             <td align="left" colspan="2" nowrap valign="middle"></td>

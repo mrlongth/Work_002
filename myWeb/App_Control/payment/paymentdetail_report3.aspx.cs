@@ -36,7 +36,7 @@ namespace myWeb.App_Control.payment
 
 
 
-                imgList_position.Attributes.Add("onclick", "OpenPopUp('800px','400px','93%','ค้นหาข้อมูลตำแหน่งปัจจุบัน' ,'../lov/position_lov.aspx?position_code='+$('#" + txtposition_code.ClientID + "').val()+'&position_name='+$('#" + txtposition_name.ClientID + "').val()+'&ctrl1=" + txtposition_code.ClientID + "&" +
+                imgList_position.Attributes.Add("onclick", "OpenPopUp('800px','400px','93%','ค้นหาข้อมูลระดับตำแหน่งปัจจุบัน' ,'../lov/position_lov.aspx?position_code='+$('#" + txtposition_code.ClientID + "').val()+'&position_name='+$('#" + txtposition_name.ClientID + "').val()+'&ctrl1=" + txtposition_code.ClientID + "&" +
                                                                "ctrl2=" + txtposition_name.ClientID + "&show=1', '1');return false;");
                 imgClear_position.Attributes.Add("onclick", "$('#" + txtposition_code.ClientID + "').val('');$('#" + txtposition_name.ClientID + "').val(''); return false;");
 
@@ -474,7 +474,7 @@ namespace myWeb.App_Control.payment
             string strCode = this.myBudgetType;
             DataSet ds = new DataSet();
             DataTable dt = new DataTable();
-            strCriteria = " Select * from  general where g_type = 'budget_type' and g_code <> 'M' Order by g_sort ";
+            strCriteria = " Select * from  general where g_type = 'budget_type' and g_code not in ('M','S') Order by g_sort ";
             if (oCommon.SEL_SQL(strCriteria, ref ds, ref strMessage))
             {
                 dt = ds.Tables[0];

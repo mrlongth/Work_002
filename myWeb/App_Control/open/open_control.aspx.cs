@@ -408,7 +408,7 @@ namespace myWeb.App_Control.open
             string strCode = this.BudgetType;
             DataSet ds = new DataSet();
             DataTable dt = new DataTable();
-            strCriteria = " Select * from  general where g_type = 'budget_type' and g_code <> 'M' Order by g_sort ";
+            strCriteria = " Select * from  general where g_type = 'budget_type' and g_code not in ('M','S')  Order by g_sort ";
             if (oCommon.SEL_SQL(strCriteria, ref ds, ref strMessage))
             {
                 dt = ds.Tables[0];

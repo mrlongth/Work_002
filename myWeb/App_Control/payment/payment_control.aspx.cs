@@ -95,20 +95,20 @@ namespace myWeb.App_Control.payment
 
                 imgList_item.Attributes.Add("onclick", "OpenPopUp('900px','500px','94%','ค้นหาข้อมูลบุคลากร' ,'../lov/person_lov.aspx?" +
                      "from=payment_control&person_code='+getElementById('" + txtperson_code.ClientID + "').value+'" +
-                     "&person_name='+getElementById('" + txtperson_name.ClientID + "').value+'" +
-                    "&ctrl1=" + txtperson_code.ClientID + "&ctrl2=" + txtperson_name.ClientID + "&show=2', '2');return false;");
+                     "&person_name='+ getElementById('" + txtperson_thai_name.ClientID + "').value+ ' ' + getElementById('" + txtperson_thai_name.ClientID + "').value +'" +
+                    "&ctrl1=" + txtperson_code.ClientID + "&ctrl2=" + txtperson_thai_name.ClientID + "&show=2', '2');return false;");
                 //imgClear_item.Attributes.Add("onclick", "document.getElementById('" + txtperson_code.ClientID + "').value='';document.getElementById('" + txtperson_name.ClientID + "').value=''; return false;");
 
 
 
-                imgList_position.Attributes.Add("onclick", "OpenPopUp('800px','400px','93%','ค้นหาข้อมูลตำแหน่งปัจจุบัน' ,'../lov/position_lov.aspx?position_code='+document.forms[0]." +
+                imgList_position.Attributes.Add("onclick", "OpenPopUp('800px','400px','93%','ค้นหาข้อมูลระดับตำแหน่งปัจจุบัน' ,'../lov/position_lov.aspx?position_code='+document.forms[0]." +
                                  strPrefixCtr_main + "TabPanel1$txtposition_code.value+" + "'&position_name='+document.forms[0]." + strPrefixCtr_main +
                                  "TabPanel1$txtposition_name.value+" + "'&ctrl1=" + txtposition_code.ClientID + "&" +
                                  "ctrl2=" + txtposition_name.ClientID + "&show=2', '2');return false;");
                 imgClear_position.Attributes.Add("onclick", "document.forms[0]." + strPrefixCtr_main + "TabPanel1$txtposition_code.value='';document.forms[0]." +
                                                         strPrefixCtr_main + "TabPanel1$txtposition_name.value=''; return false;");
 
-                imgList_level.Attributes.Add("onclick", "OpenPopUp('800px','400px','93%','ค้นหาข้อมูลระดับตำแหน่ง' ,'../lov/level_position_lov.aspx?level_position_code='+document.forms[0]." +
+                imgList_level.Attributes.Add("onclick", "OpenPopUp('800px','400px','93%','ค้นหาข้อมูลระดับระดับตำแหน่ง' ,'../lov/level_position_lov.aspx?level_position_code='+document.forms[0]." +
                                             strPrefixCtr_main + "TabPanel1$txtperson_level.value+" + "'&position_name='+document.forms[0]." + strPrefixCtr_main +
                                             "TabPanel1$txtlevel_position_name.value+" + "'&ctrl1=" + txtperson_level.ClientID + "&" +
                                             "ctrl2=" + txtlevel_position_name.ClientID + "&show=2', '2');return false;");
@@ -116,7 +116,7 @@ namespace myWeb.App_Control.payment
                                                         strPrefixCtr_main + "TabPanel1$txtlevel_position_name.value=''; return false;");
 
 
-                imgList_type.Attributes.Add("onclick", "OpenPopUp('800px','400px','93%','ค้นหาข้อมูลประเภทตำแหน่ง' ,'../lov/type_position_lov.aspx?type_position_code='+document.forms[0]." +
+                imgList_type.Attributes.Add("onclick", "OpenPopUp('800px','400px','93%','ค้นหาข้อมูลประเภทระดับตำแหน่ง' ,'../lov/type_position_lov.aspx?type_position_code='+document.forms[0]." +
                                                               strPrefixCtr_main + "TabPanel1$txttype_position_code.value+" + "'&type_position_name='+document.forms[0]." + strPrefixCtr_main +
                                                               "TabPanel1$txttype_position_name.value+" + "'&ctrl1=" + txttype_position_code.ClientID + "&" +
                                                               "ctrl2=" + txttype_position_name.ClientID + "&show=2', '2');return false;");
@@ -125,7 +125,7 @@ namespace myWeb.App_Control.payment
 
 
 
-                imgList_person_manage.Attributes.Add("onclick", "OpenPopUp('800px','400px','93%','ค้นหาข้อมูลตำแหน่งทางการบริหาร' ,'../lov/person_manage_lov.aspx?" +
+                imgList_person_manage.Attributes.Add("onclick", "OpenPopUp('800px','400px','93%','ค้นหาข้อมูลระดับตำแหน่งทางการบริหาร' ,'../lov/person_manage_lov.aspx?" +
                                                             "person_manage_code='+document.forms[0]." + strPrefixCtr_main + "TabPanel1$txtperson_manage_code.value+" +
                                                             "'&person_manage_name='+document.forms[0]." + strPrefixCtr_main + "TabPanel1$txtperson_manage_name.value+" +
                                                             "'&ctrl1=" + txtperson_manage_code.ClientID + "&ctrl2=" + txtperson_manage_name.ClientID + "&show=2', '2');return false;");
@@ -177,7 +177,9 @@ namespace myWeb.App_Control.payment
                     //InitcboPay_Month();
                     InitcboRound();
                     InitcboPerson_group();
+                    InitcboBranch();
                     InitcboPerson_work_status();
+                    InitcboTitle();
                     txtpayment_date.Text = cCommon.CheckDate(DateTime.Now.ToShortDateString());
                     ViewState["page"] = Request.QueryString["page"];
                     chkStatus.Checked = true;
@@ -347,7 +349,7 @@ namespace myWeb.App_Control.payment
             string strCode = cboBudget_type.SelectedValue;
             DataSet ds = new DataSet();
             DataTable dt = new DataTable();
-            strCriteria = " Select * from  general where g_type = 'budget_type' and g_code <> 'M' Order by g_sort ";
+            strCriteria = " Select * from  general where g_type = 'budget_type' and g_code not in ('M','S')  Order by g_sort ";
             if (oCommon.SEL_SQL(strCriteria, ref ds, ref strMessage))
             {
                 dt = ds.Tables[0];
@@ -427,6 +429,63 @@ namespace myWeb.App_Control.payment
             }
         }
 
+        private void InitcboTitle()
+        {
+            cCommon oCommon = new cCommon();
+            string strMessage = string.Empty, strCriteria = string.Empty;
+            string strCode = cboTitle.SelectedValue;
+            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
+            strCriteria = " Select * from  title Order by title_name";
+            if (oCommon.SEL_SQL(strCriteria, ref ds, ref strMessage))
+            {
+                dt = ds.Tables[0];
+                cboTitle.Items.Clear();
+                int i;
+                cboTitle.Items.Add(new ListItem("---- กรุณาเลือกข้อมูล ----", ""));
+                for (i = 0; i <= dt.Rows.Count - 1; i++)
+                {
+                    cboTitle.Items.Add(new ListItem(dt.Rows[i]["title_name"].ToString(), dt.Rows[i]["title_code"].ToString()));
+                }
+                if (cboTitle.Items.FindByValue(strCode) != null)
+                {
+                    cboTitle.SelectedIndex = -1;
+                    cboTitle.Items.FindByValue(strCode).Selected = true;
+                }
+            }
+        }
+
+
+        private void InitcboBranch()
+        {
+            cBranch oBranch = new cBranch();
+            string strMessage = string.Empty,
+                        strCriteria = string.Empty,
+                        strbranch_code = string.Empty;
+            strbranch_code = cboBranch_code.SelectedValue;
+            int i;
+            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
+            strCriteria = " and branch.c_active='Y' ";
+            if (oBranch.SP_SEL_BRANCH(strCriteria, ref ds, ref strMessage))
+            {
+                dt = ds.Tables[0];
+                cboBranch_code.Items.Clear();
+                cboBranch_code.Items.Add(new ListItem("---- กรุณาเลือกข้อมูล ----", ""));
+                for (i = 0; i <= dt.Rows.Count - 1; i++)
+                {
+                    cboBranch_code.Items.Add(new ListItem(dt.Rows[i]["branch_name"].ToString(), dt.Rows[i]["branch_code"].ToString()));
+                }
+                if (cboBranch_code.Items.FindByValue(strbranch_code) != null)
+                {
+                    cboBranch_code.SelectedIndex = -1;
+                    cboBranch_code.Items.FindByValue(strbranch_code).Selected = true;
+                }
+            }
+        }
+
+
+
         #endregion
 
         #region Web Form Designer generated code
@@ -482,7 +541,8 @@ namespace myWeb.App_Control.payment
                     if (!oPayment.SP_PAYMENT_HEAD_INS(DateTime.Now.ToString("dd/MM/yyyy"), cboYear.SelectedValue, cboPay_Month.SelectedValue, cboPay_Year.SelectedValue,
                         txtperson_code.Text.Trim(), txtposition_code.Text.Trim(), txtperson_level.Text.Trim(), cboPerson_group.SelectedValue,
                         txtperson_manage_code.Text.Trim(), txtbudget_plan_code.Text.Trim(), cboPerson_work_status.SelectedValue,
-                        "0", "0", "0", strcomments, "O", strActive, txttype_position_code.Text, strUpdatedBy, ref strMessage))
+                        "0", "0", "0", strcomments, "O", strActive, txttype_position_code.Text, strUpdatedBy, cboBranch_code.SelectedValue, txtbank_no.Text, 
+                        cboTitle.SelectedValue , txtperson_thai_name.Text , txtperson_thai_surname.Text, ref strMessage))
                     {
                         lblError.Text = strMessage;
                     }
@@ -509,7 +569,9 @@ namespace myWeb.App_Control.payment
                     if (!oPayment.SP_PAYMENT_HEAD_UPD(strpayment_doc, txtperson_code.Text.Trim(), txtposition_code.Text.Trim(),
                                                       txtperson_level.Text.Trim(), cboPerson_group.SelectedValue,
                                                       txtperson_manage_code.Text.Trim(), txtbudget_plan_code.Text.Trim(),
-                                                      cboPerson_work_status.SelectedValue, strcomments, strActive, strUpdatedBy, txttype_position_code.Text, ref strMessage))
+                                                      cboPerson_work_status.SelectedValue, strcomments, strActive, strUpdatedBy, txttype_position_code.Text,
+                                                      cboBranch_code.SelectedValue, txtbank_no.Text,
+                                                      cboTitle.SelectedValue , txtperson_thai_name.Text , txtperson_thai_surname.Text, ref strMessage))
                     {
                         lblError.Text = strMessage;
                     }
@@ -562,11 +624,10 @@ namespace myWeb.App_Control.payment
             string strpay_year = string.Empty;
             string strpay_month = string.Empty;
             string strperson_code = string.Empty;
-            string strperson_name = string.Empty;
+           
             string strunit_name = string.Empty;
             string strposition_name = string.Empty;
             string strcomments = string.Empty;
-            string strBudget_type = string.Empty;
             string strpayment_recv = string.Empty;
             string strpayment_pay = string.Empty;
             string strpayment_net = string.Empty;
@@ -595,8 +656,15 @@ namespace myWeb.App_Control.payment
                 strwork_name = string.Empty,
                 strfund_name = string.Empty,
                 strdirector_name = string.Empty,
-                strperson_work_status = string.Empty;
-            strBudget_type = string.Empty;
+                strBranch_code = string.Empty,
+                strbank_no = string.Empty,
+
+                strtitle_code = string.Empty,
+	            strperson_thai_name = string.Empty,
+                strperson_thai_surname = string.Empty,
+
+                strperson_work_status = string.Empty,
+                strBudget_type = string.Empty;
 
             try
             {
@@ -616,9 +684,11 @@ namespace myWeb.App_Control.payment
                         strpay_year = ds.Tables[0].Rows[0]["pay_year"].ToString();
                         strpay_month = ds.Tables[0].Rows[0]["pay_month"].ToString();
                         strperson_code = ds.Tables[0].Rows[0]["person_code"].ToString();
-                        strperson_name = ds.Tables[0].Rows[0]["title_name"].ToString() +
-                                                             ds.Tables[0].Rows[0]["person_thai_name"].ToString() + "  " +
-                                                             ds.Tables[0].Rows[0]["person_thai_surname"].ToString();
+                        
+                        strtitle_code = ds.Tables[0].Rows[0]["title_code"].ToString();
+                        strperson_thai_name = ds.Tables[0].Rows[0]["person_thai_name"].ToString();
+                        strperson_thai_surname = ds.Tables[0].Rows[0]["person_thai_surname"].ToString();
+                        
                         strunit_name = ds.Tables[0].Rows[0]["unit_name"].ToString();
                         strposition_name = ds.Tables[0].Rows[0]["position_name"].ToString();
                         strcomments = ds.Tables[0].Rows[0]["comments"].ToString();
@@ -654,6 +724,10 @@ namespace myWeb.App_Control.payment
                         strunit_name = ds.Tables[0].Rows[0]["unit_name"].ToString();
                         strperson_work_status = ds.Tables[0].Rows[0]["person_work_status_code"].ToString();
 
+                        strbank_no = ds.Tables[0].Rows[0]["bank_no"].ToString();
+                        strBranch_code = ds.Tables[0].Rows[0]["branch_code"].ToString();
+
+                     
                         #endregion
 
                         #region set Control
@@ -688,6 +762,22 @@ namespace myWeb.App_Control.payment
                             cboPerson_group.Items.FindByValue(strperson_group).Selected = true;
                         }
 
+                        this.InitcboTitle();
+                        if (cboTitle.Items.FindByValue(strtitle_code) != null)
+                        {
+                            cboTitle.SelectedIndex = -1;
+                            cboTitle.Items.FindByValue(strtitle_code).Selected = true;
+                        }
+
+                        InitcboBranch();
+                        if (cboBranch_code.Items.FindByValue(strBranch_code) != null)
+                        {
+                            cboBranch_code.SelectedIndex = -1;
+                            cboBranch_code.Items.FindByValue(strBranch_code).Selected = true;
+                        }
+                        txtbank_no.Text = strbank_no;
+
+
                         InitcboPerson_work_status();
                         if (cboPerson_work_status.Items.FindByValue(strperson_work_status) != null)
                         {
@@ -702,11 +792,18 @@ namespace myWeb.App_Control.payment
                             cboBudget_type.SelectedIndex = -1;
                             cboBudget_type.Items.FindByValue(strBudget_type).Selected = true;
                         }
+
+
+
+
+
                         ChangeLabelBudget();
 
 
                         txtperson_code.Text = strperson_code;
-                        txtperson_name.Text = strperson_name;
+                        txtperson_thai_name.Text = strperson_thai_name;
+                        txtperson_thai_surname.Text = strperson_thai_surname;
+                        
                         txtunit_name.Text = strunit_name;
                         txtposition_name.Text = strposition_name;
                         txtcomments.Text = strcomments;
@@ -923,7 +1020,7 @@ namespace myWeb.App_Control.payment
                 imgAdd.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgGridAdd"].Rows[0]["img"].ToString();
                 imgAdd.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgGridAdd"].Rows[0]["title"].ToString());
                 imgAdd.Attributes.Add("onclick", "OpenPopUp('750px','330px','95%','เพิ่มข้อมูลเงินกู้รายเดือน','payment_loan_control.aspx?mode=add&payment_doc=" + txtpayment_doc.Text +
-                                                   "&person_code=" + txtperson_code.Text + "&person_name=" + txtperson_name.Text + "','2');return false;");
+                                                   "&person_code=" + txtperson_code.Text + "&person_name=" + txtperson_thai_name.Text + ' ' + txtperson_thai_surname.Text + "','2');return false;");
 
             }
             else if (e.Row.RowType.Equals(DataControlRowType.DataRow) || e.Row.RowState.Equals(DataControlRowState.Alternate))
@@ -963,7 +1060,7 @@ namespace myWeb.App_Control.payment
 
                 ImageButton imgEdit = (ImageButton)e.Row.FindControl("imgEdit");
                 imgEdit.Attributes.Add("onclick", "OpenPopUp('750px','330px','95%','แก้ไขข้อมูลเงินกู้รายเดือน','payment_loan_control.aspx?mode=edit&payment_doc=" + txtpayment_doc.Text +
-                                "&person_name=" + txtperson_name.Text + "&loan_code=" + lblloan_code.Text +
+                                "&person_name=" + txtperson_thai_name.Text + ' ' + txtperson_thai_surname.Text + "&loan_code=" + lblloan_code.Text +
                                 "&person_code=" + txtperson_code.Text + "&loan_acc=" + lblloan_acc.Text + "','2');return false;");
 
                 Label lblCanEdit = (Label)e.Row.FindControl("lblCanEdit");
@@ -1148,7 +1245,7 @@ namespace myWeb.App_Control.payment
                 imgAdd.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgGridAdd"].Rows[0]["img"].ToString();
                 imgAdd.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgGridAdd"].Rows[0]["title"].ToString());
                 imgAdd.Attributes.Add("onclick", "OpenPopUp('800px','425px','94%','เพิ่มข้อมูลการจ่ายเงินเดือนรายรับ/จ่ายบุคลากร','payment_item_control.aspx?mode=add&person_code=" +
-                                                                                txtperson_code.Text + "&person_name=" + txtperson_name.Text + "&payment_doc=" +
+                                                                                txtperson_code.Text + "&person_name=" + txtperson_thai_name.Text +' ' + txtperson_thai_surname.Text + "&payment_doc=" +
                                                                                 txtpayment_doc.Text + "&year=" + cboYear.SelectedValue + "','2');return false;");
 
             }
@@ -1371,7 +1468,7 @@ namespace myWeb.App_Control.payment
                 imgAdd.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgGridAdd"].Rows[0]["img"].ToString();
                 imgAdd.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgGridAdd"].Rows[0]["title"].ToString());
                 imgAdd.Attributes.Add("onclick", "OpenPopUp('800px','425px','94%','เพิ่มข้อมูลการจ่ายเงินเดือนรายรับ (ส่วนกลาง)','payment_item_acc_control.aspx?mode=add&person_code=" +
-                                                                                txtperson_code.Text + "&person_name=" + txtperson_name.Text + "&payment_doc=" +
+                                                                                txtperson_code.Text + "&person_name=" + txtperson_thai_name.Text + ' ' + txtperson_thai_surname.Text + "&payment_doc=" +
                                                                                 txtpayment_doc.Text + "&year=" + cboYear.SelectedValue + "','2');return false;");
 
             }
@@ -1561,6 +1658,7 @@ namespace myWeb.App_Control.payment
             #region clear Data
             //Tab 1 
             string strperson_code = string.Empty,
+                strtitle_code = string.Empty,
                 strperson_thai_name = string.Empty,
                 strperson_thai_surname = string.Empty,
                 strCreatedBy = string.Empty,
@@ -1599,8 +1697,11 @@ namespace myWeb.App_Control.payment
                     {
                         #region get Data
                         strperson_code = ds.Tables[0].Rows[0]["person_code"].ToString();
+
+                        strtitle_code = ds.Tables[0].Rows[0]["title_code"].ToString();
                         strperson_thai_name = ds.Tables[0].Rows[0]["person_thai_name"].ToString();
                         strperson_thai_surname = ds.Tables[0].Rows[0]["person_thai_surname"].ToString();
+
                         strCreatedBy = ds.Tables[0].Rows[0]["c_created_by"].ToString();
                         strUpdatedBy = ds.Tables[0].Rows[0]["c_updated_by"].ToString();
                         strCreatedDate = ds.Tables[0].Rows[0]["d_created_date"].ToString();
@@ -1627,7 +1728,15 @@ namespace myWeb.App_Control.payment
 
                         #region set Control
                         txtperson_code.Text = strperson_code;
-                        txtperson_name.Text = strperson_thai_name + " " + strperson_thai_surname;
+
+                        this.InitcboTitle();
+                        if (cboTitle.Items.FindByValue(strtitle_code) != null)
+                        {
+                            cboTitle.SelectedIndex = -1;
+                            cboTitle.Items.FindByValue(strtitle_code).Selected = true;
+                        }
+                        txtperson_thai_name.Text = strperson_thai_name;
+                        txtperson_thai_surname.Text = strperson_thai_surname;
                         //txtUpdatedBy.Text = strUpdatedBy;
                         //txtUpdatedDate.Text = strUpdatedDate;
 
@@ -1676,7 +1785,10 @@ namespace myWeb.App_Control.payment
         protected void imgClear_item_Click(object sender, ImageClickEventArgs e)
         {
             txtperson_code.Text = string.Empty;
-            txtperson_name.Text = string.Empty;
+
+            cboTitle.SelectedIndex = 0;
+            txtperson_thai_name.Text = string.Empty;
+            txtperson_thai_surname.Text = string.Empty;
 
 
             //Tab 2 
@@ -1684,6 +1796,8 @@ namespace myWeb.App_Control.payment
             txtposition_name.Text = string.Empty;
             txtperson_level.Text = string.Empty;
             InitcboPerson_group();
+
+            this.InitcboBranch();
 
             txtperson_manage_code.Text = string.Empty;
             txtperson_manage_name.Text = string.Empty;

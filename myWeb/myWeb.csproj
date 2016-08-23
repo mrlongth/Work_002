@@ -109,6 +109,9 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Control\level_position\level_position_control.aspx" />
+    <Content Include="App_Control\level_position\level_position_list.aspx" />
+    <Content Include="App_Control\level_position\level_position_view.aspx" />
     <Content Include="App_Control\lov\direct_pay_lov.aspx" />
     <Content Include="App_Control\payment_medical\payment_medical_excel_upload.aspx" />
     <Content Include="App_Control\payment_medical\payment_medical_import.aspx" />
@@ -526,6 +529,27 @@
     </Compile>
     <Compile Include="App_Control\cheque\cheque_print.aspx.designer.cs">
       <DependentUpon>cheque_print.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Control\level_position\level_position_control.aspx.cs">
+      <DependentUpon>level_position_control.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Control\level_position\level_position_control.aspx.designer.cs">
+      <DependentUpon>level_position_control.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Control\level_position\level_position_list.aspx.cs">
+      <DependentUpon>level_position_list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Control\level_position\level_position_list.aspx.designer.cs">
+      <DependentUpon>level_position_list.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Control\level_position\level_position_view.aspx.cs">
+      <DependentUpon>level_position_view.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Control\level_position\level_position_view.aspx.designer.cs">
+      <DependentUpon>level_position_view.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Control\lov\direct_pay_lov.aspx.cs">
       <DependentUpon>direct_pay_lov.aspx</DependentUpon>

@@ -24,6 +24,9 @@ namespace myWeb.App_Control.payment
             lblError.Text = "";
             if (!IsPostBack)
             {
+                txtpayment_direct_pay.Visible = false;
+                lblpayment_direct_pay.Visible = false;
+
                 #region set QueryString
                 if (Request.QueryString["payment_doc"] != null)
                 {
@@ -181,7 +184,9 @@ namespace myWeb.App_Control.payment
                 strcomments_sub = string.Empty,
                 strActive = string.Empty,
                 strCreatedBy = string.Empty,
-                strUpdatedBy = string.Empty;
+                strUpdatedBy = string.Empty,
+                strpayment_direct_pay = string.Empty;
+            
             string strScript = string.Empty;
             string strpayment_detail_id = "0";
             cPayment oPayment = new cPayment();
@@ -217,6 +222,7 @@ namespace myWeb.App_Control.payment
                 strUpdatedBy = Session["username"].ToString();
                 strperson_group = cboPerson_group.SelectedValue;
                 strpayment_detail_id = hddpayment_detail_id.Value.ToString();
+                strpayment_direct_pay =  txtpayment_direct_pay.Value.ToString() ;
                 #endregion
                 if (ViewState["mode"].ToString().ToLower().Equals("edit"))
                 {
@@ -224,7 +230,7 @@ namespace myWeb.App_Control.payment
                     if (!blnDup)
                     {
                         if (oPayment.SP_PAYMENT_DETAIL_UPD(strpayment_doc, stritem_code, stritem_debit, stritem_credit, "Y", "Y",
-                                                            strcomments_sub, strActive, strUpdatedBy, cboBudget_type.SelectedValue, strpayment_detail_id, ref strMessage))
+                                                            strcomments_sub, strActive, strUpdatedBy, cboBudget_type.SelectedValue, strpayment_detail_id, strpayment_direct_pay, ref strMessage))
                         {
                             oPayment.SP_PAYMENT_DETAIL_BUDGET_UPD(strpayment_doc, stritem_code, txtbudget_plan_code.Text,
                                 "N", cboLot.SelectedValue, txtbudget_plan_code.Text, cboLot.SelectedValue, cboPerson_group.Text,
@@ -270,7 +276,7 @@ namespace myWeb.App_Control.payment
                     {
                         if (oPayment.SP_PAYMENT_DETAIL_BUDGET_INS(strpayment_doc, stritem_code, stritem_debit, stritem_credit, "Y", "Y",
                                  strcomments_sub, strActive, strCreatedBy, "N", txtbudget_plan_code.Text,
-                                 "N", cboLot.SelectedValue, cboBudget_type.SelectedValue, strperson_group ,ref strMessage))
+                                 "N", cboLot.SelectedValue, cboBudget_type.SelectedValue, strperson_group, ref strMessage))
                         {
                             blnResult = true;
                         }
@@ -349,6 +355,7 @@ namespace myWeb.App_Control.payment
                 strCreatedDate = string.Empty,
                 strUpdatedDate = string.Empty;
             string strpayment_detail_id = "0";
+            string strpayment_direct_pay = "0";
 
             try
             {
@@ -374,6 +381,9 @@ namespace myWeb.App_Control.payment
                         stritem_type = ds.Tables[0].Rows[0]["item_type"].ToString();
                         stritem_debit = ds.Tables[0].Rows[0]["payment_item_recv"].ToString();
                         stritem_credit = ds.Tables[0].Rows[0]["payment_item_pay"].ToString();
+
+                        strpayment_direct_pay = ds.Tables[0].Rows[0]["payment_direct_pay"].ToString() ;
+
                         if (stritem_type.Equals("D"))
                         {
                             stritem_type = "Debit";
@@ -437,6 +447,8 @@ namespace myWeb.App_Control.payment
                             chkStatus.Checked = false;
                         }
 
+                        txtpayment_direct_pay.Value = strpayment_direct_pay;
+
                         string strbudget_plan_code = ds.Tables[0].Rows[0]["payment_detail_budget_plan_code"].ToString();
                         string strperson_item_lot_code = ds.Tables[0].Rows[0]["payment_detail_lot_code"].ToString();
                         string strperson_group = ds.Tables[0].Rows[0]["payment_detail_person_group_code"].ToString();
@@ -483,6 +495,19 @@ namespace myWeb.App_Control.payment
                             cboPerson_group.SelectedIndex = -1;
                             cboPerson_group.Items.FindByValue(strperson_group).Selected = true;
                         }
+
+
+                        if ((cboPerson_group.SelectedValue == "01" || cboPerson_group.SelectedValue == "02") && txtitem_type.Text == "Credit")
+                        {
+                            txtpayment_direct_pay.Visible = true;
+                            lblpayment_direct_pay.Visible = true;                           
+                        }
+                        else
+                        {
+                            txtpayment_direct_pay.Visible = false;
+                            lblpayment_direct_pay.Visible = false;
+                        }
+
 
                         hddpayment_detail_id.Value = strpayment_detail_id;
                         txtcomments_sub.Text = strcommentsub;
@@ -542,6 +567,15 @@ namespace myWeb.App_Control.payment
                                                             "$('#" + txtdirector_name.ClientID + "').val('');" +
                                                             "$('#" + txtunit_name.ClientID + "').val('');" +
                                                             "$('#" + txtbudget_plan_year.ClientID + "').val('');return false;");
+            if ((cboPerson_group.SelectedValue == "01" || cboPerson_group.SelectedValue == "02")
+                && strBusget_type == "R" && txtitem_type.Text == "Debit")
+            {
+                //chkIsDirectPay.Visible = true;
+            }
+            else
+            {
+                //chkIsDirectPay.Visible = false;
+            }
 
             //if (strBusget_type == "B")
             //{
@@ -611,7 +645,7 @@ namespace myWeb.App_Control.payment
             {
                 strCode = base.myBudgetType;
             }
-            strCriteria = " Select * from  general where g_type = 'budget_type'  and g_code <> 'M' Order by g_sort ";
+            strCriteria = " Select * from  general where g_type = 'budget_type'  and g_code not in ('M','S') Order by g_sort ";
             if (oCommon.SEL_SQL(strCriteria, ref ds, ref strMessage))
             {
                 dt = ds.Tables[0];

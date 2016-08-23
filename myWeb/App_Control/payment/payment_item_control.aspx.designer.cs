@@ -337,13 +337,22 @@ namespace myWeb.App_Control.payment {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
         
         /// <summary>
-        /// ValidationSummary1 control.
+        /// lblpayment_direct_pay control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
+        protected global::System.Web.UI.WebControls.Label lblpayment_direct_pay;
+        
+        /// <summary>
+        /// txtpayment_direct_pay control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Aware.WebControls.AwNumeric txtpayment_direct_pay;
         
         /// <summary>
         /// Label12 control.

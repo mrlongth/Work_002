@@ -93,11 +93,12 @@ namespace myWeb.Person_Manage
             {
                 cboPay_Year.Items.Add(new ListItem(odt.Rows[i]["pay_year"].ToString(), odt.Rows[i]["pay_year"].ToString()));
             }
-            if (cboPay_Year.Items.FindByValue(strYear) != null)
-            {
-                cboPay_Year.SelectedIndex = -1;
-                cboPay_Year.Items.FindByValue(strYear).Selected = true;
-            }
+            //if (cboPay_Year.Items.FindByValue(strYear) != null)
+            //{
+            //    cboPay_Year.SelectedIndex = -1;
+            //    cboPay_Year.Items.FindByValue(strYear).Selected = true;
+            //}
+            cboPay_Year.SelectedIndex = 0;
             InitcboPay_Month();
         }
 
