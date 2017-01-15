@@ -214,6 +214,25 @@ namespace myDLL
 
         #endregion
 
+        #region CBool
+
+        public static bool CBool(object value)
+        {
+            try
+            {
+                return bool.Parse(value.ToString());
+            }
+            catch
+            {
+
+                return false;
+            }
+        }
+
+
+        #endregion
+
+        
         #region Insert a single quote
 
         public static string ISql(string stringData)
