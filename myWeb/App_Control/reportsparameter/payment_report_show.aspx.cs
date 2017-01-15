@@ -349,10 +349,10 @@ namespace myWeb.App_Control.reportsparameter
             {
                 Retive_Rep_payment_slip();
             }
-            else if (ViewState["report_code"].ToString().Equals("Rep_cheque_ktb") ||
-                ViewState["report_code"].ToString().Equals("Rep_cheque_scb"))
+            else if (ViewState["report_code"].ToString().Equals("Rep_loan_ktb") ||
+                ViewState["report_code"].ToString().Equals("Rep_loan_scb"))
             {
-                Retive_Rep_cheque_print();
+                Retive_Rep_loan_print();
             }
             else if (ViewState["report_code"].ToString().Equals("Rep_GSJ")
                 || ViewState["report_code"].ToString().Equals("Rep_GSJ_back"))
@@ -422,11 +422,11 @@ namespace myWeb.App_Control.reportsparameter
             {
                 Retive_Rep_paymentdebitbyperson();
             }
-            else if (ViewState["report_code"].ToString().Equals("Rep_cheque_record")
-                || ViewState["report_code"].ToString().Equals("Rep_cheque_recv")
-                || ViewState["report_code"].ToString().Equals("Rep_cheque_recv2"))
+            else if (ViewState["report_code"].ToString().Equals("Rep_loan_record")
+                || ViewState["report_code"].ToString().Equals("Rep_loan_recv")
+                || ViewState["report_code"].ToString().Equals("Rep_loan_recv2"))
             {
-                Retive_Rep_cheque_record();
+                Retive_Rep_loan_record();
             }
             else if (ViewState["report_code"].ToString().Equals("Rep_paymentbytranfer")
                 || ViewState["report_code"].ToString().Equals("Rep_paymentbytranfer02"))
@@ -1598,7 +1598,7 @@ namespace myWeb.App_Control.reportsparameter
             }
         }
 
-        private void Retive_Rep_cheque_print()
+        private void Retive_Rep_loan_print()
         {
             try
             {
@@ -1806,7 +1806,7 @@ namespace myWeb.App_Control.reportsparameter
             }
         }
 
-        private void Retive_Rep_cheque_record()
+        private void Retive_Rep_loan_record()
         {
             try
             {

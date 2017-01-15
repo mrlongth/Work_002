@@ -190,7 +190,7 @@ namespace myWeb.App_Control.person {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLoan_remark;
+        protected global::Aware.WebControls.AwNumeric txtLoan_remark;
         
         /// <summary>
         /// imgSaveOnly control.

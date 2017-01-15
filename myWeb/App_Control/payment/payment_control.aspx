@@ -101,11 +101,11 @@
                                 <asp:ImageButton ID="imgClear_item" runat="server" CausesValidation="False" ImageAlign="AbsBottom"
                                     ImageUrl="../../images/controls/erase.gif" OnClick="imgClear_item_Click" Style="width: 18px"
                                     Visible="False" />
-                                &nbsp;<asp:DropDownList ID="cboTitle" runat="server" CssClass="textboxdis">
+                                &nbsp;<asp:DropDownList ID="cboTitle" runat="server" CssClass="textbox">
                                 </asp:DropDownList>
-                                <asp:TextBox ID="txtperson_thai_name" runat="server" CssClass="textboxdis" ReadOnly="True"
+                                <asp:TextBox ID="txtperson_thai_name" runat="server" CssClass="textbox" 
                                     Width="150px"></asp:TextBox>
-                                &nbsp;<asp:TextBox ID="txtperson_thai_surname" runat="server" CssClass="textboxdis" ReadOnly="True" Width="150px"></asp:TextBox>
+                                &nbsp;<asp:TextBox ID="txtperson_thai_surname" runat="server" CssClass="textbox" Width="150px"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="cboTitle" Display="None" ErrorMessage="กรุณาเลือกคำนำหน้าชื่อ" SetFocusOnError="True" ValidationGroup="A"></asp:RequiredFieldValidator>
                             </td>
                             <td align="left" nowrap style="vertical-align: bottom; width: 1%;" valign="middle">&nbsp;
@@ -521,7 +521,7 @@
                     </table>
                 </ContentTemplate>
             </ajaxtoolkit:TabPanel>
-            <ajaxtoolkit:TabPanel ID="TabPanel5" runat="server" HeaderText="ข้อมูลบัญชีเงินกู้" Visible="False">
+            <ajaxtoolkit:TabPanel ID="TabPanel5" runat="server" HeaderText="ข้อมูลบัญชีเงินกู้" Visible="True">
                 <HeaderTemplate>
                     ข้อมูลบัญชีเงินกู้
                 </HeaderTemplate>

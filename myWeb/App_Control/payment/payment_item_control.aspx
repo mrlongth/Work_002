@@ -16,7 +16,7 @@
             <td align="left" nowrap valign="middle" style="text-align: right">
                 <asp:Label ID="lblError" runat="server" CssClass="label_error"></asp:Label>
                 <asp:Label runat="server" ID="lblLastUpdatedBy">Last Updated By :</asp:Label>
-            </td>
+            </td> รหัสบุคลากร
             <td align="left" style="width: 1%">
                 <asp:TextBox runat="server" ReadOnly="True" CssClass="textboxdis" Width="148px" ID="txtUpdatedBy">
                 </asp:TextBox>

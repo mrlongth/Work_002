@@ -70,7 +70,7 @@ namespace myWeb.App_Control.lov
                 {
                     ViewState["ctrl2"] = string.Empty;
                 }
-                #endregion 
+                #endregion
 
                 if (Request.QueryString["show"] != null)
                 {
@@ -79,8 +79,8 @@ namespace myWeb.App_Control.lov
                 else
                 {
                     ViewState["show"] = "1";
-                }               
-                
+                }
+
                 ViewState["sort"] = "level_position_code";
                 ViewState["direction"] = "ASC";
                 BindGridView();
@@ -92,7 +92,7 @@ namespace myWeb.App_Control.lov
         }
 
         #region private function
-        
+
         private void BindGridView()
         {
             cPosition oPosition = new cPosition();
@@ -123,15 +123,19 @@ namespace myWeb.App_Control.lov
                         strlevel_position_name = ds.Tables[0].Rows[0]["level_position_name"].ToString();
                         if (!ViewState["show"].ToString().Equals("1"))
                         {
-                            strScript = "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl1"].ToString() + "').value='" + strlevel_position_code + "';\n " +
-                                                "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl2"].ToString() + "').value='" + strlevel_position_name + "';\n" +
-                                                "ClosePopUp('" + ViewState["show"].ToString() + "');";
+                            if (!string.IsNullOrEmpty(ViewState["ctrl1"].ToString()))
+                                strScript = "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl1"].ToString() + "').value='" + strlevel_position_code + "';\n ";
+                            if (!string.IsNullOrEmpty(ViewState["ctrl2"].ToString()))
+                                strScript += "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl2"].ToString() + "').value='" + strlevel_position_name + "';\n";
+                            strScript += "ClosePopUp('" + ViewState["show"].ToString() + "');";
                         }
                         else
                         {
-                            strScript = "window.parent.document.getElementById('" + ViewState["ctrl1"].ToString() + "').value='" + strlevel_position_code + "';\n " +
-                                                "window.parent.document.getElementById('" + ViewState["ctrl2"].ToString() + "').value='" + strlevel_position_name + "';\n" +
-                                                "ClosePopUp('" + ViewState["show"].ToString() + "');";
+                            if (!string.IsNullOrEmpty(ViewState["ctrl1"].ToString()))
+                                strScript = "window.parent.document.getElementById('" + ViewState["ctrl1"].ToString() + "').value='" + strlevel_position_code + "';\n ";
+                            if (!string.IsNullOrEmpty(ViewState["ctrl2"].ToString()))
+                                strScript += "window.parent.document.getElementById('" + ViewState["ctrl2"].ToString() + "').value='" + strlevel_position_name + "';\n";
+                            strScript += "ClosePopUp('" + ViewState["show"].ToString() + "');";
                         }
                         ScriptManager.RegisterStartupScript(Page, Page.GetType(), "close", strScript, true);
                     }
@@ -203,22 +207,28 @@ namespace myWeb.App_Control.lov
                 lblNo.Text = nNo.ToString();
                 Label lbllevel_position_code = (Label)e.Row.FindControl("lbllevel_position_code");
                 Label lbllevel_position_name = (Label)e.Row.FindControl("lbllevel_position_name");
+                string strlevel_position_code = string.Empty;
                 if (!ViewState["show"].ToString().Equals("1"))
                 {
-                    lbllevel_position_code.Text = "<a href=\"\" onclick=\"" +
-                                                            "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl1"].ToString() + "').value='" + lbllevel_position_code.Text + "';\n " +
-                                                            "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl2"].ToString() + "').value='" + lbllevel_position_name.Text + "';\n" +
-                                                            "ClosePopUp('" + ViewState["show"].ToString() + "');" +
-                                                            "return false;\" >" + lbllevel_position_code.Text + "</a>";
+                    strlevel_position_code = "<a href=\"\" onclick=\"";
+                   if (!string.IsNullOrEmpty(ViewState["ctrl1"].ToString()))
+                       strlevel_position_code += "window.parent.frames['iframeShow"+ (int.Parse(ViewState["show"].ToString()) - 1)+ "'].document.getElementById('" + ViewState["ctrl1"].ToString()+ "').value='" + lbllevel_position_code.Text + "';\n ";
+                    if (!string.IsNullOrEmpty(ViewState["ctrl2"].ToString()))
+                        strlevel_position_code += "window.parent.frames['iframeShow"+ (int.Parse(ViewState["show"].ToString()) - 1)+ "'].document.getElementById('" + ViewState["ctrl2"].ToString()+ "').value='" + lbllevel_position_name.Text + "';\n";
+                    strlevel_position_code += "ClosePopUp('" + ViewState["show"].ToString() + "');";
+                    strlevel_position_code += "return false;\" >" + lbllevel_position_code.Text + "</a>";
                 }
-                else 
+                else
                 {
-                    lbllevel_position_code.Text = "<a href=\"\" onclick=\"" +
-                                                            "window.parent.document.getElementById('" + ViewState["ctrl1"].ToString() + "').value='" + lbllevel_position_code.Text + "';\n " +
-                                                            "window.parent.document.getElementById('" +  ViewState["ctrl2"].ToString() + ").value='" + lbllevel_position_name.Text + "';\n" +
-                                                            "ClosePopUp('" + ViewState["show"].ToString() + "');" +
-                                                            "return false;\" >" + lbllevel_position_code.Text + "</a>";
+                    strlevel_position_code = "<a href=\"\" onclick=\"";
+                    if (!string.IsNullOrEmpty(ViewState["ctrl1"].ToString()))
+                        strlevel_position_code += "window.parent.document.getElementById('" + ViewState["ctrl1"].ToString()+ "').value='" + lbllevel_position_code.Text + "';\n ";
+                    if (!string.IsNullOrEmpty(ViewState["ctrl2"].ToString()))
+                        strlevel_position_code += "window.parent.document.getElementById('" + ViewState["ctrl2"].ToString()+ ").value='" + lbllevel_position_name.Text + "';\n";
+                    strlevel_position_code += "ClosePopUp('" + ViewState["show"].ToString() + "');";
+                    strlevel_position_code +="return false;\" >" + lbllevel_position_code.Text + "</a>";
                 }
+                lbllevel_position_code.Text = strlevel_position_code;
             }
         }
 

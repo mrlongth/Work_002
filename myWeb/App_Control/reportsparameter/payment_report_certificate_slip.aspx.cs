@@ -15,6 +15,7 @@ using myDLL;
 
 namespace myWeb.App_Control.reportsparameter
 {
+    using Microsoft.SqlServer.Server;
 
     public partial class payment_report_certificate_slip : PageBase
     {
@@ -162,94 +163,66 @@ namespace myWeb.App_Control.reportsparameter
 
         private void getQueryString()
         {
-            if (Request.QueryString["report_id"] != null)
+            if (Request.QueryString["req_cer_id"] != null)
             {
-                ViewState["report_id"] = Request.QueryString["report_id"].ToString();
+                ViewState["req_cer_id"] = Request.QueryString["req_cer_id"].ToString();
             }
             else
             {
-                ViewState["report_id"] = "0";
+                ViewState["req_cer_id"] = "0";
             }
 
-            if (!ViewState["report_id"].Equals("0"))
+            if (!ViewState["req_cer_id"].Equals("0"))
             {
-                cPayment oPayment = new cPayment();
+                cReq_cer oReq_cer = new cReq_cer();
+                cCommon oCommon = new cCommon();
                 string strMessage = string.Empty;
-                string strCriteria2 = string.Empty;
+                string strCriteria = string.Empty;
                 DataSet ds = new DataSet();
+                DataSet ds2 = new DataSet();
                 DataTable dt = new DataTable();
-                strCriteria2 = " and report_id='" + ViewState["report_id"].ToString() + "' ";
-                if (oPayment.SP_PAYMENT_REPORT_SEL(strCriteria2, ref ds, ref strMessage))
+                ViewState["item_des"] = null;
+                strCriteria = " and req_cer_id='" + ViewState["req_cer_id"].ToString() + "' ";
+                if (oReq_cer.SP_REQ_CER_HEAD_SEL(strCriteria, ref ds, ref strMessage))
                 {
                     dt = ds.Tables[0];
                     if (dt.Rows.Count > 0)
                     {
-                        ViewState["report_code"] = dt.Rows[0]["report_code"].ToString();
-                        ViewState["report_title"] = dt.Rows[0]["report_title"].ToString();
-                        ViewState["remark1"] = dt.Rows[0]["remark1"].ToString();
-                        ViewState["remark2"] = dt.Rows[0]["remark2"].ToString();
-                        ViewState["remark3"] = dt.Rows[0]["remark3"].ToString();
+                        var dataRow = dt.Rows[0];
+                        var reportCode = string.Empty;
+                        if (dt.Rows[0]["req_code"].ToString() == "05"
+                            || dt.Rows[0]["req_code"].ToString() == "06" || dt.Rows[0]["req_code"].ToString() == "07"
+                            || dt.Rows[0]["req_code"].ToString() == "08" || dt.Rows[0]["req_code"].ToString() == "09" 
+                            || dt.Rows[0]["req_code"].ToString() == "10")
+                        {
+                            ViewState["report_code"] = "Rep_payment_req_certificate_05";
+                        }
+                        else
+                        {
+                            ViewState["report_code"] = "Rep_payment_req_certificate_" + dt.Rows[0]["req_code"].ToString();
+                        }
+                        ViewState["report_title"] = dt.Rows[0]["req_name"].ToString();
+                        if (dt.Rows[0]["is_show_detail"].ToString() == "True")
+                        {
+                            if (oCommon.SEL_SQL("select [dbo].[getReq_cer_item_desc](" + ViewState["req_cer_id"].ToString() + ")", ref ds2, ref strMessage))
+                            {
+                                ViewState["item_des"] = ds2.Tables[0].Rows[0][0].ToString();
+                            }
+                        }
                     }
-                }
-            }
-            else
-            {
-                if (Request.QueryString["report_code"] != null)
-                {
-                    ViewState["report_code"] = Request.QueryString["report_code"].ToString();
-                }
-                else
-                {
-                    ViewState["report_code"] = string.Empty;
+                    this.myREQ_CER_HEAD = dt;
                 }
             }
 
-            if (Request.QueryString["months"] != null)
-            {
-                ViewState["months"] = Request.QueryString["months"].ToString();
-            }
-            else
-            {
-                ViewState["months"] = string.Empty;
-            }
+        }
 
-            if (Request.QueryString["year"] != null)
+        public DataTable myREQ_CER_HEAD
+        {
+            get
             {
-                ViewState["year"] = Request.QueryString["year"].ToString();
+                return (DataTable)(ViewState["myREQ_CER_HEAD"]);
             }
-            else
-            {
-                ViewState["year"] = string.Empty;
-            }
-
-            if (Request.QueryString["criteria"] != null)
-            {
-                ViewState["criteria"] = HttpUtility.HtmlDecode(Request.QueryString["criteria"].ToString());
-            }
-            else
-            {
-                ViewState["criteria"] = string.Empty;
-            }
-
-            if (Request.QueryString["item_des"] != null)
-            {
-                ViewState["item_des"] = Request.QueryString["item_des"].ToString();
-            }
-            else
-            {
-                ViewState["item_des"] = "0";
-            }
-
-            if (Request.QueryString["person_retiregroup"] != null)
-            {
-                ViewState["person_retiregroup"] = Request.QueryString["person_retiregroup"].ToString();
-            }
-            else
-            {
-                ViewState["person_retiregroup"] = "";
-            }
-
-
+            set { ViewState["myREQ_CER_HEAD"] = value; }
         }
 
         private void Retive_Rep_payment_slip()
@@ -271,56 +244,14 @@ namespace myWeb.App_Control.reportsparameter
                 logOnInfo.ConnectionInfo.UserID = strDbuser;
                 logOnInfo.ConnectionInfo.Password = strDbpassword;
                 tableLogOnInfos.Add(logOnInfo);
-
-                cPayment oPayment = new cPayment();
-                DataSet ds = new DataSet();
-                DataSet dsC = new DataSet();
-                DataSet dsD = new DataSet();
-                string strMessage = string.Empty;
-                string strCriteria = string.Empty;
-                if (!oPayment.SP_REP_PAYMENT_CERTIFICATE_SEL(
-                    Session["criteria"].ToString().Replace("ph.",""),
-                    ViewState["months"].ToString(),
-                    ViewState["year"].ToString(),
-                    "D",
-                    ref dsD, ref strMessage))
-                {
-                    lblError.Text = strMessage;
-                }
-                if (!oPayment.SP_REP_PAYMENT_CERTIFICATE_SEL(
-                     Session["criteria"].ToString().Replace("ph.", ""),
-                     ViewState["months"].ToString(),
-                     ViewState["year"].ToString(),
-                     "C",
-                     ref dsC, ref strMessage))
-                {
-                    lblError.Text = strMessage;
-                }
-                if (!oPayment.SP_REP_PAYMENT_MAIN_CERTIFICATE_SEL(
-                      Session["criteria"].ToString(),
-                     ViewState["months"].ToString(),
-                     ViewState["year"].ToString(),
-                     ref ds, ref strMessage))
-                {
-                    lblError.Text = strMessage;
-                }
-                rptSource.SetDataSource(ds.Tables[0]);
-                rptSource.OpenSubreport("sub_debit").SetDataSource(dsD.Tables[0]);
-                rptSource.OpenSubreport("sub_credit").SetDataSource(dsC.Tables[0]);
-
+                rptSource.SetDataSource(this.myREQ_CER_HEAD);
                 rptSource.SetParameterValue("UserName", strUsername);
                 rptSource.SetParameterValue("CompanyName", strCompanyname);
-                rptSource.SetParameterValue("pMonth", getMonth());
-                rptSource.SetParameterValue("pYear", ViewState["year"].ToString());
-
+                if (ViewState["item_des"] != null)
+                {
+                    rptSource.SetParameterValue("item_des", ViewState["item_des"].ToString());
+                }
                 CrystalReportViewer1.LogOnInfo = tableLogOnInfos;
-
-                oPayment.Dispose();
-                ds.Dispose();
-                dsC.Dispose();
-                dsD.Dispose();
-
-
             }
             catch (Exception ex)
             {

@@ -97,7 +97,7 @@ namespace myWeb.App_Control.lov
         }
 
         #region private function
-        
+
         private void BindGridView()
         {
             cWork owork = new cWork();
@@ -134,15 +134,19 @@ namespace myWeb.App_Control.lov
                         strwork_name = ds.Tables[0].Rows[0]["work_name"].ToString();
                         if (!ViewState["show"].ToString().Equals("1"))
                         {
-                            strScript = "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl1"].ToString() + "').value='" + strwork_code + "';\n " +
-                                                "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl2"].ToString() + "').value='" + strwork_name + "';\n" +
-                                                "ClosePopUp('" + ViewState["show"].ToString() + "');";
+                            if (!string.IsNullOrEmpty(ViewState["ctrl1"].ToString()))
+                                strScript = "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl1"].ToString() + "').value='" + strwork_code + "';\n ";
+                            if (!string.IsNullOrEmpty(ViewState["ctrl2"].ToString()))
+                                strScript += "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl2"].ToString() + "').value='" + strwork_name + "';\n";
+                            strScript += "ClosePopUp('" + ViewState["show"].ToString() + "');";
                         }
                         else
                         {
-                            strScript = "window.parent.document.forms[0]." + ViewState["ctrl1"].ToString() + ".value='" + strwork_code + "';\n " +
-                                                "window.parent.document.forms[0]." + ViewState["ctrl2"].ToString() + ".value='" + strwork_name + "';\n" +
-                                                "ClosePopUp('" + ViewState["show"].ToString() + "');";
+                            if (!string.IsNullOrEmpty(ViewState["ctrl1"].ToString()))
+                                strScript = "window.parent.document.forms[0]." + ViewState["ctrl1"].ToString() + ".value='" + strwork_code + "';\n ";
+                            if (!string.IsNullOrEmpty(ViewState["ctrl2"].ToString()))
+                                strScript += "window.parent.document.forms[0]." + ViewState["ctrl2"].ToString() + ".value='" + strwork_name + "';\n";
+                            strScript += "ClosePopUp('" + ViewState["show"].ToString() + "');";
                         }
                         ScriptManager.RegisterStartupScript(Page, Page.GetType(), "close", strScript, true);
                     }
@@ -168,6 +172,7 @@ namespace myWeb.App_Control.lov
                 ds.Dispose();
             }
         }
+
         #endregion
 
         protected void imgFind_Click(object sender, ImageClickEventArgs e)
@@ -214,23 +219,28 @@ namespace myWeb.App_Control.lov
                 lblNo.Text = nNo.ToString();
                 Label lblwork_code = (Label)e.Row.FindControl("lblwork_code");
                 Label lblwork_name = (Label)e.Row.FindControl("lblwork_name");
-
+                string strwork_code = string.Empty;
                 if (!ViewState["show"].ToString().Equals("1"))
                 {
-                    lblwork_code.Text = "<a href=\"\" onclick=\"" +
-                                        "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl1"].ToString() + "').value='" + lblwork_code.Text + "';\n " +
-                                        "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl2"].ToString() + "').value='" + lblwork_name.Text + "';\n" +
-                                        "ClosePopUp('" + ViewState["show"].ToString() + "');" +
-                                        "return false;\" >" + lblwork_code.Text + "</a>";
+                    strwork_code = "<a href=\"\" onclick=\"";
+                    if (!string.IsNullOrEmpty(ViewState["ctrl1"].ToString()))
+                        strwork_code += "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl1"].ToString() + "').value='" + lblwork_code.Text + "';\n " ;
+                    if (!string.IsNullOrEmpty(ViewState["ctrl2"].ToString()))
+                        strwork_code += "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl2"].ToString() + "').value='" + lblwork_name.Text + "';\n" ;
+                    strwork_code += "ClosePopUp('" + ViewState["show"].ToString() + "');";
+                    strwork_code += "return false;\" >" + lblwork_code.Text + "</a>";
                 }
                 else
                 {
-                    lblwork_code.Text = "<a href=\"\" onclick=\"" +
-                                    "window.parent.document.forms[0]." + ViewState["ctrl1"].ToString() + ".value='" + lblwork_code.Text + "';\n " +
-                                    "window.parent.document.forms[0]." + ViewState["ctrl2"].ToString() + ".value='" + lblwork_name.Text + "';\n" +
-                                    "ClosePopUp('" + ViewState["show"].ToString() + "');" +
-                                    "return false;\" >" + lblwork_code.Text + "</a>";
+                    strwork_code = "<a href=\"\" onclick=\"";
+                    if (!string.IsNullOrEmpty(ViewState["ctrl1"].ToString()))
+                        strwork_code += "window.parent.document.forms[0]." + ViewState["ctrl1"].ToString() + ".value='" + lblwork_code.Text + "';\n " ;
+                    if (!string.IsNullOrEmpty(ViewState["ctrl2"].ToString()))
+                        strwork_code += "window.parent.document.forms[0]." + ViewState["ctrl2"].ToString() + ".value='" + lblwork_name.Text + "';\n" ;
+                    strwork_code += "ClosePopUp('" + ViewState["show"].ToString() + "');";
+                    strwork_code += "return false;\" >" + lblwork_code.Text + "</a>";
                 }
+                lblwork_code.Text = strwork_code;
             }
         }
 
@@ -294,9 +304,9 @@ namespace myWeb.App_Control.lov
             }
         }
 
-       
 
-  
+
+
 
     }
 }

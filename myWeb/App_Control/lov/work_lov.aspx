@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site_lov.Master" EnableEventValidation="false"
     AutoEventWireup="true" CodeBehind="work_lov.aspx.cs" Inherits="myWeb.App_Control.lov.work_lov"
-    Title="ค้นหาข้อมูลงาน" %>
+    Title="ค้นหาข้อมูลงาน/หลักสูตร" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

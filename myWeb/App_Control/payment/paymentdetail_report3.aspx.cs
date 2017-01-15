@@ -917,7 +917,7 @@ namespace myWeb.App_Control.payment
                 strReport_code = "Rep_payment_tax_year";
 
                 if (strPay_Month.Length > 0)
-                    strCriteria += " and (payment_head.pay_year + payment_head.pay_month) >= '" +  (cboPay_Year.SelectedValue + cboPay_Month.SelectedValue) + "' ";
+                    strCriteria += " and (payment_head.pay_year + payment_head.pay_month) <= '" +  (cboPay_Year.SelectedValue + cboPay_Month.SelectedValue) + "' ";
 
                 strCriteria = strCriteria.Replace("view_payment.", "view_person_list.").Replace(".payment_detail_", ".");
             }

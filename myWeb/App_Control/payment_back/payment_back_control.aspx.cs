@@ -23,7 +23,7 @@ namespace myWeb.App_Control.payment_back
         {
             if (!pNumber.ToString().Equals(""))
             {
-                string strNumber = String.Format("{0:#,##0.00}", float.Parse(pNumber.ToString()));
+                string strNumber = String.Format("{0:#,##0.00}", double.Parse(pNumber.ToString()));
                 return strNumber;
             }
             return "";

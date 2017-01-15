@@ -61,7 +61,7 @@
                 <asp:Label ID="lblType_position_name" runat="server">XXXXX</asp:Label>
             </td>
         </tr>
-        <tr align="left">
+      <%--  <tr align="left">
             <td align="right" nowrap valign="middle" style="width: 20%">
                 <asp:Label ID="Label41" runat="server" CssClass="label_h">เงินเดือนปัจจุบัน :</asp:Label>
             </td>
@@ -84,19 +84,13 @@
             <td align="left" nowrap>
                 <asp:Label ID="lblPerson_reward" runat="server">XXXXX</asp:Label>
             </td>
-        </tr>
+        </tr>--%>
         <tr align="left">
             <td align="right" nowrap valign="middle" style="width: 20%">
-                <asp:Label ID="Label80" runat="server" CssClass="label_h">ประกอบการพิจารณาในการกู้เงินจาก :</asp:Label>
+                <asp:Label ID="Label80" runat="server" CssClass="label_h">ประเภทหนังสือรับรอง :</asp:Label>
             </td>
             <td align="left" nowrap valign="middle">
-                <asp:DropDownList ID="cboTypeLoan" runat="server" CssClass="textbox" 
-                    ValidationGroup="A">
-                    <asp:ListItem Value="">---- กรุณาเลือก ----</asp:ListItem>
-                    <asp:ListItem Value="2">สหกรณ์ออมทรัพย์ครูเชียงใหม่ </asp:ListItem>
-                    <asp:ListItem Value="3">ธนาคารกรุงไทย จำกัด มหาชน</asp:ListItem>
-                    <asp:ListItem Value="4">ธนาคารออมสิน</asp:ListItem>
-                    <asp:ListItem Value="5">ธนาคารอาคารสงเคราะห์</asp:ListItem>
+                <asp:DropDownList ID="cboTypeLoan" runat="server" CssClass="textbox" ValidationGroup="A">
                 </asp:DropDownList>
             </td>
         </tr>
@@ -108,7 +102,7 @@
                     <asp:ImageButton runat="server" AlternateText="พิมพ์ข้อมูล" ImageUrl="~/images/button/print.png"
                         ID="imgPrint" OnClick="imgPrint_Click" ValidationGroup="A"></asp:ImageButton>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="cboTypeLoan"
-                    Display="None" ErrorMessage="กรุณาเลือกประเภทประกอบการพิจารณาในการกู้เงิน" 
+                    Display="None" ErrorMessage="ประเภทหนังสือรับรอง" 
                     ValidationGroup="A" SetFocusOnError="True"></asp:RequiredFieldValidator>
                 <asp:ValidationSummary ID="ValidationSummary1" runat="server" 
                     ShowMessageBox="True" ShowSummary="False" ValidationGroup="A" />

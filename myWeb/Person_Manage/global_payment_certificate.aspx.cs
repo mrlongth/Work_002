@@ -56,6 +56,34 @@ namespace myWeb.Person_Manage
         }
         #endregion
 
+
+        private void InitcboLoanType()
+        {
+            cCommon oCommon = new cCommon();
+            string strMessage = string.Empty, strCriteria = string.Empty;
+            string strCode = cboTypeLoan.SelectedValue;
+            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
+            strCriteria = " Select * from  general where g_type = 'certificate' Order by g_sort";
+            if (oCommon.SEL_SQL(strCriteria, ref ds, ref strMessage))
+            {
+                dt = ds.Tables[0];
+                cboTypeLoan.Items.Clear();
+                int i;
+                cboTypeLoan.Items.Add(new ListItem("---- กรุณาเลือกข้อมูล ----", ""));
+                for (i = 0; i <= dt.Rows.Count - 1; i++)
+                {
+                    cboTypeLoan.Items.Add(new ListItem(dt.Rows[i]["g_name"].ToString(), dt.Rows[i]["g_code"].ToString()));
+                }
+                if (cboTypeLoan.Items.FindByValue(strCode) != null)
+                {
+                    cboTypeLoan.SelectedIndex = -1;
+                    cboTypeLoan.Items.FindByValue(strCode).Selected = true;
+                }
+            }
+        }
+
+
         private void setData()
         {
             cPerson oPerson = new cPerson();
@@ -103,28 +131,30 @@ namespace myWeb.Person_Manage
                         lblPosition_name.Text = strposition_name;
 
                         lblType_position_name.Text = strtype_position_name;
-                        lblPerson_salaly.Text = String.Format("{0:0.00}", float.Parse(strperson_salaly));
+                        this.InitcboLoanType();
+                       
+                        //lblPerson_salaly.Text = String.Format("{0:0.00}", double.Parse(strperson_salaly));
 
-                        string strSal1 = "0.00";
-                        string strSal2 = "0.00";
+                        //string strSal1 = "0.00";
+                        //string strSal2 = "0.00";
 
-                        string strSQL = string.Empty;
-                        strSQL = "Select Sum(item_debit) as item_debit_sum from [view_person_item] where person_code ='" + base.PersonCode + "' and substring(item_code,5,6) in (Select Code from getConfigListCode('PersonPosition')) ";
-                        ds = null;
-                        oCommon.SEL_SQL(strSQL, ref ds, ref strMessage);
-                        if (ds.Tables[0].Rows.Count > 0)
-                        {
-                            strSal1 = Helper.CStr(ds.Tables[0].Rows[0]["item_debit_sum"], "0.00");
-                        }
-                        lblPerson_position.Text = String.Format("{0:0.00}", float.Parse(strSal1));
-                        strSQL = "Select Sum(item_debit) as item_debit_sum from [view_person_item] where person_code ='" + base.PersonCode + "' and substring(item_code,5,6) in (Select Code from getConfigListCode('PersonReward')) ";
-                        ds = null;
-                        oCommon.SEL_SQL(strSQL, ref ds, ref strMessage);
-                        if (ds.Tables[0].Rows.Count > 0)
-                        {
-                            strSal2 = Helper.CStr(ds.Tables[0].Rows[0]["item_debit_sum"], "0.00");
-                        }
-                        lblPerson_reward.Text = String.Format("{0:0.00}", float.Parse(strSal2));
+                        //string strSQL = string.Empty;
+                        //strSQL = "Select Sum(item_debit) as item_debit_sum from [view_person_item] where person_code ='" + base.PersonCode + "' and substring(item_code,5,6) in (Select Code from getConfigListCode('PersonPosition')) ";
+                        //ds = null;
+                        //oCommon.SEL_SQL(strSQL, ref ds, ref strMessage);
+                        //if (ds.Tables[0].Rows.Count > 0)
+                        //{
+                        //    strSal1 = Helper.CStr(ds.Tables[0].Rows[0]["item_debit_sum"], "0.00");
+                        //}
+                        //lblPerson_position.Text = String.Format("{0:0.00}", double.Parse(strSal1));
+                        //strSQL = "Select Sum(item_debit) as item_debit_sum from [view_person_item] where person_code ='" + base.PersonCode + "' and substring(item_code,5,6) in (Select Code from getConfigListCode('PersonReward')) ";
+                        //ds = null;
+                        //oCommon.SEL_SQL(strSQL, ref ds, ref strMessage);
+                        //if (ds.Tables[0].Rows.Count > 0)
+                        //{
+                        //    strSal2 = Helper.CStr(ds.Tables[0].Rows[0]["item_debit_sum"], "0.00");
+                        //}
+                        //lblPerson_reward.Text = String.Format("{0:0.00}", double.Parse(strSal2));
                         #endregion
                     }
                 }
@@ -193,8 +223,11 @@ namespace myWeb.Person_Manage
 
                     strReport_code = "Rep_payment_req_certificate";
 
-                    strScript = "window.open(\"global_payment_report.aspx?report_code=" + strReport_code + "&report_title=" + report_title +
-                                                     "&payment_position=" + lblPerson_position.Text + "&payment_reward=" + lblPerson_reward.Text + "&payment_type=" + cboTypeLoan.SelectedItem.Text + "\", \"_blank\");\n";
+                    strScript = "window.open(\"global_payment_report.aspx\", \"_blank\");\n";
+                    Session["report_code"] = strReport_code;
+                    Session["report_title"] = report_title;
+                    Session["payment_type"] = cboTypeLoan.SelectedItem.Text;
+
                     ScriptManager.RegisterStartupScript(Page, Page.GetType(), "OpenPage", strScript, true);
                 }
                 else

@@ -299,5 +299,15 @@ namespace myWeb.App_Control.person
             }
         }
 
+        public static string getNumber(object pNumber)
+        {
+            if (!pNumber.ToString().Equals(""))
+            {
+                string strNumber = String.Format("{0:#,##0.00}", double.Parse(pNumber.ToString()));
+                return strNumber;
+            }
+            return "";
+        }
+
     }
 }

@@ -44,7 +44,7 @@ namespace myWeb.App_Control.budget_money
             string strNumber = "0.00";
             try
             {
-                strNumber = String.Format("{0:#,##0.00}", float.Parse(pNumber.ToString()));
+                strNumber = String.Format("{0:#,##0.00}", double.Parse(pNumber.ToString()));
             }
             catch { }
             return strNumber;

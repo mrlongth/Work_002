@@ -226,7 +226,7 @@ namespace myWeb.App_Control.payment_round
             string pcomments = string.Empty;
             string pc_status = string.Empty;
             string ptype_position_code = string.Empty;
-            string strLastPayment_doc = string.Empty;
+            //string strLastPayment_doc = string.Empty;
             string strbranch_code = string.Empty;
             string strbank_no = string.Empty;
             string strtitle_code = string.Empty;
@@ -342,18 +342,18 @@ namespace myWeb.App_Control.payment_round
                         pc_status = "O";
                         #endregion
 
-                        if (!oPayment.SP_PAYMENT_HEAD_SEL(" and person_code='" + pperson_code + "' order by pay_year +'-'+ pay_month desc  ", ref dsPersonLoan, ref strMessage))
-                        {
-                            lblError.Text = strMessage + " Code : " + pperson_code;
-                            return false;
-                        }
-                        else
-                        { 
-                            if (dsPersonLoan.Tables[0].Rows.Count > 0)
-                            {
-                                strLastPayment_doc = dsPersonLoan.Tables[0].Rows[0]["payment_doc"].ToString();
-                            }                        
-                        }
+                        //if (!oPayment.SP_PAYMENT_HEAD_SEL(" and person_code='" + pperson_code + "' order by pay_year +'-'+ pay_month desc  ", ref dsPersonLoan, ref strMessage))
+                        //{
+                        //    lblError.Text = strMessage + " Code : " + pperson_code;
+                        //    return false;
+                        //}
+                        //else
+                        //{ 
+                        //    if (dsPersonLoan.Tables[0].Rows.Count > 0)
+                        //    {
+                        //        strLastPayment_doc = dsPersonLoan.Tables[0].Rows[0]["payment_doc"].ToString();
+                        //    }                        
+                        //}
 
                         if (!oPayment.SP_PAYMENT_HEAD_INS(ppayment_date, ppayment_year, ppay_month, ppay_year, pperson_code, pposition_code, pperson_level,
                                     pperson_group_code, pperson_manage_code, pbudget_plan_code, pperson_work_status_code, ppayment_recv,
@@ -416,50 +416,51 @@ namespace myWeb.App_Control.payment_round
                             }
 
                             //SP_PAYMENT_LOAN
-                            //string strPerson_code = dsPaymentDoc.Tables[0].Rows[0]["person_code"].ToString();
-                            //string strPaymentLoan = " and  person_code='" + strPerson_code + "'";
-                         
-                            //if (!oPersonLoan.SP_PERSON_LOAN_SEL(strPaymentLoan, ref dsPersonLoan, ref strMessage))
-                            //{
-                            //    lblError.Text = strMessage + " Code : " + pperson_code;
-                            //    return false;
-                            //}
+                            string strPerson_code = dsPaymentDoc.Tables[0].Rows[0]["person_code"].ToString();
+                            string strPaymentLoan = " and  person_code='" + strPerson_code + "'";
 
-                            //int intCountL;
-                            //string strloan_code;
-                            //string strloan_acc;
-                            //string strloan_money = "0";
+                            if (!oPersonLoan.SP_PERSON_LOAN_SEL(strPaymentLoan, ref dsPersonLoan, ref strMessage))
+                            {
+                                lblError.Text = strMessage + " Code : " + pperson_code;
+                                return false;
+                            }
 
-                            //for (intCountL = 0; intCountL <= dsPersonLoan.Tables[0].Rows.Count - 1; intCountL++)
-                            //{
+                            int intCountL;
+                            string strloan_code;
+                            string strloan_acc;
+                            string strloan_money = "0";
 
-                            //    strloan_code = dsPersonLoan.Tables[0].Rows[intCountL]["loan_code"].ToString();
-                            //    strloan_acc = dsPersonLoan.Tables[0].Rows[intCountL]["loan_acc"].ToString();
+                            for (intCountL = 0; intCountL <= dsPersonLoan.Tables[0].Rows.Count - 1; intCountL++)
+                            {
 
-                            //    string strPaymentDetail = " and payment_doc = '" + strLastPayment_doc + "' " +
-                            //                                " and person_code = '" + strPerson_code + "' " +
-                            //                              " and loan_code = '" + strloan_code + "'" +
-                            //                              " and loan_acc = '" + strloan_acc + "'";
+                                strloan_code = dsPersonLoan.Tables[0].Rows[intCountL]["loan_code"].ToString();
+                                strloan_acc = dsPersonLoan.Tables[0].Rows[intCountL]["loan_acc"].ToString();
+                                strloan_money = dsPersonLoan.Tables[0].Rows[intCountL]["loan_remark"].ToString();
 
-                            //    if (!oPayment.SP_PAYMENT_LOAN_SEL(strPaymentDetail, ref dsLoanMoney, ref strMessage))
-                            //    {
-                            //        lblError.Text = strMessage + " Code : " + pperson_code;
-                            //        return false;
-                            //    }
-                            //    else
-                            //    {
-                            //        if (dsLoanMoney.Tables[0].Rows.Count > 0)
-                            //        {
-                            //            strloan_money = dsLoanMoney.Tables[0].Rows[0]["loan_money"].ToString();
-                            //        }
-                            //    }
+                                //string strPaymentDetail = " and payment_doc = '" + strLastPayment_doc + "' " +
+                                //                            " and person_code = '" + strPerson_code + "' " +
+                                //                          " and loan_code = '" + strloan_code + "'" +
+                                //                          " and loan_acc = '" + strloan_acc + "'";
 
-                            //    if (!oPayment.SP_PAYMENT_LOAN_INS(ppayment_doc, strloan_code, strloan_acc, strloan_money, strCreatedBy, ref strMessage))
-                            //    {
-                            //        lblError.Text = strMessage + " Code : " + pperson_code;
-                            //    }
+                                //if (!oPayment.SP_PAYMENT_LOAN_SEL(strPaymentDetail, ref dsLoanMoney, ref strMessage))
+                                //{
+                                //    lblError.Text = strMessage + " Code : " + pperson_code;
+                                //    return false;
+                                //}
+                                //else
+                                //{
+                                //    if (dsLoanMoney.Tables[0].Rows.Count > 0)
+                                //    {
+                                //        strloan_money = dsLoanMoney.Tables[0].Rows[0]["loan_money"].ToString();
+                                //    }
+                                //}
 
-                            //}
+                                if (!oPayment.SP_PAYMENT_LOAN_INS(ppayment_doc, strloan_code, strloan_acc, strloan_money, strCreatedBy, ref strMessage))
+                                {
+                                    lblError.Text = strMessage + " Code : " + pperson_code;
+                                }
+
+                            }
 
                             //----- End SP_PAYMENT_LOAN -------
 

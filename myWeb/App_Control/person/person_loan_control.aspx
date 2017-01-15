@@ -2,6 +2,8 @@
     AutoEventWireup="true" CodeBehind="person_loan_control.aspx.cs" Inherits="myWeb.App_Control.person.person_loan_control" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxtoolkit" %>
+<%@ Register Assembly="Aware.WebControls" Namespace="Aware.WebControls" TagPrefix="cc1" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <script src="../../js/jquery.min.js" type="text/javascript"></script>
@@ -86,11 +88,11 @@
         </tr>
         <tr align="left">
             <td align="right" nowrap valign="middle">
-                <asp:Label runat="server" ID="lblPage11">หมายเหตุ :</asp:Label>
+                <asp:Label runat="server" ID="lblPage11">จำนวนเงิน :</asp:Label>
             </td>
             <td align="left" nowrap valign="middle">
-                <asp:TextBox runat="server" MaxLength="255"
-                    CssClass="textbox" Width="350px" ID="txtLoan_remark"></asp:TextBox>
+               <%-- <asp:TextBox runat="server" MaxLength="255" CssClass="textbox" Width="350px" ID="txtLoan_remark"></asp:TextBox>--%>
+                <cc1:AwNumeric ID="txtLoan_remark" runat="server" CssClass="textbox" MaxValue="99999999" MinValue="-99999999" Width="100px"></cc1:AwNumeric>
 
             </td>
         </tr>

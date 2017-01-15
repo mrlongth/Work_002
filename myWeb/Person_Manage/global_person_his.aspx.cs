@@ -25,7 +25,7 @@ namespace myWeb.Person_Manage
         {
             if (!pNumber.ToString().Equals(""))
             {
-                string strNumber = String.Format("{0:#,##0.00}", float.Parse(pNumber.ToString()));
+                string strNumber = String.Format("{0:#,##0.00}", double.Parse(pNumber.ToString()));
                 return strNumber;
             }
             return "";
@@ -674,7 +674,7 @@ namespace myWeb.Person_Manage
                         txtbranch_name.Text = strbranch_name;
                         txtbank_name.Text = strbank_name;
                         txtbank_no.Text = strbank_no;
-                        txtperson_salaly.Text = String.Format("{0:0.00}", float.Parse(strperson_salaly));
+                        txtperson_salaly.Text = String.Format("{0:0.00}", double.Parse(strperson_salaly));
                         InitcboPerson_group();
                         if (cboPerson_group.Items.FindByValue(strperson_group) != null)
                         {
@@ -690,7 +690,7 @@ namespace myWeb.Person_Manage
                             cboMember_type.Items.FindByValue(strmember_type).Selected = true;
                         }
 
-                        txtmember_type_add.Text = String.Format("{0:0.00}", float.Parse(strmember_type_add));
+                        txtmember_type_add.Text = String.Format("{0:0.00}", double.Parse(strmember_type_add));
                         txtperson_manage_code.Text = strperson_manage_code;
                         txtperson_manage_name.Text = strperson_manage_name;
                         txtbudget_plan_code.Text = strbudget_plan_code;
@@ -852,11 +852,11 @@ namespace myWeb.Person_Manage
                 string strStatus = lblc_active.Text;
                 if (!lblitem_debit.Text.Equals(""))
                 {
-                    lblitem_debit.Text = String.Format("{0:#,##0.00}", float.Parse(lblitem_debit.Text));
+                    lblitem_debit.Text = String.Format("{0:#,##0.00}", double.Parse(lblitem_debit.Text));
                 }
                 if (!lblitem_credit.Text.Equals(""))
                 {
-                    lblitem_credit.Text = String.Format("{0:#,##0.00}", float.Parse(lblitem_credit.Text));
+                    lblitem_credit.Text = String.Format("{0:#,##0.00}", double.Parse(lblitem_credit.Text));
                 }
                 if (lblbudget_type.Text.Equals("R"))
                 {
@@ -1264,8 +1264,8 @@ namespace myWeb.Person_Manage
         //        if (!lblchange_date.Text.Equals(""))
         //        {
         //            lblchange_date.Text = cCommon.CheckDate(lblchange_date.Text);
-        //            lblsalary_old.Text = String.Format("{0:#,##0.00}", float.Parse(lblsalary_old.Text));
-        //            lblsalary_new.Text = String.Format("{0:#,##0.00}", float.Parse(lblsalary_new.Text));
+        //            lblsalary_old.Text = String.Format("{0:#,##0.00}", double.Parse(lblsalary_old.Text));
+        //            lblsalary_new.Text = String.Format("{0:#,##0.00}", double.Parse(lblsalary_new.Text));
         //        }
         //        Label lblc_active = (Label)e.Row.FindControl("lblc_active2");
         //        string strStatus = lblc_active.Text;

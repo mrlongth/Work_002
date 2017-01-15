@@ -1202,6 +1202,13 @@
                                                             <asp:Label ID="lblloan_acc_name" runat="server" CssClass="label_hbk" Text='<%# DataBinder.Eval(Container, "DataItem.loan_acc_name") %>'> </asp:Label></ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Left" Width="25%" Wrap="True" />
                                                     </asp:TemplateField>
+                                                    
+                                                      <asp:TemplateField HeaderText="จำนวนเงิน" SortExpression="loan_remark">
+                                                        <ItemTemplate>
+                                                            <asp:Label ID="lblloan_remark" runat="server" CssClass="label_hbk" Text='<%# getNumber(DataBinder.Eval(Container, "DataItem.loan_remark")) %>'> </asp:Label></ItemTemplate>
+                                                        <ItemStyle HorizontalAlign="Right" Width="8%" Wrap="False" />
+                                                    </asp:TemplateField>
+
                                                     <asp:TemplateField>
                                                         <ItemTemplate>
                                                             <asp:ImageButton ID="imgEdit" runat="server" CausesValidation="False" CommandName="Edit" />
