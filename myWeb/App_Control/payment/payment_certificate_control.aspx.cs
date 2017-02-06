@@ -97,6 +97,7 @@ namespace myWeb.App_Control.payment
                 imgList_person.Attributes.Add("onclick", "OpenPopUp('900px','500px','94%','ค้นหาข้อมูลบุคลากร' ,'../lov/person_lov.aspx?" +
                      "from=payment_control&person_code='+getElementById('" + txtperson_code.ClientID + "').value+'" +
                      "&person_name='+ getElementById('" + txtperson_thai_name.ClientID + "').value+ ' ' + getElementById('" + txtperson_thai_name.ClientID + "').value +'" +
+                     "&req_cer_code='+$('#" + cboReq_code.ClientID + " option:selected').val()+'" +
                     "&ctrl1=" + txtperson_code.ClientID + "&ctrl2=" + txtperson_thai_name.ClientID + "&show=2', '2');return false;");
                 //imgClear_item.Attributes.Add("onclick", "document.getElementById('" + txtperson_code.ClientID + "').value='';document.getElementById('" + txtperson_name.ClientID + "').value=''; return false;");
 

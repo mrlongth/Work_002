@@ -2,9 +2,11 @@
     AutoEventWireup="true" CodeBehind="paymentdetail_report3.aspx.cs" Inherits="myWeb.App_Control.payment.paymentdetail_report3"
     Title="รายงานข้อมูลการจ่ายเงินเดือน" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+<%@ Register Assembly="DropDownCheckBoxes" Namespace="Saplin.Controls" TagPrefix="dcb" %>
 <asp:content id="Content1" contentplaceholderid="ContentPlaceHolder1" runat="server">
 
-    <script src="../../js/jquery.min.js" type="text/javascript"></script>
+   <%-- <script src="../../js/jquery.min.js" type="text/javascript"></script>--%>
 
     <table cellpadding="1" cellspacing="1" style="width: 100%" border="0">
         <tr>
@@ -46,8 +48,14 @@
                             <asp:Label runat="server" CssClass="label_h" ID="lblPage2">กลุ่มบุคลากร :</asp:Label>
                         </td>
                         <td style="height: 23px; text-align: left;">
-                            <asp:DropDownList runat="server" CssClass="textbox" ID="cboPerson_group">
+                            <asp:DropDownList runat="server" CssClass="textbox" ID="cboPerson_group" Visible="False">
                             </asp:DropDownList>
+                            <dcb:DropDownCheckBoxes ID="cboPerson_group_dropdown_checkboxes" runat="server"
+                                AddJQueryReference="True" UseButtons="False" UseSelectAllNode="True" AutoPostBack="True" OnSelectedIndexChanged="cboPerson_group_dropdown_checkboxes_SelectedIndexChanged">
+                                <Texts SelectBoxCaption="--- เลือกข้อมูลกลุ่มบุคลากร ---" />
+                            </dcb:DropDownCheckBoxes>
+                            <br />
+                            <asp:Label runat="server" ID="lblperson_group_name"></asp:Label>
                         </td>
                     </tr>
                     <tr>
@@ -74,11 +82,9 @@
                             <asp:DropDownList runat="server" CssClass="textbox" ID="cboBudget_type">
                             </asp:DropDownList>
                         </td>
-                        <td style="width: 20%; text-align: right;">
-                            &nbsp;
+                        <td style="width: 20%; text-align: right;">&nbsp;
                         </td>
-                        <td style="height: 23px; text-align: left;">
-                            &nbsp;
+                        <td style="height: 23px; text-align: left;">&nbsp;
                         </td>
                     </tr>
                     <tr>
@@ -124,11 +130,9 @@
                             <asp:DropDownList runat="server" CssClass="textbox" ID="cboLot" Enabled="False">
                             </asp:DropDownList>
                         </td>
-                        <td style="text-align: right;">
-                            &nbsp;
+                        <td style="text-align: right;">&nbsp;
                         </td>
-                        <td style="height: 23px; text-align: left;">
-                            &nbsp;
+                        <td style="height: 23px; text-align: left;">&nbsp;
                         </td>
                     </tr>
                     <tr>
@@ -185,11 +189,9 @@
                         </td>
                     </tr>
                     <tr>
-                        <td style="text-align: right; width: 20%;">
-                            &nbsp;
+                        <td style="text-align: right; width: 20%;">&nbsp;
                         </td>
-                        <td style="text-align: left;" colspan="2">
-                            &nbsp;
+                        <td style="text-align: left;" colspan="2">&nbsp;
                         </td>
                         <td style="height: 23px; text-align: right;">
                             <asp:ImageButton runat="server" AlternateText="พิมพ์ข้อมูล" ImageUrl="~/images/button/print.png"

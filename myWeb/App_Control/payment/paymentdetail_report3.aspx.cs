@@ -157,6 +157,35 @@ namespace myWeb.App_Control.payment
             }
         }
 
+        //private void InitcboPerson_group()
+        //{
+        //    cPerson_group oPerson_group = new cPerson_group();
+        //    string strMessage = string.Empty,
+        //                strCriteria = string.Empty,
+        //                strperson_group_code = string.Empty;
+        //    strperson_group_code = cboPerson_group.SelectedValue;
+        //    int i;
+        //    DataSet ds = new DataSet();
+        //    DataTable dt = new DataTable();
+        //    strCriteria = " and c_active='Y' ";
+        //    strCriteria += " and person_group_code IN (" + PersonGroupList + ") ";
+        //    if (oPerson_group.SP_PERSON_GROUP_SEL(strCriteria, ref ds, ref strMessage))
+        //    {
+        //        dt = ds.Tables[0];
+        //        cboPerson_group.Items.Clear();
+        //        cboPerson_group.Items.Add(new ListItem("---- เลือกข้อมูลทั้งหมด ----", ""));
+        //        for (i = 0; i <= dt.Rows.Count - 1; i++)
+        //        {
+        //            cboPerson_group.Items.Add(new ListItem(dt.Rows[i]["person_group_name"].ToString(), dt.Rows[i]["person_group_code"].ToString()));
+        //        }
+        //        if (cboPerson_group.Items.FindByValue(strperson_group_code) != null)
+        //        {
+        //            cboPerson_group.SelectedIndex = -1;
+        //            cboPerson_group.Items.FindByValue(strperson_group_code).Selected = true;
+        //        }
+        //    }
+        //}
+
         private void InitcboPerson_group()
         {
             cPerson_group oPerson_group = new cPerson_group();
@@ -168,21 +197,31 @@ namespace myWeb.App_Control.payment
             DataSet ds = new DataSet();
             DataTable dt = new DataTable();
             strCriteria = " and c_active='Y' ";
-            strCriteria += " and person_group_code IN (" + PersonGroupList + ") ";
+            strCriteria += " order by person_group_name";
+            //strCriteria += " and person_group_code IN (" + PersonGroupList + ") ";
             if (oPerson_group.SP_PERSON_GROUP_SEL(strCriteria, ref ds, ref strMessage))
             {
                 dt = ds.Tables[0];
                 cboPerson_group.Items.Clear();
+                cboPerson_group_dropdown_checkboxes.Items.Clear();
+
                 cboPerson_group.Items.Add(new ListItem("---- เลือกข้อมูลทั้งหมด ----", ""));
                 for (i = 0; i <= dt.Rows.Count - 1; i++)
                 {
                     cboPerson_group.Items.Add(new ListItem(dt.Rows[i]["person_group_name"].ToString(), dt.Rows[i]["person_group_code"].ToString()));
+                    cboPerson_group_dropdown_checkboxes.Items.Add(new ListItem(dt.Rows[i]["person_group_name"].ToString(), dt.Rows[i]["person_group_code"].ToString()));
                 }
+                cboPerson_group.Items.Add(new ListItem("พนักงานกลุ่มอื่นๆ", ""));
                 if (cboPerson_group.Items.FindByValue(strperson_group_code) != null)
                 {
                     cboPerson_group.SelectedIndex = -1;
                     cboPerson_group.Items.FindByValue(strperson_group_code).Selected = true;
                 }
+                cboPerson_group_dropdown_checkboxes.Style.SelectBoxCssClass = "dd_chk_select_cust";
+                cboPerson_group_dropdown_checkboxes.Style.SelectBoxWidth = 200;
+                cboPerson_group_dropdown_checkboxes.Style.DropDownBoxBoxWidth = 300;
+
+
             }
         }
 
@@ -517,6 +556,7 @@ namespace myWeb.App_Control.payment
             string strLevel_position = string.Empty;
             string strPerson_manage = string.Empty;
             string strCondition = string.Empty;
+            string strperson_group_name_list = string.Empty;
 
             strYear = cboYear.SelectedValue;
             strPay_Year = cboPay_Year.SelectedValue;
@@ -529,10 +569,28 @@ namespace myWeb.App_Control.payment
             if (stritem_code.Length > 0)
                 strCondition += "รายได้/จ่าย : " + txtitem_code.Text + "-" + txtitem_name.Text + "   ";
 
-            if (cboPerson_group.Enabled)
+            //if (cboPerson_group.Enabled)
+            //{
+            //    strperson_group_code = cboPerson_group.SelectedValue;
+            //    if (strperson_group_code.Length > 0) strCondition += "กลุ่มบุคลากร : " + cboPerson_group.SelectedItem.Text + "   ";
+            //}
+
+            foreach (ListItem item in cboPerson_group_dropdown_checkboxes.Items)
             {
-                strperson_group_code = cboPerson_group.SelectedValue;
-                if (strperson_group_code.Length > 0) strCondition += "กลุ่มบุคลากร : " + cboPerson_group.SelectedItem.Text + "   ";
+                if (item.Selected)
+                {
+                    strperson_group_code += "'" + item.Value + "',";
+                    strperson_group_name_list += item.Text + ", ";
+                }
+            }
+            if (strperson_group_code.Length > 0)
+            {
+                strperson_group_code = strperson_group_code.Substring(0, strperson_group_code.Length - 1);
+                if (strperson_group_name_list.Length > 0)
+                    strperson_group_name_list = strperson_group_name_list.Substring(0, strperson_group_name_list.Length - 2);
+
+                //strCriteria = strCriteria + "  And  view_payment.payment_detail_person_group_code IN (" + strperson_group_code + ")";
+                strCondition += "กลุ่มบุคลากร : " + strperson_group_name_list + "  ";
             }
 
             if (cboDirector.Enabled)
@@ -661,14 +719,14 @@ namespace myWeb.App_Control.payment
                 {
                     if (cboBudget_type.SelectedValue != "R")
                     {
-                        strCriteria = strCriteria + "  And  view_payment.payment_detail_person_group_code ='" + strperson_group_code + "' ";
+                        strCriteria = strCriteria + "  And  view_payment.payment_detail_person_group_code IN(" + strperson_group_code + ") ";
                     }
                 }
                 else
                 {
                     if (cboBudget_type.SelectedValue != "R")
                     {
-                        strCriteria = strCriteria + "  And  view_payment.payment_detail_person_group_code ='" + strperson_group_code + "' ";
+                        strCriteria = strCriteria + "  And  view_payment.payment_detail_person_group_code IN(" + strperson_group_code + ") ";
                     }
                 }
             }
@@ -785,8 +843,8 @@ namespace myWeb.App_Control.payment
 
             if (RadioButtonList1.SelectedValue.Equals("17"))
             {
+                strCriteria = strCriteria + "  And  (pay_year+'/'+pay_month) >= '" + (int.Parse(strPay_Year) - 1) + "/01' ";
                 strCriteria = strCriteria + "  And  (pay_year+'/'+pay_month) <= '" + strPay_Year + "/" + strPay_Month + "' ";
-                strCriteria = strCriteria + "  And  (pay_year+'/'+pay_month) >= '" + (int.Parse(strPay_Year) - 1) + "/10' ";
             }
 
 
@@ -1214,5 +1272,22 @@ namespace myWeb.App_Control.payment
             }
         }
 
+
+        protected void cboPerson_group_dropdown_checkboxes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var strperson_group_name_list = string.Empty;
+            foreach (ListItem item in cboPerson_group_dropdown_checkboxes.Items)
+            {
+                if (item.Selected)
+                {
+                    strperson_group_name_list += item.Text + "<br/>";
+                }
+            }
+            if (strperson_group_name_list.Length > 0)
+                strperson_group_name_list = strperson_group_name_list.Substring(0, strperson_group_name_list.Length - 2);
+
+            lblperson_group_name.Text = strperson_group_name_list;
+        }
+    
     }
 }

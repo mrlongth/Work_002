@@ -167,6 +167,14 @@ namespace myWeb.App_Control.lov
                     ViewState["from"] = string.Empty;
                 }
 
+                if (Request.QueryString["req_cer_code"] != null)
+                {
+                    ViewState["req_cer_code"] = Request.QueryString["req_cer_code"].ToString();
+                }
+                else
+                {
+                    ViewState["req_cer_code"] = string.Empty;
+                }
 
 
                 ViewState["sort"] = "person_code";
@@ -387,6 +395,13 @@ namespace myWeb.App_Control.lov
             if (DirectorLock == "Y")
             {
                 strCriteria += " and substring(director_code,4,2) = substring('" + DirectorCode + "',4,2) ";
+            }
+
+            if (!string.IsNullOrEmpty(ViewState["req_cer_code"].ToString()))
+            {
+                strCriteria += " and ((exists(SELECT 1 from req_cer where req_code = '" + ViewState["req_cer_code"].ToString() + 
+                    "' and person_group_list  is null) OR person_group_code IN  (SELECT Item from dbo.Split((SELECT req_cer.person_group_list from req_cer where req_code = '" + 
+                    ViewState["req_cer_code"].ToString() + "'), ','))))";
             }
 
 
