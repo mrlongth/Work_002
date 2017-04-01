@@ -844,13 +844,15 @@ namespace myWeb
                     dt.Columns.Add("SOS");
                     dt.Columns.Add("GBK2");
                     dt.Columns.Add("PVD");
-
+                    dt.Columns.Add("GSJ2");
+                
                     rw = dt.NewRow();
                     rw[0] = oXml.GetValue("MemberType", "GBK");
                     rw[1] = oXml.GetValue("MemberType", "GSJ");
                     rw[2] = oXml.GetValue("MemberType", "SOS");
                     rw[3] = oXml.GetValue("MemberType", "GBK2");
                     rw[4] = oXml.GetValue("MemberType", "PVD");
+                    rw[5] = oXml.GetValue("MemberType", "GSJ2");
                     dt.Rows.Add(rw);
                     ds.Tables.Add(dt);
                     #endregion

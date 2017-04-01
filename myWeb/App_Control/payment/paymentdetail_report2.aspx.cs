@@ -535,6 +535,21 @@ namespace myWeb.App_Control.payment
                 strCriteria = strCriteria.Replace("view_payment.", "");
             }
 
+            else if (RadioButtonList1.SelectedValue.Equals("A06"))
+            {
+                if (cboPayType.SelectedValue == "N")
+                {
+                    strReport_code = "Rep_GSJadd";
+                    strCriteria = strCriteria + "  And  substring(item_code,5,7)= '" + this.GetConfigItem("GSJCodeAdd") + "' ";
+                }
+                else
+                {
+                    strReport_code = "Rep_GSJadd_back";
+                    strCriteria = strCriteria + "  And  substring(item_code,5,7)= '" + this.GetConfigItem("GSJCodeAdd") + "A' ";
+                }
+                strCriteria = strCriteria.Replace("view_payment.", "");
+            }
+
 
             else if (RadioButtonList1.SelectedValue.Equals("A01"))
             {

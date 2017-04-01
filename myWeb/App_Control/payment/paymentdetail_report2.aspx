@@ -10,7 +10,9 @@
                     <asp:listitem value="9" selected="True">รายงานสรุปรวม กสจ.</asp:listitem>
                     <asp:listitem value="10">รายงานสรุป กสจ.แยกตามสังกัด</asp:listitem>
                     <asp:listitem value="A02">รายงานการเบิกจ่าย กสจ.ประจำประจำปี</asp:listitem>
-                    <asp:listitem value="11">รายงานสรุปรวม กบข.</asp:listitem>
+                    <asp:listitem value="A06">รายงานสรุปรวม กสจ.ส่วนเพิ่ม</asp:listitem>
+
+                     <asp:listitem value="11">รายงานสรุปรวม กบข.</asp:listitem>
                     <asp:listitem value="12">รายงานสรุปรวม กบข.แยกตามสังกัด</asp:listitem>
                     <asp:listitem value="A01">รายงานการเบิกจ่าย กบข.ประจำปี</asp:listitem>
                     <asp:listitem value="13">รายงานสรุปรวม กบข.ส่วนเพิ่ม</asp:listitem>

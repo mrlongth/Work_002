@@ -407,7 +407,19 @@ namespace myWeb.App_Control.person
                 Label lblperson_code = (Label)e.Row.FindControl("lblperson_code");
                 Label lblperson_name = (Label)e.Row.FindControl("lblperson_name");
                 Label lblc_active = (Label)e.Row.FindControl("lblc_active");
+                Label lblperson_sex = (Label)e.Row.FindControl("lblperson_sex");
+
                 string strStatus = lblc_active.Text;
+
+                if (lblperson_sex.Text == "M")
+                {
+                    lblperson_sex.Text = "ชาย";
+                }
+                else if (lblperson_sex.Text == "F")
+                {
+                    lblperson_sex.Text = "หญิง";
+                }
+
 
                 #region set ImageStatus
                 ImageButton imgStatus = (ImageButton)e.Row.FindControl("imgStatus");

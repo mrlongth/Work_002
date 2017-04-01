@@ -261,6 +261,7 @@
     <!--ลูกจ้างประจำ||กสจ.-->
     <entry name="SOS">03</entry>
     <entry name="GBK2">04</entry>
+    <entry name="GSJ2">06</entry>
     <!--สำรองเลี้ยงชีพ-->
     <entry name="PVD">05</entry>
   </section>
