@@ -810,18 +810,18 @@ namespace myWeb.App_Control.payment
                 strCriteria = strCriteria + "  And  view_payment.person_manage_code= '" + strPerson_manage + "' ";
             }
 
-            if (!RadioButtonList1.SelectedValue.Equals("A4") &&
-                !RadioButtonList1.SelectedValue.Equals("20") &&
-                !RadioButtonList1.SelectedValue.Equals("A2") &&
-                !RadioButtonList1.SelectedValue.Equals("A3") &&
-                !RadioButtonList1.SelectedValue.Equals("A7") &&
-                !RadioButtonList1.SelectedValue.Equals("A6"))
-            {
-                if (cboBudget_type.SelectedValue != "R")
-                {
-                    strCriteria += " and view_payment.payment_detail_person_group_code IN (" + PersonGroupList + ") ";
-                }
-            }
+            //if (!RadioButtonList1.SelectedValue.Equals("A4") &&
+            //    !RadioButtonList1.SelectedValue.Equals("20") &&
+            //    !RadioButtonList1.SelectedValue.Equals("A2") &&
+            //    !RadioButtonList1.SelectedValue.Equals("A3") &&
+            //    !RadioButtonList1.SelectedValue.Equals("A7") &&
+            //    !RadioButtonList1.SelectedValue.Equals("A6"))
+            //{
+            //    if (cboBudget_type.SelectedValue != "R")
+            //    {
+            //        strCriteria += " and view_payment.payment_detail_person_group_code IN (" + PersonGroupList + ") ";
+            //    }
+            //}
 
             if (DirectorLock == "Y")
             {
@@ -830,7 +830,8 @@ namespace myWeb.App_Control.payment
                     !RadioButtonList1.SelectedValue.Equals("A3") &&
                     !RadioButtonList1.SelectedValue.Equals("A6") &&
                     !RadioButtonList1.SelectedValue.Equals("A7") &&
-                    !RadioButtonList1.SelectedValue.Equals("A4"))
+                    !RadioButtonList1.SelectedValue.Equals("A4") &&
+                    !RadioButtonList1.SelectedValue.Equals("A9"))
                 {
                     strCriteria += " and substring(view_payment.payment_detail_director_code,4,2) = substring('" + DirectorCode + "',4,2) ";
                 }
@@ -974,8 +975,8 @@ namespace myWeb.App_Control.payment
             {
                 strReport_code = "Rep_payment_tax_year";
 
-                if (strPay_Month.Length > 0)
-                    strCriteria += " and (payment_head.pay_year + payment_head.pay_month) <= '" +  (cboPay_Year.SelectedValue + cboPay_Month.SelectedValue) + "' ";
+                //if (strPay_Month.Length > 0)
+                //    strCriteria += " and (payment_head.pay_year + payment_head.pay_month) <= '" +  (cboPay_Year.SelectedValue + cboPay_Month.SelectedValue) + "' ";
 
                 strCriteria = strCriteria.Replace("view_payment.", "view_person_list.").Replace(".payment_detail_", ".");
             }

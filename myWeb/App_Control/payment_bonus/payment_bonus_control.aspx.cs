@@ -269,66 +269,102 @@ namespace myWeb.App_Control.payment_bonus
             }
         }
 
+        private void InitcboPayItem()
+        {
+            var oCommon = new cCommon();
+            string strMessage = string.Empty,
+                   strCriteria = string.Empty,
+                   strPay_item = string.Empty;
+
+            int i;
+            var ds = new DataSet();
+            var dt = new DataTable();
+            strPay_item = cboPay_Item.SelectedValue;
+            strCriteria = " and g_type='special_item' ";
+            if (oCommon.SP_SEL_OBJECT("sp_GENERAL_SEL", strCriteria, ref ds, ref strMessage))
+            {
+                dt = ds.Tables[0];
+                cboPay_Item.Items.Clear();
+                //cboPay_Item.Items.Add(new ListItem("---- กรุณาเลือกข้อมูล ----", ""));
+                for (i = 0; i <= dt.Rows.Count - 1; i++)
+                {
+                    cboPay_Item.Items.Add(new ListItem(dt.Rows[i]["g_name"].ToString(), dt.Rows[i]["g_code"].ToString()));
+                }
+                if (cboPay_Item.Items.FindByValue(strPay_item) != null)
+                {
+                    cboPay_Item.SelectedIndex = -1;
+                    cboPay_Item.Items.FindByValue(strPay_item).Selected = true;
+                }
+            }
+        }
+
+
         private void InitcboRound()
         {
-            var oPayment_round = new cPayment_round();
-            var ds = new DataSet();
-            string strMessage = string.Empty, strCriteria = string.Empty;
-            string strYear = string.Empty;
-            string strPay_Month = string.Empty;
-            string strPay_Year = string.Empty;
-            try
-            {
-                strCriteria = " and round_status= 'O' ";
-                if (!oPayment_round.SP_PAYMENT_ROUND_SEL(strCriteria, ref ds, ref strMessage))
-                {
-                    lblError.Text = strMessage;
-                }
-                else
-                {
-                    if (ds.Tables[0].Rows.Count > 0)
-                    {
-                        #region get Data
-                        strYear = ds.Tables[0].Rows[0]["payment_year"].ToString();
-                        strPay_Month = ds.Tables[0].Rows[0]["pay_month"].ToString();
-                        strPay_Year = ds.Tables[0].Rows[0]["pay_year"].ToString();
-                        #endregion
+            InitcboYear();
+            InitcboPay_Month();
+            InitcboPay_Year();
+            InitcboPayItem();
+            //var oPayment_round = new cPayment_round();
+            //var ds = new DataSet();
+            //string strMessage = string.Empty, strCriteria = string.Empty;
+            //string strYear = string.Empty;
+            //string strPay_Month = string.Empty;
+            //string strPay_Year = string.Empty;
+            //try
+            //{
+            //    strCriteria = " and round_status= 'O' ";
+            //    if (!oPayment_round.SP_PAYMENT_ROUND_SEL(strCriteria, ref ds, ref strMessage))
+            //    {
+            //        lblError.Text = strMessage;
+            //    }
+            //    else
+            //    {
+            //        if (ds.Tables[0].Rows.Count > 0)
+            //        {
+            //            #region get Data
+            //            strYear = ds.Tables[0].Rows[0]["payment_year"].ToString();
+            //            strPay_Month = ds.Tables[0].Rows[0]["pay_month"].ToString();
+            //            strPay_Year = ds.Tables[0].Rows[0]["pay_year"].ToString();
+            //            #endregion
 
-                        #region set Control
-                        InitcboYear();
-                        if (cboYear.Items.FindByValue(strYear) != null)
-                        {
-                            cboYear.SelectedIndex = -1;
-                            cboYear.Items.FindByValue(strYear).Selected = true;
-                        }
+            //            #region set Control
+            //            InitcboYear();
+            //            if (cboYear.Items.FindByValue(strYear) != null)
+            //            {
+            //                cboYear.SelectedIndex = -1;
+            //                cboYear.Items.FindByValue(strYear).Selected = true;
+            //            }
 
-                        InitcboPay_Month();
-                        if (cboPay_Month.Items.FindByValue(strPay_Month) != null)
-                        {
-                            cboPay_Month.SelectedIndex = -1;
-                            cboPay_Month.Items.FindByValue(strPay_Month).Selected = true;
-                        }
+            //            InitcboPay_Month();
+            //            if (cboPay_Month.Items.FindByValue(strPay_Month) != null)
+            //            {
+            //                cboPay_Month.SelectedIndex = -1;
+            //                cboPay_Month.Items.FindByValue(strPay_Month).Selected = true;
+            //            }
 
-                        InitcboPay_Year();
-                        if (cboPay_Year.Items.FindByValue(strPay_Year) != null)
-                        {
-                            cboPay_Year.SelectedIndex = -1;
-                            cboPay_Year.Items.FindByValue(strPay_Year).Selected = true;
-                        }
+            //            InitcboPay_Year();
+            //            if (cboPay_Year.Items.FindByValue(strPay_Year) != null)
+            //            {
+            //                cboPay_Year.SelectedIndex = -1;
+            //                cboPay_Year.Items.FindByValue(strPay_Year).Selected = true;
+            //            }
+
+            //            this.InitcboPayItem();
 
 
-                        #endregion
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                lblError.Text = ex.Message.ToString();
-            }
-            finally
-            {
-                oPayment_round.Dispose();
-            }
+            //            #endregion
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    lblError.Text = ex.Message.ToString();
+            //}
+            //finally
+            //{
+            //    oPayment_round.Dispose();
+            //}
         }
 
         #endregion
@@ -383,7 +419,7 @@ namespace myWeb.App_Control.payment_bonus
                 {
                     #region insert
                     if (!oPayment_bonus.SP_PAYMENT_BONUS_HEAD_INS(strpayment_doc, txtpayment_date.Text, cboYear.SelectedValue, cboPay_Month.SelectedValue,
-                        cboPay_Year.SelectedValue, txtperson_code.Text, cboPerson_group.SelectedValue, txtbudget_plan_code.Text, "0", "0", "0", strcomments, "O",
+                        cboPay_Year.SelectedValue,  cboPay_Item.SelectedValue,  txtperson_code.Text, cboPerson_group.SelectedValue, txtbudget_plan_code.Text, "0", "0", "0", strcomments, "O",
                         strActive, strUpdatedBy, ref strMessage))
                     {
                         lblError.Text = strMessage;

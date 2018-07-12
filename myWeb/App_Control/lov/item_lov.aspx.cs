@@ -590,7 +590,8 @@ namespace myWeb.App_Control.lov
                                             "return false;\" >" + lblitem_code.Text + "</a>";
 
                     }
-                    if (ViewState["from"].ToString().Equals("back") || ViewState["from"].ToString().Equals("payment_special") || ViewState["from"].ToString().Equals("payment_medical"))
+                    if (ViewState["from"].ToString().Equals("back") || ViewState["from"].ToString().Equals("payment_special") 
+                        || ViewState["from"].ToString().Equals("payment_medical") || ViewState["from"].ToString().Equals("payment_bonus"))
                     {
                         lblitem_code.Text = "<a href=\"\" onclick=\"" +
                                             "window.parent.document.getElementById('" + ViewState["ctrl1"].ToString() + "').value='" + lblitem_code.Text + "';\n " +

@@ -179,12 +179,15 @@
                 <ItemTemplate>
                     <asp:TextBox ID="txtpayment_doc" runat="server" CssClass="textbox" MaxLength="100"
                         Width="100" Text='<%# DataBinder.Eval(Container, "DataItem.payment_doc") %>'></asp:TextBox>
+                    <asp:ImageButton ID="imgList_payment_doc" runat="server" CausesValidation="False" ImageAlign="AbsBottom" ImageUrl="../../images/controls/view2.gif" />
+                    <asp:ImageButton ID="imgClear_payment_doc" runat="server" CausesValidation="False" ImageAlign="AbsBottom"
+                        ImageUrl="../../images/controls/erase.gif" Style="width: 18px" />
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="รหัสบุคลากร" SortExpression="sp_person_code">
                 <ItemStyle HorizontalAlign="Center" Width="8%" Wrap="True" />
                 <ItemTemplate>
-                    <asp:Label ID="lblperson_code" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.bk_person_code") %>'>
+                    <asp:Label ID="lblperson_code" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.person_code") %>'>
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
@@ -238,4 +241,39 @@
         </Columns>
         <HeaderStyle HorizontalAlign="Center" CssClass="stGridHeader" Font-Bold="True"></HeaderStyle>
     </asp:GridView>
+
+
+    <script type="text/javascript">
+        function RegisterScript()
+        {
+            $("input[id*=imgClear_payment_doc]").click(function ()
+            {                
+                $('#' + this.id.replace('imgClear_payment_doc', 'txtpayment_doc')).val('');
+                $('#' + this.id.replace('imgClear_payment_doc', 'lblperson_code')).val('');
+                $('#' + this.id.replace('imgClear_payment_doc', 'lblperson_name')).html('');
+                $('#' + this.id.replace('imgClear_payment_doc', 'lblperson_thai_surname')).html('');
+                return false;
+            });
+            $("input[id*=imgList_payment_doc]").click(function ()
+            {
+                var txtpayment_doc = $('#' + this.id.replace('imgList_payment_doc', 'txtpayment_doc'));
+                var lblperson_code = $('#' + this.id.replace('imgList_payment_doc', 'lblperson_code'));
+                var lblperson_name = $('#' + this.id.replace('imgList_payment_doc', 'lblperson_name'));
+                var lblperson_thai_surname = $('#' + this.id.replace('imgList_payment_doc', 'lblperson_thai_surname'));
+                var url = "../lov/payment_lov.aspx?" +
+                    "person_name=" + (lblperson_name.text() + ' ' + lblperson_thai_surname.text()) +
+                    "&txtpayment_doc=" + $(txtpayment_doc).attr('id') +
+                    "&lblperson_code=" + $(lblperson_code).attr('id') +
+                    "&lblperson_name=" + $(lblperson_name).attr('id') +
+                    "&lblperson_thai_surname=" + $(lblperson_thai_surname).attr('id') +
+                    "&show=1&from=payment_import";
+                OpenPopUp('900px', '500px', '95%', 'ค้นหาข้อมูลการจ่ายเงินเดือน', url, '1');
+                return false;
+            });
+
+        };
+
+
+    </script>
+
 </asp:Content>

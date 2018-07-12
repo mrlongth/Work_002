@@ -248,79 +248,115 @@ namespace myWeb.App_Control.payment_bonus
 
         private void InitcboRound()
         {
-            cPayment_round oPayment_round = new cPayment_round();
-            DataSet ds = new DataSet();
-            string strMessage = string.Empty, strCriteria = string.Empty;
-            string strYear = string.Empty;
-            string strPay_Month = string.Empty;
-            string strPay_Year = string.Empty;
-            try
+            InitcboYear();
+            InitcboPay_Month();
+            InitcboPay_Year();
+            InitcboPayItem();
+
+            //cPayment_round oPayment_round = new cPayment_round();
+            //DataSet ds = new DataSet();
+            //string strMessage = string.Empty, strCriteria = string.Empty;
+            //string strYear = string.Empty;
+            //string strPay_Month = string.Empty;
+            //string strPay_Year = string.Empty;
+            //try
+            //{
+            //    strCriteria = " and round_status= 'O' ";
+            //    if (!oPayment_round.SP_PAYMENT_ROUND_SEL(strCriteria, ref ds, ref strMessage))
+            //    {
+            //        lblError.Text = strMessage;
+            //    }
+            //    else
+            //    {
+
+            //        if (ds.Tables[0].Rows.Count > 0)
+            //        {
+            //            #region get Data
+            //            strYear = ds.Tables[0].Rows[0]["payment_year"].ToString();
+            //            strPay_Month = ds.Tables[0].Rows[0]["pay_month"].ToString();
+            //            strPay_Year = ds.Tables[0].Rows[0]["pay_year"].ToString();
+            //            #endregion
+            //        }
+            //        else
+            //        {
+            //            #region get Data
+            //            strYear = ((DataSet)Application["xmlconfig"]).Tables["default"].Rows[0]["yearnow"].ToString();
+            //            if (DateTime.Now.Year < 2200)
+            //            {
+            //                strPay_Year = (DateTime.Now.Year + 543).ToString();
+            //            }
+            //            if (DateTime.Now.Month < 10)
+            //                strPay_Month = "0" + DateTime.Now.Month;
+            //            else
+            //                strPay_Month = DateTime.Now.Month.ToString();
+            //            #endregion
+            //        }
+
+            //        #region set Control
+            //        InitcboYear();
+            //        if (cboYear.Items.FindByValue(strYear) != null)
+            //        {
+            //            cboYear.SelectedIndex = -1;
+            //            cboYear.Items.FindByValue(strYear).Selected = true;
+            //        }
+
+            //        InitcboPay_Month();
+            //        if (cboPay_Month.Items.FindByValue(strPay_Month) != null)
+            //        {
+            //            cboPay_Month.SelectedIndex = -1;
+            //            cboPay_Month.Items.FindByValue(strPay_Month).Selected = true;
+            //        }
+
+            //        InitcboPay_Year();
+            //        if (cboPay_Year.Items.FindByValue(strPay_Year) != null)
+            //        {
+            //            cboPay_Year.SelectedIndex = -1;
+            //            cboPay_Year.Items.FindByValue(strPay_Year).Selected = true;
+            //        }
+            //        InitcboPayItem();
+            //        #endregion
+
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    lblError.Text = ex.Message.ToString();
+            //}
+            //finally
+            //{
+            //    oPayment_round.Dispose();
+            //}
+        }
+
+        private void InitcboPayItem()
+        {
+            var oCommon = new cCommon();
+            string strMessage = string.Empty,
+                   strCriteria = string.Empty,
+                   strPay_item = string.Empty;
+
+            int i;
+            var ds = new DataSet();
+            var dt = new DataTable();
+            strPay_item = cboPay_Item.SelectedValue;
+            strCriteria = " and g_type='special_item' ";
+            if (oCommon.SP_SEL_OBJECT("sp_GENERAL_SEL", strCriteria, ref ds, ref strMessage))
             {
-                strCriteria = " and round_status= 'O' ";
-                if (!oPayment_round.SP_PAYMENT_ROUND_SEL(strCriteria, ref ds, ref strMessage))
+                dt = ds.Tables[0];
+                cboPay_Item.Items.Clear();
+                cboPay_Item.Items.Add(new ListItem("---- เลือกข้อมูลทั้งหมด ----", ""));
+                for (i = 0; i <= dt.Rows.Count - 1; i++)
                 {
-                    lblError.Text = strMessage;
+                    cboPay_Item.Items.Add(new ListItem(dt.Rows[i]["g_name"].ToString(), dt.Rows[i]["g_code"].ToString()));
                 }
-                else
+                if (cboPay_Item.Items.FindByValue(strPay_item) != null)
                 {
-
-                    if (ds.Tables[0].Rows.Count > 0)
-                    {
-                        #region get Data
-                        strYear = ds.Tables[0].Rows[0]["payment_year"].ToString();
-                        strPay_Month = ds.Tables[0].Rows[0]["pay_month"].ToString();
-                        strPay_Year = ds.Tables[0].Rows[0]["pay_year"].ToString();
-                        #endregion
-                    }
-                    else
-                    {
-                        #region get Data
-                        strYear = ((DataSet)Application["xmlconfig"]).Tables["default"].Rows[0]["yearnow"].ToString();
-                        if (DateTime.Now.Year < 2200)
-                        {
-                            strPay_Year = (DateTime.Now.Year + 543).ToString();
-                        }
-                        if (DateTime.Now.Month < 10)
-                            strPay_Month = "0" + DateTime.Now.Month;
-                        else
-                            strPay_Month = DateTime.Now.Month.ToString();
-                        #endregion
-                    }
-
-                    #region set Control
-                    InitcboYear();
-                    if (cboYear.Items.FindByValue(strYear) != null)
-                    {
-                        cboYear.SelectedIndex = -1;
-                        cboYear.Items.FindByValue(strYear).Selected = true;
-                    }
-
-                    InitcboPay_Month();
-                    if (cboPay_Month.Items.FindByValue(strPay_Month) != null)
-                    {
-                        cboPay_Month.SelectedIndex = -1;
-                        cboPay_Month.Items.FindByValue(strPay_Month).Selected = true;
-                    }
-
-                    InitcboPay_Year();
-                    if (cboPay_Year.Items.FindByValue(strPay_Year) != null)
-                    {
-                        cboPay_Year.SelectedIndex = -1;
-                        cboPay_Year.Items.FindByValue(strPay_Year).Selected = true;
-                    }
-                    #endregion
-
+                    cboPay_Item.SelectedIndex = -1;
+                    cboPay_Item.Items.FindByValue(strPay_item).Selected = true;
                 }
-            }
-            catch (Exception ex)
-            {
-                lblError.Text = ex.Message.ToString();
-            }
-            finally
-            {
-                oPayment_round.Dispose();
             }
         }
+
 
         private void BindGridView(int nPageNo)
         {
@@ -332,6 +368,7 @@ namespace myWeb.App_Control.payment_bonus
             string strYear = string.Empty;
             string strPay_Month = string.Empty;
             string strPay_Year = string.Empty;
+            string strPay_Item = string.Empty;
             string strPerson_group_code = string.Empty;
             string strPerson_code = string.Empty;
             string strPerson_name = string.Empty;
@@ -342,6 +379,7 @@ namespace myWeb.App_Control.payment_bonus
             strYear = cboYear.SelectedValue;
             strPay_Month = cboPay_Month.SelectedValue;
             strPay_Year = cboPay_Year.SelectedValue;
+            strPay_Item = cboPay_Item.SelectedValue;
             strPerson_group_code = cboPerson_group.SelectedValue;
             strdirector_code = cboDirector.SelectedValue;
             strunit_code = cboUnit.SelectedValue;
@@ -369,6 +407,11 @@ namespace myWeb.App_Control.payment_bonus
             {
                 strCriteria = strCriteria + "  And  (pay_year='" + strPay_Year + "') ";
             }
+
+            if (!strPay_Item.Equals(""))
+            {
+                strCriteria = strCriteria + "  And  (pay_item='" + strPay_Item + "') ";
+            }            
 
             if (!strPerson_group_code.Equals(""))
             {

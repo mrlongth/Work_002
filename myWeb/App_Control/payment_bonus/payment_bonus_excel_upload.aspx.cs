@@ -59,6 +59,10 @@ namespace myWeb.App_Control.payment_bonus
                 {
                     ViewState["pay_month"] = Request.QueryString["pay_month"].ToString();
                 }
+                if (Request.QueryString["pay_item"] != null)
+                {
+                    ViewState["pay_item"] = Request.QueryString["pay_item"].ToString();
+                }
             }
         }
 
@@ -92,6 +96,7 @@ namespace myWeb.App_Control.payment_bonus
                 string ppayment_year;
                 string ppay_year;
                 string ppay_month;
+                string ppay_item;
                 string pbn_person_id;
                 string pbn_person_code;
                 string pbn_person_name ;
@@ -116,6 +121,7 @@ namespace myWeb.App_Control.payment_bonus
                     ppayment_year = ViewState["year"].ToString();
                     ppay_year = ViewState["pay_year"].ToString();
                     ppay_month = ViewState["pay_month"].ToString();
+                    ppay_item = ViewState["pay_item"].ToString();
                     pbn_person_id = Helper.CStr(odtExcelAll.Rows[i][int.Parse(str_person_id)]);
                     pbn_person_code = str_person_code != "null" ? Helper.CStr(odtExcelAll.Rows[i][int.Parse(str_person_code)]) : "";
                     pbn_person_name = str_person_name != "null" ? Helper.CStr(odtExcelAll.Rows[i][int.Parse(str_person_name)]) : "";
@@ -125,7 +131,7 @@ namespace myWeb.App_Control.payment_bonus
                     pitem_code = ViewState["item_code"].ToString();
                     if (!string.IsNullOrEmpty(pbn_person_name) && !string.IsNullOrEmpty(pbn_person_surname))
                     {
-                        objPayment_bonus.SP_IMPORT_PAYMENT_BONUS_INS(ppayment_year,ppay_year ,ppay_month, pbn_person_id, pbn_person_code, pbn_person_name, pbn_person_surname, 
+                        objPayment_bonus.SP_IMPORT_PAYMENT_BONUS_INS(ppayment_year,ppay_year ,ppay_month, ppay_item, pbn_person_id, pbn_person_code, pbn_person_name, pbn_person_surname, 
                             pitem_code, pitem_qty, pitem_amt, pc_created_by, ref strMassege);
                     }
                 }

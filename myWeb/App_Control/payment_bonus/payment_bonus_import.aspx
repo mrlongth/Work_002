@@ -44,26 +44,43 @@
                 <asp:Label runat="server" ID="Label7">ปีงบประมาณ :</asp:Label>
             </td>
             <td align="left" nowrap valign="middle" style="width: 20%;">
-                <asp:DropDownList runat="server" CssClass="textboxdis" ID="cboYear" Enabled="False">
+                <asp:DropDownList runat="server" CssClass="textbox" ID="cboYear">
                 </asp:DropDownList>
+
+                                <asp:RequiredFieldValidator runat="server" ControlToValidate="cboYear" ErrorMessage="กรุณาเลือกปีงบประมาณ" Display="None" SetFocusOnError="True" ValidationGroup="A" ID="RequiredFieldValidator14"></asp:RequiredFieldValidator>
+
             </td>
-            <td align="left" nowrap valign="middle" style="text-align: right; width: 10%;">&nbsp;</td>
+            <td align="left" nowrap valign="middle" style="text-align: right; width: 10%;">
+                <asp:Label runat="server" ID="Label85">รอบปีที่จ่าย :</asp:Label>
+            </td>
             <td align="left" nowrap valign="middle" colspan="2">
+                <asp:DropDownList runat="server" CssClass="textbox" ID="cboPay_Year"></asp:DropDownList>
                 <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click1">
                 </asp:LinkButton>
+
+                                <asp:RequiredFieldValidator runat="server" ControlToValidate="cboPay_Year" ErrorMessage="กรุณาเลือกรอบปีที่จ่าย" Display="None" SetFocusOnError="True" ValidationGroup="A" ID="RequiredFieldValidator16"></asp:RequiredFieldValidator>
+
             </td>
         </tr>
         <tr align="left">
             <td align="right" nowrap valign="middle" width="20%">
-                <asp:Label runat="server" ID="Label85">รอบปีที่จ่าย :</asp:Label>
+                <asp:Label runat="server" ID="Label84">รอบเดือนที่จ่าย :</asp:Label>
             </td>
             <td align="left" nowrap valign="middle">
-                <asp:DropDownList runat="server" CssClass="textboxdis" ID="cboPay_Year" Enabled="False"></asp:DropDownList>
+                <asp:DropDownList runat="server" CssClass="textbox" ID="cboPay_Month"></asp:DropDownList>
+
+                                <asp:RequiredFieldValidator runat="server" ControlToValidate="cboPay_Month" ErrorMessage="กรุณาเลือกรอบเดือนที่จ่าย" Display="None" SetFocusOnError="True" ValidationGroup="A" ID="RequiredFieldValidator15"></asp:RequiredFieldValidator>
+
             </td>
             <td align="left" nowrap valign="middle" style="text-align: right;">
-                <asp:Label runat="server" ID="Label84">รอบเดือนที่จ่าย :</asp:Label></td>
+                                <asp:Label runat="server" ID="Label91">รอบการจ่ายที่ :</asp:Label>
+
+                            </td>
             <td align="left" nowrap valign="middle">
-                <asp:DropDownList runat="server" CssClass="textboxdis" ID="cboPay_Month" Enabled="False"></asp:DropDownList>
+                                <asp:DropDownList runat="server" CssClass="textbox" ID="cboPay_Item"></asp:DropDownList>
+
+                                <asp:RequiredFieldValidator runat="server" ControlToValidate="cboPay_Item" ErrorMessage="กรุณาเลือกรอบการจ่ายที่" Display="None" SetFocusOnError="True" ValidationGroup="A" ID="RequiredFieldValidator17"></asp:RequiredFieldValidator>
+
             </td>
             <td align="left" nowrap rowspan="2" style="vertical-align: middle; width: 1%;" valign="middle">
                 <asp:ImageButton ID="imgImport" runat="server" AlternateText="นำเข้า Excel" ImageUrl="~/images/button/import.png"

@@ -72,40 +72,49 @@
                                 <asp:Label runat="server" ID="Label82">ปีงบประมาณ :</asp:Label>
                             </td>
                             <td align="left" nowrap valign="middle">
-                                <asp:DropDownList runat="server" CssClass="textboxdis" ID="cboYear" Enabled="False">
+                                <asp:DropDownList runat="server" CssClass="textbox" ID="cboYear">
                                 </asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="cboYear" Display="None" ErrorMessage="กรุณาเลือกปีงบประมาณ" SetFocusOnError="True" ValidationGroup="A"></asp:RequiredFieldValidator>
                             </td>
                             <td align="left" nowrap valign="middle" style="vertical-align: bottom; width: 1%;">&nbsp;&nbsp;
                             </td>
                         </tr>
                         <tr align="left">
-                            <td align="right" nowrap valign="middle">
+                            <td align="right" nowrap valign="middle" style="height: 25px">
                                 <asp:Label runat="server" ID="Label84">รอบเดือนที่จ่าย :</asp:Label>
                             </td>
-                            <td align="left" nowrap valign="middle">
-                                <asp:DropDownList runat="server" CssClass="textboxdis" ID="cboPay_Month" Enabled="False">
+                            <td align="left" nowrap valign="middle" style="height: 25px">
+                                <asp:DropDownList runat="server" CssClass="textbox" ID="cboPay_Month">
                                 </asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="cboPay_Month" Display="None" ErrorMessage="กรุณาเลือกรอบเดือนที่จ่าย" SetFocusOnError="True" ValidationGroup="A"></asp:RequiredFieldValidator>
                             </td>
-                            <td align="left" nowrap valign="middle" style="text-align: right" colspan="2">
+                            <td align="left" nowrap valign="middle" style="text-align: right; height: 25px;" colspan="2">
                                 <asp:Label runat="server" ID="Label85">รอบปีที่จ่าย :</asp:Label>
                             </td>
-                            <td align="left" nowrap valign="middle">
-                                <asp:DropDownList runat="server" CssClass="textboxdis" ID="cboPay_Year" Enabled="False">
+                            <td align="left" nowrap valign="middle" style="height: 25px">
+                                <asp:DropDownList runat="server" CssClass="textbox" ID="cboPay_Year">
                                 </asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="cboPay_Year" Display="None" ErrorMessage="กรุณาเลือกรอบปีที่จ่าย" SetFocusOnError="True" ValidationGroup="A"></asp:RequiredFieldValidator>
                             </td>
-                            <td align="left" nowrap valign="middle" style="vertical-align: bottom; width: 1%;">&nbsp;&nbsp;
+                            <td align="left" nowrap valign="middle" style="vertical-align: bottom; width: 1%; height: 25px;">&nbsp;&nbsp;
                             </td>
                         </tr>
                         <tr align="left">
                             <td align="right" nowrap valign="middle">
+                                <asp:Label ID="Label91" runat="server">รอบการจ่ายที่ :</asp:Label>
+                            </td>
+                            <td align="left" nowrap valign="middle">
+                                <asp:DropDownList ID="cboPay_Item" runat="server" CssClass="textbox">
+                                </asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="cboPay_Item" Display="None" ErrorMessage="กรุณาเลือกรอบการจ่ายที่" SetFocusOnError="True" ValidationGroup="A"></asp:RequiredFieldValidator>
+                            </td>
+                            <td align="left" colspan="2" nowrap style="text-align: right" valign="middle">
                                 <asp:Label ID="Label50" runat="server" CssClass="label_hbk">กลุ่มบุคลากร :</asp:Label>
                             </td>
                             <td align="left" nowrap valign="middle">
                                 <asp:DropDownList ID="cboPerson_group" runat="server" AutoPostBack="True" CssClass="textbox" OnSelectedIndexChanged="cboPerson_group_SelectedIndexChanged1">
                                 </asp:DropDownList>
                             </td>
-                            <td align="left" colspan="2" nowrap style="text-align: right" valign="middle">&nbsp;</td>
-                            <td align="left" nowrap valign="middle">&nbsp;</td>
                             <td align="left" nowrap style="vertical-align: bottom; width: 1%;" valign="middle">&nbsp;</td>
                         </tr>
                         <tr align="left">

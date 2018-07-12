@@ -232,10 +232,6 @@ namespace myWeb.App_Control.payment_back
             base.OnInit(e);
         }
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             //  this.imgSaveOnly.Click += new System.Web.UI.ImageClickEventHandler(this.imgSaveOnly_Click);
@@ -537,7 +533,7 @@ namespace myWeb.App_Control.payment_back
         protected void Page_LoadComplete(object sender, EventArgs e)
         {
 
-            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "RegisterScript", "createDate('" + txtdate_begin.ClientID + "','" + DateTime.Now.Date.ToString("dd/MM/yyyy") + "');createDate('" + txtdate_end.ClientID + "','" + DateTime.Now.Date.ToString("dd/MM/yyyy") + "','" + DateTime.Now.Date.ToString("dd/MM/yyyy") + "');", true);
+            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "RegisterScript", "createDate('" + txtdate_begin.ClientID + "','" + DateTime.Now.Date.ToString("dd/MM/yyyy") + "');createDate('" + txtdate_end.ClientID + "','" + DateTime.Now.Date.ToString("dd/MM/yyyy") + "','" + DateTime.Now.Date.ToString("dd/MM/yyyy") + "');RegisterScript();", true);
 
 
             txtdate_begin.Attributes.Add("onblur",

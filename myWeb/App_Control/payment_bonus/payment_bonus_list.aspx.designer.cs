@@ -103,6 +103,24 @@ namespace myWeb.App_Control.payment_bonus {
         protected global::System.Web.UI.WebControls.DropDownList cboPay_Month;
         
         /// <summary>
+        /// lblPage15 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPage15;
+        
+        /// <summary>
+        /// cboPay_Item control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList cboPay_Item;
+        
+        /// <summary>
         /// lblPage12 control.
         /// </summary>
         /// <remarks>

@@ -24,7 +24,7 @@
                     AutoPostBack="True" OnSelectedIndexChanged="cboPerson_group_SelectedIndexChanged">
                 </asp:DropDownList>
             </td>
-            <td style="text-align: left" rowspan="5" width="15%">
+            <td style="text-align: left" rowspan="6" width="15%">
                 <asp:ImageButton runat="server" AlternateText="ค้นหาข้อมูล" ImageUrl="~/images/button/Search.png"
                     ID="imgFind" OnClick="imgFind_Click"></asp:ImageButton>
                 <asp:ImageButton runat="server" AlternateText="เพิ่มข้อมุล" ImageUrl="~/images/button/Save.png"
@@ -48,6 +48,19 @@
                     AutoPostBack="True" OnSelectedIndexChanged="cboPay_Month_SelectedIndexChanged">
                 </asp:DropDownList>
             </td>
+        </tr>
+        <tr>
+            <td style="text-align: right;">
+                <asp:Label runat="server" CssClass="label_h" ID="lblPage15">รอบการจ่ายที่ :</asp:Label>
+            </td>
+            <td>
+                                <asp:DropDownList runat="server" CssClass="textbox" ID="cboPay_Item"></asp:DropDownList>
+
+            </td>
+            <td style="text-align: right" >
+                &nbsp;</td>
+            <td style="text-align: left">
+                &nbsp;</td>
         </tr>
         <tr>
             <td style="text-align: right;">

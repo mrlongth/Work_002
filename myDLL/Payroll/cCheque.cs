@@ -534,6 +534,7 @@ namespace myDLL
                 string pcheque_year,
                 string ppay_month,
                 string ppay_year,
+                string ppay_item,
                 string pcheque_bank_code,
                 string pcheque_comment,
                 string pc_created_by,
@@ -558,6 +559,7 @@ namespace myDLL
                 oCommand.Parameters.Add("@pcheque_year", SqlDbType.VarChar).Value = pcheque_year;
                 oCommand.Parameters.Add("@ppay_month", SqlDbType.VarChar).Value = ppay_month;
                 oCommand.Parameters.Add("@ppay_year", SqlDbType.VarChar).Value = ppay_year;
+                oCommand.Parameters.Add("@ppay_item", SqlDbType.VarChar).Value = ppay_item;
                 oCommand.Parameters.Add("@pcheque_bank_code", SqlDbType.VarChar).Value = pcheque_bank_code;
                 oCommand.Parameters.Add("@pcheque_comment", SqlDbType.VarChar).Value = pcheque_comment;
                 oCommand.Parameters.Add("@c_created_by", SqlDbType.VarChar).Value = pc_created_by;

@@ -1,12 +1,6 @@
 <%@ Page Language="C#" MasterPageFile="~/Site_popup.Master" EnableEventValidation="false"
     AutoEventWireup="true" CodeBehind="unit_control.aspx.cs" Inherits="myWeb.App_Control.unit.unit_control" %>
 
-<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxtoolkit" %>
-<%@ Register Assembly="Aware.WebControls" Namespace="Aware.WebControls" TagPrefix="cc2" %>
-<%@ Register Assembly="DevExpress.Web.v9.1, Version=9.1.4.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073"
-    Namespace="DevExpress.Web.ASPxRoundPanel" TagPrefix="dxrp" %>
-<%@ Register Assembly="DevExpress.Web.v9.1, Version=9.1.4.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073"
-    Namespace="DevExpress.Web.ASPxPanel" TagPrefix="dxp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <script type="text/javascript" language="javascript">
@@ -197,9 +191,9 @@
                                     <td align="right" nowrap valign="middle">
                                         <asp:Label ID="Label2" runat="server">ลำดับที่ :</asp:Label>
                                     </td>
-                                    <td align="left" nowrap valign="middle">&nbsp;<cc2:AwNumeric ID="txtunit_order" runat="server" CssClass="textbox" LeadZero="Show"
+                                    <td align="left" nowrap valign="middle">&nbsp;<cc1:AwNumeric ID="txtunit_order" runat="server" CssClass="textbox" LeadZero="Show"
                                         MaxValue="99999999" MinValue="0" Width="100px" DecimalPlaces="0">
-                                    </cc2:AwNumeric>
+                                    </cc1:AwNumeric>
                                     </td>
                                 </tr>
                                 <tr align="left">

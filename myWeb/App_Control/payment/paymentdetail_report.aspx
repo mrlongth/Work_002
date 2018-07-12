@@ -48,7 +48,7 @@
                         <td style="width: 20%; text-align: right;" colspan="2">
                             <asp:Label runat="server" CssClass="label_h" ID="lblPage2">กลุ่มบุคลากร :</asp:Label>
                         </td>
-                        <td style="height: 23px; text-align: left;">
+                        <td style="height: 23px; text-align: left;" colspan="2">
                             <asp:DropDownList runat="server" CssClass="textbox" ID="cboPerson_group" Visible="False">
                             </asp:DropDownList>
                             <dcb:DropDownCheckBoxes ID="cboPerson_group_dropdown_checkboxes" runat="server"
@@ -70,7 +70,7 @@
                         <td style="width: 20%; text-align: right;" colspan="2">
                             <asp:Label runat="server" CssClass="label_h" ID="lblPage1">รอบเดือนที่จ่าย :</asp:Label>
                         </td>
-                        <td style="height: 23px; text-align: left;">
+                        <td style="height: 23px; text-align: left;" colspan="2">
                             <asp:DropDownList runat="server" CssClass="textbox" ID="cboPay_Month">
                             </asp:DropDownList>
                         </td>
@@ -89,7 +89,7 @@
                             <asp:Label runat="server" CssClass="label_h" ID="lblPage8">หน่วยงาน :
                             </asp:Label>
                         </td>
-                        <td style="height: 23px; text-align: left;">
+                        <td style="height: 23px; text-align: left;" colspan="2">
                             <asp:DropDownList runat="server" CssClass="textbox" ID="cboUnit">
                             </asp:DropDownList>
                         </td>
@@ -99,7 +99,7 @@
                             <asp:Label runat="server" CssClass="label_error" ID="Label71">*</asp:Label>
                             <asp:Label runat="server" ID="lblPage9" CssClass="label_h">รายได้/จ่าย :</asp:Label>
                         </td>
-                        <td style="text-align: left;" colspan="4">
+                        <td style="text-align: left;" colspan="5">
                             <asp:TextBox runat="server" CssClass="textbox" Width="80px" ID="txtitem_code" MaxLength="20">
                             </asp:TextBox>
                             &nbsp;<asp:ImageButton runat="server" ImageAlign="AbsBottom" ImageUrl="../../images/controls/view2.gif"
@@ -132,6 +132,11 @@
                             <asp:CheckBox ID="chkNegative" runat="server" CssClass="label_h" Text="แสดงเฉพาะยอดติดลบ" />
 
                         </td>
+                        <td style="text-align: left;">
+
+                            <asp:CheckBox ID="chkLessThan10" runat="server" CssClass="label_h" Text="แสดงเฉพาะยอด &lt; 10" />
+
+                        </td>
                     </tr>
                     <tr>
                         <td style="text-align: right; width: 20%;">
@@ -146,7 +151,7 @@
                         <td style="text-align: right;" colspan="2">
                             <asp:Label runat="server" ID="lblLot" CssClass="label_h" Visible="False">งบ :</asp:Label>
                         </td>
-                        <td style="height: 23px; text-align: left;">
+                        <td style="height: 23px; text-align: left;" colspan="2">
                             <asp:DropDownList runat="server" CssClass="textbox" ID="cboLot" Visible="False">
                             </asp:DropDownList>
                         </td>
@@ -159,7 +164,7 @@
                             <asp:DropDownList runat="server" CssClass="textbox" ID="cboBank" Visible="False">
                             </asp:DropDownList>
                         </td>
-                        <td style="height: 23px; text-align: right;">
+                        <td style="height: 23px; text-align: right;" colspan="2">
                              &nbsp;</td>
                     </tr>
                     <tr>
@@ -170,7 +175,7 @@
                             border="0" />
                     </asp:HyperLink>
                         </td>
-                        <td style="height: 23px; text-align: right;">
+                        <td style="height: 23px; text-align: right;" colspan="2">
                             <asp:ImageButton runat="server" AlternateText="พิมพ์ข้อมูล" ImageUrl="~/images/button/print.png"
                                 ID="imgPrint" OnClick="imgPrint_Click" ValidationGroup="A"></asp:ImageButton>
                         </td>

@@ -127,7 +127,7 @@ namespace myWeb.App_Control.payment_back
                     ppayment_item_diff = Helper.CStr(odtExcelAll.Rows[i][int.Parse(str_payment_item_diff)]);
                     ppayment_item_back = Helper.CStr(odtExcelAll.Rows[i][int.Parse(str_payment_item_back)]);
                     pitem_code = ViewState["item_code"].ToString();
-                    if (!string.IsNullOrEmpty(pbk_person_code))
+                    //if (!string.IsNullOrEmpty(pbk_person_code))
                     {
                         oPayment_back.SP_IMPORT_PAYMENT_BACK_INS(ppayment_year,ppay_year ,ppay_month,  pbk_person_code, pbk_person_name, pbk_person_surname, 
                             pitem_code, ppayment_item_old, ppayment_item_new , ppayment_item_diff,ppayment_item_back, "" , pc_created_by, ref strMassege);

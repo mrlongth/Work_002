@@ -1,11 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site_main.Master" AutoEventWireup="true"
     CodeBehind="Default.aspx.cs" Inherits="myWeb.Default" Title="การจ่ายเงินสำหรับบุคลากร มหาวิทยาลัยราชภัฏเชียงใหม่" %>
 
-<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
-<%@ Register Assembly="DevExpress.Web.v9.1, Version=9.1.4.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073"
-    Namespace="DevExpress.Web.ASPxPanel" TagPrefix="dxp" %>
-<%@ Register Assembly="DevExpress.Web.v9.1, Version=9.1.4.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073"
-    Namespace="DevExpress.Web.ASPxRoundPanel" TagPrefix="dxrp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content_left">
         <div class="head_news">
@@ -92,7 +87,7 @@
     <!-- Hidden Field -->
     <asp:HiddenField ID="hidForModel" runat="server" />
 
-    <cc1:ModalPopupExtender
+    <ajaxtoolkit:ModalPopupExtender
         ID="WarningModal"
         TargetControlID="hidForModel"
         runat="server"
@@ -100,7 +95,7 @@
         CancelControlID="btnWarning"
         DropShadow="true"
         PopupControlID="pnlIssues">
-    </cc1:ModalPopupExtender>
+    </ajaxtoolkit:ModalPopupExtender>
 
     <!-- Panel -->
     <asp:Panel ID="pnlIssues" runat="server" Style="display: none;"

@@ -76,6 +76,7 @@ namespace myWeb.App_Control.cheque_save
                 InitcboCheque_bank();
                 InitcboChequeType();
                 InitcboBudgetType();
+                InitcboPayItem();
 
                 if (ViewState["mode"].ToString().ToLower().Equals("add"))
                 {
@@ -515,6 +516,7 @@ namespace myWeb.App_Control.cheque_save
             string strcheque_year = string.Empty;
             string strpay_month = string.Empty;
             string strpay_year = string.Empty;
+            string strpay_item = string.Empty;
             string strcheque_bank_code = string.Empty;
             string strcheque_comment = string.Empty;
             //Detail
@@ -538,6 +540,7 @@ namespace myWeb.App_Control.cheque_save
             string strcheque_type = cboChequeType.SelectedValue;
             string strsp_round_id = hddsp_round_id.Value;
             string strbudget_type = cboBudget_type.SelectedValue;
+
             string strScript = string.Empty;
             bool blnDup = false;
             cCheque oCheque = new cCheque();
@@ -551,6 +554,7 @@ namespace myWeb.App_Control.cheque_save
                 strcheque_year = cboYear.SelectedValue;
                 strpay_month = hddpay_month.Value;
                 strpay_year = cboPay_Year.SelectedValue;
+                strpay_item = cboPay_Item.SelectedValue;
                 strcheque_bank_code = cboCheque_bank_code.SelectedValue;
                 strcheque_comment = txtcomments.Text;
                 #endregion
@@ -565,8 +569,14 @@ namespace myWeb.App_Control.cheque_save
                     if (cboChequeType.SelectedValue == "02")
                         strCheckDup += " and sp_round_id = " + hddsp_round_id.Value;
 
+
+
                     if (cboChequeType.SelectedValue == "01" || cboChequeType.SelectedValue == "04")
                         strCheckDup += " and budget_type = '" + cboBudget_type.SelectedValue + "'";
+
+                    if (cboChequeType.SelectedValue == "04")
+                        strCheckDup += " and pay_item = '" + cboPay_Item.SelectedValue + "'";
+
 
                     if (!oCheque.SP_CHEQUE_HEAD_SEL(strCheckDup, ref ds, ref strMessage))
                     {
@@ -598,7 +608,7 @@ namespace myWeb.App_Control.cheque_save
                         else
                         {
                             if (!oCheque.SP_CHEQUE_HEAD_INS(
-                                strcheque_doc, strcheque_date, strcheque_year, strpay_month, strpay_year,
+                                strcheque_doc, strcheque_date, strcheque_year, strpay_month, strpay_year, strpay_item,
                                 strcheque_bank_code, strcheque_comment, strc_user, strcheque_type, strsp_round_id, strbudget_type, ref strMessage))
                             {
                                 lblError.Text = strMessage;
@@ -783,6 +793,19 @@ namespace myWeb.App_Control.cheque_save
                             }
                             lblpay_item.Visible = false;
                             cboPay_Item.Visible = false;
+
+                            if(strcheque_type == "04")
+                            {
+                                this.InitcboPayItem();
+                                if (cboPay_Item.Items.FindByValue(strpay_item) != null)
+                                {
+                                    cboPay_Item.SelectedIndex = -1;
+                                    cboPay_Item.Items.FindByValue(strpay_item).Selected = true;
+                                }
+                                lblpay_item.Visible = true;
+                                cboPay_Item.Visible = true;
+                            }
+
                         }
                         else
                         {
@@ -1224,7 +1247,16 @@ namespace myWeb.App_Control.cheque_save
                 InitcboRound();
                 cboCheque_bank_code.CssClass = "textboxdis";
                 cboCheque_bank_code.Enabled = false;
+                if(cboChequeType.SelectedValue == "04")
+                {
+                    lblpay_item.Visible = true;
+                    cboPay_Item.Visible = true;
+
+                }
             }
+
+
+
             else
             {
                 cboCheque_bank_code.CssClass = "textbox";

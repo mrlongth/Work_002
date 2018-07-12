@@ -105,7 +105,7 @@
                 <asp:Label runat="server" ID="lblpay_item">รอบการจ่ายที่ :</asp:Label>
                 </td>
             <td align="left" nowrap valign="middle" style="vertical-align: bottom; width: 1%;">
-                <asp:DropDownList runat="server" CssClass="textboxdis" ID="cboPay_Item" Enabled="False">
+                <asp:DropDownList runat="server" CssClass="textbox" ID="cboPay_Item" >
                 </asp:DropDownList>
             </td>
         </tr>

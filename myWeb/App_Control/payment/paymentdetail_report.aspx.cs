@@ -593,7 +593,12 @@ namespace myWeb.App_Control.payment
             {
                 strCriteria = strCriteria + "  And  view_payment.payment_net < 0 ";
             }
-           
+
+            if (chkLessThan10.Visible && chkLessThan10.Checked)
+            {
+                strCriteria = strCriteria + "  And  view_payment.payment_net < 10 ";
+            }
+
 
             if (!strProduce.Equals(""))
             {
@@ -627,7 +632,7 @@ namespace myWeb.App_Control.payment
                 strCriteria += " and substring(view_payment.payment_detail_director_code,4,2) = substring('" + DirectorCode + "',4,2) ";
             }
 
-            if (base.myBudgetType != "M")
+            if (base.myBudgetType != "M" && !RadioButtonList1.SelectedValue.Equals("0"))
             {
                 strCriteria = strCriteria + "  And  view_payment.payment_detail_budget_type ='" + base.myBudgetType + "' ";
             }
@@ -902,10 +907,12 @@ namespace myWeb.App_Control.payment
             if (RadioButtonList1.SelectedValue == "0")
             {
                 chkNegative.Visible = true;
+                chkLessThan10.Visible = true;
             }
             else
             {
                 chkNegative.Visible = false;
+                chkLessThan10.Visible = false;
             }
            
 

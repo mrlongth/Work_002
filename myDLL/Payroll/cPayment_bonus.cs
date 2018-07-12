@@ -124,6 +124,7 @@ namespace myDLL
                 string ppayment_year,
                 string ppay_month,
                 string ppay_year,
+                string ppay_item,
                 string pbn_person_code,
                 string pbn_person_group_code,
                 string pbn_budget_plan_code,
@@ -152,6 +153,8 @@ namespace myDLL
                 oCommand.Parameters.Add("ppayment_year", SqlDbType.VarChar).Value = ppayment_year;
                 oCommand.Parameters.Add("ppay_month", SqlDbType.VarChar).Value = ppay_month;
                 oCommand.Parameters.Add("ppay_year", SqlDbType.VarChar).Value = ppay_year;
+                oCommand.Parameters.Add("ppay_item", SqlDbType.VarChar).Value = ppay_item;
+
                 oCommand.Parameters.Add("pbn_person_code", SqlDbType.VarChar).Value = pbn_person_code;
                 oCommand.Parameters.Add("pbn_person_group_code", SqlDbType.VarChar).Value = pbn_person_group_code;
                 oCommand.Parameters.Add("pbn_budget_plan_code", SqlDbType.VarChar).Value = pbn_budget_plan_code;
@@ -412,6 +415,7 @@ namespace myDLL
                  string ppayment_year,
                  string ppay_year,
                  string ppay_month,
+                 string ppay_item,
                 string pbn_person_id,
                 string pbn_person_code,
                 string pbn_person_name,
@@ -437,6 +441,7 @@ namespace myDLL
                 oCommand.Parameters.Add("ppayment_year", SqlDbType.VarChar).Value = ppayment_year;
                 oCommand.Parameters.Add("ppay_year", SqlDbType.VarChar).Value = ppay_year;
                 oCommand.Parameters.Add("ppay_month", SqlDbType.VarChar).Value = ppay_month;
+                oCommand.Parameters.Add("ppay_item", SqlDbType.VarChar).Value = ppay_item;
                 oCommand.Parameters.Add("pbn_person_id", SqlDbType.VarChar).Value = pbn_person_id;
                 oCommand.Parameters.Add("pbn_person_code", SqlDbType.VarChar).Value = pbn_person_code;
                 oCommand.Parameters.Add("pbn_person_name", SqlDbType.VarChar).Value = pbn_person_name;
@@ -543,6 +548,7 @@ namespace myDLL
                  string ppayment_year,
                  string ppay_year,
                  string ppay_month,
+                 string ppay_item,
                  string pbn_person_id,
                  string pbn_person_group_code,
                  string pbudget_plan_code,
@@ -565,8 +571,9 @@ namespace myDLL
                 oCommand.CommandType = CommandType.StoredProcedure;
                 oCommand.CommandText = "sp_IMPORT_PAYMENT_BONUS_SAVE";
                 oCommand.Parameters.Add("ppayment_year", SqlDbType.VarChar).Value = ppayment_year;
-                oCommand.Parameters.Add("ppay_year", SqlDbType.VarChar).Value = ppay_year;
                 oCommand.Parameters.Add("ppay_month", SqlDbType.VarChar).Value = ppay_month;
+                oCommand.Parameters.Add("ppay_year", SqlDbType.VarChar).Value = ppay_year;
+                oCommand.Parameters.Add("ppay_item", SqlDbType.VarChar).Value = ppay_item;
                 oCommand.Parameters.Add("pbn_person_id", SqlDbType.VarChar).Value = pbn_person_id;
                 oCommand.Parameters.Add("pbn_person_group_code", SqlDbType.VarChar).Value = pbn_person_group_code;                
                 oCommand.Parameters.Add("pbudget_plan_code", SqlDbType.VarChar).Value = pbudget_plan_code;
