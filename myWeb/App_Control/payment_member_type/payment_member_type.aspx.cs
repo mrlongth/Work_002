@@ -444,6 +444,7 @@ namespace myWeb.App_Control.payment_member_type
                 string strGBK2 = string.Empty;
                 strGBK2 = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["GBK2"].ToString();
                 string strGSJ2 = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["GSJ2"].ToString();
+                string strPVD2 = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["PVD2"].ToString();
 
 
                 GridViewRow gviewRow;
@@ -458,7 +459,10 @@ namespace myWeb.App_Control.payment_member_type
                     AwNumeric txtextra_credit = (AwNumeric)gviewRow.FindControl("txtextra_credit");
 
 
-                    if (!txtrate1.Text.Equals("0.00") | cboMember_type.SelectedValue.Equals(strGBK2) | cboMember_type.SelectedValue.Equals(strGSJ2))
+                    if (!txtrate1.Text.Equals("0.00") || 
+                        cboMember_type.SelectedValue.Equals(strGBK2) || 
+                        cboMember_type.SelectedValue.Equals(strGSJ2) || 
+                        cboMember_type.SelectedValue.Equals(strPVD2))
                     {
                         DataSet ds = new DataSet();
                         string strCheckDup = string.Empty;
@@ -584,9 +588,10 @@ namespace myWeb.App_Control.payment_member_type
             string strGSJ2 = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["GSJ2"].ToString();
 
             string strPVD = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["PVD"].ToString();
+            string strPVD2 = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["PVD2"].ToString();
             try
             {
-                if (!strmember_type_code.Equals(strGBK2) && !strmember_type_code.Equals(strGSJ2))
+                if (!strmember_type_code.Equals(strGBK2) && !strmember_type_code.Equals(strGSJ2) && !strmember_type_code.Equals(strPVD2))
                 {
                     strCriteria = "  and  member_type_code like '%" + strmember_type_code + "%' " +
                                            " and person_work_status_code='01' " +
@@ -606,6 +611,17 @@ namespace myWeb.App_Control.payment_member_type
                                            " and pay_year='" + strpay_year + "' " +
                                            " and person_group_code IN (" + PersonGroupList + ") ";
                 }
+                else if (strmember_type_code.Equals(strPVD2))
+                {
+                    strmember_type_code = strPVD;
+                    strCriteria = "  and  member_type_code like '%" + strmember_type_code + "%' " +
+                                           " and person_work_status_code='01' " +
+                                           " and payment_year='" + strpayment_year + "' " +
+                                           " and member_type_add > 0 " +
+                                           " and pay_month='" + strpay_month + "' " +
+                                           " and pay_year='" + strpay_year + "' " +
+                                           " and person_group_code IN (" + PersonGroupList + ") ";
+                }
                 else
                 {
                     strmember_type_code = strGBK;
@@ -617,6 +633,7 @@ namespace myWeb.App_Control.payment_member_type
                                            " and pay_year='" + strpay_year + "' " +
                                            " and person_group_code IN (" + PersonGroupList + ") ";
                 }
+
                 if (!oPayment.SP_PAYMENT_MEMBER_TYPE_TEMP_SEL(strCriteria, ref ds, ref strMessage))
                 {
                     lblError.Text = strMessage;
@@ -716,9 +733,35 @@ namespace myWeb.App_Control.payment_member_type
                         }
 
 
-                        if (cboMember_type.SelectedValue.Equals(strGBK2) || cboMember_type.SelectedValue.Equals(strGSJ2))
+                        if (cboMember_type.SelectedValue.Equals(strGBK2) || 
+                            cboMember_type.SelectedValue.Equals(strGSJ2))
                         {
-                            ds.Tables[0].Rows[i]["membertype_credit"] = ((dblmember_type_add) * dblperson_salaly) / 100;
+                            if(cboMember_type.SelectedValue.Equals(strPVD2))
+                            {
+                                ds.Tables[0].Rows[i]["membertype_credit"] = Math.Round(
+                                        (dblmember_type_add * dblperson_salaly) / 100,
+                                        0,
+                                        MidpointRounding.AwayFromZero);
+                            }
+                            else
+                            {
+                                ds.Tables[0].Rows[i]["membertype_credit"] = ((dblmember_type_add) * dblperson_salaly) / 100;
+                            }
+                        }
+
+                        if (cboMember_type.SelectedValue.Equals(strPVD2))
+                        {
+                            if (cboMember_type.SelectedValue.Equals(strPVD2))
+                            {
+                                ds.Tables[0].Rows[i]["membertype_credit"] = Math.Round(
+                                        (dblmember_type_add * dblperson_salaly) / 100,
+                                        0,
+                                        MidpointRounding.AwayFromZero);
+                            }
+                            else
+                            {
+                                ds.Tables[0].Rows[i]["membertype_credit"] = ((dblmember_type_add) * dblperson_salaly) / 100;
+                            }
                         }
 
                     }
@@ -753,7 +796,9 @@ namespace myWeb.App_Control.payment_member_type
                         GridView1.Columns[GridView1.Columns.Count - 1].Visible = false;
                     }
 
-                    if (cboMember_type.SelectedValue.Equals(strGBK2) || cboMember_type.SelectedValue.Equals(strGSJ2))
+                    if (cboMember_type.SelectedValue.Equals(strGBK2) || 
+                        cboMember_type.SelectedValue.Equals(strGSJ2) || 
+                        cboMember_type.SelectedValue.Equals(strPVD2))
                     {
                         GridView1.Columns[GridView1.Columns.Count - 3].Visible = true;
                     }

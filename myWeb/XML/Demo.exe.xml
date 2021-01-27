@@ -230,10 +230,13 @@
     <entry name="2559">2559</entry>
     <entry name="2560">2560</entry>
     <entry name="2561">2561</entry>
+    <entry name="2562">2562</entry>
+    <entry name="2563">2563</entry>
+    <entry name="2564">2564</entry>
   </section>
   <section name="default">
-    <entry name="pagetitle">MJU</entry>
-    <entry name="yearnow">2561</entry>
+    <entry name="pagetitle">CMRU</entry>
+    <entry name="yearnow">2564</entry>
     <entry name="work_status">'01','02','03'</entry>
 
     <entry name="companyname">มหาวิทยาลัยราชภัฏเชียงใหม่</entry>
@@ -265,6 +268,7 @@
     <entry name="GSJ2">06</entry>
     <!--สำรองเลี้ยงชีพ-->
     <entry name="PVD">05</entry>
+    <entry name="PVD2">07</entry>
   </section>
   <section name="PersonMange">
     <entry name="00001">00001</entry>

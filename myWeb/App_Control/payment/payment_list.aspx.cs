@@ -23,6 +23,8 @@ namespace myWeb.App_Control.payment
         private bool[] blnAccessRight = new bool[5] { false, false, false, false, false };
         private string strPrefixCtr = "ctl00$ASPxRoundPanel1$ASPxRoundPanel2$ContentPlaceHolder1$";
         private string strPrefixCtr_2 = "ctl00$ASPxRoundPanel1$ContentPlaceHolder2$";
+        
+
         #endregion
 
         protected void Page_Load(object sender, EventArgs e)
@@ -255,6 +257,10 @@ namespace myWeb.App_Control.payment
             string strYear = string.Empty;
             string strPay_Month = string.Empty;
             string strPay_Year = string.Empty;
+
+            ViewState["RoundPay_Month"] = string.Empty;
+            ViewState["RoundPay_Year"] = string.Empty;
+
             try
             {
                 strCriteria = " and round_status= 'O' ";
@@ -271,6 +277,10 @@ namespace myWeb.App_Control.payment
                         strYear = ds.Tables[0].Rows[0]["payment_year"].ToString();
                         strPay_Month = ds.Tables[0].Rows[0]["pay_month"].ToString();
                         strPay_Year = ds.Tables[0].Rows[0]["pay_year"].ToString();
+
+                        ViewState["RoundPay_Month"] = strPay_Month;
+                        ViewState["RoundPay_Year"] = strPay_Year;
+
                         #endregion
                     }
                     else
@@ -527,6 +537,10 @@ namespace myWeb.App_Control.payment
                 Label lblperson_name = (Label)e.Row.FindControl("lblperson_name");
                 string strStatus = lblc_active.Text;
 
+                var strRoundPay_Year = Helper.CStr(ViewState["RoundPay_Year"]);
+                var strRoundPay_Month = Helper.CStr(ViewState["RoundPay_Month"]);
+                bool isInRound = cboPay_Year.SelectedValue == strRoundPay_Year && cboPay_Month.SelectedValue == strRoundPay_Month;
+
                 #region set ImageStatus
                 ImageButton imgStatus = (ImageButton)e.Row.FindControl("imgStatus");
                 if (strStatus.Equals("Y"))
@@ -560,7 +574,7 @@ namespace myWeb.App_Control.payment
                                                         "OpenPopUp('990px','550px','95%','แก้ไขข้อมูลการจ่ายเงินเดือน','payment_control.aspx?mode=edit&payment_doc=" +
                                                         lblpayment_doc.Text + "&page=" + GridView1.PageIndex.ToString() +
                                                          "&IsUserEdit=" + (IsUserEdit ? "Y" : "N") + "&IsUserDelete=" + (IsUserDelete ? "Y" : "N") + "','1');return false;\" >" + lblperson_name.Text + "</a>";
-                if (!IsUserEdit) {
+                if (!IsUserEdit || !isInRound) {
                     strScript = lblperson_name.Text ;
                 
                 }
@@ -583,8 +597,8 @@ namespace myWeb.App_Control.payment
                 #endregion
 
                 #region check user can edit/delete
-                imgEdit.Visible = base.IsUserEdit;
-                imgDelete.Visible = base.IsUserDelete;
+                imgEdit.Visible = base.IsUserEdit && isInRound;
+                imgDelete.Visible = base.IsUserDelete && isInRound;
                 #endregion
          
 

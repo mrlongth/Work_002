@@ -845,7 +845,8 @@ namespace myWeb
                     dt.Columns.Add("GBK2");
                     dt.Columns.Add("PVD");
                     dt.Columns.Add("GSJ2");
-                
+                    dt.Columns.Add("PVD2");
+
                     rw = dt.NewRow();
                     rw[0] = oXml.GetValue("MemberType", "GBK");
                     rw[1] = oXml.GetValue("MemberType", "GSJ");
@@ -853,6 +854,7 @@ namespace myWeb
                     rw[3] = oXml.GetValue("MemberType", "GBK2");
                     rw[4] = oXml.GetValue("MemberType", "PVD");
                     rw[5] = oXml.GetValue("MemberType", "GSJ2");
+                    rw[6] = oXml.GetValue("MemberType", "PVD2");
                     dt.Rows.Add(rw);
                     ds.Tables.Add(dt);
                     #endregion

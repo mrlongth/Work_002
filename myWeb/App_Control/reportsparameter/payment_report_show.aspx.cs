@@ -465,7 +465,9 @@ namespace myWeb.App_Control.reportsparameter
             {
                 Retive_Rep_budget_plan_item_group();
             }
-            else if (ViewState["report_code"].ToString().Equals("Rep_payment_bank"))
+            else if (ViewState["report_code"].ToString().Equals("Rep_payment_bank") ||
+                     ViewState["report_code"].ToString().Equals("Rep_payment_bank_special") ||
+                     ViewState["report_code"].ToString().Equals("Rep_payment_bank_bonus"))
             {
                 Retive_Rep_payment_bank();
             }
@@ -2120,7 +2122,7 @@ namespace myWeb.App_Control.reportsparameter
                 rptSource.SetParameterValue("pMonth", getMonth());
                 rptSource.SetParameterValue("pYear", ViewState["year"].ToString());
                 rptSource.SetParameterValue("BankName", Session["BankName"].ToString());
-                rptSource.SetParameterValue("MoneyType", Session["MoneyType"].ToString());
+                rptSource.SetParameterValue("MoneyType", Session["MoneyType"] != null ? Session["MoneyType"].ToString() : "");
                 CrystalReportViewer1.LogOnInfo = tableLogOnInfos;
             }
             catch (Exception ex)

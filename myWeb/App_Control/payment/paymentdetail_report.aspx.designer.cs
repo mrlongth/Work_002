@@ -337,6 +337,42 @@ namespace myWeb.App_Control.payment {
         protected global::System.Web.UI.WebControls.DropDownList cboBank;
         
         /// <summary>
+        /// lblPay_item control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPay_item;
+        
+        /// <summary>
+        /// cboPay_item control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList cboPay_item;
+        
+        /// <summary>
+        /// lblSemeter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSemeter;
+        
+        /// <summary>
+        /// cboSemeter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList cboSemeter;
+        
+        /// <summary>
         /// lnkTxtFile control.
         /// </summary>
         /// <remarks>

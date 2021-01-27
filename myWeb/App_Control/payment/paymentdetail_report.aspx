@@ -30,6 +30,8 @@
                     <asp:ListItem Value="A9">ส่งออก Text ไฟล์สำหรับธนาคารไทยพานิชย์ประจำเดือน</asp:ListItem>                    
                     <asp:ListItem Value="A7">รายงานสรุปการรับ - จ่ายเงิน ประจำเดือน ระบบเบิกตรง</asp:ListItem>
                     <asp:ListItem Value="A8">รายงานสรุปการรับ - จ่ายเงินแยกตามผลผลิต ประจำเดือน ระบบเบิกตรง </asp:ListItem>
+                    <asp:ListItem Value="A10">รายงานเงินสวัสดิการ ข้าราชการ/ลูกจ้างประจำ </asp:ListItem>
+                    <asp:ListItem Value="A11">รายงานเงินภาคพิเศษ </asp:ListItem>
 
                 </asp:RadioButtonList>
             </td>
@@ -45,7 +47,7 @@
                             </asp:DropDownList>
                             <asp:Label runat="server" CssClass="label_error" ID="lblError"></asp:Label>
                         </td>
-                        <td style="width: 20%; text-align: right;" colspan="2">
+                        <td style="width: 20%; text-align: right;" colspan="3">
                             <asp:Label runat="server" CssClass="label_h" ID="lblPage2">กลุ่มบุคลากร :</asp:Label>
                         </td>
                         <td style="height: 23px; text-align: left;" colspan="2">
@@ -67,7 +69,7 @@
                             <asp:DropDownList runat="server" CssClass="textbox" ID="cboPay_Year">
                             </asp:DropDownList>
                         </td>
-                        <td style="width: 20%; text-align: right;" colspan="2">
+                        <td style="width: 20%; text-align: right;" colspan="3">
                             <asp:Label runat="server" CssClass="label_h" ID="lblPage1">รอบเดือนที่จ่าย :</asp:Label>
                         </td>
                         <td style="height: 23px; text-align: left;" colspan="2">
@@ -85,7 +87,7 @@
                                 OnSelectedIndexChanged="cboDirector_SelectedIndexChanged">
                             </asp:DropDownList>
                         </td>
-                        <td style="width: 20%; text-align: right;" colspan="2">
+                        <td style="width: 20%; text-align: right;" colspan="3">
                             <asp:Label runat="server" CssClass="label_h" ID="lblPage8">หน่วยงาน :
                             </asp:Label>
                         </td>
@@ -99,7 +101,7 @@
                             <asp:Label runat="server" CssClass="label_error" ID="Label71">*</asp:Label>
                             <asp:Label runat="server" ID="lblPage9" CssClass="label_h">รายได้/จ่าย :</asp:Label>
                         </td>
-                        <td style="text-align: left;" colspan="5">
+                        <td style="text-align: left;" colspan="6">
                             <asp:TextBox runat="server" CssClass="textbox" Width="80px" ID="txtitem_code" MaxLength="20">
                             </asp:TextBox>
                             &nbsp;<asp:ImageButton runat="server" ImageAlign="AbsBottom" ImageUrl="../../images/controls/view2.gif"
@@ -118,7 +120,7 @@
                             <asp:Label runat="server" CssClass="label_h" ID="lblPage11">ประเภทข้อมูล :
                             </asp:Label>
                         </td>
-                        <td style="text-align: left;" colspan="2">
+                        <td style="text-align: left;" colspan="3">
 
                             <asp:RadioButton runat="server" GroupName="A" Checked="True" Text="ทั้งหมด" CssClass="label_h"
                                 ID="RadioAll"></asp:RadioButton>
@@ -148,7 +150,7 @@
                                 </asp:DropDownList>
                             </font>
                         </td>
-                        <td style="text-align: right;" colspan="2">
+                        <td style="text-align: right;" colspan="3">
                             <asp:Label runat="server" ID="lblLot" CssClass="label_h" Visible="False">งบ :</asp:Label>
                         </td>
                         <td style="height: 23px; text-align: left;" colspan="2">
@@ -160,7 +162,7 @@
                         <td style="text-align: right; width: 20%;">&nbsp;<asp:Label runat="server" ID="lblBank" CssClass="label_h" Visible="False">ธนาคาร :</asp:Label>
                             &nbsp;
                         </td>
-                        <td style="text-align: left;" colspan="3">
+                        <td style="text-align: left;" colspan="4">
                             <asp:DropDownList runat="server" CssClass="textbox" ID="cboBank" Visible="False">
                             </asp:DropDownList>
                         </td>
@@ -168,8 +170,36 @@
                              &nbsp;</td>
                     </tr>
                     <tr>
+                        <td style="text-align: right; width: 20%;"><asp:Label runat="server" ID="lblPay_item" CssClass="label_h" Visible="False">รอบการจ่าย :</asp:Label>
+                        </td>
+                        <td style="text-align: left;" colspan="2">
+                            <asp:DropDownList runat="server" CssClass="textbox" ID="cboPay_item" Visible="False">
+                              <asp:ListItem>01</asp:ListItem>
+                              <asp:ListItem>02</asp:ListItem>
+                              <asp:ListItem>03</asp:ListItem>
+                            </asp:DropDownList>
+                        </td>
+                        <td style="text-align: right;" colspan="2">
+                            <asp:Label runat="server" ID="lblSemeter" CssClass="label_h" Visible="False">ภาคการศึกษา :</asp:Label>
+                        </td>
+                        <td style="height: 23px; text-align: left;" colspan="2">
+                            <asp:DropDownList runat="server" CssClass="textbox" ID="cboSemeter" Visible="False">
+                              <asp:ListItem>01</asp:ListItem>
+                              <asp:ListItem>02</asp:ListItem>
+                              <asp:ListItem>03</asp:ListItem>
+                            </asp:DropDownList>
+                        </td>
+                    </tr>
+                    <tr>
                         <td style="text-align: right; width: 20%;">&nbsp;</td>
-                        <td style="text-align: left;" colspan="3">
+                        <td style="text-align: left;" colspan="4">
+                            &nbsp;</td>
+                        <td style="height: 23px; text-align: right;" colspan="2">
+                             &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right; width: 20%;">&nbsp;</td>
+                        <td style="text-align: left;" colspan="4">
                             <asp:HyperLink ID="lnkTxtFile" runat="server" Target="_blank">
                         <img id="imgTxt" runat="server" alt="ดาวน์โหลดไฟล์" src="~/images/icon_txtdisable.gif"
                             border="0" />

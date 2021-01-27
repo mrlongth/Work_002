@@ -320,7 +320,7 @@ namespace myWeb.App_Control.lov
                 strCriteria = strCriteria + "  And (substring(item_code,5,7)<>'" + this.GetConfigItem("GBKCodeAdd") + "' OR (substring(item_code,5,7) in (Select Code from getConfigListCode('TaxCode'))))";
                 if (ViewState["payment_back_type"].ToString().Equals("O"))
                 {
-                    strCriteria = strCriteria + "  And substring(item_code,5,7) in(Select substring(item_code,5,7) from view_payment_debit where person_code ='" + strperson_code + "' ) ";
+                    strCriteria = strCriteria + "  And substring(item_code,5,7) in(Select substring(item_code,5,7) from person_item where person_code ='" + strperson_code + "' ) ";
                 }
                 else if (ViewState["payment_back_type"].ToString().Equals("N"))
                 {
